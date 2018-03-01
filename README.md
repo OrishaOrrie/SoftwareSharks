@@ -1,9 +1,12 @@
+![alt text](https://i.imgur.com/h2hLhqK.png "Software Sharks")
 # SoftwareSharks
-301 Final Project Repository
-
-Tobias Bester - u14041368
-Mark Coetzer - u14044537
-Orisha Orrie - u13025199
-Len Bekker - u11026953
-Mukundi caiphus Matodzi- u16091265
-Jonathan Lew - u13318765
+## 301 Final Project Repository
+___
+### The Team
+u14041368  - Tobias Bester \
+u14044537  - Mark Coetzer \
+u13025199  - Orisha Orrie \
+u11026953  - Len Bekker \
+u16091265  - Mukundi Matodzi \
+u13318765  - Jonathan Lew 
+___
