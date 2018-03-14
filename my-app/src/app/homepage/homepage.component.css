@@ -1,0 +1,30 @@
+.demo-panel {
+    margin: 10px 0px;
+}
+
+.toolbar-icon {
+    padding: 0px 30px;
+}
+.mat-toolbar
+{
+      background: white;
+      border-color: dimgrey;
+}
+.toolbar-spacer {
+    flex: 1 1 auto;
+}
+.mat-raised-button {
+    padding: 0 6px 0 6px;
+    margin: 6px 8px 6px 8px;
+    width: 150px;
+    
+    font-size: 16px;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    align-self: center;
+
+    text-decoration:none;
+   
+    color: black;
+    background-color:white;
+  }
