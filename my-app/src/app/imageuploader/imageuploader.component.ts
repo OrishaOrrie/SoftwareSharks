@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ImageuploaderComponent implements OnInit {
 
+  uploadDesc = 'Click the Upload Image tab to upload and process an image.';
+
   constructor() { }
 
   ngOnInit() {
