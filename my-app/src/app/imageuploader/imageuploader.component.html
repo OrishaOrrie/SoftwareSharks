@@ -1,34 +1,26 @@
-<<<<<<< HEAD
 <div class="container">
 
   <div class='row'>
     
     <div class="col-md-3">
-      <h3>Select files please</h3>
 
-      Single
-      <p-toolbar>
+      <mat-card>
+        <mat-card-title>UPLOAD AN IMAGE</mat-card-title>
+
+        <mat-card-subtitle>Click Choose File and Upload</mat-card-subtitle>
+
         <p-fileUpload mode="advanced" name="myfile[]" url="./upload.php" accept="image/*">
           <ng-template pTemplate="toolbar">
-          </ng-template> 
-        </p-fileUpload>
-      </p-toolbar>    
+          </ng-template>
+        </p-fileUpload>  
+        <p>
+
+        </p>
+        
+
+      </mat-card>
 
     </div>
   </div>  
   
 </div>
-=======
-<!--<h1>
-  {{ uploadDesc }}
-</h1>
-<div>
-  <label>name:
-    <input [(ngModel)] ="uploadDesc">
-  </label>
-</div>-->
-<p>
-  imageuploader works!
-</p>
-
->>>>>>> 0cb81d097573628abe4e743f24124853b2eb0cea
