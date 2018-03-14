@@ -1,8 +1,19 @@
-<h1>
-  {{ uploadDesc }}
-</h1>
-<div>
-  <label>name:
-    <input [(ngModel)] ="uploadDesc">
-  </label>
+<div class="container">
+
+  <div class='row'>
+    
+    <div class="col-md-3">
+      <h3>Select files please</h3>
+
+      Single
+      <p-toolbar>
+        <p-fileUpload mode="advanced" name="myfile[]" url="./upload.php" accept="image/*">
+          <ng-template pTemplate="toolbar">
+          </ng-template> 
+        </p-fileUpload>
+      </p-toolbar>    
+
+    </div>
+  </div>  
+  
 </div>
