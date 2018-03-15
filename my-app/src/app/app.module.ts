@@ -10,14 +10,16 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { ImageUploaderComponent } from './imageuploader/imageuploader.component';
 import { MatMenuModule, MatButtonModule, MatIconModule, MatCardModule,  MatToolbarModule } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
-import { ImageUploadModule } from "angular2-image-upload";
+import { ImageResultComponent } from './image-result/image-result.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomepageComponent,
-    ImageUploaderComponent
+    ImageUploaderComponent,
+    ImageResultComponent
   ],
   imports: [
     BrowserModule,
@@ -29,8 +31,7 @@ import { ImageUploadModule } from "angular2-image-upload";
     MatCardModule,
     MatToolbarModule,
     GrowlModule,
-    HttpClientModule,
-    ImageUploadModule.forRoot()
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

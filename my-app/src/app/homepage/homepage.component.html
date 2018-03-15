@@ -1,5 +1,3 @@
-
-
   <mat-card class="demo-panel">
     <mat-card-content>
       <mat-toolbar color="primary">
@@ -31,7 +29,7 @@
         </mat-toolbar>
     </mat-card-content>
 </mat-card>
-<div class="md-actions" layout="row" layout-align="end center" id = "mainimage"> <img  hspace="10%" width="1200px" alt="bramhope logo" src="assets/images/Capture.JPG"></div>
-<div class="md-actions" layout="row" layout-align="end center" id = "imageimage"> <img style="width:40%; height:40%;" hspace="30%" alt="taking image" src="assets/images/othermain.jpg"></div>
-<app-imageuploader id="imgup"  ></app-imageuploader>
+<img *ngIf="showMain == true" hspace="10%" width="1200px" alt="bramhope logo" src="assets/images/Capture.JPG">
+<app-imageuploader *ngIf="showUpload == true"  ></app-imageuploader>
+
   

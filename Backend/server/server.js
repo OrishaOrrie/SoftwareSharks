@@ -50,3 +50,4 @@ app.post("/upload", function(req, res) {
 http.createServer(app).listen(80);
 // Create an HTTPS service identical to the HTTP service.
 https.createServer(options, app).listen(8081);
+console.log('Server running at http://127.0.0.1:8081/');

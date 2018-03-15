@@ -8,8 +8,6 @@ import {MatMenuModule} from '@angular/material/menu';
 })
 export class AppComponent {
   title = 'BISI Image APP';
-
-  showUpload:boolean = false;
 }
 
 /*@Component({

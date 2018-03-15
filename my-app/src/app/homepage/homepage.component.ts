@@ -8,38 +8,27 @@ import { AppComponent } from '../app.component';
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.css']
 })
-export class HomepageComponent implements OnInit {
+export class HomepageComponent {
 
+  showMain = true;
+  showUpload = false;
   constructor() { }
   
   ngOnInit() {
-    var y = document.getElementById("imgup");
-    y.style.display ="none";
-    var yo = document.getElementById("imageimage");
-    yo.style.display ="none";
-  }
-  //showUp :boolean =false;
   
+  }
+
+
   showupload()
   {
-   // this.showUp=true;
-    var x = document.getElementById("imgup");
-    var z = document.getElementById("imageimage");
-      z.style.display = "block";
-      x.style.display = "block";
-      var y = document.getElementById("mainimage");
-      y.style.display = "none";
+    this.showMain = false;
+    this.showUpload = true;
    }
 
   showmain()
   {
-      var y = document.getElementById("mainimage");
-      var z = document.getElementById("imageimage");
-      z.style.display ="none";
-      y.style.display = "block";
-      var x = document.getElementById("imgup");
-      x.style.display = "none";
+    this.showMain = true;
+    this.showUpload = false;
   }
-
 }
 
