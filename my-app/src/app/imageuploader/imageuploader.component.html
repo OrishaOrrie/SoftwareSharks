@@ -1,35 +1,15 @@
 <div class="container" >
-
   <div class='row'>
-    
     <div class="col-md-3">
-
       <mat-card >
         <mat-card-title>UPLOAD AN IMAGE</mat-card-title>
-
-        <mat-card-subtitle>Choose a file to upload</mat-card-subtitle>
-
-        <!-- NGPrime Image uploader - Hard to specify image submission -->
-        <!--p-fileUpload mode="advanced" name="myfile[]" url="./upload.php" accept="image/*">
-          <ng-template pTemplate="toolbar">
-          </ng-template>
-        </p-fileUpload--> 
-
-        <!-- Simple HTML image uploader -->
+        <mat-card-subtitle>Choose a file to upload</mat-card-subtitle>   
         <div>
-          <!-- CHOICE#2 includes (change)="handleFileInput($event.target.files)" -->
-          <input type="file" #fileInput id="file" (change)="handleImageInput($event.target.files)"  placeholder="Upload Image..."/>
-          <!--button type="button" (click)="handleImageInput($event.target.files)">Upload</button-->  <!-- Choice#1 -->
-
+          <form id="frmUploader" enctype="multipart/form-data" action="http://localhost/upload" method="post">
+            <input type="file" name="imgUploader" />
+            <input type="submit" name="submit" id="btnSubmit" value="Upload" /> </form>
         </div>
-
-        <p>
-          <!-- EMPTY SPACE -->
-        </p>
-        
       </mat-card>
-
     </div>
   </div>  
-  
 </div>

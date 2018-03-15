@@ -10,6 +10,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { ImageUploaderComponent } from './imageuploader/imageuploader.component';
 import { MatMenuModule, MatButtonModule, MatIconModule, MatCardModule,  MatToolbarModule } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
+import { ImageUploadModule } from "angular2-image-upload";
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatCardModule,
     MatToolbarModule,
     GrowlModule,
-    HttpClientModule
+    HttpClientModule,
+    ImageUploadModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
