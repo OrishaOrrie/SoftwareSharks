@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { NgClass, NgStyle } from '@angular/common';
 
 const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
@@ -10,7 +10,6 @@ const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
   styleUrls: ['./imageuploader.component.css'],
 })
 export class ImageUploaderComponent implements OnInit {
-
   ngOnInit() {
   }
 

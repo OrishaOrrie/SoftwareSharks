@@ -15,8 +15,8 @@ import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
-    ImageUploaderComponent,
-    HomepageComponent
+    HomepageComponent,
+    ImageUploaderComponent
   ],
   imports: [
     BrowserModule,
