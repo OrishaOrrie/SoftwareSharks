@@ -41,8 +41,7 @@ var Storage = multer.diskStorage({
 function ImageModification(){
 sharp("uploads/"+uploadFileName)
 	.greyscale()
-	.toFile("greyscale/"+uploadFileName,function(err){
-		
+	.toFile("greyscale/uploaded.jpg",function(err){
 		});
 }
 
@@ -50,13 +49,18 @@ var upload = multer({
   storage: Storage
 }).array("imgUploader", 1); 
 
+// app.get('/', function(req, res) {
+//     var passedVariable = req.query.valid;
+//     // Do something with variable
+//   });
+
 app.post("/upload", function(req, res) {
   upload(req, res, function(err) {
       if (err) {
           return res.end("Something went wrong!" + err);
       }
       ImageModification();
-      return res.sendFile(__dirname +'/display.html');
+      return res.sendFile(__dirname +'/display.html/' +uploadFileName);
   });
 });
 
