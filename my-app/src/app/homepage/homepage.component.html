@@ -1,0 +1,35 @@
+  <mat-card class="demo-panel">
+    <mat-card-content>
+      <mat-toolbar color="primary">
+          <img id ="imagemain" hspace="20" width="200" alt="homeimage" src="assets/images/logo.png">
+          <button mat-raised-button color="primary" (click)= "showmain()">
+              Home
+          </button>
+          <button mat-raised-button color="primary" (click)="showupload()">
+            Image Recognition
+          </button>
+          <button mat-raised-button color="primary">
+            Careers
+          </button>
+           <button mat-raised-button color="primary">
+            Services
+            </button>
+            <button mat-raised-button color="primary">
+              Contact Us
+            </button>
+            <button mat-raised-button color="primary">
+                About Us
+            </button>
+            <button mat-raised-button color="primary">
+              Register
+            </button>
+            <button mat-raised-button color="primary">
+              Sign in
+            </button>        
+        </mat-toolbar>
+    </mat-card-content>
+</mat-card>
+<img *ngIf="showMain == true" hspace="10%" width="1200px" alt="bramhope logo" src="assets/images/Capture.JPG">
+<app-imageuploader *ngIf="showUpload == true"  ></app-imageuploader>
+
+  
