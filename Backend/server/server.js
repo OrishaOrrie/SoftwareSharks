@@ -15,6 +15,7 @@ var options = {
 var app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(express.static('public'));
 
 var uploadFileName = "";
 
@@ -41,7 +42,7 @@ var Storage = multer.diskStorage({
 function ImageModification(){
 sharp("uploads/"+uploadFileName)
 	.greyscale()
-	.toFile("greyscale/uploaded.jpg",function(err){
+	.toFile("public/uploaded.jpg",function(err){
 		});
 }
 

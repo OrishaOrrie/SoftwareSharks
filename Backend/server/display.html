@@ -1,6 +1,6 @@
 <html>
 <head>
-  <title>Express HTML</title>
+  <title>Imaage Modified!</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
@@ -10,23 +10,25 @@
   <div style="margin:100px;">
     <nav class="navbar navbar-inverse navbar-static-top">
   <div class="container">
-    <a class="navbar-brand" href="/">Express HTML</a>
-    <ul class="nav navbar-nav">
-      <li class="active">
-        <a href="/">Home</a>
-      </li>
-      <li>
-        <a href="/about">About</a>
-      </li>
-    </ul>
+    <a class="navbar-brand" href="/">Software Sharks</a>
   </div>
 </nav>
     <div class="jumbotron"  style="padding:40px;">
-      <h1>Image Modified!</h1>
-      <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-      <img src="uploads/uploaded.jpg" alt="Uploaded image"/>
-      <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+      <h1>Image Recieved & Modified!</h1>
+      <img src="public/uploaded.jpg" alt="Uploaded image"/>
+      <p><a class="btn btn-primary btn-lg" href="http://127.0.0.1:4200" role="button">Go Back</a></p>
     </div>
   </div>
+  <div class="container">
+      <div id="mapholder"></div>
+  </div>
+  <script>
+  function showPosition(position) {
+    var latlon = position.coords.latitude + "," + position.coords.longitude;
+    var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="+latlon+"&zoom=14&size=400x300&sensor=false&key=AIzaSyCTOHLNavlHDv80BjBw87uGdJn_bQG2m_k";
+
+    document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
+}
+  </script>
 </body>
 </html>
