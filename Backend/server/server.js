@@ -61,7 +61,7 @@ app.post("/upload", function(req, res) {
           return res.end("Something went wrong!" + err);
       }
       ImageModification();
-      return res.sendFile(__dirname +'/display.html/' +uploadFileName);
+      return res.sendFile(__dirname +'/display.html');
   });
 });
 
