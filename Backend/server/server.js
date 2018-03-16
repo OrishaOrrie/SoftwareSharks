@@ -4,6 +4,7 @@ var fs = require("fs");
 var https = require('https');
 var http = require('http');
 var multer  = require('multer')
+const sharp=require('sharp');
 var upload = multer({ dest: 'uploads/' })
 
 var options = {
@@ -12,7 +13,6 @@ var options = {
 };
 
 var app = express();
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -24,6 +24,8 @@ app.options("/*", function(req, res, next){
     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
     res.sendStatus(200);
   });
+var filenm="";
+var filenmNew="";
 
 var Storage = multer.diskStorage({
   destination: function(req, file, callback) {
@@ -35,6 +37,15 @@ var Storage = multer.diskStorage({
   }
 });
 
+//Image Modification Function
+function ImageModification(){
+sharp("uploads/"+uploadFileName)
+	.greyscale()
+	.toFile("greyscale/"+uploadFileName,function(err){
+		
+		});
+}
+
 var upload = multer({
   storage: Storage
 }).array("imgUploader", 1); 
@@ -44,9 +55,8 @@ app.post("/upload", function(req, res) {
       if (err) {
           return res.end("Something went wrong!" + err);
       }
-      
+      ImageModification();
       return res.sendFile(__dirname +'/display.html');
-      //return res.end("File uploaded sucessfully!.");
   });
 });
 
