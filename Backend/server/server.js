@@ -16,6 +16,8 @@ var app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+var uploadFileName = "";
+
 app.options("/*", function(req, res, next){
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
@@ -28,7 +30,8 @@ var Storage = multer.diskStorage({
       callback(null, "uploads/");
   },
   filename: function(req, file, callback) {
-      callback(null, file.fieldname + "_" + Date.now() + "_" + file.originalname);
+    uploadFileName = file.fieldname + "_" + Date.now() + "_" + file.originalname;
+    callback(null, uploadFileName);
   }
 });
 
@@ -39,9 +42,11 @@ var upload = multer({
 app.post("/upload", function(req, res) {
   upload(req, res, function(err) {
       if (err) {
-          return res.end("Something went wrong! " + err);
+          return res.end("Something went wrong!" + err);
       }
-      return res.end("File uploaded sucessfully!.");
+      
+      return res.sendFile(__dirname +'/display.html');
+      //return res.end("File uploaded sucessfully!.");
   });
 });
 
