@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('softwaresharks-image-app App', () => {
+describe('ss-imagerec-webapp App', () => {
   let page: AppPage;
 
   beforeEach(() => {
