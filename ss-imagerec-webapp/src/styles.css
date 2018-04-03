@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+/*@import url('https://fonts.googleapis.com/css?family=Raleway:300,700');
+
+body {
+    padding: 3em;
+    font-family: 'Raleway', 'Arial';
+    color: rgb(209, 87, 87);
+}
+ul {
+    list-style-type:none;
+    margin: 0 0 2em 0;
+    padding: 0;
+}
+ul li {
+    display: inline;
+    margin-right: 30px;
+}
+ul li a {
+    font-size: 1.5em;
+}
+a {
+    color: rgb(34, 9, 9);
+    text-decoration: none;
+}*/
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import url('https://fonts.googleapis.com/css?family=Lato:thin,regular|Raleway:thin,regular');
+
+body {
+    /*background: #23074d;  /* fallback for old browsers */
+    /*background: -webkit-linear-gradient(to right, #cc5333, #23074d);  /* Chrome 10-25, Safari 5.1-6 */
+    /*background: linear-gradient(to right, #cc5333, #23074d); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+   /* background-image: linear-gradient(to right, #6e6ba4, #928eba, #b6b2d1, #dad8e8, #ffffff);*/
+    background: rgb(231, 239, 243);
+    text-transform: uppercase;
+    font-family: 'Lato', sans-serif;
+    font-family: 'Raleway', sans-serif;
+}

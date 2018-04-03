@@ -1,0 +1,16 @@
+<div>
+    <mat-card color="accent">
+      <mat-form-field>
+        <input matInput [(ngModel)]="answer" placeholder="Please describe your image!">
+      </mat-form-field>
+      <br>
+      <button color="primary" mat-raised-button (click)="showAnswer()">Answer Me</button>
+      <mat-spinner [style.display]="showSpinner ? 'block':'none'"></mat-spinner>
+    </mat-card>
+    
+    <mat-card *ngIf="answerDisplay">
+      <h1>{{ answerDisplay }}, SOUNDS like a great picture!</h1>
+    </mat-card>
+    
+  <a mat-button routerLink="/home">Back to Home</a>
+</div>

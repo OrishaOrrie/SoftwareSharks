@@ -1,0 +1,65 @@
+.welcome-container{
+    display: grid;
+    grid-template-rows: 1fr 4fr 1fr;
+    grid-template-columns: 1fr 1fr 1f;
+    grid-row-gap: 5px;
+    grid-column-gap: 2px;
+    grid-template-areas: 
+    "msg msg msg"
+    "howto classify result"
+    "button button button";
+    padding: 5px;
+    box-shadow: 0px 0px 10px grey;
+}
+
+.intro-message{
+    grid-area: msg;
+    height: 3em;
+    text-align: center;
+    font-family: Raleway, sans-serif;
+    font-size: 200%;
+}
+
+/* Step 1 */
+.how-to{
+    grid-area: howto;
+    background-image: url(/assets/taking-img-of-dessert.jpeg);
+    background-size: cover;
+    width:21em;
+
+}
+
+/* Step 2 */
+.classify{
+    grid-area: classify;
+    background-image: url(/assets/blue-network.jpg);
+    background-size: cover;
+    width:21em;
+}
+
+/* Step 3 */
+.getresult{
+    grid-area: result;
+    background-image: url(/assets/thumbs-up.jpg);
+    background-size: cover;
+    width:21em;
+}
+
+.button-area{
+    grid-area: button;
+}
+
+.steps{
+    text-align: center;
+    color: white;
+    font-size: 400%;
+}
+
+.steps-descript{
+    text-align: center;
+    color:darkgray;
+    text-shadow: gray;
+    font-size: 200%;
+    position: absolute;
+    bottom: 0px;
+}
