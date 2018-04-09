@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ImageuploadComponent } from './imageupload/imageupload.component';
+import { MatGridListModule } from '@angular/material';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { ImageuploadComponent } from './imageupload/imageupload.component';
     AppRoutingModule,
     MaterialModule,
     BrowserAnimationsModule,
+    MatGridListModule,
     FormsModule
   ],
   providers: [],

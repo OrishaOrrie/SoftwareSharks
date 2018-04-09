@@ -16,18 +16,31 @@
     font-family: Lato, Arial, sans-serif;
 }
 
-#home-toolbar{
-    padding: 50;
+main{
+    margin: auto 10em;
+    overflow: auto;
+    padding-bottom: 100px;
 }
 
-#footer{
-    margin: auto 0 0 0;
-    padding: 20px;
-    left: 0;
-    bottom: 0;
-    width: 100%;
+#footy{
+    background: rgb(60, 60, 80);
+    color: white;
     position: relative;
-    color: black;
-    font-family: Lato, sans-serif;
+    margin-top: -100px;
+    height: 100px;
+    clear: both;
+}
 
+#ss-info{
+    text-align: left;
+}
+
+.bramhope-logo{
+    width: 100px;
+    height: 90px;
+}
+
+.ss-logo{
+    width: 90px;
+    height: 90px;
 }

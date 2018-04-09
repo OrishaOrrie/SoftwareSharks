@@ -1,16 +1,25 @@
 <div class="welcome-container">
+
   <div class="intro-message">Let us tell you what you're holding</div>
-  <mat-card class="how-to">
+
+  <mat-card class="how-to hvr-float">
     <h2 class="steps">1</h2>
-    <div class="steps-descript">you upload an image</div>
+    <div class="steps-descript">image<br>upload</div>
+    <mat-card class="detailed-descript" color="accent">Click the Upload Image button and upload an image of an object</mat-card>
   </mat-card>
-  <mat-card class="classify">
+  <mat-card class="classify hvr-float">
     <h2 class="steps">2</h2>
-    <div class="steps-descript">we analyze the image</div>
+    <div class="steps-descript">image<br>analysis</div>
+    <mat-card class="detailed-descript" color="primary">We run the image through our image recognition model</mat-card>
   </mat-card>
-  <mat-card class="getresult">
+  <mat-card class="getresult hvr-float">
     <h2 class="steps">3</h2>
-    <div class="steps-descript">image classification</div>
+    <div class="steps-descript">image<br>classification</div>
+    <mat-card class="detailed-descript" color="primary">Receive a classification of the object in the image</mat-card>
   </mat-card>
-  <div class="button-area">Click here</div>
+
+  <div class="button-area">
+      <br>
+    <button mat-raised-button color="primary" routerLink="/imageupload" class="go-to-upload">Upload Image</button>
+  </div>
 </div>
