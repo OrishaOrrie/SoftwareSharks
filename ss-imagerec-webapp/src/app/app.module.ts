@@ -10,7 +10,6 @@ import { HomeComponent } from './home/home.component';
 import { ImageuploadComponent } from './imageupload/imageupload.component';
 import { MatGridListModule } from '@angular/material';
 
-
 @NgModule({
   declarations: [
     AppComponent,

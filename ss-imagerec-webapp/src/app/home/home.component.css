@@ -85,6 +85,7 @@
     width: 50%;
     height: 4em;
     font-size: larger;
+    text-transform: capitalize;
 }
 
 /* ANIMATION */
