@@ -1,3 +1,8 @@
+.total-upload-card{
+    background-color: rgb(60, 60, 80);
+    color: lightgray;
+}
+
 .title{
     text-align: center;
     font-family: "Lato", Arial, Helvetica, sans-serif;
@@ -6,26 +11,24 @@
 .dashboardContainer{
     align-content: center;
     background-color: rgb(75, 75, 97);
+    padding-left: 16%;
 }
 
-.total-upload-card{
-    background-color: rgb(60, 60, 80);
-    color: white;
+.nothing-to-show{
+    color: orange;
 }
 
 .result-card{
-    align-content: center;
     background-color: rgb(75, 75, 97);
 }
 
 .results-list{
-    color: white;
-    align-content: center;
+    color: lightgray;
+    text-align: left;
 }
 
 mat-card-title{
-    color: white;
-    text-align: center;
+    color: lightgray;
     font-family: "Lato", Arial, Helvetica, sans-serif;
 }
 

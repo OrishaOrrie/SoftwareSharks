@@ -19,6 +19,8 @@ export class ImageuploadComponent implements OnInit {
 
   private uppy: IUppy<any, UppyFile<any>>;
   public results: Result[] = [];
+  public instruction: String = 'Click Browse, My Device, or Webcam and Select or Capture an Image to Upload';
+  public showSpinner = false;
 
   constructor() { }
 
@@ -52,6 +54,10 @@ export class ImageuploadComponent implements OnInit {
       // console.log(this.uppy.getFile(result).response);
     });
 
+    this.uppy.on('upload', (file) => {
+      this.showSpinner = true;
+    });
+
     this.uppy.on('file-added', (file) => {
       this.uppy.setFileMeta(file.id, {
         size: file.size
@@ -65,8 +71,14 @@ export class ImageuploadComponent implements OnInit {
       body.forEach(element => {
         this.results.push(new Result(element.id, element.name, element.value));
       });
+      this.instruction = 'View Results Below';
+      this.showSpinner = false;
     });
 
+  }
+
+  reloadPage() {
+    window.location.reload(true);
   }
 
 }

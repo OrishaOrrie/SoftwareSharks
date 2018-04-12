@@ -9,12 +9,14 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ImageuploadComponent } from './imageupload/imageupload.component';
 import { MatGridListModule } from '@angular/material';
+import { UtilitiesComponent } from './utilities/utilities.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ImageuploadComponent
+    ImageuploadComponent,
+    UtilitiesComponent
   ],
   imports: [
     BrowserModule,
