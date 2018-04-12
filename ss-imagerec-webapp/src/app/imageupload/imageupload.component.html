@@ -1,13 +1,22 @@
 <div>
-    <mat-card color="accent">
+    <mat-card class="total-upload-card" href="#upload-top" color="accent">
 
       <h1 class="title">Upload an Image</h1>
-      <div class="dashboardContainer"></div>
-      <a mat-raised-button routerLink="/home" color="primary">Back to Home</a>
+      <mat-card class="dashboardContainer"></mat-card>
+      <br>
 
-      <mat-card *ngFor="let result of results">
-        {{ result.name }}<br>
-        {{ result.value }}
+      <mat-card class="result-card">
+        <mat-card-title><h3>Classification Results</h3></mat-card-title>
+        <h4 style="text-align: center;" *ngIf="results.length == 0">Nothing to show yet!</h4>
+        <mat-list>
+          <mat-list-item class="results-list" *ngFor="let result of results">
+            {{ result.name }}<br>
+            {{ result.value }}
+            <mat-divider></mat-divider>
+          </mat-list-item>
+        </mat-list>
+        <br>
+        <a mat-raised-button routerLink="/imageupload" class="reload-upload" color="primary">Upload another Image</a>       
       </mat-card>
 
     </mat-card>

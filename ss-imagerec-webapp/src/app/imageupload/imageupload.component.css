@@ -1,7 +1,34 @@
 .title{
     text-align: center;
+    font-family: "Lato", Arial, Helvetica, sans-serif;
 }
 
 .dashboardContainer{
+    align-content: center;
+    background-color: rgb(75, 75, 97);
+}
+
+.total-upload-card{
+    background-color: rgb(60, 60, 80);
+    color: white;
+}
+
+.result-card{
+    align-content: center;
+    background-color: rgb(75, 75, 97);
+}
+
+.results-list{
+    color: white;
+    align-content: center;
+}
+
+mat-card-title{
+    color: white;
+    text-align: center;
+    font-family: "Lato", Arial, Helvetica, sans-serif;
+}
+
+.reload-upload{
     align-content: center;
 }
