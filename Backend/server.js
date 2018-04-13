@@ -20,6 +20,55 @@ app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 /**
+ * Start of email thing
+ */
+var nodemailer = require("nodemailer");
+var smtpTransport = nodemailer.createTransport({
+    service: "gmail",
+    host: "smtp.gmail.com",
+    auth: {
+        user: "softwaresharks@gmail.com",
+        pass: "SoftwareSharks123"
+    }
+});
+/*------------------SMTP Over-----------------------------*/
+
+/*------------------Routing Started ------------------------*/
+app.get('/',function(req,res){
+    //res.sendfile('../ss-imagerec-webapp/contact-us.component.html');
+  
+    res.sendFile(path.resolve('../ss-imagerec-webapp/src/app/contact-us/contact-us.component.html'));
+    //Users/Orisha/Documents/3rdyear/COS301/git folder/SoftwareSharks/ss-imagerec-webapp/src/app/contact-us/contact-us.component.html
+});
+app.get('/send',function(req,res){
+    var mailOptions={
+        to : 'softwaresharks@gmail.com', //req.query.to,
+        subject : req.query.subject,
+        text : 'Email: '+req.query.email + ' Message: '+ req.query.text
+
+    }
+    console.log(mailOptions);
+    smtpTransport.sendMail(mailOptions, function(error, response){
+     if(error){
+            console.log(error);
+        res.end("error");
+     }else{
+            console.log("Message sent: " + response.message);
+        res.end("sent");
+         }
+});
+});
+/*
+app.listen(3000,function(){
+    console.log("Express Started on Port 3000");
+});
+ /**
+ * End of email thing
+ */
+
+
+
+/**
  * Multer
  */
 var _uploadFilePath = ''

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule, MatToolbarModule, MatProgressSpinnerModule, MatCardModule } from '@angular/material';
 import { MatInputModule, MatListModule, MatDividerModule } from '@angular/material';
@@ -17,6 +17,7 @@ import { MatInputModule, MatListModule, MatDividerModule } from '@angular/materi
     MatListModule,
     MatDividerModule
   ],
-  declarations: []
+  declarations: [],
+  schemas: [NO_ERRORS_SCHEMA]
 })
 export class MaterialModule { }

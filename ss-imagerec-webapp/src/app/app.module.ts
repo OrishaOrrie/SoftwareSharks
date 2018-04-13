@@ -1,6 +1,7 @@
+import { ContactUsComponent } from './contact-us/contact-us.component';
 import { MaterialModule } from './material.module';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './/app-routing.module';
 import { FormsModule } from '@angular/forms';
@@ -16,7 +17,8 @@ import { UtilitiesComponent } from './utilities/utilities.component';
     AppComponent,
     HomeComponent,
     ImageuploadComponent,
-    UtilitiesComponent
+    UtilitiesComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +29,7 @@ import { UtilitiesComponent } from './utilities/utilities.component';
     FormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [NO_ERRORS_SCHEMA]
 })
 export class AppModule { }
