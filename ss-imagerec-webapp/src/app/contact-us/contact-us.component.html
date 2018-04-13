@@ -1,0 +1,59 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" />
+<title>Contact Us!</title>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script><script>// <![CDATA[
+$(document).ready(function(){
+    var fullname,to,subject,text;
+    $("#send_email").click(function(){     
+        to=$("#emailadd").val();
+        subject=$("#name").val();
+        text=  $("#content").val();
+        email = $("#emailadd").val();
+        $("#message").text("Sending E-mail...");
+        $.get("http://localhost:3000/send",{to:to,subject:subject,text:text, email:email},function(data){
+        if(data=="sent")
+        {
+            $("#message").empty().html("Your query has been sent!");
+        }
+
+});
+    });
+});
+</script>
+</head>
+
+<body>
+  <div class="container">
+      <div ng-controller="formCtrl">
+          <h2 class="text-center text-primary" >Contact Us!</h2>
+          <hr />
+          <form name="userForm" class="form-horizontal well form-search">
+              <div class="form-group">
+                  <label for="name" class="col-sm-2 control-label">Your Name</label>
+                  <div class="col-sm-10">
+                      <input type="name" ng-model="name" class="form-control" id="name" placeholder="Your Name" required/>
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label for="email" class="col-sm-2 control-label">Email</label>
+                  <div class="col-sm-10">
+                      <input type="email" ng-model="email" class="form-control" id="emailadd" placeholder="Your Email" required/>
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label for="Message" class="col-sm-2 control-label">Message</label>
+                  <div class="col-sm-10">
+                      <textarea ng-model="message" id="content" class="form-control" rows="3" placeholder="Your Message" required></textarea>
+                  </div>
+              </div>
+              <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10">
+                      <button type="submit" id = "send_email"  ng-disabled="userForm.$invalid" class="btn btn-primary">Submit</button>
+                  </div>
+              </div>
+        
+          </form>
+      </div>
+  </div>
+</body>

@@ -43,13 +43,13 @@ export class ImageuploadComponent implements OnInit {
     /*.use(GoogleDrive, { target: Dashboard, host: 'https://server.uppy.io'})
     .use(Instagram, { target: Dashboard, host: 'https://server.uppy.io'})*/
     .use(Webcam, {target: Dashboard})
-    .use(XHRUpload, {endpoint: 'http://127.0.0.1:8000/upload', method: 'post', fieldName: 'file'} )
+    .use(XHRUpload, {endpoint: 'http://127.0.0.1:3000/upload', method: 'post', fieldName: 'file'} )
     .run();
 
     this.uppy.on('complete', (result) => {
-      // console.log('failed files: ', result.failed);
-      // console.log('successful files: ', result.successful.response);
-      // console.log(this.uppy.getFile(result).response);
+      //console.log('failed files: ', result.failed);
+      //console.log('successful files: ', result.successful.response);
+      //console.log(this.uppy.getFile(result).response);
     });
 
     this.uppy.on('file-added', (file) => {

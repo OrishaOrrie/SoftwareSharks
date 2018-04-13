@@ -28,6 +28,7 @@
     "animate.css": "^3.6.1",
     "core-js": "^2.4.1",
     "hover.css": "^2.3.0",
+    "nodemailer": "^4.6.4",
     "rxjs": "^5.5.6",
     "uppy": "^0.23.3",
     "uppy-store-ngrx": "^0.1.1",
