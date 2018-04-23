@@ -1,0 +1,16 @@
+{
+  "method": {
+    "get"      : [],
+    "post"     : [],
+    "put"      : [],
+    "patch"    : [],
+    "head"     : [],
+    "trace"    : [],
+    "options"  : [],
+    "delete"   : []
+  },
+  "option": {},
+  "custom": {
+    "request"  : []
+  }
+}
