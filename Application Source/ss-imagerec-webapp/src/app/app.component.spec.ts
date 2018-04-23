@@ -1,17 +1,19 @@
 import { Router, RouterModule, RouterOutlet } from '@angular/router';
-import { HomeComponent } from './home/home.component';
+import { RouterTestingModule } from '@angular/router/testing';
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material.module';
+
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent
       ],
-      providers: [
-        RouterOutlet,
-        MaterialModule
+      imports: [
+        MaterialModule,
+        RouterModule,
+        RouterTestingModule
       ]
     }).compileComponents();
   }));
@@ -29,6 +31,6 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to app!');
+    expect(compiled.querySelector('h1').textContent).toContain('Ninshiki');
   }));
 });

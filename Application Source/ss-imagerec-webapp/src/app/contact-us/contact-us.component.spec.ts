@@ -1,6 +1,8 @@
+import { MaterialModule } from './../material.module';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ContactUsComponent } from './contact-us.component';
+import { RouterModule, Router } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('ContactUsComponent', () => {
   let component: ContactUsComponent;
@@ -8,7 +10,10 @@ describe('ContactUsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ContactUsComponent ]
+      declarations: [ ContactUsComponent ],
+      imports: [
+        MaterialModule
+      ]
     })
     .compileComponents();
   }));
