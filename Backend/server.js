@@ -120,7 +120,7 @@ app.use(uppy.app(uppy_options))
  */
 const _image = require('./local_modules/image.js')
 const _httpCodes = require('./local_modules/HTTPRequests.js')
-const _base64 = require('./local_modules/Base64.js')
+const _base64 = require('./local_modules/base64.js')
 const _logger = require('./local_modules/logger.js')
 app.use(_logger())
 
