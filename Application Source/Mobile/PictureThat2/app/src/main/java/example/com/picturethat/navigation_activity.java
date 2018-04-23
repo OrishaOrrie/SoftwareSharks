@@ -60,6 +60,8 @@ public class navigation_activity extends AppCompatActivity
 
     private  String resultant = "";
 
+
+
     ImageView ivDisplayPicture;
     ImageView ivCam;
     Integer REQUEST_CAMERA=1, SELECT_FILE=0;
@@ -97,6 +99,7 @@ public class navigation_activity extends AppCompatActivity
 
 
                 selectImage();
+
                 /*Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
                         */
@@ -267,6 +270,40 @@ private static final String TAG = navigation_activity.class.getSimpleName();
         }
     }
 
+    private void Load()
+    {
+        Toast.makeText(this,"uploading", Toast.LENGTH_SHORT).show();
+
+        if(photoFile != null)
+        {
+
+            Thread thread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+
+                    uploadToServer(photoFile);
+                }
+            });
+
+            thread.start();
+
+
+            try {
+                thread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+
+            processResponse();
+
+
+        }
+
+
+    }
+
+
 
     private void selectImage() {
         final CharSequence[] items={"Camera","Gallery", "Cancel"};
@@ -335,73 +372,44 @@ private static final String TAG = navigation_activity.class.getSimpleName();
  */
 
     @Override
-    public  void onActivityResult(int requestCode, int resultCode, Intent data){
-        super.onActivityResult(requestCode, resultCode,data);
+    public  void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
-        if(resultCode== Activity.RESULT_OK){
+        if (resultCode == Activity.RESULT_OK) {
 
             //set the image  to be viewed.
-            if(requestCode==REQUEST_CAMERA){
+            if (requestCode == REQUEST_CAMERA) {
 
-            boolean response = false;
+                boolean response = false;
                 setPic(mCurrentPhotoPath);
-                if(photoFile != null)
-                {
+                //Load();
 
-                    Thread thread = new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-
-                            uploadToServer(photoFile);
-                        }
-                    });
-
-                    thread.start();
-
-
-                    try {
-                        thread.join();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-
-
-                     processResponse();
+                //Toast.makeText(this, "gallery!"+  mCurrentPhotoPath, Toast.LENGTH_SHORT).show();
 
 
 
+                //gallery
+                Load();
+            }
+            if (requestCode == SELECT_FILE) {
 
-                }
+                Uri uri = data.getData();
+                setPic(FilePath.getPath(this,uri).toString());
+
+                //Toast.makeText(this, "gallery!"+   FilePath.getPath(this,uri).toString(), Toast.LENGTH_SHORT).show();
+
 
 
             }
 
 
-                //String path  = FilePath.getPath(this,uri);
-               // Toast.makeText(this, path.toString(), Toast.LENGTH_SHORT).show();
-
-            //gallery
-            }else if(requestCode==SELECT_FILE){
-
-            //get path and set the path.
-                 String path = "";
-
-            Uri selectedImageUri = data.getData();
-            ivDisplayPicture.setImageURI(selectedImageUri);
-
-                 //setPic(path);
-
-            }
-            else
-            {
-                Toast.makeText(this, "something went wrong!", Toast.LENGTH_SHORT).show();
-            }
 
         }
+    }
 
 
     /*
-    creation of image file.
+    *creation of image file.
 
      */
     private File createImageFile() throws IOException {
