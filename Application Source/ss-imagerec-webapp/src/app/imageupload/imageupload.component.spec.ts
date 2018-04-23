@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { MaterialModule } from './../material.module';
 import { ImageuploadComponent } from './imageupload.component';
 
 describe('ImageuploadComponent', () => {
@@ -8,7 +8,10 @@ describe('ImageuploadComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ImageuploadComponent ]
+      declarations: [ ImageuploadComponent ],
+      imports: [
+        MaterialModule
+      ]
     })
     .compileComponents();
   }));
