@@ -386,6 +386,9 @@ private static final String TAG = navigation_activity.class.getSimpleName();
             //get path and set the path.
                  String path = "";
 
+            Uri selectedImageUri = data.getData();
+            ivDisplayPicture.setImageURI(selectedImageUri);
+
                  //setPic(path);
 
             }
