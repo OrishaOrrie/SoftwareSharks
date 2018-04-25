@@ -7,12 +7,14 @@ from __future__ import absolute_import, division, print_function
 import numpy as np
 
 import tensorflow as tf
+from keras.backend.tensorflow_backend import set_session
 
 tf.logging.set_verbosity(tf.logging.INFO)
 
 config = tf.ConfigProto()
 config.gpu_options.allow_growth = True
-session = tf.Session(config=config)
+print('Session')
+tf.Session(config=config)
 print('Loaded')
 
 # 2. INTRO TO CONVOLUTIONAL NEURAL NETWORKS
@@ -206,11 +208,11 @@ def cnn_model_fn(features, labels, mode):
 
     # 3.10
     # Add evaluation metrics (for EVAL mode)      
-    eval_metrics_ops = {
+    eval_metric_ops = {
         "accuracy": tf.metrics.accuracy (
             labels = labels, predictions=predictions["classes"]) }
     return tf.estimator.EstimatorSpec(
-        mode=mode, loss=loss, eval_metrics_ops=eval_metrics_ops
+        mode=mode, loss=loss, eval_metric_ops=eval_metric_ops
     )
     # Here, we add an accuracy metric.
     
@@ -283,9 +285,5 @@ def main(unused_argv):
     # 4.6
     # Run the model
 
-#
-#if __name__ == "__main__":
-#    tf.app.run()
-#
-
-session.run(tf.app.run())
+if __name__ == "__main__":
+	tf.app.run()
