@@ -4,6 +4,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -30,6 +31,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.MimeTypeMap;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -57,14 +59,16 @@ public class navigation_activity extends AppCompatActivity
     private  static final  int WRITE_REQUEST_RES = 10;
     String mCurrentPhotoPath;
     File photoFile = null; //File to be uploaded.
+    Uri uri; //global uri
 
     private  String resultant = "";
 
-
+    Button uploadButton;
 
     ImageView ivDisplayPicture;
     ImageView ivCam;
     Integer REQUEST_CAMERA=1, SELECT_FILE=0;
+    final int PIC_CROP = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +78,14 @@ public class navigation_activity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         ivDisplayPicture = findViewById(R.id.ivDisplayPicture);
+
+        uploadButton = findViewById(R.id.uploadButton);
+
+        uploadButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Load();
+            }
+        });
 
 
 
@@ -257,18 +269,24 @@ private static final String TAG = navigation_activity.class.getSimpleName();
                 photoFile = createImageFile();
             } catch (IOException ex) {
                 // Error occurred while creating the File
-
             }
-            // Continue only if the File was successfully created
-            if (photoFile != null) {
-                Uri photoURI = FileProvider.getUriForFile(this,
-                        "example.com.android.fileprovider",
-                        photoFile);
-                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-                startActivityForResult(takePictureIntent, REQUEST_CAMERA);
+
+
+                //uri = Uri.fromFile(file);
+
+
+                // Continue only if the File was successfully created
+                if (photoFile != null) {
+                    uri = FileProvider.getUriForFile(this,
+                            "example.com.android.fileprovider",
+                            photoFile);
+                    takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+                    takePictureIntent.putExtra("return-data", true);
+                    startActivityForResult(takePictureIntent, REQUEST_CAMERA);
+                }
             }
         }
-    }
+
 
     private void Load()
     {
@@ -318,14 +336,12 @@ private static final String TAG = navigation_activity.class.getSimpleName();
                 if (items[i].equals("Camera")) {
 
 
-                    dispatchTakePictureIntent();
+                  //  dispatchTakePictureIntent();
 
 
                 } else if (items[i].equals("Gallery")) {
 
-                    Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                    intent.setType("image/*");
-                    startActivityForResult(intent,SELECT_FILE);
+                    openGallery();
 
                 } else if (items[i].equals("Cancel")) {
                     dialogInterface.dismiss();
@@ -378,27 +394,82 @@ private static final String TAG = navigation_activity.class.getSimpleName();
         if (resultCode == Activity.RESULT_OK) {
 
             //set the image  to be viewed.
-            if (requestCode == REQUEST_CAMERA) {
+            if (requestCode == REQUEST_CAMERA){
 
-                boolean response = false;
-                setPic(mCurrentPhotoPath);
+                this.cropImage();
+                //setPic(mCurrentPhotoPath);
+
                 //Load();
-
-                //Toast.makeText(this, "gallery!"+  mCurrentPhotoPath, Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(this, "camera!", Toast.LENGTH_SHORT).show();
 
 
-                //gallery
-                Load();
+
+                //TODO:CREATE AN UPLOAD BUTTON TO CALL THE LOAD FUNCTION
+                //Load();
             }
-            if (requestCode == SELECT_FILE) {
-
-                Uri uri = data.getData();
-                setPic(FilePath.getPath(this,uri).toString());
-
-                //Toast.makeText(this, "gallery!"+   FilePath.getPath(this,uri).toString(), Toast.LENGTH_SHORT).show();
+            else if (requestCode == SELECT_FILE) {
 
 
+                if(data != null) {
+                    uri = data.getData();
+                    cropImage();
+                }
+
+
+
+               // String path= FilePath.getPath(this,uri);
+               // photoFile = new File(path);
+                //setPic(path);
+
+
+
+               //TODO:CREATE AN UPLOAD BUTTON TO CALL THE LOAD FUNCTION
+              // Load();
+
+
+            } else if (requestCode == PIC_CROP){
+
+
+
+                if(data != null)
+                {
+                    Bundle bundle = data.getExtras();
+                    //setting the image.
+                   Bitmap bitmap = bundle.getParcelable("data");
+                    ivDisplayPicture.setImageBitmap(bitmap);
+                    String path= FilePath.getPath(this,uri);
+                    photoFile = new File(path);
+                    Button resetButton = findViewById(R.id.uploadButton);
+                    resetButton.setVisibility(View.VISIBLE);
+                }
+                else
+                {
+                    Toast toast = Toast.makeText(this,"data is null is guess", Toast.LENGTH_SHORT);
+                }
+                //String path= FilePath.getPath(this,uri);
+                //photoFile = new File(path);
+               // Toast toast = Toast.makeText(this,"path: "+path, Toast.LENGTH_SHORT);
+                //toast.show();
+
+
+
+                //String path= FilePath.getPath(this,uri);
+
+                //TODO - FIND A  NEW WAY TO GET THE FILE PATH.
+
+
+                //photoFile = new File(path);
+
+              // setPic(path);
+               /*try
+                {
+
+                }
+                catch(Exception e)
+                {
+
+                }
+                */
 
             }
 
@@ -407,10 +478,74 @@ private static final String TAG = navigation_activity.class.getSimpleName();
         }
     }
 
+    /**
+     * this function opens the gallery intent.
+     * @return returns a void.
+     *
+     */
+    private void openGallery()
+    {
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        intent.setType("image/*");
+        startActivityForResult(intent,SELECT_FILE);
 
-    /*
-    *creation of image file.
+    }
 
+
+
+
+
+    private void cropImage(){
+
+        try {
+
+            Intent cropIntent = new Intent("com.android.camera.action.CROP");
+            //indicate image type and Uri
+            cropIntent.setDataAndType(uri, "image/*");
+            //set crop properties
+            cropIntent.putExtra("crop", "true");
+            //indicate aspect of desired crop
+            cropIntent.putExtra("aspectX", 1);
+            cropIntent.putExtra("aspectY", 1);
+            //indicate output X and Y
+            cropIntent.putExtra("outputX", 256);
+            cropIntent.putExtra("outputY", 256);
+            //retrieve data on return
+            cropIntent.putExtra("return-data", true);
+
+           cropIntent.putExtra("scaleUpIfNeeded",true);
+            //start the activity - we handle returning in onActivityResult
+            startActivityForResult(cropIntent, PIC_CROP);
+
+
+
+
+
+
+
+            //cropIntent.putExtra("aspectX",3);
+            //cropIntent.putExtra("aspectY",4);
+
+
+
+
+        }
+        catch(ActivityNotFoundException anfe){
+            //display an error message
+            String errorMessage = "Whoops - your device doesn't support the crop action!";
+            Toast toast = Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT);
+            toast.show();
+        }
+
+
+    }
+
+
+
+    /**
+     *
+     * @return a File image.
+     * @throws IOException
      */
     private File createImageFile() throws IOException {
         // Create an image file name
