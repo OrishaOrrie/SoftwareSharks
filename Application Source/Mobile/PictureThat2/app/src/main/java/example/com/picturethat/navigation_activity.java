@@ -394,12 +394,6 @@ private static final String TAG = navigation_activity.class.getSimpleName();
 
 
 
-/*
-
-*This function is called after the image has been choosen for the gallery or capture.
-* @parameters are request code and intent
-* it sets the image to be displayed  after being picked.
- */
 
     @Override
     public  void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -409,40 +403,15 @@ private static final String TAG = navigation_activity.class.getSimpleName();
 
             //set the image  to be viewed.
             if (requestCode == REQUEST_CAMERA){
-
-
                 cropImage();
-                Toast.makeText(this, "camera!", Toast.LENGTH_SHORT).show();
-
-
-
-                //TODO:CREATE AN UPLOAD BUTTON TO CALL THE LOAD FUNCTION
-                //Load();
             }
             else if (requestCode == SELECT_FILE) {
-
-
                 if(data != null) {
                     uri = data.getData();
                     cropImage();
                 }
 
-
-
-               // String path= FilePath.getPath(this,uri);
-               // photoFile = new File(path);
-                //setPic(path);
-
-
-
-               //TODO:CREATE AN UPLOAD BUTTON TO CALL THE LOAD FUNCTION
-              // Load();
-
-
             } else if (requestCode == PIC_CROP){
-
-
-
                 if(data != null)
                 {
                     Bundle bundle = data.getExtras();
@@ -458,30 +427,6 @@ private static final String TAG = navigation_activity.class.getSimpleName();
                 {
                     Toast toast = Toast.makeText(this,"data is null is guess", Toast.LENGTH_SHORT);
                 }
-                //String path= FilePath.getPath(this,uri);
-                //photoFile = new File(path);
-               // Toast toast = Toast.makeText(this,"path: "+path, Toast.LENGTH_SHORT);
-                //toast.show();
-
-
-
-                //String path= FilePath.getPath(this,uri);
-
-                //TODO - FIND A  NEW WAY TO GET THE FILE PATH.
-
-
-                //photoFile = new File(path);
-
-              // setPic(path);
-               /*try
-                {
-
-                }
-                catch(Exception e)
-                {
-
-                }
-                */
 
             }
 
@@ -489,11 +434,8 @@ private static final String TAG = navigation_activity.class.getSimpleName();
 
         }
     }
-
     /**
      * this function opens the gallery intent.
-     * @return returns a void.
-     *
      */
     private void openGallery()
     {
@@ -504,9 +446,10 @@ private static final String TAG = navigation_activity.class.getSimpleName();
     }
 
 
-
-
-
+    /**
+     * This function crops an image
+     * @throws  ActivityNotFoundException if the device does not support the cropping functionality.
+     */
     private void cropImage(){
 
         try {
@@ -526,18 +469,7 @@ private static final String TAG = navigation_activity.class.getSimpleName();
             cropIntent.putExtra("return-data", true);
 
            cropIntent.putExtra("scaleUpIfNeeded",true);
-            //start the activity - we handle returning in onActivityResult
             startActivityForResult(cropIntent, PIC_CROP);
-
-
-
-
-
-
-
-            //cropIntent.putExtra("aspectX",3);
-            //cropIntent.putExtra("aspectY",4);
-
 
 
 
@@ -555,7 +487,7 @@ private static final String TAG = navigation_activity.class.getSimpleName();
 
 
     /**
-     *
+     * this function creates a new image file.
      * @return a File image.
      * @throws IOException
      */
@@ -576,23 +508,10 @@ private static final String TAG = navigation_activity.class.getSimpleName();
     }
 
 
-
-
-    /*
-    *This function creates an http request to the server.
-
+    /**
+     * This function uploads a file to the server using the okhttp request.
+     * @param f File to be uploaded to the server
      */
-//convert bitmap to base 64;
-    private String uploadToBase64(Bitmap bitmap)
-    {
-        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
-        byte[] imgBytes = bytes.toByteArray();
-        return Base64.encodeToString(imgBytes,Base64.DEFAULT);
-    }
-
-
-
     private  void uploadToServer(File f)
     {
 
@@ -628,14 +547,8 @@ private static final String TAG = navigation_activity.class.getSimpleName();
         }
 
 
-
-
-
-
     }
 
-
-    //function to  get the response from the server and store it on results.
     public void onResponse(Response response) throws IOException
     {
         if (response.isSuccessful())
@@ -648,7 +561,9 @@ private static final String TAG = navigation_activity.class.getSimpleName();
         }
     }
 
-    //function to process the resultant string which is in json format.
+    /**
+     * This function starts a new results activity after recieve a json string from the server
+     */
     public  void processResponse()
     {
         if(resultant != "")
@@ -670,8 +585,12 @@ private static final String TAG = navigation_activity.class.getSimpleName();
 
     }
 
-    //FUNCTION TO PROCESS THE JSON STRING.
 
+    /**
+     *  This function gets the mime type of a file given the file path string.
+     * @param path a string of the path of the file
+     * @return a string that is a mime type of the file.
+     */
 
     private String getMimeType(String path) {
 
