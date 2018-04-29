@@ -288,6 +288,20 @@ private static final String TAG = navigation_activity.class.getSimpleName();
         }
 
 
+
+        private void openCamera()
+        {
+            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            photoFile = new File(Environment.getExternalStorageDirectory(),
+                    "file"+String.valueOf(System.currentTimeMillis())+".jpg");
+            uri = Uri.fromFile(photoFile);
+            intent.putExtra(MediaStore.EXTRA_OUTPUT,uri);
+            intent.putExtra("return-data",true);
+            startActivityForResult(intent,REQUEST_CAMERA);
+
+        }
+
+
     private void Load()
     {
         Toast.makeText(this,"uploading", Toast.LENGTH_SHORT).show();
@@ -336,8 +350,8 @@ private static final String TAG = navigation_activity.class.getSimpleName();
                 if (items[i].equals("Camera")) {
 
 
-                  //  dispatchTakePictureIntent();
-
+                  //dispatchTakePictureIntent();
+                    openCamera();
 
                 } else if (items[i].equals("Gallery")) {
 
@@ -396,10 +410,8 @@ private static final String TAG = navigation_activity.class.getSimpleName();
             //set the image  to be viewed.
             if (requestCode == REQUEST_CAMERA){
 
-                this.cropImage();
-                //setPic(mCurrentPhotoPath);
 
-                //Load();
+                cropImage();
                 Toast.makeText(this, "camera!", Toast.LENGTH_SHORT).show();
 
 
