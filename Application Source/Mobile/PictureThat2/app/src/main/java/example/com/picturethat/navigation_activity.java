@@ -35,6 +35,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -528,7 +531,7 @@ private static final String TAG = navigation_activity.class.getSimpleName();
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://10.0.2.2:8080/upload")
+                .url("http://192.168.1.100:8000/upload")
                 .post(request_body)
                 .build();
 
@@ -568,12 +571,15 @@ private static final String TAG = navigation_activity.class.getSimpleName();
     {
         if(resultant != "")
         {//process the response.
+
             Toast.makeText(this, "json file reecieved!", Toast.LENGTH_SHORT).show();
+//
+//            Intent intent = new Intent(getBaseContext(), Results.class);
+//            intent.putExtra("JSON_RESULT",resultant);
+//            startActivity(intent);
 
-            Intent intent = new Intent(getBaseContext(), Results.class);
-            intent.putExtra("JSON_RESULT",resultant);
-            startActivity(intent);
 
+            getResponse(resultant);
 
 
         }
@@ -601,5 +607,45 @@ private static final String TAG = navigation_activity.class.getSimpleName();
 
 
 
+    void getResponse(String res)
+    {
+
+        //Parse json
+        JSONArray reader = null;
+        try
+        {
+            //Into java object
+            reader = new JSONArray(res);
+            //Place name and value in string[]
+            String resNames[] = new String[reader.length()];
+            String resValues[] = new String[reader.length()];
+            for(int n = 0; n < reader.length(); n++)
+            {
+                JSONObject object = reader.getJSONObject(n);
+                resNames[n] = object.get("name").toString();
+                resValues[n] = object.get("value").toString();
+                //System.out.println(resNames[n] + ": " + Float.parseFloat(resValues[n])*100 + " %");
+            }
+
+            //Display response(start activity)
+
+            Intent rez =  new Intent(this, results_activity.class);
+
+            rez.putExtra("Photopath", photoFile.getAbsolutePath());
+            rez.putExtra("Names", resNames);
+            rez.putExtra("Values", resValues);
+            startActivity(rez);
+
+
+        }
+        catch(Exception e)
+        {
+            System.out.println("We dun goofed");
+            e.printStackTrace();
+        }
+
+
+
     }
+}
 

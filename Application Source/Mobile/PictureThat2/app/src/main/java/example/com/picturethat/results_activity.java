@@ -24,10 +24,11 @@ public class results_activity extends AppCompatActivity {
 
         Bundle ex =  getIntent().getExtras();
 
-        System.out.println("Photo Path: " + ex.getString("Photopath"));
 
         //TODO: Fix setPic on result page
-        //setPic(ex.getString("Photopath"));
+
+        Bitmap bitmap = BitmapFactory.decodeFile(ex.getString("Photopath"));
+        ivDisplayResPicture.setImageBitmap(bitmap);
 
         TextView editResult = (TextView) findViewById(R.id.TextViewResult);
         String[] Names = ex.getStringArray("Names");
@@ -44,27 +45,4 @@ public class results_activity extends AppCompatActivity {
         //editResult.setText(getIntent().getExtras().toString());
     }
 
-    private void setPic(String mCurrentPhotoPath) {
-        // Get the dimensions of the View
-        int targetW = ivDisplayResPicture.getWidth();
-        int targetH = ivDisplayResPicture.getHeight();
-
-        // Get the dimensions of the bitmap
-        BitmapFactory.Options bmOptions = new BitmapFactory.Options();
-        bmOptions.inJustDecodeBounds = true;
-        BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
-        int photoW = bmOptions.outWidth;
-        int photoH = bmOptions.outHeight;
-
-        // Determine how much to scale down the image
-        int scaleFactor = Math.max(photoW/targetW, photoH/targetH);
-
-        // Decode the image file into a Bitmap sized to fill the View
-        bmOptions.inJustDecodeBounds = false;
-        bmOptions.inSampleSize = scaleFactor;
-        bmOptions.inPurgeable = true;
-
-        Bitmap bitmap = BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
-        ivDisplayResPicture.setImageBitmap(bitmap);
-    }
 }
