@@ -36,29 +36,34 @@ var smtpTransport = nodemailer.createTransport({
 /*------------------Routing Started ------------------------*/
 app.get('/',function(req,res){
     //res.sendfile('../ss-imagerec-webapp/contact-us.component.html');
-  
-    res.sendFile(path.resolve('../ss-imagerec-webapp/src/app/contact-us/contact-us.component.html'));
+    res.sendFile(path.resolve('../../ss-imagerec-webapp/src/app/contact-us/contact-us.component.html'));
     //Users/Orisha/Documents/3rdyear/COS301/git folder/SoftwareSharks/ss-imagerec-webapp/src/app/contact-us/contact-us.component.html
 });
-app.get('/send',function(req,res){
+app.post('/send',function(req,res){
+	res.header("Access-Control-Allow-Origin", "*");
+  	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
+	console.log("Localhost://3000/send received a post request\n");
+	console.log("Request: " + req.body.email + "\n");
     var mailOptions={
+    	from: req.body.email,
         to : 'softwaresharks@gmail.com', //req.query.to,
-        subject : req.query.subject,
-        text : 'Email: '+req.query.email + ' Message: '+ req.query.text
+        subject : 'Email sent by ' + req.body.subject,
+        text : 'Email From: '+ req.body.email + '\n Message: '+ req.body.text
 
     }
     console.log(mailOptions);
     smtpTransport.sendMail(mailOptions, function(error, response){
      if(error){
             console.log(error);
-        res.end("error");
+        	res.end("error");
      }else{
             console.log("Message sent: " + response.message);
-        res.end("sent");
+        	res.end("sent");
          }
+	});
 });
-});
-/*
+
 app.listen(3000,function(){
     console.log("Express Started on Port 3000");
 });
