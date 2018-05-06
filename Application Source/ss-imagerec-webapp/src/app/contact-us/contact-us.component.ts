@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHandler, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHandler, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 
 @Component({
@@ -22,7 +22,7 @@ export class ContactUsComponent implements OnInit {
   });
 
   getErrorMessage() {
-    console.log('Errrorrrrr');
+    // console.log('Errrorrrrr');
     return this.email.hasError('required') ? 'You must enter a value' :
       this.email.hasError('email') ? 'Not a valid email' :
         '';
@@ -46,6 +46,11 @@ export class ContactUsComponent implements OnInit {
     {'subject': contactName, 'text': contactMessage, 'email': contactEmail}
     ).subscribe(data1 => {
       console.log(data1);
+      if (data1 === 'sent') {
+        this.submitted = true;
+      }
+    }
+      /*
     },
     (err: HttpErrorResponse) => {
       if (err.error instanceof Error) {
@@ -53,7 +58,7 @@ export class ContactUsComponent implements OnInit {
       } else {
         console.log('SS error occured');
       }
-    });
+    }*/ );
 
   }
   constructor(private http: HttpClient) { }
