@@ -21,6 +21,10 @@
     "uppy-server": "^0.11.2"
   },
   "devDependencies": {
-    "nodemon": "^1.17.2"
-  }
+    "chai": "^4.1.2",
+    "nodemon": "^1.17.2",
+    "sinon": "^4.5.0",
+    "mocha": "^5.1.1"
+  },
+  "test-unit": "NODE_ENV=test mocha '/**/*.spec.js'"
 }
