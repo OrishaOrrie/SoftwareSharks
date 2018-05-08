@@ -1,7 +1,6 @@
-<head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" />
-<title>Contact Us!</title>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script><script>// <![CDATA[
+
+<!--script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>// <![CDATA[
 $(document).ready(function(){
     var fullname,to,subject,text;
     $("#send_email").click(function(){     
@@ -11,19 +10,18 @@ $(document).ready(function(){
         email = $("#emailadd").val();
         $("#message").text("Sending E-mail...");
         $.get("http://localhost:8000/send",{to:to,subject:subject,text:text, email:email},function(data){
-        if(data=="sent")
-        {
-            $("#message").empty().html("Your query has been sent!");
-        }
-
-});
+            if(data=="sent")
+            {
+                $("#message").empty().html("Your query has been sent!");
+            } else {
+                console.log("DId not send");
+            }
+        });
     });
 });
-</script>
-</head>
+</script-->
 
-<body>
-  <div class="container">
+  <!--div class="container">
       <div ng-controller="formCtrl">
           <h2 class="text-center text-primary" >Contact Us!</h2>
           <hr />
@@ -54,5 +52,38 @@ $(document).ready(function(){
         
           </form>
       </div>
-  </div>
-</body>
+  </div-->
+<!-- ---------------------------------- -->
+<div class="contact-container">
+    <div class="contact-title">
+        <h1>Contact Us!</h1>
+    </div>
+    <br>
+    
+    <mat-card class="email-container" color="primary" *ngIf="!submitted">
+        <form class="form-horizontal" id="usrForm" [formGroup]="myGroup">
+            <mat-form-field>
+                <input class="name-part" matInput type="text" id="name" required formControlName="name" name="name" placeholder="Enter your name">
+            </mat-form-field>
+            <br>
+            <mat-form-field >
+                <input class="email-part" matInput id="email" required formControlName="email" name="email" placeholder="Enter your email">
+                <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="msg-part">
+                <textarea matInput matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5" rows="3" 
+                id="message" form="usrForm" required formControlName="message" name="message" placeholder="Enter your query"></textarea>
+            </mat-form-field>
+            <br>
+            <div>
+                <button mat-raised-button color="primary" type="submit" (click)="onSubmit()" class="sumbit-btn" form="usrForm">Submit</button>
+            </div>
+        </form>
+    </mat-card>
+    <br>
+    <mat-card *ngIf="submitted">
+        <h1>Email Sent!</h1>
+    </mat-card>
+</div>
+
