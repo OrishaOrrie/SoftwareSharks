@@ -50,7 +50,6 @@ app.post('/send',function(req,res){
         to : 'softwaresharks@gmail.com', //req.query.to,
         subject : 'Email sent by ' + req.body.subject,
         text : 'Email From: '+ req.body.email + '\n Message: '+ req.body.text
-
     }
     console.log(mailOptions);
     smtpTransport.sendMail(mailOptions, function(error, response){
@@ -63,7 +62,6 @@ app.post('/send',function(req,res){
          }
 	});
 });
-
 app.listen(3000,function(){
     console.log("Express Started on Port 3000");
 });
