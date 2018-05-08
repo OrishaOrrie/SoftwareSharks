@@ -1,3 +1,17 @@
+/* File Name: utilities.component
+Version Number: v1.0
+Author Name: Tobias Bester
+Project Name: Ninshiki
+Organization: Software Sharks
+Requirements: Refer to the Ninshiki User Manual at https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf
+Update History:
+----–––-––-–––---––––---––––--–––---––––-
+Date––––Author––––Description–––––––––
+01/03/2018 - Tobias - Created Utilities
+----–––-––-–––---––––---––––--–––---––––-
+Test Cases: utilities.component.spec.ts
+Functional Description: Provides utilities such as item weight calculator. More to be added */
+
 import { Component, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @Component({

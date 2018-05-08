@@ -1,3 +1,17 @@
+/* File Name: contact-us.component
+Version Number: v1.0
+Author Name: Orisha Orrie
+Project Name: Ninshiki
+Organization: Software Sharks
+Requirements: Refer to the Ninshiki User Manual at https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf
+Update History:
+----–––-––-–––---––––---––––--–––---––––-
+Date––––Author––––Description–––––––––
+01/03/2018 - Orisha - Created ContactUs
+----–––-––-–––---––––---––––--–––---––––-
+Test Cases: contact-us.component.spec.ts
+Functional Description: Allows user to send query to client via email. */
+
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHandler, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { FormControl, Validators, FormGroup } from '@angular/forms';

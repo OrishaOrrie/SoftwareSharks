@@ -1,3 +1,17 @@
+/* File Name: imageupload.component
+Version Number: v1.0
+Author Name: Tobias Bester
+Project Name: Ninshiki
+Organization: Software Sharks
+Requirements: Refer to the Ninshiki User Manual at https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf
+Update History:
+----–––-––-–––---––––---––––--–––---––––-
+Date––––Author––––Description–––––––––
+01/03/2018 - Tobias - Created ImageUpload
+----–––-––-–––---––––---––––--–––---––––-
+Test Cases: imageupload.component.spec.ts
+Functional Description: Allows user to upload image and receive classification of object in image */
+
 import { Result } from './result';
 import { IUppy, UppyFile } from 'uppy-store-ngrx';
 import { Component, OnInit } from '@angular/core';
