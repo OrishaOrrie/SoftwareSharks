@@ -1,3 +1,5 @@
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './../material.module';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ContactUsComponent } from './contact-us.component';
@@ -12,7 +14,9 @@ describe('ContactUsComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ ContactUsComponent ],
       imports: [
-        MaterialModule
+        MaterialModule,
+        ReactiveFormsModule,
+        HttpClientModule
       ]
     })
     .compileComponents();
