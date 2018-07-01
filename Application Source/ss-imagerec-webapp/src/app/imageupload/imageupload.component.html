@@ -2,9 +2,28 @@
     <mat-card class="total-upload-card" color="accent">
 
       <h1 class="title">Upload an Image</h1>
-      <p class="instruction">{{ instruction }}</p>
-      <mat-spinner [style.display]="showSpinner ? 'block':'none'"></mat-spinner>
-      <mat-card class="dashboardContainer"></mat-card>
+      <!--mat-spinner [style.display]="showSpinner ? 'block':'none'"></mat-spinner>
+      <mat-card class="dashboardContainer"></mat-card-->
+      <mat-card color="primary">
+        <mat-card-title>{{instruction}}</mat-card-title>
+        <form class="form-horizontal" id="imgSelectForm">
+          <div>
+            <label for="file-upload" class="custom-file-upload">
+              Select File to Upload
+            </label>
+            <span id="file-selected"></span>
+            <input id="file-upload" (change)="madeChange()" type="file"/>
+          </div>
+          <button mat-raised-button>CAPTURE IMAGE WITH WEBCAM</button>
+          <br>
+          <div class="preview">
+            <p>No files currently selected</p>
+          </div>
+          <div>
+            <button mat-button>UPLOAD</button>
+          </div>
+        </form>
+      </mat-card>
       <br>
 
       <mat-card class="result-card">

@@ -1,3 +1,4 @@
+import { style } from '@angular/animations';
 /* File Name: imageupload.component
 Version Number: v1.0
 Author Name: Tobias Bester
@@ -39,7 +40,7 @@ export class ImageuploadComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.uppy = Uppy({
+    /* this.uppy = Uppy({
       autoProceed: false,
       debug: true,
       restrictions: {
@@ -58,6 +59,7 @@ export class ImageuploadComponent implements OnInit {
     })
     /*.use(GoogleDrive, { target: Dashboard, host: 'https://server.uppy.io'})
     .use(Instagram, { target: Dashboard, host: 'https://server.uppy.io'})*/
+    /*
     .use(Webcam, {target: Dashboard})
     .use(XHRUpload, {endpoint: 'http://127.0.0.1:8000/upload', method: 'post', fieldName: 'file'} )
     .run();
@@ -80,6 +82,7 @@ export class ImageuploadComponent implements OnInit {
 
     this.uppy.on('upload-success', (file, body) => {
       /*console.log('full result text', file);*/
+      /*
       console.log('body text', body);
       this.results = [];
       body.forEach(element => {
@@ -87,7 +90,44 @@ export class ImageuploadComponent implements OnInit {
       });
       this.instruction = 'View Results Below';
       this.showSpinner = false;
-    });
+    });*/
+
+  }
+
+  madeChange() {
+    const uploadedFile = document.querySelector('input');
+    const preview = document.querySelector('.preview');
+    while (preview.firstChild) {
+      preview.removeChild(preview.firstChild);
+    }
+
+    if (uploadedFile.files.length === 0) {
+      const newP = document.createElement('p');
+      newP.textContent = 'No files currently selected';
+      preview.appendChild(newP);
+    } else {
+      const newP = document.createElement('p');
+      const fileSize = this.formattedFileSize(uploadedFile.files[0].size);
+      newP.textContent = 'File Name: ' + uploadedFile.files[0].name + ' Size: ' + fileSize;
+      const image = document.createElement('img');
+      image.src = window.URL.createObjectURL(uploadedFile.files[0]);
+      image.style.setProperty('height', '200px');
+      preview.appendChild(newP);
+      preview.appendChild(image);
+    }
+
+  }
+
+  formattedFileSize (size) {
+    if (size < 1024) {
+      return size + ' bytes';
+    }
+    if (size < 1024 * 1024) {
+      return ( (size / 1024).toFixed(2) + 'KB' );
+    }
+    if (size > 1024 * 1024) {
+      return ( (size / (1024 * 1024)).toFixed(2) + 'MB');
+    }
 
   }
 

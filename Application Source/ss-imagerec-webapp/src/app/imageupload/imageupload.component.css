@@ -35,3 +35,43 @@ mat-card-title{
 .reload-upload{
     align-content: center;
 }
+
+.image-select-container {
+    position: relative;
+}
+
+.image-select-underlayer {
+    position: absolute;
+    height: 2em;
+}
+
+.image-select-button {
+    z-index: 2;
+    opacity: 0;
+}
+
+.custom-file-upload {
+    font-size: 100%;
+    border: 1px solid rgb(75, 75, 97);
+    display: inline-block;
+    padding: 16px 32px;
+    cursor: pointer;
+}
+
+.custom-file-upload:hover{
+    font-size: 100%;
+    border: 1px solid rgb(75, 75, 97);
+    background: rgb(144, 144, 158);
+    display: inline-block;
+    padding: 16px 32px;
+    cursor: pointer;
+}
+
+#file-upload {
+    display: none;
+}
+
+img {
+    height: 6em;
+    background: red;
+}
