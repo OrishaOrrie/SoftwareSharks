@@ -150,12 +150,15 @@ export class ImageuploadComponent implements OnInit {
 
     this.video = document.createElement('video');
     this.video.textContent = 'Video stream not available';
+    this.video.style.setProperty('float', 'left');
 
     const captureButton = document.createElement('button');
     captureButton.textContent = 'CAPTURE';
     captureButton.style.setProperty('padding', '16px 32px');
     captureButton.style.setProperty('border-radius', '3px');
     captureButton.style.setProperty('background', 'rgb(255, 255, 255)');
+
+    const br = document.createElement('br');
 
     this.canvas = document.createElement('canvas');
     this.canvas.style.setProperty('display', 'none');
@@ -165,8 +168,9 @@ export class ImageuploadComponent implements OnInit {
     this.startup(this.video, this.canvas, this.image, captureButton);
 
     preview.appendChild(this.video);
-    preview.appendChild(this.image);
     preview.appendChild(this.canvas);
+    preview.appendChild(this.image);
+    preview.appendChild(br);
     preview.appendChild(captureButton);
 
   }
@@ -218,11 +222,6 @@ export class ImageuploadComponent implements OnInit {
   hasGetUserMedia() {
     return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
   }
-
-  /*
-  takePicture(canvas, image, video, width, height) {
-
-  }*/
 
   clearPhoto(canvas, image) {
     const context = canvas.getContext('2d');
