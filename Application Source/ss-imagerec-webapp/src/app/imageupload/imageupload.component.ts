@@ -36,6 +36,10 @@ export class ImageuploadComponent implements OnInit {
   public results: Result[] = [];
   public instruction: String = 'Click Browse, My Device, or Webcam and Select or Capture an Image to Upload';
   public showSpinner = false;
+  streaming = false;
+  public video = null;
+  public canvas = null;
+  public image = null;
 
   constructor() { }
 
@@ -95,6 +99,7 @@ export class ImageuploadComponent implements OnInit {
   }
 
   madeChange() {
+    this.streaming = false;
     const uploadedFile = document.querySelector('input');
     const preview = document.querySelector('.preview');
     while (preview.firstChild) {
@@ -129,6 +134,103 @@ export class ImageuploadComponent implements OnInit {
       return ( (size / (1024 * 1024)).toFixed(2) + 'MB');
     }
 
+  }
+
+  captureImage() {
+    if (this.hasGetUserMedia()) {
+      console.log('Has getUserMedia');
+    } else {
+      console.log(':(');
+    }
+
+    const preview = document.querySelector('.preview');
+    while (preview.firstChild) {
+      preview.removeChild(preview.firstChild);
+    }
+
+    this.video = document.createElement('video');
+    this.video.textContent = 'Video stream not available';
+
+    const captureButton = document.createElement('button');
+    captureButton.textContent = 'CAPTURE';
+    captureButton.style.setProperty('padding', '16px 32px');
+    captureButton.style.setProperty('border-radius', '3px');
+    captureButton.style.setProperty('background', 'rgb(255, 255, 255)');
+
+    this.canvas = document.createElement('canvas');
+    this.canvas.style.setProperty('display', 'none');
+
+    this.image = document.createElement('img');
+
+    this.startup(this.video, this.canvas, this.image, captureButton);
+
+    preview.appendChild(this.video);
+    preview.appendChild(this.image);
+    preview.appendChild(this.canvas);
+    preview.appendChild(captureButton);
+
+  }
+
+  startup(video, canvas, image, captureButton) {
+    const width = 320;
+    let height = 0;
+    navigator.mediaDevices.getUserMedia({video: true})
+      .then(function(stream) {
+        video.srcObject = stream;
+        video.play();
+      })
+      .catch(function(err) {
+        console.log('An error has occured! ' + err);
+    });
+
+    video.addEventListener('canplay', function(ev) {
+      if (!this.streaming) {
+        height = video.videoHeight / (video.videoWidth / width);
+        video.setAttribute('width', width);
+        video.setAttribute('height', height);
+        canvas.setAttribute('width', width);
+        canvas.setAttribute('height', height);
+        this.streaming = true;
+      }
+    }, false);
+
+    captureButton.addEventListener('click', function(ev) {
+      const context = canvas.getContext('2d');
+      if (width && height) {
+        canvas.width = width;
+        canvas.height = height;
+        context.drawImage(video, 0, 0, width, height);
+
+        const data = canvas.toDataURL('image/png');
+        image.setAttribute('src', data);
+      } else {
+        this.clearPhoto(canvas, image);
+      }
+
+      /* TODO: Link Capture Photo to Photo Object that needs to be sent/uploaded */
+
+      ev.preventDefault();
+    }, false);
+
+    this.clearPhoto(canvas, image);
+  }
+
+  hasGetUserMedia() {
+    return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
+  }
+
+  /*
+  takePicture(canvas, image, video, width, height) {
+
+  }*/
+
+  clearPhoto(canvas, image) {
+    const context = canvas.getContext('2d');
+    context.fillStyle = '#FFF';
+    context.fillRect(0, 0, canvas.width, canvas.height);
+
+    const data = canvas.toDataURL('image/png');
+    image.setAttribute('src', data);
   }
 
   reloadPage() {

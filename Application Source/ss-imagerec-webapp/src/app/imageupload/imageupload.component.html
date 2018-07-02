@@ -7,21 +7,39 @@
       <mat-card color="primary">
         <mat-card-title>{{instruction}}</mat-card-title>
         <form class="form-horizontal" id="imgSelectForm">
-          <div>
-            <label for="file-upload" class="custom-file-upload">
-              Select File to Upload
-            </label>
-            <span id="file-selected"></span>
-            <input id="file-upload" (change)="madeChange()" type="file"/>
-          </div>
-          <button mat-raised-button>CAPTURE IMAGE WITH WEBCAM</button>
-          <br>
-          <div class="preview">
-            <p>No files currently selected</p>
-          </div>
-          <div>
-            <button mat-button>UPLOAD</button>
-          </div>
+          <mat-grid-list cols="4" rowHeight="100px">
+
+            <mat-grid-tile [colspan]=1 [rowspan]=1>
+                <div class="file-button">
+                  <label for="file-upload" class="custom-file-upload">
+                    Select File to Upload
+                  </label>
+                  <input id="file-upload" (change)="madeChange()" type="file" accept="image/*"/>
+                </div>
+            </mat-grid-tile>
+            
+            <mat-grid-tile [colspan]=3 [rowspan]=3>
+                <div class="preview">
+                  <p>No files currently selected</p>
+                </div>
+            </mat-grid-tile>
+
+            <mat-grid-tile [colspan]=1 [rowspan]=1>
+              <div>
+                <label for="webcam-upload" class="custom-file-upload">
+                  Capture Image with Webcam
+                </label>
+                <button id="webcam-upload" (click)="captureImage()"></button>
+              </div>
+            </mat-grid-tile>
+
+            <mat-grid-tile [colspan]=4 [rowspan]=1>
+                <div>
+                  <button mat-raised-button color="primary" class="upload-button">UPLOAD</button>
+                </div>
+            </mat-grid-tile>
+            
+          </mat-grid-list>          
         </form>
       </mat-card>
       <br>

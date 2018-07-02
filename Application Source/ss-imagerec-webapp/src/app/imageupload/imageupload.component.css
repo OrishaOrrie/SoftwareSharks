@@ -36,18 +36,8 @@ mat-card-title{
     align-content: center;
 }
 
-.image-select-container {
-    position: relative;
-}
-
-.image-select-underlayer {
-    position: absolute;
-    height: 2em;
-}
-
-.image-select-button {
-    z-index: 2;
-    opacity: 0;
+.file-button {
+    text-align: center;
 }
 
 .custom-file-upload {
@@ -56,6 +46,8 @@ mat-card-title{
     display: inline-block;
     padding: 16px 32px;
     cursor: pointer;
+    border-radius: 3px;
+    box-shadow: 2px 2px black;
 }
 
 .custom-file-upload:hover{
@@ -71,7 +63,11 @@ mat-card-title{
     display: none;
 }
 
-img {
-    height: 6em;
-    background: red;
+#webcam-upload {
+    display: none;
+}
+
+.upload-button {
+    width: 200%;
+    font-size: 150%;
 }
