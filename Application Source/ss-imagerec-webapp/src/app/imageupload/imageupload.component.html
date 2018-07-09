@@ -14,7 +14,7 @@
                   <label for="file-upload" class="custom-file-upload">
                     Select File to Upload
                   </label>
-                  <input id="file-upload" (change)="madeChange()" type="file" accept="image/*"/>
+                  <input id="file-upload" (change)="madeChange($event)" type="file" accept="image/*"/>
                 </div>
             </mat-grid-tile>
             
@@ -34,8 +34,8 @@
             </mat-grid-tile>
 
             <mat-grid-tile [colspan]=4 [rowspan]=1>
-                <div>
-                  <button mat-raised-button color="primary" class="upload-button">UPLOAD</button>
+                <div><!--*ngIf="(imageToUpload || image.src)"-->
+                  <button mat-raised-button color="primary" (click)="uploadImage()" class="upload-button">UPLOAD</button>
                 </div>
             </mat-grid-tile>
             
