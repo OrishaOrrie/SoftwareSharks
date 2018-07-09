@@ -34,7 +34,7 @@ const XHRUpload = require('uppy/lib/plugins/XHRUpload');
 })
 export class ImageuploadComponent implements OnInit {
 
-  private uppy: IUppy<any, UppyFile<any>>;
+  // private uppy: IUppy<any, UppyFile<any>>;
   public results: Result[] = [];
   public instruction: String = 'Click Browse, My Device, or Webcam and Select or Capture an Image to Upload';
   public showSpinner = false;
@@ -104,10 +104,13 @@ export class ImageuploadComponent implements OnInit {
   }
 
   madeChange(event) {
-    this.imageToUpload = null;
-    this.streaming = false;
     const uploadedFile = document.querySelector('input');
     const preview = document.querySelector('.preview');
+
+    this.uploadCapture = false;
+    this.imageToUpload = null;
+    this.streaming = false;
+
     while (preview.firstChild) {
       preview.removeChild(preview.firstChild);
     }
@@ -115,17 +118,19 @@ export class ImageuploadComponent implements OnInit {
     if (uploadedFile.files.length === 0) {
       const newP = document.createElement('p');
       newP.textContent = 'No files currently selected';
+
       preview.appendChild(newP);
-      console.log('set to null');
+
       this.imageToUpload = null;
     } else {
-
       const newP = document.createElement('p');
       const fileSize = this.formattedFileSize(uploadedFile.files[0].size);
       newP.textContent = 'File Name: ' + uploadedFile.files[0].name + ' Size: ' + fileSize;
+
       const image = document.createElement('img');
       image.src = window.URL.createObjectURL(uploadedFile.files[0]);
       image.style.setProperty('height', '200px');
+
       preview.appendChild(newP);
       preview.appendChild(image);
 
@@ -149,18 +154,21 @@ export class ImageuploadComponent implements OnInit {
   }
 
   captureImage() {
-    this.imageToUpload = null;
     const preview = document.querySelector('.preview');
+
     while (preview.firstChild) {
       preview.removeChild(preview.firstChild);
     }
 
+    this.imageToUpload = null;
+    this.uploadCapture = true;
+
+    // Video element
     this.video = document.createElement('video');
     this.video.textContent = 'Video stream not available';
     this.video.style.setProperty('float', 'left');
 
-    this.uploadCapture = true;
-
+    // Capture button element
     this.captureButton = document.createElement('button');
     this.captureButton.textContent = 'CAPTURE';
     this.captureButton.style.setProperty('padding', '16px 32px');
@@ -169,9 +177,11 @@ export class ImageuploadComponent implements OnInit {
 
     const br = document.createElement('br');
 
+    // Canvas element that draws screenshot
     this.canvas = document.createElement('canvas');
     this.canvas.style.setProperty('display', 'none');
 
+    // Image element displaying saved screenshot
     this.image = document.createElement('img');
 
     this.startup(this.video, this.canvas, this.image, this.captureButton);
@@ -229,26 +239,6 @@ export class ImageuploadComponent implements OnInit {
     this.clearPhoto(canvas, image);
   }
 
-  /*
-  saveCapture(canvas = this.canvas, video = this.video, image = this.video) {
-    // console.log('Function called');
-
-    const context = canvas.getContext('2d');
-    let data = null;
-    if (video.width && video.height) {
-      this.uploadCapture = true;
-      canvas.width = video.width;
-      canvas.height = video.height;
-      context.drawImage(video, 0, 0, video.width, video.height);
-
-      data = canvas.toDataURL('image/png');
-      image.src = data;
-
-    } else {
-      this.clearPhoto(canvas, image);
-    }
-  } */
-
   clearPhoto(canvas, image) {
     const context3 = canvas.getContext('2d');
     context3.fillStyle = '#FFF';
@@ -263,45 +253,72 @@ export class ImageuploadComponent implements OnInit {
   }
 
   uploadImage() {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        /* 'Content-Type': 'multipart/form-data', */
-        'Accept': 'application/json'
-      })
-    };
-
     console.log('Uploading...');
-    if (this.imageToUpload == null) {
-      console.log('No image selected or captured');
-    } else {
-      console.log('Boolean at uploadImage() is: ' + this.uploadCapture);
-      if (this.uploadCapture) {
-        this.getCapturedImage();
-        console.log('Uploading the webcam capture');
+
+    if (this.uploadCapture === false) {    // if file select
+      if (this.imageToUpload == null) {
+        console.log('No image selected');
       } else {
-
-        console.log('Uploading the selected file');
+        console.log('Uploading selected image file');
         console.log(this.imageToUpload);
-
-        const dest = 'http://localhost:8000/upload';
-        const formData: FormData = new FormData();
-        formData.append('file', this.imageToUpload, this.imageToUpload.name);
-
-        this.http.post(dest, formData, httpOptions)
-        .subscribe(
-          data => {
-            console.log('SENT!');
-          },
-          error => {
-            console.log(Observable.throw(error));
-          }
-        );
+        this.httpUploadImage();
+      }
+    } else {  // else webcam capture
+      this.getCapturedImage();
+      if (this.imageToUpload == null) {
+        console.log('Failed to upload webcam capture');
+      } else {
+        console.log('Uploading webcam capture');
+        this.httpUploadImage();
       }
     }
   }
 
-  getCapturedImage() {
+  httpUploadImage() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Accept': 'application/json'
+      })
+    };
 
+    const dest = 'http://localhost:8000/upload';
+    const formData: FormData = new FormData();
+    formData.append('file', this.imageToUpload, this.imageToUpload.name);
+
+    this.http.post(dest, formData, httpOptions)
+    .subscribe(
+      data => {
+        console.log('SENT!');
+      }
+    );
+  }
+
+  getCapturedImage() {
+    const blobToUpload = this.dataURIToBlob(this.image.src);
+    let fileFromBlob: any = blobToUpload;
+    fileFromBlob.lastModfiedData = new Date();
+    fileFromBlob.name = 'webcam_capture';
+    fileFromBlob = <File>fileFromBlob;
+    console.log(fileFromBlob);
+    this.imageToUpload = fileFromBlob;
+  }
+
+  dataURIToBlob(dataURI) {
+    let byteString;
+    if (dataURI.split(',')[0].indexOf('base64') >= 0) {
+      byteString = atob(dataURI.split(',')[1]);
+    } else {
+      byteString = unescape(dataURI.split(',')[1]);
+    }
+
+    const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+
+    const ia = new Uint8Array(byteString.length);
+    for (let i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i);
+    }
+
+    return new Blob([ia], {type: mimeString});
   }
 
   reloadPage() {
