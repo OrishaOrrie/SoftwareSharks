@@ -303,6 +303,7 @@ export class ImageuploadComponent implements OnInit {
     if (this.uploadCapture === false) {    // if file select
       if (this.imageToUpload == null) {
         console.log('No image selected');
+        this.updateInstruction();
       } else {
         console.log('Uploading selected image file');
         console.log(this.imageToUpload);
@@ -311,6 +312,7 @@ export class ImageuploadComponent implements OnInit {
     } else {  // else webcam capture
       this.getCapturedImage();
       if (this.imageToUpload == null) {
+        this.updateInstruction();
         console.log('Failed to upload webcam capture');
       } else {
         console.log('Uploading webcam capture');
