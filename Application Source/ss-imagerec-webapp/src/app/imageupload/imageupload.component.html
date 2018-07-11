@@ -5,16 +5,16 @@
       <!--mat-spinner [style.display]="showSpinner ? 'block':'none'"></mat-spinner>
       <mat-card class="dashboardContainer"></mat-card-->
       <mat-card color="primary">
-        <mat-card-title>{{instruction}}</mat-card-title>
+        <mat-card-title class="instruction">{{instruction}}</mat-card-title>
         <form class="form-horizontal" id="imgSelectForm">
           <mat-grid-list cols="4" rowHeight="100px">
 
             <mat-grid-tile [colspan]=1 [rowspan]=1>
                 <div class="file-button">
                   <label for="file-upload" class="custom-file-upload">
-                    Select File to Upload
+                    File Select
                   </label>
-                  <input id="file-upload" (change)="madeChange($event)" type="file" accept="image/*"/>
+                  <input id="file-upload" (change)="madeChange()" type="file" accept="image/*"/>
                 </div>
             </mat-grid-tile>
             
@@ -27,15 +27,15 @@
             <mat-grid-tile [colspan]=1 [rowspan]=1>
               <div>
                 <label for="webcam-upload" class="custom-file-upload">
-                  Capture Image with Webcam
+                  Webcam Capture
                 </label>
                 <button id="webcam-upload" (click)="captureImage()"></button>
               </div>
             </mat-grid-tile>
 
             <mat-grid-tile [colspan]=4 [rowspan]=1>
-                <div><!--*ngIf="(imageToUpload || image.src)"-->
-                  <button mat-raised-button color="primary" (click)="uploadImage()" class="upload-button">UPLOAD</button>
+                <div>
+                  <button mat-raised-button color="primary" *ngIf="imgAvailable" (click)="uploadImage()" class="upload-button">UPLOAD</button>
                 </div>
             </mat-grid-tile>
             

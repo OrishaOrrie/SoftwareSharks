@@ -8,6 +8,12 @@
     font-family: "Lato", Arial, Helvetica, sans-serif;
 }
 
+.instruction {
+    text-align: center;
+    font-size: 150%;
+    color: rgb(100, 99, 99);
+}
+
 .dashboardContainer{
     align-content: center;
     background-color: rgb(75, 75, 97);
