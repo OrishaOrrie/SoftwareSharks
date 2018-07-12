@@ -25,17 +25,6 @@ import { style } from '@angular/animations';
 import { Result } from './result';
 import { Component, OnInit } from '@angular/core';
 
-/**
- * @ignore
- */
-const Uppy = require('uppy/lib/core');
-const Dashboard = require('uppy/lib/plugins/Dashboard');
-const Tus = require('uppy/lib/plugins/Tus');
-const GoogleDrive = require('uppy/lib/plugins/GoogleDrive');
-const Instagram = require('uppy/lib/plugins/Instagram');
-const Webcam = require('uppy/lib/plugins/Webcam');
-const XHRUpload = require('uppy/lib/plugins/XHRUpload');
-
 @Component({
   selector: 'app-imageupload',
   templateUrl: './imageupload.component.html',

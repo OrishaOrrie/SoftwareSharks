@@ -1,3 +1,4 @@
+/// <amd-module name="@angular/compiler-cli/src/transformers/compiler_host" />
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -35,6 +36,7 @@ export declare class TsCompilerAotCompilerTypeCheckHostAdapter implements ts.Com
     private codeGenerator;
     private librarySummaries;
     private metadataReaderCache;
+    private fileNameToModuleNameCache;
     private flatModuleIndexCache;
     private flatModuleIndexNames;
     private flatModuleIndexRedirectNames;
