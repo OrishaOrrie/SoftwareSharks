@@ -477,12 +477,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">src/app/contact-us/contact-us.component.ts:77</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">src/app/contact-us/contact-us.component.ts:84</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>This constructor is only used to pass an instance of the HttpClient module.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -491,6 +493,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -505,6 +508,10 @@
                                                             no
                                                     </td>
                                                     
+                                                        <td>
+                                                                <code><p>HttpClient instance</p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -546,13 +553,15 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/contact-us/contact-us.component.ts:38</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/contact-us/contact-us.component.ts:51</a></div>
                             </td>
                         </tr>
 
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Called when invalid input is detected</p>
+</div>
 
                             <div class="io-description">
                                 <b>Returns : </b>    <code>&quot;&quot; | &quot;You must enter a value&quot; | &quot;Not a valid email&quot;</code>
@@ -584,7 +593,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">src/app/contact-us/contact-us.component.ts:80</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">src/app/contact-us/contact-us.component.ts:92</a></div>
                             </td>
                         </tr>
 
@@ -622,13 +631,15 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/contact-us/contact-us.component.ts:45</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/contact-us/contact-us.component.ts:61</a></div>
                             </td>
                         </tr>
 
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Called when the Submit button is clicked. POSTs the email, name, and query to the backend server.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -671,10 +682,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/contact-us/contact-us.component.ts:30</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/contact-us/contact-us.component.ts:37</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>FormControl used to validate email input</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -708,10 +725,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/contact-us/contact-us.component.ts:32</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/contact-us/contact-us.component.ts:42</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>FormGroup used as a model for form input</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -741,10 +764,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/contact-us/contact-us.component.ts:26</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/contact-us/contact-us.component.ts:32</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Evaluates to true when a server response is received.</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -765,18 +794,28 @@ import { FormControl, Validators, FormGroup } from &#x27;@angular/forms&#x27;;
 })
 export class ContactUsComponent implements OnInit {
 
+  /**
+   * Evaluates to true when a server response is received.
+   */
   submitted &#x3D; false;
-  // name &#x3D; &#x27;&#x27;;
-  // email &#x3D; &#x27;&#x27;;
-  // message &#x3D; &#x27;&#x27;;
+
+  /**
+   * FormControl used to validate email input
+   */
   email &#x3D; new FormControl(&#x27;&#x27;, [Validators.required, Validators.email] );
 
+  /**
+   * FormGroup used as a model for form input
+   */
   myGroup &#x3D; new FormGroup({
     name: new FormControl(&#x27;&#x27;),
     email: new FormControl(&#x27;&#x27;, [Validators.required, Validators.email] ),
     message: new FormControl(&#x27;&#x27;)
   });
 
+  /**
+   * Called when invalid input is detected
+   */
   getErrorMessage() {
     // console.log(&#x27;Errrorrrrr&#x27;);
     return this.email.hasError(&#x27;required&#x27;) ? &#x27;You must enter a value&#x27; :
@@ -784,6 +823,9 @@ export class ContactUsComponent implements OnInit {
         &#x27;&#x27;;
   }
 
+  /**
+   * Called when the Submit button is clicked. POSTs the email, name, and query to the backend server.
+   */
   onSubmit() {
 
     const contactName &#x3D; this.myGroup.get(&#x27;name&#x27;).value;
@@ -805,18 +847,14 @@ export class ContactUsComponent implements OnInit {
       if (data1 &#x3D;&#x3D;&#x3D; &#x27;sent&#x27;) {
         this.submitted &#x3D; true;
       }
-    }
-      /*
-    },
-    (err: HttpErrorResponse) &#x3D;&gt; {
-      if (err.error instanceof Error) {
-        console.log(&#x27;CS error occured&#x27;);
-      } else {
-        console.log(&#x27;SS error occured&#x27;);
-      }
-    }*/ );
+    });
 
   }
+
+  /**
+   * This constructor is only used to pass an instance of the HttpClient module.
+   * @param http  HttpClient instance
+   */
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
@@ -827,63 +865,7 @@ export class ContactUsComponent implements OnInit {
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">
-&lt;!--script src&#x3D;&quot;//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js&quot;&gt;&lt;/script&gt;
-&lt;script&gt;// &lt;![CDATA[
-$(document).ready(function(){
-    var fullname,to,subject,text;
-    $(&quot;#send_email&quot;).click(function(){     
-        to&#x3D;$(&quot;#emailadd&quot;).val();
-        subject&#x3D;$(&quot;#name&quot;).val();
-        text&#x3D;  $(&quot;#content&quot;).val();
-        email &#x3D; $(&quot;#emailadd&quot;).val();
-        $(&quot;#message&quot;).text(&quot;Sending E-mail...&quot;);
-        $.get(&quot;http://localhost:8000/send&quot;,{to:to,subject:subject,text:text, email:email},function(data){
-            if(data&#x3D;&#x3D;&quot;sent&quot;)
-            {
-                $(&quot;#message&quot;).empty().html(&quot;Your query has been sent!&quot;);
-            } else {
-                console.log(&quot;DId not send&quot;);
-            }
-        });
-    });
-});
-&lt;/script--&gt;
-
-  &lt;!--div class&#x3D;&quot;container&quot;&gt;
-      &lt;div ng-controller&#x3D;&quot;formCtrl&quot;&gt;
-          &lt;h2 class&#x3D;&quot;text-center text-primary&quot; &gt;Contact Us!&lt;/h2&gt;
-          &lt;hr /&gt;
-          &lt;form name&#x3D;&quot;userForm&quot; class&#x3D;&quot;form-horizontal well form-search&quot;&gt;
-              &lt;div class&#x3D;&quot;form-group&quot;&gt;
-                  &lt;label for&#x3D;&quot;name&quot; class&#x3D;&quot;col-sm-2 control-label&quot;&gt;Your Name&lt;/label&gt;
-                  &lt;div class&#x3D;&quot;col-sm-10&quot;&gt;
-                      &lt;input type&#x3D;&quot;name&quot; ng-model&#x3D;&quot;name&quot; class&#x3D;&quot;form-control&quot; id&#x3D;&quot;name&quot; placeholder&#x3D;&quot;Your Name&quot; required/&gt;
-                  &lt;/div&gt;
-              &lt;/div&gt;
-              &lt;div class&#x3D;&quot;form-group&quot;&gt;
-                  &lt;label for&#x3D;&quot;email&quot; class&#x3D;&quot;col-sm-2 control-label&quot;&gt;Email&lt;/label&gt;
-                  &lt;div class&#x3D;&quot;col-sm-10&quot;&gt;
-                      &lt;input type&#x3D;&quot;email&quot; ng-model&#x3D;&quot;email&quot; class&#x3D;&quot;form-control&quot; id&#x3D;&quot;emailadd&quot; placeholder&#x3D;&quot;Your Email&quot; required/&gt;
-                  &lt;/div&gt;
-              &lt;/div&gt;
-              &lt;div class&#x3D;&quot;form-group&quot;&gt;
-                  &lt;label for&#x3D;&quot;Message&quot; class&#x3D;&quot;col-sm-2 control-label&quot;&gt;Message&lt;/label&gt;
-                  &lt;div class&#x3D;&quot;col-sm-10&quot;&gt;
-                      &lt;textarea ng-model&#x3D;&quot;message&quot; id&#x3D;&quot;content&quot; class&#x3D;&quot;form-control&quot; rows&#x3D;&quot;3&quot; placeholder&#x3D;&quot;Your Message&quot; required&gt;&lt;/textarea&gt;
-                  &lt;/div&gt;
-              &lt;/div&gt;
-              &lt;div class&#x3D;&quot;form-group&quot;&gt;
-                  &lt;div class&#x3D;&quot;col-sm-offset-2 col-sm-10&quot;&gt;
-                      &lt;button type&#x3D;&quot;submit&quot; id &#x3D; &quot;send_email&quot;  ng-disabled&#x3D;&quot;userForm.$invalid&quot; class&#x3D;&quot;btn btn-primary&quot;&gt;Submit&lt;/button&gt;
-                  &lt;/div&gt;
-              &lt;/div&gt;
-        
-          &lt;/form&gt;
-      &lt;/div&gt;
-  &lt;/div--&gt;
-&lt;!-- ---------------------------------- --&gt;
-&lt;div class&#x3D;&quot;contact-container&quot;&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;contact-container&quot;&gt;
     &lt;div class&#x3D;&quot;contact-title&quot;&gt;
         &lt;h1&gt;Contact Us!&lt;/h1&gt;
     &lt;/div&gt;
@@ -944,7 +926,7 @@ $(document).ready(function(){
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><!--script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script><script>// <![CDATA[$(document).ready(function(){    var fullname,to,subject,text;    $("#send_email").click(function(){             to=$("#emailadd").val();        subject=$("#name").val();        text=  $("#content").val();        email = $("#emailadd").val();        $("#message").text("Sending E-mail...");        $.get("http://localhost:8000/send",{to:to,subject:subject,text:text, email:email},function(data){            if(data=="sent")            {                $("#message").empty().html("Your query has been sent!");            } else {                console.log("DId not send");            }        });    });});</script-->  <!--div class="container">      <div ng-controller="formCtrl">          <h2 class="text-center text-primary" >Contact Us!</h2>          <hr />          <form name="userForm" class="form-horizontal well form-search">              <div class="form-group">                  <label for="name" class="col-sm-2 control-label">Your Name</label>                  <div class="col-sm-10">                      <input type="name" ng-model="name" class="form-control" id="name" placeholder="Your Name" required/>                  </div>              </div>              <div class="form-group">                  <label for="email" class="col-sm-2 control-label">Email</label>                  <div class="col-sm-10">                      <input type="email" ng-model="email" class="form-control" id="emailadd" placeholder="Your Email" required/>                  </div>              </div>              <div class="form-group">                  <label for="Message" class="col-sm-2 control-label">Message</label>                  <div class="col-sm-10">                      <textarea ng-model="message" id="content" class="form-control" rows="3" placeholder="Your Message" required></textarea>                  </div>              </div>              <div class="form-group">                  <div class="col-sm-offset-2 col-sm-10">                      <button type="submit" id = "send_email"  ng-disabled="userForm.$invalid" class="btn btn-primary">Submit</button>                  </div>              </div>                  </form>      </div>  </div--><!-- ---------------------------------- --><div class="contact-container">    <div class="contact-title">        <h1>Contact Us!</h1>    </div>    <br>        <mat-card class="email-container" color="primary" *ngIf="!submitted">        <form class="form-horizontal" id="usrForm" [formGroup]="myGroup">            <mat-form-field>                <input class="name-part" matInput type="text" id="name" required formControlName="name" name="name" placeholder="Enter your name">            </mat-form-field>            <br>            <mat-form-field >                <input class="email-part" matInput id="email" required formControlName="email" name="email" placeholder="Enter your email">                <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>            </mat-form-field>            <br>            <mat-form-field class="msg-part">                <textarea matInput matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5" rows="3"                 id="message" form="usrForm" required formControlName="message" name="message" placeholder="Enter your query"></textarea>            </mat-form-field>            <br>            <div>                <button mat-raised-button color="primary" type="submit" (click)="onSubmit()" class="sumbit-btn" form="usrForm">Submit</button>            </div>        </form>    </mat-card>    <br>    <mat-card *ngIf="submitted">        <h1>Email Sent!</h1>    </mat-card></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="contact-container">    <div class="contact-title">        <h1>Contact Us!</h1>    </div>    <br>        <mat-card class="email-container" color="primary" *ngIf="!submitted">        <form class="form-horizontal" id="usrForm" [formGroup]="myGroup">            <mat-form-field>                <input class="name-part" matInput type="text" id="name" required formControlName="name" name="name" placeholder="Enter your name">            </mat-form-field>            <br>            <mat-form-field >                <input class="email-part" matInput id="email" required formControlName="email" name="email" placeholder="Enter your email">                <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>            </mat-form-field>            <br>            <mat-form-field class="msg-part">                <textarea matInput matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5" rows="3"                 id="message" form="usrForm" required formControlName="message" name="message" placeholder="Enter your query"></textarea>            </mat-form-field>            <br>            <div>                <button mat-raised-button color="primary" type="submit" (click)="onSubmit()" class="sumbit-btn" form="usrForm">Submit</button>            </div>        </form>    </mat-card>    <br>    <mat-card *ngIf="submitted">        <h1>Email Sent!</h1>    </mat-card></div></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ContactUsComponent', 'selector': 'app-contact-us'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'ImageuploadComponent', 'selector': 'app-imageupload'},{'name': 'UtilitiesComponent', 'selector': 'app-utilities'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ContactUsComponent'};

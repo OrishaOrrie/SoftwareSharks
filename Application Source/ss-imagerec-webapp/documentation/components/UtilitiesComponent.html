@@ -434,9 +434,6 @@
                                 <a href="#Math">Math</a>
                             </li>
                             <li>
-                                <a href="#num_items">num_items</a>
-                            </li>
-                            <li>
                                 <a href="#single_item">single_item</a>
                             </li>
                         </ul>
@@ -477,7 +474,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/utilities/utilities.component.ts:32</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/utilities/utilities.component.ts:52</a></div>
                             </td>
                         </tr>
 
@@ -516,7 +513,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/utilities/utilities.component.ts:35</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/utilities/utilities.component.ts:55</a></div>
                             </td>
                         </tr>
 
@@ -571,10 +568,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/utilities/utilities.component.ts:27</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/utilities/utilities.component.ts:38</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The weight value of an empty bucket</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -610,10 +613,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/utilities/utilities.component.ts:28</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/utilities/utilities.component.ts:43</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The weight value of a bucket filled with items</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -649,43 +658,17 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/utilities/utilities.component.ts:32</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/utilities/utilities.component.ts:52</a></div>
                             </td>
                         </tr>
 
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="num_items"></a>
-                        <span class="name">
-                            <b>
-                            num_items
-                            </b>
-                            <a href="#num_items"><span class="fa fa-link"></span></a>
-                        </span>
+                        <div class="io-description"><p>The Number of Items is calculated by taking the weight of the items excluding the bucket
+dividing it by the weight of a single item.</p>
+</div>
                     </td>
                 </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <code>num_items:     <code></code>
-</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>Math.floor(2.51)</code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/utilities/utilities.component.ts:30</a></div>
-                            </td>
-                        </tr>
-
 
             </tbody>
         </table>
@@ -721,10 +704,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/utilities/utilities.component.ts:26</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/utilities/utilities.component.ts:33</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The weight value of an individual item</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -745,12 +734,29 @@ export class UtilitiesComponent implements OnInit {
 
   // Filled bucket - empty bucket &#x3D; weight of all items
   // weight of all items / single item weight &#x3D; num items
-  single_item &#x3D; 1;    // Item Weight: 1kg
-  empty_bucket &#x3D; 1;   // Empty Bucket Weight: 5kg
-  filled_bucket &#x3D; 1;  // Filled Bucket Weight: 20kg;
-  // num_items would be (20 - 5)/1
-  num_items &#x3D; Math.floor(2.51);
 
+  /**
+   * The weight value of an individual item
+   */
+  single_item &#x3D; 1;
+
+  /**
+   * The weight value of an empty bucket
+   */
+  empty_bucket &#x3D; 1;
+
+  /**
+   * The weight value of a bucket filled with items
+   */
+  filled_bucket &#x3D; 1;
+
+  /** The Number of Items is calculated by taking the weight of the items excluding the bucket
+   *  dividing it by the weight of a single item.
+   */
+
+  /**
+   * Math object to make use of the floor function
+   */
   Math: Math &#x3D; Math;
   constructor() { }
 

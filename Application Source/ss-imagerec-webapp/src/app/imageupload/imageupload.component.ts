@@ -1,6 +1,6 @@
 /**
  * File Name:       imageupload.component
- * Version Number:  v1.0
+ * Version Number:  v1.1
  * Author:          Tobias Bester
  * Project Name:    Ninshiki
  * Organization:    Software Sharks
@@ -80,7 +80,6 @@ export class ImageuploadComponent implements OnInit {
   public imgAvailable = false;
 
   /**
-   * @ignore
    * This constructor is only used to pass an instance of the HttpClient module.
    * @param http  HttpClient instance
    */
