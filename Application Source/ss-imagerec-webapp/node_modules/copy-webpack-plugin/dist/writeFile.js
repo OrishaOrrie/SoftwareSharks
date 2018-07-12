@@ -29,6 +29,10 @@ var _findCacheDir2 = _interopRequireDefault(_findCacheDir);
 
 var _promisify = require('./utils/promisify');
 
+var _crypto = require('crypto');
+
+var _crypto2 = _interopRequireDefault(_crypto);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function writeFile(globalRef, pattern, file) {
@@ -68,7 +72,7 @@ function writeFile(globalRef, pattern, file) {
                         name: _package.name,
                         version: _package.version,
                         pattern: pattern,
-                        content: content
+                        hash: _crypto2.default.createHash('md4').update(content).digest('hex')
                     });
 
                     return _cacache2.default.get(globalRef.cacheDir, cacheKey).then(function (result) {
@@ -102,6 +106,7 @@ function writeFile(globalRef, pattern, file) {
 
                 file.webpackTo = _loaderUtils2.default.interpolateName({ resourcePath: file.absoluteFrom }, file.webpackTo, {
                     content: content,
+                    regExp: file.webpackToRegExp,
                     context: pattern.context
                 });
             }
