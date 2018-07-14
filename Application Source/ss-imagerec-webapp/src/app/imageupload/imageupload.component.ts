@@ -14,7 +14,7 @@
  * Test Cases:      imageupload.component.spec.ts
  * Functional Description:
  *  Provides interface for user to select or capture an image and upload
- *  it to the system server.
+ *  it to the system server. Displays results of image classification.
  */
 
 /**
