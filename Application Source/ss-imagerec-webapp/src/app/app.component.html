@@ -1,16 +1,15 @@
 <div class="toolbar-container">
 
   <mat-toolbar class="mat-elevation-z4" color="primary">
-    <a mat-button routerLink="/home" class="toolbar-title"><h1>{{ title }}</h1></a>
+    <a mat-button routerLink="/home" class="toolbar-title">{{ title }}</a>
     <span class="toolbar-spacer"></span>
-
-    <a mat-button routerLink="/home" color="accent">Home</a>
+    <a mat-button routerLink="/home" color="white">Home</a>
     <span class="toolbar-button-spacer"></span>
-    <a mat-button routerLink="/imageupload" color="accent">Upload Image</a>
+    <a mat-button routerLink="/imageupload" color="white">Upload Image</a>
     <span class="toolbar-button-spacer"></span>
-    <a mat-button routerLink="/utilities" color="accent">Utilities</a>
+    <a mat-button routerLink="/utilities" color="white">Utilities</a>
     <span class="toolbar-button-spacer"></span>
-    <a mat-button routerLink="/contactus" color="accent">Contact Us</a>
+    <a mat-button routerLink="/contactus" color="white">Contact Us</a>
   </mat-toolbar>
 
   <br>
@@ -25,24 +24,27 @@
 <br>
 
 <mat-card class="mat-elevation-z4" id="footy">
-  <mat-grid-list cols="3" rowHeight="5:1">
+    <mat-grid-list cols="4" rowHeight="3:1">
+      <mat-grid-tile [colspan]=1 [rowspan]=1>
+        <div class="footer-links">
+          <a routerLink="/home" class="footer-link">Home</a><br>
+          <a routerLink="/imageupload" class="footer-link">Upload Image</a><br>
+          <a routerLink="/utilities" class="footer-link">Utilities</a><br>
+          <a routerLink="/contactus" class="footer-link">Contact Us</a>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <a href="https://github.com/OrishaOrrie/SoftwareSharks" class="footer-link" target="_blank">Developed by<br> Software Sharks</a><br>
+        <img class="bramhope-logo" src="../assets/ss-logo.png" alt="Software-Sharks">
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <a href="http://www.bramhope.co.za/" class="footer-link" target="_blank">Developed for<br>The Bramhope Group</a><br>
+        <img class="bramhope-logo" src="../assets/bramhope-logo.jpg" alt="logo">
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <a href="https://www.up.ac.za/" class="footer-link" target="_blank">In Association with<br>The University of Pretoria</a><br>
+        <img class="bramhope-logo" src="../assets/tukslogo.png" alt="logo">
+      </mat-grid-tile>
+    </mat-grid-list>
 
-    <mat-grid-tile id="website-info">
-      <a mat-button routerLink="/home">Home</a>
-      <a mat-button routerLink="/imageupload">Upload Image</a>
-      <a mat-button routerLink="/utilities">Utilities</a>
-      <a mat-button routerLink="/contactus">Contact Us</a>
-    </mat-grid-tile>
-
-    <mat-grid-tile id="ss-info">
-      <a mat-button href="https://github.com/OrishaOrrie/SoftwareSharks" target="_blank">Developed by<br> Software Sharks</a>
-      <img class="ss-logo" src="../assets/ss-logo.png" alt="Software-Sharks">
-    </mat-grid-tile>
-
-    <mat-grid-tile id="bramhope-info">
-      <a mat-button href="http://www.bramhope.co.za/" target="_blank">Developed for<br>The Bramhope Group</a>
-      <img class="bramhope-logo" src="../assets/bramhope-logo.jpg" alt="logo">
-    </mat-grid-tile>
-    
-  </mat-grid-list>
 </mat-card>

@@ -2,9 +2,7 @@
     <mat-card class="total-upload-card" color="accent">
 
       <h1 class="title">Upload an Image</h1>
-      <!--mat-spinner [style.display]="showSpinner ? 'block':'none'"></mat-spinner>
-      <mat-card class="dashboardContainer"></mat-card-->
-      <mat-card color="primary">
+      <mat-card color="primary" class="upload-card">
         <mat-card-title class="instruction">{{instruction}}</mat-card-title>
         <form class="form-horizontal" id="imgSelectForm">
           <mat-grid-list cols="4" rowHeight="100px">
@@ -36,10 +34,11 @@
             <mat-grid-tile [colspan]=4 [rowspan]=1>
                 <div>
                   <button mat-raised-button color="primary" *ngIf="imgAvailable" (click)="uploadImage()" class="upload-button">UPLOAD</button>
+                  <mat-spinner [diameter]="30" [style.display]="showSpinner ? 'block':'none'"></mat-spinner>
                 </div>
             </mat-grid-tile>
             
-          </mat-grid-list>          
+          </mat-grid-list>
         </form>
       </mat-card>
       <br>

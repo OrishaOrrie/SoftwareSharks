@@ -185,7 +185,7 @@ export class ImageuploadComponent implements OnInit {
     this.captureButton.textContent = 'CAPTURE';
     this.captureButton.style.setProperty('padding', '16px 32px');
     this.captureButton.style.setProperty('border-radius', '3px');
-    this.captureButton.style.setProperty('background', 'rgb(255, 255, 255)');
+    this.captureButton.style.setProperty('background-color', '#607D8B;');
 
     const br = document.createElement('br');
 
@@ -265,7 +265,7 @@ export class ImageuploadComponent implements OnInit {
    */
   clearPhoto(canvas, image) {
     const context3 = canvas.getContext('2d');
-    context3.fillStyle = '#FFF';
+    context3.fillStyle = 'rgb(207, 207, 207)';
     context3.fillRect(0, 0, canvas.width, canvas.height);
 
     const dataF = canvas.toDataURL('image/png');
@@ -314,6 +314,7 @@ export class ImageuploadComponent implements OnInit {
    * handling the server response.
    */
   httpUploadImage() {
+    this.showSpinner = true;
     const httpOptions = {
       headers: new HttpHeaders({
         'Accept': 'application/json'
@@ -326,8 +327,15 @@ export class ImageuploadComponent implements OnInit {
 
     this.http.post(dest, formData, httpOptions)
     .subscribe(
-      data => {
-        console.log('SENT!');
+      resp => {
+        const data: any = resp;
+        this.results = [];
+        data.forEach(element => {
+          this.results.push(new Result(element.id, element.name, element.value));
+        });
+        this.instruction = 'View results below';
+        console.log('RESPONSE RECEIVED!');
+        this.showSpinner = false;
       }
     );
   }
