@@ -593,7 +593,39 @@ export class HomeComponent implements OnInit {
 
   &lt;div class&#x3D;&quot;intro-message&quot;&gt;Let us tell you what you&#x27;re holding&lt;/div&gt;
 
-  &lt;mat-card class&#x3D;&quot;how-to hvr-float&quot;&gt;
+  &lt;div style&#x3D;&quot;width:100%;&quot;&gt;
+    &lt;mat-grid-list cols&#x3D;&quot;3&quot; rowHeight&#x3D;&quot;9:10&quot; gutterSize&#x3D;&quot;10px&quot;&gt;
+      &lt;mat-grid-tile class&#x3D;&quot;step-tile&quot; [colspan]&#x3D;1 &gt;
+        &lt;mat-card class&#x3D;&quot;hvr-float step-card&quot; style&#x3D;&quot;background-image: url(/assets/taking-img-of-dessert.jpeg)&quot;&gt;
+          &lt;h2 class&#x3D;&quot;step-number&quot;&gt;1&lt;/h2&gt;
+          &lt;div class&#x3D;&quot;steps-descript&quot;&gt;image&lt;br&gt;upload&lt;/div&gt;
+          &lt;mat-card class&#x3D;&quot;detailed-descript&quot; color&#x3D;&quot;primary&quot;&gt;
+              Click the Upload Image button to continue
+          &lt;/mat-card&gt;
+        &lt;/mat-card&gt;
+      &lt;/mat-grid-tile&gt;
+      &lt;mat-grid-tile class&#x3D;&quot;step-tile&quot; [colspan]&#x3D;1&gt;
+        &lt;mat-card class&#x3D;&quot;hvr-float step-card&quot; style&#x3D;&quot;background-image: url(/assets/gears.jpeg)&quot;&gt;
+          &lt;h2 class&#x3D;&quot;step-number&quot;&gt;2&lt;/h2&gt;
+          &lt;div class&#x3D;&quot;steps-descript&quot;&gt;image&lt;br&gt;analysis&lt;/div&gt;
+          &lt;mat-card class&#x3D;&quot;detailed-descript&quot; color&#x3D;&quot;primary&quot;&gt;
+              We run the image through our image recognition model
+          &lt;/mat-card&gt;
+        &lt;/mat-card&gt;
+      &lt;/mat-grid-tile&gt;
+      &lt;mat-grid-tile class&#x3D;&quot;step-tile&quot; [colspan]&#x3D;1&gt;
+        &lt;mat-card class&#x3D;&quot;hvr-float step-card&quot; style&#x3D;&quot;background-image: url(/assets/hardware-store.jpg)&quot;&gt;
+          &lt;h2 class&#x3D;&quot;step-number&quot;&gt;3&lt;/h2&gt;
+          &lt;div class&#x3D;&quot;steps-descript&quot;&gt;image&lt;br&gt;classification&lt;/div&gt;
+          &lt;mat-card class&#x3D;&quot;detailed-descript&quot; color&#x3D;&quot;primary&quot;&gt;
+              Receive a classification of the object in the image
+          &lt;/mat-card&gt;
+        &lt;/mat-card&gt;
+      &lt;/mat-grid-tile&gt;
+    &lt;/mat-grid-list&gt;
+  &lt;/div&gt;
+
+  &lt;!--mat-card class&#x3D;&quot;how-to hvr-float&quot;&gt;
     &lt;h2 class&#x3D;&quot;steps&quot;&gt;1&lt;/h2&gt;
     &lt;div class&#x3D;&quot;steps-descript&quot;&gt;image&lt;br&gt;upload&lt;/div&gt;
     &lt;mat-card class&#x3D;&quot;detailed-descript&quot; color&#x3D;&quot;accent&quot;&gt;Click the Upload Image button to continue&lt;/mat-card&gt;
@@ -607,7 +639,7 @@ export class HomeComponent implements OnInit {
     &lt;h2 class&#x3D;&quot;steps&quot;&gt;3&lt;/h2&gt;
     &lt;div class&#x3D;&quot;steps-descript&quot;&gt;image&lt;br&gt;classification&lt;/div&gt;
     &lt;mat-card class&#x3D;&quot;detailed-descript&quot; color&#x3D;&quot;primary&quot;&gt;Receive a classification of the object in the image&lt;/mat-card&gt;
-  &lt;/mat-card&gt;
+  &lt;/mat-card--&gt;
 
   &lt;div class&#x3D;&quot;button-area&quot;&gt;
       &lt;br&gt;
@@ -641,7 +673,7 @@ export class HomeComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="welcome-container">  <div class="intro-message">Let us tell you what you\'re holding</div>  <mat-card class="how-to hvr-float">    <h2 class="steps">1</h2>    <div class="steps-descript">image<br>upload</div>    <mat-card class="detailed-descript" color="accent">Click the Upload Image button to continue</mat-card>  </mat-card>  <mat-card class="classify hvr-float">    <h2 class="steps">2</h2>    <div class="steps-descript">image<br>analysis</div>    <mat-card class="detailed-descript" color="primary">We run the image through our image recognition model</mat-card>  </mat-card>  <mat-card class="getresult hvr-float">    <h2 class="steps">3</h2>    <div class="steps-descript">image<br>classification</div>    <mat-card class="detailed-descript" color="primary">Receive a classification of the object in the image</mat-card>  </mat-card>  <div class="button-area">      <br>    <button mat-raised-button color="primary" routerLink="/imageupload" class="go-to-upload">UPLOAD IMAGE</button>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="welcome-container">  <div class="intro-message">Let us tell you what you\'re holding</div>  <div style="width:100%;">    <mat-grid-list cols="3" rowHeight="9:10" gutterSize="10px">      <mat-grid-tile class="step-tile" [colspan]=1 >        <mat-card class="hvr-float step-card" style="background-image: url(/assets/taking-img-of-dessert.jpeg)">          <h2 class="step-number">1</h2>          <div class="steps-descript">image<br>upload</div>          <mat-card class="detailed-descript" color="primary">              Click the Upload Image button to continue          </mat-card>        </mat-card>      </mat-grid-tile>      <mat-grid-tile class="step-tile" [colspan]=1>        <mat-card class="hvr-float step-card" style="background-image: url(/assets/gears.jpeg)">          <h2 class="step-number">2</h2>          <div class="steps-descript">image<br>analysis</div>          <mat-card class="detailed-descript" color="primary">              We run the image through our image recognition model          </mat-card>        </mat-card>      </mat-grid-tile>      <mat-grid-tile class="step-tile" [colspan]=1>        <mat-card class="hvr-float step-card" style="background-image: url(/assets/hardware-store.jpg)">          <h2 class="step-number">3</h2>          <div class="steps-descript">image<br>classification</div>          <mat-card class="detailed-descript" color="primary">              Receive a classification of the object in the image          </mat-card>        </mat-card>      </mat-grid-tile>    </mat-grid-list>  </div>  <!--mat-card class="how-to hvr-float">    <h2 class="steps">1</h2>    <div class="steps-descript">image<br>upload</div>    <mat-card class="detailed-descript" color="accent">Click the Upload Image button to continue</mat-card>  </mat-card>  <mat-card class="classify hvr-float">    <h2 class="steps">2</h2>    <div class="steps-descript">image<br>analysis</div>    <mat-card class="detailed-descript" color="primary">We run the image through our image recognition model</mat-card>  </mat-card>  <mat-card class="getresult hvr-float">    <h2 class="steps">3</h2>    <div class="steps-descript">image<br>classification</div>    <mat-card class="detailed-descript" color="primary">Receive a classification of the object in the image</mat-card>  </mat-card-->  <div class="button-area">      <br>    <button mat-raised-button color="primary" routerLink="/imageupload" class="go-to-upload">UPLOAD IMAGE</button>  </div></div></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ContactUsComponent', 'selector': 'app-contact-us'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'ImageuploadComponent', 'selector': 'app-imageupload'},{'name': 'UtilitiesComponent', 'selector': 'app-utilities'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'HomeComponent'};

@@ -888,13 +888,13 @@ export class ContactUsComponent implements OnInit {
             &lt;/mat-form-field&gt;
             &lt;br&gt;
             &lt;div&gt;
-                &lt;button mat-raised-button color&#x3D;&quot;primary&quot; type&#x3D;&quot;submit&quot; (click)&#x3D;&quot;onSubmit()&quot; class&#x3D;&quot;sumbit-btn&quot; form&#x3D;&quot;usrForm&quot;&gt;Submit&lt;/button&gt;
+                &lt;button mat-raised-button color&#x3D;&quot;primary&quot; type&#x3D;&quot;submit&quot; (click)&#x3D;&quot;onSubmit()&quot; class&#x3D;&quot;sumbit-btn&quot; form&#x3D;&quot;usrForm&quot;&gt;SUBMIT&lt;/button&gt;
             &lt;/div&gt;
         &lt;/form&gt;
     &lt;/mat-card&gt;
     &lt;br&gt;
-    &lt;mat-card *ngIf&#x3D;&quot;submitted&quot;&gt;
-        &lt;h1&gt;Email Sent!&lt;/h1&gt;
+    &lt;mat-card class&#x3D;&quot;status-card&quot; *ngIf&#x3D;&quot;submitted&quot;&gt;
+        &lt;h1 class&#x3D;&quot;status-heading&quot;&gt;Email Sent!&lt;/h1&gt;
     &lt;/mat-card&gt;
 &lt;/div&gt;
 
@@ -926,7 +926,7 @@ export class ContactUsComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="contact-container">    <div class="contact-title">        <h1>Contact Us!</h1>    </div>    <br>        <mat-card class="email-container" color="primary" *ngIf="!submitted">        <form class="form-horizontal" id="usrForm" [formGroup]="myGroup">            <mat-form-field>                <input class="name-part" matInput type="text" id="name" required formControlName="name" name="name" placeholder="Enter your name">            </mat-form-field>            <br>            <mat-form-field >                <input class="email-part" matInput id="email" required formControlName="email" name="email" placeholder="Enter your email">                <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>            </mat-form-field>            <br>            <mat-form-field class="msg-part">                <textarea matInput matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5" rows="3"                 id="message" form="usrForm" required formControlName="message" name="message" placeholder="Enter your query"></textarea>            </mat-form-field>            <br>            <div>                <button mat-raised-button color="primary" type="submit" (click)="onSubmit()" class="sumbit-btn" form="usrForm">Submit</button>            </div>        </form>    </mat-card>    <br>    <mat-card *ngIf="submitted">        <h1>Email Sent!</h1>    </mat-card></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="contact-container">    <div class="contact-title">        <h1>Contact Us!</h1>    </div>    <br>        <mat-card class="email-container" color="primary" *ngIf="!submitted">        <form class="form-horizontal" id="usrForm" [formGroup]="myGroup">            <mat-form-field>                <input class="name-part" matInput type="text" id="name" required formControlName="name" name="name" placeholder="Enter your name">            </mat-form-field>            <br>            <mat-form-field >                <input class="email-part" matInput id="email" required formControlName="email" name="email" placeholder="Enter your email">                <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>            </mat-form-field>            <br>            <mat-form-field class="msg-part">                <textarea matInput matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5" rows="3"                 id="message" form="usrForm" required formControlName="message" name="message" placeholder="Enter your query"></textarea>            </mat-form-field>            <br>            <div>                <button mat-raised-button color="primary" type="submit" (click)="onSubmit()" class="sumbit-btn" form="usrForm">SUBMIT</button>            </div>        </form>    </mat-card>    <br>    <mat-card class="status-card" *ngIf="submitted">        <h1 class="status-heading">Email Sent!</h1>    </mat-card></div></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ContactUsComponent', 'selector': 'app-contact-us'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'ImageuploadComponent', 'selector': 'app-imageupload'},{'name': 'UtilitiesComponent', 'selector': 'app-utilities'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ContactUsComponent'};

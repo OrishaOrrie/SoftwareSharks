@@ -779,15 +779,15 @@ export class UtilitiesComponent implements OnInit {
         &lt;mat-card-subtitle&gt;Enter the values as instructed. Use the same measurement units&lt;/mat-card-subtitle&gt;
         &lt;mat-card-content&gt;
           &lt;mat-form-field class&#x3D;&quot;input-field&quot;&gt;
-            &lt;input matInput type&#x3D;&quot;number&quot; placeholder&#x3D;&quot;Weight of SINGLE item&quot; [(ngModel)]&#x3D;&quot;single_item&quot; &gt;
+            &lt;input matInput id&#x3D;&quot;single-weight&quot; type&#x3D;&quot;number&quot; placeholder&#x3D;&quot;Weight of SINGLE item&quot; [(ngModel)]&#x3D;&quot;single_item&quot; &gt;
           &lt;/mat-form-field&gt;
           &lt;br&gt;
           &lt;mat-form-field class&#x3D;&quot;input-field&quot;&gt;
-            &lt;input matInput type&#x3D;&quot;number&quot; placeholder&#x3D;&quot;Weight of EMPTY bucket&quot; [(ngModel)]&#x3D;&quot;empty_bucket&quot;&gt;
+            &lt;input matInput id&#x3D;&quot;empty-weight&quot; type&#x3D;&quot;number&quot; placeholder&#x3D;&quot;Weight of EMPTY bucket&quot; [(ngModel)]&#x3D;&quot;empty_bucket&quot;&gt;
           &lt;/mat-form-field&gt;
           &lt;br&gt;
           &lt;mat-form-field class&#x3D;&quot;input-field&quot;&gt;
-            &lt;input matInput type&#x3D;&quot;number&quot; placeholder&#x3D;&quot;Weight of FILLED bucket&quot; [(ngModel)]&#x3D;&quot;filled_bucket&quot;&gt;
+            &lt;input matInput id&#x3D;&quot;filled-weight&quot; type&#x3D;&quot;number&quot; placeholder&#x3D;&quot;Weight of FILLED bucket&quot; [(ngModel)]&#x3D;&quot;filled_bucket&quot;&gt;
           &lt;/mat-form-field&gt;
           &lt;br&gt;
           &lt;br&gt;
@@ -798,11 +798,11 @@ export class UtilitiesComponent implements OnInit {
       &lt;/mat-card&gt;
     &lt;/mat-grid-tile&gt;
 
-    &lt;mat-grid-tile&gt;
+    &lt;!--mat-grid-tile&gt;
       &lt;mat-card&gt;
         Utility 2
       &lt;/mat-card&gt;
-    &lt;/mat-grid-tile&gt;
+    &lt;/mat-grid-tile--&gt;
 
   &lt;/mat-grid-list&gt;
 
@@ -835,7 +835,7 @@ export class UtilitiesComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><mat-card class="total-utilities-card">  <h1 class="title">Utilities</h1>  <mat-grid-list cols="1" rowHeight="2:1">    <mat-grid-tile class="tally-upper-tile">      <mat-card class="tally-upper-card">        <mat-card-title>Item Amount Calculator</mat-card-title>        <mat-card-subtitle>Enter the values as instructed. Use the same measurement units</mat-card-subtitle>        <mat-card-content>          <mat-form-field class="input-field">            <input matInput type="number" placeholder="Weight of SINGLE item" [(ngModel)]="single_item" >          </mat-form-field>          <br>          <mat-form-field class="input-field">            <input matInput type="number" placeholder="Weight of EMPTY bucket" [(ngModel)]="empty_bucket">          </mat-form-field>          <br>          <mat-form-field class="input-field">            <input matInput type="number" placeholder="Weight of FILLED bucket" [(ngModel)]="filled_bucket">          </mat-form-field>          <br>          <br>          <mat-card class="amount-result">            <mat-card-title class="result-title">Number of Items: {{ Math.floor((filled_bucket - empty_bucket)/single_item) }}</mat-card-title>          </mat-card>        </mat-card-content>      </mat-card>    </mat-grid-tile>    <mat-grid-tile>      <mat-card>        Utility 2      </mat-card>    </mat-grid-tile>  </mat-grid-list></mat-card></div>'
+        var COMPONENT_TEMPLATE = '<div><mat-card class="total-utilities-card">  <h1 class="title">Utilities</h1>  <mat-grid-list cols="1" rowHeight="2:1">    <mat-grid-tile class="tally-upper-tile">      <mat-card class="tally-upper-card">        <mat-card-title>Item Amount Calculator</mat-card-title>        <mat-card-subtitle>Enter the values as instructed. Use the same measurement units</mat-card-subtitle>        <mat-card-content>          <mat-form-field class="input-field">            <input matInput id="single-weight" type="number" placeholder="Weight of SINGLE item" [(ngModel)]="single_item" >          </mat-form-field>          <br>          <mat-form-field class="input-field">            <input matInput id="empty-weight" type="number" placeholder="Weight of EMPTY bucket" [(ngModel)]="empty_bucket">          </mat-form-field>          <br>          <mat-form-field class="input-field">            <input matInput id="filled-weight" type="number" placeholder="Weight of FILLED bucket" [(ngModel)]="filled_bucket">          </mat-form-field>          <br>          <br>          <mat-card class="amount-result">            <mat-card-title class="result-title">Number of Items: {{ Math.floor((filled_bucket - empty_bucket)/single_item) }}</mat-card-title>          </mat-card>        </mat-card-content>      </mat-card>    </mat-grid-tile>    <!--mat-grid-tile>      <mat-card>        Utility 2      </mat-card>    </mat-grid-tile-->  </mat-grid-list></mat-card></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ContactUsComponent', 'selector': 'app-contact-us'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'ImageuploadComponent', 'selector': 'app-imageupload'},{'name': 'UtilitiesComponent', 'selector': 'app-utilities'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'UtilitiesComponent'};

@@ -507,16 +507,15 @@ export class AppComponent {
         <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;toolbar-container&quot;&gt;
 
   &lt;mat-toolbar class&#x3D;&quot;mat-elevation-z4&quot; color&#x3D;&quot;primary&quot;&gt;
-    &lt;a mat-button routerLink&#x3D;&quot;/home&quot; class&#x3D;&quot;toolbar-title&quot;&gt;&lt;h1&gt;{{ title }}&lt;/h1&gt;&lt;/a&gt;
+    &lt;a mat-button routerLink&#x3D;&quot;/home&quot; class&#x3D;&quot;toolbar-title&quot;&gt;{{ title }}&lt;/a&gt;
     &lt;span class&#x3D;&quot;toolbar-spacer&quot;&gt;&lt;/span&gt;
-
-    &lt;a mat-button routerLink&#x3D;&quot;/home&quot; color&#x3D;&quot;accent&quot;&gt;Home&lt;/a&gt;
+    &lt;a mat-button id&#x3D;&quot;navbar-home&quot; routerLink&#x3D;&quot;/home&quot; color&#x3D;&quot;white&quot;&gt;Home&lt;/a&gt;
     &lt;span class&#x3D;&quot;toolbar-button-spacer&quot;&gt;&lt;/span&gt;
-    &lt;a mat-button routerLink&#x3D;&quot;/imageupload&quot; color&#x3D;&quot;accent&quot;&gt;Upload Image&lt;/a&gt;
+    &lt;a mat-button id&#x3D;&quot;navbar-image&quot; routerLink&#x3D;&quot;/imageupload&quot; color&#x3D;&quot;white&quot;&gt;Upload Image&lt;/a&gt;
     &lt;span class&#x3D;&quot;toolbar-button-spacer&quot;&gt;&lt;/span&gt;
-    &lt;a mat-button routerLink&#x3D;&quot;/utilities&quot; color&#x3D;&quot;accent&quot;&gt;Utilities&lt;/a&gt;
+    &lt;a mat-button id&#x3D;&quot;navbar-utilities&quot; routerLink&#x3D;&quot;/utilities&quot; color&#x3D;&quot;white&quot;&gt;Utilities&lt;/a&gt;
     &lt;span class&#x3D;&quot;toolbar-button-spacer&quot;&gt;&lt;/span&gt;
-    &lt;a mat-button routerLink&#x3D;&quot;/contactus&quot; color&#x3D;&quot;accent&quot;&gt;Contact Us&lt;/a&gt;
+    &lt;a mat-button id&#x3D;&quot;navbar-contactus&quot; routerLink&#x3D;&quot;/contactus&quot; color&#x3D;&quot;white&quot;&gt;Contact Us&lt;/a&gt;
   &lt;/mat-toolbar&gt;
 
   &lt;br&gt;
@@ -531,26 +530,29 @@ export class AppComponent {
 &lt;br&gt;
 
 &lt;mat-card class&#x3D;&quot;mat-elevation-z4&quot; id&#x3D;&quot;footy&quot;&gt;
-  &lt;mat-grid-list cols&#x3D;&quot;3&quot; rowHeight&#x3D;&quot;5:1&quot;&gt;
+    &lt;mat-grid-list cols&#x3D;&quot;4&quot; rowHeight&#x3D;&quot;3:1&quot;&gt;
+      &lt;mat-grid-tile [colspan]&#x3D;1 [rowspan]&#x3D;1&gt;
+        &lt;div class&#x3D;&quot;footer-links&quot;&gt;
+          &lt;a id&#x3D;&quot;footer-home&quot; routerLink&#x3D;&quot;/home&quot; class&#x3D;&quot;footer-link&quot;&gt;Home&lt;/a&gt;&lt;br&gt;
+          &lt;a id&#x3D;&quot;footer-image&quot; routerLink&#x3D;&quot;/imageupload&quot; class&#x3D;&quot;footer-link&quot;&gt;Upload Image&lt;/a&gt;&lt;br&gt;
+          &lt;a id&#x3D;&quot;footer-utilities&quot; routerLink&#x3D;&quot;/utilities&quot; class&#x3D;&quot;footer-link&quot;&gt;Utilities&lt;/a&gt;&lt;br&gt;
+          &lt;a id&#x3D;&quot;footer-contactus&quot; routerLink&#x3D;&quot;/contactus&quot; class&#x3D;&quot;footer-link&quot;&gt;Contact Us&lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/mat-grid-tile&gt;
+      &lt;mat-grid-tile&gt;
+        &lt;a href&#x3D;&quot;https://github.com/OrishaOrrie/SoftwareSharks&quot; class&#x3D;&quot;footer-link&quot; target&#x3D;&quot;_blank&quot;&gt;Developed by&lt;br&gt; Software Sharks&lt;/a&gt;&lt;br&gt;
+        &lt;img class&#x3D;&quot;bramhope-logo&quot; src&#x3D;&quot;../assets/ss-logo.png&quot; alt&#x3D;&quot;Software-Sharks&quot;&gt;
+      &lt;/mat-grid-tile&gt;
+      &lt;mat-grid-tile&gt;
+        &lt;a href&#x3D;&quot;http://www.bramhope.co.za/&quot; class&#x3D;&quot;footer-link&quot; target&#x3D;&quot;_blank&quot;&gt;Developed for&lt;br&gt;The Bramhope Group&lt;/a&gt;&lt;br&gt;
+        &lt;img class&#x3D;&quot;bramhope-logo&quot; src&#x3D;&quot;../assets/bramhope-logo.jpg&quot; alt&#x3D;&quot;logo&quot;&gt;
+      &lt;/mat-grid-tile&gt;
+      &lt;mat-grid-tile&gt;
+        &lt;a href&#x3D;&quot;https://www.up.ac.za/&quot; class&#x3D;&quot;footer-link&quot; target&#x3D;&quot;_blank&quot;&gt;In Association with&lt;br&gt;The University of Pretoria&lt;/a&gt;&lt;br&gt;
+        &lt;img class&#x3D;&quot;bramhope-logo&quot; src&#x3D;&quot;../assets/tukslogo.png&quot; alt&#x3D;&quot;logo&quot;&gt;
+      &lt;/mat-grid-tile&gt;
+    &lt;/mat-grid-list&gt;
 
-    &lt;mat-grid-tile id&#x3D;&quot;website-info&quot;&gt;
-      &lt;a mat-button routerLink&#x3D;&quot;/home&quot;&gt;Home&lt;/a&gt;
-      &lt;a mat-button routerLink&#x3D;&quot;/imageupload&quot;&gt;Upload Image&lt;/a&gt;
-      &lt;a mat-button routerLink&#x3D;&quot;/utilities&quot;&gt;Utilities&lt;/a&gt;
-      &lt;a mat-button routerLink&#x3D;&quot;/contactus&quot;&gt;Contact Us&lt;/a&gt;
-    &lt;/mat-grid-tile&gt;
-
-    &lt;mat-grid-tile id&#x3D;&quot;ss-info&quot;&gt;
-      &lt;a mat-button href&#x3D;&quot;https://github.com/OrishaOrrie/SoftwareSharks&quot; target&#x3D;&quot;_blank&quot;&gt;Developed by&lt;br&gt; Software Sharks&lt;/a&gt;
-      &lt;img class&#x3D;&quot;ss-logo&quot; src&#x3D;&quot;../assets/ss-logo.png&quot; alt&#x3D;&quot;Software-Sharks&quot;&gt;
-    &lt;/mat-grid-tile&gt;
-
-    &lt;mat-grid-tile id&#x3D;&quot;bramhope-info&quot;&gt;
-      &lt;a mat-button href&#x3D;&quot;http://www.bramhope.co.za/&quot; target&#x3D;&quot;_blank&quot;&gt;Developed for&lt;br&gt;The Bramhope Group&lt;/a&gt;
-      &lt;img class&#x3D;&quot;bramhope-logo&quot; src&#x3D;&quot;../assets/bramhope-logo.jpg&quot; alt&#x3D;&quot;logo&quot;&gt;
-    &lt;/mat-grid-tile&gt;
-    
-  &lt;/mat-grid-list&gt;
 &lt;/mat-card&gt;
 </code></pre>
     </div>
@@ -580,7 +582,7 @@ export class AppComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="toolbar-container">  <mat-toolbar class="mat-elevation-z4" color="primary">    <a mat-button routerLink="/home" class="toolbar-title"><h1>{{ title }}</h1></a>    <span class="toolbar-spacer"></span>    <a mat-button routerLink="/home" color="accent">Home</a>    <span class="toolbar-button-spacer"></span>    <a mat-button routerLink="/imageupload" color="accent">Upload Image</a>    <span class="toolbar-button-spacer"></span>    <a mat-button routerLink="/utilities" color="accent">Utilities</a>    <span class="toolbar-button-spacer"></span>    <a mat-button routerLink="/contactus" color="accent">Contact Us</a>  </mat-toolbar>  <br>  <!--app-home></app-home-->  </div>  <main>      <router-outlet></router-outlet>  </main>  <br><mat-card class="mat-elevation-z4" id="footy">  <mat-grid-list cols="3" rowHeight="5:1">    <mat-grid-tile id="website-info">      <a mat-button routerLink="/home">Home</a>      <a mat-button routerLink="/imageupload">Upload Image</a>      <a mat-button routerLink="/utilities">Utilities</a>      <a mat-button routerLink="/contactus">Contact Us</a>    </mat-grid-tile>    <mat-grid-tile id="ss-info">      <a mat-button href="https://github.com/OrishaOrrie/SoftwareSharks" target="_blank">Developed by<br> Software Sharks</a>      <img class="ss-logo" src="../assets/ss-logo.png" alt="Software-Sharks">    </mat-grid-tile>    <mat-grid-tile id="bramhope-info">      <a mat-button href="http://www.bramhope.co.za/" target="_blank">Developed for<br>The Bramhope Group</a>      <img class="bramhope-logo" src="../assets/bramhope-logo.jpg" alt="logo">    </mat-grid-tile>      </mat-grid-list></mat-card></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="toolbar-container">  <mat-toolbar class="mat-elevation-z4" color="primary">    <a mat-button routerLink="/home" class="toolbar-title">{{ title }}</a>    <span class="toolbar-spacer"></span>    <a mat-button id="navbar-home" routerLink="/home" color="white">Home</a>    <span class="toolbar-button-spacer"></span>    <a mat-button id="navbar-image" routerLink="/imageupload" color="white">Upload Image</a>    <span class="toolbar-button-spacer"></span>    <a mat-button id="navbar-utilities" routerLink="/utilities" color="white">Utilities</a>    <span class="toolbar-button-spacer"></span>    <a mat-button id="navbar-contactus" routerLink="/contactus" color="white">Contact Us</a>  </mat-toolbar>  <br>  <!--app-home></app-home-->  </div>  <main>      <router-outlet></router-outlet>  </main>  <br><mat-card class="mat-elevation-z4" id="footy">    <mat-grid-list cols="4" rowHeight="3:1">      <mat-grid-tile [colspan]=1 [rowspan]=1>        <div class="footer-links">          <a id="footer-home" routerLink="/home" class="footer-link">Home</a><br>          <a id="footer-image" routerLink="/imageupload" class="footer-link">Upload Image</a><br>          <a id="footer-utilities" routerLink="/utilities" class="footer-link">Utilities</a><br>          <a id="footer-contactus" routerLink="/contactus" class="footer-link">Contact Us</a>        </div>      </mat-grid-tile>      <mat-grid-tile>        <a href="https://github.com/OrishaOrrie/SoftwareSharks" class="footer-link" target="_blank">Developed by<br> Software Sharks</a><br>        <img class="bramhope-logo" src="../assets/ss-logo.png" alt="Software-Sharks">      </mat-grid-tile>      <mat-grid-tile>        <a href="http://www.bramhope.co.za/" class="footer-link" target="_blank">Developed for<br>The Bramhope Group</a><br>        <img class="bramhope-logo" src="../assets/bramhope-logo.jpg" alt="logo">      </mat-grid-tile>      <mat-grid-tile>        <a href="https://www.up.ac.za/" class="footer-link" target="_blank">In Association with<br>The University of Pretoria</a><br>        <img class="bramhope-logo" src="../assets/tukslogo.png" alt="logo">      </mat-grid-tile>    </mat-grid-list></mat-card></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ContactUsComponent', 'selector': 'app-contact-us'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'ImageuploadComponent', 'selector': 'app-imageupload'},{'name': 'UtilitiesComponent', 'selector': 'app-utilities'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AppComponent'};
