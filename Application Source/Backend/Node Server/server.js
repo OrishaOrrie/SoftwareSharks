@@ -96,7 +96,7 @@ var upload = multer({ storage: storage })
 
 /**
  * Uppy Options
- */
+ 
 
 const uppy_options = {
 	providerOptions: {
@@ -117,6 +117,7 @@ const uppy_options = {
 }
 
 app.use(uppy.app(uppy_options))
+*/
 
 /**
  * Local Dependencies
@@ -137,7 +138,7 @@ app.get('/', (req, res) => res.status(_httpCodes.RESPONSE.OKAY).send('Hello and 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.header("Tus-Resumable","1.0.0");
+  // res.header("Tus-Resumable","1.0.0");
   next();
 });
 

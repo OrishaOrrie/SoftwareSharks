@@ -5,26 +5,34 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import { Injectable, NgModule } from '@angular/core';
+import { Inject, Injectable, Optional, PLATFORM_ID, NgModule, defineInjectable, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
  */
-
 // Whether the current platform supports the V8 Break Iterator. The V8 check
 // is necessary to detect all Blink based browsers.
-var hasV8BreakIterator = (typeof Intl !== 'undefined' && (/** @type {?} */ (Intl)).v8BreakIterator);
+var /** @type {?} */ hasV8BreakIterator = (typeof Intl !== 'undefined' && (/** @type {?} */ (Intl)).v8BreakIterator);
 /**
  * Service to detect the current platform by comparing the userAgent strings and
  * checking browser-specific global properties.
  */
 var Platform = /** @class */ (function () {
-    function Platform() {
+    /**
+     * @deletion-target v7.0.0 remove optional decorator
+     */
+    function Platform(_platformId) {
+        this._platformId = _platformId;
         /**
          * Whether the Angular application is being rendered in the browser.
+         * We want to use the Angular platform check because if the Document is shimmed
+         * without the navigator, the following checks will fail. This is preferred because
+         * sometimes the Document may be shimmed without the user's knowledge or intention
          */
-        this.isBrowser = typeof document === 'object' && !!document;
+        this.isBrowser = this._platformId ?
+            isPlatformBrowser(this._platformId) : typeof document === 'object' && !!document;
         /**
          * Whether the current browser is Microsoft Edge.
          */
@@ -62,10 +70,13 @@ var Platform = /** @class */ (function () {
         this.SAFARI = this.isBrowser && /safari/i.test(navigator.userAgent) && this.WEBKIT;
     }
     Platform.decorators = [
-        { type: Injectable },
+        { type: Injectable, args: [{ providedIn: 'root' },] },
     ];
     /** @nocollapse */
-    Platform.ctorParameters = function () { return []; };
+    Platform.ctorParameters = function () { return [
+        { type: Object, decorators: [{ type: Optional }, { type: Inject, args: [PLATFORM_ID,] },] },
+    ]; };
+    /** @nocollapse */ Platform.ngInjectableDef = defineInjectable({ factory: function Platform_Factory() { return new Platform(inject(PLATFORM_ID, 8)); }, token: Platform, providedIn: "root" });
     return Platform;
 }());
 
@@ -77,7 +88,7 @@ var Platform = /** @class */ (function () {
 /**
  * Cached result of whether the user's browser supports passive event listeners.
  */
-var supportsPassiveEvents;
+var /** @type {?} */ supportsPassiveEvents;
 /**
  * Checks whether the user's browser supports passive event listeners.
  * See: https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md
@@ -99,11 +110,11 @@ function supportsPassiveEventListeners() {
 /**
  * Cached result Set of input types support by the current browser.
  */
-var supportedInputTypes;
+var /** @type {?} */ supportedInputTypes;
 /**
  * Types of `<input>` that *might* be supported.
  */
-var candidateInputTypes = [
+var /** @type {?} */ candidateInputTypes = [
     'color',
     'button',
     'checkbox',
@@ -154,17 +165,12 @@ function getSupportedInputTypes() {
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
  */
-
 var PlatformModule = /** @class */ (function () {
     function PlatformModule() {
     }
     PlatformModule.decorators = [
-        { type: NgModule, args: [{
-                    providers: [Platform]
-                },] },
+        { type: NgModule },
     ];
-    /** @nocollapse */
-    PlatformModule.ctorParameters = function () { return []; };
     return PlatformModule;
 }());
 
@@ -176,9 +182,6 @@ var PlatformModule = /** @class */ (function () {
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
- */
-/**
- * Generated bundle index. Do not edit.
  */
 
 export { Platform, supportsPassiveEventListeners, getSupportedInputTypes, PlatformModule };

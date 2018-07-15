@@ -5,8 +5,12 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
+export * from './alias';
 export * from './buffer';
 export * from './interface';
 export * from './memory';
+export * from './pattern';
 export * from './scoped';
 export * from './sync';
+import * as test from './test';
+export { test };

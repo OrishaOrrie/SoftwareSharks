@@ -136,4 +136,4 @@ function calculatePercentBytes(val, baseline, factor) {
     const percentage = parseFloat(val.replace(/%/g, ''));
     return baselineBytes + baselineBytes * percentage / 100 * (factor === 'pos' ? 1 : -1);
 }
-//# sourceMappingURL=/users/hansl/sources/hansl/angular-cli/utilities/bundle-calculator.js.map
+//# sourceMappingURL=/Users/hansl/Sources/hansl/angular-cli/utilities/bundle-calculator.js.map

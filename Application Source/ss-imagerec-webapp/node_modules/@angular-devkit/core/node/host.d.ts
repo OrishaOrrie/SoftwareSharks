@@ -7,14 +7,13 @@
  * found in the LICENSE file at https://angular.io/license
  */
 import * as fs from 'fs';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Path, PathFragment, virtualFs } from '../src';
 /**
  * An implementation of the Virtual FS using Node as the background. There are two versions; one
  * synchronous and one asynchronous.
  */
 export declare class NodeJsAsyncHost implements virtualFs.Host<fs.Stats> {
-    protected _getSystemPath(path: Path): string;
     readonly capabilities: virtualFs.HostCapabilities;
     write(path: Path, content: virtualFs.FileBuffer): Observable<void>;
     read(path: Path): Observable<virtualFs.FileBuffer>;
@@ -24,14 +23,13 @@ export declare class NodeJsAsyncHost implements virtualFs.Host<fs.Stats> {
     exists(path: Path): Observable<boolean>;
     isDirectory(path: Path): Observable<boolean>;
     isFile(path: Path): Observable<boolean>;
-    stats(path: Path): Observable<virtualFs.Stats<fs.Stats>> | null;
+    stat(path: Path): Observable<virtualFs.Stats<fs.Stats>> | null;
     watch(path: Path, _options?: virtualFs.HostWatchOptions): Observable<virtualFs.HostWatchEvent> | null;
 }
 /**
  * An implementation of the Virtual FS using Node as the backend, synchronously.
  */
 export declare class NodeJsSyncHost implements virtualFs.Host<fs.Stats> {
-    protected _getSystemPath(path: Path): string;
     readonly capabilities: virtualFs.HostCapabilities;
     write(path: Path, content: virtualFs.FileBuffer): Observable<void>;
     read(path: Path): Observable<virtualFs.FileBuffer>;
@@ -41,6 +39,6 @@ export declare class NodeJsSyncHost implements virtualFs.Host<fs.Stats> {
     exists(path: Path): Observable<boolean>;
     isDirectory(path: Path): Observable<boolean>;
     isFile(path: Path): Observable<boolean>;
-    stats(path: Path): Observable<virtualFs.Stats<fs.Stats>> | null;
+    stat(path: Path): Observable<virtualFs.Stats<fs.Stats>>;
     watch(path: Path, _options?: virtualFs.HostWatchOptions): Observable<virtualFs.HostWatchEvent> | null;
 }
