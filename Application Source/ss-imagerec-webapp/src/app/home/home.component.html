@@ -2,7 +2,39 @@
 
   <div class="intro-message">Let us tell you what you're holding</div>
 
-  <mat-card class="how-to hvr-float">
+  <div style="width:100%;">
+    <mat-grid-list cols="3" rowHeight="9:10" gutterSize="10px">
+      <mat-grid-tile class="step-tile" [colspan]=1 >
+        <mat-card class="hvr-float step-card" style="background-image: url(/assets/taking-img-of-dessert.jpeg)">
+          <h2 class="step-number">1</h2>
+          <div class="steps-descript">image<br>upload</div>
+          <mat-card class="detailed-descript" color="primary">
+              Click the Upload Image button to continue
+          </mat-card>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile class="step-tile" [colspan]=1>
+        <mat-card class="hvr-float step-card" style="background-image: url(/assets/gears.jpeg)">
+          <h2 class="step-number">2</h2>
+          <div class="steps-descript">image<br>analysis</div>
+          <mat-card class="detailed-descript" color="primary">
+              We run the image through our image recognition model
+          </mat-card>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile class="step-tile" [colspan]=1>
+        <mat-card class="hvr-float step-card" style="background-image: url(/assets/hardware-store.jpg)">
+          <h2 class="step-number">3</h2>
+          <div class="steps-descript">image<br>classification</div>
+          <mat-card class="detailed-descript" color="primary">
+              Receive a classification of the object in the image
+          </mat-card>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+
+  <!--mat-card class="how-to hvr-float">
     <h2 class="steps">1</h2>
     <div class="steps-descript">image<br>upload</div>
     <mat-card class="detailed-descript" color="accent">Click the Upload Image button to continue</mat-card>
@@ -16,7 +48,7 @@
     <h2 class="steps">3</h2>
     <div class="steps-descript">image<br>classification</div>
     <mat-card class="detailed-descript" color="primary">Receive a classification of the object in the image</mat-card>
-  </mat-card>
+  </mat-card-->
 
   <div class="button-area">
       <br>

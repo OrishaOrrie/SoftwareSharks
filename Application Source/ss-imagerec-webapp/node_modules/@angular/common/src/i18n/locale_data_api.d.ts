@@ -311,7 +311,7 @@ export declare function getLocalePluralCase(locale: string): (value: number) => 
  * You should fallback to AM/PM when there are no rules available.
  *
  * Note: this is only available if you load the full locale data.
- * See the {@linkDocs guide/i18n#i18n-pipes "I18n guide"} to know how to import additional locale
+ * See the ["I18n guide"](guide/i18n#i18n-pipes) to know how to import additional locale
  * data.
  *
  * @experimental i18n support is experimental.
@@ -325,7 +325,7 @@ export declare function getLocaleExtraDayPeriodRules(locale: string): (Time | [T
  * You should fallback to AM/PM when there are no day periods available.
  *
  * Note: this is only available if you load the full locale data.
- * See the {@linkDocs guide/i18n#i18n-pipes "I18n guide"} to know how to import additional locale
+ * See the ["I18n guide"](guide/i18n#i18n-pipes) to know how to import additional locale
  * data.
  *
  * @experimental i18n support is experimental.
@@ -347,9 +347,17 @@ export declare type Time = {
  */
 export declare function findLocaleData(locale: string): any;
 /**
- * Return the currency symbol for a given currency code, or the code if no symbol available
+ * Returns the currency symbol for a given currency code, or the code if no symbol available
  * (e.g.: format narrow = $, format wide = US$, code = USD)
+ * If no locale is provided, it uses the locale "en" by default
  *
  * @experimental i18n support is experimental.
  */
-export declare function getCurrencySymbol(code: string, format: 'wide' | 'narrow'): string;
+export declare function getCurrencySymbol(code: string, format: 'wide' | 'narrow', locale?: string): string;
+/**
+ * Returns the number of decimal digits for the given currency.
+ * Its value depends upon the presence of cents in that particular currency.
+ *
+ * @experimental i18n support is experimental.
+ */
+export declare function getNumberOfCurrencyDigits(code: string): number;
