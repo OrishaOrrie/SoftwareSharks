@@ -29,7 +29,8 @@
     "animate.css": "^3.6.1",
     "core-js": "^2.4.1",
     "hover.css": "^2.3.0",
-    "rxjs": "^6.2.1",
+    "rxjs": "^6.2.2",
+    "rxjs-compat": "^6.2.2",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
