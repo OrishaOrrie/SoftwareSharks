@@ -5,25 +5,19 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import { Directive, ElementRef, Injectable, NgModule, NgZone, Optional, SkipSelf } from '@angular/core';
 import { Platform, PlatformModule } from '@angular/cdk/platform';
-import { Subject } from 'rxjs/Subject';
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
-import { fromEvent } from 'rxjs/observable/fromEvent';
-import { auditTime } from 'rxjs/operators/auditTime';
-import { filter } from 'rxjs/operators/filter';
-import { merge } from 'rxjs/observable/merge';
+import { Injectable, NgZone, Optional, SkipSelf, Directive, ElementRef, NgModule, defineInjectable, inject } from '@angular/core';
+import { fromEvent, of, Subject, Observable, merge } from 'rxjs';
+import { auditTime, filter } from 'rxjs/operators';
 
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
  */
-
 /**
  * Time in ms to throttle the scrolling events by default.
  */
-const DEFAULT_SCROLL_TIME = 20;
+const /** @type {?} */ DEFAULT_SCROLL_TIME = 20;
 /**
  * Service contained all registered Scrollable references and emits an event when any one of the
  * Scrollable references emit a scrolled event.
@@ -115,6 +109,7 @@ class ScrollDispatcher {
     ngOnDestroy() {
         this._removeGlobalListener();
         this.scrollContainers.forEach((_, container) => this.deregister(container));
+        this._scrolled.complete();
     }
     /**
      * Returns an observable that emits whenever any of the
@@ -182,15 +177,16 @@ class ScrollDispatcher {
     }
 }
 ScrollDispatcher.decorators = [
-    { type: Injectable },
+    { type: Injectable, args: [{ providedIn: 'root' },] },
 ];
 /** @nocollapse */
 ScrollDispatcher.ctorParameters = () => [
     { type: NgZone, },
     { type: Platform, },
 ];
+/** @nocollapse */ ScrollDispatcher.ngInjectableDef = defineInjectable({ factory: function ScrollDispatcher_Factory() { return new ScrollDispatcher(inject(NgZone), inject(Platform)); }, token: ScrollDispatcher, providedIn: "root" });
 /**
- * \@docs-private
+ * \@docs-private \@deprecated \@deletion-target 7.0.0
  * @param {?} parentDispatcher
  * @param {?} ngZone
  * @param {?} platform
@@ -200,9 +196,9 @@ function SCROLL_DISPATCHER_PROVIDER_FACTORY(parentDispatcher, ngZone, platform) 
     return parentDispatcher || new ScrollDispatcher(ngZone, platform);
 }
 /**
- * \@docs-private
+ * \@docs-private \@deprecated \@deletion-target 7.0.0
  */
-const SCROLL_DISPATCHER_PROVIDER = {
+const /** @type {?} */ SCROLL_DISPATCHER_PROVIDER = {
     // If there is already a ScrollDispatcher available, use that. Otherwise, provide a new one.
     provide: ScrollDispatcher,
     deps: [[new Optional(), new SkipSelf(), ScrollDispatcher], NgZone, Platform],
@@ -213,7 +209,6 @@ const SCROLL_DISPATCHER_PROVIDER = {
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
  */
-
 /**
  * Sends an event when the directive's element is scrolled. Registers itself with the
  * ScrollDispatcher service to include itself as part of its collection of scrolling events that it
@@ -249,6 +244,7 @@ class CdkScrollable {
         if (this._scrollListener) {
             this.getElementRef().nativeElement.removeEventListener('scroll', this._scrollListener);
         }
+        this._elementScrolled.complete();
     }
     /**
      * Returns observable that emits when a scroll event is fired on the host element.
@@ -280,11 +276,10 @@ CdkScrollable.ctorParameters = () => [
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
  */
-
 /**
  * Time in ms to throttle the resize events by default.
  */
-const DEFAULT_RESIZE_TIME = 20;
+const /** @type {?} */ DEFAULT_RESIZE_TIME = 20;
 /**
  * Simple utility for getting the bounds of the browser viewport.
  * \@docs-private
@@ -372,7 +367,7 @@ class ViewportRuler {
     }
     /**
      * Returns a stream that emits whenever the size of the viewport changes.
-     * @param {?=} throttleTime
+     * @param {?=} throttleTime Time in milliseconds to throttle the stream.
      * @return {?}
      */
     change(throttleTime = DEFAULT_RESIZE_TIME) {
@@ -389,15 +384,16 @@ class ViewportRuler {
     }
 }
 ViewportRuler.decorators = [
-    { type: Injectable },
+    { type: Injectable, args: [{ providedIn: 'root' },] },
 ];
 /** @nocollapse */
 ViewportRuler.ctorParameters = () => [
     { type: Platform, },
     { type: NgZone, },
 ];
+/** @nocollapse */ ViewportRuler.ngInjectableDef = defineInjectable({ factory: function ViewportRuler_Factory() { return new ViewportRuler(inject(Platform), inject(NgZone)); }, token: ViewportRuler, providedIn: "root" });
 /**
- * \@docs-private
+ * \@docs-private \@deprecated \@deletion-target 7.0.0
  * @param {?} parentRuler
  * @param {?} platform
  * @param {?} ngZone
@@ -407,9 +403,9 @@ function VIEWPORT_RULER_PROVIDER_FACTORY(parentRuler, platform, ngZone) {
     return parentRuler || new ViewportRuler(platform, ngZone);
 }
 /**
- * \@docs-private
+ * \@docs-private \@deprecated \@deletion-target 7.0.0
  */
-const VIEWPORT_RULER_PROVIDER = {
+const /** @type {?} */ VIEWPORT_RULER_PROVIDER = {
     // If there is already a ViewportRuler available, use that. Otherwise, provide a new one.
     provide: ViewportRuler,
     deps: [[new Optional(), new SkipSelf(), ViewportRuler], Platform, NgZone],
@@ -420,7 +416,6 @@ const VIEWPORT_RULER_PROVIDER = {
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
  */
-
 class ScrollDispatchModule {
 }
 ScrollDispatchModule.decorators = [
@@ -428,11 +423,8 @@ ScrollDispatchModule.decorators = [
                 imports: [PlatformModule],
                 exports: [CdkScrollable],
                 declarations: [CdkScrollable],
-                providers: [SCROLL_DISPATCHER_PROVIDER],
             },] },
 ];
-/** @nocollapse */
-ScrollDispatchModule.ctorParameters = () => [];
 
 /**
  * @fileoverview added by tsickle
@@ -442,9 +434,6 @@ ScrollDispatchModule.ctorParameters = () => [];
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
- */
-/**
- * Generated bundle index. Do not edit.
  */
 
 export { DEFAULT_SCROLL_TIME, ScrollDispatcher, SCROLL_DISPATCHER_PROVIDER_FACTORY, SCROLL_DISPATCHER_PROVIDER, CdkScrollable, DEFAULT_RESIZE_TIME, ViewportRuler, VIEWPORT_RULER_PROVIDER_FACTORY, VIEWPORT_RULER_PROVIDER, ScrollDispatchModule };

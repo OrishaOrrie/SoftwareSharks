@@ -3,19 +3,23 @@
     color: lightgray;
 }
 
+.upload-card {
+    background-color: rgb(207, 207, 207);
+}
+
 .title{
     text-align: center;
     font-family: "Lato", Arial, Helvetica, sans-serif;
 }
 
-.dashboardContainer{
-    align-content: center;
-    background-color: rgb(75, 75, 97);
-    padding-left: 16%;
+.instruction {
+    text-align: center;
+    font-size: 150%;
+    color: rgb(100, 99, 99);
 }
 
 .nothing-to-show{
-    color: orange;
+    color: lightgray;
 }
 
 .result-card{
@@ -30,6 +34,49 @@
 mat-card-title{
     color: lightgray;
     font-family: "Lato", Arial, Helvetica, sans-serif;
+}
+
+.file-button {
+    text-align: center;
+}
+
+.custom-file-upload {
+    font-family: "Lato", sans-serif;
+    font-size: 100%;
+    /* border: 1px solid rgb(75, 75, 97); */
+    display: inline-block;
+    padding: 16px 32px;
+    cursor: pointer;
+    border-radius: 3px;
+    box-shadow: 2px 2px 2px black;
+    color: white;
+    background: #607D8B;
+}
+
+.custom-file-upload:hover{
+    font-size: 100%;
+    background: rgb(144, 144, 158);
+    display: inline-block;
+    padding: 16px 32px;
+    cursor: pointer;
+}
+
+#file-upload {
+    display: none;
+}
+
+#webcam-upload {
+    display: none;
+}
+
+.upload-button {
+    width: 200%;
+    font-size: 150%;
+    float: left;
+}
+
+mat-spinner{
+    float: right;
 }
 
 .reload-upload{

@@ -7,9 +7,10 @@
  * found in the LICENSE file at https://angular.io/license
  */
 import { logging } from '@angular-devkit/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Url } from 'url';
 import { FileEntry, MergeStrategy, Tree } from '../tree/interface';
+import { Workflow } from '../workflow';
 import { TaskConfigurationGenerator, TaskExecutor, TaskId } from './task';
 /**
  * The description (metadata) of a collection. This type contains every information the engine
@@ -28,6 +29,8 @@ export declare type CollectionDescription<CollectionMetadataT extends object> = 
 export declare type SchematicDescription<CollectionMetadataT extends object, SchematicMetadataT extends object> = SchematicMetadataT & {
     readonly collection: CollectionDescription<CollectionMetadataT>;
     readonly name: string;
+    readonly private?: boolean;
+    readonly hidden?: boolean;
 };
 /**
  * The Host for the Engine. Specifically, the piece of the tooling responsible for resolving
@@ -45,6 +48,7 @@ export interface EngineHost<CollectionMetadataT extends object, SchematicMetadat
     getSchematicRuleFactory<OptionT extends object>(schematic: SchematicDescription<CollectionMetadataT, SchematicMetadataT>, collection: CollectionDescription<CollectionMetadataT>): RuleFactory<OptionT>;
     createSourceFromUrl(url: Url, context: TypedSchematicContext<CollectionMetadataT, SchematicMetadataT>): Source | null;
     transformOptions<OptionT extends object, ResultT extends object>(schematic: SchematicDescription<CollectionMetadataT, SchematicMetadataT>, options: OptionT): Observable<ResultT>;
+    transformContext(context: TypedSchematicContext<CollectionMetadataT, SchematicMetadataT>): TypedSchematicContext<CollectionMetadataT, SchematicMetadataT> | void;
     createTaskExecutor(name: string): Observable<TaskExecutor>;
     hasTaskExecutor(name: string): boolean;
     readonly defaultMergeStrategy?: MergeStrategy;
@@ -67,6 +71,7 @@ export interface Engine<CollectionMetadataT extends object, SchematicMetadataT e
     transformOptions<OptionT extends object, ResultT extends object>(schematic: Schematic<CollectionMetadataT, SchematicMetadataT>, options: OptionT): Observable<ResultT>;
     executePostTasks(): Observable<void>;
     readonly defaultMergeStrategy: MergeStrategy;
+    readonly workflow: Workflow | null;
 }
 /**
  * A Collection as created by the Engine. This should be used by the tool to create schematics,
@@ -75,7 +80,7 @@ export interface Engine<CollectionMetadataT extends object, SchematicMetadataT e
 export interface Collection<CollectionMetadataT extends object, SchematicMetadataT extends object> {
     readonly description: CollectionDescription<CollectionMetadataT>;
     readonly baseDescriptions?: Array<CollectionDescription<CollectionMetadataT>>;
-    createSchematic(name: string): Schematic<CollectionMetadataT, SchematicMetadataT>;
+    createSchematic(name: string, allowPrivate?: boolean): Schematic<CollectionMetadataT, SchematicMetadataT>;
     listSchematicNames(): string[];
 }
 /**
