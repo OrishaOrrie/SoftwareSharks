@@ -6,4 +6,8 @@
  * found in the LICENSE file at https://angular.io/license
  */
 export * from './interface';
+export * from './pointer';
 export * from './registry';
+export * from './visitor';
+import * as transforms from './transforms';
+export { transforms };

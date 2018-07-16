@@ -5,12 +5,13 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import { ComponentFactoryResolver, ApplicationRef, Injector, NgZone } from '@angular/core';
+import { Directionality } from '@angular/cdk/bidi';
+import { ComponentFactoryResolver, Injector, NgZone } from '@angular/core';
+import { OverlayKeyboardDispatcher } from './keyboard/overlay-keyboard-dispatcher';
 import { OverlayConfig } from './overlay-config';
+import { OverlayContainer } from './overlay-container';
 import { OverlayRef } from './overlay-ref';
 import { OverlayPositionBuilder } from './position/overlay-position-builder';
-import { OverlayKeyboardDispatcher } from './keyboard/overlay-keyboard-dispatcher';
-import { OverlayContainer } from './overlay-container';
 import { ScrollStrategyOptions } from './scroll/index';
 /**
  * Service to create Overlays. Overlays are dynamically added pieces of floating UI, meant to be
@@ -27,13 +28,14 @@ export declare class Overlay {
     private _componentFactoryResolver;
     private _positionBuilder;
     private _keyboardDispatcher;
-    private _appRef;
     private _injector;
     private _ngZone;
     private _document;
+    private _directionality;
+    private _appRef;
     constructor(
         /** Scrolling strategies that can be used when creating an overlay. */
-        scrollStrategies: ScrollStrategyOptions, _overlayContainer: OverlayContainer, _componentFactoryResolver: ComponentFactoryResolver, _positionBuilder: OverlayPositionBuilder, _keyboardDispatcher: OverlayKeyboardDispatcher, _appRef: ApplicationRef, _injector: Injector, _ngZone: NgZone, _document: any);
+        scrollStrategies: ScrollStrategyOptions, _overlayContainer: OverlayContainer, _componentFactoryResolver: ComponentFactoryResolver, _positionBuilder: OverlayPositionBuilder, _keyboardDispatcher: OverlayKeyboardDispatcher, _injector: Injector, _ngZone: NgZone, _document: any, _directionality: Directionality);
     /**
      * Creates an overlay.
      * @param config Configuration applied to the overlay.
@@ -50,7 +52,13 @@ export declare class Overlay {
      * Creates the DOM element for an overlay and appends it to the overlay container.
      * @returns Newly-created pane element
      */
-    private _createPaneElement();
+    private _createPaneElement(host);
+    /**
+     * Creates the host element that wraps around an overlay
+     * and can be used for advanced positioning.
+     * @returns Newly-create host element.
+     */
+    private _createHostElement();
     /**
      * Create a DomPortalOutlet into which the overlay content can be loaded.
      * @param pane The DOM element to turn into a portal outlet.
