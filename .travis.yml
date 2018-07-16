@@ -13,7 +13,6 @@ node_js:
 
 branches:
   only:
-    - travis-ci
     - master
 
 before_install:
