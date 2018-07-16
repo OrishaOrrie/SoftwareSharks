@@ -16,8 +16,8 @@ branches:
     - master
 
 before_install:
-  - cd '.\Application Source'
-  - cd '.\ss-imagerec-webapp'
+  - cd './Application Source'
+  - cd './ss-imagerec-webapp'
 
 before_script:
   - export DISPLAY=:99.0
