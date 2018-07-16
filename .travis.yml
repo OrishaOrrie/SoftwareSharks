@@ -23,8 +23,10 @@ before_script:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
   - npm install -g @angular/cli
+  - npm install rxjs@latest rxjs-compat@latest --save
 
 script:
+  - ng lint
   - ng test
   - ng e2e
   - ng serve
