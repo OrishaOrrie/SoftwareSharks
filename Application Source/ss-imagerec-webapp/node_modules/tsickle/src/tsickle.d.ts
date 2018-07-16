@@ -1,5 +1,5 @@
 /// <amd-module name="tsickle/src/tsickle" />
-import * as es5processor from './es5processor';
+import * as googmodule from './googmodule';
 import { ModulesManifest } from './modules_manifest';
 import { SourceMapper } from './source_map_utils';
 import * as ts from './typescript';
@@ -55,7 +55,7 @@ export declare function writeExterns(typeChecker: ts.TypeChecker, file: ts.Sourc
 export declare function getGeneratedExterns(externs: {
     [fileName: string]: string;
 }): string;
-export interface TsickleHost extends es5processor.Es5ProcessorHost, AnnotatorHost {
+export interface TsickleHost extends googmodule.GoogModuleProcessorHost, AnnotatorHost {
     /**
      * Whether to downlevel decorators
      */
@@ -79,13 +79,18 @@ export interface TsickleHost extends es5processor.Es5ProcessorHost, AnnotatorHos
      * useful for e.g. third party code.
      */
     shouldIgnoreWarningsForPath(filePath: string): boolean;
+    /** Whether to convert CommonJS require() imports to goog.module() and goog.require() calls. */
+    googmodule: boolean;
 }
 export declare function mergeEmitResults(emitResults: EmitResult[]): EmitResult;
 export interface EmitResult extends ts.EmitResult {
     modulesManifest: ModulesManifest;
-    /** externs.js files produced by tsickle, if any. */
+    /**
+     * externs.js files produced by tsickle, if any. module IDs are relative paths from
+     * fileNameToModuleId.
+     */
     externs: {
-        [fileName: string]: string;
+        [moduleId: string]: string;
     };
 }
 export interface EmitTransformers {

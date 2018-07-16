@@ -1,0 +1,34 @@
+sudo: required
+dist: trusty
+addons:
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
+
+language: node_js
+node_js:
+  - "8"
+
+branches:
+  only:
+    - travis-ci
+    - master
+
+before_install:
+  - cd '.\Backend\Node Server'
+  - npm test
+
+before_script:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - npm install -g @angular/cli
+
+script:
+  - cd ..
+  - cd ..
+  - cd '.\Application Source\ss-imagerec-webapp'
+  - ng test
+  - ng e2e
+  - ng serve
