@@ -67,12 +67,26 @@ function coerceArray(value) {
  */
 
 /**
+ * Coerces a value to a CSS pixel value.
+ * @param {?} value
+ * @return {?}
+ */
+function coerceCssPixelValue(value) {
+    if (value == null) {
+        return '';
+    }
+    return typeof value === 'string' ? value : value + "px";
+}
+
+/**
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
  */
+
 /**
- * Generated bundle index. Do not edit.
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
  */
 
-export { coerceBooleanProperty, coerceNumberProperty, _isNumberValue, coerceArray };
+export { coerceBooleanProperty, coerceNumberProperty, _isNumberValue, coerceArray, coerceCssPixelValue };
 //# sourceMappingURL=coercion.es5.js.map

@@ -5,13 +5,13 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import { InjectionToken, Optional, OnDestroy } from '@angular/core';
-export declare const LIVE_ANNOUNCER_ELEMENT_TOKEN: InjectionToken<HTMLElement>;
+import { ContentObserver } from '@angular/cdk/observers';
+import { ElementRef, NgZone, OnDestroy, Provider } from '@angular/core';
 /** Possible politeness levels. */
 export declare type AriaLivePoliteness = 'off' | 'polite' | 'assertive';
 export declare class LiveAnnouncer implements OnDestroy {
     private _document;
-    private _liveElement;
+    private readonly _liveElement;
     constructor(elementToken: any, _document: any);
     /**
      * Announces a message to screenreaders.
@@ -23,11 +23,23 @@ export declare class LiveAnnouncer implements OnDestroy {
     ngOnDestroy(): void;
     private _createLiveElement();
 }
-/** @docs-private */
+/**
+ * A directive that works similarly to aria-live, but uses the LiveAnnouncer to ensure compatibility
+ * with a wider range of browsers and screen readers.
+ */
+export declare class CdkAriaLive implements OnDestroy {
+    private _elementRef;
+    private _liveAnnouncer;
+    private _contentObserver;
+    private _ngZone;
+    /** The aria-live politeness level to use when announcing messages. */
+    politeness: AriaLivePoliteness;
+    private _politeness;
+    private _subscription;
+    constructor(_elementRef: ElementRef, _liveAnnouncer: LiveAnnouncer, _contentObserver: ContentObserver, _ngZone: NgZone);
+    ngOnDestroy(): void;
+}
+/** @docs-private @deprecated @deletion-target 7.0.0 */
 export declare function LIVE_ANNOUNCER_PROVIDER_FACTORY(parentDispatcher: LiveAnnouncer, liveElement: any, _document: any): LiveAnnouncer;
-/** @docs-private */
-export declare const LIVE_ANNOUNCER_PROVIDER: {
-    provide: typeof LiveAnnouncer;
-    deps: (InjectionToken<Document> | Optional[])[];
-    useFactory: (parentDispatcher: LiveAnnouncer, liveElement: any, _document: any) => LiveAnnouncer;
-};
+/** @docs-private @deprecated @deletion-target 7.0.0 */
+export declare const LIVE_ANNOUNCER_PROVIDER: Provider;

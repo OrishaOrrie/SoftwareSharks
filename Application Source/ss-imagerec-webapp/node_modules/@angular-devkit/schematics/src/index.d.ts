@@ -16,6 +16,7 @@ export { TaskConfiguration, TaskConfigurationGenerator, TaskExecutor, TaskExecut
 export * from './exception/exception';
 export * from './tree/interface';
 export * from './rules/base';
+export * from './rules/call';
 export * from './rules/move';
 export * from './rules/random';
 export * from './rules/schematic';
@@ -24,14 +25,17 @@ export * from './rules/url';
 export * from './tree/delegate';
 export * from './tree/empty';
 export * from './tree/filesystem';
-export * from './tree/memory-host';
 export * from './tree/virtual';
 export { UpdateRecorder } from './tree/interface';
 export * from './engine/schematic';
 export * from './sink/dryrun';
-export { FileSystemSink } from './sink/filesystem';
+export * from './sink/filesystem';
+export * from './sink/host';
+export * from './sink/sink';
 import * as formats from './formats';
 export { formats };
+import * as workflow from './workflow';
+export { workflow };
 export interface TreeConstructor {
     empty(): TreeInterface;
     branch(tree: TreeInterface): TreeInterface;

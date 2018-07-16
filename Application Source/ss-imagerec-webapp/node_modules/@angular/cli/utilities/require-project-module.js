@@ -11,4 +11,4 @@ function requireProjectModule(root, moduleName) {
     return require(resolveProjectModule(root, moduleName));
 }
 exports.requireProjectModule = requireProjectModule;
-//# sourceMappingURL=/users/hansl/sources/hansl/angular-cli/utilities/require-project-module.js.map
+//# sourceMappingURL=/Users/hansl/Sources/hansl/angular-cli/utilities/require-project-module.js.map

@@ -7,7 +7,7 @@
  */
 import { NgZone, OnDestroy } from '@angular/core';
 import { MediaMatcher } from './media-matcher';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 /** The current state of a layout breakpoint. */
 export interface BreakpointState {
     /** Whether the breakpoint is currently matching. */
@@ -33,6 +33,7 @@ export declare class BreakpointObserver implements OnDestroy {
     /**
      * Gets an observable of results for the given queries that will emit new results for any changes
      * in matching of the given queries.
+     * @param value One or more media queries to check.
      * @returns A stream of matches for the given queries.
      */
     observe(value: string | string[]): Observable<BreakpointState>;

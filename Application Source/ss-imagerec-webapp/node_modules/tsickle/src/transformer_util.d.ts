@@ -13,6 +13,12 @@ import * as ts from './typescript';
  */
 export declare function createCustomTransformers(given: ts.CustomTransformers): ts.CustomTransformers;
 /**
+ * A transformer that does nothing, but synthesizes all comments. This allows testing transformers
+ * in isolation, but with an AST and comment placement that matches what'd happen after a source map
+ * based transformer ran.
+ */
+export declare function synthesizeCommentsTransformer(context: ts.TransformationContext): ts.Transformer<ts.SourceFile>;
+/**
  * Convert comment text ranges before and after a node
  * into ts.SynthesizedComments for the node and prevent the
  * comment text ranges to be emitted, to allow
@@ -22,6 +28,13 @@ export declare function createCustomTransformers(given: ts.CustomTransformers): 
  * state management after the caller is done changing a node.
  */
 export declare function visitNodeWithSynthesizedComments<T extends ts.Node>(context: ts.TransformationContext, sourceFile: ts.SourceFile, node: T, visitor: (node: T) => T): T;
+/**
+ * ts.createNotEmittedStatement will create a node whose comments are never emitted except for very
+ * specific special cases (/// comments). createNotEmittedStatementWithComments creates a not
+ * emitted statement and adds comment ranges from the original statement as synthetic comments to
+ * it, so that they get retained in the output.
+ */
+export declare function createNotEmittedStatementWithComments(sourceFile: ts.SourceFile, original: ts.Node): ts.Statement;
 /**
  * Creates a non emitted statement that can be used to store synthesized comments.
  */
