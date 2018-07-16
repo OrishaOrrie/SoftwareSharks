@@ -13,7 +13,7 @@
 
 ### MIGRATION AND RELEASE INFORMATION:
 
-Find out how up update to v6, **automatically update your TypeScript code**, and more!
+Find out how to update to v6, **automatically update your TypeScript code**, and more!
 
 - [Current home is MIGRATION.md](./docs_app/content/guide/v6/migration.md)
 
@@ -119,7 +119,7 @@ Run `npm run perf_micro [operator]` to run micro performance test benchmarking o
 ## Adding documentation
 RxNext uses [ESDoc](https://esdoc.org/) to generate API documentation. Refer to ESDoc's documentation for syntax. Run `npm run build_docs` to generate.
 
-At the moment we are trying to improve the documentation. For this purpose the Documentation is in a seperate [GitHub Repostory](https://github.com/ReactiveX/rxjs-docs).
+At the moment we are trying to improve the documentation. For this purpose the Documentation is in a separate [GitHub Repository](https://github.com/ReactiveX/rxjs-docs).
 For a quick instruction take a look at the [documentation guidelines](https://github.com/ReactiveX/rxjs-docs/blob/master/DOCUMENTATION_GUIDELINES.md).
 We are really happy about any type of contributions! 
 
