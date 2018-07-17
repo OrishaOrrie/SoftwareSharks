@@ -25,9 +25,9 @@ before_script:
   - sh -e /etc/init.d/xvfb start
   - npm install -g @angular/cli
   - npm install @angular/cli
-  - ng update @angular/cli
   - npm install rxjs@latest rxjs-compat@latest --save
   - npm install @angular-devkit/core --save-dev
+  - ng update @angular/cli
   - ng -v
 
 script:
