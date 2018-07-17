@@ -19,7 +19,7 @@ branches:
 before_install:
   - cd './Application Source'
   - cd './ss-imagerec-webapp'
-  # - rm -rf node_modules
+  - rm -rf node_modules
 
 before_script:
   - export DISPLAY=:99.0
@@ -29,10 +29,9 @@ before_script:
   - npm install rxjs@latest rxjs-compat@latest --save
   - npm install @angular-devkit/core --save-dev
   - ng update @angular/cli
-  - ng -v
 
 script:
   - ng lint
   - ng test --watch=false
   - ng e2e
-  - ng serve
+  # - ng serve
