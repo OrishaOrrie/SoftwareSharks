@@ -3,6 +3,7 @@ import sys
 import glob
 import argparse
 import matplotlib.pyplot as plt
+import numpy as np
 
 from keras import __version__
 from keras.applications.inception_v3 import InceptionV3, preprocess_input
@@ -10,6 +11,7 @@ from keras.models import Model
 from keras.layers import Dense, GlobalAveragePooling2D
 from keras.preprocessing.image import ImageDataGenerator
 from keras.optimizers import SGD
+from sklearn.utils import class_weight
 from tensorflow.python.client import device_lib
 
 IM_WIDTH, IM_HEIGHT=229,229 #fixed size for InceptionV3
@@ -96,45 +98,53 @@ def train(args):
 		zoom_range=0.2,
 		horizontal_flip=True
 	)
+
+	print("generating training data")
 	train_generator=train_datagen.flow_from_directory(
 		args.train_dir,
 		target_size=(IM_WIDTH, IM_HEIGHT),
 		batch_size=batch_size
 	)
+
+	print("generating validation data")
 	validation_generator=test_datagen.flow_from_directory(
 		args.val_dir,
 		target_size=(IM_WIDTH, IM_HEIGHT),
 		batch_size=batch_size
 	)
+	print("")
 	
 	#Setup Model
+	print("getting InceptionV3 model without last layer")
 	base_model=InceptionV3(weights='imagenet',include_top=False)
 	#include_top=False excludes final FC layer
+	print("")
+
+	print('adding new last layer')
 	model=add_new_last_layer(base_model,nb_classes)
-	
-	print('completed add new last layer')
+	print("")
 
 	#Transfer learning
+	print('setting up to transfer learn - freeze all layers and compile model')
 	setup_to_transfer_learn(model,base_model)
-	
-	print('completed setup_to_transfer_learn')
+	print("")
 
+	print("computing history of transfer learning process")
+	# class_weights = class_weight.compute_class_weight('balanced', np.unique(train_generator), train_generator)
 	history_tl=model.fit_generator(
 		train_generator,
 		steps_per_epoch=nb_train_samples/batch_size,
 		epochs=nb_epoch,
 		validation_data=validation_generator,
 		validation_steps=nb_val_samples/batch_size,
-		class_weight='auto'
+		class_weight="auto"
 	)
-	
-	print('completed history_tl')
 
 	#Fine-tuning
+	print('setting up fine tuning - freeze all layers and compile model')
 	setup_to_finetune(model)
 	
-	print('completed setup_to_finetune')
-
+	print('computing history of fine tuning process')
 	history_ft=model.fit_generator(
 		train_generator,
 		steps_per_epoch=nb_train_samples/batch_size,
@@ -143,17 +153,14 @@ def train(args):
 		validation_steps=nb_val_samples/batch_size,
 		class_weight='auto'
 	)
-	
-	print('completed history_ft')
+	print("")
 
+	print('saving model to file')
 	model.save(args.output_model_file)
-	
-	print('completed model save')
 
-	if args.plot:
-		plot_training(history_ft)
 
-	print('completed args plot')	
+	print('plotting fine tuning process')
+	plot_training(history_ft)
 	
 def plot_training(history):
 	acc=history.history['acc']
@@ -190,8 +197,11 @@ if __name__=="__main__":
 		print("Directories do not exist")
 		sys.exit(1)
 	
+	print("")
 	print(device_lib.list_local_devices())
 
+	print("")
+	print("Commencing Initial Training")
 	train(args)
 	
 	

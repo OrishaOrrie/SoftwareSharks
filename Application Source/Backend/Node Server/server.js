@@ -37,7 +37,7 @@ var smtpTransport = nodemailer.createTransport({
 app.get('/',function(req,res){
     //res.sendfile('../ss-imagerec-webapp/contact-us.component.html');
   
-    res.sendFile(path.resolve('../ss-imagerec-webapp/src/app/contact-us/contact-us.component.html'));
+    res.sendFile(path.resolve('../../ss-imagerec-webapp/src/app/contact-us/contact-us.component.html'));
     //Users/Orisha/Documents/3rdyear/COS301/git folder/SoftwareSharks/ss-imagerec-webapp/src/app/contact-us/contact-us.component.html
 });
 app.get('/send',function(req,res){
@@ -122,6 +122,9 @@ const _image = require('./local_modules/image.js')
 const _httpCodes = require('./local_modules/HTTPRequests.js')
 const _base64 = require('./local_modules/base64.js')
 const _logger = require('./local_modules/logger.js')
+const PythonShell=require('python-shell');
+var pyshell;
+
 app.use(_logger())
 
 app.use(express.static(path.join(__dirname, 'public')))
@@ -146,21 +149,77 @@ app.post('/upload', upload.single('file'), (req, res) => {
     console.log('--------------')
     console.log('Received File:')
     console.log('--------------')
-    console.log('Attempting to Upload Image to Clarifai API...')
-    console.log('--------------')
-    _base64.base64_encode('./upload/' + _uploadFilePath, function(_base64String){
-      _image.predictImage(_base64String , function(_imageResponse){
+    //~ console.log('Attempting to Upload Image to Clarifai API...')
+    //~ console.log('--------------')
+    //~ _base64.base64_encode('./upload/' + _uploadFilePath, function(_base64String){
+      //~ _image.predictImage(_base64String , function(_imageResponse){
+	console.log("Attempting to Upload Image to Predict Model");
+	pyshell.send('../upload/' + _uploadFilePath);
+	console.log("sent");
+	pyshell.on('message',function(message){
+		console.log(message);
+	});
+	var predict=require('./Keras_Training_Model/predictions.json');
+	
         console.log('--------------')
         console.log('Sending Upload Response:')
         console.log('--------------')
-        console.log(_imageResponse)
-        res.status(_httpCodes.RESPONSE.OKAY).json(_imageResponse)
-      })
-    })
-  }
-});
+        //console.log(_imageResponse)
+	console.log(predict)
+        res.status(_httpCodes.RESPONSE.OKAY).json(predict)//(_imageResponse)
+      }
+    });
 
-var server = app.listen(8000, () => console.log('Test Environment NodeJS Development Server Running at: http://127.0.0.1:8000'))
+var server = app.listen(8000, () => {
+	console.log('Test Environment NodeJS Development Server Running at: http://127.0.0.1:8000');
+	callName();
+})
+
+function callName(){
+	pyshell=new PythonShell('/Keras_Training_Model/predict.py');
+	console.log("sending");
+	pyshell.send('inceptionv3-ft.model');
+	console.log("sent");
+	pyshell.on('message',function(message){
+		console.log(message);
+	});
+	//~ pyshell.end(function(err){
+		//~ if(err) throw err;
+		
+		//~ console.log('finished');
+	//~ });
+	
+	//~ var options={
+		//~ mode: 'text',
+		//~ pythonOptions:['-u'],
+		//~ args: ['inceptionv3-ft.model']
+	//~ };
+	
+	//~ PythonShell.run('/Keras_Training_Model/predict.py',options, function(err,results){
+		//~ if(err) throw err;
+		//~ console.log('results: %j',results);
+	//~ });
+}
+
+//~ function callName(){
+	//~ const spawn = require("child_process").spawn;
+	//~ const pythonProcess = spawn('python',["./Keras_Training_Model/predict.py","inceptionv3-ft.model"]);
+	//~ console.log("process started");
+	//~ var output="";
+	//~ pythonProcess.stdout.on('data',function(data){
+		//~ output+=data;
+		//~ console.log(data.toString());//Take this out!!!!!!!!!!!!!!!!!!!!
+		//~ if(data.toString().substring(0,6)=="NodeJS:"){
+			//~ console.log("NODE INSTRUCTION");
+			//~ //console.log(data.toString());
+		//~ }
+	//~ });
+	//~ pythonProcess.on('close',function(code){
+		//~ console.log("Here I am: "+code);
+		//~ console.log("Output: "+output);
+	//~ });
+	//~ console.log("HERE");
+//~ }
 
 // function to encode file data to base64 encoded string
 function base64_encode(file) {

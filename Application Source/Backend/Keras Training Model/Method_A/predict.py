@@ -100,9 +100,11 @@ if __name__=="__main__":
 
 	####################
 	imageArg=""
-	modelArg = str(sys.argv[1])
+	#modelArg = str(sys.argv[1])
+	modelArg = str(sys.stdin.readlines())
 
 	print ("model-name: " + modelArg)
+	sys.stdout.flush()
 	print("")
 
 	####################
@@ -113,9 +115,12 @@ if __name__=="__main__":
 
 	#model = load_model(args.model)
 	print("Loading Model...")
+	#sys.stdout.flush()
 	model = load_model(modelArg)
 	print("Loaded Model...")
+	sys.stdout.flush()
 	print("NodeJS:model_loaded")
+	sys.stdout.flush()
 	
 	while(imageArg is not None):
 		print("NodeJS:image_source: ")
@@ -129,15 +134,18 @@ if __name__=="__main__":
 			print("Reloading Model...")
 			model = load_model(modelArg)
 			print("Reloaded Model...")
+			sys.stdout.flush()
 			print("NodeJS:model_reloaded")
+			sys.stdout.flush()
 		elif my_file.is_file():
 			print("Opening image")	
 			img = Image.open(imageArg)
 			print("")
 			print("Making a prediction")
 			predicts = predict(model, img, target_size)
+			sys.stdout.flush()
 			print("NodeJS:image_classified")
-			
+			sys.stdout.flush()
 		# print(predicts)
 		# plot_preds(img, predicts)
 
