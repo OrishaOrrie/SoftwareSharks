@@ -58,6 +58,7 @@ describe('ss-imagerec-webapp ImageUpload', () => {
   const path = require('path');
   let page: ImageUploadPage;
   const testImgEarthClamp = './images/IMG_20180517_141125.jpg';
+  const testImgHammer = './images/hdx-claw-hammers-n-a10shd-64_1000.jpg';
   let absolutePath = null;
 
   beforeEach(() => {
@@ -66,14 +67,15 @@ describe('ss-imagerec-webapp ImageUpload', () => {
 
   it('should display the Upload button if a file is selected', () => {
     page.navigateTo();
-    absolutePath = path.resolve(__dirname, testImgEarthClamp);
+    absolutePath = path.resolve(__dirname, testImgHammer);
     page.getFileInput().sendKeys(absolutePath);
     expect(page.getUploadButton()).toBeTruthy();
   });
 
   xit('should display a list of results from the server after upload', () => {
     page.navigateTo();
-    absolutePath = path.resolve(__dirname, testImgEarthClamp);
+    browser.sleep(5000);
+    absolutePath = path.resolve(__dirname, testImgHammer);
     page.getFileInput().sendKeys(absolutePath);
     page.getUploadButton().click();
     browser.sleep(10000);
@@ -90,6 +92,7 @@ describe('ss-imagerec-webapp Utilities', () => {
 
   it('should return the correct calculation for a valid input', () => {
     page.navigateTo();
+    browser.sleep(5000);
     page.getSingleWeight().clear();
     page.getSingleWeight().sendKeys('1');
     page.getEmptyWeight().clear();
@@ -101,6 +104,7 @@ describe('ss-imagerec-webapp Utilities', () => {
   });
 
   it('should display error message if input values are negative', () => {
+  	browser.sleep(5000);
     page.navigateTo();
     page.getSingleWeight().clear();
     page.getSingleWeight().sendKeys('-1');
@@ -122,6 +126,7 @@ describe('ss-imagerec-webapp ContactUs', () => {
 
   it('should not display any status message initially', () => {
     page.navigateTo();
+    browser.sleep(5000);
     expect(page.getStatusResult()).toBeTruthy();
   });
 
