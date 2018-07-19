@@ -143,7 +143,7 @@ if(filepath != null) {
             .build();
 
     Request request = new Request.Builder()
-            .url("http://192.168.1.100:8000/upload")
+            .url("http://169.0.58.55:8000/upload")
             .post(request_body)
             .build();
 
@@ -178,7 +178,7 @@ else
         }
         else
         {
-
+            Toast.makeText(getActivity(), "No response received \n Check Internet Connection", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -209,7 +209,7 @@ else
           }
           else{
 
-            Toast.makeText(getActivity(), "FiLE UPLOAD ERROR /n check Internet connection!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "FiLE UPLOAD ERROR \n check Internet connection!", Toast.LENGTH_SHORT).show();
           }
     }
 
