@@ -104,7 +104,7 @@ describe('ss-imagerec-webapp Utilities', () => {
   });
 
   it('should display error message if input values are negative', () => {
-  	browser.sleep(5000);
+    browser.sleep(5000);
     page.navigateTo();
     page.getSingleWeight().clear();
     page.getSingleWeight().sendKeys('-1');

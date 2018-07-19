@@ -42,6 +42,7 @@ testem.log
 /e2e/*.js
 /e2e/*.map
 !/e2e/images/IMG_20180517_141125.jpg
+!/e2e/images/hdx-claw-hammers-n-a10shd-64_1000.jpg
 
 # System Files
 .DS_Store
