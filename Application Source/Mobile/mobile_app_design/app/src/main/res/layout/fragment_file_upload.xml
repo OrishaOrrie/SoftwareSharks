@@ -1,0 +1,53 @@
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="5dp"
+    android:id="@+id/file_upload"
+    android:foreground="?selectableItemBackground"
+    android:clickable="true"
+    app:cardElevation="3dp"
+    app:contentPadding="4dp"
+    tools:context="com.example.noelmatodzi.mobile_app_design.FileUploadFragment">
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageViewUploader"
+            android:layout_width="256dp"
+            android:layout_height="256dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="38dp"
+            android:src="@android:color/darker_gray" />
+
+        <Button
+            android:id="@+id/upload_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/imageViewUploader"
+            android:layout_below="@+id/imageViewUploader"
+            android:layout_marginTop="36dp"
+            android:text="@string/title_upload" />
+
+        <Button
+            android:id="@+id/back_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/upload_button"
+            android:layout_below="@+id/upload_button"
+            android:layout_marginTop="43dp"
+            android:text= "@string/title_back"
+            />
+
+
+    </RelativeLayout>
+
+
+
+</android.support.v7.widget.CardView>

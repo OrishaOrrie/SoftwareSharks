@@ -1,0 +1,99 @@
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="5dp"
+
+    android:foreground="?selectableItemBackground"
+    android:clickable="true"
+    app:cardElevation="3dp"
+    app:contentPadding="4dp"
+    tools:context="com.example.noelmatodzi.mobile_app_design.UploadFragment">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.CardView
+
+            android:layout_width="match_parent"
+            app:cardElevation="3dp"
+            android:clickable="true"
+            android:id="@+id/camera_option"
+            app:contentPadding="5dp"
+            android:layout_margin="5dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/cardview_dark_background"
+
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:background="@drawable/ic_sharp_camera_alt_24px"
+                    android:layout_height="200dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text="NEW IMAGE"
+                    android:textSize="20dp"
+                    android:textAlignment="center"
+                    android:layout_height="wrap_content" />
+
+
+
+            </LinearLayout>
+
+
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+
+            android:layout_width="match_parent"
+            android:id="@+id/gallery_option"
+            android:layout_margin="5dp"
+            app:cardElevation="3dp"
+            app:contentPadding="5dp"
+            android:clickable="true"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/cardview_dark_background"
+            >
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:background="@drawable/ic_sharp_photo_library_24px"
+                    android:layout_height="200dp" />
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:text="GALLERY"
+                    android:textSize="20dp"
+                    android:textAlignment="center"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+
+
+
+        </android.support.v7.widget.CardView>
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+</android.support.v7.widget.CardView>
