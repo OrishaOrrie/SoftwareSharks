@@ -115,7 +115,7 @@ if __name__=="__main__":
 
 	#model = load_model(args.model)
 	print("Loading Model...")
-	#sys.stdout.flush()
+	sys.stdout.flush()
 	model = load_model(modelArg)
 	print("Loaded Model...")
 	sys.stdout.flush()
@@ -148,8 +148,6 @@ if __name__=="__main__":
 			sys.stdout.flush()
 		# print(predicts)
 		# plot_preds(img, predicts)
-
-	# sys.stdout.flush()
 
 	#if args.image is not None:
 	#	img = Image.open(args.image)

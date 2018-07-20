@@ -177,11 +177,13 @@ var server = app.listen(8000, () => {
 
 function callName(){
 	pyshell=new PythonShell('/Keras_Training_Model/predict.py');
-	console.log("sending");
+	console.log("Server.js, Line 180:Sending model name");
 	pyshell.send('inceptionv3-ft.model');
-	console.log("sent");
+	console.log("Server.js, Line 182:Sent model name");
 	pyshell.on('message',function(message){
-		console.log(message);
+		//console.log(message);//Prints out all messages
+		if(message.substring(0,7)=="NodeJS:")
+			console.log(message);
 	});
 	//~ pyshell.end(function(err){
 		//~ if(err) throw err;
@@ -200,26 +202,6 @@ function callName(){
 		//~ console.log('results: %j',results);
 	//~ });
 }
-
-//~ function callName(){
-	//~ const spawn = require("child_process").spawn;
-	//~ const pythonProcess = spawn('python',["./Keras_Training_Model/predict.py","inceptionv3-ft.model"]);
-	//~ console.log("process started");
-	//~ var output="";
-	//~ pythonProcess.stdout.on('data',function(data){
-		//~ output+=data;
-		//~ console.log(data.toString());//Take this out!!!!!!!!!!!!!!!!!!!!
-		//~ if(data.toString().substring(0,6)=="NodeJS:"){
-			//~ console.log("NODE INSTRUCTION");
-			//~ //console.log(data.toString());
-		//~ }
-	//~ });
-	//~ pythonProcess.on('close',function(code){
-		//~ console.log("Here I am: "+code);
-		//~ console.log("Output: "+output);
-	//~ });
-	//~ console.log("HERE");
-//~ }
 
 // function to encode file data to base64 encoded string
 function base64_encode(file) {
