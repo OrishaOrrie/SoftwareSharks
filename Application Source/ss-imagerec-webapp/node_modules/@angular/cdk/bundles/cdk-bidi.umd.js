@@ -6,16 +6,15 @@
  * found in the LICENSE file at https://angular.io/license
  */
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/common')) :
-	typeof define === 'function' && define.amd ? define(['exports', '@angular/core', '@angular/common'], factory) :
-	(factory((global.ng = global.ng || {}, global.ng.cdk = global.ng.cdk || {}, global.ng.cdk.bidi = global.ng.cdk.bidi || {}),global.ng.core,global.ng.common));
-}(this, (function (exports,_angular_core,_angular_common) { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/common'), require('@angular/core')) :
+	typeof define === 'function' && define.amd ? define('@angular/cdk/bidi', ['exports', '@angular/common', '@angular/core'], factory) :
+	(factory((global.ng = global.ng || {}, global.ng.cdk = global.ng.cdk || {}, global.ng.cdk.bidi = {}),global.ng.common,global.ng.core));
+}(this, (function (exports,common,core) { 'use strict';
 
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
  */
-
 /**
  * Injection token used to inject the document into Directionality.
  * This is used so that the value can be faked in tests.
@@ -25,8 +24,28 @@
  *
  * We also can't re-provide the DOCUMENT token from platform-brower because the unit tests
  * themselves use things like `querySelector` in test code.
+ *
+ * This token is defined in a separate file from Directionality as a workaround for
+ * https://github.com/angular/angular/issues/22559
+ *
+ * \@docs-private
  */
-var DIR_DOCUMENT = new _angular_core.InjectionToken('cdk-dir-doc');
+var /** @type {?} */ DIR_DOCUMENT = new core.InjectionToken('cdk-dir-doc', {
+    providedIn: 'root',
+    factory: DIR_DOCUMENT_FACTORY,
+});
+/**
+ * \@docs-private
+ * @return {?}
+ */
+function DIR_DOCUMENT_FACTORY() {
+    return core.inject(common.DOCUMENT);
+}
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
 /**
  * The directionality (LTR / RTL) context for the application (or a subtree of it).
  * Exposes the current direction and a stream of direction changes.
@@ -40,7 +59,7 @@ var Directionality = /** @class */ (function () {
         /**
          * Stream that emits whenever the 'ltr' / 'rtl' state changes.
          */
-        this.change = new _angular_core.EventEmitter();
+        this.change = new core.EventEmitter();
         if (_document) {
             // TODO: handle 'auto' value -
             // We still need to account for dir="auto".
@@ -51,13 +70,23 @@ var Directionality = /** @class */ (function () {
             this.value = /** @type {?} */ ((bodyDir || htmlDir || 'ltr'));
         }
     }
+    /**
+     * @return {?}
+     */
+    Directionality.prototype.ngOnDestroy = /**
+     * @return {?}
+     */
+    function () {
+        this.change.complete();
+    };
     Directionality.decorators = [
-        { type: _angular_core.Injectable },
+        { type: core.Injectable, args: [{ providedIn: 'root' },] },
     ];
     /** @nocollapse */
     Directionality.ctorParameters = function () { return [
-        { type: undefined, decorators: [{ type: _angular_core.Optional }, { type: _angular_core.Inject, args: [DIR_DOCUMENT,] },] },
+        { type: undefined, decorators: [{ type: core.Optional }, { type: core.Inject, args: [DIR_DOCUMENT,] },] },
     ]; };
+    /** @nocollapse */ Directionality.ngInjectableDef = core.defineInjectable({ factory: function Directionality_Factory() { return new Directionality(core.inject(DIR_DOCUMENT, 8)); }, token: Directionality, providedIn: "root" });
     return Directionality;
 }());
 
@@ -65,7 +94,6 @@ var Directionality = /** @class */ (function () {
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
  */
-
 /**
  * Directive to listen for changes of direction of part of the DOM.
  *
@@ -82,7 +110,7 @@ var Dir = /** @class */ (function () {
         /**
          * Event emitted when the direction changes.
          */
-        this.change = new _angular_core.EventEmitter();
+        this.change = new core.EventEmitter();
     }
     Object.defineProperty(Dir.prototype, "dir", {
         get: /**
@@ -136,7 +164,7 @@ var Dir = /** @class */ (function () {
         this.change.complete();
     };
     Dir.decorators = [
-        { type: _angular_core.Directive, args: [{
+        { type: core.Directive, args: [{
                     selector: '[dir]',
                     providers: [{ provide: Directionality, useExisting: Dir }],
                     host: { '[dir]': 'dir' },
@@ -144,10 +172,9 @@ var Dir = /** @class */ (function () {
                 },] },
     ];
     /** @nocollapse */
-    Dir.ctorParameters = function () { return []; };
     Dir.propDecorators = {
-        "change": [{ type: _angular_core.Output, args: ['dirChange',] },],
-        "dir": [{ type: _angular_core.Input },],
+        "change": [{ type: core.Output, args: ['dirChange',] },],
+        "dir": [{ type: core.Input },],
     };
     return Dir;
 }());
@@ -156,22 +183,15 @@ var Dir = /** @class */ (function () {
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
  */
-
 var BidiModule = /** @class */ (function () {
     function BidiModule() {
     }
     BidiModule.decorators = [
-        { type: _angular_core.NgModule, args: [{
+        { type: core.NgModule, args: [{
                     exports: [Dir],
                     declarations: [Dir],
-                    providers: [
-                        { provide: DIR_DOCUMENT, useExisting: _angular_common.DOCUMENT },
-                        Directionality,
-                    ]
                 },] },
     ];
-    /** @nocollapse */
-    BidiModule.ctorParameters = function () { return []; };
     return BidiModule;
 }());
 
@@ -179,6 +199,7 @@ exports.Directionality = Directionality;
 exports.DIR_DOCUMENT = DIR_DOCUMENT;
 exports.Dir = Dir;
 exports.BidiModule = BidiModule;
+exports.ɵa = DIR_DOCUMENT_FACTORY;
 
 Object.defineProperty(exports, '__esModule', { value: true });
 

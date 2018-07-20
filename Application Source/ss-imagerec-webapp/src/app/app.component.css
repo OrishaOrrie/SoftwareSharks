@@ -8,16 +8,18 @@
 }
 
 .toolbar-container{
-    margin: auto 10em;
+    margin: auto 8em;
 }
 
 .toolbar-title{
+    font-style: italic;
     font-size: 150%;
     font-family: Lato, Arial, sans-serif;
+    text-shadow: 2px 2px black;
 }
 
 main{
-    margin: auto 10em;
+    margin: auto 8em;
     overflow: auto;
     padding-bottom: 100px;
 }
@@ -27,20 +29,16 @@ main{
     color: white;
     position: relative;
     margin-top: -100px;
-    height: 100px;
+    height: 150px;
     clear: both;
 }
 
-#ss-info{
-    text-align: left;
+.footer-link {
+    size: 60%;
+    color: white;
+    margin-right: 5px;
 }
 
 .bramhope-logo{
-    width: 100px;
-    height: 90px;
-}
-
-.ss-logo{
-    width: 90px;
-    height: 90px;
+    width: 30%;
 }

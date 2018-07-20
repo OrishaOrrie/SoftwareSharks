@@ -1,0 +1,24 @@
+.contact-container{
+    background-color: rgb(60, 60, 80);
+    color: lightgray;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-title {
+    color: lightgray;
+    text-align: center;
+    font-family: "Lato", Arial, Helvetica, sans-serif;
+}
+
+.email-container {
+    background-color: rgb(207, 207, 207);
+    color: black;
+    width: 80%;
+    margin: 0px auto;
+}
+
+.msg-part {
+    width: 60%;
+}

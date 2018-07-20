@@ -1,3 +1,4 @@
+/// <amd-module name="@angular/compiler-cli/src/ngtools_api2" />
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -38,7 +39,6 @@ export interface CompilerOptions extends ts.CompilerOptions {
     annotateForClosureCompiler?: boolean;
     annotationsAs?: 'decorators' | 'static fields';
     trace?: boolean;
-    enableLegacyTemplate?: boolean;
     disableExpressionLowering?: boolean;
     i18nOutLocale?: string;
     i18nOutFormat?: string;
@@ -48,6 +48,7 @@ export interface CompilerOptions extends ts.CompilerOptions {
     i18nInFile?: string;
     i18nInMissingTranslations?: 'error' | 'warning' | 'ignore';
     preserveWhitespaces?: boolean;
+    disableTypeScriptVersionCheck?: boolean;
 }
 export interface CompilerHost extends ts.CompilerHost {
     moduleNameToFileName?(moduleName: string, containingFile?: string): string | null;
