@@ -71,7 +71,7 @@ describe('ss-imagerec-webapp ImageUpload', () => {
     expect(page.getUploadButton()).toBeTruthy();
   });
 
-  it('should display a list of results from the server after upload', () => {
+  xit('should display a list of results from the server after upload', () => {
     page.navigateTo();
     absolutePath = path.resolve(__dirname, testImgEarthClamp);
     page.getFileInput().sendKeys(absolutePath);
