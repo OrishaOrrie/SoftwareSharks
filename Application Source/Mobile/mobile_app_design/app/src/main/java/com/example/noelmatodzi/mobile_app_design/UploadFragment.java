@@ -30,7 +30,8 @@ import java.net.InterfaceAddress;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class UploadFragment extends Fragment  implements View.OnClickListener{
+public class
+UploadFragment extends Fragment  implements View.OnClickListener{
 
     File photoFile = null;
     Uri uri;
