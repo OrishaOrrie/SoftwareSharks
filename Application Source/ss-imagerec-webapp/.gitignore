@@ -27,8 +27,6 @@
 
 # misc
 /node_modules
-/angular_material_schematics-CoIU6E
-/angular_material_schematics-UIHR27
 /.sass-cache
 /connect.lock
 /coverage
