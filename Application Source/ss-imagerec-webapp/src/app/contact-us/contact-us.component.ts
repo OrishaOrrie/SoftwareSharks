@@ -72,11 +72,12 @@ export class ContactUsComponent implements OnInit {
 
     console.log('Name: ' + contactName + ' Email: ' + contactEmail + ' Msg: ' + contactMessage);
 
-    this.http.post('http://localhost:3000/send',
-    {'subject': contactName, 'text': contactMessage, 'email': contactEmail}
+    this.http.post('https://us-central1-testproject-ee885.cloudfunctions.net/app/sendmail',
+    {'subject': contactName, 'text': contactMessage, 'email': contactEmail},
+    httpOptions
     ).subscribe(data1 => {
       console.log(data1);
-      if (data1 === 'sent') {
+      if (data1[0]) {
         this.submitted = true;
       }
     });
