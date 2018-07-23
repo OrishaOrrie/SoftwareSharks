@@ -32,6 +32,16 @@ export class ContactUsComponent implements OnInit {
   submitted = false;
 
   /**
+   * Determines whether the spinner is to be displayed or not
+   */
+  showSpinner = false;
+
+  /**
+   * Message received from the server. Displayed on the status card
+   */
+  msgReceived = '';
+
+  /**
    * FormControl used to validate email input
    */
   email = new FormControl('', [Validators.required, Validators.email] );
@@ -71,14 +81,19 @@ export class ContactUsComponent implements OnInit {
     };
 
     console.log('Name: ' + contactName + ' Email: ' + contactEmail + ' Msg: ' + contactMessage);
+    this.showSpinner = true;
 
     this.http.post('https://us-central1-testproject-ee885.cloudfunctions.net/app/sendmail',
     {'subject': contactName, 'text': contactMessage, 'email': contactEmail},
     httpOptions
     ).subscribe(data1 => {
-      console.log(data1);
-      if (data1[0]) {
-        this.submitted = true;
+      this.showSpinner = false;
+      const msgFromServer = data1['message'];
+      this.submitted = true;
+      if (msgFromServer === 'Message sent') {
+        this.msgReceived = 'Thank you for contacting us! We\'ll be in touch ;) ';
+      } else {
+        this.msgReceived = 'Sorry, your message was not sent. Try again later please if you don\'t mind OwO';
       }
     });
 

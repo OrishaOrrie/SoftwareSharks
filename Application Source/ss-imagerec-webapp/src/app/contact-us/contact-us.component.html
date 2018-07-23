@@ -4,7 +4,7 @@
     </div>
     <br>
     
-    <mat-card class="email-container" color="primary" *ngIf="!submitted">
+    <mat-card class="email-container" color="primary">
         <form class="form-horizontal" id="usrForm" [formGroup]="myGroup">
             <mat-form-field>
                 <input class="name-part" matInput type="text" id="name" required formControlName="name" name="name" placeholder="Enter your name">
@@ -21,13 +21,13 @@
             </mat-form-field>
             <br>
             <div>
-                <button mat-raised-button color="primary" type="submit" (click)="onSubmit()" class="sumbit-btn" form="usrForm">SUBMIT</button>
+                <button *ngIf="!submitted" mat-raised-button color="primary" type="submit" (click)="onSubmit()" class="sumbit-btn" form="usrForm">SUBMIT</button>
+                <mat-spinner style="float: right;" [diameter]="30" [style.display]="showSpinner ? 'block':'none'"></mat-spinner>
             </div>
         </form>
     </mat-card>
     <br>
     <mat-card class="status-card" *ngIf="submitted">
-        <h1 class="status-heading">Email Sent!</h1>
+        <h4 class="status-heading">{{ msgReceived }}</h4>
     </mat-card>
 </div>
-

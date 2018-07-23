@@ -22,3 +22,11 @@
 .msg-part {
     width: 60%;
 }
+
+.status-card {
+    background-color: rgb(207, 207, 207);
+    color: black;
+    width: 80%;
+    margin: 0px auto;
+    font-family: "Lato", Arial, Helvetica, sans-serif;
+}
