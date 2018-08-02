@@ -2,43 +2,43 @@
     "data": [
         {
             "id": 0,
-            "class": "tape_measure",
-            "value": "0.41796994"
+            "class": "binzel_torch",
+            "value": "0.5284321"
         },
         {
             "id": 1,
-            "class": "cap_screw_socket_head",
-            "value": "0.19592164"
+            "class": "split_pin",
+            "value": "0.13001405"
         },
         {
             "id": 2,
-            "class": "hexagonal_shoulder_screw",
-            "value": "0.14663358"
+            "class": "screw_socket_head",
+            "value": "0.08842236"
         },
         {
             "id": 3,
-            "class": "grub_screw",
-            "value": "0.075769365"
+            "class": "allen_key_std_6mm",
+            "value": "0.032605477"
         },
         {
             "id": 4,
-            "class": "allan_key",
-            "value": "0.06463629"
+            "class": "spring_pin",
+            "value": "0.016104152"
         },
         {
             "id": 5,
-            "class": "binzel_torch",
-            "value": "0.020704346"
+            "class": "allen_key_long",
+            "value": "0.015323896"
         },
         {
             "id": 6,
-            "class": "quick_release_coupler_quarterinch",
-            "value": "0.019871945"
+            "class": "file_triangular_bastard",
+            "value": "0.013904755"
         },
         {
             "id": 7,
-            "class": "l_connector",
-            "value": "0.019176304"
+            "class": "washer_flat",
+            "value": "0.013754652"
         }
     ]
 }

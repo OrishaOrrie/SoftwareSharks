@@ -1,4 +1,4 @@
-import os, shutil, json, math
+import os, shutil, json, math, time
 from os.path import isfile, join
 
 TRAINING_DIR = "./training_data"
@@ -56,12 +56,15 @@ def copyImages(directory):
                 shutil.copy(category_path + '/' + files[count], VALIDATION_DIR + '/' + x['name'])
                 count += 1
 
+start = time.time()
 createFolder(TRAINING_DIR)
 createFolder(VALIDATION_DIR)
 createClassesJSON(ALL_DIR)
 createCategoryFolders(TRAINING_DIR)
 createCategoryFolders(VALIDATION_DIR)
 copyImages(ALL_DIR)
+end = time.time()
+print(end - start)
 
 # PROCESS
 #   1. Create Training and Validation Folders
