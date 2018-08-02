@@ -1,0 +1,434 @@
+{
+    "classes": [
+        {
+            "id": 0,
+            "name": "air_service_unit_quarterinch",
+            "first": "a"
+        },
+        {
+            "id": 1,
+            "name": "allan_key",
+            "first": "a"
+        },
+        {
+            "id": 2,
+            "name": "allen_key_long",
+            "first": "a"
+        },
+        {
+            "id": 3,
+            "name": "allen_key_std_12mm",
+            "first": "a"
+        },
+        {
+            "id": 4,
+            "name": "allen_key_std_6mm",
+            "first": "a"
+        },
+        {
+            "id": 5,
+            "name": "alumina",
+            "first": "a"
+        },
+        {
+            "id": 6,
+            "name": "back_up_pad_hookit",
+            "first": "b"
+        },
+        {
+            "id": 7,
+            "name": "ball_lock",
+            "first": "b"
+        },
+        {
+            "id": 8,
+            "name": "binzel_torch",
+            "first": "b"
+        },
+        {
+            "id": 9,
+            "name": "blade_bandsaw",
+            "first": "b"
+        },
+        {
+            "id": 10,
+            "name": "cap_screw_socket_head",
+            "first": "c"
+        },
+        {
+            "id": 11,
+            "name": "cheese_head",
+            "first": "c"
+        },
+        {
+            "id": 12,
+            "name": "circuit_breaker",
+            "first": "c"
+        },
+        {
+            "id": 13,
+            "name": "clamp",
+            "first": "c"
+        },
+        {
+            "id": 14,
+            "name": "clamp_a50-40",
+            "first": "c"
+        },
+        {
+            "id": 15,
+            "name": "coil_solenoid",
+            "first": "c"
+        },
+        {
+            "id": 16,
+            "name": "combination_spanner",
+            "first": "c"
+        },
+        {
+            "id": 17,
+            "name": "counter_sunk",
+            "first": "c"
+        },
+        {
+            "id": 18,
+            "name": "coupler_quick_female",
+            "first": "c"
+        },
+        {
+            "id": 19,
+            "name": "cutting_disc",
+            "first": "c"
+        },
+        {
+            "id": 20,
+            "name": "dowel_pin",
+            "first": "d"
+        },
+        {
+            "id": 21,
+            "name": "dressing_stone",
+            "first": "d"
+        },
+        {
+            "id": 22,
+            "name": "drill_twist_shaper_shank",
+            "first": "d"
+        },
+        {
+            "id": 23,
+            "name": "drill_twist_straight_shank_6c6mm",
+            "first": "d"
+        },
+        {
+            "id": 24,
+            "name": "earth_clamp_300a",
+            "first": "e"
+        },
+        {
+            "id": 25,
+            "name": "elbow_mf_galv",
+            "first": "e"
+        },
+        {
+            "id": 26,
+            "name": "electrode_tungsten_2.4mm_aluminium",
+            "first": "e"
+        },
+        {
+            "id": 27,
+            "name": "electro_shaft",
+            "first": "e"
+        },
+        {
+            "id": 28,
+            "name": "electr_cowl_btm",
+            "first": "e"
+        },
+        {
+            "id": 29,
+            "name": "exhaust",
+            "first": "e"
+        },
+        {
+            "id": 30,
+            "name": "fan_grinders_or_flap_wheels",
+            "first": "f"
+        },
+        {
+            "id": 31,
+            "name": "file_handles",
+            "first": "f"
+        },
+        {
+            "id": 32,
+            "name": "file_triangular_bastard",
+            "first": "f"
+        },
+        {
+            "id": 33,
+            "name": "finishing_stick_square",
+            "first": "f"
+        },
+        {
+            "id": 34,
+            "name": "fuse_bottle",
+            "first": "f"
+        },
+        {
+            "id": 35,
+            "name": "grub_screw",
+            "first": "g"
+        },
+        {
+            "id": 36,
+            "name": "guided_drive",
+            "first": "g"
+        },
+        {
+            "id": 37,
+            "name": "hammer_chipping",
+            "first": "h"
+        },
+        {
+            "id": 38,
+            "name": "hammer_handle",
+            "first": "h"
+        },
+        {
+            "id": 39,
+            "name": "hexagonal_shoulder_screw",
+            "first": "h"
+        },
+        {
+            "id": 40,
+            "name": "insert_13mm_cap",
+            "first": "i"
+        },
+        {
+            "id": 41,
+            "name": "insulator",
+            "first": "i"
+        },
+        {
+            "id": 42,
+            "name": "l_connector",
+            "first": "l"
+        },
+        {
+            "id": 43,
+            "name": "m3000_cylinder",
+            "first": "m"
+        },
+        {
+            "id": 44,
+            "name": "mechanical_blue_tube",
+            "first": "m"
+        },
+        {
+            "id": 45,
+            "name": "mls_cartridge_120_automatic_lubricator",
+            "first": "m"
+        },
+        {
+            "id": 46,
+            "name": "mounted_point_a24",
+            "first": "m"
+        },
+        {
+            "id": 47,
+            "name": "mounted_point_w188",
+            "first": "m"
+        },
+        {
+            "id": 48,
+            "name": "nipple_air_square",
+            "first": "n"
+        },
+        {
+            "id": 49,
+            "name": "nipple_long_screw_galv",
+            "first": "n"
+        },
+        {
+            "id": 50,
+            "name": "nut_metric_hexagon",
+            "first": "n"
+        },
+        {
+            "id": 51,
+            "name": "open_tige_rkm_6_std",
+            "first": "o"
+        },
+        {
+            "id": 52,
+            "name": "people",
+            "first": "p"
+        },
+        {
+            "id": 53,
+            "name": "piece_punch",
+            "first": "p"
+        },
+        {
+            "id": 54,
+            "name": "plug_male_galv",
+            "first": "p"
+        },
+        {
+            "id": 55,
+            "name": "punch_holder",
+            "first": "p"
+        },
+        {
+            "id": 56,
+            "name": "pvc_inspection_box_4way",
+            "first": "p"
+        },
+        {
+            "id": 57,
+            "name": "quick_release_coupler_quarterinch",
+            "first": "q"
+        },
+        {
+            "id": 58,
+            "name": "safety_boo",
+            "first": "s"
+        },
+        {
+            "id": 59,
+            "name": "screw_socket_head",
+            "first": "s"
+        },
+        {
+            "id": 60,
+            "name": "self_tapping_screw",
+            "first": "s"
+        },
+        {
+            "id": 61,
+            "name": "silver_steel",
+            "first": "s"
+        },
+        {
+            "id": 62,
+            "name": "spanner",
+            "first": "s"
+        },
+        {
+            "id": 63,
+            "name": "split_pin",
+            "first": "s"
+        },
+        {
+            "id": 64,
+            "name": "spm_air_quick_coupler",
+            "first": "s"
+        },
+        {
+            "id": 65,
+            "name": "spring_pin",
+            "first": "s"
+        },
+        {
+            "id": 66,
+            "name": "steel_hinges",
+            "first": "s"
+        },
+        {
+            "id": 67,
+            "name": "stripper_pierce_punch",
+            "first": "s"
+        },
+        {
+            "id": 68,
+            "name": "suction_cup",
+            "first": "s"
+        },
+        {
+            "id": 69,
+            "name": "tape_measure",
+            "first": "t"
+        },
+        {
+            "id": 70,
+            "name": "tee_piece_galv",
+            "first": "t"
+        },
+        {
+            "id": 71,
+            "name": "thorex_hammer",
+            "first": "t"
+        },
+        {
+            "id": 72,
+            "name": "tool_bits",
+            "first": "t"
+        },
+        {
+            "id": 73,
+            "name": "tow_belt",
+            "first": "t"
+        },
+        {
+            "id": 74,
+            "name": "tube_string_6mm",
+            "first": "t"
+        },
+        {
+            "id": 75,
+            "name": "tut_cap_ek2",
+            "first": "t"
+        },
+        {
+            "id": 76,
+            "name": "union_elbow_black",
+            "first": "u"
+        },
+        {
+            "id": 77,
+            "name": "union_galv",
+            "first": "u"
+        },
+        {
+            "id": 78,
+            "name": "valve_balance_cylinder",
+            "first": "v"
+        },
+        {
+            "id": 79,
+            "name": "valve_ball",
+            "first": "v"
+        },
+        {
+            "id": 80,
+            "name": "valve_europa",
+            "first": "v"
+        },
+        {
+            "id": 81,
+            "name": "washer",
+            "first": "w"
+        },
+        {
+            "id": 82,
+            "name": "washer_flat",
+            "first": "w"
+        },
+        {
+            "id": 83,
+            "name": "washer_spring",
+            "first": "w"
+        },
+        {
+            "id": 84,
+            "name": "welding_tips_no_16",
+            "first": "w"
+        },
+        {
+            "id": 85,
+            "name": "wing_nut",
+            "first": "w"
+        }
+    ]
+}
