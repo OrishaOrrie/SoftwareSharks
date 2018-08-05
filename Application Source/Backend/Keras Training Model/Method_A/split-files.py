@@ -16,11 +16,14 @@ def createClassesJSON(directory):
     classes = {}
     classes['classes'] = []
     i = 0
+    num_files = 0;
     for x in os.listdir(directory):
+        num_files = len( [f for f in os.listdir(directory + "/" + x)] )
         classes['classes'].append({
             'id': i,
             'name': x,
-            'first': x[0]
+            'first': x[0],
+            'quantity': num_files
         })
         i += 1
 
