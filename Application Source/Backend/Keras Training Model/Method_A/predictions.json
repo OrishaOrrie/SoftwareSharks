@@ -2,43 +2,43 @@
     "data": [
         {
             "id": 0,
-            "class": "binzel_torch",
-            "value": "0.5284321"
+            "class": "nipple_air_square",
+            "value": "0.29455793"
         },
         {
             "id": 1,
-            "class": "split_pin",
-            "value": "0.13001405"
+            "class": "nipple_long_screw_galv",
+            "value": "0.18483679"
         },
         {
             "id": 2,
-            "class": "screw_socket_head",
-            "value": "0.08842236"
+            "class": "welding_tips_no_16",
+            "value": "0.17954879"
         },
         {
             "id": 3,
-            "class": "allen_key_std_6mm",
-            "value": "0.032605477"
+            "class": "coupler_quick_female",
+            "value": "0.061342668"
         },
         {
             "id": 4,
-            "class": "spring_pin",
-            "value": "0.016104152"
+            "class": "elbow_mf_galv",
+            "value": "0.04156463"
         },
         {
             "id": 5,
-            "class": "allen_key_long",
-            "value": "0.015323896"
+            "class": "valve_ball",
+            "value": "0.030960197"
         },
         {
             "id": 6,
-            "class": "file_triangular_bastard",
-            "value": "0.013904755"
+            "class": "valve_europa",
+            "value": "0.030592496"
         },
         {
             "id": 7,
-            "class": "washer_flat",
-            "value": "0.013754652"
+            "class": "spm_air_quick_coupler",
+            "value": "0.028925363"
         }
     ]
 }

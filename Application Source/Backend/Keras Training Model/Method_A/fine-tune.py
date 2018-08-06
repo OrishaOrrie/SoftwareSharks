@@ -9,13 +9,13 @@ from keras import __version__
 from keras.applications.inception_v3 import InceptionV3, preprocess_input
 from keras.models import Model
 from keras.layers import Dense, GlobalAveragePooling2D
-from keras.preprocessing.image import ImageDataGenerator
+from keras.preprocessing.image import ImageDataGenerator, img_to_array
 from keras.optimizers import SGD
 from sklearn.utils import class_weight
 from tensorflow.python.client import device_lib
 
 IM_WIDTH, IM_HEIGHT=229,229 #fixed size for InceptionV3
-NB_EPOCHS=5
+NB_EPOCHS=10
 BAT_SIZE=32
 FC_SIZE=1024
 NB_IV3_LAYERS_TO_FREEZE=172
@@ -88,8 +88,10 @@ def train(args):
 		shear_range=0.2,
 		zoom_range=0.2,
 		horizontal_flip=True,
-		featurewise_std_normalization=True
+		# featurewise_std_normalization=True,
+		# zca_whitening=True
 	)
+
 	test_datagen=ImageDataGenerator(
 		preprocessing_function=preprocess_input,
 		rotation_range=45,
@@ -98,7 +100,8 @@ def train(args):
 		shear_range=0.2,
 		zoom_range=0.2,
 		horizontal_flip=True,
-		featurewise_std_normalization=True
+		# featurewise_std_normalization=True,
+		# zca_whitening=True
 	)
 
 	print("generating training data")

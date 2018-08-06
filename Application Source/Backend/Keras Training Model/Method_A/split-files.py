@@ -4,6 +4,7 @@ from os.path import isfile, join
 TRAINING_DIR = "./training_data"
 VALIDATION_DIR = "./validation_data"
 ALL_DIR = "./all_images"
+MIN_NUM_IMAGES = 30
 
 def createFolder(directory):
     try:
@@ -19,13 +20,14 @@ def createClassesJSON(directory):
     num_files = 0;
     for x in os.listdir(directory):
         num_files = len( [f for f in os.listdir(directory + "/" + x)] )
-        classes['classes'].append({
-            'id': i,
-            'name': x,
-            'first': x[0],
-            'quantity': num_files
-        })
-        i += 1
+        if (num_files >= MIN_NUM_IMAGES):
+            classes['classes'].append({
+                'id': i,
+                'name': x,
+                'first': x[0],
+                'quantity': num_files
+            })
+            i += 1
 
         with open('classes.json','w') as outfile:
             json.dump(classes, outfile, indent=4)
