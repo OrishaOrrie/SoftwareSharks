@@ -1,9 +1,9 @@
-import os, shutil, json, math, time
+import os, shutil, json, math, time, random
 from os.path import isfile, join
 
 TRAINING_DIR = "./training_data"
 VALIDATION_DIR = "./validation_data"
-ALL_DIR = "./all_images"
+ALL_DIR = "./scraped_dataset"
 MIN_NUM_IMAGES = 30
 
 def createFolder(directory):
@@ -49,7 +49,9 @@ def copyImages(directory):
         category_path = directory + '/' + x['name']
         print(category_path)
         if os.path.exists(category_path):
-            files = [file for file in os.listdir(category_path) if isfile(join(category_path, file))]
+            shuffled_list_of_files = os.listdir(category_path)
+            random.shuffle(shuffled_list_of_files)
+            files = [file for file in shuffled_list_of_files if isfile(join(category_path, file))]
             numFiles = len(files)
             numTrain = math.floor(0.75 * len(files))
             numVal = math.ceil( 0.25 * len(files) )
@@ -69,7 +71,7 @@ createCategoryFolders(TRAINING_DIR)
 createCategoryFolders(VALIDATION_DIR)
 copyImages(ALL_DIR)
 end = time.time()
-print(end - start)
+print((end - start) + " seconds to complete which is " + (end-start)/60 + " minutes wow" )
 
 # PROCESS
 #   1. Create Training and Validation Folders

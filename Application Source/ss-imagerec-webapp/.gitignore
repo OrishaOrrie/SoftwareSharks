@@ -26,6 +26,7 @@
 !.vscode/extensions.json
 
 # misc
+/functions/node_modules
 /node_modules
 /angular_material_schematics-CoIU6E
 /angular_material_schematics-UIHR27

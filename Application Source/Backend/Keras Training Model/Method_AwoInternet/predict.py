@@ -6,6 +6,7 @@ import requests
 from io import BytesIO
 import matplotlib.pyplot as plt
 import json
+from pathlib import Path
 
 from keras.preprocessing import image
 from keras.models import load_model
@@ -98,10 +99,12 @@ if __name__=="__main__":
 	# args = a.parse_args()
 
 	####################
-	imageArg = str(sys.argv[1])
-	modelArg = str(sys.argv[2])
+	# imageArg=str(sys.argv[1])
+	modelArg = str(sys.argv[1])
+	# modelArg = str(sys.stdin.readlines())
 
-	print ("image-path: " +  imageArg + "\nmodel-name: " + modelArg)
+	print ("model-name: " + modelArg)
+	sys.stdout.flush()
 	print("")
 
 	####################
@@ -112,17 +115,37 @@ if __name__=="__main__":
 
 	#model = load_model(args.model)
 	print("Loading Model...")
+	#sys.stdout.flush()
 	model = load_model(modelArg)
 	print("Loaded Model...")
-	print("")
-
-	if imageArg is not None:
-		print("Opening image")	
-		img = Image.open(imageArg)
+	sys.stdout.flush()
+	print("NodeJS:model_loaded")
+	sys.stdout.flush()
+	
+	while(imageArg is not None):
+		print("NodeJS:image_source: ")
+		imageArg=input()
+		print ("image-path: " +  imageArg)
 		print("")
-		print("Making a prediction")
-		predicts = predict(model, img, target_size)
-		print("")
+		my_file = Path(imageArg)
+		if imageArg=="quit":
+			break;
+		elif(imageArg=="restart"):
+			print("Reloading Model...")
+			model = load_model(modelArg)
+			print("Reloaded Model...")
+			sys.stdout.flush()
+			print("NodeJS:model_reloaded")
+			sys.stdout.flush()
+		elif my_file.is_file():
+			print("Opening image")	
+			img = Image.open(imageArg)
+			print("")
+			print("Making a prediction")
+			predicts = predict(model, img, target_size)
+			sys.stdout.flush()
+			print("NodeJS:image_classified")
+			sys.stdout.flush()
 		# print(predicts)
 		# plot_preds(img, predicts)
 

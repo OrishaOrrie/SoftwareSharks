@@ -46,7 +46,8 @@ def predict(model,img,target_size):
 	x = np.expand_dims(x, axis=0)
 	# print("preprocessing input for inception v3")
 	x = preprocess_input(x)
-	# print("making a prediction")
+
+    # print("making a prediction")
 	preds = model.predict(x)
 	top_preds = np.argsort(-preds)[::-1][0:8]
 
