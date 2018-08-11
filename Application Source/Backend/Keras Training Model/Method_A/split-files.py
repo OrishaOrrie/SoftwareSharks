@@ -71,7 +71,7 @@ createCategoryFolders(TRAINING_DIR)
 createCategoryFolders(VALIDATION_DIR)
 copyImages(ALL_DIR)
 end = time.time()
-print((end - start) + " seconds to complete which is " + (end-start)/60 + " minutes wow" )
+print((end - start) + " seconds to complete which is ")
 
 # PROCESS
 #   1. Create Training and Validation Folders
