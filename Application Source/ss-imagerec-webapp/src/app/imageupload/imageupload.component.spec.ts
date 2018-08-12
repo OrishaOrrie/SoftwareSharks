@@ -9,7 +9,7 @@ import { By } from '@angular/platform-browser';
 describe('ImageuploadComponent', () => {
   let component: ImageuploadComponent;
   let fixture: ComponentFixture<ImageuploadComponent>;
-  let previewEl, fileSelectEl, fileSelButtonEl, webcamButtonEl: DebugElement;
+  let previewEl, fileSelectEl, webcamButtonEl: DebugElement;
   let captureButton, uploadButtonEl: DebugElement;
   let spy: any;
 
@@ -30,7 +30,6 @@ describe('ImageuploadComponent', () => {
 
     previewEl = fixture.debugElement.query(By.css('.preview'));
     fileSelectEl = fixture.debugElement.query(By.css('#file-upload'));
-    fileSelButtonEl = fixture.debugElement.query(By.css('.custom-file-upload'));
     webcamButtonEl = fixture.debugElement.query(By.css('#webcam-upload'));
     captureButton = fixture.debugElement.query(By.css('button'));
 
@@ -133,7 +132,7 @@ describe('ImageuploadComponent', () => {
    * Image Upload
    */
   it('should not display Upload button if no image was selected or captured', () => {
-    uploadButtonEl = fixture.debugElement.query(By.css('.upload-button'));
+    uploadButtonEl = fixture.debugElement.query(By.css('.upload-card__upload-button'));
     fixture.detectChanges();
     expect(uploadButtonEl).toBeNull();
   });
@@ -141,7 +140,7 @@ describe('ImageuploadComponent', () => {
   it('should display Upload button if image has been selected or captured', () => {
     component.imgAvailable = true;
     fixture.detectChanges();
-    uploadButtonEl = fixture.debugElement.query(By.css('.upload-button'));
+    uploadButtonEl = fixture.debugElement.query(By.css('.upload-card__upload-button'));
     expect(uploadButtonEl).toBeTruthy();
   });
 

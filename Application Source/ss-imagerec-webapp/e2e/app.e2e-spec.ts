@@ -100,7 +100,7 @@ describe('ss-imagerec-webapp Utilities', () => {
     page.getFilledWeight().clear();
     page.getFilledWeight().sendKeys('20');
     browser.waitForAngular();
-    expect(page.getResultText()).toBe('NUMBER OF ITEMS: 15');
+    expect(page.getResultText()).toBe('Number of Items: 15');
   });
 
   it('should display error message if input values are negative', () => {
@@ -113,7 +113,7 @@ describe('ss-imagerec-webapp Utilities', () => {
     page.getFilledWeight().clear();
     page.getFilledWeight().sendKeys('-20');
     browser.waitForAngular();
-    expect(page.getResultText()).toBe('NUMBER OF ITEMS: 15');
+    expect(page.getResultText()).toBe('Number of Items: 15');
   });
 });
 
