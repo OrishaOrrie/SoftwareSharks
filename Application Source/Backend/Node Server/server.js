@@ -97,7 +97,7 @@ var upload = multer({ storage: storage })
 
 /**
  * Uppy Options
- 
+
 
 const uppy_options = {
 	providerOptions: {
@@ -165,7 +165,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
 		console.log(message);
 	});
 	var predict=require('./Keras_Training_Model/predictions.json');
-	
+
         console.log('--------------')
         console.log('Sending Upload Response:')
         console.log('--------------')
@@ -192,16 +192,16 @@ function callName(){
 	});
 	//~ pyshell.end(function(err){
 		//~ if(err) throw err;
-		
+
 		//~ console.log('finished');
 	//~ });
-	
+
 	//~ var options={
 		//~ mode: 'text',
 		//~ pythonOptions:['-u'],
 		//~ args: ['inceptionv3-ft.model']
 	//~ };
-	
+
 	//~ PythonShell.run('/Keras_Training_Model/predict.py',options, function(err,results){
 		//~ if(err) throw err;
 		//~ console.log('results: %j',results);
