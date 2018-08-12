@@ -9,7 +9,14 @@
   <ion-navbar>
     <ion-title>Item Amount Calculator</ion-title>
   </ion-navbar>
-  <ion-item>
+  
+
+
+</ion-header>
+
+
+<ion-content padding>
+<ion-item>
     <ion-label color="primary" stacked>Weight of Single Item</ion-label>
     <ion-input type="number" placeholder="Single item weight" [(ngModel)]="single_item"></ion-input>
   </ion-item>
@@ -21,15 +28,10 @@
     <ion-label color="primary" stacked>Weight of Filled Bucket</ion-label>
     <ion-input type="number" placeholder="Filled bucket weight" [(ngModel)]="filled_bucket"></ion-input>
   </ion-item>
-<button ion-button full round>Calculate</button>
+<button ion-button full round (click) ="hello(single_item, filled_bucket,empty_bucket)">Calculate</button>
 <ion-card-header>
       <ion-item>
-        dvfbgnh
+        {{totalObjects}}
       </ion-item>
 </ion-card-header>
-</ion-header>
-
-
-<ion-content padding>
-
 </ion-content>
