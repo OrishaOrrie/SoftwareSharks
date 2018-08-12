@@ -7,21 +7,21 @@
     <mat-card class="email-container" color="primary">
         <form class="form-horizontal" id="usrForm" [formGroup]="myGroup">
             <mat-form-field>
-                <input class="name-part" matInput type="text" id="name" required formControlName="name" name="name" placeholder="Enter your name">
+                <input class="email__name-part" matInput type="text" id="name" required formControlName="name" name="name" placeholder="Enter your name">
             </mat-form-field>
             <br>
             <mat-form-field >
-                <input class="email-part" matInput id="email" required formControlName="email" name="email" placeholder="Enter your email">
+                <input class="email__email-part" matInput id="email" required formControlName="email" name="email" placeholder="Enter your email">
                 <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
             </mat-form-field>
             <br>
-            <mat-form-field class="msg-part">
+            <mat-form-field class="email__msg-part">
                 <textarea matInput matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5" rows="3" 
                 id="message" form="usrForm" required formControlName="message" name="message" placeholder="Enter your query"></textarea>
             </mat-form-field>
             <br>
             <div>
-                <button *ngIf="!submitted" mat-raised-button color="primary" type="submit" (click)="onSubmit()" class="sumbit-btn" form="usrForm">SUBMIT</button>
+                <button *ngIf="!submitted" mat-raised-button color="accent" type="submit" (click)="onSubmit()" class="sumbit-btn" form="usrForm">SUBMIT</button>
                 <mat-spinner style="float: right;" [diameter]="30" [style.display]="showSpinner ? 'block':'none'"></mat-spinner>
             </div>
         </form>

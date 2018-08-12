@@ -3,7 +3,7 @@
     color: white;
 }
 
-.title{
+.utilcard__title{
     color: lightgray;
     text-align: center;
     font-family: Lato, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -15,11 +15,11 @@
     width: 80%;
 }
 
-.input-field{
+.tally-upper-card__input-field{
     width: 70%;
 }
 
-.amount-result{
+.tally-upper-card__amount-result{
     background: rgb(75, 75, 97);
 }
 

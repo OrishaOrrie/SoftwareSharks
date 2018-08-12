@@ -11,3 +11,5 @@ Application Source/ss-imagerec-webapp/node_modules/@schematics/angular/component
 !docs/img/logos/*
 !docs/img/portfolio/*
 !docs/img/team/*
+*.ckpt
+*.h5

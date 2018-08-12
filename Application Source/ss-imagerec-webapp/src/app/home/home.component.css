@@ -3,9 +3,7 @@
 }
 
 .intro-message{
-    color: white;
-    height: 3em;
-    position: relative;
+    color: rgb(47, 15, 107);
     text-align: center;
     top: 1em;
     font-family: "Lato", sans-serif;
@@ -19,21 +17,15 @@
     height: 100%;
 }
 
-.step-number {
+.step-card__number {
+    margin-top: 20px;
     text-align: center;
     color: white;
     font-size: 300%;
     text-shadow: 4px 4px 4px black;
 }
 
-.steps{
-    text-align: center;
-    color: white;
-    font-size: 400%;
-    text-shadow: 4px 4px 4px black;
-}
-
-.steps-descript{
+.step-card__title{
     font-family: "Raleway", sans-serif;
     text-align: left;
     text-shadow: 4px 4px 4px black;
@@ -42,19 +34,23 @@
     position: absolute;
 }
 
-.detailed-descript{
-    text-align: center;
+.step-card__description{
     color: white;
-    background: rgb(60, 60, 80);
-    padding: auto auto auto;
-    height: 25%;
+    background: rgb(212, 80, 4);
+    height: 15%;
     width: 100%;
     position: absolute;
     left: 0em;
     bottom: 0em;
 }
 
-.go-to-upload{
+.actual-description {
+    overflow-wrap: break-word;
+    text-align: center;
+    margin-right: 50px;
+}
+
+.upload-button{
     display: block;
     margin-left: auto;
     margin-right: auto;

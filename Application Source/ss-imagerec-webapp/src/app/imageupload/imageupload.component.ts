@@ -185,7 +185,7 @@ export class ImageuploadComponent implements OnInit {
     this.captureButton.textContent = 'CAPTURE';
     this.captureButton.style.setProperty('padding', '16px 32px');
     this.captureButton.style.setProperty('border-radius', '3px');
-    this.captureButton.style.setProperty('background-color', '#607D8B;');
+    this.captureButton.style.setProperty('background-color', 'rgb(218, 97, 17)');
 
     const br = document.createElement('br');
 

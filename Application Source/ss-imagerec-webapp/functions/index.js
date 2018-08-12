@@ -64,54 +64,10 @@ app.post('/sendmail', (request, response) => {
 
 });
 
-/**
-  MULTER
-
-let _uploadFilePath = '';
-const storage = multer.diskStorage({
-  destination: function (request, file, cb) {
-    cb(null, 'upload/');
-  },
-  filename: (request, file, cb) => {
-    if (file.mimetype === ('image/jpeg')) {
-      _uploadFilePath = 'upload.jpg';
-      cb(null, _uploadFilePath);
-    } else if (file.mimetype === ('image/png')) {
-      _uploadFilePath = 'upload.png';
-      cb(null, _uploadFilePath);
-    }
-  }
-});
-var upload = multer({ storage: storage });
-*/
-
 app.use(express.static(path.join(__dirname, 'public')));
 
-/**
-  TESTING HTTP REQUESTS
-*/
 app.get('/', (request, response) => {
   response.status(_httpCodes.RESPONSE.OKAY).send('Hello and Welcome to the Test Environment NodeJS Development Server');
 });
 
-/**
-  IMAGE RECOGNITION SECTION
-
-app.post('/upload', upload.single('file'), (request, response) => {
-  if (!request.file) {
-    console.log('No file received');
-    response.status(_httpCodes.RESPONSE.BAD_REQUEST).send('Invalid File / No File Received');
-  } else {
-    console.log('---------------');
-    console.log('Received File:');
-    console.log('---------------');
-    console.log('Attempting to Uploda Image to Predict Model');
-    pyShell.send('../upload/' + _uploadFilePath);
-    console.log('Image sent to program');
-    pyShell.on('message', (message) => {
-      console.log(message);
-    });
-  }
-});
-*/
 exports.app = functions.https.onRequest(app);

@@ -1,46 +1,28 @@
 .total-upload-card{
-    background-color: rgb(60, 60, 80);
+    background-color:  #3F51B5;
     color: lightgray;
+}
+
+.total-upload-card__title{
+    text-align: center;
+    font-family: "Lato", Arial, Helvetica, sans-serif;
 }
 
 .upload-card {
     background-color: rgb(207, 207, 207);
 }
 
-.title{
-    text-align: center;
-    font-family: "Lato", Arial, Helvetica, sans-serif;
-}
-
-.instruction {
+.upload-card__instruction {
     text-align: center;
     font-size: 150%;
     color: rgb(100, 99, 99);
 }
 
-.nothing-to-show{
-    color: lightgray;
-}
-
-.result-card{
-    background-color: rgb(75, 75, 97);
-}
-
-.results-list{
-    color: lightgray;
-    text-align: left;
-}
-
-mat-card-title{
-    color: lightgray;
-    font-family: "Lato", Arial, Helvetica, sans-serif;
-}
-
-.file-button {
+.upload-card__file-button {
     text-align: center;
 }
 
-.custom-file-upload {
+.upload-card__button-label {
     font-family: "Lato", sans-serif;
     font-size: 100%;
     /* border: 1px solid rgb(75, 75, 97); */
@@ -48,14 +30,14 @@ mat-card-title{
     padding: 16px 32px;
     cursor: pointer;
     border-radius: 3px;
-    box-shadow: 2px 2px 2px black;
+    box-shadow: 2px 2px 2px rgb(150, 148, 148);
     color: white;
-    background: #607D8B;
+    background: rgb(218, 97, 17);
 }
 
-.custom-file-upload:hover{
+.upload-card__button-label:hover{
     font-size: 100%;
-    background: rgb(144, 144, 158);
+    background: rgb(211, 133, 81);
     display: inline-block;
     padding: 16px 32px;
     cursor: pointer;
@@ -69,7 +51,8 @@ mat-card-title{
     display: none;
 }
 
-.upload-button {
+.upload-card__upload-button {
+    background: rgb(218, 97, 17);
     width: 200%;
     font-size: 150%;
     float: left;
@@ -77,6 +60,24 @@ mat-card-title{
 
 mat-spinner{
     float: right;
+}
+
+.result-card{
+    background-color: rgb(230, 101, 27);
+}
+
+.result-card__nothing-to-show{
+    color: rgb(0, 0, 0);
+}
+
+.result-card__results-list{
+    color: rgb(0, 0, 0);
+    text-align: left;
+}
+
+mat-card-title{
+    color: rgb(0, 0, 0);
+    font-family: "Lato", Arial, Helvetica, sans-serif;
 }
 
 .reload-upload{

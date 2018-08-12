@@ -1,15 +1,15 @@
 <div>
-    <mat-card class="total-upload-card" color="accent">
+    <mat-card class="total-upload-card">
 
-      <h1 class="title">Upload an Image</h1>
+      <h1 class="total-upload-card__title">Upload an Image</h1>
       <mat-card color="primary" class="upload-card">
-        <mat-card-title class="instruction">{{instruction}}</mat-card-title>
+        <mat-card-title class="upload-card__instruction">{{instruction}}</mat-card-title>
         <form class="form-horizontal" id="imgSelectForm">
           <mat-grid-list cols="4" rowHeight="100px">
 
             <mat-grid-tile [colspan]=1 [rowspan]=1>
-                <div class="file-button">
-                  <label for="file-upload" class="custom-file-upload">
+                <div class="upload-card__file-button">
+                  <label for="file-upload" class="upload-card__button-label">
                     File Select
                   </label>
                   <input id="file-upload" (change)="madeChange()" type="file" accept="image/*"/>
@@ -24,7 +24,7 @@
 
             <mat-grid-tile [colspan]=1 [rowspan]=1>
               <div>
-                <label for="webcam-upload" class="custom-file-upload">
+                <label for="webcam-upload" class="upload-card__button-label">
                   Webcam Capture
                 </label>
                 <button id="webcam-upload" (click)="captureImage()"></button>
@@ -33,7 +33,7 @@
 
             <mat-grid-tile [colspan]=4 [rowspan]=1>
                 <div>
-                  <button mat-raised-button color="primary" *ngIf="imgAvailable" (click)="uploadImage()" class="upload-button">UPLOAD</button>
+                  <button mat-raised-button color="primary" *ngIf="imgAvailable" (click)="uploadImage()" class="upload-card__upload-button">UPLOAD</button>
                   <mat-spinner [diameter]="30" [style.display]="showSpinner ? 'block':'none'"></mat-spinner>
                 </div>
             </mat-grid-tile>
@@ -45,9 +45,9 @@
 
       <mat-card class="result-card">
         <mat-card-title><h3>Classification Results</h3></mat-card-title>
-        <h4 class="nothing-to-show" *ngIf="results.length == 0">Nothing to show yet!</h4>
+        <h4 class="result-card__nothing-to-show" *ngIf="results.length == 0">Nothing to show yet!</h4>
         <mat-list>
-          <mat-list-item class="results-list" *ngFor="let result of results">
+          <mat-list-item class="result-card__results-list" *ngFor="let result of results">
             Item Class: {{ result.name }} 
             <br>
             Class Probability: {{ result.value }}
