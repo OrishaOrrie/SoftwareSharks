@@ -3,3 +3,7 @@
 *.jpg
 *.jpeg
 *.png
+/node_modules
+*.ckpt
+*.h5
+*.__styleext__
