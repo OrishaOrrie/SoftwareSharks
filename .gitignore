@@ -1,9 +1,16 @@
-
-*.model
-*.jpg
-*.jpeg
-*.png
 /node_modules
 *.ckpt
 *.h5
 *.__styleext__
+*.jpg
+*.jpeg
+*.model
+*.png
+Application Source/Backend/Node Server/upload/upload.jpg
+Application Source/Backend/Node Server/upload/upload.png
+*.__styleext__
+!docs/img/*
+!docs/img/about/*
+!docs/img/logos/*
+!docs/img/portfolio/*
+!docs/img/team/*
