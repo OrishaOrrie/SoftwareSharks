@@ -10,3 +10,4 @@ Application Source/ss-imagerec-webapp/node_modules/@schematics/angular/component
 *.h5
 *.ckpt
 /node_modules
+*.__styleext__

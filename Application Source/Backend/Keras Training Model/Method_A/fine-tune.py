@@ -11,13 +11,13 @@ from keras.applications.inception_v3 import InceptionV3, preprocess_input
 from keras.models import Model
 from keras.layers import Dense, GlobalAveragePooling2D
 from keras.preprocessing.image import ImageDataGenerator, img_to_array
-from keras.optimizers import SGD
+from keras.optimizers import SGD, Adam, Adagrad, Adadelta
 from sklearn.utils import class_weight
 from tensorflow.python.client import device_lib
-import tensorflowjs as tfjs
+# import tensorflowjs as tfjs
 
 IM_WIDTH, IM_HEIGHT=229,229 #fixed size for InceptionV3
-NB_EPOCHS=3
+NB_EPOCHS=5
 BAT_SIZE=32
 FC_SIZE=1024
 NB_IV3_LAYERS_TO_FREEZE=172
@@ -69,7 +69,7 @@ def setup_to_finetune(model):
 		layer.trainable=False
 	for layer in model.layers[NB_IV3_LAYERS_TO_FREEZE:]:
 		layer.trainable=True
-	model.compile(optimizer=SGD(lr=0.001,momentum=0.9),loss='categorical_crossentropy',metrics=['accuracy'])
+	model.compile(optimizer=SGD(lr=0.0001),loss='categorical_crossentropy',metrics=['accuracy'])
 
 def train(args):
 	"""
@@ -85,9 +85,9 @@ def train(args):
 	train_datagen=ImageDataGenerator(
 		preprocessing_function=preprocess_input,
 		rotation_range=45,
-		width_shift_range=0.2,
-		height_shift_range=0.2,
-		shear_range=0.2,
+		# width_shift_range=0.2,
+		# height_shift_range=0.2,
+		# shear_range=0.2,
 		zoom_range=0.2,
 		horizontal_flip=True,
 		# featurewise_std_normalization=True,
@@ -97,9 +97,9 @@ def train(args):
 	test_datagen=ImageDataGenerator(
 		preprocessing_function=preprocess_input,
 		rotation_range=45,
-		width_shift_range=0.2,
-		height_shift_range=0.2,
-		shear_range=0.2,
+		# width_shift_range=0.2,
+		# height_shift_range=0.2,
+		# shear_range=0.2,
 		zoom_range=0.2,
 		horizontal_flip=True,
 		# featurewise_std_normalization=True,
@@ -158,7 +158,7 @@ def train(args):
 	history_ft=model.fit_generator(
 		train_generator,
 		steps_per_epoch=nb_train_samples/batch_size,
-		epochs=nb_epoch,
+		epochs=nb_epoch*5,
 		validation_data=validation_generator,
 		validation_steps=nb_val_samples/batch_size,
 		class_weight='auto'
@@ -167,7 +167,8 @@ def train(args):
 
 	print('saving model to file')
 	model.save(args.output_model_file)
-	tfjs.converters.save_keras_model(model, ".\\tfjs\\")
+	model.summary()
+	# tfjs.converters.save_keras_model(model, ".\\tfjs\\")
 
 	print('plotting fine tuning process')
 	plot_training(history_ft)
