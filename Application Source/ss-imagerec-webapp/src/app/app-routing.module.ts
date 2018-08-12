@@ -1,3 +1,20 @@
+/**
+ * File Name:       app-routing.module
+ * Version Number:  v1.0
+ * Author:          Tobias Bester
+ * Project Name:    Ninshiki
+ * Organization:    Software Sharks
+ * User Manual:     Refer to https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf
+ * Update History:
+ * ------------------------------------------
+ * Date         Author        Description
+ * 01/03/2018   Tobias        Created module
+ * ------------------------------------------
+ * Test Cases:      None
+ * Functional Description:
+ *  Provides routing.
+ */
+
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { UtilitiesComponent } from './utilities/utilities.component';
 import { HomeComponent } from './home/home.component';
