@@ -28,7 +28,10 @@ export class ImagerecPage {
 			destinationType: this.camera.DestinationType.FILE_URI,
 			encodingType: this.camera.EncodingType.JPEG,
 			mediaType: this.camera.MediaType.PICTURE,
-			saveToPhotoAlbum : true
+			saveToPhotoAlbum : true,
+			allowEdit :true,
+			targetWidth :300,
+			targetHeight :300
 		}
 
 		this.camera.getPicture(options).then((imageData) => {
@@ -44,7 +47,10 @@ export class ImagerecPage {
 			quality: 100,
 			encodingType: this.camera.EncodingType.JPEG,
 			sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
-			saveToPhotoAlbum :false
+			saveToPhotoAlbum :false,
+			allowEdit :true,
+			targetWidth :300,
+			targetHeight :300
 		}
 
 		this.camera.getPicture(options).then((imageData) => {

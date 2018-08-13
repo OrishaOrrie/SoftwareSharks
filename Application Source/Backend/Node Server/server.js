@@ -36,29 +36,33 @@ var smtpTransport = nodemailer.createTransport({
 /*------------------Routing Started ------------------------*/
 app.get('/',function(req,res){
     //res.sendfile('../ss-imagerec-webapp/contact-us.component.html');
-  
-    res.sendFile(path.resolve('../ss-imagerec-webapp/src/app/contact-us/contact-us.component.html'));
+    origin/travis-ci
+    res.sendFile(path.resolve('../../ss-imagerec-webapp/src/app/contact-us/contact-us.component.html'));
     //Users/Orisha/Documents/3rdyear/COS301/git folder/SoftwareSharks/ss-imagerec-webapp/src/app/contact-us/contact-us.component.html
 });
-app.get('/send',function(req,res){
-    var mailOptions={
-        to : 'softwaresharks@gmail.com', //req.query.to,
-        subject : req.query.subject,
-        text : 'Email: '+req.query.email + ' Message: '+ req.query.text
+app.post('/send',function(req,res){
+	res.header("Access-Control-Allow-Origin", "*");
+  	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
+	console.log("Localhost://3000/send received a post request\n");
+	console.log("Request: " + req.body.email + "\n");
+    var mailOptions={
+    	from: req.body.email,
+        to : 'softwaresharks@gmail.com', //req.query.to,
+        subject : 'Email sent by ' + req.body.subject,
+        text : 'Email From: '+ req.body.email + '\n Message: '+ req.body.text
     }
     console.log(mailOptions);
     smtpTransport.sendMail(mailOptions, function(error, response){
      if(error){
             console.log(error);
-        res.end("error");
+        	res.end("error");
      }else{
             console.log("Message sent: " + response.message);
-        res.end("sent");
+        	res.end("sent");
          }
+	});
 });
-});
-/*
 app.listen(3000,function(){
     console.log("Express Started on Port 3000");
 });
@@ -93,7 +97,7 @@ var upload = multer({ storage: storage })
 
 /**
  * Uppy Options
- */
+ 
 
 const uppy_options = {
 	providerOptions: {
@@ -114,6 +118,7 @@ const uppy_options = {
 }
 
 app.use(uppy.app(uppy_options))
+*/
 
 /**
  * Local Dependencies
@@ -122,6 +127,9 @@ const _image = require('./local_modules/image.js')
 const _httpCodes = require('./local_modules/HTTPRequests.js')
 const _base64 = require('./local_modules/base64.js')
 const _logger = require('./local_modules/logger.js')
+const PythonShell=require('python-shell');
+var pyshell;
+
 app.use(_logger())
 
 app.use(express.static(path.join(__dirname, 'public')))
@@ -134,7 +142,7 @@ app.get('/', (req, res) => res.status(_httpCodes.RESPONSE.OKAY).send('Hello and 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.header("Tus-Resumable","1.0.0");
+  // res.header("Tus-Resumable","1.0.0");
   next();
 });
 
@@ -146,21 +154,59 @@ app.post('/upload', upload.single('file'), (req, res) => {
     console.log('--------------')
     console.log('Received File:')
     console.log('--------------')
-    console.log('Attempting to Upload Image to Clarifai API...')
-    console.log('--------------')
-    _base64.base64_encode('./upload/' + _uploadFilePath, function(_base64String){
-      _image.predictImage(_base64String , function(_imageResponse){
+    //~ console.log('Attempting to Upload Image to Clarifai API...')
+    //~ console.log('--------------')
+    //~ _base64.base64_encode('./upload/' + _uploadFilePath, function(_base64String){
+      //~ _image.predictImage(_base64String , function(_imageResponse){
+	console.log("Attempting to Upload Image to Predict Model");
+	pyshell.send('../upload/' + _uploadFilePath);
+	console.log("sent");
+	pyshell.on('message',function(message){
+		console.log(message);
+	});
+	var predict=require('./Keras_Training_Model/predictions.json');
+	
         console.log('--------------')
         console.log('Sending Upload Response:')
         console.log('--------------')
-        console.log(_imageResponse)
-        res.status(_httpCodes.RESPONSE.OKAY).json(_imageResponse)
-      })
-    })
-  }
-});
+        //console.log(_imageResponse)
+	console.log(predict)
+        res.status(_httpCodes.RESPONSE.OKAY).json(predict)//(_imageResponse)
+      }
+    });
 
-var server = app.listen(8000, () => console.log('Test Environment NodeJS Development Server Running at: http://127.0.0.1:8000'))
+var server = app.listen(8000, () => {
+	console.log('Test Environment NodeJS Development Server Running at: http://127.0.0.1:8000');
+	callName();
+})
+
+function callName(){
+	pyshell=new PythonShell('/Keras_Training_Model/predict.py');
+	console.log("Server.js, Line 180:Sending model name");
+	pyshell.send('inceptionv3-ft.model');
+	console.log("Server.js, Line 182:Sent model name");
+	pyshell.on('message',function(message){
+		//console.log(message);//Prints out all messages
+		if(message.substring(0,7)=="NodeJS:")
+			console.log(message);
+	});
+	//~ pyshell.end(function(err){
+		//~ if(err) throw err;
+		
+		//~ console.log('finished');
+	//~ });
+	
+	//~ var options={
+		//~ mode: 'text',
+		//~ pythonOptions:['-u'],
+		//~ args: ['inceptionv3-ft.model']
+	//~ };
+	
+	//~ PythonShell.run('/Keras_Training_Model/predict.py',options, function(err,results){
+		//~ if(err) throw err;
+		//~ console.log('results: %j',results);
+	//~ });
+}
 
 // function to encode file data to base64 encoded string
 function base64_encode(file) {
