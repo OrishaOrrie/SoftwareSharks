@@ -13,6 +13,7 @@ import { ImagerecPage } from '../pages/imagerec/imagerec';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Camera } from '@ionic-native/camera';
+import { Firebase } from '@ionic-native/firebase';
 
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
@@ -50,6 +51,7 @@ import { FormControl } from '@angular/forms';
     StatusBar,
     SplashScreen,
     Camera,
+    Firebase,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

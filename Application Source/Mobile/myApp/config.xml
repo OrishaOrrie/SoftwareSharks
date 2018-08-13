@@ -85,4 +85,5 @@
     <plugin name="cordova-plugin-camera" spec="^4.0.3" />
     <engine name="android" spec="^7.0.0" />
     <engine name="browser" spec="^5.0.4" />
+    <plugin name="cordova-plugin-firebase" spec="^1.0.5" />
 </widget>
