@@ -24,6 +24,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { style } from '@angular/animations';
 import { Result } from './result';
 import { Component, OnInit } from '@angular/core';
+import * as tf from '@tensorflow/tfjs';
+import { AngularFireStorage } from '../../../node_modules/angularfire2/storage';
 
 @Component({
   selector: 'app-imageupload',
@@ -68,11 +70,16 @@ export class ImageuploadComponent implements OnInit {
    */
   public imgAvailable = false;
 
+  model: tf.Model;
+  predictions: any;
+  downloadedModel = false;
+  modelRef = null;
+
   /**
    * This constructor is only used to pass an instance of the HttpClient module.
    * @param http  HttpClient instance
    */
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private storage: AngularFireStorage) { }
 
   /**
    * @hidden
@@ -376,11 +383,43 @@ export class ImageuploadComponent implements OnInit {
     return new Blob([ia], {type: mimeString});
   }
 
+  async loadModel() {
+    if (this.downloadedModel === false) {
+      console.log('Downloading Model');
+      this.downloadModel();
+    }
+
+    this.model = await tf.loadModel(this.modelRef);
+    console.log('Model Loaded!');
+  }
+
+  downloadModel() {
+    this.downloadedModel = false;
+    const ref = this.storage.ref('tfjs/model.json');
+    this.modelRef = ref;
+    console.log('Model Downloaded!');
+    this.downloadedModel = true;
+  }
+
+  async predict() {
+    await tf.tidy(() => {
+      let img = tf.fromPixels(this.image);
+      img = img.reshape([3, 229, 229]);
+      img = tf.cast(img, 'float32');
+
+      const output = this.model.predict(img) as any;
+
+      this.predictions = Array.from(output.dataSync());
+      console.log(this.predictions);
+    });
+  }
+
   /**
    * This function reloads the page when the Upload Another Image button is clicked.
    */
-  reloadPage() {
-    window.location.reload(true);
+  async reloadPage() {
+    console.log(await tf.io.listModels());
+    // window.location.reload(true);
   }
 
 }
