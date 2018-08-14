@@ -1,8 +1,8 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatButtonModule, MatToolbarModule, MatProgressSpinnerModule, MatCardModule, MatGridListModule } from '@angular/material';
-import { MatInputModule, MatListModule, MatDividerModule } from '@angular/material';
+import { MatButtonModule, MatToolbarModule, MatProgressSpinnerModule, MatCardModule, MatGridListModule} from '@angular/material';
+import { MatInputModule, MatListModule, MatDividerModule, MatTableModule  } from '@angular/material';
 
 @NgModule({
   imports: [
@@ -18,6 +18,7 @@ import { MatInputModule, MatListModule, MatDividerModule } from '@angular/materi
     MatListModule,
     MatDividerModule,
     MatGridListModule,
+    MatTableModule,
     BrowserAnimationsModule
   ],
   declarations: [],

@@ -32,12 +32,12 @@
     border-radius: 3px;
     box-shadow: 2px 2px 2px rgb(150, 148, 148);
     color: white;
-    background: rgb(218, 97, 17);
+    background: #607D8B;
 }
 
 .upload-card__button-label:hover{
     font-size: 100%;
-    background: rgb(211, 133, 81);
+    background: #607D8B;
     display: inline-block;
     padding: 16px 32px;
     cursor: pointer;
@@ -52,7 +52,7 @@
 }
 
 .upload-card__upload-button {
-    background: rgb(218, 97, 17);
+    background: #607D8B;
     width: 200%;
     font-size: 150%;
     float: left;
@@ -63,20 +63,20 @@ mat-spinner{
 }
 
 .result-card{
-    background-color: rgb(230, 101, 27);
+    background-color: #607D8B;
 }
 
 .result-card__nothing-to-show{
-    color: rgb(0, 0, 0);
+    color: white;
 }
 
 .result-card__results-list{
-    color: rgb(0, 0, 0);
+    color: white;
     text-align: left;
 }
 
 mat-card-title{
-    color: rgb(0, 0, 0);
+    color: white;
     font-family: "Lato", Arial, Helvetica, sans-serif;
 }
 

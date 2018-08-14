@@ -1,5 +1,5 @@
 .total-utilities-card{
-    background-color: rgb(60, 60, 80);
+    background-color: #607D8B;
     color: white;
 }
 
@@ -20,7 +20,8 @@
 }
 
 .tally-upper-card__amount-result{
-    background: rgb(75, 75, 97);
+    background: #607D8B;
+    color: white;
 }
 
 .tally-upper-card___result-title{

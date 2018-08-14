@@ -3,7 +3,7 @@
 }
 
 .intro-message{
-    color: rgb(47, 15, 107);
+    color: #303F9F;
     text-align: center;
     top: 1em;
     font-family: "Lato", sans-serif;
@@ -36,7 +36,7 @@
 
 .step-card__description{
     color: white;
-    background: rgb(212, 80, 4);
+    background: #607D8B;
     height: 15%;
     width: 100%;
     position: absolute;

@@ -26,6 +26,7 @@ import { Result } from './result';
 import { Component, OnInit } from '@angular/core';
 import * as tf from '@tensorflow/tfjs';
 import { AngularFireStorage } from '../../../node_modules/angularfire2/storage';
+import { Observable } from '../../../node_modules/rxjs/internal/Observable';
 
 @Component({
   selector: 'app-imageupload',
@@ -70,10 +71,13 @@ export class ImageuploadComponent implements OnInit {
    */
   public imgAvailable = false;
 
-  model: tf.Model;
-  predictions: any;
-  downloadedModel = false;
-  modelRef = null;
+  public displayUpload: Boolean = false;
+  public model: tf.Model;
+  public predictions: any;
+  public downloadedModel = false;
+  public modelRef = null;
+  public resultPreds = [];
+  public displayedColumns = ['name', 'likeliness'];
 
   /**
    * This constructor is only used to pass an instance of the HttpClient module.
@@ -84,7 +88,9 @@ export class ImageuploadComponent implements OnInit {
   /**
    * @hidden
    */
-  ngOnInit() {  }
+  ngOnInit() {
+      this.loadModel();
+    }
 
   /**
    *  This function is triggered by the user selecting an image from the file explorer. It displays the selected
@@ -121,6 +127,7 @@ export class ImageuploadComponent implements OnInit {
       const image = document.createElement('img');
       image.src = window.URL.createObjectURL(uploadedFile.files[0]);
       image.style.setProperty('height', '200px');
+      this.image = image;
 
       preview.appendChild(newP);
       preview.appendChild(image);
@@ -173,6 +180,7 @@ export class ImageuploadComponent implements OnInit {
   captureImage() {
     const preview = document.querySelector('.preview');
     this.imgAvailable = false;
+    this.displayUpload = false;
     this.updateInstruction();
 
     while (preview.firstChild) {
@@ -192,7 +200,8 @@ export class ImageuploadComponent implements OnInit {
     this.captureButton.textContent = 'CAPTURE';
     this.captureButton.style.setProperty('padding', '16px 32px');
     this.captureButton.style.setProperty('border-radius', '3px');
-    this.captureButton.style.setProperty('background-color', 'rgb(218, 97, 17)');
+    this.captureButton.style.setProperty('color', 'white');
+    this.captureButton.style.setProperty('background-color', '#607D8B');
 
     const br = document.createElement('br');
 
@@ -384,33 +393,89 @@ export class ImageuploadComponent implements OnInit {
   }
 
   async loadModel() {
-    if (this.downloadedModel === false) {
-      console.log('Downloading Model');
-      this.downloadModel();
-    }
+    // let jsonContent = null;
+    // const ref = this.storage.ref('tfjs').child('model.json');
+    // const refURL = ref.getDownloadURL();
+    // console.log(refURL);
+    // const request = new XMLHttpRequest();
+    // request.open('GET', refURL);
+    // request.responseType = 'json';
+    // request.onload = function() {
+    //   console.log('GOT IT');
+    //   jsonContent = request.response;
+    //   localStorage.setItem('model', jsonContent);
+    // };
+    // request.send();
 
-    this.model = await tf.loadModel(this.modelRef);
-    console.log('Model Loaded!');
+    // console.log('Model downloaded from Firebase Storage - ' + JSON.parse());
+
+    try {
+      this.model = await tf.loadModel('../../assets/tfjs/model.json');
+      console.log('Model Loaded!');
+    } catch (err) {
+      console.error('Error obtained: ' + err);
+    }
   }
 
-  downloadModel() {
-    this.downloadedModel = false;
-    const ref = this.storage.ref('tfjs/model.json');
-    this.modelRef = ref;
-    console.log('Model Downloaded!');
-    this.downloadedModel = true;
+  predictImage() {
+    this.showSpinner = true;
+    this.resultPreds = [];
+    this.predict();
+    this.showSpinner = false;
   }
 
   async predict() {
-    await tf.tidy(() => {
-      let img = tf.fromPixels(this.image);
-      img = img.reshape([3, 229, 229]);
-      img = tf.cast(img, 'float32');
+      console.log('Predicting: ' + this.image);
 
-      const output = this.model.predict(img) as any;
+      const predictedClass = tf.tidy(() => {
+        const raw = tf.fromPixels(this.image, 3);
+        const cropped = this.cropImage(raw);
+        const resized = tf.image.resizeBilinear(cropped, [229, 229]);
 
-      this.predictions = Array.from(output.dataSync());
-      console.log(this.predictions);
+        const batchedImage = resized.expandDims(0);
+        const img = batchedImage.toFloat().div(tf.scalar(127)).sub(tf.scalar(1));
+        const predictions = (this.model.predict(img) as tf.Tensor);
+        console.log('Still predicting: ');
+        return predictions;
+      });
+
+      const classId = (await predictedClass.data());
+      predictedClass.dispose();
+
+      console.log('Predictions: ' + classId);
+      this.mapPredictions(classId);
+      const el = document.querySelector('.result-card');
+      el.scrollIntoView({behavior: 'instant'});
+  }
+
+  cropImage(img) {
+    const size = Math.min(img.shape[0], img.shape[1]);
+    const centerHeight = img.shape[0] / 2;
+    const beginHeight = centerHeight - (size / 2);
+    const centerWidth = img.shape[1] / 2;
+    const beginWidth = centerWidth - (size / 2);
+    return img.slice([beginHeight, beginWidth, 0], [size, size, 3]);
+  }
+
+  mapPredictions(classPreds) {
+    // const classes = ('../../assets/classes/classes.json');
+    const classesJson = require('../../assets/classes/classes.json');
+    const numClasses = classPreds.length;
+    this.resultPreds = [];
+
+    for (let i = 0; i < numClasses; i++) {
+      this.resultPreds[i] = {};
+      this.resultPreds[i].id = classesJson.classes[i].id;
+      this.resultPreds[i].first = classesJson.classes[i].first;
+      this.resultPreds[i].name = classesJson.classes[i].name;
+      this.resultPreds[i].likeliness = (classPreds[i] * 100).toFixed(4);
+    }
+    this.sortPreds();
+  }
+
+  sortPreds() {
+    this.resultPreds.sort(function(a, b) {
+      return b.likeliness - a.likeliness;
     });
   }
 
