@@ -1,6 +1,7 @@
+import { AngularFireStorageModule, AngularFireStorage } from 'angularfire2/storage';
 import { trigger } from '@angular/animations';
-import { HttpClientModule } from '@angular/common/http';
-import { async, ComponentFixture, TestBed, tick } from '@angular/core/testing';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { async, ComponentFixture, TestBed, tick, inject } from '@angular/core/testing';
 import { MaterialModule } from './../material.module';
 import { ImageuploadComponent } from './imageupload.component';
 import { DebugElement } from '../../../node_modules/@angular/core';
@@ -18,7 +19,8 @@ describe('ImageuploadComponent', () => {
       declarations: [ ImageuploadComponent ],
       imports: [
         MaterialModule,
-        HttpClientModule
+        HttpClientModule,
+        AngularFireStorageModule
       ]
     })
     .compileComponents();
@@ -42,9 +44,10 @@ describe('ImageuploadComponent', () => {
     spy = null;
   });
 
-  it('should create', () => {
+  it('should create', async(inject([HttpClient, AngularFireStorage],
+    (httpMock: HttpClient, angularFireStorage: AngularFireStorage) => {
     expect(component).toBeTruthy();
-  });
+  })));
 
   /**
    * File Select option

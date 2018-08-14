@@ -47,7 +47,7 @@
       <mat-card class="result-card">
         <mat-card-title><h3>Classification Results</h3></mat-card-title>
         <h4 class="result-card__nothing-to-show" *ngIf="resultPreds.length == 0">Nothing to show yet!</h4>
-        <table *ngFor="let result of resultPreds" mat-table [dataSource]="resultPreds" style="width: 100%; height: 400px; overflow: auto;" color="primary">
+        <table *ngIf="resultPreds.length != 0" mat-table [dataSource]="resultPreds" style="width: 100%; height: 400px; overflow: auto;" color="primary">
           
           <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef>Class Name</th>
