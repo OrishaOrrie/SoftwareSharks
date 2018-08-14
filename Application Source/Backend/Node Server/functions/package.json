@@ -11,6 +11,8 @@
   },
   "main": "lib/index.js",
   "dependencies": {
+    "@tensorflow/tfjs": "^0.12.4",
+    "canvas-prebuilt": "1.*",
     "firebase-admin": "^5.13.1",
     "firebase-functions": "^2.0.4",
     "nodemailer": "^4.6.7"
