@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams , AlertController} from 'ionic-angular';
 
 /**
  * Generated class for the UtilitiesPage page.
@@ -17,7 +17,7 @@ export class UtilitiesPage {
 	Math: Math = Math;
 	totalObjects : number =null;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private alertController: AlertController) {
 
   }
 
@@ -26,14 +26,25 @@ export class UtilitiesPage {
   }
 	  single_item = 1;
 	  empty_bucket = 1;
-	  filled_bucket = 1;
+    filled_bucket = 1;
 
+
+    presentAlert =function() {
+      let alert = this.alertController.create({
+        title: 'Total amount of items',
+        subTitle: this.totalObjects,
+        buttons: ['Dismiss']
+      });
+      alert.present();
+    }
   hello = function(a: number, b: number, c: number)
   {
    		this.totalObjects = ((b - c)/a);
-   			//alert(totalObjects);
+       //	alert(this.totalObjects);
+       this.presentAlert();
    			return this.totalObjects;
 
    }
+   
 
 }

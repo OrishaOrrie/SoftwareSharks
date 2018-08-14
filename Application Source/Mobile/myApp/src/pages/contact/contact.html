@@ -1,31 +1,34 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Contact Us
-    </ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Contact Us</ion-title>
+      </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <form [formGroup]="myGroup"  *ngIf="!submitted">
+<ion-content id ="formcol">
+  <form [formGroup]="myGroup"  *ngIf="!submitted" >
  
-      <ion-item >
-        <ion-label stacked>Enter your name...</ion-label>
+      <ion-item class="inputs">
+        <ion-label class = 'bob' stacked>Enter your name...</ion-label>
         <ion-input id="name" type="text" required formControlName="name"></ion-input>
         </ion-item>
-      <ion-item>
-        <ion-label stacked>Enter your email address...</ion-label>
+      <ion-item class="inputs">
+        <ion-label class = 'bob' stacked>Enter your email address...</ion-label>
         <ion-input id="email" type="email" required formControlName="email" ></ion-input>
       </ion-item>
-        <ion-item>
-        <ion-label stacked>Enter your message...</ion-label>
-        <ion-input id="message" type="text" required formControlName="message"></ion-input>
+        <ion-item class="inputs">
+        <ion-label class = 'bob' stacked>Enter your message...</ion-label>
+        <ion-input color= "primary" id="message" type="text" required formControlName="message"></ion-input>
       </ion-item>
- 
+
     </form>
  
-    <button ion-button primary (click)="onSubmit()">Enter</button>
+    <button ion-button full round [disabled]="!myGroup.valid" (click)="onSubmit()">Send Message</button>
     <ion-item *ngIf="submitted">
       <h1 class="status-heading">Email Sent!</h1>
     </ion-item>
+
+  
 </ion-content>

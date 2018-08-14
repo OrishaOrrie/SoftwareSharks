@@ -7,7 +7,10 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Item Amount Calculator</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Item amount calculator</ion-title>
   </ion-navbar>
   
 
@@ -15,23 +18,18 @@
 </ion-header>
 
 
-<ion-content padding>
-<ion-item>
-    <ion-label color="primary" stacked>Weight of Single Item</ion-label>
+<ion-content padding >
+<ion-item class = "calc">
+   <ion-label color="secondary" class="lab" stacked>Weight of Single Item</ion-label> 
     <ion-input type="number" placeholder="Single item weight" [(ngModel)]="single_item"></ion-input>
   </ion-item>
-  <ion-item>
-    <ion-label color="primary" stacked>Weight Of Empty Bucket</ion-label>
+  <ion-item class = "calc">
+    <ion-label color="secondary" class="lab" stacked>Weight Of Empty Bucket</ion-label>
     <ion-input type="number" placeholder="Empty bucket weight" [(ngModel)]="empty_bucket"></ion-input>
   </ion-item>
-  <ion-item>
-    <ion-label color="primary" stacked>Weight of Filled Bucket</ion-label>
+  <ion-item class = "calc">
+    <ion-label color="secondary" class="lab" stacked>Weight of Filled Bucket</ion-label>
     <ion-input type="number" placeholder="Filled bucket weight" [(ngModel)]="filled_bucket"></ion-input>
   </ion-item>
 <button ion-button full round (click) ="hello(single_item, filled_bucket,empty_bucket)">Calculate</button>
-<ion-card-header>
-      <ion-item>
-        {{totalObjects}}
-      </ion-item>
-</ion-card-header>
 </ion-content>

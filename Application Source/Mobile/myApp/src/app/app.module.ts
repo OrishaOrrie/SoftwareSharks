@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 
+
 @NgModule({
   declarations: [
     MyApp,
@@ -31,7 +32,9 @@ import { FormControl } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+      tabsHideOnSubPages: false
+   }),
     HttpModule,
     HttpClientModule,
     FormsModule
@@ -53,4 +56,6 @@ import { FormControl } from '@angular/forms';
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
-export class AppModule {}
+export class AppModule {
+
+}

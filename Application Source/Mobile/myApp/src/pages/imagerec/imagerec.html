@@ -7,7 +7,10 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Upload an image</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Image recognition</ion-title>
 
   </ion-navbar>
 
@@ -15,12 +18,14 @@
 
 
 <ion-content padding>
-
-  <button align ="center" ion-button icon-start outline round (click) = "takePic()" ><ion-icon name="camera"  ></ion-icon>
-  Use Camera</button>
-   <button align ="center" ion-button icon-start outline round (click) = "selectPic()" ><ion-icon name="md-images"  ></ion-icon>
-  Select from Gallery</button>
+<h1 class = "first" >Choose an option</h1>
+<h2 class = "second" >Capture an image using device camera</h2>
+  <button align ="center" color= "secondary" ion-button icon-start outline round (click) = "takePic()" ><ion-icon name="camera"  ></ion-icon>
+  Camera</button>
+  <h2 class = "second" >Select image from device gallery</h2>
+   <button align ="center" color= "secondary" ion-button icon-start outline round (click) = "selectPic()" ><ion-icon name="md-images"  ></ion-icon>
+  Gallery</button>
   
 
-  <p align = "center"><img src ="{{ myPhoto }}"></p>
+  <p align = "center"><img src ="{{myPhoto}}"></p>
 </ion-content>
