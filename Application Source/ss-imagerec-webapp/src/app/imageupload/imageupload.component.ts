@@ -26,7 +26,6 @@ import { Result } from './result';
 import { Component, OnInit } from '@angular/core';
 import * as tf from '@tensorflow/tfjs';
 import { AngularFireStorage } from '../../../node_modules/angularfire2/storage';
-import { Observable } from '../../../node_modules/rxjs/internal/Observable';
 
 @Component({
   selector: 'app-imageupload',
@@ -408,9 +407,13 @@ export class ImageuploadComponent implements OnInit {
     // request.send();
 
     // console.log('Model downloaded from Firebase Storage - ' + JSON.parse());
+    // const ref = this.storage.ref('tfjs').child('model.json');
+    // const refURL = ref.getDownloadURL();
+    // console.log('URL: ' + refURL);
 
     try {
       this.model = await tf.loadModel('../../assets/tfjs/model.json');
+      // this.model = await tf.loadModel(refURL);
       console.log('Model Loaded!');
     } catch (err) {
       console.error('Error obtained: ' + err);

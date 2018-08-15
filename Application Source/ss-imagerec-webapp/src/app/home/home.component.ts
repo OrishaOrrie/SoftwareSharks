@@ -30,7 +30,6 @@ Functional Description: Acts as landing page and provides routes to the other pa
  */
 
 import { Component, OnInit } from '@angular/core';
-import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-home',
