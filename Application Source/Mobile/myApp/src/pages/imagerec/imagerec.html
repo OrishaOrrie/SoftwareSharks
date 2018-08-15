@@ -20,16 +20,17 @@
 <ion-content padding>
 <h1 class = "first" >Choose an option</h1>
 <h2 class = "second" >Capture an image using device camera</h2>
-  <button align ="center" color= "secondary" ion-button icon-start outline round (click) = "captureImage()" ><ion-icon name="camera"  ></ion-icon>
+  <button align ="center" color= "secondary" ion-button icon-start outline round (click) = "takePic()" ><ion-icon name="camera"  ></ion-icon>
   Camera</button>
   <h2 class = "second" >Select image from device gallery</h2>
    <button align ="center" color= "secondary" ion-button icon-start outline round (click) = "selectPic()" ><ion-icon name="md-images"  ></ion-icon>
   Gallery</button>
   
+  <p class="model-info">{{ modelStatus }}</p>
   <button mat-raised-button color="primary" *ngIf="imgAvailable" (click)="predictImage()" class="upload-card__upload-button">UPLOAD</button>
-  <p align = "center"><img src ="{{myPhoto}}"></p>
+  <p align = "center"><img class="user-image" id="selectedImage" src ="{{myPhoto}}" alt="Select an image please"></p>
 </ion-content>
-<mat-card class="result-card">
+<!-- <mat-card class="result-card">
   <mat-card-title><h3>Classification Results</h3></mat-card-title>
   <h4 class="result-card__nothing-to-show" *ngIf="resultPreds.length == 0">Nothing to show yet!</h4>
   <mat-table *ngFor="let result of resultPreds" mat-table #table [dataSource]="resultPreds" style="width: 100%; height: 400px; overflow: auto;" color="primary">
@@ -47,4 +48,4 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true;"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       
-  </mat-table>
+  </mat-table> -->
