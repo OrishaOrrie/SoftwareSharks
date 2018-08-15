@@ -18,7 +18,7 @@
  */
 // import { HttpClient,HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import * as tf from '@tensorflow/tfjs';
 // import { AngularFireStorage } from '../../../node_modules/angularfire2/storage';
@@ -65,7 +65,7 @@ export class ImagerecPage {
 		 */
 		public imgAvailable = false;
 		
-		public displayUpload: Boolean = false;
+		public imgSelectedOrCaptured = false;
 		public predictions: any;
 		public downloadedModel = false;
 		public modelRef = null;
@@ -74,15 +74,15 @@ export class ImagerecPage {
 		public model: tf.Model;
 		public modelStatus = 'The model is still loading please be patient sheesh';
 		public results: Result[] = [];
-		public myPhoto :any;
+		public myPhoto: string;
 		public imageToPredict: HTMLImageElement;
 		
-		constructor( public navCtrl: NavController, public navParams: NavParams, 
-			private camera: Camera /*private http: HttpClient, private storage: AngularFireStorage */) {
-		
+		constructor( public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController,
+			private camera: Camera, public loadingController: LoadingController /*private http: HttpClient, private storage: AngularFireStorage */) {
 		}
 
 		ngOnInit() {
+			this.presentLoadingModelSpinner();
 			this.loadModel();
 		}
 		
@@ -97,7 +97,7 @@ export class ImagerecPage {
 		takePic(pictureSourceType: any){
 			const options: CameraOptions = {
 				quality: 95,
-				destinationType: this.camera.DestinationType.FILE_URI,
+				destinationType: this.camera.DestinationType.DATA_URL,
 				encodingType: this.camera.EncodingType.JPEG,
 				mediaType: this.camera.MediaType.PICTURE,
 				saveToPhotoAlbum : true,
@@ -109,16 +109,26 @@ export class ImagerecPage {
 			this.camera.getPicture(options).then((imageData) => {
 				// imageData is either a base64 encoded string or a file URI
 				// If it's base64 (DATA_URL):
-				this.imgAvailable = true;
-				this.myPhoto =  imageData;
-				let image = new Image();
-				image.src = this.myPhoto;
-				// this.imageToPredict = <HTMLImageElement>document.getElementById('selectedImage');
+				this.myPhoto = 'data:image/jpeg;base64,' + imageData;
+				// console.log('Image data: ' + imageData);
+				let image = <HTMLImageElement>document.getElementById('selectedImage');
+				// let image = new Image();
+				// image.src = this.myPhoto;
 				this.imageToPredict = image;
 				console.log('Image to predict: ' + this.imageToPredict);
 			}, (err) => {
 				// Handle error
+				this.imgSelectedOrCaptured = false;
+				this.imgAvailable = false;
+				let prompt = this.alertCtrl.create({
+					title: 'Error getting captured image',
+					subTitle: err,
+					buttons: ['OK']
+				});
+				prompt.present();
 			});
+			this.imgSelectedOrCaptured = true;
+			this.imgAvailable = true;
 		};
 	  
 /**
@@ -129,35 +139,41 @@ export class ImagerecPage {
 
   	selectPic()
   	{
-			// const options: CameraOptions = {
-			// 	quality: 100,
-			// 	encodingType: this.camera.EncodingType.JPEG,
-			// 	sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
-			// 	saveToPhotoAlbum :false,
-			// 	allowEdit :true,
-			// 	targetWidth :300,
-			// 	targetHeight :300
-			// }
+			const options: CameraOptions = {
+				quality: 100,
+				destinationType: this.camera.DestinationType.DATA_URL,
+				encodingType: this.camera.EncodingType.JPEG,
+				sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+				saveToPhotoAlbum :false,
+				allowEdit :true,
+				targetWidth :300,
+				targetHeight :300
+			}
 
-			// this.camera.getPicture(options).then((imageData) => {
-			// 	// imageData is either a base64 encoded string or a file URI
-			// 	// If it's base64 (DATA_URL):
-			// 	this.imgAvailable = true;
-			// 	// this.myPhoto = imageData;
-			// 	this.myPhoto = '../../assets/imgs/gears.jpeg';
-			// 	let image = new Image();
-			// 	// image.src = this.myPhoto;
-			// 	image.src = '../../assets/imgs/gears.jpeg';
-			// 	// this.imageToPredict = <HTMLImageElement>document.getElementById('selectedImage');
-			// 	this.imageToPredict = image;
-			// 	console.log('Image to predict: ' + this.imageToPredict);
-			// }, (err) => {
-			// 	// Handle error
-			// });
-			this.myPhoto = '../../assets/imgs/gears.jpeg';
-			let image = new Image();
-			image.src = '../../assets/imgs/gears.jpeg';
-			this.imageToPredict = image;
+			this.camera.getPicture(options).then((imageData) => {
+				// imageData is either a base64 encoded string or a file URI
+				// If it's base64 (DATA_URL):
+				this.myPhoto = 'data:image/jpeg;base64,' + imageData;
+				console.log('Image data: ' + imageData);
+				let image = <HTMLImageElement>document.getElementById('selectedImage');
+				//this.myPhoto = 'data:image/jpeg;base64,' + imageData;
+				// let image = new Image();
+				// image.src = this.myPhoto;
+				this.imageToPredict = image;
+				console.log('Image to predict: ' + this.imageToPredict);
+				
+			}, (err) => {
+				// Handle error
+				this.imgSelectedOrCaptured = false;
+				this.imgAvailable = false;
+				let prompt = this.alertCtrl.create({
+					title: 'Error getting selected image',
+					subTitle: err,
+					buttons: ['OK']
+				});
+				prompt.present();
+			});
+			this.imgSelectedOrCaptured = true;
 			this.imgAvailable = true;
 		};
 /**
@@ -264,7 +280,13 @@ export class ImagerecPage {
 				console.log('Model Loaded!');
 				this.modelStatus = 'Model loaded YAS QUEEN';
 			} catch (err) {
-				console.error('Error obtained: ' + err);
+				// Handle error
+				let prompt = this.alertCtrl.create({
+					title: 'Error loading model',
+					subTitle: err,
+					buttons: ['OK']
+				});
+				prompt.present();
 			}
 		};
 
@@ -273,14 +295,13 @@ export class ImagerecPage {
 		 */
 
 		predictImage() {
-			this.showSpinner = true;
 			this.resultPreds = [];
 			this.predict();
-			this.showSpinner = false;
 		};
 
 		async predict() {
 		  console.log('Predicting');
+		  // this.presentPredictingSpinner();
 		
 		  const predictedClass = tf.tidy(() => {
 				const raw = tf.fromPixels(this.imageToPredict, 3);
@@ -324,7 +345,8 @@ export class ImagerecPage {
 			  this.resultPreds[i].likeliness = (classPreds[i] * 100).toFixed(4);
 			}
 			this.sortPreds();
-			console.log(this.resultPreds);
+			console.log(this.resultPreds[0].name);
+			this.modelStatus = this.resultPreds[0].name + ' ' + this.resultPreds[0].likeliness + '%';
 		};
 		
 		sortPreds() {
@@ -341,4 +363,29 @@ export class ImagerecPage {
 			// window.location.reload(true);
 		};
 
+		presentLoadingModelSpinner() {
+			let loading = this.loadingController.create({
+				spinner: 'crescent',
+				content: 'Loading Model...'
+			});
+
+			loading.present();
+
+			setTimeout(() => {
+				loading.dismiss();
+			}, 15000);
+		}
+
+		presentPredictingSpinner() {
+			let loading = this.loadingController.create({
+				spinner: 'crescent',
+				content: 'Making a Prediction...'
+			});
+
+			loading.present();
+
+			setTimeout(() => {
+				loading.dismiss();
+			}, 4000);
+		}
 }

@@ -27,8 +27,8 @@
   Gallery</button>
   
   <p class="model-info">{{ modelStatus }}</p>
-  <button mat-raised-button color="primary" *ngIf="imgAvailable" (click)="predictImage()" class="upload-card__upload-button">UPLOAD</button>
-  <p align = "center"><img class="user-image" id="selectedImage" src ="{{myPhoto}}" alt="Select an image please"></p>
+  <button mat-raised-button color="primary" *ngIf="imgAvailable" (click)="predictImage()" class="upload-card__upload-button">CLASSIFY</button>
+  <p align = "center"><img *ngIf="imgSelectedOrCaptured" src="{{ myPhoto }}" class="user-image" id="selectedImage" alt="Select an image please"></p>
 </ion-content>
 <!-- <mat-card class="result-card">
   <mat-card-title><h3>Classification Results</h3></mat-card-title>
