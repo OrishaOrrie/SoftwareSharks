@@ -12,3 +12,4 @@ Application Source/ss-imagerec-webapp/node_modules/@schematics/angular/component
 *.ckpt
 /node_modules
 *.__styleext__
+Application Source/Backend/FirebaseAdmin/private_key/testproject-ee885-firebase-adminsdk-mqdgy-b964b7fd30.json
