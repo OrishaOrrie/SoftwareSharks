@@ -2,6 +2,7 @@
 # http://git-scm.com/docs/gitignore
 !*.jpeg
 !*.jpg
+!*.png
 *~
 *.sw[mnpcod]
 *.log
