@@ -20,6 +20,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 
+import {AngularFireModule} from 'angularfire2';
+import {AngularFireDatabaseModule, AngularFireDatabase, } from 'angularfire2/database';
+import {AngularFireAuthModule} from 'angularfire2/auth';
+import { MatCardModule, MatTableModule } from '@angular/material';
+import { CdkTableModule } from '@angular/cdk/table';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { environment } from './../environments/environment';
+import { AngularFireStorageModule } from 'angularfire2/storage';
 
 @NgModule({
   declarations: [
@@ -38,7 +46,15 @@ import { FormControl } from '@angular/forms';
    }),
     HttpModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
+    MatCardModule,
+    MatTableModule,
+    CdkTableModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -54,6 +70,7 @@ import { FormControl } from '@angular/forms';
     StatusBar,
     SplashScreen,
     Camera,
+    AngularFirestoreModule,
     Firebase,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
