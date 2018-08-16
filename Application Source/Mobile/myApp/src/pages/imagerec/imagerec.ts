@@ -183,108 +183,12 @@ export class ImagerecPage {
 			this.imgSelectedOrCaptured = true;
 			this.imgAvailable = true;
 		};
-/**
- * 
- * TOBY'S CODE STARTS HERE
- * 
- */
-		
-		  /**
-		   * This function updates the instruction <p> element to display contextual information.
-		   */
-		// updateInstruction() {
-		// 	if (this.imgAvailable === false) {
-		// 		this.instruction = 'Click either the File Select or Webcam Capture button';
-		// 	} else {
-		// 			if (this.uploadCapture === false) {
-		// 				this.instruction = 'Click Upload to upload the selected image';
-		// 			} else {
-		// 				this.instruction = 'Click Capture to take a screenshot and then click Upload to upload the captured image';
-		// 			}
-		// 	}
-		// };
-		
-		/**
-		 * This function formats the size value of the selected file from bytes to a readable string.
-		 * @param size  This is the size in bytes of the selected file from madeChange().
-		 * @returns     Returns the size in bytes, KB, or MB depending on the value of size.
-		 */
-		// formattedFileSize (size) {
-		// 	if (size < 1024) {
-		// 		return size + ' bytes';
-		// 	}
-		// 	if (size < 1024 * 1024) {
-		// 		return ( (size / 1024).toFixed(2) + 'KB' );
-		// 	}
-		// 	if (size > 1024 * 1024) {
-		// 		return ( (size / (1024 * 1024)).toFixed(2) + 'MB');
-		// 	}
-		// };
-		
-		  /**
-		   * This function is called when the user clicks the Upload button. It handles the process of uploading
-		   * either a selected file or a captured webcam image.
-		   */
-		// uploadImage() {
-		// 	console.log('Uploading...');
-		
-		// 	if (this.uploadCapture === false) {    // if file select
-		// 	  if (this.imageToUpload == null) {
-		// 		console.log('No image selected');
-		// 		this.updateInstruction();
-		// 	  } else {
-		// 		console.log('Uploading selected image file');
-		// 		console.log(this.imageToUpload);
-		// 		this.httpUploadImage();
-		// 	  }
-		// 	} else {  // else webcam capture
-		// 	  this.getCapturedImage();
-		// 	  if (this.imageToUpload == null) {
-		// 		this.updateInstruction();
-		// 		console.log('Failed to upload webcam capture');
-		// 	  } else {
-		// 		console.log('Uploading webcam capture');
-		// 		this.httpUploadImage();
-		// 	  }
-		// 	}
-		// };
-		
-		  /**
-		   * This function carries out the task of sending an Http request (the image) to the server and
-		   * handling the server response.
-		   */
-		// httpUploadImage() {
-		// 	this.showSpinner = true;
-		// 	const httpOptions = {
-		// 	  headers: new HttpHeaders({
-		// 		'Accept': 'application/json'
-		// 	  })
-		// 	};
-		
-		// 	const dest = 'http://localhost:8000/upload';
-		// 	const formData: FormData = new FormData();
-		// 	formData.append('file', this.imageToUpload, this.imageToUpload.name);
-		
-		// 	this.http.post(dest, formData, httpOptions)
-		// 	.subscribe(
-		// 	  resp => {
-		// 		const data: any = resp;
-		// 		this.results = [];
-		// 		data.forEach(element => {
-		// 		  this.results.push(new Result(element.id, element.name, element.value));
-		// 		});
-		// 		this.instruction = 'View results below';
-		// 		console.log('RESPONSE RECEIVED!');
-		// 		this.showSpinner = false;
-		// 	  }
-		// 	);
-		// };
 		
 		//ADD NEW THINGS HERE
 		async loadModel() {	
 			try {
-				this.model = await tf.loadModel('../../assets/tfjs/model.json');
-				console.log('Model Loaded!');
+				this.model = await tf.loadModel('https://storage.googleapis.com/testproject-ee885.appspot.com/mobilenet_model/model.json');
+				console.log('Model is Loaded!');
 				this.modelStatus = 'Model loaded YAS QUEEN';
 			} catch (err) {
 				// Handle error
@@ -298,7 +202,10 @@ export class ImagerecPage {
 		};
 
 		/**
-		 * predictImage() is called when 
+		 * predictImage() is called when the classify button is clicked.
+		 * Then the predict() function is called. Here stuff happens in tf.tidy.
+		 * Stuff includes reading the image into a Tensor, cropping, resizing, and predicting the thing.
+		 * Then, the predictions are mapped to the correct classes. Thanks
 		 */
 
 		predictImage() {
@@ -313,7 +220,7 @@ export class ImagerecPage {
 		  const predictedClass = tf.tidy(() => {
 				const raw = tf.fromPixels(this.imageToPredict, 3);
 				const cropped = this.cropImage(raw);
-				const resized = tf.image.resizeBilinear(cropped, [229, 229]);
+				const resized = tf.image.resizeBilinear(cropped, [224, 224]);
 		
 				const batchedImage = resized.expandDims(0);
 				const img = batchedImage.toFloat().div(tf.scalar(127)).sub(tf.scalar(1));
@@ -393,7 +300,7 @@ export class ImagerecPage {
 
 			setTimeout(() => {
 				loading.dismiss();
-			}, 4000);
+			}, 1000);
 		}
 		
 }
