@@ -72,11 +72,13 @@ export class ImageuploadComponent implements OnInit {
 
   public displayUpload: Boolean = false;
   public model: tf.Model;
+  public modelLoaded: Boolean = false;
   public predictions: any;
   public downloadedModel = false;
   public modelRef = null;
   public resultPreds = [];
   public displayedColumns = ['name', 'likeliness'];
+  public modelStatus = 'Loading Model...';
 
   /**
    * This constructor is only used to pass an instance of the HttpClient module.
@@ -412,15 +414,19 @@ export class ImageuploadComponent implements OnInit {
     // console.log('URL: ' + refURL);
 
     try {
-      this.model = await tf.loadModel('../../assets/tfjs/model.json');
-      // this.model = await tf.loadModel(refURL);
+      // this.model = await tf.loadModel('../../assets/tfjs/model.json');
+      this.model = await tf.loadModel('https://storage.googleapis.com/testproject-ee885.appspot.com/mobilenet_model/model.json');
+      // this.model = await tf.loadModel('https://storage.googleapis.com/testproject-ee885.appspot.com/tfjs/model.json');
+      this.modelStatus = 'Model Loaded Successfully!';
       console.log('Model Loaded!');
     } catch (err) {
       console.error('Error obtained: ' + err);
+      this.modelStatus = 'Error obtained: ' + err;
     }
   }
 
   predictImage() {
+    this.modelStatus = 'Predicting Image... This may take a while so strap in...';
     this.showSpinner = true;
     this.resultPreds = [];
     this.predict();
@@ -428,17 +434,21 @@ export class ImageuploadComponent implements OnInit {
   }
 
   async predict() {
-      console.log('Predicting: ' + this.image);
+    this.modelStatus = 'Beginning Predictionizing...';
 
       const predictedClass = tf.tidy(() => {
         const raw = tf.fromPixels(this.image, 3);
+        this.modelStatus = 'Converting Image to Tensor...';
         const cropped = this.cropImage(raw);
+        this.modelStatus = 'Resizing Image...';
         const resized = tf.image.resizeBilinear(cropped, [229, 229]);
 
+        this.modelStatus = 'Expanding Dimensions';
         const batchedImage = resized.expandDims(0);
+        this.modelStatus = 'Averaging and Applying Bias to Pixels';
         const img = batchedImage.toFloat().div(tf.scalar(127)).sub(tf.scalar(1));
+        this.modelStatus = 'Predicting now... This may take a while...';
         const predictions = (this.model.predict(img) as tf.Tensor);
-        console.log('Still predicting: ');
         return predictions;
       });
 
@@ -448,10 +458,12 @@ export class ImageuploadComponent implements OnInit {
       console.log('Predictions: ' + classId);
       this.mapPredictions(classId);
       const el = document.querySelector('.result-card');
-      el.scrollIntoView({behavior: 'instant'});
+      el.scrollIntoView({behavior: 'smooth'});
+      this.modelStatus = '"Predictions made! Check them out below! Or upload another one!" - DJ Khaled';
   }
 
   cropImage(img) {
+    this.modelStatus = 'Cropping Image...';
     const size = Math.min(img.shape[0], img.shape[1]);
     const centerHeight = img.shape[0] / 2;
     const beginHeight = centerHeight - (size / 2);
@@ -462,6 +474,7 @@ export class ImageuploadComponent implements OnInit {
 
   mapPredictions(classPreds) {
     // const classes = ('../../assets/classes/classes.json');
+    this.modelStatus = 'Mapping Predictions to the classes';
     const classesJson = require('../../assets/classes/classes.json');
     const numClasses = classPreds.length;
     this.resultPreds = [];

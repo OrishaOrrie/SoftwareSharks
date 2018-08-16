@@ -36,6 +36,7 @@
                   <!-- UPLOAD IMAGE <button mat-raised-button color="primary" *ngIf="imgAvailable" (click)="uploadImage()" class="upload-card__upload-button">UPLOAD</button> -->
                   <!-- PREDICT FROM MODEL --><button mat-raised-button color="primary" *ngIf="imgAvailable" (click)="predictImage()" class="upload-card__upload-button">UPLOAD</button>
                   <mat-spinner [diameter]="30" [style.display]="showSpinner ? 'block':'none'"></mat-spinner>
+                  <h4>{{ modelStatus }}</h4>
                 </div>
             </mat-grid-tile>
             
