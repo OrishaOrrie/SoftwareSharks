@@ -276,8 +276,8 @@ export class ImagerecPage {
 		//ADD NEW THINGS HERE
 		async loadModel() {	
 			try {
-				this.model = await tf.loadModel('../../assets/tfjs/model.json');
-				console.log('Model Loaded!');
+				this.model = await tf.loadModel('https://console.cloud.google.com/storage/browser/testproject-ee885.appspot.com/mobilenet-model');
+				console.log('Model is Loaded!');
 				this.modelStatus = 'Model loaded YAS QUEEN';
 			} catch (err) {
 				// Handle error
