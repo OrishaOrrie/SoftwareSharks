@@ -4,6 +4,8 @@ import { Http } from '@angular/http';
 import { map } from 'rxjs/operators'
 import { HttpClient, HttpHandler, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { ModalController } from 'ionic-angular';
+import { AboutPage } from '../about/about';
 @Component({
   selector: 'page-contact',
   templateUrl: 'contact.html'
@@ -21,6 +23,12 @@ export class ContactPage {
     alert.present();
 
 }
+openModal()
+  {
+    var data = { message : 'hello world' };
+    var homePage = this.modalCtrl.create(AboutPage,data);
+    homePage.present();
+  }
 
 	name: string;
 	/**
@@ -46,7 +54,7 @@ export class ContactPage {
         'Access-Control-Allow-Origin': '*'
       })
     };
-  constructor(public navCtrl: NavController, private http: HttpClient, private alertController: AlertController, private fb: FormBuilder) {
+  constructor(public navCtrl: NavController, public modalCtrl : ModalController, private http: HttpClient, private alertController: AlertController, private fb: FormBuilder) {
   
       this.myGroup = this.fb.group({  
           'name': ['', Validators.compose([Validators.required, Validators.minLength(1)])],

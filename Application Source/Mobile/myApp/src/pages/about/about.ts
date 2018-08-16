@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { ViewController } from 'ionic-angular';
 //import { Camera } from ‘ionic-native’;
 
 
@@ -9,8 +10,10 @@ import { NavController } from 'ionic-angular';
 })
 export class AboutPage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public viewCtrl : ViewController) {
 
   }
-
+  public closeModal(){
+    this.viewCtrl.dismiss();
+  }
 }

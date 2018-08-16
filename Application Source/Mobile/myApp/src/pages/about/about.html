@@ -1,12 +1,25 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
+      <ion-buttons end>
+          <button ion-button (click)="closeModal()">Close</button>
+        </ion-buttons>
     <ion-title>About Us</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+<h1 ion-text color="secondary" style="text-align: center;">Ninshiki</h1>
+<p style=" color: black">Ninshiki is a custom image recognition software designed specifically for warehouses. It uses artificial intelligence and machine learning to predict the class of an object.</p>
+<p style=" color: black">The app was designed for the Bramhope Group and The University of Pretoria.</p>
+<h6 ion-text style="text-align: center" color="tertiary">Developed by:</h6>
+<ion-img id="softw" src="assets/imgs/soft.PNG"></ion-img>
+<p style="text-align: center; color: black">
+  Orisha Orrie <br/> 
+  Tobias Bester <br/> 
+  Mark Coetzer <br/> 
+  Mukundi Matodzi <br/> 
+  Jonathan Lew <br/> 
+</p>
+<ion-img id="images" src="assets/imgs/uni.PNG"></ion-img>
 
 </ion-content>

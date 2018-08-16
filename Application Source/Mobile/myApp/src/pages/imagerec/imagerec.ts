@@ -21,12 +21,13 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import * as tf from '@tensorflow/tfjs';
+import { ModalController } from 'ionic-angular';
 // import { AngularFireStorage } from '../../../node_modules/angularfire2/storage';
 import { Result } from './result';
 // import { Observable } from '../../../node_modules/rxjs/internal/Observable';
 // import { MatTableDataSource, MatSort } from '@angular/material';
 // import { DataSource } from '@angular/cdk/table';
-
+import { AboutPage } from '../about/about';
 /**
  * Generated class for the ImagerecPage page.
  *
@@ -77,9 +78,15 @@ export class ImagerecPage {
 		public myPhoto: string;
 		public imageToPredict: HTMLImageElement;
 		
-		constructor( public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController,
-			private camera: Camera, public loadingController: LoadingController /*private http: HttpClient, private storage: AngularFireStorage */) {
+		constructor( public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, private alertCtrl: AlertController,
+			private camera: Camera, public loadingController: LoadingController ) {
 		}
+		openModal()
+  {
+    var data = { message : 'hello world' };
+    var homePage = this.modalCtrl.create(AboutPage,data);
+    homePage.present();
+  }
 
 		ngOnInit() {
 			this.presentLoadingModelSpinner();
@@ -373,7 +380,7 @@ export class ImagerecPage {
 
 			setTimeout(() => {
 				loading.dismiss();
-			}, 15000);
+			}, 1000);
 		}
 
 		presentPredictingSpinner() {
@@ -388,4 +395,5 @@ export class ImagerecPage {
 				loading.dismiss();
 			}, 4000);
 		}
+		
 }
