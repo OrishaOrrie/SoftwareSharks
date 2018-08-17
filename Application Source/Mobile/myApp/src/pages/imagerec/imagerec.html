@@ -28,6 +28,7 @@
   Gallery</button>
   
   <p align = "center"><img *ngIf="imgSelectedOrCaptured" src="{{ myPhoto }}" class="user-image" id="selectedImage" alt="Select an image please"></p>
+<<<<<<< HEAD
   <button align ="center" color= "secondary" ion-button icon-start round *ngIf="imgAvailable" (click)="predictImage(); " class="upload-card__upload-button">
       <ion-icon name="md-alert"  ></ion-icon>
     Predict</button>
@@ -36,4 +37,11 @@
   <p class="model-info">{{ modelStatus }}</p>
   
   
+=======
+
+  <h4 *ngIf="resultsReady">RESULTS</h4>
+  <ion-list>
+    <p ion-item *ngFor="let result of resultPreds">{{ result.name }} + {{ result.likeliness }}</p>
+  </ion-list>
+>>>>>>> a084146a44a0f1e3a62a167c04ff59a42194b11d
 </ion-content>

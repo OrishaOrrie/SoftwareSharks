@@ -1,6 +1,7 @@
+import { ModelLoaderProvider } from './../providers/model-loader/model-loader';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { IonicApp, IonicModule, IonicErrorHandler, List } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 import { AboutPage } from '../pages/about/about';
@@ -72,6 +73,7 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
     Camera,
     AngularFirestoreModule,
     Firebase,
+    ModelLoaderProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
