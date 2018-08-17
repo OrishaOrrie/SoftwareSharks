@@ -30,4 +30,9 @@
   <p class="model-info">{{ modelStatus }}</p>
   <button mat-raised-button color="primary" *ngIf="imgAvailable" (click)="predictImage()" class="upload-card__upload-button">PREDICT</button>
   <p align = "center"><img *ngIf="imgSelectedOrCaptured" src="{{ myPhoto }}" class="user-image" id="selectedImage" alt="Select an image please"></p>
+
+  <h4 *ngIf="resultsReady">RESULTS</h4>
+  <ion-list>
+    <p ion-item *ngFor="let result of resultPreds">{{ result.name }} + {{ result.likeliness }}</p>
+  </ion-list>
 </ion-content>

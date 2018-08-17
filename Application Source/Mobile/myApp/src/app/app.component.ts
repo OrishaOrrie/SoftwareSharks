@@ -10,6 +10,7 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { UtilitiesPage } from '../pages/utilities/utilities';
 import { ImagerecPage } from '../pages/imagerec/imagerec';
+import { ModelLoaderProvider } from '../providers/model-loader/model-loader';
 
 
 export interface PageInterface {
@@ -26,9 +27,10 @@ export class MyApp {
 @ViewChild(Nav) nav: Nav;
   rootPage:any = TabsPage;
   pages: Array<{ title: string, component: any }>;
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, modelLoader: ModelLoaderProvider) {
     platform.ready().then(() => {
       statusBar.styleDefault();
+      modelLoader.loadModel();
     });
     this.pages = [
       { title: 'Custom image recognition', component: ImagerecPage },

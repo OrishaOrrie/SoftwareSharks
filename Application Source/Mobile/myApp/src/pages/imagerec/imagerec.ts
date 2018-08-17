@@ -21,7 +21,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import * as tf from '@tensorflow/tfjs';
-import { ModalController } from 'ionic-angular';
+import { ModalController, List } from 'ionic-angular';
+import { ModelLoaderProvider } from './../../providers/model-loader/model-loader';
 // import { AngularFireStorage } from '../../../node_modules/angularfire2/storage';
 import { Result } from './result';
 // import { Observable } from '../../../node_modules/rxjs/internal/Observable';
@@ -75,11 +76,12 @@ export class ImagerecPage {
 		public model: tf.Model;
 		public modelStatus = 'The model is still loading please be patient sheesh';
 		public results: Result[] = [];
+		public resultsReady = false;
 		public myPhoto: string;
 		public imageToPredict: HTMLImageElement;
 		
 		constructor( public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, private alertCtrl: AlertController,
-			private camera: Camera, public loadingController: LoadingController ) {
+			private camera: Camera, public loadingController: LoadingController, public modelLoader: ModelLoaderProvider ) {
 		}
 		openModal()
   {
@@ -89,8 +91,12 @@ export class ImagerecPage {
   }
 
 		ngOnInit() {
-			this.presentLoadingModelSpinner();
-			this.loadModel();
+			// this.presentLoadingModelSpinner();
+			this.model = this.modelLoader.getModel();
+			if (this.model) {
+				console.log('Model is loaded maybe');
+				this.modelStatus = 'Model has completed loading!';
+			}
 		}
 		
 		ionViewDidLoad() {
@@ -144,8 +150,8 @@ export class ImagerecPage {
  * 
  */
 
-  	selectPic()
-  	{
+  		selectPic()
+  		{
 			const options: CameraOptions = {
 				quality: 100,
 				destinationType: this.camera.DestinationType.DATA_URL,
@@ -210,6 +216,7 @@ export class ImagerecPage {
 
 		predictImage() {
 			this.resultPreds = [];
+			this.resultsReady = false;
 			this.predict();
 		};
 
@@ -259,6 +266,7 @@ export class ImagerecPage {
 			  this.resultPreds[i].likeliness = (classPreds[i] * 100).toFixed(4);
 			}
 			this.sortPreds();
+			this.resultsReady = true;
 			console.log(this.resultPreds[0].name);
 			this.modelStatus = this.resultPreds[0].name + ' ' + this.resultPreds[0].likeliness + '%';
 		};
