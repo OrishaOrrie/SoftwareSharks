@@ -35,7 +35,7 @@
     "cordova-browser": "^5.0.4",
     "cordova-plugin-camera": "^4.0.3",
     "cordova-plugin-device": "^2.0.2",
-    "cordova-plugin-firebase": "^1.0.5",
+    "cordova-plugin-firebase": "^1.0.0",
     "cordova-plugin-ionic-keyboard": "^2.0.5",
     "cordova-plugin-ionic-webview": "^1.1.19",
     "cordova-plugin-splashscreen": "^5.0.2",
@@ -52,8 +52,7 @@
     "rxjs-compat": "^6.2.2",
     "sw-toolbox": "3.6.0",
     "yarn": "^1.9.4",
-    "zone.js": "0.8.26",
-    "cordova-plugin-firebase": "^1.0.0"
+    "zone.js": "0.8.26"
   },
   "devDependencies": {
     "@angular/forms": "^5.2.5",
