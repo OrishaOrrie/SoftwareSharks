@@ -17,7 +17,7 @@
  *  it to the system server. Displays results of image classification.
  */
 // import { HttpClient,HttpClientModule, HttpHeaders } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import * as tf from '@tensorflow/tfjs';
@@ -39,7 +39,7 @@ declare var require: any
 @IonicPage()
 @Component({
   selector: 'page-imagerec',
-  templateUrl: 'imagerec.html',
+  templateUrl: 'imagerec.html'
 })
 
 /**
@@ -47,9 +47,9 @@ declare var require: any
  * ORISHA'S CODE IS HERE
  * 
  */
-
+//content: new ViewChild('content');
 export class ImagerecPage {
-
+	@ViewChild('content') content:any;
 		public showSpinner = false;
 			
 		/**
@@ -74,7 +74,7 @@ export class ImagerecPage {
 		public resultPreds = [];
 		public displayedColumns = ['name', 'likeliness'];
 		public model: tf.Model;
-		public modelStatus = 'The model is still loading please be patient sheesh';
+		public modelStatus = '';
 		public results: Result[] = [];
 		public resultsReady = false;
 		public myPhoto: string;
@@ -83,6 +83,7 @@ export class ImagerecPage {
 		constructor( public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, private alertCtrl: AlertController,
 			private camera: Camera, public loadingController: LoadingController, public modelLoader: ModelLoaderProvider ) {
 		}
+		
 		openModal()
   {
     var data = { message : 'hello world' };
@@ -101,7 +102,9 @@ export class ImagerecPage {
 		
 		ionViewDidLoad() {
 			console.log('ionViewDidLoad ImagerecPage');
+			//this.content.scrollToBottom(300);
 		};
+		
 	/**
 	 * 
 	 * IONIC FUNTION TO USE CAMERA
@@ -123,10 +126,7 @@ export class ImagerecPage {
 				// imageData is either a base64 encoded string or a file URI
 				// If it's base64 (DATA_URL):
 				this.myPhoto = 'data:image/jpeg;base64,' + imageData;
-				// console.log('Image data: ' + imageData);
 				let image = <HTMLImageElement>document.getElementById('selectedImage');
-				// let image = new Image();
-				// image.src = this.myPhoto;
 				this.imageToPredict = image;
 				console.log('Image to predict: ' + this.imageToPredict);
 			}, (err) => {
@@ -144,6 +144,16 @@ export class ImagerecPage {
 			this.imgAvailable = true;
 		};
 	  
+		presentAlert =function(mes:string) {
+			let alert = this.alertController.create({
+			  title: 'The object belongs to the following class:',
+			  subTitle: this.modelStatus,
+			  buttons: ['Dismiss']
+			})
+		
+			alert.present();
+		
+		  }
 /**
  * 
  * IONIC FUNCTION TO SELECT FROM GALLERY
@@ -190,12 +200,10 @@ export class ImagerecPage {
 			this.imgAvailable = true;
 		};
 		
-		//ADD NEW THINGS HERE
 		async loadModel() {	
 			try {
 				this.model = await tf.loadModel('https://storage.googleapis.com/testproject-ee885.appspot.com/mobilenet_model/model.json');
 				console.log('Model is Loaded!');
-				this.modelStatus = 'Model loaded YAS QUEEN';
 			} catch (err) {
 				// Handle error
 				let prompt = this.alertCtrl.create({
@@ -215,20 +223,23 @@ export class ImagerecPage {
 		 */
 
 		predictImage() {
+			this.res();
 			this.resultPreds = [];
 			this.resultsReady = false;
 			this.predict();
+			this.content.scrollToBottom();
 		};
 
 		async predict() {
 		  console.log('Predicting');
+		 // this.presentAlert('Hello', this.modelStatus);
 		  // this.presentPredictingSpinner();
 		
 		  const predictedClass = tf.tidy(() => {
 				const raw = tf.fromPixels(this.imageToPredict, 3);
 				const cropped = this.cropImage(raw);
 				const resized = tf.image.resizeBilinear(cropped, [224, 224]);
-		
+				const currentPred = false;
 				const batchedImage = resized.expandDims(0);
 				const img = batchedImage.toFloat().div(tf.scalar(127)).sub(tf.scalar(1));
 				const predictions = (this.model.predict(img) as tf.Tensor);
@@ -257,7 +268,6 @@ export class ImagerecPage {
 			const classesJson = require('../../assets/classes/classes.json');
 			const numClasses = classPreds.length;
 			this.resultPreds = [];
-		
 			for (let i = 0; i < numClasses; i++) {
 			  this.resultPreds[i] = {};
 			  this.resultPreds[i].id = classesJson.classes[i].id;
@@ -270,7 +280,13 @@ export class ImagerecPage {
 			console.log(this.resultPreds[0].name);
 			this.modelStatus = this.resultPreds[0].name + ' ' + this.resultPreds[0].likeliness + '%';
 		};
-		
+		res()
+		{
+			this.presentPredictingSpinner();
+			//alert('sdfrrer');
+			//this.presentAlert(this.modelStatus);
+			
+		};
 		sortPreds() {
 			this.resultPreds.sort(function(a, b) {
 			  return b.likeliness - a.likeliness;
@@ -282,6 +298,7 @@ export class ImagerecPage {
 		   */
 		async reloadPage() {
 			console.log(await tf.io.listModels());
+			
 			// window.location.reload(true);
 		};
 
@@ -295,7 +312,7 @@ export class ImagerecPage {
 
 			setTimeout(() => {
 				loading.dismiss();
-			}, 1000);
+			}, 2000);
 		}
 
 		presentPredictingSpinner() {
@@ -303,12 +320,12 @@ export class ImagerecPage {
 				spinner: 'crescent',
 				content: 'Making a Prediction...'
 			});
-
+			
 			loading.present();
 
 			setTimeout(() => {
 				loading.dismiss();
-			}, 1000);
+			}, 2000);
 		}
 		
 }
