@@ -21,7 +21,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import * as tf from '@tensorflow/tfjs';
-import { ModalController, List } from 'ionic-angular';
+import { ModalController, List, Item } from 'ionic-angular';
 import { ModelLoaderProvider } from './../../providers/model-loader/model-loader';
 // import { AngularFireStorage } from '../../../node_modules/angularfire2/storage';
 import { Result } from './result';

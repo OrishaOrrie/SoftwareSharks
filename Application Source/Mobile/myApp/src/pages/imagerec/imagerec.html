@@ -33,6 +33,6 @@
 
   <h4 *ngIf="resultsReady">RESULTS</h4>
   <ion-list>
-    <p ion-item *ngFor="let result of resultPreds">{{ result.name }} + {{ result.likeliness }}</p>
+    <ion-item style="color: black;" *ngFor="let result of resultPreds">{{ result.name }} + {{ result.likeliness }}</ion-item>
   </ion-list>
 </ion-content>
