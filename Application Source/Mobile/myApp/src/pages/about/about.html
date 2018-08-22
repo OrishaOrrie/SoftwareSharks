@@ -8,18 +8,28 @@
 </ion-header>
 
 <ion-content padding>
-<h1 ion-text color="secondary" style="text-align: center;">Ninshiki</h1>
-<p style=" color: black">Ninshiki is a custom image recognition software designed specifically for warehouses. It uses artificial intelligence and machine learning to predict the class of an object.</p>
-<p style=" color: black">The app was designed for the Bramhope Group and The University of Pretoria.</p>
-<h6 ion-text style="text-align: center" color="tertiary">Developed by:</h6>
-<ion-img id="softw" src="assets/imgs/soft.png"></ion-img>
-<p style="text-align: center; color: black">
-  Orisha Orrie <br/> 
-  Tobias Bester <br/> 
-  Mark Coetzer <br/> 
-  Mukundi Matodzi <br/> 
-  Jonathan Lew <br/> 
-</p>
-<ion-img id="images" src="assets/imgs/uni.png"></ion-img>
-
+  <!-- <h1 ion-text color="secondary" style="text-align: center;">Ninshiki</h1> -->
+  <ion-img src="assets/imgs/white_logo.png" id="about__nishiki-logo" alt="ninshiki-logo"></ion-img>
+  <p style="margin: 20px 20px; color: black">Ninshiki brings the power of AI and Computer Vision to your mobile device. Take an image
+  of an object and let our custom-defined model predict what the object is!</p>
+  <!-- <h6 ion-text style="text-align: center" color="tertiary">Developed by:</h6> -->
+  <div class="developed-by">
+    <ion-img id="softw" src="assets/imgs/soft.png"></ion-img>
+  <ion-img id="images" src="assets/imgs/uni.png"></ion-img>
+  </div>
+  <div class="about__members">
+    <p class="about__single-member">Orisha Orrie</p>
+    <p class="about__single-member">Mark Coetzer</p>
+    <p class="about__single-member">Mukundi Matodzi</p>
+    <p class="about__single-member">Jonathan Lew</p>
+    <p class="about__single-member">Tobias Bester</p>
+  </div>
+  <p style="margin: 20px 20px; color: black">We are Software Sharks, a team of Computer Science students from the University of Pretoria, South Africa</p>
+  <p style="margin: 20px 20px; color: black">This app is part of our Capstone Project and is meant to be open-source. The app is 
+  still in Beta testing, so any feedback and bug reports would be hugely appreciated, and might help us get better marks :)</p>
+  <a style="display: block; margin: auto;" round ion-button icon-start color="secondary" (click)="openBrowserToGithubIssues()">
+    <ion-icon name="logo-github"></ion-icon>
+    Report an Issue</a><br/>
+  <!-- <a style="display: block; margin: auto;" round ion-button color="secondary">
+    Send Feedback</a> -->
 </ion-content>
