@@ -12,7 +12,7 @@ import * as tf from '@tensorflow/tfjs';
 @Injectable()
 export class ModelLoaderProvider {
 
-  private model: any;
+  private model: any = null;
   public resultPreds = [];
 
   constructor(public http: HttpClient, private alertCtrl: AlertController) {
@@ -22,7 +22,7 @@ export class ModelLoaderProvider {
   async loadModel() {	
     try {
       this.model = await tf.loadModel('https://storage.googleapis.com/testproject-ee885.appspot.com/mobilenet_model/model.json');
-      console.log('Model is Loaded!');
+      console.log('Provider: Model is Loaded!');
       // alert('loaded');
       //this.modelStatus = 'Model loaded YAS QUEEN';
     } catch (err) {
@@ -36,8 +36,25 @@ export class ModelLoaderProvider {
     }
   };
 
+  modelIsReady() {
+    if (this.model == null) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   getModel() {
-    return this.model;
+    // if (this.model) {
+    //   return this.model;
+    // } else {
+    //   return false;
+    // }
+    if (this.modelIsReady()) {
+      return this.model;
+    } else {
+      return null;
+    }
   };
 
   getResults()

@@ -67,10 +67,8 @@ export class ImagerecPage {
 		 * Determines if an image is available to be uploaded
 		 */
 		public imgAvailable = false;
-		
 		public imgSelectedOrCaptured = false;
 		public predictions: any;
-		public downloadedModel = false;
 		public modelRef = null;
 		public resultPreds = [];
 		public displayedColumns = ['name', 'likeliness'];
@@ -80,6 +78,8 @@ export class ImagerecPage {
 		public resultsReady = false;
 		public myPhoto: string;
 		public imageToPredict: HTMLImageElement;
+		public predictButtonText = 'Loading...';
+		public notReadyToPredict = true;
 		
 		constructor( public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, private alertCtrl: AlertController,
 			private camera: Camera, public loadingController: LoadingController, public modelLoader: ModelLoaderProvider ) {
@@ -95,11 +95,22 @@ export class ImagerecPage {
 	ngOnInit() 
 	{
 		// this.presentLoadingModelSpinner();
-		this.model = this.modelLoader.getModel();
-		if (this.model) {
-			console.log('Model is loaded maybe');
-			this.modelStatus = 'Model has completed loading!';
-		}
+		// while the getModel
+		//while (!this.modelLoader.getModel()) {
+		//	this.predictButtonText = 'Loading...';
+		//}
+		// this.predictButtonText = 'Predict';
+
+		// Carries out the code below every second
+		let modelLoaded = setInterval(() => {
+			console.log('Checking if model is ready');
+			if (this.modelLoader.modelIsReady()) {
+				this.model = this.modelLoader.getModel();
+				this.predictButtonText = 'Predict';
+				this.notReadyToPredict = false;
+				clearInterval(modelLoaded);
+			}
+		},1000);
 	}
 	
 	resultsModal()
@@ -143,6 +154,8 @@ export class ImagerecPage {
 				this.myPhoto = 'data:image/jpeg;base64,' + imageData;
 				let image = <HTMLImageElement>document.getElementById('selectedImage');
 				this.imageToPredict = image;
+				this.imgSelectedOrCaptured = true;
+				this.imgAvailable = true;
 				console.log('Image to predict: ' + this.imageToPredict);
 			}, (err) => {
 				// Handle error
@@ -155,8 +168,6 @@ export class ImagerecPage {
 				});
 				prompt.present();
 			});
-			this.imgSelectedOrCaptured = true;
-			this.imgAvailable = true;
 		};
 	  
 /**
@@ -184,11 +195,10 @@ export class ImagerecPage {
 				this.myPhoto = 'data:image/jpeg;base64,' + imageData;
 				console.log('Image data: ' + imageData);
 				let image = <HTMLImageElement>document.getElementById('selectedImage');
-				//this.myPhoto = 'data:image/jpeg;base64,' + imageData;
-				// let image = new Image();
-				// image.src = this.myPhoto;
 				this.imageToPredict = image;
 				console.log('Image to predict: ' + this.imageToPredict);
+				this.imgSelectedOrCaptured = true;
+				this.imgAvailable = true;
 				
 			}, (err) => {
 				// Handle error
@@ -201,8 +211,7 @@ export class ImagerecPage {
 				});
 				prompt.present();
 			});
-			this.imgSelectedOrCaptured = true;
-			this.imgAvailable = true;
+			
 		};
 		
 		async loadModel() {	
@@ -287,6 +296,7 @@ export class ImagerecPage {
 			this.presentResults();
 			//this.modelStatus = this.resultPreds[0].name + ' ' + this.resultPreds[0].likeliness + '%';
 		};
+
 		res()
 		{
 			this.presentPredictingSpinner();
@@ -294,6 +304,7 @@ export class ImagerecPage {
 			//this.presentAlert(this.modelStatus);
 			
 		};
+
 		sortPreds() {
 			this.resultPreds.sort(function(a, b) {
 			  return b.likeliness - a.likeliness;
@@ -303,7 +314,7 @@ export class ImagerecPage {
 		presentLoadingModelSpinner() {
 			let loading = this.loadingController.create({
 				spinner: 'crescent',
-				content: 'Loading Model...'
+				content: 'Loading...'
 			});
 
 			loading.present();

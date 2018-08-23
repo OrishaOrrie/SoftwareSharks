@@ -26,12 +26,16 @@ export interface PageInterface {
 export class MyApp {
 @ViewChild(Nav) nav: Nav;
   rootPage:any = TabsPage;
+  isLoaded = false;
   pages: Array<{ title: string, component: any }>;
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, modelLoader: ModelLoaderProvider) {
     platform.ready().then(() => {
       statusBar.styleDefault();
+
+      console.log('App: Calling provider function - loadModel');
       modelLoader.loadModel();
     });
+  
     this.pages = [
       { title: 'Custom image recognition', component: ImagerecPage },
       { title: 'Need Help?', component: ContactPage },

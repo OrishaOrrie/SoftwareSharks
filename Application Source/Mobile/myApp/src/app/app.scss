@@ -26,3 +26,13 @@ ion-content {
 .toolbar-title.toolbar-title-wp { color: map-get($colors, custom); }
 
 title{ color: red; font: 12px tahoma;} 
+
+.overlay {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.7);
+	z-index: 20;
+	top: 0;
+	left: 0;
+}

@@ -17,6 +17,7 @@
 
 </ion-header>
 
+<!-- <div class="overlay" padding [hidden]="isLoaded"></div> -->
 
 <ion-content #content padding>
 <h1 class = "first" color ="primary" ></h1>
@@ -36,7 +37,8 @@
   <p align = "center"><img *ngIf="imgSelectedOrCaptured" src="{{ myPhoto }}" class="user-image" id="selectedImage" alt="Select an image please">
     <img *ngIf="!imgSelectedOrCaptured" src="../../assets/imgs/camera-holder.png" class="user-image" id="selectedImage">
   </p>
-  <button align ="center" color= "tertiary" ion-button icon-start round *ngIf="imgAvailable" (click)="predictImage(); " class="upload-card__upload-button">
+  <button align ="center" color= "tertiary" ion-button icon-start round  *ngIf="imgAvailable" 
+    (click)="predictImage(); " [disabled]="notReadyToPredict" class="upload-card__upload-button">
       <ion-icon name="md-alert"  ></ion-icon>
-    Predict</button>
+    {{ predictButtonText }}</button>
 </ion-content>
