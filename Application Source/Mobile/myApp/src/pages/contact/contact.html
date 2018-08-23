@@ -3,7 +3,7 @@
         <ion-title>Contact Us</ion-title>
         <ion-buttons end>
             <button ion-button icon-only (click) ="openModal()"  >
-             <ion-icon name="help-circle"></ion-icon>
+             <ion-icon name="help-circle" color= "dark"></ion-icon>
            </button>
           </ion-buttons>
       </ion-navbar>
@@ -30,7 +30,7 @@
         <ion-checkbox color="secondary" checked="true" [(ngModel)]="sendLocation"></ion-checkbox>
       </ion-item>
  
-    <button ion-button full round [disabled]="!myGroup.valid" (click)="onSubmit()">Send Message</button>
+    <button ion-button full  color= "tertiary" [disabled]="!myGroup.valid" (click)="onSubmit()">Send Message</button>
     <ion-item *ngIf="submitted">
       <h1 class="status-heading">Email Sent!</h1>
     </ion-item>

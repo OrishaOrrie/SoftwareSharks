@@ -11,7 +11,7 @@
     <ion-title>Item amount calculator</ion-title>
     <ion-buttons end>
         <button ion-button icon-only (click) ="openModal()"  >
-         <ion-icon name="help-circle"></ion-icon>
+         <ion-icon name="help-circle" color= "dark"></ion-icon>
        </button>
       </ion-buttons>
    <!-- <ion-buttons end> <button (click)="openModal()"> Modal </button> </ion-buttons>  -->
@@ -34,5 +34,5 @@
     <ion-label class="bob" color="secondary"stacked>Weight of Filled Bucket</ion-label>
     <ion-input type="number" placeholder="Filled bucket" [(ngModel)]="filled_bucket"></ion-input>
   </ion-item>
-<button ion-button full round (click) ="hello(single_item, filled_bucket,empty_bucket)">Calculate</button>
+<button ion-button color ="tertiary" full round (click) ="hello(single_item, filled_bucket,empty_bucket)">Calculate</button>
 </ion-content>
