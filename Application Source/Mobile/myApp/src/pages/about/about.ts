@@ -16,4 +16,9 @@ export class AboutPage {
   public closeModal(){
     this.viewCtrl.dismiss();
   }
+
+  openBrowserToGithubIssues() {
+    window.open('https://github.com/OrishaOrrie/SoftwareSharks/issues/new/choose', '_system', 'location=yes');
+    return false;
+  }
 }

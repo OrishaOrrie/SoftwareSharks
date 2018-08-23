@@ -32,7 +32,10 @@
    <button align ="center" color= "tertiary" ion-button icon-start round (click) = "selectPic()" ><ion-icon name="md-images"  ></ion-icon>
     Gallery</button>
  </p> 
-  <p align = "center"><img *ngIf="imgSelectedOrCaptured" src="{{ myPhoto }}" class="user-image" id="selectedImage" alt="Select an image please"></p>
+
+  <p align = "center"><img *ngIf="imgSelectedOrCaptured" src="{{ myPhoto }}" class="user-image" id="selectedImage" alt="Select an image please">
+    <img *ngIf="!imgSelectedOrCaptured" src="../../assets/imgs/camera-holder.png" class="user-image" id="selectedImage">
+  </p>
   <button align ="center" color= "tertiary" ion-button icon-start round *ngIf="imgAvailable" (click)="predictImage(); " class="upload-card__upload-button">
       <ion-icon name="md-alert"  ></ion-icon>
     Predict</button>

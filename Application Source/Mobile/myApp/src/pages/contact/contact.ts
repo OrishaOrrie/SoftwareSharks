@@ -1,3 +1,4 @@
+import { Geolocation } from '@ionic-native/geolocation';
 import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { Http } from '@angular/http';
@@ -6,12 +7,12 @@ import { HttpClient, HttpHandler, HttpErrorResponse, HttpHeaders, HttpResponse }
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { ModalController } from 'ionic-angular';
 import { AboutPage } from '../about/about';
+
 @Component({
   selector: 'page-contact',
   templateUrl: 'contact.html'
 })
 export class ContactPage {
-
 
   presentAlert =function() {
     let alert = this.alertController.create({
@@ -23,6 +24,7 @@ export class ContactPage {
     alert.present();
 
   }
+
   openModal()
     {
       var data = { message : 'hello world' };
@@ -41,20 +43,27 @@ export class ContactPage {
      */
     email = new FormControl('', [Validators.required, Validators.email] );
 
+    sendLocation = true;
+    positionLat = 0;
+    positionLong = 0;
+
     /**
      * FormGroup used as a model for form input
      */
     myGroup = new FormGroup({
       name: new FormControl(),
       email: new FormControl(),
-      message: new FormControl() });
+      message: new FormControl()
+    });
 
-      httpOptions = {
-        headers: new HttpHeaders({
-          'Access-Control-Allow-Origin': '*'
-        })
-      };
-    constructor(public navCtrl: NavController, public modalCtrl : ModalController, private http: HttpClient, private alertController: AlertController, private fb: FormBuilder) {
+    httpOptions = {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Origin': '*'
+      })
+    };
+
+    constructor(public navCtrl: NavController, public modalCtrl : ModalController, private http: HttpClient, 
+      private alertController: AlertController, private fb: FormBuilder, private geolocation: Geolocation) {
     
         this.myGroup = this.fb.group({  
             'name': ['', Validators.compose([Validators.required, Validators.minLength(1)])],
@@ -62,7 +71,9 @@ export class ContactPage {
             'message': ['', Validators.compose([Validators.required, Validators.minLength(1)])]
         });
 
+        this.getGeolocation();
     }
+
     getErrorMessage() {
       // console.log('Errrorrrrr');
       return this.email.hasError('required') ? 'You must enter a value' :
@@ -80,20 +91,57 @@ export class ContactPage {
         headers: new HttpHeaders({
           'Access-Control-Allow-Origin': '*'
         })
-      
       }
       this.myGroup.reset();
-      
-      console.log('Name: ' + contactName + ' Email: ' + contactEmail + ' Msg: ' + contactMessage);
 
+      if (this.shouldLocationBeSent() == true) {
+        this.getGeolocation();
+        let googleAddress: any;
+        this.getGoogleAddress(this.positionLat, this.positionLong)
+          .then(data => {
+            googleAddress = data.results[0].formatted_address;
+            this.postMessage(contactName, contactEmail, contactMessage, googleAddress);
+          })
+          .catch(error => console.error(error));    
+      } else {
+        this.postMessage(contactName, contactEmail, contactMessage, 'Undisclosed location');
+      }
+
+    }
+
+    postMessage(name, email, message, address) {
+      console.log('Name: ' + name + ' Email: ' + email + ' Msg: ' + message + ' Address: ' + address);
+      let messageToSend = message + '\nSent from:  ' + address;
       this.http.post('https://us-central1-testproject-ee885.cloudfunctions.net/app/sendmail',
-      {'subject': contactName, 'text': contactMessage, 'email': contactEmail}
+      {'subject': name, 'text': messageToSend, 'email': email}
       ).subscribe(data1 => {
         console.log(data1);
         if (data1 == 'sent') {
           this.submitted = true;
-    
         }
       });
     }
+
+    shouldLocationBeSent() {
+      return this.sendLocation;
+    }
+
+    getGeolocation() {
+      this.geolocation.getCurrentPosition().then((response) => {
+        this.positionLat = response.coords.latitude;
+        this.positionLong = response.coords.longitude;
+      }).catch((error) => {
+        console.log("Error getting geolocation data: " + error);
+      });
+    }
+
+    getGoogleAddress(lat, lng) {
+      const latlng = lat + ',' + lng;
+      return fetch('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + latlng + '&key=AIzaSyD1GI0J6QPOYxqxBMG4Z2oIr-ctibYoRiI')
+      .then(
+        response => {
+          return response.json();
+        })
+    }
+
 }
