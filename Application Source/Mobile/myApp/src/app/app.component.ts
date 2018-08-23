@@ -38,9 +38,11 @@ export class MyApp {
       { title: 'About Us', component: AboutPage }
     ];
   }
- openPage(page) {
+
+  openPage(page) {
     this.nav.setRoot(page.component);
   }
+  
   isActive(page)
   {
 

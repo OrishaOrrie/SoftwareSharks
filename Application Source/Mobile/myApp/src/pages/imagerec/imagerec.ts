@@ -299,15 +299,6 @@ export class ImagerecPage {
 			  return b.likeliness - a.likeliness;
 			});
 		};
-		
-		  /**
-		   * This function reloads the page when the Upload Another Image button is clicked.
-		   */
-		async reloadPage() {
-			console.log(await tf.io.listModels());
-			
-			// window.location.reload(true);
-		};
 
 		presentLoadingModelSpinner() {
 			let loading = this.loadingController.create({

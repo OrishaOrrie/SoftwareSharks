@@ -25,7 +25,7 @@ export class ContactPage {
 
   }
 
-  openModal()
+    openModal()
     {
       var data = { message : 'hello world' };
       var homePage = this.modalCtrl.create(AboutPage,data);
@@ -99,7 +99,8 @@ export class ContactPage {
         let googleAddress: any;
         this.getGoogleAddress(this.positionLat, this.positionLong)
           .then(data => {
-            googleAddress = data.results[0].formatted_address;
+            googleAddress = data.results[0].address_components[3].long_name + ', ' + 
+              data.results[0].address_components[4].long_name + ', ' + data.results[0].address_components[5].long_name;
             this.postMessage(contactName, contactEmail, contactMessage, googleAddress);
           })
           .catch(error => console.error(error));    
