@@ -6,6 +6,7 @@ import { MyApp } from './app.component';
 
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
+import { FeedbackPage } from './../pages/feedback/feedback';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { UtilitiesPage } from '../pages/utilities/utilities';
@@ -39,7 +40,8 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
     HomePage,
     TabsPage,
     UtilitiesPage,
-    ImagerecPage
+    ImagerecPage,
+    FeedbackPage
   ],
   imports: [
     BrowserModule,
@@ -66,7 +68,8 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
     HomePage,
     TabsPage,
     UtilitiesPage,
-    ImagerecPage
+    ImagerecPage,
+    FeedbackPage
   ],
   providers: [
     StatusBar,
