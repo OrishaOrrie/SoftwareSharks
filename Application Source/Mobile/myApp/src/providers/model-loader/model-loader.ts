@@ -13,6 +13,7 @@ import * as tf from '@tensorflow/tfjs';
 export class ModelLoaderProvider {
 
   private model: any;
+  public resultPreds = [];
 
   constructor(public http: HttpClient, private alertCtrl: AlertController) {
     console.log('Hello ModelLoaderProvider Provider');
@@ -22,7 +23,8 @@ export class ModelLoaderProvider {
     try {
       this.model = await tf.loadModel('https://storage.googleapis.com/testproject-ee885.appspot.com/mobilenet_model/model.json');
       console.log('Model is Loaded!');
-      // this.modelStatus = 'Model loaded YAS QUEEN';
+      alert('loaded');
+      //this.modelStatus = 'Model loaded YAS QUEEN';
     } catch (err) {
       // Handle error
       let prompt = this.alertCtrl.create({
@@ -36,6 +38,16 @@ export class ModelLoaderProvider {
 
   getModel() {
     return this.model;
+  };
+
+  getResults()
+  {
+    return this.resultPreds;
+  };
+
+  setResults(resultPreds)
+  {
+    this.resultPreds = resultPreds;
   };
 
 }

@@ -10,7 +10,7 @@
     <ion-title>Image recognition</ion-title>
     <ion-buttons end>
         <button ion-button icon-only (click) ="openModal()"  >
-         <ion-icon name="help-circle"></ion-icon>
+         <ion-icon name="help-circle" color= "dark"></ion-icon>
        </button>
       </ion-buttons>
   </ion-navbar>
@@ -19,35 +19,21 @@
 
 
 <ion-content #content padding>
-<h1 class = "first" >Choose an option</h1>
-<h2 class = "second" >Capture an image using device camera</h2>
-  <button align ="center" color= "secondary" ion-button icon-start outline round (click) = "takePic()" ><ion-icon name="camera"  ></ion-icon>
-  Camera</button>
-  <h2 class = "second" >Select image from device gallery</h2>
-   <button align ="center" color= "secondary" ion-button icon-start outline round (click) = "selectPic()" ><ion-icon name="md-images"  ></ion-icon>
-  Gallery</button>
-  
+<h1 class = "first" color ="primary" ></h1>
+<!-- <h2 class = "second" color="secondary" >Capture an image using device camera</h2> -->
+<p>
+  <button align ="center" color= "custom" ion-button icon-start round  (click) = "takePic()" >
+      <ion-icon name="camera"  ></ion-icon>
+        Camera
+  </button>
+</p>
+  <!-- <h2 class = "second" >Select image from device gallery</h2> md-cloud-upload-->
+<p>
+   <button align ="center" color= "tertiary" ion-button icon-start round (click) = "selectPic()" ><ion-icon name="md-images"  ></ion-icon>
+    Gallery</button>
+ </p> 
   <p align = "center"><img *ngIf="imgSelectedOrCaptured" src="{{ myPhoto }}" class="user-image" id="selectedImage" alt="Select an image please"></p>
-<<<<<<< HEAD
-<<<<<<< HEAD
-  <button align ="center" color= "secondary" ion-button icon-start round *ngIf="imgAvailable" (click)="predictImage(); " class="upload-card__upload-button">
+  <button align ="center" color= "tertiary" ion-button icon-start round *ngIf="imgAvailable" (click)="predictImage(); " class="upload-card__upload-button">
       <ion-icon name="md-alert"  ></ion-icon>
     Predict</button>
-    
-  <p>The object belongs to the following class</p>
-  <p class="model-info">{{ modelStatus }}</p>
-  
-  
-=======
-=======
->>>>>>> a084146a44a0f1e3a62a167c04ff59a42194b11d
-
-  <h4 *ngIf="resultsReady">RESULTS</h4>
-  <ion-list>
-    <ion-item style="color: black;" *ngFor="let result of resultPreds">{{ result.name }} + {{ result.likeliness }}</ion-item>
-  </ion-list>
-<<<<<<< HEAD
->>>>>>> a084146a44a0f1e3a62a167c04ff59a42194b11d
-=======
->>>>>>> a084146a44a0f1e3a62a167c04ff59a42194b11d
 </ion-content>

@@ -29,6 +29,7 @@ import { Result } from './result';
 // import { MatTableDataSource, MatSort } from '@angular/material';
 // import { DataSource } from '@angular/cdk/table';
 import { AboutPage } from '../about/about';
+import { ResultsPage } from '../results/results';
 /**
  * Generated class for the ImagerecPage page.
  *
@@ -84,26 +85,40 @@ export class ImagerecPage {
 			private camera: Camera, public loadingController: LoadingController, public modelLoader: ModelLoaderProvider ) {
 		}
 		
-		openModal()
-  {
-    var data = { message : 'hello world' };
-    var homePage = this.modalCtrl.create(AboutPage,data);
-    homePage.present();
-  }
+	openModal()
+  	{
+   		var data = { message : 'hello world' };
+    	var homePage = this.modalCtrl.create(AboutPage,data);
+    	homePage.present();
+  	}
 
-		ngOnInit() {
-			// this.presentLoadingModelSpinner();
-			this.model = this.modelLoader.getModel();
-			if (this.model) {
-				console.log('Model is loaded maybe');
-				this.modelStatus = 'Model has completed loading!';
-			}
+	ngOnInit() 
+	{
+		// this.presentLoadingModelSpinner();
+		this.model = this.modelLoader.getModel();
+		if (this.model) {
+			console.log('Model is loaded maybe');
+			this.modelStatus = 'Model has completed loading!';
 		}
-		
-		ionViewDidLoad() {
-			console.log('ionViewDidLoad ImagerecPage');
-			//this.content.scrollToBottom(300);
-		};
+	}
+	
+	resultsModal()
+  	{
+		var data = { message : 'hello world' };
+		var homePage = this.modalCtrl.create(AboutPage,data);
+		homePage.present();
+	  }
+
+	  ///////////////////thissss added
+	  presentResults() {
+		let resultsModal = this.modalCtrl.create(ResultsPage,  this.resultPreds);
+		resultsModal.present();
+	  }
+	
+	ionViewDidLoad() {
+		console.log('ionViewDidLoad ImagerecPage');
+		//this.content.scrollToBottom(300);
+	};
 		
 	/**
 	 * 
@@ -144,16 +159,6 @@ export class ImagerecPage {
 			this.imgAvailable = true;
 		};
 	  
-		presentAlert =function(mes:string) {
-			let alert = this.alertController.create({
-			  title: 'The object belongs to the following class:',
-			  subTitle: this.modelStatus,
-			  buttons: ['Dismiss']
-			})
-		
-			alert.present();
-		
-		  }
 /**
  * 
  * IONIC FUNCTION TO SELECT FROM GALLERY
@@ -278,7 +283,9 @@ export class ImagerecPage {
 			this.sortPreds();
 			this.resultsReady = true;
 			console.log(this.resultPreds[0].name);
-			this.modelStatus = this.resultPreds[0].name + ' ' + this.resultPreds[0].likeliness + '%';
+			this.modelLoader.setResults(this.resultPreds);
+			this.presentResults();
+			//this.modelStatus = this.resultPreds[0].name + ' ' + this.resultPreds[0].likeliness + '%';
 		};
 		res()
 		{

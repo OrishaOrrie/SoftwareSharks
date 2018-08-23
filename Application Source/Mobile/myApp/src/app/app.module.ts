@@ -10,6 +10,8 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { UtilitiesPage } from '../pages/utilities/utilities';
 import { ImagerecPage } from '../pages/imagerec/imagerec';
+import { ResultsPage } from '../pages/results/results';
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -38,7 +40,8 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
     HomePage,
     TabsPage,
     UtilitiesPage,
-    ImagerecPage
+    ImagerecPage,
+    ResultsPage
   ],
   imports: [
     BrowserModule,
@@ -65,7 +68,8 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
     HomePage,
     TabsPage,
     UtilitiesPage,
-    ImagerecPage
+    ImagerecPage,
+    ResultsPage
   ],
   providers: [
     StatusBar,
