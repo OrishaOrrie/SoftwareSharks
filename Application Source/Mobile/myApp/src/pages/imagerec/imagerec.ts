@@ -85,11 +85,11 @@ export class ImagerecPage {
 		}
 		
 		openModal()
-  {
-    var data = { message : 'hello world' };
-    var homePage = this.modalCtrl.create(AboutPage,data);
-    homePage.present();
-  }
+		{
+			var data = { message : 'hello world' };
+			var homePage = this.modalCtrl.create(AboutPage,data);
+			homePage.present();
+		}
 
 		ngOnInit() {
 			// this.presentLoadingModelSpinner();
