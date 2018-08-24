@@ -220,10 +220,11 @@ export class ImagerecPage {
 			// this.res();
 			this.predict()
 				.then((data) => {
-					console.log(data);
 					this.mapPredictions(data);
 					this.presentResults();
 					this.predictButtonText = 'Predict';
+				}).catch((error) => {
+					alert('Sorry, your device does not seem to be optimized to run AI stuff. Apologies\n' + error);
 				});
 
 			//this.mapPredictions(classId);
