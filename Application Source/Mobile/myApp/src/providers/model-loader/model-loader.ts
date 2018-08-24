@@ -37,6 +37,7 @@ export class ModelLoaderProvider {
   };
 
   modelIsReady() {
+    console.log('Checking modelIsReady');
     if (this.model == null) {
       return false;
     } else {
@@ -50,6 +51,7 @@ export class ModelLoaderProvider {
     // } else {
     //   return false;
     // }
+    console.log('Getting model');
     if (this.modelIsReady()) {
       return this.model;
     } else {
@@ -59,8 +61,17 @@ export class ModelLoaderProvider {
 
   getResults()
   {
-    return this.resultPreds;
+    return this.resultPreds.slice(0,8);
   };
+
+  predictionsAreReady() {
+    console.log('Checking predictionsAreReady');
+    if (this.resultPreds.length == 0) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 
   setResults(resultPreds)
   {

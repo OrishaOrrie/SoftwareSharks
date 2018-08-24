@@ -87,9 +87,8 @@
     <plugin name="cordova-plugin-geolocation" spec="^4.0.1">
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="User location for queries" />
     </plugin>
-    <engine name="browser" spec="^5.0.4" />
-    <engine name="android" spec="7.0.0" />
     <allow-navigation href="http://196.248.90.104:8102" />
     <allow-navigation href="http://192.168.1.33:8100" />
-    <engine name="android" spec="^6.3.0" />
+    <engine name="browser" spec="^5.0.4" />
+    <engine name="android" spec="7.0.0" />
 </widget>
