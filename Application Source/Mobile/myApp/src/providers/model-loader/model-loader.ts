@@ -23,7 +23,7 @@ export class ModelLoaderProvider {
     try {
       this.model = await tf.loadModel('https://storage.googleapis.com/testproject-ee885.appspot.com/mobilenet_model/model.json');
       console.log('Provider: Model is Loaded!');
-      // alert('loaded');
+      alert('loaded');
       //this.modelStatus = 'Model loaded YAS QUEEN';
     } catch (err) {
       // Handle error
