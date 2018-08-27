@@ -7,31 +7,32 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Item Amount Calculator</ion-title>
-  </ion-navbar>
   
+    <ion-title>Item amount calculator</ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only (click) ="openModal()"  >
+         <ion-icon name="help-circle" color= "dark"></ion-icon>
+       </button>
+      </ion-buttons>
+   <!-- <ion-buttons end> <button (click)="openModal()"> Modal </button> </ion-buttons>  -->
+  </ion-navbar>
 
 
 </ion-header>
 
 
-<ion-content padding>
-<ion-item>
-    <ion-label color="primary" stacked>Weight of Single Item</ion-label>
-    <ion-input type="number" placeholder="Single item weight" [(ngModel)]="single_item"></ion-input>
+<ion-content padding >
+<ion-item class="inputs">
+   <ion-label  class="bob" color="secondary" stacked>Weight of Single Item</ion-label> 
+    <ion-input type="number" placeholder="Single item" [(ngModel)]="single_item"></ion-input>
   </ion-item>
-  <ion-item>
-    <ion-label color="primary" stacked>Weight Of Empty Bucket</ion-label>
-    <ion-input type="number" placeholder="Empty bucket weight" [(ngModel)]="empty_bucket"></ion-input>
+  <ion-item class = "inputs">
+    <ion-label class="bob" color="secondary" stacked>Weight Of Empty Bucket</ion-label>
+    <ion-input type="number" placeholder="Empty bucket" [(ngModel)]="empty_bucket"></ion-input>
   </ion-item>
-  <ion-item>
-    <ion-label color="primary" stacked>Weight of Filled Bucket</ion-label>
-    <ion-input type="number" placeholder="Filled bucket weight" [(ngModel)]="filled_bucket"></ion-input>
+  <ion-item class = "inputs">
+    <ion-label class="bob" color="secondary"stacked>Weight of Filled Bucket</ion-label>
+    <ion-input type="number" placeholder="Filled bucket" [(ngModel)]="filled_bucket"></ion-input>
   </ion-item>
-<button ion-button full round (click) ="hello(single_item, filled_bucket,empty_bucket)">Calculate</button>
-<ion-card-header>
-      <ion-item>
-        {{totalObjects}}
-      </ion-item>
-</ion-card-header>
+<button ion-button color ="tertiary" full round (click) ="hello(single_item, filled_bucket,empty_bucket)">Calculate</button>
 </ion-content>

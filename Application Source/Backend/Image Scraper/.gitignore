@@ -1,0 +1,6 @@
+/urls
+*.model
+*.jpg
+*.jpeg
+*.png
+program/node_modules

@@ -1,7 +1,13 @@
 <ion-header>
-  <ion-navbar>
+<ion-navbar>
+  
     <ion-title>Home</ion-title>
-  </ion-navbar>
+    <ion-buttons end>
+        <button ion-button icon-only (click) ="openModal()"  >
+         <ion-icon name="help-circle" color= "dark"></ion-icon>
+       </button>
+      </ion-buttons>
+</ion-navbar>
 </ion-header>
 
 <ion-content padding>
@@ -11,7 +17,6 @@
 
     <h2>Image upload</h2>
     Click on the upload image button and upload an image of an object to be recognised.
-    <!--<img id ="img1" src="assets/imgs/takeimage.jpeg">-->
   </ion-slide>
 
   <ion-slide id ="slide2" style="background-image: url(assets/imgs/gears.jpeg)">

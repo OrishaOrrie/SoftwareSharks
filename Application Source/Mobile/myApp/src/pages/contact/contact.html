@@ -1,31 +1,36 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Contact Us
-    </ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>Contact Us</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click) ="openModal()"  >
+             <ion-icon name="help-circle" color= "dark"></ion-icon>
+           </button>
+          </ion-buttons>
+      </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <form [formGroup]="myGroup"  *ngIf="!submitted">
+<ion-content id ="formcol">
+    <form [formGroup]="myGroup"  *ngIf="!submitted" >
  
-      <ion-item >
-        <ion-label stacked>Enter your name...</ion-label>
+      <ion-item class="inputs">
+        <ion-label class = 'bob' color="secondary" stacked>Enter your name...</ion-label>
         <ion-input id="name" type="text" required formControlName="name"></ion-input>
-        </ion-item>
-      <ion-item>
-        <ion-label stacked>Enter your email address...</ion-label>
+      </ion-item>
+      <ion-item class="inputs">
+        <ion-label class = 'bob' color="secondary" stacked>Enter your email address...</ion-label>
         <ion-input id="email" type="email" required formControlName="email" ></ion-input>
       </ion-item>
-        <ion-item>
-        <ion-label stacked>Enter your message...</ion-label>
+      <ion-item class="inputs">
+        <ion-label class = 'bob' color="secondary" stacked>Enter your message...</ion-label>
         <ion-input id="message" type="text" required formControlName="message"></ion-input>
       </ion-item>
- 
     </form>
+      <ion-item class="inputs">
+        <ion-label style="font-weight: bold" color="secondary">Send geolocation data</ion-label>
+        <ion-checkbox color="secondary" checked="true" [(ngModel)]="sendLocation"></ion-checkbox>
+      </ion-item>
  
-    <button ion-button primary (click)="onSubmit()">Enter</button>
-    <ion-item *ngIf="submitted">
-      <h1 class="status-heading">Email Sent!</h1>
-    </ion-item>
+    <button ion-button full  color= "tertiary" [disabled]="!myGroup.valid" (click)="onSubmit()">Send Message</button>
+
+  
 </ion-content>
