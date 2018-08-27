@@ -21,7 +21,7 @@ import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import * as tf from '@tensorflow/tfjs';
-import { ModalController, List, Item } from 'ionic-angular';
+import { ModalController } from 'ionic-angular';
 import { ModelLoaderProvider } from './../../providers/model-loader/model-loader';
 // import { AngularFireStorage } from '../../../node_modules/angularfire2/storage';
 import { Result } from './result';
@@ -83,6 +83,19 @@ export class ImagerecPage {
 		
 		constructor( public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, private alertCtrl: AlertController,
 			private camera: Camera, public loadingController: LoadingController, public modelLoader: ModelLoaderProvider ) {
+		
+			// Carries out the code below every second
+			let modelLoaded = setInterval(() => {
+				if (this.modelLoader.modelIsReady()) {
+					console.log('Model Ready');	
+					this.model = this.modelLoader.getModel();
+					this.predictButtonText = 'Predict';
+					this.notReadyToPredict = false;
+					clearInterval(modelLoaded);
+				} else {
+					console.log('Not Ready');			
+				}
+			},500);
 		}
 		
 		openModal()
@@ -94,23 +107,7 @@ export class ImagerecPage {
 
 	ngOnInit() 
 	{
-		// this.presentLoadingModelSpinner();
-		// while the getModel
-		//while (!this.modelLoader.getModel()) {
-		//	this.predictButtonText = 'Loading...';
-		//}
-		// this.predictButtonText = 'Predict';
 
-		// Carries out the code below every second
-		let modelLoaded = setInterval(() => {
-			console.log('Checking if model is ready');
-			if (this.modelLoader.modelIsReady()) {
-				this.model = this.modelLoader.getModel();
-				this.predictButtonText = 'Predict';
-				this.notReadyToPredict = false;
-				clearInterval(modelLoaded);
-			}
-		},1000);
 	}
 	
 	resultsModal()
@@ -155,8 +152,6 @@ export class ImagerecPage {
 				let image = <HTMLImageElement>document.getElementById('selectedImage');
 				this.imageToPredict = image;
 				this.imgSelectedOrCaptured = true;
-				this.imgAvailable = true;
-				console.log('Image to predict: ' + this.imageToPredict);
 			}, (err) => {
 				// Handle error
 				this.imgSelectedOrCaptured = false;
@@ -168,6 +163,8 @@ export class ImagerecPage {
 				});
 				prompt.present();
 			});
+			
+			this.imgAvailable = true;
 		};
 	  
 /**
@@ -193,13 +190,9 @@ export class ImagerecPage {
 				// imageData is either a base64 encoded string or a file URI
 				// If it's base64 (DATA_URL):
 				this.myPhoto = 'data:image/jpeg;base64,' + imageData;
-				console.log('Image data: ' + imageData);
 				let image = <HTMLImageElement>document.getElementById('selectedImage');
 				this.imageToPredict = image;
-				console.log('Image to predict: ' + this.imageToPredict);
 				this.imgSelectedOrCaptured = true;
-				this.imgAvailable = true;
-				
 			}, (err) => {
 				// Handle error
 				this.imgSelectedOrCaptured = false;
@@ -212,21 +205,8 @@ export class ImagerecPage {
 				prompt.present();
 			});
 			
-		};
-		
-		async loadModel() {	
-			try {
-				this.model = await tf.loadModel('https://storage.googleapis.com/testproject-ee885.appspot.com/mobilenet_model/model.json');
-				console.log('Model is Loaded!');
-			} catch (err) {
-				// Handle error
-				let prompt = this.alertCtrl.create({
-					title: 'Error loading model',
-					subTitle: err,
-					buttons: ['OK']
-				});
-				prompt.present();
-			}
+			this.imgAvailable = true;
+			
 		};
 
 		/**
@@ -237,23 +217,34 @@ export class ImagerecPage {
 		 */
 
 		predictImage() {
-			this.res();
-			this.resultPreds = [];
-			this.resultsReady = false;
-			this.predict();
-			this.content.scrollToBottom();
+			// this.res();
+			this.predict()
+				.then((data) => {
+					this.mapPredictions(data);
+					this.presentResults();
+					this.predictButtonText = 'Predict';
+				}).catch((error) => {
+					alert('Sorry, your device does not seem to be optimized to run AI stuff. Apologies\n' + error);
+				});
+
+			//this.mapPredictions(classId);
+			// this.predict()
+			// .then(() => {
+			// 	this.presentResults();
+			// 	this.predictButtonText = 'Predict';
+			// });
+			// this.content.scrollToBottom();
 		};
 
 		async predict() {
-		  console.log('Predicting');
-		 // this.presentAlert('Hello', this.modelStatus);
-		  // this.presentPredictingSpinner();
+
+			console.log('Predicting');
 		
-		  const predictedClass = tf.tidy(() => {
+			const predictedClass = tf.tidy(() => {
+				this.predictButtonText = 'Predicting...';
 				const raw = tf.fromPixels(this.imageToPredict, 3);
 				const cropped = this.cropImage(raw);
 				const resized = tf.image.resizeBilinear(cropped, [224, 224]);
-				const currentPred = false;
 				const batchedImage = resized.expandDims(0);
 				const img = batchedImage.toFloat().div(tf.scalar(127)).sub(tf.scalar(1));
 				const predictions = (this.model.predict(img) as tf.Tensor);
@@ -261,12 +252,10 @@ export class ImagerecPage {
 				return predictions;
 			});
 		
-			const classId = (await predictedClass.data());
+			const classId = (await predictedClass.dataSync());
 			predictedClass.dispose();
 		
-			this.mapPredictions(classId);
-			// const el = document.querySelector('.result-card');
-			// el.scrollIntoView({behavior: 'smooth'});
+			return classId;
 		};
 		
 		cropImage(img) {
@@ -293,7 +282,6 @@ export class ImagerecPage {
 			this.resultsReady = true;
 			console.log(this.resultPreds[0].name);
 			this.modelLoader.setResults(this.resultPreds);
-			this.presentResults();
 			//this.modelStatus = this.resultPreds[0].name + ' ' + this.resultPreds[0].likeliness + '%';
 		};
 
@@ -331,6 +319,13 @@ export class ImagerecPage {
 			});
 			
 			loading.present();
+			this.resultPreds = [];
+			this.resultsReady = false;
+			this.predict()
+			.then(() => {
+				loading.dismiss;
+				this.presentResults();
+			});
 
 			setTimeout(() => {
 				loading.dismiss();
