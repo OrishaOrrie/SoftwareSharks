@@ -1,5 +1,5 @@
 .total-upload-card{
-    background-color:  #3F51B5;
+    background-color:  #607D8B;
     color: lightgray;
 }
 
@@ -9,13 +9,13 @@
 }
 
 .upload-card {
-    background-color: rgb(207, 207, 207);
+    background-color: #CFD8DC;
 }
 
 .upload-card__instruction {
     text-align: center;
     font-size: 150%;
-    color: rgb(100, 99, 99);
+    color: #212121;
 }
 
 .upload-card__file-button {
@@ -31,7 +31,7 @@
     cursor: pointer;
     border-radius: 3px;
     box-shadow: 2px 2px 2px rgb(150, 148, 148);
-    color: white;
+    color: lightgray;
     background: #607D8B;
 }
 
@@ -63,21 +63,50 @@ mat-spinner{
 }
 
 .result-card{
-    background-color: #607D8B;
+    background-color: #CFD8DC;
 }
 
 .result-card__nothing-to-show{
-    color: white;
+    color: #212121;
+    font-family: "Lato", Arial, Helvetica, sans-serif;
 }
 
 .result-card__results-list{
-    color: white;
+    font-family: "Lato", Arial, Helvetica, sans-serif;
     text-align: left;
 }
 
 mat-card-title{
-    color: white;
+    color: #212121;
     font-family: "Lato", Arial, Helvetica, sans-serif;
+}
+
+.table__container {
+    height: 400px;
+    overflow: auto;
+}
+
+.results__table {
+    width: 80%;
+    background-color: #CFD8DC;
+}
+
+.table__string {
+    color: #212121;
+    font-family: "Lato", Arial, Helvetica, sans-serif;
+}
+
+.table__header {
+    background-color: #212121;
+    text-transform: capitalize;
+}
+
+.table__row {
+    background-color: rgb(228, 228, 228);
+}
+
+.table__row:hover {
+    background-color: lightgray;
 }
 
 .reload-upload{

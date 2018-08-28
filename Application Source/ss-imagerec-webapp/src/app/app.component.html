@@ -3,13 +3,13 @@
   <mat-toolbar class="mat-elevation-z3" color="primary">
     <a mat-button routerLink="/home" class="toolbar__title">{{ title }}</a>
     <span class="toolbar__spacer"></span>
-    <a mat-button routerLink="/home" color="white">Home</a>
+    <a mat-button routerLink="/home">Home</a>
     <span class="toolbar__button-spacer"></span>
-    <a mat-button id="navbar-image" routerLink="/imageupload" color="white">Upload Image</a>
+    <a mat-button id="navbar-image" routerLink="/imageupload">Upload Image</a>
     <span class="toolbar__button-spacer"></span>
-    <a mat-button id="navbar-utilities" routerLink="/utilities" color="white">Utilities</a>
+    <a mat-button id="navbar-utilities" routerLink="/utilities">Tools</a>
     <span class="toolbar__button-spacer"></span>
-    <a mat-button routerLink="/contactus" color="white">Contact Us</a>
+    <a mat-button routerLink="/contactus">Contact Us</a>
   </mat-toolbar>
   <br>
 </div>
@@ -20,8 +20,8 @@
   
 <br>
 
-<mat-card class="mat-elevation-z4" class="footer">
-    <mat-grid-list cols="4" rowHeight="3:1">
+<div class="footer">
+    <!-- <mat-grid-list cols="3" rowHeight="3:1">
       <mat-grid-tile [colspan]=1 [rowspan]=1>
         <div>
           <a mat-button routerLink="/home" class="footer__link">Home</a><br>
@@ -42,6 +42,23 @@
         <a mat-button href="https://www.up.ac.za/" class="footer__link" target="_blank">A Project for<br>The University of Pretoria</a><br>
         <img class="footer__logo" src="../assets/tukslogo.png" alt="logo">
       </mat-grid-tile>
-    </mat-grid-list>
+    </mat-grid-list> -->
+    <div class="footer__buttons">
+      <a class="footer__button" mat-button href="https://github.com/OrishaOrrie/SoftwareSharks" target="_blank">
+        <h3 class="footer__button-info">Developed by</h3>
+        <img class="footer__logo" src="../assets/ss-logo.png" alt="Software Sharks Logo">
+        <h3 class="footer__button-info">Software Sharks</h3>
+      </a>
+      <a class="footer__button" mat-button href="http://www.bramhope.co.za/" target="_blank">
+        <h3 class="footer__button-info">Developed for</h3>
+        <img class="footer__logo" src="../assets/bramhope-logo.jpg" alt="Bramhope Logo">
+        <h3 class="footer__button-info">The Bramhope Group</h3>
+      </a>
+      <a class="footer__button" mat-button href="https://www.up.ac.za/" target="_blank">
+        <h3 class="footer__button-info">A project for</h3>
+        <img class="footer__logo" src="../assets/tukslogo.png" alt="University of Pretoria logo">
+        <h3 class="footer__button-info">The University of Pretoria</h3>
+      </a>
+    </div>
 
-</mat-card>
+  </div>

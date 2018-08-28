@@ -5,27 +5,36 @@
     <br>
     
     <mat-card class="email-container" color="primary">
-        <form class="form-horizontal" id="usrForm" [formGroup]="myGroup">
-            <mat-form-field>
-                <input class="email__name-part" matInput type="text" id="name" required formControlName="name" name="name" placeholder="Enter your name">
-            </mat-form-field>
-            <br>
-            <mat-form-field >
-                <input class="email__email-part" matInput id="email" required formControlName="email" name="email" placeholder="Enter your email">
-                <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
-            </mat-form-field>
-            <br>
-            <mat-form-field class="email__msg-part">
-                <textarea matInput matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5" rows="3" 
-                id="message" form="usrForm" required formControlName="message" name="message" placeholder="Enter your query"></textarea>
-            </mat-form-field>
-            <br>
-            <div>
-                <button *ngIf="!submitted" mat-raised-button color="accent" type="submit" (click)="onSubmit()" class="sumbit-btn" form="usrForm">SUBMIT</button>
-                <mat-spinner style="float: right;" [diameter]="30" [style.display]="showSpinner ? 'block':'none'"></mat-spinner>
-            </div>
-        </form>
+        <p class="email__instructions">
+            Got a query about one of Brahope's products? Want to request a quote? Enter your name, email, and message, and one of our kind
+            staff members will get back to you soon!
+        </p>
+        <div class="email-container__form">
+            <form class="form-horizontal email__form" id="usrForm" [formGroup]="myGroup">
+                    <mat-form-field color="primary">
+                        <input class="email__name-part" matInput type="text" id="name" required formControlName="name" name="name" placeholder="Enter your name">
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field color="primary">
+                        <input class="email__email-part" matInput id="email" required formControlName="email" name="email" placeholder="Enter your email">
+                        <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field class="email__msg-part" color="primary">
+                        <textarea matInput matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5" rows="3" 
+                        id="message" form="usrForm" required formControlName="message" name="message" placeholder="Enter your query"></textarea>
+                    </mat-form-field>
+                    <br>
+                    <div>
+                        <button *ngIf="!submitted" mat-raised-button color="primary" type="submit" (click)="onSubmit()" class="sumbit-btn" form="usrForm">SUBMIT</button>
+                        <mat-spinner style="float: right;" color="primary" [diameter]="30" [style.display]="showSpinner ? 'block':'none'"></mat-spinner>
+                    </div>
+                </form>
+                <img class="email__image" src="../../assets/bramhope-logo.jpg">
+        </div>
+        
     </mat-card>
+    
     <br>
     <mat-card class="status-card" *ngIf="submitted">
         <h4 class="status-heading">{{ msgReceived }}</h4>

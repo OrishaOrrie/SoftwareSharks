@@ -91,8 +91,10 @@ export class ContactUsComponent implements OnInit {
       const msgFromServer = data1['message'];
       this.submitted = true;
       if (msgFromServer === 'Message sent') {
+        console.log('Message sent == true');
         this.msgReceived = 'Thank you for contacting us! We\'ll be in touch ;) ';
       } else {
+        console.log('Message sent == false');
         this.msgReceived = 'Sorry, your message was not sent. Try again later please if you don\'t mind OwO';
       }
     });

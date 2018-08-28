@@ -9,22 +9,54 @@
     font-family: Lato, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
+.tally-upper-tile {
+    text-align: center;
+}
+
 .tally-upper-card{
-    background-color: rgb(207, 207, 207);
-    color: black;
-    width: 80%;
+    background-color: #CFD8DC;
+    color: #212121;
+    width: 90%;
+    margin: auto 50px;
+    text-align: center;
+}
+
+.tuc__title {
+    font-family: Lato, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: #212121;
+}
+
+.tuc__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.tuc__input-container {
+    width: 25%;
+    background-color: #455A64;
 }
 
 .tally-upper-card__input-field{
-    width: 70%;
+    width: 100%;
 }
 
+/* 
+.tally-upper-card__input-field{
+    width: 70%;
+} */
+
 .tally-upper-card__amount-result{
-    background: #607D8B;
+    background: #455A64;
     color: white;
 }
 
-.tally-upper-card___result-title{
+.tuc__icon {
+    width: 30px;
+    height: 30px;
+}
+
+.tally-upper-card__result-title {
     color: lightgray;
-    font-size: medium;
+    font-family: Lato, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }

@@ -1,5 +1,5 @@
 .contact-container{
-    background-color: #303F9F;
+    background-color: #607D8B;
     color: lightgray;
     padding: 10px;
     display: flex;
@@ -13,20 +13,39 @@
 }
 
 .email-container {
-    background-color: rgb(207, 207, 207);
+    background-color: #CFD8DC;
     color: black;
-    width: 80%;
+    width: 60%;
     margin: 0px auto;
 }
 
-.email__msg-part {
+.email-container__form {
+    display: flex;
+    flex-direction: row;
+}
+
+.email__instructions {
+    color: #212121;
+    font-family: "Lato", Arial, Helvetica, sans-serif;
+}
+
+.email__form {
     width: 60%;
 }
 
-.status-card {
-    background-color: rgb(207, 207, 207);
-    color: black;
+.email__msg-part {
     width: 80%;
+}
+
+.email__image {
+    width: 40%;
+    height: 40%;
+}
+
+.status-card {
+    background-color: #CFD8DC;
+    color: #212121;
+    width: 60%;
     margin: 0px auto;
     font-family: "Lato", Arial, Helvetica, sans-serif;
 }

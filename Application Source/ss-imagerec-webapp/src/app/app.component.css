@@ -1,5 +1,5 @@
 .toolbar-container{
-    margin: auto 8em;
+    margin: auto 5%;
 }
 
 .toolbar__title{
@@ -19,28 +19,48 @@
 }
 
 main{
-    margin: auto 8em;
+    margin: auto 5%;
     overflow: auto;
     padding-bottom: 100px;
 }
 
 .footer{
-    background: #303F9F;
-    color: white;
+    background: #607D8B;
+    /* background-color: rgba(5,5,5,0); */
     position: relative;
-    margin-top: -100px;
-    height: 150px;
-    padding: auto;
+    margin-top: -5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    height: 10%;
     clear: both;
 }
 
+/* 
 .footer__link {
     height: 70%;
     text-align: left;
     color: white;
     margin-right: 5px;
+} */
+
+.footer__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
-.footer__logo{
+.footer__button {
+    width: 20%;
+    height: 8%;
+    padding: 5px;
+}
+
+.footer__button-info {
+    font-family: Lato, Arial, sans-serif;
+    color:lightgray;
+}
+
+.footer__logo {
     width: 30%;
+    height: 30%;
 }
