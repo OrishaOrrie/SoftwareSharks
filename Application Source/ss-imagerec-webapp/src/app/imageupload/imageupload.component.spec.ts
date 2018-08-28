@@ -1,4 +1,4 @@
-import { AngularFireStorageModule, AngularFireStorage } from 'angularfire2/storage';
+// import { AngularFireStorageModule, AngularFireStorage } from 'angularfire2/storage';
 import { trigger } from '@angular/animations';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { async, ComponentFixture, TestBed, tick, inject } from '@angular/core/testing';
@@ -19,8 +19,7 @@ describe('ImageuploadComponent', () => {
       declarations: [ ImageuploadComponent ],
       imports: [
         MaterialModule,
-        HttpClientModule,
-        AngularFireStorageModule
+        HttpClientModule
       ]
     })
     .compileComponents();
@@ -44,8 +43,8 @@ describe('ImageuploadComponent', () => {
     spy = null;
   });
 
-  it('should create', async(inject([HttpClient, AngularFireStorage],
-    (httpMock: HttpClient, angularFireStorage: AngularFireStorage) => {
+  it('should create', async(inject([HttpClient],
+    (httpMock: HttpClient) => {
     expect(component).toBeTruthy();
   })));
 

@@ -25,7 +25,7 @@ import { style } from '@angular/animations';
 import { Result } from './result';
 import { Component, OnInit } from '@angular/core';
 import * as tf from '@tensorflow/tfjs';
-import { AngularFireStorage } from '../../../node_modules/angularfire2/storage';
+// import { AngularFireStorage } from '../../../node_modules/angularfire2/storage';
 
 @Component({
   selector: 'app-imageupload',
@@ -84,7 +84,7 @@ export class ImageuploadComponent implements OnInit {
    * This constructor is only used to pass an instance of the HttpClient module.
    * @param http  HttpClient instance
    */
-  constructor(private http: HttpClient, private storage: AngularFireStorage) { }
+  constructor(private http: HttpClient /*, private storage: AngularFireStorage*/) { }
 
   /**
    * @hidden

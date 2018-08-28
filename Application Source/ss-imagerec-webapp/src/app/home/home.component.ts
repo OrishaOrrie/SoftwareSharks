@@ -29,6 +29,7 @@ Functional Description: Acts as landing page and provides routes to the other pa
  *  Acts as landing page for the web app and provides links to application functions.
  */
 
+import { environment } from './../../environments/environment';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

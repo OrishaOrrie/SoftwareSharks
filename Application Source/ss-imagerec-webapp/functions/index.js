@@ -8,6 +8,7 @@ const multer = require('multer');
 const _httpCodes = require('./local_modules/HTTPRequests.js');
 const _logger = require('./local_modules/logger.js');
 const pyShell = require('python-shell');
+const credentials = require('./local_modules/credentials.js');
 
 const app = express();
 app.use(cors());
@@ -33,8 +34,8 @@ const smtpTransport = nodemailer.createTransport({
   service: 'gmail',
   host: 'smtp.gmail.com',
   auth: {
-    user: 'softwaresharks@gmail.com',
-    pass: '0r@ng3IsTh3N3wBl@ck'
+    user: credentials.gmail.user,
+    pass: credentials.gmail.pass
   }
 });
 
@@ -47,7 +48,7 @@ app.post('/sendmail', (request, response) => {
     from: request.body.email,
     to: 'softwaresharks@gmail.com',
     subject: 'Customer called ' + request.body.subject + ' has a query',
-    text: 'Query from address: ' + request.body.email + '\n' + request.body.text
+    text: 'Query: ' + request.body.email + '\n' + request.body.text
   }
   console.log(mailOptions);
   smtpTransport.sendMail(mailOptions, (error, res) => {
