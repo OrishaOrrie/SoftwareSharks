@@ -14,3 +14,4 @@ Application Source/ss-imagerec-webapp/node_modules/@schematics/angular/component
 *.ckpt
 *.h5
 /node_modules
+/Application Source/ss-dashboard
