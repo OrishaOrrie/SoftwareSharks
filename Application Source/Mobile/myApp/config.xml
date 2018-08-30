@@ -2,7 +2,7 @@
 <widget id="com.softwaresharks.ninshiki" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Ninshiki</name>
     <author email="orisha.orrie@gmail.com">Orisha Orrie</author>
-    <content original-src="index.html" src="http://192.168.1.36:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -87,13 +87,14 @@
     <plugin name="cordova-plugin-geolocation" spec="^4.0.1">
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="User location for queries" />
     </plugin>
+    <engine name="browser" spec="^5.0.4" />
     <allow-navigation href="http://196.248.90.104:8102" />
     <allow-navigation href="http://192.168.1.33:8100" />
     <allow-navigation href="http://192.168.1.33:8101" />
     <allow-navigation href="http://196.248.90.104:8102" />
     <allow-navigation href="http://192.168.1.33:8100" />
-    <allow-navigation href="http://192.168.1.36:8101" />
-    <allow-navigation href="http://192.168.1.36:8100" />
     <engine name="browser" spec="^5.0.4" />
-    <engine name="android" spec="^7.0.0" />
+    <allow-navigation href="http://192.168.1.36:8101" />
+    <engine name="android" spec="~7.0.0" />
+    <allow-navigation href="http://192.168.1.36:8100" />
 </widget>
