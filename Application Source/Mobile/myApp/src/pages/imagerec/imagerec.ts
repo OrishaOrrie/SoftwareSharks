@@ -76,7 +76,7 @@ export class ImagerecPage {
 		public modelStatus = '';
 		public results: Result[] = [];
 		public resultsReady = false;
-		public myPhoto: string;
+		public myPhoto= "assets/imgs/camera-holder.png";
 		public imageToPredict: HTMLImageElement;
 		public predictButtonText = 'Loading...';
 		public notReadyToPredict = true;
@@ -149,6 +149,7 @@ export class ImagerecPage {
 				// imageData is either a base64 encoded string or a file URI
 				// If it's base64 (DATA_URL):
 				this.myPhoto = 'data:image/jpeg;base64,' + imageData;
+				this.content.scrollToBottom(1000);
 				let image = <HTMLImageElement>document.getElementById('selectedImage');
 				this.imageToPredict = image;
 				this.imgSelectedOrCaptured = true;
@@ -190,6 +191,7 @@ export class ImagerecPage {
 				// imageData is either a base64 encoded string or a file URI
 				// If it's base64 (DATA_URL):
 				this.myPhoto = 'data:image/jpeg;base64,' + imageData;
+				this.content.scrollToBottom(1000);
 				let image = <HTMLImageElement>document.getElementById('selectedImage');
 				this.imageToPredict = image;
 				this.imgSelectedOrCaptured = true;
