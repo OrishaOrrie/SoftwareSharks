@@ -1,9 +1,9 @@
 import { Geolocation } from '@ionic-native/geolocation';
 import { Component } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
-import { Http } from '@angular/http';
-import { map } from 'rxjs/operators'
-import { HttpClient, HttpHandler, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { NavController} from 'ionic-angular';
+// import { Http } from '@angular/http';
+// import { map } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { ModalController } from 'ionic-angular';
 import { AboutPage } from '../about/about';
@@ -22,7 +22,6 @@ export class ContactPage {
     })
 
     alert.present();
-
   }
 
     openModal()
@@ -56,14 +55,14 @@ export class ContactPage {
       message: new FormControl()
     });
 
-    httpOptions = {
-      headers: new HttpHeaders({
-        'Access-Control-Allow-Origin': '*'
-      })
-    };
+    // httpOptions = {
+    //   headers: new HttpHeaders({
+    //     'Access-Control-Allow-Origin': '*'
+    //   })
+    // };
 
     constructor(public navCtrl: NavController, public modalCtrl : ModalController, private http: HttpClient, 
-      private alertController: AlertController, private fb: FormBuilder, private geolocation: Geolocation) {
+      /* private alertController: AlertController,*/ private fb: FormBuilder, private geolocation: Geolocation) {
     
         this.myGroup = this.fb.group({  
             'name': ['', Validators.compose([Validators.required, Validators.minLength(1)])],
@@ -87,11 +86,11 @@ export class ContactPage {
       const contactEmail = this.myGroup.get('email').value;
       const contactMessage = this.myGroup.get('message').value;
       this.presentAlert();
-      const httpOptions = {
-        headers: new HttpHeaders({
-          'Access-Control-Allow-Origin': '*'
-        })
-      }
+      // const httpOptions = {
+      //   headers: new HttpHeaders({
+      //     'Access-Control-Allow-Origin': '*'
+      //   })
+      // }
       this.myGroup.reset();
 
       if (this.shouldLocationBeSent() == true) {

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { ViewController } from 'ionic-angular';
 import { ModelLoaderProvider } from './../../providers/model-loader/model-loader';
 /**
@@ -9,7 +9,6 @@ import { ModelLoaderProvider } from './../../providers/model-loader/model-loader
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-results',
   templateUrl: 'results.html',

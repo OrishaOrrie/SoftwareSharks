@@ -18,7 +18,7 @@
  */
 // import { HttpClient,HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import * as tf from '@tensorflow/tfjs';
 import { ModalController } from 'ionic-angular';
@@ -37,7 +37,6 @@ import { ResultsPage } from '../results/results';
  * Ionic pages and navigation.
  */
 declare var require: any
-@IonicPage()
 @Component({
   selector: 'page-imagerec',
   templateUrl: 'imagerec.html'
@@ -80,6 +79,10 @@ export class ImagerecPage {
 		public imageToPredict: HTMLImageElement;
 		public predictButtonText = 'Loading...';
 		public notReadyToPredict = true;
+		public loading = this.loadingController.create({
+			spinner: 'crescent',
+			content: 'Making a Prediction...'
+		});
 		
 		constructor( public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, private alertCtrl: AlertController,
 			private camera: Camera, public loadingController: LoadingController, public modelLoader: ModelLoaderProvider ) {
@@ -190,6 +193,7 @@ export class ImagerecPage {
 			this.camera.getPicture(options).then((imageData) => {
 				// imageData is either a base64 encoded string or a file URI
 				// If it's base64 (DATA_URL):
+				
 				this.myPhoto = 'data:image/jpeg;base64,' + imageData;
 				this.content.scrollToBottom(1000);
 				let image = <HTMLImageElement>document.getElementById('selectedImage');
@@ -220,13 +224,15 @@ export class ImagerecPage {
 
 		predictImage() {
 			// this.res();
+			// this.loading.present();
 			this.predict()
 				.then((data) => {
+					// this.loading.dismiss();
 					this.mapPredictions(data);
 					this.presentResults();
 					this.predictButtonText = 'Predict';
 				}).catch((error) => {
-					alert('Sorry, your device does not seem to be optimized to run AI stuff. Apologies\n' + error);
+					alert('Sorry, your device does not seem to be optimized to run AI computations. Apologies\n' + error);
 				});
 
 			//this.mapPredictions(classId);
@@ -243,6 +249,9 @@ export class ImagerecPage {
 			console.log('Predicting');
 		
 			const predictedClass = tf.tidy(() => {
+				let image = <HTMLImageElement>document.getElementById('selectedImage');
+				this.imageToPredict = image;
+
 				this.predictButtonText = 'Predicting...';
 				const raw = tf.fromPixels(this.imageToPredict, 3);
 				const cropped = this.cropImage(raw);
@@ -287,13 +296,13 @@ export class ImagerecPage {
 			//this.modelStatus = this.resultPreds[0].name + ' ' + this.resultPreds[0].likeliness + '%';
 		};
 
-		res()
-		{
-			this.presentPredictingSpinner();
-			//alert('sdfrrer');
-			//this.presentAlert(this.modelStatus);
+		// res()
+		// {
+		// 	this.presentPredictingSpinner();
+		// 	//alert('sdfrrer');
+		// 	//this.presentAlert(this.modelStatus);
 			
-		};
+		// };
 
 		sortPreds() {
 			this.resultPreds.sort(function(a, b) {
@@ -314,24 +323,21 @@ export class ImagerecPage {
 			}, 2000);
 		}
 
-		presentPredictingSpinner() {
-			let loading = this.loadingController.create({
-				spinner: 'crescent',
-				content: 'Making a Prediction...'
-			});
+		// presentPredictingSpinner() {
 			
-			loading.present();
-			this.resultPreds = [];
-			this.resultsReady = false;
-			this.predict()
-			.then(() => {
-				loading.dismiss;
-				this.presentResults();
-			});
+			
+		// 	loading.present();
+		// 	this.resultPreds = [];
+		// 	this.resultsReady = false;
+		// 	this.predict()
+		// 	.then(() => {
+		// 		loading.dismiss;
+		// 		this.presentResults();
+		// 	});
 
-			setTimeout(() => {
-				loading.dismiss();
-			}, 2000);
-		}
+		// 	setTimeout(() => {
+		// 		loading.dismiss();
+		// 	}, 2000);
+		// }
 		
 }

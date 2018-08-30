@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams , AlertController} from 'ionic-angular';
+import { NavController, NavParams} from 'ionic-angular';
 import { ModalController } from 'ionic-angular';
-import { ContactPage } from '../contact/contact';
+// import { ContactPage } from '../contact/contact';
 import { AboutPage } from '../about/about';
 /**
  * Generated class for the UtilitiesPage page.
@@ -10,7 +10,6 @@ import { AboutPage } from '../about/about';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-utilities',
   templateUrl: 'utilities.html',
@@ -20,7 +19,8 @@ export class UtilitiesPage {
 	totalObjects : number =null;
 
   
-  constructor(public navCtrl: NavController, public navParams: NavParams, private alertController: AlertController,public modalCtrl : ModalController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+    /*private alertController: AlertController,*/ public modalCtrl : ModalController) {
 
   }
 
@@ -34,13 +34,13 @@ export class UtilitiesPage {
     console.log('ionViewDidLoad UtilitiesPage');
   }
 
-  errorAlert =function() {
-    let erralert = this.alertController.create({
-      title: 'Message sent!',
-      subTitle: 'Your message has been sent. A member of our team will get back to you as soon as possible.',
-      buttons: ['Dismiss']
-    })
-  }
+  // errorAlert =function() {
+  //   let erralert = this.alertController.create({
+  //     title: 'Message sent!',
+  //     subTitle: 'Your message has been sent. A member of our team will get back to you as soon as possible.',
+  //     buttons: ['Dismiss']
+  //   })
+  // }
 
     presentAlert =function() {
       let alert = this.alertController.create({

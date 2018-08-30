@@ -1,7 +1,7 @@
 import { ModelLoaderProvider } from './../providers/model-loader/model-loader';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler, List } from 'ionic-angular';
+import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 import { AboutPage } from '../pages/about/about';
@@ -22,11 +22,10 @@ import { Geolocation } from '@ionic-native/geolocation';
 
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FormControl } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import {AngularFireModule} from 'angularfire2';
-import {AngularFireDatabaseModule, AngularFireDatabase, } from 'angularfire2/database';
+import {AngularFireDatabaseModule /*, AngularFireDatabase,*/ } from 'angularfire2/database';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import { MatCardModule, MatTableModule } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';

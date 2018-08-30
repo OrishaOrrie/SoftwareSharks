@@ -47,8 +47,10 @@
   <p align = "center"><img *ngIf="imgSelectedOrCaptured" src="{{ myPhoto }}" class="user-image" id="selectedImage" alt="Select an image please">
     <img *ngIf="!imgSelectedOrCaptured" src="assets/imgs/camera-holder.png" class="user-image" id="selectedImage">
   </p>
-  <button color= "tertiary" ion-button icon-start round  *ngIf="imgAvailable" 
+  <div class="wrapper">
+    <button color= "tertiary" ion-button icon-start round  *ngIf="imgAvailable" 
     (click)="predictImage(); " [disabled]="notReadyToPredict" class="upload-card__upload-button">
       <ion-icon name="md-alert"  ></ion-icon>
     {{ predictButtonText }}</button>
-</ion-content> 
+  </div>
+</ion-content>

@@ -2,13 +2,13 @@ import { Component  , ViewChild} from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { Camera, CameraOptions } from '@ionic-native/camera';
+// import { Camera, CameraOptions } from '@ionic-native/camera';
 
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
+// import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
-import { UtilitiesPage } from '../pages/utilities/utilities';
+// import { UtilitiesPage } from '../pages/utilities/utilities';
 import { ImagerecPage } from '../pages/imagerec/imagerec';
 import { ModelLoaderProvider } from '../providers/model-loader/model-loader';
 
