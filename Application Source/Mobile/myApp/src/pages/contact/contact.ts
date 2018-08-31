@@ -1,6 +1,6 @@
 import { Geolocation } from '@ionic-native/geolocation';
 import { Component } from '@angular/core';
-import { NavController} from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 // import { Http } from '@angular/http';
 // import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
@@ -13,16 +13,6 @@ import { AboutPage } from '../about/about';
   templateUrl: 'contact.html'
 })
 export class ContactPage {
-
-  presentAlert =function() {
-    let alert = this.alertController.create({
-      title: 'Message sent!',
-      subTitle: 'Your message has been sent. A member of our team will get back to you as soon as possible.',
-      buttons: ['Dismiss']
-    })
-
-    alert.present();
-  }
 
     openModal()
     {
@@ -62,7 +52,7 @@ export class ContactPage {
     // };
 
     constructor(public navCtrl: NavController, public modalCtrl : ModalController, private http: HttpClient, 
-      /* private alertController: AlertController,*/ private fb: FormBuilder, private geolocation: Geolocation) {
+       public alertController: AlertController, private fb: FormBuilder, private geolocation: Geolocation) {
     
         this.myGroup = this.fb.group({  
             'name': ['', Validators.compose([Validators.required, Validators.minLength(1)])],
@@ -107,6 +97,16 @@ export class ContactPage {
         this.postMessage(contactName, contactEmail, contactMessage, 'Undisclosed location');
       }
 
+    }
+
+    presentAlert =function() {
+      let alert = this.alertController.create({
+        title: 'Message sent!',
+        subTitle: 'Your message has been sent. A member of our team will get back to you as soon as possible.',
+        buttons: ['Dismiss']
+      })
+  
+      alert.present();
     }
 
     postMessage(name, email, message, address) {

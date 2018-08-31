@@ -59,7 +59,8 @@ export class ModelLoaderProvider {
 
   getResults()
   {
-    return this.resultPreds.slice(0,8);
+    // return this.resultPreds.slice(0,8);
+    return this.resultPreds;
   };
 
   predictionsAreReady() {

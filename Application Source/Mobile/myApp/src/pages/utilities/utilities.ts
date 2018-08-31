@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams} from 'ionic-angular';
+import { NavController, NavParams, AlertController} from 'ionic-angular';
 import { ModalController } from 'ionic-angular';
 // import { ContactPage } from '../contact/contact';
 import { AboutPage } from '../about/about';
@@ -20,7 +20,7 @@ export class UtilitiesPage {
 
   
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-    /*private alertController: AlertController,*/ public modalCtrl : ModalController) {
+    public alertController: AlertController, public modalCtrl : ModalController) {
 
   }
 
@@ -50,6 +50,7 @@ export class UtilitiesPage {
       });
       alert.present();
     }
+
     //single filed empty
   hello = function(a: number, b: number, c: number)
   {
