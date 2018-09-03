@@ -131,7 +131,7 @@ export class ContactPage {
         this.positionLat = response.coords.latitude;
         this.positionLong = response.coords.longitude;
       }).catch((error) => {
-        console.log("Error getting geolocation data: " + error);
+        console.error("Error getting geolocation data: " + error);
       });
     }
 

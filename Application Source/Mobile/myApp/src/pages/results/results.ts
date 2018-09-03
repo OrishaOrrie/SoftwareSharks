@@ -19,7 +19,7 @@ export class ResultsPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public modelLoader : ModelLoaderProvider) {
       console.log('UserId', navParams.get('resultPreds'));
       this.resultPreds= modelLoader.getResults();
-      
+      // this.resultPreds = this.formatClassNames(this.resultPreds);
   }
 
   ionViewDidLoad() {
@@ -29,5 +29,15 @@ export class ResultsPage {
   public closeModal(){
     this.viewCtrl.dismiss();
   }
+
+  // formatClassNames(preds) {
+  //   let p: any;
+  //   for (p in preds) {
+  //     let ps: String = p.name;
+  //     p.name.replace('_', ' ');
+  //     p.name = p.name.charAt(0).toUpperCase() + p.name.slice(1);
+  //   }
+  //   return preds;
+  // }
 
 }

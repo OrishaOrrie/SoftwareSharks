@@ -60,6 +60,7 @@ export class ModelLoaderProvider {
   getResults()
   {
     // return this.resultPreds.slice(0,8);
+    this.processResultNames(this.resultPreds);
     return this.resultPreds;
   };
 
@@ -70,6 +71,14 @@ export class ModelLoaderProvider {
     } else {
       return true;
     }
+  }
+
+  processResultNames(preds) {
+    preds.forEach((element) => {
+      element.name = element.name.replace(/_/g, ' ');
+      element.name = element.name.charAt(0).toUpperCase() + element.name.slice(1);
+      console.log(element.name);
+    });
   }
 
   setResults(resultPreds)

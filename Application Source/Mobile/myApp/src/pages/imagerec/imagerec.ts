@@ -81,7 +81,8 @@ export class ImagerecPage {
 		public notReadyToPredict = true;
 		public loading = this.loadingController.create({
 			spinner: 'crescent',
-			content: 'Making a Prediction...'
+			content: 'Making a Prediction...',
+			dismissOnPageChange: false
 		});
 		
 		constructor( public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, private alertCtrl: AlertController,
