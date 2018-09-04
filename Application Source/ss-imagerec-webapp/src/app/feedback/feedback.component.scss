@@ -1,0 +1,30 @@
+.feedback {
+    border: lightgray 3px solid;
+    margin: auto 5%;
+}
+
+.feedback_instructions {
+    padding-left: 20px;
+    font-family: "Lato", Arial, Helvetica, sans-serif;
+    color: lightgray; 
+}
+
+.feedback__form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: lightgray;
+    padding-top: 20px;
+}
+
+.feedback__send-button {
+    border: 2px solid #607D8B;
+    color: #607D8B;
+    font-family: "Lato", Arial, Helvetica, sans-serif;
+}
+
+.feedback__sent {
+    padding-left: 20px;
+    color: lightgray;
+    font-family: "Lato", Arial, Helvetica, sans-serif;
+}

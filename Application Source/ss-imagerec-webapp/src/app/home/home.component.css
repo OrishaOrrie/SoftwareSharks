@@ -1,14 +1,78 @@
-.welcome-container{
+.welcome-container {
     padding: 5px;
 }
 
-.intro-message{
+.intro-message {
     color: lightgray;
     text-align: center;
     top: 1em;
     font-family: "Lato", sans-serif;
     font-size: 250%;
 }
+
+.intro__subtitle {
+    font-family: "Lato", sans-serif;
+    text-align: center;
+    color: lightgray;
+    font-weight: 400;
+    margin: auto;
+    word-wrap: break-word;
+}
+
+.upload-button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    padding: 20px auto;
+    border: 3px solid lightgray;
+    word-wrap: break-word;
+}
+
+.upload-button__text {
+    font-family: "Lato", sans-serif;
+    font-size: larger;
+    text-transform: capitalize;
+    color: lightgray;
+}
+
+.carousel {
+    width: 75%;
+    height: 25%;
+    background-color: #CFD8DC;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: auto;
+}
+
+.carousel__img {
+    align-self: flex-start;
+    height: 300px;
+    width: 60%;
+}
+
+.carousel__img-src{
+    align-self: flex-start;
+    height: 100%;
+}
+
+.carousel__content {
+    align-self: center;
+    width: 30%;
+    padding-right: 50px;
+}
+
+.carousel__content-header {
+    font-family: "Lato", sans-serif;
+}
+
+.carousel__content-text {
+    font-family: "Lato", sans-serif;
+    word-wrap: break-word;
+}
+
+/* 
 
 .step-card {
     background-size: cover;
@@ -48,18 +112,5 @@
     overflow-wrap: break-word;
     text-align: center;
     margin-right: 50px;
-}
-
-.upload-button{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-    font-size: 150%;
-    height: 4em;
-    font-size: larger;
-    text-transform: capitalize;
-}
-
-/* ANIMATION */
+} */
 

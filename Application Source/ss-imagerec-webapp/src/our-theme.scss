@@ -3,7 +3,35 @@
 
 $custom-primary: mat-palette($mat-blue-grey);
 $custom-accent: mat-palette($mat-indigo);
+$custom-warn: mat-palette($mat-red);
 
-$custom-theme: mat-dark-theme($custom-primary, $custom-accent);
+// $grey: #c2c1c1;
+
+// $mat-light-theme-foreground: (
+//   base:            $grey,
+//   divider:         rgba($grey, 1),
+//   dividers:        rgba($grey, 1),
+//   disabled:        rgba($grey, 1),
+//   disabled-button: rgba($grey, 1),
+//   disabled-text:   rgba($grey, 1),
+//   hint-text:       rgba($grey, 1),
+//   secondary-text:  rgba($grey, 1),
+//   icon:            rgba($grey, 1),
+//   icons:           rgba($grey, 1),
+//   text:            rgba($grey, 1)
+// );
+
+// @function customTheme($primary, $accent, $warn: md-palette($mat-red)) {
+//     @return (
+//         primary: $primary,
+//         accent: $accent,
+//         warn: $warn,
+//         is-dark: false,
+//         foreground: mat-color(map-get($mat-blue-grey, primary), darker)Zz,
+//         background: mat-color(map-get($mat-blue-grey, primary), darker)
+//     );
+// }
+
+$custom-theme: mat-light-theme($custom-primary, $custom-accent);
 
 @include angular-material-theme($custom-theme);
