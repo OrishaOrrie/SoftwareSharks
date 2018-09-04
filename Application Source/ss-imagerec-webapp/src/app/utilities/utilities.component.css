@@ -1,6 +1,5 @@
 .total-utilities-card{
     background-color: #607D8B;
-    color: white;
 }
 
 .utilcard__title{
@@ -14,27 +13,27 @@
 }
 
 .tally-upper-card{
-    background-color: #CFD8DC;
-    color: #212121;
-    width: 90%;
-    margin: auto 50px;
+    background-color:  #607D8B;
+    border: lightgray 2px solid;
+    color: lightgray;
     text-align: center;
 }
 
 .tuc__title {
     font-family: Lato, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    color: #212121;
+    color: lightgray;
 }
 
 .tuc__container {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .tuc__input-container {
     width: 25%;
-    background-color: #455A64;
+    background-color: lightgray;
+    border: solid 4px rgb(13, 33, 44);
 }
 
 .tally-upper-card__input-field{
@@ -47,8 +46,7 @@
 } */
 
 .tally-upper-card__amount-result{
-    background: #455A64;
-    color: white;
+    background-color: lightgray;
 }
 
 .tuc__icon {
@@ -57,6 +55,6 @@
 }
 
 .tally-upper-card__result-title {
-    color: lightgray;
+    color: rgb(13, 33, 44);
     font-family: Lato, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }

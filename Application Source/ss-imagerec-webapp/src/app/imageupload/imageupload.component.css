@@ -39,7 +39,7 @@
 }
 
 .upload-card__button-label:hover{
-    background: rgb(124, 151, 165);
+    /* background: rgb(124, 151, 165); */
     cursor: pointer;
 }
 
@@ -92,11 +92,12 @@ mat-spinner{
 }
 
 .result-card{
-    background-color: #CFD8DC;
+    background-color: lightgray;
+    text-align: center;
 }
 
 .result-card__nothing-to-show{
-    color: #212121;
+    color: rgb(35, 64, 78);
     font-family: "Lato", Arial, Helvetica, sans-serif;
 }
 
@@ -105,28 +106,31 @@ mat-spinner{
     text-align: left;
 }
 
-mat-card-title{
-    color: #212121;
+.results__title {
+    color: rgb(35, 64, 78);
     font-family: "Lato", Arial, Helvetica, sans-serif;
 }
 
 .table__container {
     height: 400px;
     overflow: auto;
+    margin: auto 10%;
+    text-align: left;
 }
 
 .results__table {
-    width: 80%;
+    margin-right: 20%;
+    width: 100%;
     background-color: #CFD8DC;
 }
 
 .table__string {
-    color: #212121;
+    color: rgb(35, 64, 78);
     font-family: "Lato", Arial, Helvetica, sans-serif;
 }
 
 .table__header {
-    background-color: lightgray;
+    background-color: #607D8B;
     text-transform: capitalize;
 }
 
@@ -139,5 +143,8 @@ mat-card-title{
 }
 
 .reload-upload{
-    align-content: center;
+    border: 3px solid rgb(35, 64, 78);
+    color: rgb(35, 64, 78);
+    font-family: "Lato", Arial, Helvetica, sans-serif;
+    background-color: rgba(5,5,5,0);
 }

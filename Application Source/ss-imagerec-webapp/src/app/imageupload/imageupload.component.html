@@ -36,10 +36,9 @@
             <br>
             <mat-grid-tile [colspan]=4 [rowspan]=1>
                 <div>
-                  <!-- UPLOAD IMAGE <button mat-raised-button color="primary" *ngIf="imgAvailable" (click)="uploadImage()" class="upload-card__upload-button">UPLOAD</button> -->
-                  <!-- PREDICT FROM MODEL --><button mat-raised-button color="primary" *ngIf="imgAvailable" (click)="predictImage()" class="upload-card__upload-button">Submit</button>
+                  <button mat-raised-button color="primary" *ngIf="imgAvailable" (click)="predictImage()" 
+                    class="upload-card__upload-button" [disabled]="notReadyToPredict" >{{ modelStatus }}</button>
                   <mat-spinner [diameter]="30" [style.display]="showSpinner ? 'block':'none'"></mat-spinner>
-                  <h4 style="color: #212121;">{{ modelStatus }}</h4>
                 </div>
             </mat-grid-tile>
             
@@ -50,11 +49,11 @@
 
       <mat-card class="result-card">
         <div>
-            <mat-card-title><h3>Classification Results</h3></mat-card-title>
-            <a mat-raised-button *ngIf="resultPreds.length != 0" (click)="reloadPage()" class="reload-upload" color="primary">Upload another Image</a>     
+            <h1 class="results__title">Classification Results</h1>
+            <a mat-raised-button *ngIf="resultPreds.length != 0" (click)="reloadPage()" class="reload-upload" color="primary">Classify another Image</a>     
         </div>
         <br>
-        <h4 class="result-card__nothing-to-show" *ngIf="resultPreds.length == 0">Nothing to show yet!</h4>
+        <h4 class="result-card__nothing-to-show" *ngIf="resultPreds.length == 0">Nothing to show yet... Submit an Image!</h4>
         <div class="table__container" *ngIf="resultPreds.length != 0">
             <table *ngIf="resultPreds.length != 0" mat-table [dataSource]="resultPreds" class="results__table">
           
@@ -75,11 +74,5 @@
         </div>
         <br>              
       </mat-card>
-
-      <!-- <mat-card class="test-card">
-        <mat-card-title><h3>Testing the TFJS model</h3></mat-card-title>
-        <button mat-button color="primary" (click)="loadModel()">Load Model</button>
-      </mat-card> -->
-
     </mat-card>
 </div>

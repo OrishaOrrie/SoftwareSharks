@@ -30,6 +30,7 @@ Functional Description: Acts as landing page and provides routes to the other pa
  */
 
 import { Component, OnInit } from '@angular/core';
+import { ModelLoaderService } from './../model/model-loader.service';
 
 @Component({
   selector: 'app-home',
@@ -41,9 +42,11 @@ export class HomeComponent implements OnInit {
 
   state = false;
 
-  constructor() { }
+  constructor(public ml: ModelLoaderService) { }
 
   ngOnInit() {
+    console.log('Fetching model');
+    this.ml.loadModel();
   }
 
 }

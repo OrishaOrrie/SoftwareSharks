@@ -1,6 +1,5 @@
 <mat-card class="total-utilities-card">
   <h1 class="utilcard__title">Tools</h1>
-    <div class="tally-upper-tile">
       <mat-card class="tally-upper-card">
         <h2 class="tuc__title">Item Amount Calculator</h2>
         <mat-card-subtitle class="tuc__title">Enter the values as instructed. Use the same measurement units (e.g. Kg)</mat-card-subtitle>
@@ -29,23 +28,10 @@
                 <mat-hint>Enter the weight of a filled container</mat-hint>
               </mat-form-field>
           </mat-card>
-          
-          <!-- <mat-form-field class="tally-upper-card__input-field">
-            <input matInput id="single-weight" type="number" placeholder="Weight of SINGLE item" [(ngModel)]="single_item" >
-          </mat-form-field>
-          <br>
-          <mat-form-field class="tally-upper-card__input-field">
-            <input matInput id="empty-weight" type="number" placeholder="Weight of EMPTY bucket" [(ngModel)]="empty_bucket">
-          </mat-form-field>
-          <br>
-          <mat-form-field class="tally-upper-card__input-field">
-            <input matInput id="filled-weight" type="number" placeholder="Weight of FILLED bucket" [(ngModel)]="filled_bucket">
-          </mat-form-field> -->
         </div>
         <br>
         <mat-card class="tally-upper-card__amount-result">
           <h2 class="tally-upper-card__result-title">Number of Items: {{ Math.floor((filled_bucket - empty_bucket)/single_item) }}</h2>
         </mat-card>
       </mat-card>
-    </div>
 </mat-card>

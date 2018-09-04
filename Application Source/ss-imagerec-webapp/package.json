@@ -33,6 +33,7 @@
     "animate.css": "^3.6.1",
     "core-js": "^2.4.1",
     "firebase": "^5.3.1",
+    "firebase-functions": "^2.0.5",
     "hover.css": "^2.3.0",
     "rxjs": "^6.2.2",
     "rxjs-compat": "^6.2.2",
