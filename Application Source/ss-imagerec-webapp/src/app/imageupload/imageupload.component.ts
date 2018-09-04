@@ -21,7 +21,6 @@
  * @ignore
 */
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { style } from '@angular/animations';
 import { Result } from './result';
 import { Component, OnInit } from '@angular/core';
 import * as tf from '@tensorflow/tfjs';
@@ -123,7 +122,10 @@ export class ImageuploadComponent implements OnInit {
     } else {
       const newP = document.createElement('p');
       const fileSize = this.formattedFileSize(uploadedFile.files[0].size);
-      newP.textContent = 'File Name: ' + uploadedFile.files[0].name + ' Size: ' + fileSize;
+      newP.textContent = 'Name: ' + uploadedFile.files[0].name + ' Size: ' + fileSize;
+      newP.style.setProperty('color', 'lightgray');
+      newP.style.setProperty('margin', 'auto');
+      newP.style.setProperty('font-family', '"Lato", Arial, Helvetica, sans-serif');
 
       const image = document.createElement('img');
       image.src = window.URL.createObjectURL(uploadedFile.files[0]);
@@ -148,9 +150,9 @@ export class ImageuploadComponent implements OnInit {
       this.instruction = 'Click either the File Select or Webcam Capture button';
     } else {
       if (this.uploadCapture === false) {
-        this.instruction = 'Click Upload to upload the selected image';
+        this.instruction = 'Click Submit to submit the selected image';
       } else {
-        this.instruction = 'Click Capture to take a screenshot and then click Upload to upload the captured image';
+        this.instruction = 'Click Capture to take a screenshot and then click Submit to submit the captured image';
       }
     }
   }
@@ -195,20 +197,32 @@ export class ImageuploadComponent implements OnInit {
     this.video = document.createElement('video');
     this.video.textContent = 'Video stream not available';
     this.video.style.setProperty('float', 'left');
+    this.video.style.setProperty('text-align', 'center');
 
     // Capture button element
     this.captureButton = document.createElement('button');
     this.captureButton.textContent = 'CAPTURE';
     this.captureButton.style.setProperty('padding', '16px 32px');
-    this.captureButton.style.setProperty('border-radius', '3px');
-    this.captureButton.style.setProperty('color', 'white');
-    this.captureButton.style.setProperty('background-color', '#607D8B');
+    this.captureButton.style.setProperty('border', '3px lightgray solid');
+    this.captureButton.style.setProperty('color', 'lightgray');
+    this.captureButton.style.setProperty('background-color', 'rgba(5,5,5,0)');
+    this.captureButton.style.setProperty('font-family', '"Lato", Arial, Helvetica, sans-serif');
+    this.captureButton.style.setProperty('margin-left', '20px');
+    this.captureButton.onmouseover = function() {
+      this.style.setProperty('cursor', 'pointer');
+      this.style.setProperty('background-color', 'rgb(33, 74, 95)');
+    };
+    this.captureButton.onmouseleave = function() {
+      this.style.setProperty('cursor', 'default');
+      this.style.setProperty('background-color', 'rgba(5,5,5,0)');
+    };
 
     const br = document.createElement('br');
 
     // Canvas element that draws screenshot
     this.canvas = document.createElement('canvas');
     this.canvas.style.setProperty('display', 'none');
+    this.canvas.style.setProperty('float', 'right');
 
     // Image element displaying saved screenshot
     this.image = document.createElement('img');

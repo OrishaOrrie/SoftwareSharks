@@ -1,15 +1,17 @@
 <div>
     <mat-card class="total-upload-card">
 
-      <h1 class="total-upload-card__title">Upload an Image</h1>
+      <h1 class="total-upload-card__title">Submit an Image</h1>
       <mat-card color="primary" class="upload-card">
         <mat-card-title class="upload-card__instruction">{{instruction}}</mat-card-title>
+        <br>
         <form class="form-horizontal" id="imgSelectForm">
           <mat-grid-list cols="4" rowHeight="100px">
 
             <mat-grid-tile [colspan]=1 [rowspan]=1>
                 <div class="upload-card__file-button">
                   <label for="file-upload" class="upload-card__button-label">
+                    <i class="material-icons button__icon">photo_library</i>
                     File Select
                   </label>
                   <input id="file-upload" (change)="madeChange()" type="file" accept="image/*"/>
@@ -18,23 +20,24 @@
             
             <mat-grid-tile [colspan]=3 [rowspan]=3>
                 <div class="preview">
-                  <p>No files currently selected</p>
+                  <h4 class="preview__no-files">No files currently selected</h4>
                 </div>
             </mat-grid-tile>
 
             <mat-grid-tile [colspan]=1 [rowspan]=1>
               <div>
                 <label for="webcam-upload" class="upload-card__button-label">
-                  Webcam Capture
+                  <i class="material-icons button__icon">photo_camera</i>
+                Webcam Capture
                 </label>
                 <button id="webcam-upload" (click)="captureImage()"></button>
               </div>
             </mat-grid-tile>
-
+            <br>
             <mat-grid-tile [colspan]=4 [rowspan]=1>
                 <div>
                   <!-- UPLOAD IMAGE <button mat-raised-button color="primary" *ngIf="imgAvailable" (click)="uploadImage()" class="upload-card__upload-button">UPLOAD</button> -->
-                  <!-- PREDICT FROM MODEL --><button mat-raised-button color="primary" *ngIf="imgAvailable" (click)="predictImage()" class="upload-card__upload-button">UPLOAD</button>
+                  <!-- PREDICT FROM MODEL --><button mat-raised-button color="primary" *ngIf="imgAvailable" (click)="predictImage()" class="upload-card__upload-button">Submit</button>
                   <mat-spinner [diameter]="30" [style.display]="showSpinner ? 'block':'none'"></mat-spinner>
                   <h4 style="color: #212121;">{{ modelStatus }}</h4>
                 </div>

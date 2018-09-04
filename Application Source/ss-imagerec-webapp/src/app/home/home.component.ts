@@ -30,7 +30,6 @@ Functional Description: Acts as landing page and provides routes to the other pa
  */
 
 import { Component, OnInit } from '@angular/core';
-import { NgbCarousel, NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-home',

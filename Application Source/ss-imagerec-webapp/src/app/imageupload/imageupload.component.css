@@ -9,13 +9,15 @@
 }
 
 .upload-card {
-    background-color: #CFD8DC;
+    background-color:  #607D8B;
+    border: lightgray 2px solid;
 }
 
 .upload-card__instruction {
     text-align: center;
     font-size: 150%;
-    color: #212121;
+    color: lightgray;
+    font-family: "Lato", Arial, Helvetica, sans-serif;
 }
 
 .upload-card__file-button {
@@ -27,20 +29,44 @@
     font-size: 100%;
     /* border: 1px solid rgb(75, 75, 97); */
     display: inline-block;
-    padding: 16px 32px;
+    padding: 24px 48px;
+    width: 160px;
     cursor: pointer;
-    border-radius: 3px;
-    box-shadow: 2px 2px 2px rgb(150, 148, 148);
+    border: 3px solid lightgray;
     color: lightgray;
     background: #607D8B;
+    line-height: 20px;
 }
 
 .upload-card__button-label:hover{
-    font-size: 100%;
-    background: #607D8B;
-    display: inline-block;
-    padding: 16px 32px;
+    background: rgb(124, 151, 165);
     cursor: pointer;
+}
+
+.upload-card__button-label:active{
+    background: rgb(146, 170, 182);
+}
+
+.button__icon {
+    padding-right: 10px;
+    padding-bottom: 6px;
+    /* background: red; */
+}
+
+.preview {
+    width: 100%;
+    text-align: center;
+    background: rgb(13, 33, 44);
+    border: 5px lightgray solid;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.preview__no-files {
+    color: lightgray;
+    font-family: "Lato", Arial, Helvetica, sans-serif;
 }
 
 #file-upload {
@@ -53,9 +79,12 @@
 
 .upload-card__upload-button {
     background: #607D8B;
-    width: 200%;
+    border: 3px solid lightgray;
+    padding: 10px 50px;
     font-size: 150%;
     float: left;
+    color: lightgray;
+    font-family: "Lato", Arial, Helvetica, sans-serif;
 }
 
 mat-spinner{
@@ -97,7 +126,7 @@ mat-card-title{
 }
 
 .table__header {
-    background-color: #212121;
+    background-color: lightgray;
     text-transform: capitalize;
 }
 
