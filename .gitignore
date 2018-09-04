@@ -14,7 +14,11 @@ Application Source/Backend/Node Server/upload/upload.png
 !docs/img/logos/*
 !docs/img/portfolio/*
 !docs/img/team/*
-Application Source/Backend/Node Server/tfjs/
-Application Source/Mobile/myApp/google-services.json
-Application Source/ss-dashboard
-Application Source/ss-imagerec-webapp/functions/local_modules/credentials.js
+/Application Source/Backend/node_modules/
+/Application Source/Backend/Node Server/tfjs/
+/Application Source/Backend/Node Server/node_modules/
+/Application Source/Backend/Node Server/functions/node_modules/
+/Application Source/Mobile/myApp/google-services.json
+/Application Source/ss-dashboard
+/Application Source/ss-imagerec-webapp/functions/local_modules/credentials.js
+/Application Source/Mobile/myApp/package-lock.json
