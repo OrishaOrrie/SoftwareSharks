@@ -20,6 +20,13 @@ export class ModelLoaderService {
       'classJson': 'bramhope_classes.json',
       'numClasses': 53,
       'hasLinks': true
+    },
+    {
+      'name': 'imagenet',
+      'url': 'https://storage.googleapis.com/tfjs-models/tfjs/mobilenet_v1_0.25_224/model.json',
+      'classJson': 'imagenet_classes.json',
+      'numClasses': 1000,
+      'hasLinks': false
     }
   ];
   public resultPreds = [];
@@ -62,7 +69,7 @@ export class ModelLoaderService {
       const raw = tf.fromPixels(image, 3);
       const cropped = this.cropImage(raw);
       console.log( 'Resizing Image...' );
-      const resized = tf.image.resizeBilinear(cropped, [229, 229]);
+      const resized = tf.image.resizeBilinear(cropped, [224, 224]);
       const batchedImage = resized.expandDims(0);
       const img = batchedImage.toFloat().div(tf.scalar(127)).sub(tf.scalar(1));
       console.log( 'Making actual prediction...' );
@@ -86,20 +93,29 @@ export class ModelLoaderService {
 
   mapPredictions(classPreds) {
     console.log('Mapping predictions...');
-    const classesJson = require(`../../assets/classes/${this.modelType[this.modelNumber].classJson}`);
-    // const numClasses = this.modelType[1].numClasses;
+    const classesJson = require(`../imageupload/classes/${this.modelType[this.modelNumber].classJson}`);
     const numClasses = classPreds.length;
     this.resultPreds = [];
     const linkExists = this.modelHasLinks();
 
     for (let i = 0; i < numClasses; i++) {
-      this.resultPreds[i] = {};
-      this.resultPreds[i].id = classesJson.classes[i].id;
-      this.resultPreds[i].first = classesJson.classes[i].first;
-      this.resultPreds[i].name = classesJson.classes[i].name;
-      this.resultPreds[i].likeliness = (classPreds[i] * 100).toFixed(4);
-      if (linkExists) {
-        this.resultPreds[i].link = classesJson.classes[i].link;
+      if (this.modelNumber === 2) {
+        // Use if the classes json is in the plain format
+        this.resultPreds[i] = {};
+        this.resultPreds[i].name = classesJson[i];
+        this.resultPreds[i].likeliness = (classPreds[i] * 100).toFixed(4);
+
+      } else {
+        // Used if the classes json is in our format
+        this.resultPreds[i] = {};
+        this.resultPreds[i].id = classesJson.classes[i].id;
+        this.resultPreds[i].first = classesJson.classes[i].first;
+        this.resultPreds[i].name = classesJson.classes[i].name;
+        this.resultPreds[i].likeliness = (classPreds[i] * 100).toFixed(4);
+        if (linkExists) {
+          this.resultPreds[i].link = classesJson.classes[i].link;
+        }
+
       }
     }
 
@@ -125,7 +141,6 @@ export class ModelLoaderService {
 
       if (element.likeliness < 0.001) {
         this.resultPreds = this.resultPreds.slice(0, index);
-        console.log('Removed element');
       }
     });
   }
