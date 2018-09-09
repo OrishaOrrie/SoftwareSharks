@@ -9,7 +9,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { BrowserXhr } from '@angular/http';
-import { NgbCarouselModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -40,9 +39,7 @@ import { LocationStrategy, HashLocationStrategy } from '../../node_modules/@angu
     HttpClientModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireStorageModule,
-    NgbModule.forRoot(),
-    NgbCarouselModule
+    AngularFireStorageModule
   ],
   providers: [
     {provide: BrowserXhr, useClass: CustExtBrowserXhr},

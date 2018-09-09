@@ -77,9 +77,10 @@ export class ImageuploadComponent implements OnInit {
   public downloadedModel = false;
   public modelRef = null;
   public resultPreds = [];
-  public displayedColumns = ['name', 'likeliness'];
-  public modelStatus = 'Loading...';
+  public displayedColumns = ['name', 'likeliness', 'link'];
   public notReadyToPredict = true;
+  public modelStatus = 'Loading...';
+
 
   /**
    * This constructor is only used to pass an instance of the HttpClient module.
@@ -122,6 +123,7 @@ export class ImageuploadComponent implements OnInit {
     if (uploadedFile.files.length === 0) {
       const newP = document.createElement('p');
       newP.textContent = 'No files currently selected';
+      newP.style.setProperty('color', 'lightgray');
 
       preview.appendChild(newP);
 
@@ -322,149 +324,62 @@ export class ImageuploadComponent implements OnInit {
   }
 
   /**
-   * This function is called when the user clicks the Upload button. It handles the process of uploading
-   * either a selected file or a captured webcam image.
-  //  */
-  // uploadImage() {
-  //   console.log('Uploading...');
-
-  //   if (this.uploadCapture === false) {    // if file select
-  //     if (this.imageToUpload == null) {
-  //       console.log('No image selected');
-  //       this.updateInstruction();
-  //     } else {
-  //       console.log('Uploading selected image file');
-  //       console.log(this.imageToUpload);
-  //       this.httpUploadImage();
-  //     }
-  //   } else {  // else webcam capture
-  //     this.getCapturedImage();
-  //     if (this.imageToUpload == null) {
-  //       this.updateInstruction();
-  //       console.log('Failed to upload webcam capture');
-  //     } else {
-  //       console.log('Uploading webcam capture');
-  //       this.httpUploadImage();
-  //     }
-  //   }
-  // }
-
-  /**
-   * This function carries out the task of sending an Http request (the image) to the server and
-   * handling the server response.
-   */
-  // httpUploadImage() {
-  //   this.showSpinner = true;
-  //   const httpOptions = {
-  //     headers: new HttpHeaders({
-  //       'Accept': 'application/json'
-  //     })
-  //   };
-
-  //   const dest = 'http://localhost:8000/upload';
-  //   const formData: FormData = new FormData();
-  //   formData.append('file', this.imageToUpload, this.imageToUpload.name);
-
-  //   this.http.post(dest, formData, httpOptions)
-  //   .subscribe(
-  //     resp => {
-  //       const data: any = resp;
-  //       this.results = [];
-  //       data.forEach(element => {
-  //         this.results.push(new Result(element.id, element.name, element.value));
-  //       });
-  //       this.instruction = 'View results below';
-  //       console.log('RESPONSE RECEIVED!');
-  //       this.showSpinner = false;
-  //     }
-  //   );
-  // }
-
-  /**
    * This function is called when the webcam capture option is selected. It converts the image from the
    * dynamically created <img> element to a File type, which is necessary for the Http request.
    */
-  getCapturedImage() {
-    const blobToUpload = this.dataURIToBlob(this.image.src);
-    let fileFromBlob: any = blobToUpload;
-    fileFromBlob.lastModfiedData = new Date();
-    fileFromBlob.name = 'webcam_capture';
-    fileFromBlob = <File>fileFromBlob;
-    console.log(fileFromBlob);
-    this.imageToUpload = fileFromBlob;
-  }
+  // getCapturedImage() {
+  //   const blobToUpload = this.dataURIToBlob(this.image.src);
+  //   let fileFromBlob: any = blobToUpload;
+  //   fileFromBlob.lastModfiedData = new Date();
+  //   fileFromBlob.name = 'webcam_capture';
+  //   fileFromBlob = <File>fileFromBlob;
+  //   console.log(fileFromBlob);
+  //   this.imageToUpload = fileFromBlob;
+  // }
 
-  /**
-   * This function converts the image URI from the <img> element to a Blob type so that it can be converted to
-   * a File type.
-  */
-  dataURIToBlob(dataURI) {
-    let byteString;
-    if (dataURI.split(',')[0].indexOf('base64') >= 0) {
-      byteString = atob(dataURI.split(',')[1]);
-    } else {
-      byteString = (dataURI.split(',')[1]);
-    }
+  // /**
+  //  * This function converts the image URI from the <img> element to a Blob type so that it can be converted to
+  //  * a File type.
+  // */
+  // dataURIToBlob(dataURI) {
+  //   let byteString;
+  //   if (dataURI.split(',')[0].indexOf('base64') >= 0) {
+  //     byteString = atob(dataURI.split(',')[1]);
+  //   } else {
+  //     byteString = (dataURI.split(',')[1]);
+  //   }
 
-    const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+  //   const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
 
-    const ia = new Uint8Array(byteString.length);
-    for (let i = 0; i < byteString.length; i++) {
-      ia[i] = byteString.charCodeAt(i);
-    }
+  //   const ia = new Uint8Array(byteString.length);
+  //   for (let i = 0; i < byteString.length; i++) {
+  //     ia[i] = byteString.charCodeAt(i);
+  //   }
 
-    return new Blob([ia], {type: mimeString});
-  }
+  //   return new Blob([ia], {type: mimeString});
+  // }
 
   predictImage() {
-    this.modelStatus = 'Predicting...';
-    this.showSpinner = true;
-    setInterval(100);
-    this.resultPreds = [];
+    const updateStatus = (txt) => {
+      this.modelStatus = txt;
+      this.showSpinner = true;
+    };
+
+    updateStatus('Predicting...');
     this.ml.predictImage(this.image)
     .then((predictions) => {
       this.showSpinner = false;
-      this.mapPredictions(predictions);
+      this.resultPreds = this.ml.mapPredictions(predictions);
       this.modelStatus = 'Submit';
 
       const el = document.querySelector('.result-card');
       el.scrollIntoView({behavior: 'smooth'});
     })
     .catch((error) => {
-      console.log('Error: ' + error);
+      console.error('Error: ' + error);
       this.showSpinner = false;
     });
-  }
 
-  mapPredictions(classPreds) {
-    // const classes = ('../../assets/classes/classes.json');
-    const classesJson = require('../../assets/classes/classes.json');
-    const numClasses = classPreds.length;
-    this.resultPreds = [];
-
-    for (let i = 0; i < numClasses; i++) {
-      this.resultPreds[i] = {};
-      this.resultPreds[i].id = classesJson.classes[i].id;
-      this.resultPreds[i].first = classesJson.classes[i].first;
-      this.resultPreds[i].name = classesJson.classes[i].name;
-      this.resultPreds[i].likeliness = (classPreds[i] * 100).toFixed(4);
-    }
-    this.sortPreds();
-    this.processResultNames();
-  }
-
-  sortPreds() {
-    this.resultPreds.sort(function(a, b) {
-      return b.likeliness - a.likeliness;
-    });
-  }
-
-  processResultNames() {
-    this.resultPreds.forEach((element) => {
-      element.name = element.name.replace(/_/g, ' ');
-      element.name = element.name.charAt(0).toUpperCase() + element.name.slice(1);
-      console.log(element.name);
-    });
   }
 
   /**

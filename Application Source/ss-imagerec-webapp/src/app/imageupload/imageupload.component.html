@@ -66,6 +66,13 @@
                 <th mat-header-cell *matHeaderCellDef>Likelihood</th>
                 <td mat-cell class="table__string" *matCellDef="let element"> {{ element.likeliness }}%</td>
               </ng-container>
+
+              <ng-container class="table__header" matColumnDef="link">
+                <th mat-header-cell *matHeaderCellDef>Link To Store</th>
+                <td mat-cell class="table__string" *matCellDef="let element" >
+                  <a *ngIf="element.link" href="{{ element.link }}" target="_blank">Go To Store</a>
+                </td>
+              </ng-container>
       
               <tr mat-header-row class="table__header" *matHeaderRowDef="displayedColumns; sticky: true"></tr>
               <tr mat-row class="table__row" *matRowDef="let row; columns: displayedColumns;"></tr>
