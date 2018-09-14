@@ -1,4 +1,3 @@
-import { CustExtBrowserXhr } from './cust-ext-browser-xhr';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { MaterialModule } from './material.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -42,7 +41,6 @@ import { LocationStrategy, HashLocationStrategy } from '../../node_modules/@angu
     AngularFireStorageModule
   ],
   providers: [
-    {provide: BrowserXhr, useClass: CustExtBrowserXhr},
     {provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [

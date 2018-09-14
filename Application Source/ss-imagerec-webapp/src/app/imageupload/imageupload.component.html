@@ -34,6 +34,13 @@
               </div>
             </mat-grid-tile>
             <br>
+            <mat-grid-tile [colspan]=1 [rowspan]=1>
+              <mat-select placeholder="Bramhope Classifier" [(ngModel)]="modelNumber" color="primary" 
+              class="model-select" name="modelSelector" (selectionChange)="changeSelectedModel()">
+                <mat-option value="1">Bramhope Classifier</mat-option>
+                <mat-option value="2">General Classifier</mat-option>
+              </mat-select>
+          </mat-grid-tile>
             <mat-grid-tile [colspan]=4 [rowspan]=1>
                 <div>
                   <button mat-raised-button color="primary" *ngIf="imgAvailable" (click)="predictImage()" 

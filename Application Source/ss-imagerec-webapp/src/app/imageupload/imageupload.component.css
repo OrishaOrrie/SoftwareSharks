@@ -77,6 +77,13 @@
     display: none;
 }
 
+.model-select {
+    text-align: center;
+    color: white;
+    border: 3px solid lightgray;
+    width: 80%;
+}
+
 .upload-card__upload-button {
     background: #607D8B;
     border: 3px solid lightgray;

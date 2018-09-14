@@ -56,6 +56,15 @@ export class ContactUsComponent implements OnInit {
   });
 
   /**
+   * This constructor is only used to pass an instance of the HttpClient module.
+   * @param http  HttpClient instance
+   */
+  constructor(private http: HttpClient) { }
+
+  ngOnInit() {
+  }
+
+  /**
    * Called when invalid input is detected
    */
   getErrorMessage() {
@@ -99,15 +108,6 @@ export class ContactUsComponent implements OnInit {
       }
     });
 
-  }
-
-  /**
-   * This constructor is only used to pass an instance of the HttpClient module.
-   * @param http  HttpClient instance
-   */
-  constructor(private http: HttpClient) { }
-
-  ngOnInit() {
   }
 
 }

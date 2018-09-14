@@ -1,6 +1,6 @@
 /**
  * File Name:       imageupload.component
- * Version Number:  v1.1
+ * Version Number:  v1.3
  * Author:          Tobias Bester
  * Project Name:    Ninshiki
  * Organization:    Software Sharks
@@ -10,20 +10,19 @@
  * Date         Author        Description
  * 01/03/2018   Tobias        Created component
  * 03/07/2018   Tobias        Added Custom Image Upload Functionality
+ * 12/09/2018   Tobias        Added model selection functionality
  * ------------------------------------------
  * Test Cases:      imageupload.component.spec.ts
  * Functional Description:
- *  Provides interface for user to select or capture an image and upload
- *  it to the system server. Displays results of image classification.
+ *  Provides interface for user to select or capture an image and have the model predict the class of the
+ *  object in the image.
  */
 
 /**
  * @ignore
 */
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Result } from './result';
 import { Component, OnInit } from '@angular/core';
-import * as tf from '@tensorflow/tfjs';
 import { ModelLoaderService } from '../model/model-loader.service';
 // import { AngularFireStorage } from '../../../node_modules/angularfire2/storage';
 
@@ -35,11 +34,13 @@ import { ModelLoaderService } from '../model/model-loader.service';
 export class ImageuploadComponent implements OnInit {
 
   /**
-   * Stores the server's http response of image classifications.
+   * Text displayed on the interface indicating what needs to be done
    */
-  public results: Result[] = [];
-
   public instruction: String = 'Click either the File Select or Webcam Capture button';
+
+  /**
+   * Determines whether the spinner next to the Submit button should be displayed or not
+   */
   public showSpinner = false;
 
   /**
@@ -70,26 +71,62 @@ export class ImageuploadComponent implements OnInit {
    */
   public imgAvailable = false;
 
+  /**
+   * Stores the server's http response of image classifications.
+   */
+  public results: Result[] = [];
+
+  /**
+   * Determines whether or not the Submit button should be displayed
+   */
   public displayUpload: Boolean = false;
-  public model: tf.Model;
+
+  /**
+   * Indicates whether the model loader service has loaded a model into memory
+   */
   public modelLoaded: Boolean = false;
+
+  /**
+   * Stores the results returned by the model loader predict method
+   */
   public predictions: any;
-  public downloadedModel = false;
-  public modelRef = null;
+
+  /**
+   * An array used to store JSON objects related to the classes that were predicted. Includes class name, class likeliness,
+   * and class catalogue links, if specified
+   */
   public resultPreds = [];
+
+  /**
+   * The header column text displayed in the results table
+   */
   public displayedColumns = ['name', 'likeliness', 'link'];
+
+  /**
+   * Determines whether a model is ready and whether an image has been predicted
+   */
   public notReadyToPredict = true;
+
+  /**
+   * The text displayed on the Submit button
+   */
   public modelStatus = 'Loading...';
 
+  /**
+   * Determines which model is to be used in the model loader service
+   */
+  public modelNumber = 1;
 
   /**
    * This constructor is only used to pass an instance of the HttpClient module.
    * @param http  HttpClient instance
    */
-  constructor(private http: HttpClient, public ml: ModelLoaderService ) { }
+  constructor(public ml: ModelLoaderService ) { }
 
   /**
-   * @hidden
+   * Upon initialization of the component, the model loader service loads the model. It then queries whether
+   * the model has been loaded every 500 ms and if it is, it allows predicting to take place. This timed query
+   * is due to the asynchronous nature of the TensorFlowJS loadModel method
    */
   ngOnInit() {
     this.ml.loadModel();
@@ -324,42 +361,12 @@ export class ImageuploadComponent implements OnInit {
   }
 
   /**
-   * This function is called when the webcam capture option is selected. It converts the image from the
-   * dynamically created <img> element to a File type, which is necessary for the Http request.
+   * Called when the Submit button is clicked. Calls the model loader service's predictImage method,
+   * then maps the predictions and fills the resultPreds array, so that the results table is updated
    */
-  // getCapturedImage() {
-  //   const blobToUpload = this.dataURIToBlob(this.image.src);
-  //   let fileFromBlob: any = blobToUpload;
-  //   fileFromBlob.lastModfiedData = new Date();
-  //   fileFromBlob.name = 'webcam_capture';
-  //   fileFromBlob = <File>fileFromBlob;
-  //   console.log(fileFromBlob);
-  //   this.imageToUpload = fileFromBlob;
-  // }
-
-  // /**
-  //  * This function converts the image URI from the <img> element to a Blob type so that it can be converted to
-  //  * a File type.
-  // */
-  // dataURIToBlob(dataURI) {
-  //   let byteString;
-  //   if (dataURI.split(',')[0].indexOf('base64') >= 0) {
-  //     byteString = atob(dataURI.split(',')[1]);
-  //   } else {
-  //     byteString = (dataURI.split(',')[1]);
-  //   }
-
-  //   const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
-
-  //   const ia = new Uint8Array(byteString.length);
-  //   for (let i = 0; i < byteString.length; i++) {
-  //     ia[i] = byteString.charCodeAt(i);
-  //   }
-
-  //   return new Blob([ia], {type: mimeString});
-  // }
-
   predictImage() {
+
+    // Spinner is not displayed due to async issues or not being able to figure it out
     const updateStatus = (txt) => {
       this.modelStatus = txt;
       this.showSpinner = true;
@@ -383,7 +390,25 @@ export class ImageuploadComponent implements OnInit {
   }
 
   /**
-   * This function reloads the page when the Upload Another Image button is clicked.
+   * Called when the select element is changed. The model loader service methods are called to change the
+   * selected model and load it into memory
+   */
+  changeSelectedModel() {
+    this.ml.changeModel(this.modelNumber);
+    this.notReadyToPredict = true;
+    this.modelStatus = 'Loading...';
+    this.ml.loadModel();
+    const modelLoaded = setInterval(() => {
+      if (this.ml.modelIsReady()) {
+        this.notReadyToPredict = false;
+        clearInterval(modelLoaded);
+        this.modelStatus = 'Submit';
+      }
+    }, 500);
+  }
+
+  /**
+   * This function scrolls up to the Image Submit section of the page
    */
   async reloadPage() {
     const el = document.querySelector('.upload-card__instruction');

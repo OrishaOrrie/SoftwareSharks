@@ -40,10 +40,14 @@ import { ModelLoaderService } from './../model/model-loader.service';
 })
 export class HomeComponent implements OnInit {
 
-  state = false;
-
+  /**
+   * @ignore
+   */
   constructor(public ml: ModelLoaderService) { }
 
+  /**
+   * The model loader service should start loading the model from the Internet upon home page entrance
+   */
   ngOnInit() {
     console.log('Fetching model');
     this.ml.loadModel();

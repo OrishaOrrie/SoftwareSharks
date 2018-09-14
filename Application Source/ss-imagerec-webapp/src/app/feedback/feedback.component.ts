@@ -1,3 +1,20 @@
+/**
+ * File Name:       feedback.component
+ * Version Number:  v1.0
+ * Author Name:     Tobias Bester
+ * Project Name:    Ninshiki
+ * Organization:    Software Sharks
+ * Manual:  Refer to the Ninshiki User Manual at https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf
+ * Update History:
+ * ------------------------------------------
+ * Date         Author        Description
+ * 01/09/2018   Tobias        Created component
+ * ------------------------------------------
+ * Test Cases:      feedback.component.spec.ts
+ * Functional Description:
+ *  Allows user to send feedback to developers
+ */
+
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
@@ -9,17 +26,45 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 })
 export class FeedbackComponent implements OnInit {
 
+  /**
+   * Array of all types of feedback
+   */
   public feedbackTypes: string[] = [
     'General Feedback',
     'Bug',
     'Feature Request'
   ];
+
+  /**
+   * The default feedback type to be used
+   */
   public defaultType = 'General Feedback';
+
+  /**
+   * Indicates that the feedback is being sent
+   */
   public sending: Boolean = false;
+
+  /**
+   * Indicates that a response has been received from the server
+   */
   public submitted: Boolean = false;
+
+  /**
+   * Indicates that an error occured while trying to submit feedback
+   */
   public failedToSubmit: Boolean = false;
+
+  /**
+   * Used for form controls and validation
+   */
   public formGroup: FormGroup;
 
+  /**
+   * THe form group and it's validation is defined in this constructor
+   * @param fb Form Builder injection used for Form validation
+   * @param http HttpClient injection used to make HTTP requests
+   */
   constructor(public fb: FormBuilder, public http: HttpClient) {
     this.formGroup = this.fb.group({
       name: new FormControl('', Validators.compose([
@@ -39,6 +84,10 @@ export class FeedbackComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * Called when the Send Feedback button is clicked. POSTs the message and handles the server
+   * response
+   */
   submitForm() {
     this.sending = true;
     console.log('Form Valid!');
@@ -59,6 +108,10 @@ export class FeedbackComponent implements OnInit {
 
   }
 
+  /**
+   * Handles sending the HTTP POST request to the email server with the necessary feedback details
+   * @returns   Observable with the data received by the email server
+   */
   postMessage() {
     const msgToSend = 'Feedback type: ' + this.formGroup.controls['feedType'].value + '\n'
     + this.formGroup.controls['message'].value;
