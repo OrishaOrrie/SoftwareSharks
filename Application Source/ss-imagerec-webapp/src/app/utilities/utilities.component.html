@@ -1,39 +1,37 @@
 <mat-card class="total-utilities-card">
-
-  <h1 class="title">Utilities</h1>
-  <mat-grid-list cols="1" rowHeight="2:1">
-
-    <mat-grid-tile class="tally-upper-tile">
+  <h1 class="utilcard__title">Tools</h1>
       <mat-card class="tally-upper-card">
-        <mat-card-title>Item Amount Calculator</mat-card-title>
-        <mat-card-subtitle>Enter the values as instructed. Use the same measurement units</mat-card-subtitle>
-        <mat-card-content>
-          <mat-form-field class="input-field">
-            <input matInput id="single-weight" type="number" placeholder="Weight of SINGLE item" [(ngModel)]="single_item" >
-          </mat-form-field>
-          <br>
-          <mat-form-field class="input-field">
-            <input matInput id="empty-weight" type="number" placeholder="Weight of EMPTY bucket" [(ngModel)]="empty_bucket">
-          </mat-form-field>
-          <br>
-          <mat-form-field class="input-field">
-            <input matInput id="filled-weight" type="number" placeholder="Weight of FILLED bucket" [(ngModel)]="filled_bucket">
-          </mat-form-field>
-          <br>
-          <br>
-          <mat-card class="amount-result">
-            <mat-card-title class="result-title">Number of Items: {{ Math.floor((filled_bucket - empty_bucket)/single_item) }}</mat-card-title>
+        <h2 class="tuc__title">Item Amount Calculator</h2>
+        <mat-card-subtitle class="tuc__title">Enter the values as instructed. Use the same measurement units (e.g. Kg)</mat-card-subtitle>
+        <div class="tuc__container">
+          <mat-card class="tuc__input-container">
+              <mat-form-field class="tally-upper-card__input-field" appearance="outline" color="primary">
+                <mat-label>Single Item</mat-label>
+                <input matInput id="single-weight" type="number" placeholder="Weight of SINGLE Item" [(ngModel)]="single_item">
+                <img class="tuc__icon" matSuffix src="../../assets/icons/SquareIconWhite.svg">
+                <mat-hint>Enter the weight of a single item</mat-hint>
+              </mat-form-field>
           </mat-card>
-        </mat-card-content>
+          <mat-card class="tuc__input-container">
+              <mat-form-field class="tally-upper-card__input-field" appearance="outline" color="primary">
+                <mat-label>Empty Container</mat-label>
+                <input matInput id="single-weight" type="number" placeholder="Weight of EMPTY Container" [(ngModel)]="empty_bucket" >
+                <img class="tuc__icon" matSuffix src="../../assets/icons/EmptyIconWhite.svg">
+                <mat-hint>Enter the weight of an empty container</mat-hint>
+              </mat-form-field>
+          </mat-card>
+          <mat-card class="tuc__input-container">
+              <mat-form-field class="tally-upper-card__input-field" appearance="outline" color="primary">
+                <mat-label>Filled Container</mat-label>
+                <input matInput id="filled-weight" type="number" placeholder="Weight of FILLED Container" [(ngModel)]="filled_bucket">
+                <img class="tuc__icon" matSuffix src="../../assets/icons/FilledIconWhite.svg">
+                <mat-hint>Enter the weight of a filled container</mat-hint>
+              </mat-form-field>
+          </mat-card>
+        </div>
+        <br>
+        <mat-card class="tally-upper-card__amount-result">
+          <h2 class="tally-upper-card__result-title">Number of Items: {{ Math.floor((filled_bucket - empty_bucket)/single_item) }}</h2>
+        </mat-card>
       </mat-card>
-    </mat-grid-tile>
-
-    <!--mat-grid-tile>
-      <mat-card>
-        Utility 2
-      </mat-card>
-    </mat-grid-tile-->
-
-  </mat-grid-list>
-
 </mat-card>

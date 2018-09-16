@@ -1,7 +1,3 @@
-/node_modules
-*.ckpt
-*.h5
-*.__styleext__
 *.jpg
 *.jpeg
 *.model
@@ -9,11 +5,18 @@
 Application Source/Backend/Node Server/upload/upload.jpg
 Application Source/Backend/Node Server/upload/upload.png
 *.__styleext__
+Application Source/ss-imagerec-webapp/node_modules/@schematics/angular/component/files/__path__/__name@dasherize@if-flat__/__name@dasherize__.component.__styleext__
 !docs/img/*
 !docs/img/about/*
 !docs/img/logos/*
 !docs/img/portfolio/*
 !docs/img/team/*
-Application Source/Backend/Node Server/tfjs/
-Application Source/Mobile/myApp/google-services.json
-Application Source/ss-dashboard
+*.ckpt
+*.h5
+/node_modules
+/Application Source/ss-dashboard
+Application Source/ss-imagerec-webapp/functions/local_modules/credentials.js
+Application Source/Backend/Node Server
+Application Source/ss-imagerec-webapp/angular_material_schematics-UIHR27/address-form/files/__path__/__name@dasherize@if-flat__/__name@dasherize__.component.html
+Application Source/ss-imagerec-webapp/angular_material_schematics-UIHR27/address-form/files/__path__/__name@dasherize@if-flat__/__name@dasherize__.component.spec.ts
+Application Source/ss-imagerec-webapp/angular_material_schematics-UIHR27/dashboard/files/__path__/__name@dasherize@if-flat__/__name@dasherize__.component.spec.ts

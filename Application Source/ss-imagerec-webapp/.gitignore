@@ -7,7 +7,7 @@
 /out-tsc
 
 # dependencies
-
+/functions/node_modules
 
 # IDEs and editors
 /.idea
@@ -26,6 +26,7 @@
 !.vscode/extensions.json
 
 # misc
+/node_modules
 /.sass-cache
 /connect.lock
 /coverage
@@ -38,9 +39,5 @@ testem.log
 # e2e
 /e2e/*.js
 /e2e/*.map
-
-# System Files
-.DS_Store
-Thumbs.db
-/node_modules
-/functions/node_modules
+!/e2e/images/IMG_20180517_141125.jpg
+!/e2e/images/hdx-claw-hammers-n-a10shd-64_1000.jpg

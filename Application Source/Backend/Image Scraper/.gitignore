@@ -1,6 +1,2 @@
+/program/node_modules
 /urls
-*.model
-*.jpg
-*.jpeg
-*.png
-program/node_modules

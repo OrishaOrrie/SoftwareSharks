@@ -1,6 +1,6 @@
 /**
  * File Name:       imageupload.component
- * Version Number:  v1.1
+ * Version Number:  v1.3
  * Author:          Tobias Bester
  * Project Name:    Ninshiki
  * Organization:    Software Sharks
@@ -10,20 +10,20 @@
  * Date         Author        Description
  * 01/03/2018   Tobias        Created component
  * 03/07/2018   Tobias        Added Custom Image Upload Functionality
+ * 12/09/2018   Tobias        Added model selection functionality
  * ------------------------------------------
  * Test Cases:      imageupload.component.spec.ts
  * Functional Description:
- *  Provides interface for user to select or capture an image and upload
- *  it to the system server. Displays results of image classification.
+ *  Provides interface for user to select or capture an image and have the model predict the class of the
+ *  object in the image.
  */
 
 /**
  * @ignore
 */
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { style } from '@angular/animations';
-import { Result } from './result';
 import { Component, OnInit } from '@angular/core';
+import { ModelLoaderService } from '../model/model-loader.service';
+// import { AngularFireStorage } from '../../../node_modules/angularfire2/storage';
 
 @Component({
   selector: 'app-imageupload',
@@ -33,11 +33,13 @@ import { Component, OnInit } from '@angular/core';
 export class ImageuploadComponent implements OnInit {
 
   /**
-   * Stores the server's http response of image classifications.
+   * Text displayed on the interface indicating what needs to be done
    */
-  public results: Result[] = [];
-
   public instruction: String = 'Click either the File Select or Webcam Capture button';
+
+  /**
+   * Determines whether the spinner next to the Submit button should be displayed or not
+   */
   public showSpinner = false;
 
   /**
@@ -69,15 +71,67 @@ export class ImageuploadComponent implements OnInit {
   public imgAvailable = false;
 
   /**
+   * Determines whether or not the Submit button should be displayed
+   */
+  public displayUpload: Boolean = false;
+
+  /**
+   * Indicates whether the model loader service has loaded a model into memory
+   */
+  public modelLoaded: Boolean = false;
+
+  /**
+   * Stores the results returned by the model loader predict method
+   */
+  public predictions: any;
+
+  /**
+   * An array used to store JSON objects related to the classes that were predicted. Includes class name, class likeliness,
+   * and class catalogue links, if specified
+   */
+  public resultPreds = [];
+
+  /**
+   * The header column text displayed in the results table
+   */
+  public displayedColumns = ['name', 'likeliness', 'link'];
+
+  /**
+   * Determines whether a model is ready and whether an image has been predicted
+   */
+  public notReadyToPredict = true;
+
+  /**
+   * The text displayed on the Submit button
+   */
+  public modelStatus = 'Loading...';
+
+  /**
+   * Determines which model is to be used in the model loader service
+   */
+  public modelNumber = 1;
+
+  /**
    * This constructor is only used to pass an instance of the HttpClient module.
    * @param http  HttpClient instance
    */
-  constructor(private http: HttpClient) { }
+  constructor(public ml: ModelLoaderService ) { }
 
   /**
-   * @hidden
+   * Upon initialization of the component, the model loader service loads the model. It then queries whether
+   * the model has been loaded every 500 ms and if it is, it allows predicting to take place. This timed query
+   * is due to the asynchronous nature of the TensorFlowJS loadModel method
    */
-  ngOnInit() {  }
+  ngOnInit() {
+    this.ml.loadModel();
+    const modelLoaded = setInterval(() => {
+      if (this.ml.modelIsReady()) {
+        this.notReadyToPredict = false;
+        clearInterval(modelLoaded);
+        this.modelStatus = 'Submit';
+      }
+    }, 500);
+  }
 
   /**
    *  This function is triggered by the user selecting an image from the file explorer. It displays the selected
@@ -100,6 +154,7 @@ export class ImageuploadComponent implements OnInit {
     if (uploadedFile.files.length === 0) {
       const newP = document.createElement('p');
       newP.textContent = 'No files currently selected';
+      newP.style.setProperty('color', 'lightgray');
 
       preview.appendChild(newP);
 
@@ -109,11 +164,15 @@ export class ImageuploadComponent implements OnInit {
     } else {
       const newP = document.createElement('p');
       const fileSize = this.formattedFileSize(uploadedFile.files[0].size);
-      newP.textContent = 'File Name: ' + uploadedFile.files[0].name + ' Size: ' + fileSize;
+      newP.textContent = 'Name: ' + uploadedFile.files[0].name + ' Size: ' + fileSize;
+      newP.style.setProperty('color', 'lightgray');
+      newP.style.setProperty('margin', 'auto');
+      newP.style.setProperty('font-family', '"Lato", Arial, Helvetica, sans-serif');
 
       const image = document.createElement('img');
       image.src = window.URL.createObjectURL(uploadedFile.files[0]);
       image.style.setProperty('height', '200px');
+      this.image = image;
 
       preview.appendChild(newP);
       preview.appendChild(image);
@@ -133,9 +192,9 @@ export class ImageuploadComponent implements OnInit {
       this.instruction = 'Click either the File Select or Webcam Capture button';
     } else {
       if (this.uploadCapture === false) {
-        this.instruction = 'Click Upload to upload the selected image';
+        this.instruction = 'Click Submit to submit the selected image';
       } else {
-        this.instruction = 'Click Capture to take a screenshot and then click Upload to upload the captured image';
+        this.instruction = 'Click Capture to take a screenshot and then click Submit to submit the captured image';
       }
     }
   }
@@ -166,6 +225,7 @@ export class ImageuploadComponent implements OnInit {
   captureImage() {
     const preview = document.querySelector('.preview');
     this.imgAvailable = false;
+    this.displayUpload = false;
     this.updateInstruction();
 
     while (preview.firstChild) {
@@ -179,19 +239,32 @@ export class ImageuploadComponent implements OnInit {
     this.video = document.createElement('video');
     this.video.textContent = 'Video stream not available';
     this.video.style.setProperty('float', 'left');
+    this.video.style.setProperty('text-align', 'center');
 
     // Capture button element
     this.captureButton = document.createElement('button');
     this.captureButton.textContent = 'CAPTURE';
     this.captureButton.style.setProperty('padding', '16px 32px');
-    this.captureButton.style.setProperty('border-radius', '3px');
-    this.captureButton.style.setProperty('background-color', '#607D8B;');
+    this.captureButton.style.setProperty('border', '3px lightgray solid');
+    this.captureButton.style.setProperty('color', 'lightgray');
+    this.captureButton.style.setProperty('background-color', 'rgba(5,5,5,0)');
+    this.captureButton.style.setProperty('font-family', '"Lato", Arial, Helvetica, sans-serif');
+    this.captureButton.style.setProperty('margin-left', '20px');
+    this.captureButton.onmouseover = function() {
+      this.style.setProperty('cursor', 'pointer');
+      this.style.setProperty('background-color', 'rgb(33, 74, 95)');
+    };
+    this.captureButton.onmouseleave = function() {
+      this.style.setProperty('cursor', 'default');
+      this.style.setProperty('background-color', 'rgba(5,5,5,0)');
+    };
 
     const br = document.createElement('br');
 
     // Canvas element that draws screenshot
     this.canvas = document.createElement('canvas');
     this.canvas.style.setProperty('display', 'none');
+    this.canvas.style.setProperty('float', 'right');
 
     // Image element displaying saved screenshot
     this.image = document.createElement('img');
@@ -282,105 +355,58 @@ export class ImageuploadComponent implements OnInit {
   }
 
   /**
-   * This function is called when the user clicks the Upload button. It handles the process of uploading
-   * either a selected file or a captured webcam image.
+   * Called when the Submit button is clicked. Calls the model loader service's predictImage method,
+   * then maps the predictions and fills the resultPreds array, so that the results table is updated
    */
-  uploadImage() {
-    console.log('Uploading...');
+  predictImage() {
 
-    if (this.uploadCapture === false) {    // if file select
-      if (this.imageToUpload == null) {
-        console.log('No image selected');
-        this.updateInstruction();
-      } else {
-        console.log('Uploading selected image file');
-        console.log(this.imageToUpload);
-        this.httpUploadImage();
-      }
-    } else {  // else webcam capture
-      this.getCapturedImage();
-      if (this.imageToUpload == null) {
-        this.updateInstruction();
-        console.log('Failed to upload webcam capture');
-      } else {
-        console.log('Uploading webcam capture');
-        this.httpUploadImage();
-      }
-    }
-  }
-
-  /**
-   * This function carries out the task of sending an Http request (the image) to the server and
-   * handling the server response.
-   */
-  httpUploadImage() {
-    this.showSpinner = true;
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Accept': 'application/json'
-      })
+    // Spinner is not displayed due to async issues or not being able to figure it out
+    const updateStatus = (txt) => {
+      this.modelStatus = txt;
+      this.showSpinner = true;
     };
 
-    const dest = 'http://localhost:8000/upload';
-    const formData: FormData = new FormData();
-    formData.append('file', this.imageToUpload, this.imageToUpload.name);
+    updateStatus('Predicting...');
+    this.ml.predictImage(this.image)
+    .then((predictions) => {
+      this.showSpinner = false;
+      this.resultPreds = this.ml.mapPredictions(predictions);
+      this.modelStatus = 'Submit';
 
-    this.http.post(dest, formData, httpOptions)
-    .subscribe(
-      resp => {
-        const data: any = resp;
-        this.results = [];
-        data.forEach(element => {
-          this.results.push(new Result(element.id, element.name, element.value));
-        });
-        this.instruction = 'View results below';
-        console.log('RESPONSE RECEIVED!');
-        this.showSpinner = false;
+      const el = document.querySelector('.result-card');
+      el.scrollIntoView({behavior: 'smooth'});
+    })
+    .catch((error) => {
+      console.error('Error: ' + error);
+      this.showSpinner = false;
+    });
+
+  }
+
+  /**
+   * Called when the select element is changed. The model loader service methods are called to change the
+   * selected model and load it into memory
+   */
+  changeSelectedModel() {
+    this.ml.changeModel(this.modelNumber);
+    this.notReadyToPredict = true;
+    this.modelStatus = 'Loading...';
+    this.ml.loadModel();
+    const modelLoaded = setInterval(() => {
+      if (this.ml.modelIsReady()) {
+        this.notReadyToPredict = false;
+        clearInterval(modelLoaded);
+        this.modelStatus = 'Submit';
       }
-    );
+    }, 500);
   }
 
   /**
-   * This function is called when the webcam capture option is selected. It converts the image from the
-   * dynamically created <img> element to a File type, which is necessary for the Http request.
+   * This function scrolls up to the Image Submit section of the page
    */
-  getCapturedImage() {
-    const blobToUpload = this.dataURIToBlob(this.image.src);
-    let fileFromBlob: any = blobToUpload;
-    fileFromBlob.lastModfiedData = new Date();
-    fileFromBlob.name = 'webcam_capture';
-    fileFromBlob = <File>fileFromBlob;
-    console.log(fileFromBlob);
-    this.imageToUpload = fileFromBlob;
-  }
-
-  /**
-   * This function converts the image URI from the <img> element to a Blob type so that it can be converted to
-   * a File type.
-  */
-  dataURIToBlob(dataURI) {
-    let byteString;
-    if (dataURI.split(',')[0].indexOf('base64') >= 0) {
-      byteString = atob(dataURI.split(',')[1]);
-    } else {
-      byteString = (dataURI.split(',')[1]);
-    }
-
-    const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
-
-    const ia = new Uint8Array(byteString.length);
-    for (let i = 0; i < byteString.length; i++) {
-      ia[i] = byteString.charCodeAt(i);
-    }
-
-    return new Blob([ia], {type: mimeString});
-  }
-
-  /**
-   * This function reloads the page when the Upload Another Image button is clicked.
-   */
-  reloadPage() {
-    window.location.reload(true);
+  async reloadPage() {
+    const el = document.querySelector('.upload-card__instruction');
+    el.scrollIntoView({behavior: 'smooth'});
   }
 
 }

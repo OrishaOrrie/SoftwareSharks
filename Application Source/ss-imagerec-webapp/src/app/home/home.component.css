@@ -1,16 +1,78 @@
-.welcome-container{
+.welcome-container {
     padding: 5px;
 }
 
-.intro-message{
-    color: white;
-    height: 3em;
-    position: relative;
+.intro-message {
+    color: lightgray;
     text-align: center;
     top: 1em;
     font-family: "Lato", sans-serif;
     font-size: 250%;
 }
+
+.intro__subtitle {
+    font-family: "Lato", sans-serif;
+    text-align: center;
+    color: lightgray;
+    font-weight: 400;
+    margin: auto;
+    word-wrap: break-word;
+}
+
+.upload-button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    padding: 15px;
+    border: 3px solid lightgray;
+    word-wrap: break-word;
+}
+
+.upload-button__text {
+    font-family: "Lato", sans-serif;
+    font-size: larger;
+    text-transform: capitalize;
+    color: lightgray;
+}
+
+.carousel {
+    width: 75%;
+    height: 25%;
+    background-color: #CFD8DC;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: auto;
+}
+
+.carousel__img {
+    align-self: flex-start;
+    height: 300px;
+    width: 60%;
+}
+
+.carousel__img-src{
+    align-self: flex-start;
+    height: 100%;
+}
+
+.carousel__content {
+    align-self: center;
+    width: 30%;
+    padding-right: 50px;
+}
+
+.carousel__content-header {
+    font-family: "Lato", sans-serif;
+}
+
+.carousel__content-text {
+    font-family: "Lato", sans-serif;
+    word-wrap: break-word;
+}
+
+/* 
 
 .step-card {
     background-size: cover;
@@ -19,21 +81,15 @@
     height: 100%;
 }
 
-.step-number {
+.step-card__number {
+    margin-top: 20px;
     text-align: center;
     color: white;
     font-size: 300%;
     text-shadow: 4px 4px 4px black;
 }
 
-.steps{
-    text-align: center;
-    color: white;
-    font-size: 400%;
-    text-shadow: 4px 4px 4px black;
-}
-
-.steps-descript{
+.step-card__title{
     font-family: "Raleway", sans-serif;
     text-align: left;
     text-shadow: 4px 4px 4px black;
@@ -42,28 +98,19 @@
     position: absolute;
 }
 
-.detailed-descript{
-    text-align: center;
+.step-card__description{
     color: white;
-    background: rgb(60, 60, 80);
-    padding: auto auto auto;
-    height: 25%;
+    background: #607D8B;
+    height: 15%;
     width: 100%;
     position: absolute;
     left: 0em;
     bottom: 0em;
 }
 
-.go-to-upload{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-    font-size: 150%;
-    height: 4em;
-    font-size: larger;
-    text-transform: capitalize;
-}
-
-/* ANIMATION */
+.actual-description {
+    overflow-wrap: break-word;
+    text-align: center;
+    margin-right: 50px;
+} */
 
