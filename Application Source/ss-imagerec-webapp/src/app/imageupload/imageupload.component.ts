@@ -21,7 +21,6 @@
 /**
  * @ignore
 */
-import { Result } from './result';
 import { Component, OnInit } from '@angular/core';
 import { ModelLoaderService } from '../model/model-loader.service';
 // import { AngularFireStorage } from '../../../node_modules/angularfire2/storage';
@@ -70,11 +69,6 @@ export class ImageuploadComponent implements OnInit {
    * Determines if an image is available to be uploaded
    */
   public imgAvailable = false;
-
-  /**
-   * Stores the server's http response of image classifications.
-   */
-  public results: Result[] = [];
 
   /**
    * Determines whether or not the Submit button should be displayed

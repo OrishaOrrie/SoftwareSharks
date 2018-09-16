@@ -13,16 +13,16 @@ export class AppPage {
     return element(by.css('app-home'));
   }
 
-  getNavbarImageupload() {
-    return element(by.id('navbar-image'));
+  getNavbarContactus() {
+    return element(by.id('navbar-contact'));
   }
 
   getNavbarUtilities() {
     return element(by.id('navbar-utilities'));
   }
 
-  getFooterContactUs() {
-    return element(by.id('footer-contactus'));
+  getImageSubmitButton() {
+    return element(by.id('submit-button'));
   }
 
 }

@@ -10,7 +10,7 @@ describe('ss-imagerec-webapp App', () => {
 
   it('should display title in toolbar', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('NINSHIKI');
+    expect(page.getParagraphText()).toEqual('[ NINSHIKI ]');
   });
 
   it('should display the Home component at root', () => {
@@ -25,15 +25,6 @@ describe('ss-imagerec-webapp App', () => {
     });
   });
 
-  it('should navigate to imageupload from navbar', () => {
-    page.navigateTo();
-    page.getNavbarImageupload().click().then(function() {
-      browser.getCurrentUrl().then(function(currentUrl) {
-        expect(currentUrl.indexOf('imageupload') !== -1).toBeTruthy();
-      });
-    });
-  });
-
   it('should navigate to utilities from navbar', () => {
     page.navigateTo();
     page.getNavbarUtilities().click().then(function() {
@@ -43,11 +34,20 @@ describe('ss-imagerec-webapp App', () => {
     });
   });
 
-  it('should navigate to contact-us from navbar', () => {
+  it('should navigate to contactus from navbar', () => {
     page.navigateTo();
-    page.getFooterContactUs().click().then(function() {
+    page.getNavbarContactus().click().then(function() {
       browser.getCurrentUrl().then(function(currentUrl) {
         expect(currentUrl.indexOf('contactus') !== -1).toBeTruthy();
+      });
+    });
+  });
+
+  xit('should navigate to imageupload from submit button', () => {
+    page.navigateTo();
+    page.getImageSubmitButton().click().then(function() {
+      browser.getCurrentUrl().then(function(currentUrl) {
+        expect(currentUrl.indexOf('imageupload') !== -1).toBeTruthy();
       });
     });
   });
@@ -57,7 +57,6 @@ describe('ss-imagerec-webapp App', () => {
 describe('ss-imagerec-webapp ImageUpload', () => {
   const path = require('path');
   let page: ImageUploadPage;
-  const testImgEarthClamp = './images/IMG_20180517_141125.jpg';
   const testImgHammer = './images/hdx-claw-hammers-n-a10shd-64_1000.jpg';
   let absolutePath = null;
 
@@ -72,13 +71,11 @@ describe('ss-imagerec-webapp ImageUpload', () => {
     expect(page.getUploadButton()).toBeTruthy();
   });
 
-  xit('should display a list of results from the server after upload', () => {
+  it('should display a list of results from the server after upload', () => {
     page.navigateTo();
-    browser.sleep(5000);
     absolutePath = path.resolve(__dirname, testImgHammer);
     page.getFileInput().sendKeys(absolutePath);
     page.getUploadButton().click();
-    browser.sleep(10000);
     expect(page.getResultsList().count()).toBeGreaterThan(5);
   });
 });
@@ -126,7 +123,6 @@ describe('ss-imagerec-webapp ContactUs', () => {
 
   it('should not display any status message initially', () => {
     page.navigateTo();
-    browser.sleep(5000);
     expect(page.getStatusResult()).toBeTruthy();
   });
 
@@ -139,7 +135,6 @@ describe('ss-imagerec-webapp ContactUs', () => {
     page.getMsgField().clear();
     page.getMsgField().sendKeys('Test message from E2E testing test');
     page.getSubmitButton().click();
-    browser.sleep(5000);
     expect(page.getStatusResult()).toBeTruthy();
   });
 });
