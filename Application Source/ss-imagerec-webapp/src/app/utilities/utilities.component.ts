@@ -50,6 +50,23 @@ export class UtilitiesComponent implements OnInit {
    * Math object to make use of the floor function
    */
   Math: Math = Math;
+
+  result = (() => {
+    if (this.empty_bucket > this.filled_bucket) {
+      return 'Empty bucket cannot weigh more than a filled bucket';
+    }
+
+    if (!this.empty_bucket || !this.filled_bucket || !this.single_item) {
+      return 'Weight inputs cannot be empty';
+    }
+
+    if (this.empty_bucket <= 0 || this.filled_bucket <= 0 || this.single_item <= 0 ) {
+      return 'Weight value must be a positive value';
+    }
+
+    return 'Number of items: ' + Math.floor((this.filled_bucket - this.empty_bucket) / this.single_item);
+  });
+
   constructor() { }
 
   ngOnInit() {
