@@ -11,7 +11,7 @@ Application Source/ss-imagerec-webapp/node_modules/@schematics/angular/component
 !docs/img/logos/*
 !docs/img/portfolio/*
 !docs/img/team/*
-node_modules/
+node_modules/*
 Application Source/Backend/FirebaseAdmin/private_key/testproject-ee885-firebase-adminsdk-mqdgy-b964b7fd30.json
 Application Source/Backend/Image Scraper/urls
 *.h5
