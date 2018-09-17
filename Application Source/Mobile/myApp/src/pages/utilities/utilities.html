@@ -8,7 +8,7 @@
 
   <ion-navbar>
   
-    <ion-title>Item amount calculator</ion-title>
+    <ion-title>Item calculator</ion-title>
     <ion-buttons end>
         <button ion-button icon-only (click) ="openModal()"  >
          <ion-icon name="help-circle" color= "dark"></ion-icon>
@@ -22,17 +22,28 @@
 
 
 <ion-content padding >
+
+   <p class= "instructions">Enter the values as instructed. Use the same measurement units (e.g. Kg)</p> 
 <ion-item class="inputs">
-   <ion-label  class="bob" color="secondary" stacked>Weight of Single Item</ion-label> 
-    <ion-input type="number" placeholder="Single item" [(ngModel)]="single_item"></ion-input>
+   <ion-label  class="bob" color="secondary" stacked>Weight Single Item</ion-label> 
+    <ion-input type="number" required placeholder="Single item" [(ngModel)]="single_item" name="test" min=0></ion-input>
   </ion-item>
   <ion-item class = "inputs">
-    <ion-label class="bob" color="secondary" stacked>Weight Of Empty Bucket</ion-label>
-    <ion-input type="number" placeholder="Empty bucket" [(ngModel)]="empty_bucket"></ion-input>
+    <ion-label class="bob" color="secondary" stacked>Weight Empty Bucket</ion-label>
+    <ion-input type="number" required placeholder="Empty bucket" [(ngModel)]="empty_bucket" min=0></ion-input>
   </ion-item>
   <ion-item class = "inputs">
-    <ion-label class="bob" color="secondary"stacked>Weight of Filled Bucket</ion-label>
-    <ion-input type="number" placeholder="Filled bucket" [(ngModel)]="filled_bucket"></ion-input>
+    <ion-label class="bob" color="secondary"stacked>Weight Filled Bucket</ion-label>
+    <ion-input type="number" required placeholder="Filled bucket" [(ngModel)]="filled_bucket"  min=0></ion-input>
   </ion-item>
-<button ion-button color ="tertiary" full round (click) ="hello(single_item, filled_bucket,empty_bucket)">Calculate</button>
+ <br>
+ <br>
+ <br> 
+<ion-card class = "result">
+  <ion-card-header class="result" color="secondary">
+    <!--Number of Items: {{ Math.floor((filled_bucket - empty_bucket)/single_item) }}-->
+    Number of items: {{ hello(single_item,empty_bucket, filled_bucket) }}
+  </ion-card-header>
+
+</ion-card>
 </ion-content>

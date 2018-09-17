@@ -9,18 +9,22 @@ import { AboutPage } from '../about/about';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-
+      
 @Component({
   selector: 'page-utilities',
   templateUrl: 'utilities.html',
 })
+
 export class UtilitiesPage {
 	Math: Math = Math;
 	totalObjects : number =null;
-
+  single_item = 1;
+  empty_bucket = 2;
+  filled_bucket = 10;
   
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     public alertController: AlertController, public modalCtrl : ModalController) {
+      
 
   }
 
@@ -52,14 +56,20 @@ export class UtilitiesPage {
     }
 
     //single filed empty
-  hello = function(a: number, b: number, c: number)
+  hello = function(sing: number, emp: number, fil: number)
   {
   
-
-      this.totalObjects = ((b - c)/a);
-      //	alert(this.totalObjects);
-      this.presentAlert();
+      while(emp>=fil && sing>=fil)
+      {
+        return 0;
+      }
+      if(!sing || !emp || !fil)
+      {
+        return 0;
+      }
+      this.totalObjects = ((fil - emp)/sing);
       return this.totalObjects;
+       
 
    }
    
