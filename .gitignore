@@ -14,9 +14,17 @@ Application Source/ss-imagerec-webapp/node_modules/@schematics/angular/component
 *.ckpt
 *.h5
 /node_modules
-/Application Source/ss-dashboard
 Application Source/ss-imagerec-webapp/functions/local_modules/credentials.js
 Application Source/Backend/Node Server
 Application Source/ss-imagerec-webapp/angular_material_schematics-UIHR27/address-form/files/__path__/__name@dasherize@if-flat__/__name@dasherize__.component.html
 Application Source/ss-imagerec-webapp/angular_material_schematics-UIHR27/address-form/files/__path__/__name@dasherize@if-flat__/__name@dasherize__.component.spec.ts
 Application Source/ss-imagerec-webapp/angular_material_schematics-UIHR27/dashboard/files/__path__/__name@dasherize@if-flat__/__name@dasherize__.component.spec.ts
+/Application Source/Backend/node_modules/
+/Application Source/Backend/Node Server/tfjs/
+/Application Source/Backend/Node Server/node_modules/
+/Application Source/Backend/Node Server/functions/node_modules/
+/Application Source/Mobile/myApp/google-services.json
+/Application Source/ss-imagerec-webapp/functions/local_modules/credentials.js
+Application Source/Backend/Node Server/.vscode/settings.json
+.angulardoc.json
+Application Source/Backend/Node Server/functions/priv/serviceAccountKey.json

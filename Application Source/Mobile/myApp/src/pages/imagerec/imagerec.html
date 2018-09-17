@@ -1,0 +1,56 @@
+<!--
+  Generated template for the ImagerecPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Image recognition</ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only (click) ="openModal()"  >
+         <ion-icon name="help-circle" color= "dark"></ion-icon>
+       </button>
+      </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<!-- <div class="overlay" padding [hidden]="isLoaded"></div> -->
+
+<ion-content #content padding>
+
+<h1 class = "first" color ="primary" ></h1>
+<p class = "instructions">How to upload an image:</p>
+<p class= "steps">1. Take a picture with your device's camera or select an image from your gallery.</p>
+<p class= "steps">2. Crop the image.</p>
+<p class= "steps">3. Click the Predict button.</p>
+<p class= "steps">4. View the results!</p>
+<!-- <h2 class = "second" color="secondary" >Capture an image using device camera</h2> -->
+  <div class="wrapper">
+    <p>
+      <button class="button" color= "custom" ion-button icon-start round  (click) = "takePic()" >
+          <ion-icon name="camera"  ></ion-icon>
+            Camera
+      </button>
+    </p>
+    </div>
+  <div class="wrapper">
+    <!-- <h2 class = "second" >Select image from device gallery</h2> md-cloud-upload-->
+  <p>
+    <button class ="button" color= "tertiary" ion-button icon-start round (click) = "selectPic()" ><ion-icon name="md-images"  ></ion-icon>
+      Gallery</button>
+  </p> 
+</div>
+
+  <p align = "center"><img *ngIf="imgSelectedOrCaptured" src="{{ myPhoto }}" class="user-image" id="selectedImage" alt="Select an image please">
+    <img *ngIf="!imgSelectedOrCaptured" src="assets/imgs/camera-holder.png" class="user-image" id="selectedImage">
+  </p>
+  <div class="wrapper">
+    <button color= "tertiary" ion-button icon-start round  *ngIf="imgAvailable" 
+    (click)="predictImage(); " [disabled]="notReadyToPredict" class="upload-card__upload-button">
+      <ion-icon name="md-alert"  ></ion-icon>
+    {{ predictButtonText }}</button>
+  </div>
+</ion-content>

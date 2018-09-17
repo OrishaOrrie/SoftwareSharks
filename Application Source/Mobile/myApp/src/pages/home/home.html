@@ -1,0 +1,34 @@
+<ion-header>
+<ion-navbar>
+  
+    <ion-title>Home</ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only (click) ="openModal()"  >
+         <ion-icon name="help-circle" color= "dark"></ion-icon>
+       </button>
+      </ion-buttons>
+</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+ <ion-slides pager>
+
+  <ion-slide id = "slide1" style="background-image: url(assets/imgs/takeimage.jpeg)">
+    <h2>Submit Image</h2>
+    Click on the Predict button and select an image of an object to be recognised.
+
+  </ion-slide>
+
+  <ion-slide id ="slide2" style="background-image: url(assets/imgs/brains.jpg)">
+    <h2>Image Analysis</h2>
+    Once you submit an image, we'll process the image with our trained AI model.
+  </ion-slide>
+
+  <ion-slide id = "slide3" style="background-image: url(assets/imgs/store.jpg)">
+    <h2>Image Classification</h2>
+    You will then receive a classification of the object in the image.
+
+  </ion-slide> 
+
+</ion-slides>
+</ion-content>
