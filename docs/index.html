@@ -38,13 +38,16 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav text-uppercase ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#services">Services</a>
+              <a class="nav-link js-scroll-trigger" href="#project">Project</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
+              <a class="nav-link js-scroll-trigger" href="#services">Technologies</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#about">About</a>
+              <a class="nav-link js-scroll-trigger" href="#portfolio">Documentation</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#about">Project History</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#team">Team</a>
@@ -68,13 +71,13 @@
       </div>
     </header>
 
-    <!-- Services -->
-    <section id="services">
+     <!-- project -->
+     <section id="project">
       <div class="container">
         <div class="row">
           <div class="col-lg-12 text-center">
-            <h2 class="section-heading text-uppercase">Services</h2>
-            <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+            <h2 class="section-heading text-uppercase">The project</h2>
+            <h3 class="section-subheading text-muted">The project description</h3>
           </div>
         </div>
         <div class="row text-center">
@@ -83,7 +86,7 @@
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
               <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
             </span>
-            <h4 class="service-heading">E-Commerce</h4>
+            <h4 class="service-heading">Stock Management</h4>
             <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
           </div>
           <div class="col-md-4">
@@ -91,7 +94,7 @@
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
               <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
             </span>
-            <h4 class="service-heading">Responsive Design</h4>
+            <h4 class="service-heading">Image classification</h4>
             <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
           </div>
           <div class="col-md-4">
@@ -99,11 +102,50 @@
               <i class="fa fa-circle fa-stack-2x text-primary"></i>
               <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
             </span>
-            <h4 class="service-heading">Web Security</h4>
+            <h4 class="service-heading">API</h4>
             <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
           </div>
         </div>
       </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading text-uppercase">Technologies</h2>
+            <h3 class="section-subheading text-muted">The following Technologies are used in this project.</h3>
+          </div>
+        </div>
+       
+      <section class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 col-sm-6">
+            <a href="#">
+              <img class="img-fluid d-block mx-auto" src="img/angular.PNG" alt="">
+            </a>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <a href="#">
+              <img class="img-fluid d-block mx-auto" src="img/firebase.PNG" alt="">
+            </a>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <a href="http://www.bramhope.co.za/">
+              <img class="img-fluid d-block mx-auto" src="img/ionic2.PNG" alt="">
+            </a>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <a href="http://www.bramhope.co.za/">
+              <img class="img-fluid d-block mx-auto" src="img/node.PNG" alt="">
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+      
     </section>
 
     <!-- Portfolio Grid -->
@@ -111,13 +153,13 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12 text-center">
-            <h2 class="section-heading text-uppercase">Portfolio</h2>
-            <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+            <h2 class="section-heading text-uppercase">Documentation</h2>
+            <h3 class="section-subheading text-muted">This section has all the Documentation about our capstone project.</h3>
           </div>
         </div>
         <div class="row">
           <div class="col-md-4 col-sm-6 portfolio-item">
-            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+            <a class="portfolio-link"  href="../Documentation/coding-standards.pdf" target="_blank">
               <div class="portfolio-hover">
                 <div class="portfolio-hover-content">
                   <i class="fa fa-plus fa-3x"></i>
@@ -126,12 +168,12 @@
               <img class="img-fluid" src="img/portfolio/01-thumbnail.jpg" alt="">
             </a>
             <div class="portfolio-caption">
-              <h4>Threads</h4>
-              <p class="text-muted">Illustration</p>
+              <h4>Coding Standards</h4>
+
             </div>
           </div>
           <div class="col-md-4 col-sm-6 portfolio-item">
-            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
+            <a class="portfolio-link"  href="../Documentation/functional-architectural-requirements.pdf" target="_blank">
               <div class="portfolio-hover">
                 <div class="portfolio-hover-content">
                   <i class="fa fa-plus fa-3x"></i>
@@ -139,13 +181,14 @@
               </div>
               <img class="img-fluid" src="img/portfolio/02-thumbnail.jpg" alt="">
             </a>
+            <!-- Functional-architectural requirements -->
             <div class="portfolio-caption">
-              <h4>Explore</h4>
-              <p class="text-muted">Graphic Design</p>
+              <h4>Functional Requirements</h4>
+
             </div>
           </div>
           <div class="col-md-4 col-sm-6 portfolio-item">
-            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal3">
+            <a class="portfolio-link"  href="../Documentation/testing-policy.pdf" target="_blank">
               <div class="portfolio-hover">
                 <div class="portfolio-hover-content">
                   <i class="fa fa-plus fa-3x"></i>
@@ -153,13 +196,15 @@
               </div>
               <img class="img-fluid" src="img/portfolio/03-thumbnail.jpg" alt="">
             </a>
+
+            <!-- Testing Policy -->
             <div class="portfolio-caption">
-              <h4>Finish</h4>
-              <p class="text-muted">Identity</p>
+              <h4>Testing Policy</h4>
+
             </div>
           </div>
           <div class="col-md-4 col-sm-6 portfolio-item">
-            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
+            <a class="portfolio-link" href="../Documentation/user-manual.pdf" target="_blank">
               <div class="portfolio-hover">
                 <div class="portfolio-hover-content">
                   <i class="fa fa-plus fa-3x"></i>
@@ -167,39 +212,15 @@
               </div>
               <img class="img-fluid" src="img/portfolio/04-thumbnail.jpg" alt="">
             </a>
+
+              <!-- user manual-->
             <div class="portfolio-caption">
-              <h4>Lines</h4>
-              <p class="text-muted">Branding</p>
+              <h4>User Manual</h4>
+
             </div>
           </div>
-          <div class="col-md-4 col-sm-6 portfolio-item">
-            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal5">
-              <div class="portfolio-hover">
-                <div class="portfolio-hover-content">
-                  <i class="fa fa-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="img/portfolio/05-thumbnail.jpg" alt="">
-            </a>
-            <div class="portfolio-caption">
-              <h4>Southwest</h4>
-              <p class="text-muted">Website Design</p>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6 portfolio-item">
-            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal6">
-              <div class="portfolio-hover">
-                <div class="portfolio-hover-content">
-                  <i class="fa fa-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="img/portfolio/06-thumbnail.jpg" alt="">
-            </a>
-            <div class="portfolio-caption">
-              <h4>Window</h4>
-              <p class="text-muted">Photography</p>
-            </div>
-          </div>
+
+
         </div>
       </div>
     </section>
@@ -222,11 +243,11 @@
                 </div>
                 <div class="timeline-panel">
                   <div class="timeline-heading">
-                    <h4>2009-2011</h4>
-                    <h4 class="subheading">Our Humble Beginnings</h4>
+                    <h4>16 March</h4>
+                    <h4 class="subheading">Demo 1</h4>
                   </div>
                   <div class="timeline-body">
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                    <p class="text-muted">Initial web interface for uploading an image. Used Clarifai's general model to predict the image.</p>
                   </div>
                 </div>
               </li>
@@ -236,11 +257,11 @@
                 </div>
                 <div class="timeline-panel">
                   <div class="timeline-heading">
-                    <h4>March 2011</h4>
-                    <h4 class="subheading">An Agency is Born</h4>
+                    <h4>13 April</h4>
+                    <h4 class="subheading">Demo 2</h4>
                   </div>
                   <div class="timeline-body">
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                    <p class="text-muted">Fleshed out web app features and started development of mobile app.</p>
                   </div>
                 </div>
               </li>
@@ -250,11 +271,11 @@
                 </div>
                 <div class="timeline-panel">
                   <div class="timeline-heading">
-                    <h4>December 2012</h4>
-                    <h4 class="subheading">Transition to Full Service</h4>
+                    <h4>11 May</h4>
+                    <h4 class="subheading">Demo 3</h4>
                   </div>
                   <div class="timeline-body">
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                    <p class="text-muted"> Developed a program to build image prediction models using Keras and TensorFlow. Completed initial version of mobile app using Android Studio.</p>
                   </div>
                 </div>
               </li>
@@ -264,14 +285,29 @@
                 </div>
                 <div class="timeline-panel">
                   <div class="timeline-heading">
-                    <h4>July 2014</h4>
-                    <h4 class="subheading">Phase Two Expansion</h4>
+                    <h4>20 July</h4>
+                    <h4 class="subheading">Demo 4</h4>
                   </div>
                   <div class="timeline-body">
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                    <p class="text-muted"> Created a custom image prediction model for specific domain. Model set up as a locally deployed backend service using a NodeJS server. Set up automated testing and deployment for web app.</p>
                   </div>
                 </div>
               </li>
+              <li class="timeline-image">
+                <div class="timeline-image">
+                  <img class="rounded-circle img-fluid" src="img/about/4.jpg" alt="">
+                </div>
+                <div class="timeline-panel">
+                  <div class="timeline-heading">
+                    <h4>21 September</h4>
+                    <h4 class="subheading">Demo 5</h4>
+                  </div>
+                  <div class="timeline-body">
+                    <p class="text-muted">Created a new, more accurate model that could be used by TensorFlowJS for on-device predicting. Developed brand new mobile app using Ionic and deployed to Google Play Store. Deployed web app and backend services to Firebase.</p>
+                  </div>
+                </div>
+              </li>
+
               <li class="timeline-inverted">
                 <div class="timeline-image">
                   <h4>Be Part
@@ -291,15 +327,73 @@
         <div class="row">
           <div class="col-lg-12 text-center">
             <h2 class="section-heading text-uppercase">Our Amazing Team</h2>
-            <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+            <h3 class="section-subheading text-muted">Image recognition App.</h3>
           </div>
         </div>
         <div class="row">
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="team-member">
+                <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+                <img class="mx-auto rounded-circle" src="img/team/1.jpg" alt="">
+                <h4>Jonathan Lew</h4>
+              </a>
+                <p class="text-muted">Lead Backend</p>
+                <ul class="list-inline social-buttons">
+                  <li class="list-inline-item">
+                    <a href="#">
+                      <i class="fa fa-twitter"></i>
+                    </a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#">
+                      <i class="fa fa-facebook"></i>
+                    </a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#">
+                      <i class="fa fa-linkedin"></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+
+            <div class="col-sm-4">
+              <div class="team-member">
+                <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
+                <img class="mx-auto rounded-circle" src="img/team/1.jpg" alt="">
+                <h4>Mark Coetzer </h4>
+              </a>
+                <p class="text-muted">Team Lead</p>
+                <ul class="list-inline social-buttons">
+                  <li class="list-inline-item">
+                    <a href="#">
+                      <i class="fa fa-twitter"></i>
+                    </a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#">
+                      <i class="fa fa-facebook"></i>
+                    </a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#">
+                      <i class="fa fa-linkedin"></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
           <div class="col-sm-4">
             <div class="team-member">
+              <a class="portfolio-link" data-toggle="modal" href="#portfolioModal3">
               <img class="mx-auto rounded-circle" src="img/team/1.jpg" alt="">
-              <h4>Kay Garland</h4>
-              <p class="text-muted">Lead Designer</p>
+              <h4>Orisha Orrie</h4>
+            </a>
+              <p class="text-muted">Lead Frontend</p>
               <ul class="list-inline social-buttons">
                 <li class="list-inline-item">
                   <a href="#">
@@ -321,9 +415,11 @@
           </div>
           <div class="col-sm-4">
             <div class="team-member">
+              <a class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
               <img class="mx-auto rounded-circle" src="img/team/2.jpg" alt="">
-              <h4>Larry Parker</h4>
-              <p class="text-muted">Lead Marketer</p>
+              <h4>Tobias Bester </h4>
+            </a>
+              <p class="text-muted">Lead AI</p>
               <ul class="list-inline social-buttons">
                 <li class="list-inline-item">
                   <a href="#">
@@ -344,10 +440,12 @@
             </div>
           </div>
           <div class="col-sm-4">
-            <div class="team-member">
+            <div class="team-member" >
+              <a class="portfolio-link" data-toggle="modal" href="#portfolioModal5">
               <img class="mx-auto rounded-circle" src="img/team/3.jpg" alt="">
-              <h4>Diana Pertersen</h4>
-              <p class="text-muted">Lead Developer</p>
+              <h4>Mukundi Matodzi</h4>
+              <p class="text-muted">Developer</p>
+            </a>
               <ul class="list-inline social-buttons">
                 <li class="list-inline-item">
                   <a href="#">
@@ -355,12 +453,12 @@
                   </a>
                 </li>
                 <li class="list-inline-item">
-                  <a href="#">
+                  <a href="https://www.facebook.com/mukundi.matodzi">
                     <i class="fa fa-facebook"></i>
                   </a>
                 </li>
                 <li class="list-inline-item">
-                  <a href="#">
+                  <a href="https://www.linkedin.com/in/mukundi-matodzi-89225815b/">
                     <i class="fa fa-linkedin"></i>
                   </a>
                 </li>
@@ -368,12 +466,7 @@
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-lg-8 mx-auto text-center">
-            <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
-          </div>
-        </div>
-      </div>
+
     </section>
 
     <!-- Clients -->
@@ -381,23 +474,23 @@
       <div class="container">
         <div class="row">
           <div class="col-md-3 col-sm-6">
-            <a href="#">
-              <img class="img-fluid d-block mx-auto" src="img/logos/envato.jpg" alt="">
+            <a href="https://www.up.ac.za/">
+              <img class="img-fluid d-block mx-auto" src="img/logos/up_logo.PNG" alt="">
             </a>
           </div>
           <div class="col-md-3 col-sm-6">
             <a href="#">
-              <img class="img-fluid d-block mx-auto" src="img/logos/designmodo.jpg" alt="">
+              <img class="img-fluid d-block mx-auto" src="img/logos/sslogo.PNG" alt="">
             </a>
           </div>
           <div class="col-md-3 col-sm-6">
-            <a href="#">
-              <img class="img-fluid d-block mx-auto" src="img/logos/themeforest.jpg" alt="">
+            <a href="http://www.bramhope.co.za/">
+              <img class="img-fluid d-block mx-auto" src="img/logos/logo-ol.PNG" alt="">
             </a>
           </div>
           <div class="col-md-3 col-sm-6">
-            <a href="#">
-              <img class="img-fluid d-block mx-auto" src="img/logos/creative-market.jpg" alt="">
+            <a href="http://www.bramhope.co.za/">
+              <img class="img-fluid d-block mx-auto" src="img/logos/logo-hs.PNG" alt="">
             </a>
           </div>
         </div>
@@ -489,9 +582,9 @@
       </div>
     </footer>
 
-    <!-- Portfolio Modals -->
+    <!-- Bio Modals -->
 
-    <!-- Modal 1 -->
+    <!-- Yoni modal  -->
     <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -505,18 +598,12 @@
               <div class="col-lg-8 mx-auto">
                 <div class="modal-body">
                   <!-- Project Details Go Here -->
-                  <h2 class="text-uppercase">Project Name</h2>
-                  <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                  <img class="img-fluid d-block mx-auto" src="img/portfolio/01-full.jpg" alt="">
-                  <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                  <ul class="list-inline">
-                    <li>Date: January 2017</li>
-                    <li>Client: Threads</li>
-                    <li>Category: Illustration</li>
-                  </ul>
+                  <h2 class="text-uppercase">Yoni</h2>
+                  <p class="item-intro text-muted">Master Backend Developer.</p>
+                  <p>Yoni is currently obtaining his BSc. in Computer Science from the University of Pretoria. Driven from a young age by a passion for problem solving and self motivation - Yoni uses his keen eye for detail to analyse any situation and produce a result that has both the client and bigger picture in mind. His technical skills and experience in various languages such as Java, C, C++, ASP.Net and JavaScript allow him to excel in both back and front-end solutions.</p>
                   <button class="btn btn-primary" data-dismiss="modal" type="button">
                     <i class="fa fa-times"></i>
-                    Close Project</button>
+                    Close Bio</button>
                 </div>
               </div>
             </div>
@@ -525,7 +612,7 @@
       </div>
     </div>
 
-    <!-- Modal 2 -->
+    <!--Mark modal -->
     <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -539,18 +626,14 @@
               <div class="col-lg-8 mx-auto">
                 <div class="modal-body">
                   <!-- Project Details Go Here -->
-                  <h2 class="text-uppercase">Project Name</h2>
-                  <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                  <img class="img-fluid d-block mx-auto" src="img/portfolio/02-full.jpg" alt="">
-                  <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                  <ul class="list-inline">
-                    <li>Date: January 2017</li>
-                    <li>Client: Explore</li>
-                    <li>Category: Graphic Design</li>
-                  </ul>
+                  <h2 class="text-uppercase">Mark</h2>
+                  <p class="item-intro text-muted">Team Master</p>
+
+                  <p>Mark is a dedicated individual who excels at logical tasks and challenges. With a background that includes institutions such as Pretoria Boys High School and, currently, the University of Pretoria - He strives to deliver efficient and user orientated solutions which compliment his passion for Computer Science and project management. He is a competent, self motivated and focused developer who is capable of producing effective and reliable solutions in most languages. Such as C, C++, C#, Java, JavaScript, Python among many others. With a strong analytical brain and ability to adapt to any situation, Mark forms a core part of any team.</p>
+
                   <button class="btn btn-primary" data-dismiss="modal" type="button">
                     <i class="fa fa-times"></i>
-                    Close Project</button>
+                    Close Modal</button>
                 </div>
               </div>
             </div>
@@ -559,7 +642,7 @@
       </div>
     </div>
 
-    <!-- Modal 3 -->
+    <!--  Orisha's Modal -->
     <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -573,18 +656,14 @@
               <div class="col-lg-8 mx-auto">
                 <div class="modal-body">
                   <!-- Project Details Go Here -->
-                  <h2 class="text-uppercase">Project Name</h2>
-                  <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                  <img class="img-fluid d-block mx-auto" src="img/portfolio/03-full.jpg" alt="">
-                  <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                  <ul class="list-inline">
-                    <li>Date: January 2017</li>
-                    <li>Client: Finish</li>
-                    <li>Category: Identity</li>
-                  </ul>
+                  <h2 class="text-uppercase">risha</h2>
+                  <p class="item-intro text-muted">Master Frontend</p>
+
+                  <p>Currently studying towards a BSc. Computer Science degree at the University of Pretoria, Orisha excels in front end design and development. A passion for web design coupled with her vast knowledge of web based languages and APIs, such as HTML, CSS, PHP, JavaScript, ReactJS and AngularJS, make her a core aspect of any team. She is capable of well exceeding expectations through her ability to apply effective solutions quickly and affordably to any problem presented to her.</p>
+
                   <button class="btn btn-primary" data-dismiss="modal" type="button">
                     <i class="fa fa-times"></i>
-                    Close Project</button>
+                    Close Bio</button>
                 </div>
               </div>
             </div>
@@ -593,7 +672,7 @@
       </div>
     </div>
 
-    <!-- Modal 4 -->
+    <!-- TObias Modal -->
     <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -607,18 +686,13 @@
               <div class="col-lg-8 mx-auto">
                 <div class="modal-body">
                   <!-- Project Details Go Here -->
-                  <h2 class="text-uppercase">Project Name</h2>
-                  <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                  <img class="img-fluid d-block mx-auto" src="img/portfolio/04-full.jpg" alt="">
-                  <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                  <ul class="list-inline">
-                    <li>Date: January 2017</li>
-                    <li>Client: Lines</li>
-                    <li>Category: Branding</li>
-                  </ul>
+                  <h2 class="text-uppercase">Tobi</h2>
+                  <p class="item-intro text-muted">Master of A.I. </p>
+                  <p>Currently a final year BSc. Computer Science Student with a passion for finding and designing solutions to software-related business problems. Tobias also works as a teaching assistant for a Net Centric Systems module. Determined to deliver high-quality, steady content and contributions to a project and/or team with a high attention to detail and a strong willingness to learn. Experience with producing code in C, C++, Java, Python, and HTML, while also being capable in using the technologies of JavaScript, CSS, PHP, SQL, and JSON.</p>
+
                   <button class="btn btn-primary" data-dismiss="modal" type="button">
                     <i class="fa fa-times"></i>
-                    Close Project</button>
+                    Close Bio</button>
                 </div>
               </div>
             </div>
@@ -627,7 +701,7 @@
       </div>
     </div>
 
-    <!-- Modal 5 -->
+    <!--Mukundi modal-->
     <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -641,18 +715,14 @@
               <div class="col-lg-8 mx-auto">
                 <div class="modal-body">
                   <!-- Project Details Go Here -->
-                  <h2 class="text-uppercase">Project Name</h2>
-                  <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                  <img class="img-fluid d-block mx-auto" src="img/portfolio/05-full.jpg" alt="">
-                  <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                  <ul class="list-inline">
-                    <li>Date: January 2017</li>
-                    <li>Client: Southwest</li>
-                    <li>Category: Website Design</li>
-                  </ul>
+                  <h2 class="text-uppercase">Mkay</h2>
+                  <p class="item-intro text-muted">Developer</p>
+
+                  <p>Mukundi, who is engaged in his final year of BSc. Computer Science at the University of Pretoria, is an individual who constantly strives towards finding dynamic solutions to challenging tasks. He has a passion for mobile development which places him at the forefront of mobile development environments. Including Android Studio, XAMARIN and QT. Using his vast and reliable knowledge Mukundi never fails to deliver an outstanding solution.</p>
+
                   <button class="btn btn-primary" data-dismiss="modal" type="button">
                     <i class="fa fa-times"></i>
-                    Close Project</button>
+                    Close Bio</button>
                 </div>
               </div>
             </div>
@@ -661,39 +731,7 @@
       </div>
     </div>
 
-    <!-- Modal 6 -->
-    <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="close-modal" data-dismiss="modal">
-            <div class="lr">
-              <div class="rl"></div>
-            </div>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-8 mx-auto">
-                <div class="modal-body">
-                  <!-- Project Details Go Here -->
-                  <h2 class="text-uppercase">Project Name</h2>
-                  <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                  <img class="img-fluid d-block mx-auto" src="img/portfolio/06-full.jpg" alt="">
-                  <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                  <ul class="list-inline">
-                    <li>Date: January 2017</li>
-                    <li>Client: Window</li>
-                    <li>Category: Photography</li>
-                  </ul>
-                  <button class="btn btn-primary" data-dismiss="modal" type="button">
-                    <i class="fa fa-times"></i>
-                    Close Project</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
