@@ -30,17 +30,17 @@ export class UtilitiesComponent implements OnInit {
   /**
    * The weight value of an individual item
    */
-  single_item = 1;
+  single_item = 1.0;
 
   /**
    * The weight value of an empty bucket
    */
-  empty_bucket = 1;
+  empty_bucket = 2.0;
 
   /**
    * The weight value of a bucket filled with items
    */
-  filled_bucket = 1;
+  filled_bucket = 10.0;
 
   /** The Number of Items is calculated by taking the weight of the items excluding the bucket
    *  dividing it by the weight of a single item.

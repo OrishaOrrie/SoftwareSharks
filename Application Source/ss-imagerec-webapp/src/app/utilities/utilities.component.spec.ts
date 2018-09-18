@@ -1,7 +1,6 @@
 import { MaterialModule } from './../material.module';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { UppyfileModule } from './../uppyfile.module';
 
 import { UtilitiesComponent } from './utilities.component';
 
@@ -14,7 +13,6 @@ describe('UtilitiesComponent', () => {
       declarations: [ UtilitiesComponent ],
       imports: [
         MaterialModule,
-        UppyfileModule,
         FormsModule
       ]
     })

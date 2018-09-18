@@ -6,23 +6,23 @@ export class AppPage {
   }
 
   getParagraphText() {
-    return element(by.css('app-root .toolbar-title')).getText();
+    return element(by.css('app-root .toolbar__title')).getText();
   }
 
   getHomeComponent() {
     return element(by.css('app-home'));
   }
 
-  getNavbarImageupload() {
-    return element(by.id('navbar-image'));
+  getNavbarContactus() {
+    return element(by.id('navbar-contact'));
   }
 
   getNavbarUtilities() {
     return element(by.id('navbar-utilities'));
   }
 
-  getFooterContactUs() {
-    return element(by.id('footer-contactus'));
+  getImageSubmitButton() {
+    return element(by.id('submit-button'));
   }
 
 }
@@ -37,11 +37,11 @@ export class ImageUploadPage {
   }
 
   getUploadButton() {
-    return element(by.className('upload-button'));
+    return element(by.className('upload-card__upload-button'));
   }
 
   getResultsList() {
-    return element.all(by.className('results-list'));
+    return element.all(by.className('result-card__results-list'));
   }
 
 }
@@ -52,7 +52,7 @@ export class UtilitiesPage {
   }
 
   getResultText() {
-    return element(by.className('result-title')).getText();
+    return element(by.className('tally-upper-card__result-title')).getText();
   }
 
   getSingleWeight() {
@@ -74,11 +74,11 @@ export class ContactUsPage {
   }
 
   getNameField() {
-    return element(by.className('name-part'));
+    return element(by.className('email__name-part'));
   }
 
   getEmailField() {
-    return element(by.className('email-part'));
+    return element(by.className('email__email-part'));
   }
 
   getMsgField() {

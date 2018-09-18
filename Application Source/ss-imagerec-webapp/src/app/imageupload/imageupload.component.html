@@ -1,15 +1,17 @@
 <div>
-    <mat-card class="total-upload-card" color="accent">
+    <mat-card class="total-upload-card">
 
-      <h1 class="title">Upload an Image</h1>
+      <h1 class="total-upload-card__title">Submit an Image</h1>
       <mat-card color="primary" class="upload-card">
-        <mat-card-title class="instruction">{{instruction}}</mat-card-title>
+        <mat-card-title class="upload-card__instruction">{{instruction}}</mat-card-title>
+        <br>
         <form class="form-horizontal" id="imgSelectForm">
           <mat-grid-list cols="4" rowHeight="100px">
 
             <mat-grid-tile [colspan]=1 [rowspan]=1>
-                <div class="file-button">
-                  <label for="file-upload" class="custom-file-upload">
+                <div class="upload-card__file-button">
+                  <label for="file-upload" class="upload-card__button-label">
+                    <i class="material-icons button__icon">photo_library</i>
                     File Select
                   </label>
                   <input id="file-upload" (change)="madeChange()" type="file" accept="image/*"/>
@@ -18,22 +20,31 @@
             
             <mat-grid-tile [colspan]=3 [rowspan]=3>
                 <div class="preview">
-                  <p>No files currently selected</p>
+                  <h4 class="preview__no-files">No files currently selected</h4>
                 </div>
             </mat-grid-tile>
 
             <mat-grid-tile [colspan]=1 [rowspan]=1>
               <div>
-                <label for="webcam-upload" class="custom-file-upload">
-                  Webcam Capture
+                <label for="webcam-upload" class="upload-card__button-label">
+                  <i class="material-icons button__icon">photo_camera</i>
+                Webcam Capture
                 </label>
                 <button id="webcam-upload" (click)="captureImage()"></button>
               </div>
             </mat-grid-tile>
-
+            <br>
+            <mat-grid-tile [colspan]=1 [rowspan]=1>
+              <mat-select placeholder="Bramhope Classifier" [(ngModel)]="modelNumber" color="primary" 
+              class="model-select" name="modelSelector" (selectionChange)="changeSelectedModel()">
+                <mat-option value="1">Bramhope Classifier</mat-option>
+                <mat-option value="2">General Classifier</mat-option>
+              </mat-select>
+          </mat-grid-tile>
             <mat-grid-tile [colspan]=4 [rowspan]=1>
                 <div>
-                  <button mat-raised-button color="primary" *ngIf="imgAvailable" (click)="uploadImage()" class="upload-button">UPLOAD</button>
+                  <button mat-raised-button color="primary" *ngIf="imgAvailable" (click)="predictImage()" 
+                    class="upload-card__upload-button" [disabled]="notReadyToPredict" >{{ modelStatus }}</button>
                   <mat-spinner [diameter]="30" [style.display]="showSpinner ? 'block':'none'"></mat-spinner>
                 </div>
             </mat-grid-tile>
@@ -44,19 +55,38 @@
       <br>
 
       <mat-card class="result-card">
-        <mat-card-title><h3>Classification Results</h3></mat-card-title>
-        <h4 class="nothing-to-show" *ngIf="results.length == 0">Nothing to show yet!</h4>
-        <mat-list>
-          <mat-list-item class="results-list" *ngFor="let result of results">
-            Item Class: {{ result.name }} 
-            <br>
-            Class Probability: {{ result.value }}
-            <mat-divider></mat-divider>
-          </mat-list-item>
-        </mat-list>
+        <div>
+            <h1 class="results__title">Classification Results</h1>
+            <a mat-raised-button *ngIf="resultPreds.length != 0" (click)="reloadPage()" class="reload-upload" color="primary">Classify another Image</a>     
+        </div>
         <br>
-        <a mat-raised-button (click)="reloadPage()" class="reload-upload" color="primary">Upload another Image</a>       
-      </mat-card>
+        <h4 class="result-card__nothing-to-show" *ngIf="resultPreds.length == 0">Nothing to show yet... Submit an Image!</h4>
+        <div class="table__container" *ngIf="resultPreds.length != 0">
+            <table *ngIf="resultPreds.length != 0" mat-table [dataSource]="resultPreds" class="results__table">
+          
+              <ng-container class="table__header" matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef>Class Name</th>
+                <td mat-cell class="table__string" *matCellDef="let element"> {{ element.name }}</td>
+              </ng-container>
+      
+              <ng-container class="table__header" matColumnDef="likeliness">
+                <th mat-header-cell *matHeaderCellDef>Likelihood</th>
+                <td mat-cell class="table__string" *matCellDef="let element"> {{ element.likeliness }}%</td>
+              </ng-container>
 
+              <ng-container class="table__header" matColumnDef="link">
+                <th mat-header-cell *matHeaderCellDef>Link To Store</th>
+                <td mat-cell class="table__string" *matCellDef="let element" >
+                  <a *ngIf="element.link" href="{{ element.link }}" target="_blank">Go To Store</a>
+                </td>
+              </ng-container>
+      
+              <tr mat-header-row class="table__header" *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+              <tr mat-row class="table__row" *matRowDef="let row; columns: displayedColumns;"></tr>
+                  
+            </table>
+        </div>
+        <br>              
+      </mat-card>
     </mat-card>
 </div>
