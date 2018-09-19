@@ -15,7 +15,7 @@
           <mat-card class="tuc__input-container">
               <mat-form-field class="tally-upper-card__input-field" appearance="outline" color="primary">
                 <mat-label>Empty Container</mat-label>
-                <input matInput id="single-weight" type="number" placeholder="Weight of EMPTY Container" [(ngModel)]="empty_bucket" >
+                <input matInput id="empty-bucket" type="number" placeholder="Weight of EMPTY Container" [(ngModel)]="empty_bucket" >
                 <img class="tuc__icon" matSuffix src="../../assets/icons/empty_bucket.svg">
                 <mat-hint>Enter the weight of an empty container</mat-hint>
               </mat-form-field>
@@ -23,7 +23,7 @@
           <mat-card class="tuc__input-container">
               <mat-form-field class="tally-upper-card__input-field" appearance="outline" color="primary">
                 <mat-label>Filled Container</mat-label>
-                <input matInput id="filled-weight" type="number" placeholder="Weight of FILLED Container" [(ngModel)]="filled_bucket">
+                <input matInput id="filled-bucket" type="number" placeholder="Weight of FILLED Container" [(ngModel)]="filled_bucket">
                 <img class="tuc__icon" matSuffix src="../../assets/icons/filled_bucket.svg">
                 <mat-hint>Enter the weight of a filled container</mat-hint>
               </mat-form-field>
