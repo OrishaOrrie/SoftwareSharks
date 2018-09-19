@@ -33,7 +33,7 @@ export class ImageUploadPage {
   }
 
   getFileInput() {
-    return element(by.id('file-upload'));
+    return element(by.css('#file-upload'));
   }
 
   getUploadButton() {
