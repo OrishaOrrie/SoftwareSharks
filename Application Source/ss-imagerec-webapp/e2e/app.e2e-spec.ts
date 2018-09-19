@@ -43,7 +43,7 @@ describe('ss-imagerec-webapp App', () => {
     });
   });
 
-  xit('should navigate to imageupload from submit button', () => {
+  it('should navigate to imageupload from submit button', () => {
     page.navigateTo();
     page.getImageSubmitButton().click().then(function() {
       browser.getCurrentUrl().then(function(currentUrl) {
