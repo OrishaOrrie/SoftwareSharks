@@ -3,7 +3,7 @@ from os.path import isfile, join
 
 TRAINING_DIR = "./training_data"
 VALIDATION_DIR = "./validation_data"
-ALL_DIR = "./scraped_dataset"
+ALL_DIR = "./bramhope_dataset"
 MIN_NUM_IMAGES = 30
 
 def createFolder(directory):

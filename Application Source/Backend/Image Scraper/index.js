@@ -7,7 +7,7 @@ const spawn = require('child_process').spawn;
 
 (async () => {
   const browser = await puppeteer.launch({
-    // headless: false
+    headless: true
   });
 
   const searchTerm = process.argv[2];
