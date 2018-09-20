@@ -9,19 +9,20 @@
       </ion-navbar>
 </ion-header>
 
-<ion-content id ="formcol">
+<ion-content padding id ="formcol">
+    <p class= "instructions">Got a query about one of Brahope's products? Want to request a quote? Send Bramhope a message!</p> 
     <form [formGroup]="myGroup"  *ngIf="!submitted" >
  
       <ion-item class="inputs">
-        <ion-label class = 'bob' color="secondary" stacked>Enter your name...</ion-label>
+        <ion-label class = 'bob' color="secondary" stacked>Full Name</ion-label>
         <ion-input id="name" type="text" required formControlName="name"></ion-input>
       </ion-item>
       <ion-item class="inputs">
-        <ion-label class = 'bob' color="secondary" stacked>Enter your email address...</ion-label>
+        <ion-label class = 'bob' color="secondary" stacked>Email Address</ion-label>
         <ion-input id="email" type="email" required formControlName="email" ></ion-input>
       </ion-item>
       <ion-item class="inputs">
-        <ion-label class = 'bob' color="secondary" stacked>Enter your message...</ion-label>
+        <ion-label class = 'bob' color="secondary" stacked>Message</ion-label>
         <ion-input id="message" type="text" required formControlName="message"></ion-input>
       </ion-item>
     </form>
@@ -30,7 +31,6 @@
         <ion-checkbox color="secondary" checked="true" [(ngModel)]="sendLocation"></ion-checkbox>
       </ion-item>
  
-    <button ion-button full  color= "tertiary" [disabled]="!myGroup.valid" (click)="onSubmit()">Send Message</button>
-
+    <button ion-button full round color= "tertiary" [disabled]="!myGroup.valid" (click)="onSubmit()">Send</button>
   
 </ion-content>

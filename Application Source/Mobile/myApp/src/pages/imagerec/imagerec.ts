@@ -36,7 +36,6 @@ import { ResultsPage } from '../results/results';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-declare var require: any
 @Component({
   selector: 'page-imagerec',
   templateUrl: 'imagerec.html'
@@ -82,7 +81,7 @@ export class ImagerecPage {
 		public loading = this.loadingController.create({
 			spinner: 'crescent',
 			content: 'Making a Prediction...',
-			dismissOnPageChange: false
+			dismissOnPageChange: true
 		});
 		
 		constructor( public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, private alertCtrl: AlertController,
@@ -91,8 +90,7 @@ export class ImagerecPage {
 			// Carries out the code below every second
 			let modelLoaded = setInterval(() => {
 				if (this.modelLoader.modelIsReady()) {
-					console.log('Model Ready');	
-					this.model = this.modelLoader.getModel();
+					console.log('Model Ready');
 					this.predictButtonText = 'Predict';
 					this.notReadyToPredict = false;
 					clearInterval(modelLoaded);
@@ -137,7 +135,7 @@ export class ImagerecPage {
 	 * IONIC FUNTION TO USE CAMERA
 	 * 
 	 */
-		takePic(pictureSourceType: any){
+		takePic(pictureSourceType: any) {
 			const options: CameraOptions = {
 				quality: 95,
 				destinationType: this.camera.DestinationType.DATA_URL,
@@ -224,121 +222,19 @@ export class ImagerecPage {
 		 */
 
 		predictImage() {
-			// this.res();
+			let image = <HTMLImageElement>document.getElementById('selectedImage');
+			this.imageToPredict = image;
 			// this.loading.present();
-			this.predict()
-				.then((data) => {
-					// this.loading.dismiss();
-					this.mapPredictions(data);
+			this.predictButtonText = 'Predicting...';
+			this.modelLoader.predictImage(this.imageToPredict)
+				.then((predictions) => {
+					this.resultPreds = this.modelLoader.mapPredictions(predictions);
 					this.presentResults();
 					this.predictButtonText = 'Predict';
-				}).catch((error) => {
-					alert('Sorry, your device does not seem to be optimized to run AI computations. Apologies\n' + error);
+				})
+				.catch((error) => {
+					console.error('Error: ' + error);
 				});
-
-			//this.mapPredictions(classId);
-			// this.predict()
-			// .then(() => {
-			// 	this.presentResults();
-			// 	this.predictButtonText = 'Predict';
-			// });
-			// this.content.scrollToBottom();
 		};
-
-		async predict() {
-
-			console.log('Predicting');
-		
-			const predictedClass = tf.tidy(() => {
-				let image = <HTMLImageElement>document.getElementById('selectedImage');
-				this.imageToPredict = image;
-
-				this.predictButtonText = 'Predicting...';
-				const raw = tf.fromPixels(this.imageToPredict, 3);
-				const cropped = this.cropImage(raw);
-				const resized = tf.image.resizeBilinear(cropped, [224, 224]);
-				const batchedImage = resized.expandDims(0);
-				const img = batchedImage.toFloat().div(tf.scalar(127)).sub(tf.scalar(1));
-				const predictions = (this.model.predict(img) as tf.Tensor);
-				console.log('Still predicting: ');
-				return predictions;
-			});
-		
-			const classId = (await predictedClass.dataSync());
-			predictedClass.dispose();
-		
-			return classId;
-		};
-		
-		cropImage(img) {
-			const size = Math.min(img.shape[0], img.shape[1]);
-			const centerHeight = img.shape[0] / 2;
-			const beginHeight = centerHeight - (size / 2);
-			const centerWidth = img.shape[1] / 2;
-			const beginWidth = centerWidth - (size / 2);
-			return img.slice([beginHeight, beginWidth, 0], [size, size, 3]);
-		};
-		
-		mapPredictions(classPreds) {
-			const classesJson = require('../../assets/classes/classes.json');
-			const numClasses = classPreds.length;
-			this.resultPreds = [];
-			for (let i = 0; i < numClasses; i++) {
-			  this.resultPreds[i] = {};
-			  this.resultPreds[i].id = classesJson.classes[i].id;
-			  this.resultPreds[i].first = classesJson.classes[i].first;
-			  this.resultPreds[i].name = classesJson.classes[i].name;
-			  this.resultPreds[i].likeliness = (classPreds[i] * 100).toFixed(4);
-			}
-			this.sortPreds();
-			this.resultsReady = true;
-			console.log(this.resultPreds[0].name);
-			this.modelLoader.setResults(this.resultPreds);
-			//this.modelStatus = this.resultPreds[0].name + ' ' + this.resultPreds[0].likeliness + '%';
-		};
-
-		// res()
-		// {
-		// 	this.presentPredictingSpinner();
-		// 	//alert('sdfrrer');
-		// 	//this.presentAlert(this.modelStatus);
-			
-		// };
-
-		sortPreds() {
-			this.resultPreds.sort(function(a, b) {
-			  return b.likeliness - a.likeliness;
-			});
-		};
-
-		presentLoadingModelSpinner() {
-			let loading = this.loadingController.create({
-				spinner: 'crescent',
-				content: 'Loading...'
-			});
-
-			loading.present();
-
-			setTimeout(() => {
-				loading.dismiss();
-			}, 2000);
-		}
-
-		// presentPredictingSpinner() {
-			
-			
-		// 	loading.present();
-		// 	this.resultPreds = [];
-		// 	this.resultsReady = false;
-		// 	this.predict()
-		// 	.then(() => {
-		// 		loading.dismiss;
-		// 		this.presentResults();
-		// 	});
-
-		// 	setTimeout(() => {
-		// 		loading.dismiss();
-		// 	}, 2000);
-		// }
 		
 }

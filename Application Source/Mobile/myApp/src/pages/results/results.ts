@@ -30,14 +30,12 @@ export class ResultsPage {
     this.viewCtrl.dismiss();
   }
 
-  // formatClassNames(preds) {
-  //   let p: any;
-  //   for (p in preds) {
-  //     let ps: String = p.name;
-  //     p.name.replace('_', ' ');
-  //     p.name = p.name.charAt(0).toUpperCase() + p.name.slice(1);
-  //   }
-  //   return preds;
-  // }
+  openBrowserToBramhope(url) {
+    if (url == '') {
+      return false;
+    }
+    window.open(url, '_system', 'location=yes');
+    return false;
+  }
 
 }
