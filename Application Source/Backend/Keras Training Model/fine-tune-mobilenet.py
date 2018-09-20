@@ -7,7 +7,7 @@ import numpy as np
 
 from PIL import ImageFile
 from keras import __version__
-from keras.applications.inception_v3 import InceptionV3, preprocess_input
+from keras.applications.mobilenet import MobileNet, preprocess_input
 from keras.models import Model
 from keras.layers import Dense, GlobalAveragePooling2D
 from keras.preprocessing.image import ImageDataGenerator, img_to_array
@@ -16,11 +16,11 @@ from sklearn.utils import class_weight
 from tensorflow.python.client import device_lib
 # import tensorflowjs as tfjs
 
-IM_WIDTH, IM_HEIGHT=229,229 #fixed size for InceptionV3
-NB_EPOCHS=5
+IM_WIDTH, IM_HEIGHT=224,224 #fixed size for MobileNet
+NB_EPOCHS=10
 BAT_SIZE=32
 FC_SIZE=1024
-NB_IV3_LAYERS_TO_FREEZE=172
+NB_MN_LAYERS_TO_FREEZE=10
 
 def get_nb_files(directory):
 	"""
@@ -60,14 +60,14 @@ def setup_to_finetune(model):
 	"""
 	Freeze bottom NB_IV3_LAYERS and retrain the remaining top layers.
 
-	note: NB_IV3_LAYERS correspond to top 2 inception blocks in inceptionv3 arch
+	note: NB_MN_LAYERS correspond to top 2 inception blocks in inceptionv3 arch
 
 	Args:
 		model: keras model
 	"""
-	for layer in model.layers[:NB_IV3_LAYERS_TO_FREEZE]:
+	for layer in model.layers[:NB_MN_LAYERS_TO_FREEZE]:
 		layer.trainable=False
-	for layer in model.layers[NB_IV3_LAYERS_TO_FREEZE:]:
+	for layer in model.layers[NB_MN_LAYERS_TO_FREEZE:]:
 		layer.trainable=True
 	model.compile(optimizer=SGD(lr=0.01),loss='categorical_crossentropy',metrics=['accuracy'])
 
@@ -125,8 +125,8 @@ def train(args):
 	print("")
 
 	#Setup Model
-	print("getting InceptionV3 model without last layer")
-	base_model=InceptionV3(weights='imagenet',include_top=False)
+	print("getting MobileNet model without last layer")
+	base_model=MobileNet(weights='imagenet',include_top=False)
 	#include_top=False excludes final FC layer
 	print("")
 
@@ -158,7 +158,7 @@ def train(args):
 	history_ft=model.fit_generator(
 		train_generator,
 		steps_per_epoch=nb_train_samples/batch_size,
-		epochs=nb_epoch*4,
+		epochs=nb_epoch,
 		validation_data=validation_generator,
 		validation_steps=nb_val_samples/batch_size,
 		class_weight='auto'
@@ -196,7 +196,7 @@ if __name__=="__main__":
 	a.add_argument("--val_dir", default="./validation_data")
 	a.add_argument("--nb_epoch",default=NB_EPOCHS)
 	a.add_argument("--batch_size",default=BAT_SIZE)
-	a.add_argument("--output_model_file",default="inceptionv3-ft.h5")
+	a.add_argument("--output_model_file",default="mobilenet-tf.h5")
 	a.add_argument("--plot",action="store_true")
 
 	ImageFile.LOAD_TRUNCATED_IMAGES = True

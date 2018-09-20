@@ -4,6 +4,7 @@
 *.png
 Application Source/Backend/Node Server/upload/upload.jpg
 Application Source/Backend/Node Server/upload/upload.png
+Application Source/Backend/FirebaseAdmin/node_modules
 *.__styleext__
 Application Source/ss-imagerec-webapp/node_modules/@schematics/angular/component/files/__path__/__name@dasherize@if-flat__/__name@dasherize__.component.__styleext__
 !docs/img/*
@@ -28,3 +29,4 @@ Application Source/ss-imagerec-webapp/angular_material_schematics-UIHR27/dashboa
 Application Source/Backend/Node Server/.vscode/settings.json
 .angulardoc.json
 Application Source/Backend/Node Server/functions/priv/serviceAccountKey.json
+*.pyc
