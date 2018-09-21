@@ -137,7 +137,7 @@ The following section discusses the processes undertaken to test the various fun
     \subsection{Functional}
     
         \subsubsection{General Testing Process}
-        The development of the system follows the principles of Test-Driven Development. The general testing process is as follows:\\
+        The development of the system follows the principles of Test-Driven Development. The general testing process is as follows:
         \begin{enumerate}
             \item For each use case, a test function is written that acts as a user completing a task.
             \item Initially, all test functions fail. If they don’t, they are rewritten so that they fail.
@@ -180,7 +180,7 @@ The following section discusses the processes undertaken to test the various fun
             These three tools are used to ensure that performance requirements are met at three different stages of the app development life-cycle.
         
         \subsubsection{Security}
-        % TO-DO
+        In-house penetration was performed by utilizing the SQLMap and NMap command line tools. Identifying malformed URI's, potential injections and open access points. These tools were run on in a linux environment against the hosted server.
         
         \subsubsection{User Interface}
             \paragraph{}
@@ -251,8 +251,16 @@ Various testing frameworks and tools are used to automate unit and end-to-end te
                 \item NMap: A NMap script was run against the server to identify possible open ports and unwanted access points
             \end{itemize}
             
-            \paragraph{In-depth Results and Conclusions}
-            % Busy formatting
+            \begin{figure}[H]
+                \includegraphics[width=\linewidth]{images/SQLMap.png}
+                \caption{SQLMap Report}
+                \label{fig:SQLMap}
+            \end{figure}
+            \begin{figure}[H]
+                \includegraphics[width=\linewidth]{images/NMap.png}
+                \caption{NMap Report}
+                \label{fig:NMap}
+            \end{figure}
         
          \subsubsection{User Interface}
             \paragraph{}
@@ -260,7 +268,7 @@ Various testing frameworks and tools are used to automate unit and end-to-end te
             \paragraph{}
             In order to better the user interface even further, a meeting was held, with a lecturer at the University of Pretoria, who specializes in User interface design as well as User experience. He helped us to properly place different features of both the web app as well as the mobile app in correct places so that users will find it easier to access these features.
             \paragraph{}
-            From these results, an analysis was done and changes to the user interface were completes. Once these changes were completed, another usability test was done and this cycle continued throughout the life-cycle of the project.
+            From these results, an analysis was done and changes to the user interface were completed. Once these changes were completed, another usability test was done and this cycle continued throughout the life-cycle of the project.
             
         \subsubsection{Image Prediction}
             No special test tools are used to test the accuracy of a model. The model is tested by running a script that runs the Predict method on each test image.

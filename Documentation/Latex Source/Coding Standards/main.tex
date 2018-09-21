@@ -89,7 +89,7 @@
 	\vspace{0.5\baselineskip}
 	
     \textsf{\large
-    \textrm{\textbf{Bramhope International School of Inovation}} \\
+    \textrm{\textbf{Bramhope International School of Innovation}} \\
     } 
 
 \end{titlepage}
@@ -132,23 +132,6 @@
 \section{Introduction}
 This is a document defining the coding standards for the Ninshiki system, it defines the rules which govern how the development team members are to code. This includes comments structure, method structure and class structure as well as the various naming conventions. This also contains the GitHub structure used by the team as well as the file headers that are used in each of the software files.
 
-\section{File Headers}
-This section describes the Ninshiki program header template. This header is used as a standardized approach to describing the metadata/functional details of a class.
-
-This header can be found in each of the main classes for each subsystem’s application source.
-The following template is used for the header:
-\begin{itemize}
-\item File Name - Name of class/file.
-\item Version Number
-\item Author Name
-\item Project Name - Ninshiki
-\item Organization - Software Sharks
-\item Update History - A table containing the version number, date, author, and update description.
-\item Functional Description - A brief description of the use cases that the class completes.
-\item Related Classes - Classes that assist this class in completing its use cases.
-\end{itemize}
-\pagebreak
-
 \section{Detailed System design}
 \begin{sidewaysfigure}
     \includegraphics[width=\textwidth]{images/ClassDiagram.png}
@@ -162,100 +145,12 @@ The diagram can also be found on the following link: \linebreak
 
 \pagebreak
 
-\section{Github Repository Structure}
-The Software Sharks GitHub repository can be found at the following location:
-\url{https://github.com/OrishaOrrie/SoftwareSharks}
-
-This section describes the structure of this repository, specifically the current master branch.
-
-\begin{tabbing}
-	
-|-App\=lic\=ati\=on\=Sou\=rce\= (A)\\
-\>| -  Backend\\
-\>\>|- Node Server\\
-\> \> \> |--functions\\
-\>\>|- Image Scraper\\
-\>\>|- Keras Training Model\\
-\> \> \> |-- tests\\
-\> \>|-- Firebase Admin \\
-
-\>| - Mobile/ (I)\\
-\>\>|--latest APK\\
-\>\>|--myApp\\
-\>\>\>|--.sourcemaps\\
-\>\>\>|--resources\\
-\>\>\>\>\>|--Android\\
-\>\>\>|--src\\
-\>\>\>\>\>|--app\\
-\>\>\>\>\>|--assets/imgs\\
-\>\>\>\>\>|--pages\\
-\>\>\>\>\>\>|--about\\
-\>\>\>\>\>\>|--contact\\
-\>\>\>\>\>\>|--home\\
-\>\>\>\>\>\>|--imagerec\\
-\>\>\>\>\>\>|--results\\
-\>\>\>\>\>\>|--tabs\\
-\>\>\>\>\>\>|--utilities\\
-\>\>\>\>\>|--provider/model-loader\\
-\>| - ss-imagerecc-webapp\\
-\>\>|-- dist/ (J)\\
-\>\>|-- documentation/ (K)\\
-\>\>|-- e2e/ (L)\\
-\>\>|-- functions/ (M)\\
-\>\>|-- node\_modules/ (N)\\
-\>\>|-- src/ (O)\\
-\>\>\>|-- app\\
-\>\>\>\>\>|-- contact-us\\
-\>\>\>\>\>\>|-- contact-us.component.css\\
-\>\>\>\>\>\>|-- contact-us.component.html\\
-\>\>\>\>\>\>				|-- contact-us.component.spec.ts\\
-\>\>\>\>\>\>				|-- contact-us.component.ts\\
-\>\>\>\>\>			|-- home/\\
-\>\>\>\>\>				|-- imageupload/\\
-\>\>\>\>\>			|-- utilities/\\
-\>\>\>\>\>				|-- app.component.css (P)\\
-\>\>\>\>\>				|-- app.component.html\\
-\>\>\>\>\>				|-- app.component.spec.ts\\
-\>\>\>\>\>			|-- app.component.ts\\
-\>\>\>		|-- assets/ (Q)\\
-\>\>\>		|-- environments/ (R)\\
-\>\>\>		|-- index.html (S)\\
-\>\>\>		|-- styles.css (T)\\
-\>\>\>		|-- test.ts (U)\\
-\>\>	|-- package.json (V)\\
-\>\>	|-- package-lock.json\\
-\>\>	|-- firebase.json (W)\\
-\>\>	|-- protractor.conf.js (X)\\
-\>\>	|-- angular.json (Y)\\
-\>|-- .gitignore (Z)\\
-| - Documentation/ (AA)\\
-| - docs/ (BB)\\
-     \>| -  css\\
-     \>| -  img\\
-     \>| -  js\\
-     \>| -  mail\\
-     \>| -  vendor\\
-\end{tabbing}
-
-
-			
-
-
-The root folder contains two folders, Documentation and Application Source, and a Readme file.
-
-The Documentation folder contains references for the project, from the User Manual to the Requirements Specification.
-The Readme file provides a concise description of the project, the project management structure, and the Software Sharks team.
-
-The Application Source folder contains the entirety of the software source code, including unit tests and installation scripts.
-
-Each subsystem has its own folder in the Application Source folder, which also includes the dependency and installation batch files.
-
-\pagebreak
 %----------------------------------------------------------------------------------------
 %	Code Review Process
 %----------------------------------------------------------------------------------------
 \section{Code Review Processes}
 % Describe how and how often you apply code reviews to confirm adherence to your coding standards. Mention the editors and tools you use and how they should be configured.
+
 \subsection{Github}
 All major releases are subjected to peer review before being merged into the master branch as described in the process below:
 \begin{enumerate}
@@ -275,6 +170,92 @@ All interrelated modules and subsystems should be periodically and actively chec
 \end{enumerate}
 
 \pagebreak
+\section{Github Repository Structure}
+The Software Sharks GitHub repository can be found at the following location:
+\url{https://github.com/OrishaOrrie/SoftwareSharks}
+
+This section describes the structure of this repository, specifically the current master branch.
+
+\begin{tabbing}
+	
+|-App\=lic\=ati\=on\=Sou\=rce\= \\
+\>| -  Backend\\
+\>\>|- Node Server\\
+\> \> \> |--functions\\
+\>\>|- Image Scraper\\
+\>\>|- Keras Training Model\\
+\> \> \> |-- tests\\
+\> \>|-- Firebase Admin \\
+
+\>| - Mobile/ \\
+\>\>|--latest APK\\
+\>\>|--myApp\\
+\>\>\>|--.sourcemaps\\
+\>\>\>|--resources\\
+\>\>\>\>\>|--Android\\
+\>\>\>|--src\\
+\>\>\>\>\>|--app\\
+\>\>\>\>\>|--assets/imgs\\
+\>\>\>\>\>|--pages\\
+\>\>\>\>\>\>|--about\\
+\>\>\>\>\>\>|--contact\\
+\>\>\>\>\>\>|--home\\
+\>\>\>\>\>\>|--imagerec\\
+\>\>\>\>\>\>|--results\\
+\>\>\>\>\>\>|--tabs\\
+\>\>\>\>\>\>|--utilities\\
+\>\>\>\>\>|--provider/model-loader\\
+\>| - ss-imagerecc-webapp\\
+\>\>|-- dist/ \\
+\>\>|-- documentation/ \\
+\>\>|-- e2e/ \\
+\>\>|-- functions/ \\
+\>\>|-- node\_modules/ \\
+\>\>|-- src/ (O)\\
+\>\>\>|-- app\\
+\>\>\>\>\>|-- contact-us\\
+\>\>\>\>\>\>|-- contact-us.component.css\\
+\>\>\>\>\>\>|-- contact-us.component.html\\
+\>\>\>\>\>\>				|-- contact-us.component.spec.ts\\
+\>\>\>\>\>\>				|-- contact-us.component.ts\\
+\>\>\>\>\>			|-- home/\\
+\>\>\>\>\>				|-- imageupload/\\
+\>\>\>\>\>			|-- utilities/\\
+\>\>\>\>\>				|-- app.component.css (P)\\
+\>\>\>\>\>				|-- app.component.html\\
+\>\>\>\>\>				|-- app.component.spec.ts\\
+\>\>\>\>\>			|-- app.component.ts\\
+\>\>\>		|-- assets/ \\
+\>\>\>		|-- environments/ \\
+\>\>\>		|-- index.html \\
+\>\>\>		|-- styles.css \\
+\>\>\>		|-- test.ts \\
+\>\>	|-- package.json \\
+\>\>	|-- package-lock.json\\
+\>\>	|-- firebase.json \\
+\>\>	|-- protractor.conf.js \\
+\>\>	|-- angular.json \\
+\>|-- .gitignore \\
+| - Documentation/ \\
+| - docs/ \\
+     \>| -  css\\
+     \>| -  img\\
+     \>| -  js\\
+     \>| -  mail\\
+     \>| -  vendor\\
+\end{tabbing}
+
+
+The root folder contains two folders, Documentation and Application Source, and a Readme file.
+
+The Documentation folder contains references for the project, from the User Manual to the Requirements Specification.
+The Readme file provides a concise description of the project, the project management structure, and the Software Sharks team.
+
+The Application Source folder contains the entirety of the software source code, including unit tests and installation scripts.
+
+Each subsystem has its own folder in the Application Source folder, which also includes the dependency and installation batch files.
+
+\pagebreak
 %----------------------------------------------------------------------------------------
 %	General Coding Conventions
 %----------------------------------------------------------------------------------------
@@ -282,6 +263,24 @@ All interrelated modules and subsystems should be periodically and actively chec
 %----------------------------------------------------------------------------------------
 %	HTML / CSS
 %----------------------------------------------------------------------------------------
+\subsection{File Headers}
+This section describes the Ninshiki program header template. This header is used as a standardized approach to describing the metadata/functional details of a class.
+
+This header can be found in each of the main classes for each subsystem’s application source.
+The following template is used for the header:
+\begin{itemize}
+\item File Name - Name of class/file.
+\item Version Number
+\item Author Name
+\item Project Name - Ninshiki
+\item Organization - Software Sharks
+\item Update History - A table containing the version number, date, author, and update description.
+\item Functional Description - A brief description of the use cases that the class completes.
+\item Related Classes - Classes that assist this class in completing its use cases.
+\end{itemize}
+\pagebreak
+
+
 \subsection{HTML/CSS}
 \subsubsection{General Style Rules}
 \paragraph{Protocol}

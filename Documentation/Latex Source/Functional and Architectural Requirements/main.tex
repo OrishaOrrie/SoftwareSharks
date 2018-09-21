@@ -202,13 +202,24 @@ The domain model can be found on the next page.
 \end{itemize}
 \subsection{Users}
 % Identify all types of users and outline the uses of the system in supporting the activities of the different types of users. Mention the assumed competencies of each type of user
-\subsubsection{App User}
-
-\subsubsection{Dashboard User}
+\begin{enumerate}
+    \item App User\\
+    This user group makes up the largest portion of users of the system. These users are not technically inclined, or have no established knowledge of MRO items. The system helps these users identify items so that they can either handle them correctly in a warehouse environment, or look to purchase the items from the Bramhope online store.
+    \item Dashboard User\\
+    This user group is made up of developers who are technically inclined enough to build their own application system, but are not willing to build their own image classifier. The system aids these users by allowing them to simply define a list of classes for their own needs and have the system build an image classifier for them.
+\end{enumerate}
 
 
 \subsection{Subsystems}
 % Divide the system into logical units that can be implemented as inter-dependent subsystems with high cohesion and low coupling. Briefly describe the role of each of the subsystems. Use a UML component diagram to illustrate the arrangement and organization of the sub-systems. Show the dependencies between sub-systems
+\subsubsection{Web Application}
+This subsystem is an online version of the mobile application. (See section 3.2.2) The main aim of this application is to allow users that are unable to make use of the Mobile application. For example an iPhone user or someone who has a version of Android not supported by our application.
+\subsubsection{Mobile Application}
+This subsystem is used as a user interface that allows users to capture images and then submit them to be identified. They are then presented with probable results. It also allows users to do weight analysis for stock take. Lastly it allows users to contact the company.
+\subsubsection{Server}
+This is our back-end system. This is where we keep the prediction models, as well as the python scripts used for the Dashboard API (see section 3.2.4).
+\subsubsection{Dashboard API}
+This is a dashboard that allows users to define categories for a model. There is then an option to upload images or use an image scraper to create a dataset of images. It then uses this dataset to create a prediction model that the user can utilize.
 
 \subsection{Specific Requirements}
 % List all functional requirements. Use a numbering system to clarify relationships between requirements (for example sub-requirements). It should be clear which requirements belong to each sub-system described in Section 2.2.2. Illustrate using use case diagrams (Chapter 7). You should expand non-trivial use cases using Actor-System interaction modelling (Chapter 8). Show preconditions and postconditions where appropriate. Also use other UML diagrams (activity, state, sequence, communication, . . . ) to explain nontrivial processes and procedures.
