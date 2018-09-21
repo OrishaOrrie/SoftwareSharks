@@ -1,47 +1,37 @@
-<<<<<<< HEAD
-# See http://help.github.com/ignore-files/ for more about ignoring files.
-
-# IDEs and editors
-/.idea
-.project
-.classpath
-.c9/
-*.launch
-.settings/
+# Specifies intentionally untracked files to ignore when using Git
+# http://git-scm.com/docs/gitignore
+!*.jpeg
+!*.jpg
+!*.png
+*~
+*.sw[mnpcod]
+*.log
+*.tmp
+*.tmp.*
+log.txt
+*.sublime-project
 *.sublime-workspace
+.vscode/
+npm-debug.log*
 
-# IDE - VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
+.idea/
+.ionic/
+.sourcemaps/
+.sass-cache/
+.tmp/
+.versions/
+coverage/
+dist/
+node_modules/
+tmp/
+temp/
+platforms/
+plugins/
+plugins/android.json
+plugins/ios.json
+www/
+$RECYCLE.BIN/
 
-# misc
-/node_modules
-/platforms
-/plugins
-/www
-/.sass-cache
-/connect.lock
-/coverage
-/libpeerconnection.log
-npm-debug.log
-yarn-error.log
-testem.log
-/typings
-
-# e2e
-/e2e/*.js
-/e2e/*.map
-
-# System Files
 .DS_Store
 Thumbs.db
-=======
-/node_modules
-/plugins
-/platforms
-/.sourcemaps
-/www
->>>>>>> backend
+UserInterfaceState.xcuserstate
