@@ -5,14 +5,20 @@
 Application Source/Backend/Node Server/upload/upload.jpg
 Application Source/Backend/Node Server/upload/upload.png
 *.__styleext__
+Application Source/Backend/Node Server/node_modules/*
+Application Source/ss-imagerec-webapp/node_modules/*
 Application Source/ss-imagerec-webapp/node_modules/@schematics/angular/component/files/__path__/__name@dasherize@if-flat__/__name@dasherize__.component.__styleext__
 !docs/img/*
 !docs/img/about/*
 !docs/img/logos/*
 !docs/img/portfolio/*
 !docs/img/team/*
-*.ckpt
+node_modules/*
+Application Source/Backend/FirebaseAdmin/private_key/testproject-ee885-firebase-adminsdk-mqdgy-b964b7fd30.json
+Application Source/Backend/Image Scraper/urls
 *.h5
+*.ckpt
+Application Source/Backend/Node Server/tfjs
 /node_modules
 /Application Source/ss-dashboard
 Application Source/ss-imagerec-webapp/functions/local_modules/credentials.js

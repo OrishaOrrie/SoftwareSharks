@@ -1,9 +1,12 @@
-<<<<<<< HEAD
-/platforms
-/plugins
-/www
-=======
 # See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/dist
+/tmp
+/out-tsc
+
+# dependencies
+/node_modules
 
 # IDEs and editors
 /.idea
@@ -22,10 +25,6 @@
 !.vscode/extensions.json
 
 # misc
-/node_modules
-/platforms
-/plugins
-/www
 /.sass-cache
 /connect.lock
 /coverage
@@ -34,12 +33,8 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
-
-# e2e
-/e2e/*.js
-/e2e/*.map
+/src/app/dummy
 
 # System Files
 .DS_Store
 Thumbs.db
->>>>>>> origin/web
