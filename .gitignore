@@ -19,3 +19,10 @@ Application Source/Backend/Image Scraper/urls
 *.h5
 *.ckpt
 Application Source/Backend/Node Server/tfjs
+/node_modules
+/Application Source/ss-dashboard
+Application Source/ss-imagerec-webapp/functions/local_modules/credentials.js
+Application Source/Backend/Node Server
+Application Source/ss-imagerec-webapp/angular_material_schematics-UIHR27/address-form/files/__path__/__name@dasherize@if-flat__/__name@dasherize__.component.html
+Application Source/ss-imagerec-webapp/angular_material_schematics-UIHR27/address-form/files/__path__/__name@dasherize@if-flat__/__name@dasherize__.component.spec.ts
+Application Source/ss-imagerec-webapp/angular_material_schematics-UIHR27/dashboard/files/__path__/__name@dasherize@if-flat__/__name@dasherize__.component.spec.ts

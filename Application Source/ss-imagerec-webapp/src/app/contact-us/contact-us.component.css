@@ -1,7 +1,6 @@
 .contact-container{
-    background-color: rgb(60, 60, 80);
+    background-color: #607D8B;
     color: lightgray;
-    padding: 10px;
     display: flex;
     flex-direction: column;
 }
@@ -13,20 +12,54 @@
 }
 
 .email-container {
-    background-color: rgb(207, 207, 207);
-    color: black;
-    width: 80%;
-    margin: 0px auto;
+    background-color: #607D8B;
+    color: lightgray;
+    border: lightgray 2px solid;
 }
 
-.msg-part {
+.email-container__form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: lightgray;
+    color: rgb(13, 33, 44);
+    border: 3px solid rgb(35, 64, 78);
+}
+
+.email-container__cs {
+    height: 300px;
+    padding: 10px;
+}
+
+.email__instructions {
+    text-align: center;
+    color: lightgray;
+    font-family: "Lato", Arial, Helvetica, sans-serif;
+}
+
+.email__form {
+    margin: 20px auto;
     width: 60%;
 }
 
-.status-card {
-    background-color: rgb(207, 207, 207);
-    color: black;
+.email__msg-part {
     width: 80%;
-    margin: 0px auto;
+}
+
+.email__image {
+    padding: auto auto;
+    height: 275px;
+}
+
+.email__submit {
+    border: #607D8B 2px solid;
+}
+
+.status-card {
+    background-color: lightgray;
+    color: rgb(13, 33, 44);
     font-family: "Lato", Arial, Helvetica, sans-serif;
+    margin: auto 25px;
+    padding-right: 20px;
+    border: #607D8B 3px solid;
 }

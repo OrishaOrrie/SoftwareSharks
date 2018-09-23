@@ -30,17 +30,17 @@ export class UtilitiesComponent implements OnInit {
   /**
    * The weight value of an individual item
    */
-  single_item = 1;
+  single_item = 1.0;
 
   /**
    * The weight value of an empty bucket
    */
-  empty_bucket = 1;
+  empty_bucket = 2.0;
 
   /**
    * The weight value of a bucket filled with items
    */
-  filled_bucket = 1;
+  filled_bucket = 10.0;
 
   /** The Number of Items is calculated by taking the weight of the items excluding the bucket
    *  dividing it by the weight of a single item.
@@ -50,6 +50,23 @@ export class UtilitiesComponent implements OnInit {
    * Math object to make use of the floor function
    */
   Math: Math = Math;
+
+  result = (() => {
+    if (this.empty_bucket > this.filled_bucket) {
+      return 'Empty bucket cannot weigh more than a filled bucket';
+    }
+
+    if (!this.empty_bucket || !this.filled_bucket || !this.single_item) {
+      return 'Weight inputs cannot be empty';
+    }
+
+    if (this.empty_bucket <= 0 || this.filled_bucket <= 0 || this.single_item <= 0 ) {
+      return 'Weight value must be a positive value';
+    }
+
+    return 'Number of items: ' + Math.floor((this.filled_bucket - this.empty_bucket) / this.single_item);
+  });
+
   constructor() { }
 
   ngOnInit() {
