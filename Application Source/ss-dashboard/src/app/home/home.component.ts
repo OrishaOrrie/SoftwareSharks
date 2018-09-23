@@ -138,7 +138,7 @@ export class HomeComponent implements OnInit {
   // TypedJS Variable Setup
   typed: any;
   typed_options = {
-    strings: ["Powerful.", "Productive.", "Essential."],
+    strings: ["Powerful.", "Productive.", "Adaptive."],
     typeSpeed: 50,
     backSpeed: 30,
     backDelay: 1000,
