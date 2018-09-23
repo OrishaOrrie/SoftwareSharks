@@ -28,6 +28,7 @@
     "particles.js": "^2.0.0",
     "popper.js": "^1.14.4",
     "rxjs": "^6.3.2",
+    "typed.js": "^2.0.9",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
