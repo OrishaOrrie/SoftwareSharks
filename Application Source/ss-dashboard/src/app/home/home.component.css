@@ -1,5 +1,40 @@
 section#hero {
     color: #8EDBF2;
-    background-color: #020E12;
+    /* background-color: #020E12; */
     padding: 0;
+}
+
+/* section#hero .container {
+    position: relative;
+    padding: 256px 0;
+    width: 100%;
+    height: 100%;
+} */
+
+section#hero .computer {
+    padding: 0 0 0 32px;
+}
+
+section#hero .col{
+    display: table-cell;
+    vertical-align: middle;
+    float: none;
+}
+
+.display-container {
+    position: relative;
+    padding-bottom: 67.5%;
+    height: 0;
+}
+
+figure.display-container img {
+    box-sizing: border-box;
+    background: url(../../assets/images/laptop.png) center center no-repeat;
+    background-size: contain;
+    padding: 9.2% 12.3% 11.3% 12.4%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
