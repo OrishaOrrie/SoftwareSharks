@@ -30,3 +30,4 @@ Application Source/Backend/Node Server/.vscode/settings.json
 .angulardoc.json
 Application Source/Backend/Node Server/functions/priv/serviceAccountKey.json
 *.pyc
+Application Source/ss-dashboard/node_modules/*
