@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import Typed from 'typed.js';
+
+// import { Typed } from 'typed.js';
 
 @Component({
   selector: 'app-home',
@@ -132,9 +135,22 @@ export class HomeComponent implements OnInit {
     height: 100
   };
 
+  // TypedJS Variable Setup
+  typed: any;
+  typed_options = {
+    strings: ["Powerful.", "Productive.", "Essential."],
+    typeSpeed: 50,
+    backSpeed: 30,
+    backDelay: 1000,
+    showCursor: false,
+    loop: true,
+    loopCount: Infinity
+  };
+
   constructor() { }
 
   ngOnInit() {
+    this.typed = new Typed(".adjective", this.typed_options);
   }
 
 }
