@@ -21,6 +21,10 @@ section#hero .col{
     float: none;
 }
 
+.hero {
+    padding-top: 15%;
+}
+
 .display-container {
     position: relative;
     padding-bottom: 67.5%;

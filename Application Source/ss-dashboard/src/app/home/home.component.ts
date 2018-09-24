@@ -29,23 +29,23 @@ export class HomeComponent implements OnInit {
     parameters: {
       particles: {
         number: {
-          value: 80,
+          value: 90,
           density: {
             enable: true,
-            value_area: 800
+            value_area: 900
           }
         },
         color: {
-          value: '#ffffff'
+          value: '#8EDBF2'
         },
         shape: {
           type: 'circle',
           stroke: {
             width: 0,
-            color: '#000000'
+            color: '#8EDBF2'
           },
           polygon: {
-            nb_sides: 5
+            nb_sides: 4
           }
         },
         opacity: {
@@ -71,7 +71,7 @@ export class HomeComponent implements OnInit {
         line_linked: {
           enable: true,
           distance: 150,
-          color: '#ffffff',
+          color: '#8EDBF2',
           opacity: 0.4,
           width: 1
         },
@@ -138,7 +138,7 @@ export class HomeComponent implements OnInit {
   // TypedJS Variable Setup
   typed: any;
   typed_options = {
-    strings: ["Powerful.", "Productive.", "Adaptive."],
+    strings: ['Powerful.', 'Productive.', 'Intelligent.'],
     typeSpeed: 50,
     backSpeed: 30,
     backDelay: 1000,
@@ -150,7 +150,7 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.typed = new Typed(".adjective", this.typed_options);
+    this.typed = new Typed('.adjective', this.typed_options);
   }
 
 }
