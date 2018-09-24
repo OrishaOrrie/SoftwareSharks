@@ -9,18 +9,17 @@ import { DashComponent } from './dash/dash.component';
 import { UiModule } from './ui/ui.module';
 import { ParticlesModule } from 'angular-particle';
 import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireStorageModule } from '@angular/fire/storage';
-import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from './environment/environment';
 import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
 import { UserProfileComponent } from './views/user-profile/user-profile.component';
 import { AuthGuard } from './core/auth.guard';
+import { LoginComponent } from './views/login/login.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
   { path: '',
-    redirectTo: '/heroes',
+    redirectTo: '/home',
     pathMatch: 'full'
   },
   { path: 'profile', component: UserProfileComponent,  canActivate: [AuthGuard] },
@@ -33,7 +32,8 @@ const appRoutes: Routes = [
     HomeComponent,
     DashComponent,
     PageNotFoundComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +46,7 @@ const appRoutes: Routes = [
       { enableTracing: true } // <-- debugging purposes only
     )
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
