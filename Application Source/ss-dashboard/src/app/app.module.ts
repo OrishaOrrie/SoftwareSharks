@@ -15,6 +15,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from './environment/environment';
 import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
 import { UserProfileComponent } from './views/user-profile/user-profile.component';
+import { AuthGuard } from './core/auth.guard';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
