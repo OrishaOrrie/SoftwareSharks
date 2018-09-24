@@ -43,7 +43,7 @@ const appRoutes: Routes = [
     CoreModule,
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
+      { enableTracing: false } // <-- debugging purposes only
     )
   ],
   providers: [AuthGuard],
