@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Typed from 'typed.js';
 
-// import { Typed } from 'typed.js';
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
