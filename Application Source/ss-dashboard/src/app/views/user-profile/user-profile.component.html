@@ -1,3 +1,4 @@
+<app-layout>
 <div *ngIf="auth.user | async; then authenticated else guest">
   <!-- template will replace this div -->
 </div>
@@ -25,3 +26,4 @@
   <button (click)="auth.signOut()">Logout</button>
 </div>
 </ng-template>
+</app-layout>
