@@ -2,7 +2,6 @@
   <a class="navbar-brand" href="/">Ninshiki API</a>
   <div class="navbar-expand mr-auto">
     <div class="navbar-nav">
-        <!-- <a routerLink="/crisis-center" routerLinkActive="active">Crisis Center</a> -->
       <a routerLink="/home" routerLinkActive="active" class="nav-item nav-link" href="home">Home</a>
       <a routerLink="dashboard" routerLinkActive="active" class="nav-item nav-link" href="dashboard">Dashboard</a>
       <a class="nav-item nav-link" href="#">About</a>
@@ -10,10 +9,28 @@
     </div>
   </div>
   <div class="navbar-expand ml-auto navbar-nav">
-    <div class="navbar-nav">
+    <div class="navbar-nav" *ngIf="auth.user | async; then authenticated else guest">
       <a class="nav-item nav-link" href="https://github.com/OrishaOrrie/SoftwareSharks" target="_blank">
         <i class="fa fa-github"></i>
       </a>
     </div>
   </div>
 </nav>
+
+<!-- NG TEMPLATES -->
+
+<!-- User NOT logged in -->
+<ng-template #guest>
+  <a routerLink="login" class="nav-item nav-link" href="login">
+    <i class="fa fa-sign-in"></i> Login
+  </a>
+</ng-template>
+
+
+<!-- User logged in -->
+<ng-template #authenticated>
+  <a *ngIf="auth.user | async as user" class="nav-item nav-link" href="https://github.com/OrishaOrrie/SoftwareSharks"
+    target="_blank">
+    <i class="fa fa-user"></i> {{ user.displayName }}
+  </a>
+</ng-template>
