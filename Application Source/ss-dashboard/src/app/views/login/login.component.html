@@ -1,8 +1,17 @@
 <app-layout>
-<h3>Howdy, GUEST</h3>
-<p>Login to get started...</p>
-
-<button (click)="auth.googleLogin()">
-    <i class="fa fa-google"></i> Connect Google
-</button>
+    <app-particle-background></app-particle-background>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 card">
+                <h3 class="card-header">
+                    Please Login
+                </h3>
+                <div class="card-body">
+                    <h5 class="card-title">Choose a Login method below:</h5>
+                    <p class="card-text">You need to login in order to access the full potential of the Ninshiki API.</p>
+                    <button type="button" class="btn btn-light" (click)="auth.googleLogin()"><i class="fa fa-google"></i> Connect With Google</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </app-layout>
