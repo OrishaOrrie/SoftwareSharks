@@ -20,6 +20,11 @@ const appRoutes: Routes = [
         outlet: 'sidebar'
       },
       {
+        path: 'profile',
+        component: UserProfileComponent,
+        outlet: 'sidebar'
+      },
+      {
         path: '',
         component: DashComponent
       }]
@@ -29,7 +34,6 @@ const appRoutes: Routes = [
     redirectTo: '/home',
     pathMatch: 'full'
   },
-  { path: 'profile', component: UserProfileComponent, canActivate: [AuthGuard] },
   { path: '**', component: PageNotFoundComponent }
 
 ];

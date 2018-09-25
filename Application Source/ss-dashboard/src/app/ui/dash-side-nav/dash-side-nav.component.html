@@ -1,64 +1,67 @@
-<nav class="col-md-2 d-none d-md-block bg-light sidebar my-5">
-  <div class="sidebar-sticky">
-    <ul class="nav flex-column">
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="[{ outlets: { sidebar: ['overview'] } }]"
-          routerLinkActive="active">
-          <span data-feather="home"></span>
-          Dashboard
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <span data-feather="file"></span>
-          Orders
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <span data-feather="shopping-cart"></span>
-          Products
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <span data-feather="users"></span>
-          Customers
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <span data-feather="bar-chart-2"></span>
-          Reports
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <span data-feather="layers"></span>
-          Integrations
-        </a>
-      </li>
-    </ul>
-
+<nav class="d-none d-md-block py-5 sidebar fill">
     <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-      <span>Profile</span>
-      <a class="d-flex align-items-center text-muted" href="#">
-        <span data-feather="plus-circle"></span>
+        <span>Dashboard</span>
+        <a class="d-flex align-items-center text-muted" href="#">
+          <span data-feather="plus-circle"></span>
+        </a>
+      </h6>
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="[{ outlets: { sidebar: ['overview'] } }]" routerLinkActive="active">
+        <span data-feather="home"></span>
+        Overview
       </a>
-    </h6>
-    <ul class="nav flex-column mb-2">
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <span data-feather="file-text"></span>
-          View
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <span data-feather="file-text"></span>
-          Edit
-        </a>
-      </li>
-    </ul>
-  </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">
+        <span data-feather="file"></span>
+        Orders
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">
+        <span data-feather="shopping-cart"></span>
+        Products
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">
+        <span data-feather="users"></span>
+        Customers
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">
+        <span data-feather="bar-chart-2"></span>
+        Reports
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">
+        <span data-feather="layers"></span>
+        Integrations
+      </a>
+    </li>
+  </ul>
+
+  <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+    <span>Profile</span>
+    <a class="d-flex align-items-center text-muted" href="#">
+      <span data-feather="plus-circle"></span>
+    </a>
+  </h6>
+  <ul class="nav flex-column mb-2">
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="[{ outlets: { sidebar: ['profile'] } }]" routerLinkActive="active">
+        <span data-feather="file-text"></span>
+        View
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">
+        <span data-feather="file-text"></span>
+        Edit
+      </a>
+    </li>
+  </ul>
 </nav>

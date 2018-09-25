@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as feather from 'feather-icons';
 
 @Component({
   selector: 'app-dash-side-nav',
@@ -10,6 +11,7 @@ export class DashSideNavComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    feather.replace();
   }
 
 }

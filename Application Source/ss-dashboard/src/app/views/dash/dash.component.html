@@ -2,9 +2,13 @@
   <app-dash-header></app-dash-header>
 
   <div class="container-fluid">
-    <div class="row">
-      <app-dash-side-nav></app-dash-side-nav>
-      <router-outlet  name="sidebar"></router-outlet>
+    <div class="row fill">
+      <div class="col-2 px-0">
+          <app-dash-side-nav></app-dash-side-nav>
+      </div>
+      <div class="col-10">
+          <router-outlet  name="sidebar"></router-outlet>
+      </div>     
     </div>
   </div>
 </div>
