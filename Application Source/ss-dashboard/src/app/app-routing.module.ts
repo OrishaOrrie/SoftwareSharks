@@ -11,19 +11,31 @@ import { PageNotFoundComponent } from './views/page-not-found/page-not-found.com
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'dashboard', component: DashComponent, canActivate: [AuthGuard] },
-  { path: '',
+  {
+    path: 'dashboard', component: DashComponent, canActivate: [AuthGuard],
+    children: [
+      {
+        path: 'overview',
+        component: DashOverviewComponent,
+        outlet: 'sidebar'
+      },
+      {
+        path: '',
+        component: DashComponent
+      }]
+  },
+  {
+    path: '',
     redirectTo: '/home',
     pathMatch: 'full'
   },
-  { path: 'profile', component: UserProfileComponent,  canActivate: [AuthGuard] },
-  { path: 'overview', component: DashOverviewComponent, outlet: 'sidebar' },
+  { path: 'profile', component: UserProfileComponent, canActivate: [AuthGuard] },
   { path: '**', component: PageNotFoundComponent }
- 
+
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(appRoutes) ],
+  imports: [RouterModule.forRoot(appRoutes, { enableTracing: true })],
   exports: [
     RouterModule
   ],

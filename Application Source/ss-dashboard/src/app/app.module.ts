@@ -15,7 +15,6 @@ import { PageNotFoundComponent } from './views/page-not-found/page-not-found.com
 import { UserProfileComponent } from './views/user-profile/user-profile.component';
 import { AuthGuard } from './core/auth.guard';
 import { LoginComponent } from './views/login/login.component';
-import { DashOverviewComponent } from './ui/dash-overview/dash-overview.component';
 import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({

@@ -2,7 +2,7 @@
   <div class="sidebar-sticky">
     <ul class="nav flex-column">
       <li class="nav-item">
-        <a class="nav-link" routerLink="overview"
+        <a class="nav-link" [routerLink]="[{ outlets: { sidebar: ['overview'] } }]"
           routerLinkActive="active">
           <span data-feather="home"></span>
           Dashboard
