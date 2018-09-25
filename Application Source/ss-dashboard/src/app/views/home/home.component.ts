@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
       'bottom': 0,
       'color': '#8EDBF2',
       'background-color': '#020E12',
-      'background-image': 'url(../../assets/images/dots.svg)',
+      'background-image': 'url(../../../assets/images/dots.svg)',
       'padding': '0'
     },
     parameters: {

@@ -38,7 +38,7 @@ section#hero .col{
 
 figure.display-container img {
     box-sizing: border-box;
-    background: url(../../assets/images/laptop.png) center center no-repeat;
+    background: url(../../../assets/images/laptop.png) center center no-repeat;
     background-size: contain;
     padding: 9.2% 12.3% 11.3% 12.4%;
     position: absolute;
