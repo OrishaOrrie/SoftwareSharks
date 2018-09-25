@@ -19,31 +19,26 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="/">Ninshiki API</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+    aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
+    <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a routerLink="/home" routerLinkActive="active" class="nav-link">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
       </li>
       <li class="nav-item">
-        <a routerLink="/dashboard" routerLinkActive="active" class="nav-link">Dashboard</a>
+        <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
+        <a class="nav-link" routerLink="/about" routerLinkActive="active">About</a>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown link
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/contact" routerLinkActive="active">Contact</a>
       </li>
     </ul>
+    <div *ngIf="auth.user | async; then authenticated else guest"></div>
   </div>
 </nav>
 
@@ -51,26 +46,27 @@
 
 <!-- User NOT logged in -->
 <ng-template #guest>
-  <a routerLink="login" class="nav-item nav-link" href="login">
-    <i class="fa fa-sign-in"></i> Login
-  </a>
+  <ul class="navbar-nav mr-5">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/login"> <i class="fa fa-sign-in"></i> Login</a>
+    </li>
+  </ul>
 </ng-template>
 
 
 <!-- User logged in -->
 <ng-template #authenticated>
-  <a *ngIf="auth.user | async as user" class="nav-item nav-link" href="https://github.com/OrishaOrrie/SoftwareSharks"
-    target="_blank">
-    <i class="fa fa-user"></i> {{ user.displayName }}
-  </a>
-  <div class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Dropdown link
-    </a>
-    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-      <a class="dropdown-item" href="#">Action</a>
-      <a class="dropdown-item" href="#">Another action</a>
-      <a class="dropdown-item" href="#">Something else here</a>
-    </div>
-  </div>
+  <ul class="navbar-nav mr-5">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false" *ngIf="auth.user | async as user">
+        <i class="fa fa-user"></i> {{ user.displayName }}
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <a class="dropdown-item" href="#">Profile</a>
+        <a class="dropdown-item" href="#">Some Action</a>
+        <a class="dropdown-item" href="#" (click)="auth.signOut()">Sign Out</a>
+      </div>
+    </li>
+  </ul>
 </ng-template>
