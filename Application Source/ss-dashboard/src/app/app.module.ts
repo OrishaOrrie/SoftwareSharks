@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './views/home/home.component';
 import { DashComponent } from './views/dash/dash.component';
 import { UiModule } from './ui/ui.module';
-import { environment } from './environment/environment';
+import { environment } from '../environments/environment';
 import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
 import { UserProfileComponent } from './views/user-profile/user-profile.component';
 import { AuthGuard } from './core/auth.guard';
