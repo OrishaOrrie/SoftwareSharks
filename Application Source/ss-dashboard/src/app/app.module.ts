@@ -18,7 +18,7 @@ import { LoginComponent } from './views/login/login.component';
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'dashboard', component: DashComponent },
+  { path: 'dashboard', component: DashComponent, canActivate: [AuthGuard] },
   { path: '',
     redirectTo: '/home',
     pathMatch: 'full'
