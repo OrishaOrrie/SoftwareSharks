@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { ParticleBackgroundComponent } from './particle-background/particle-background.component';
+import { DashHeaderComponent } from './dash-header/dash-header.component';
 
 @NgModule({
   imports: [
@@ -19,10 +20,13 @@ import { ParticleBackgroundComponent } from './particle-background/particle-back
     HeaderComponent, 
     FooterComponent, 
     SideNavComponent, 
-    ParticleBackgroundComponent],
+    ParticleBackgroundComponent, 
+    DashHeaderComponent
+  ],
   exports: [
     LayoutComponent,
-    ParticleBackgroundComponent
+    ParticleBackgroundComponent,
+    DashHeaderComponent
   ]
 })
 export class UiModule { }
