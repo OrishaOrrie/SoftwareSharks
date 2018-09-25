@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { ParticlesModule } from 'angular-particle';
 import { LayoutComponent } from './layout/layout.component';
 import { HeaderComponent } from './header/header.component';
@@ -10,7 +11,8 @@ import { ParticleBackgroundComponent } from './particle-background/particle-back
 @NgModule({
   imports: [
     CommonModule,
-    ParticlesModule
+    ParticlesModule,
+    RouterModule
   ],
   declarations: [
     LayoutComponent, 
