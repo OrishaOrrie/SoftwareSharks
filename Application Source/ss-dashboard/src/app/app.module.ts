@@ -15,18 +15,8 @@ import { PageNotFoundComponent } from './views/page-not-found/page-not-found.com
 import { UserProfileComponent } from './views/user-profile/user-profile.component';
 import { AuthGuard } from './core/auth.guard';
 import { LoginComponent } from './views/login/login.component';
-
-const appRoutes: Routes = [
-  { path: 'home', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'dashboard', component: DashComponent, canActivate: [AuthGuard] },
-  { path: '',
-    redirectTo: '/home',
-    pathMatch: 'full'
-  },
-  { path: 'profile', component: UserProfileComponent,  canActivate: [AuthGuard] },
-  { path: '**', component: PageNotFoundComponent }
-];
+import { DashOverviewComponent } from './ui/dash-overview/dash-overview.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -43,10 +33,7 @@ const appRoutes: Routes = [
     ParticlesModule,
     AngularFireModule.initializeApp(environment.firebase), // imports firebase/app needed for everything
     CoreModule,
-    RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: false } // <-- debugging purposes only
-    )
+    AppRoutingModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
