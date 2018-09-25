@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CoreModule } from './core/core.module';
 import { RouterModule, Routes } from '@angular/router';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './views/home/home.component';
@@ -18,6 +19,7 @@ import { LoginComponent } from './views/login/login.component';
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'dashboard', component: DashComponent },
   { path: '',
     redirectTo: '/home',
     pathMatch: 'full'
@@ -44,7 +46,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: false } // <-- debugging purposes only
-    )
+    ),
+    MDBBootstrapModule.forRoot()
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
