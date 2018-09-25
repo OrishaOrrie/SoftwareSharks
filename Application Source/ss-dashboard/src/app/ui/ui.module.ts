@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ParticlesModule } from 'angular-particle';
 import { LayoutComponent } from './layout/layout.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -8,11 +9,18 @@ import { ParticleBackgroundComponent } from './particle-background/particle-back
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    ParticlesModule
   ],
-  declarations: [LayoutComponent, HeaderComponent, FooterComponent, SideNavComponent, ParticleBackgroundComponent],
+  declarations: [
+    LayoutComponent, 
+    HeaderComponent, 
+    FooterComponent, 
+    SideNavComponent, 
+    ParticleBackgroundComponent],
   exports: [
-    LayoutComponent
+    LayoutComponent,
+    ParticleBackgroundComponent
   ]
 })
 export class UiModule { }
