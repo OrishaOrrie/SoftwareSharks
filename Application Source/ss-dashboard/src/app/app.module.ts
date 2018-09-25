@@ -4,8 +4,8 @@ import { CoreModule } from './core/core.module';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { DashComponent } from './dash/dash.component';
+import { HomeComponent } from './views/home/home.component';
+import { DashComponent } from './views/dash/dash.component';
 import { UiModule } from './ui/ui.module';
 import { ParticlesModule } from 'angular-particle';
 import { AngularFireModule } from '@angular/fire';
