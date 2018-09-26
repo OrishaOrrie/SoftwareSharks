@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CoreModule } from './core/core.module';
-import { RouterModule, Routes } from '@angular/router';
 
 import { ParticlesModule } from 'angular-particle';
 import { AngularFireModule } from '@angular/fire';
@@ -15,7 +14,7 @@ import { PageNotFoundComponent } from './views/page-not-found/page-not-found.com
 import { UserProfileComponent } from './views/user-profile/user-profile.component';
 import { AuthGuard } from './core/auth.guard';
 import { LoginComponent } from './views/login/login.component';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './core/routing/app-routing.module';
 
 @NgModule({
   declarations: [

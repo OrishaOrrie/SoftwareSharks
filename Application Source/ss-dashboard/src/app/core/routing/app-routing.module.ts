@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './views/home/home.component';
-import { LoginComponent } from './views/login/login.component';
-import { DashComponent } from './views/dash/dash.component';
-import { AuthGuard } from './core/auth.guard';
-import { UserProfileComponent } from './views/user-profile/user-profile.component';
-import { DashOverviewComponent } from './ui/dash-overview/dash-overview.component';
-import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
+import { HomeComponent } from '../../views/home/home.component';
+import { LoginComponent } from '../../views/login/login.component';
+import { DashComponent } from '../../views/dash/dash.component';
+import { AuthGuard } from '../../core/auth.guard';
+import { UserProfileComponent } from '../../views/user-profile/user-profile.component';
+import { DashOverviewComponent } from '../../ui/dash-overview/dash-overview.component';
+import { PageNotFoundComponent } from '../../views/page-not-found/page-not-found.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
