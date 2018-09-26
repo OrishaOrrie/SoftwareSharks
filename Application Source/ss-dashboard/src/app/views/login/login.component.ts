@@ -22,11 +22,11 @@ export class LoginComponent implements OnInit {
   login() {
     this.auth.googleLogin().then((value) => {
       // fulfillment
-      console.log("Login Success: " + value)
+      console.log('Login Success: ' + value)
       this.router.navigateByUrl(this.returnUrl);
     }, (reason) => {
       // rejection
-      console.log("Login Failed: " + reason)
+      console.log('Login Failed: ' + reason)
     });
 }
 
