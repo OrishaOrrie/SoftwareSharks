@@ -26,7 +26,7 @@
   <div class="container">
     <div *ngFor='let alerts of alertService.alerts'>
       <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <!-- <strong>Holy guacamole!</strong> You have successfully logged in as: <strong>{{alert.message}}</strong> -->
+        <strong>Holy guacamole!</strong> You have successfully logged in as: <strong>{{alerts.message}}</strong>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
