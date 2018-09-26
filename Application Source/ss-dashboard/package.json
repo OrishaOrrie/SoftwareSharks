@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "typedoc":"typedoc --mode modules -module commonjs --target ES6 --exclude **/*.spec.ts --out docs/typedoc src/app"
+    "typedoc": "typedoc --mode modules -module commonjs --target ES6 --exclude **/*.spec.ts --out docs/typedoc src/app",
+    "compodoc": "compodoc -p tsconfig.json"
   },
   "private": true,
   "dependencies": {
@@ -44,6 +45,7 @@
     "@angular/cli": "~6.2.3",
     "@angular/compiler-cli": "^6.1.0",
     "@angular/language-service": "^6.1.0",
+    "@compodoc/compodoc": "^1.1.5",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
