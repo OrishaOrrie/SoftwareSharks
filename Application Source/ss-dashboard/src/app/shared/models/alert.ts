@@ -1,5 +1,5 @@
 export class Alert {
-    message: string;
+    public message: string;
     constructor(message: string) {
         this.message = message;
     }

@@ -9,7 +9,7 @@ import { AlertService } from '../../core/alert/alert.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public auth: AuthService, private alertService: AlertService) { }
+  constructor(public auth: AuthService, public alertService: AlertService) { }
 
   ngOnInit() {
   }
