@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AuthService } from './auth.service';
+import { AlertService } from './alert/alert.service';
+
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
@@ -12,6 +14,6 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
   ],
   declarations: [],
-  providers: [AuthService]
+  providers: [AuthService, AlertService]
 })
 export class CoreModule { }
