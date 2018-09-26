@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../core/auth.service';
 import { AlertService } from '../../core/alert/alert.service';
 import { Alert } from '../../shared/models/alert';
+import { User } from '../../shared/models/user';
 
 @Component({
   selector: 'app-login',
@@ -23,10 +24,10 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.auth.googleLogin().then((value) => {
+    this.auth.googleLogin().then(value => {
       // fulfillment
       console.log('Login Success: ' + value);
-      this.alertService.add(new Alert('Login Successful!'));
+      this.alertService.add(new Alert('TODO: Add User name'));
       this.router.navigateByUrl(this.returnUrl);
     }, (reason) => {
       // rejection

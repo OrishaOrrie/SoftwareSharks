@@ -15,6 +15,11 @@ export class AlertService {
     this.alerts = [];
   }
 
+  public removeAlert(alert: Alert) {
+    const index = this.alerts.indexOf(alert);
+    this.alerts.splice(index, 1);
+}
+
   // getAlerts(): Observable<Alert[]> {
   //   return this.alerts;
   // }
