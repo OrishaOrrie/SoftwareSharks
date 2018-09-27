@@ -1,4 +1,4 @@
-import { AlertType } from "./AlertType";
+import { AlertType } from './AlertType';
 
 export class Alert {
     public alertParams: object = {
