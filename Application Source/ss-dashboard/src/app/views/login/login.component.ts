@@ -3,8 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../core/auth.service';
 import { AlertService } from '../../core/alert/alert.service';
 import { Alert } from '../../shared/models/alert';
-import { User } from '../../shared/models/user';
 import { AlertType } from '../../shared/models/AlertType';
+import { User } from '../../shared/models/user';
 
 @Component({
   selector: 'app-login',
@@ -12,8 +12,10 @@ import { AlertType } from '../../shared/models/AlertType';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  returnUrl: string;
 
+  returnUrl: string;
+  user: User;
+  
   constructor(private route: ActivatedRoute,
     private router: Router,
     public alertService: AlertService,
@@ -25,10 +27,10 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.auth.googleLogin().then(value => {
+    this.auth.googleLogin().then((firebaseUser) => {
       // fulfillment
-      // console.log('Login Success: ' + value);
-      this.alertService.add(new Alert(AlertType.Success, 'Welcome to Ninshiki: ', 'Login Successful!', 'TODO: Add Username'));
+      this.user = new User(firebaseUser.uid, firebaseUser.email, firebaseUser.photoURL, firebaseUser.displayName);
+      this.alertService.add(new Alert(AlertType.Success, 'Welcome to Ninshiki: ', 'Login Successful!', this.user.displayName));
       this.router.navigateByUrl(this.returnUrl);
     }, (reason) => {
       // rejection

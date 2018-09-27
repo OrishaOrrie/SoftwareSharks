@@ -8,9 +8,7 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { User } from '../shared/models/user';
-import { AlertType } from '../shared/models/AlertType';
 import { AlertService } from './alert/alert.service';
-import { Alert } from '../shared/models/alert';
 
 @Injectable()
 export class AuthService {
@@ -36,8 +34,6 @@ export class AuthService {
     );
   }
 
-
-
   googleLogin() {
     const provider = new auth.GoogleAuthProvider();
     return this.oAuthLogin(provider);
@@ -47,6 +43,7 @@ export class AuthService {
     return this.afAuth.auth.signInWithPopup(provider)
       .then((credential) => {
         this.updateUserData(credential.user);
+        return credential.user;
       });
   }
 
