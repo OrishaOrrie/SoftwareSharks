@@ -20,6 +20,10 @@
   .sidebar .nav-link.active .feather {
     color: inherit;
   }
+
+  .sidebar .nav-link.disabled {
+    color: #999;
+  }
   
   .sidebar-heading {
     font-size: .75rem;
