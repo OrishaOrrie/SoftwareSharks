@@ -1,8 +1,21 @@
-<div class="alert alert-primary alert-dismissible fade show" role="alert">
   <strong>Holy guacamole!</strong> You have successfully logged in as: <strong>{{alerts.message}}</strong>
+  <strong>{{ strongStart }}</strong> {{ message }} <strong>{{ strongEnd }}</strong>
   <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="alertService.removeAlert(alerts)">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
 
-<!-- [ngClass]="{type : true}" -->
+<!-- 
+  USAGE:
+  <app-alert [type]="alertParams.type" [strongStart]="alertParams.strongStart" [message]="alertParams.message" [strongEnd]="alertParams.strongEnd"></app-alert> 
+-->
+
+<!-- 
+  In TS:
+  alertParams = {
+    type: AlertType.Danger,
+    strongStart: 'Holy guacamole! ',
+    message: 'This is a test message',
+    strongEnd: ' This is the end!'
+  }
+ -->

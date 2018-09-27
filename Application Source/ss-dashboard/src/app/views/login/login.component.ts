@@ -4,6 +4,7 @@ import { AuthService } from '../../core/auth.service';
 import { AlertService } from '../../core/alert/alert.service';
 import { Alert } from '../../shared/models/alert';
 import { User } from '../../shared/models/user';
+import { AlertType } from '../../shared/models/AlertType';
 
 @Component({
   selector: 'app-login',
@@ -13,10 +14,10 @@ import { User } from '../../shared/models/user';
 export class LoginComponent implements OnInit {
   returnUrl: string;
 
-  constructor(  private route: ActivatedRoute,
-                private router: Router,
-                public alertService: AlertService,
-                public auth: AuthService) { }
+  constructor(private route: ActivatedRoute,
+    private router: Router,
+    public alertService: AlertService,
+    public auth: AuthService) { }
 
   ngOnInit() {
     this.auth.signOut();
@@ -27,13 +28,13 @@ export class LoginComponent implements OnInit {
     this.auth.googleLogin().then(value => {
       // fulfillment
       console.log('Login Success: ' + value);
-      this.alertService.add(new Alert('TODO: Add User name'));
+      this.alertService.add(new Alert(AlertType.Success, 'Welcome to Ninshiki: ', 'Login Successful!', 'TODO: Add Username'));
       this.router.navigateByUrl(this.returnUrl);
     }, (reason) => {
       // rejection
       console.log('Login Failed: ' + reason);
-      this.alertService.add(new Alert('Login Failed!'));
+      this.alertService.add(new Alert(AlertType.Danger, 'Looks like something went wrong!', 'Oh No!', ':('));
     });
-}
+  }
 
 }

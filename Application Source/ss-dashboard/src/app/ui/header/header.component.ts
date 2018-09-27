@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../core/auth.service';
 import { AlertService } from '../../core/alert/alert.service';
+import { AlertType } from '../../shared/models/AlertType';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,6 @@ import { AlertService } from '../../core/alert/alert.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
   constructor(public auth: AuthService, public alertService: AlertService) { }
 
   ngOnInit() {
