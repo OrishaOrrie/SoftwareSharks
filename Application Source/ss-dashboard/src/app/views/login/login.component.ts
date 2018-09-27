@@ -27,12 +27,12 @@ export class LoginComponent implements OnInit {
   login() {
     this.auth.googleLogin().then(value => {
       // fulfillment
-      console.log('Login Success: ' + value);
+      // console.log('Login Success: ' + value);
       this.alertService.add(new Alert(AlertType.Success, 'Welcome to Ninshiki: ', 'Login Successful!', 'TODO: Add Username'));
       this.router.navigateByUrl(this.returnUrl);
     }, (reason) => {
       // rejection
-      console.log('Login Failed: ' + reason);
+      // console.log('Login Failed: ' + reason);
       this.alertService.add(new Alert(AlertType.Danger, 'Looks like something went wrong!', 'Oh No!', ':('));
     });
   }

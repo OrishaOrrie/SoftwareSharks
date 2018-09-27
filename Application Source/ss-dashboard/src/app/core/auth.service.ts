@@ -8,6 +8,9 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { User } from '../shared/models/user';
+import { AlertType } from '../shared/models/AlertType';
+import { AlertService } from './alert/alert.service';
+import { Alert } from '../shared/models/alert';
 
 @Injectable()
 export class AuthService {
@@ -17,7 +20,8 @@ export class AuthService {
   constructor(
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
-    private router: Router
+    private router: Router,
+    public alertService: AlertService
   ) {
 
     //// Get auth data, then get firestore user document || null
@@ -64,6 +68,7 @@ export class AuthService {
 
   signOut() {
     this.afAuth.auth.signOut().then(() => {
+      // this.alertService.add(new Alert(AlertType.Success, 'Goodbye!', 'Signout Successful!'));
       // this.router.navigate(['/']);
     });
   }
