@@ -6,7 +6,7 @@ export class Alert {
         strongStart: '',
         message: '',
         strongEnd: ''
-    }
+    };
 
     constructor(alertType: AlertType, message: string, strongStart?: string, strongEnd?: string) {
         this.alertParams = {
