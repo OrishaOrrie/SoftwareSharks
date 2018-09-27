@@ -34,7 +34,7 @@ export class AuthService {
     );
   }
 
-  googleLogin() {
+  public googleLogin() {
     const provider = new auth.GoogleAuthProvider();
     return this.oAuthLogin(provider);
   }
@@ -63,7 +63,7 @@ export class AuthService {
   }
 
 
-  signOut() {
+  public signOut() {
     this.afAuth.auth.signOut().then(() => {
       // this.alertService.add(new Alert(AlertType.Success, 'Goodbye!', 'Signout Successful!'));
       // this.router.navigate(['/']);
