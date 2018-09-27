@@ -57,14 +57,14 @@ export class AuthService {
       email: user.email,
       displayName: user.displayName,
       photoURL: user.photoURL
-    }
+    };
     return userRef.set(data, { merge: true });
 
   }
 
 
   public signOut() {
-    this.afAuth.auth.signOut().then(() => {
+    return this.afAuth.auth.signOut().then(() => {
       // this.alertService.add(new Alert(AlertType.Success, 'Goodbye!', 'Signout Successful!'));
       // this.router.navigate(['/']);
     });

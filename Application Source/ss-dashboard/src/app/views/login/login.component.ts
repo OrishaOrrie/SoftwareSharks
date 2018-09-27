@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
-  login() {
+  public login() {
     this.auth.googleLogin().then((firebaseUser) => {
       // fulfillment
       this.user = new User(firebaseUser.uid, firebaseUser.email, firebaseUser.photoURL, firebaseUser.displayName);
