@@ -1,12 +1,12 @@
 <section id="profile" class="my-5">
   <div class="d-flex p-2 justify-content-start border-bottom">
-    <h1 class="display-3">User Profile</h1>
+    <h1>User Profile</h1>
   </div>
   <div class="container-fluid">
     <div *ngIf="user | async; let user; else loading">
       <div class="row">
         <div class="col border-bottom">
-          <h1 class="display-4">{{ user.displayName }}</h1>
+          <h1 class="lead my-2">{{ user.displayName }}</h1>
         </div>
       </div>
       <div class="row">
