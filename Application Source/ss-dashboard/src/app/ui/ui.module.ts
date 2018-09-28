@@ -11,6 +11,7 @@ import { DashHeaderComponent } from './dash/dash-header/dash-header.component';
 import { DashSideNavComponent } from './dash/dash-side-nav/dash-side-nav.component';
 import { DashOverviewComponent } from './dash/dash-overview/dash-overview.component';
 import { AlertComponent } from './alert/alert.component';
+import { DashModelsComponent } from './dash/dash-models/dash-models.component';
 
 @NgModule({
   imports: [
@@ -24,18 +25,20 @@ import { AlertComponent } from './alert/alert.component';
     FooterComponent,
     SideNavComponent,
     ParticleBackgroundComponent,
+    AlertComponent,
     DashHeaderComponent,
     DashSideNavComponent,
     DashOverviewComponent,
-    AlertComponent
+    DashModelsComponent
   ],
   exports: [
     LayoutComponent,
     ParticleBackgroundComponent,
+    AlertComponent,
     DashHeaderComponent,
     DashSideNavComponent,
     DashOverviewComponent,
-    AlertComponent
+    DashModelsComponent
   ]
 })
 export class UiModule { }
