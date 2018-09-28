@@ -45,8 +45,8 @@ export class User {
     constructor(uid: string, email: string, photoURL?: string, displayName?: string, favoriteColor?: string) {
         this._uid = uid;
         this._email = email;
-        if(photoURL) {this._photoURL = photoURL;}
-        if(displayName) {this._displayName = displayName;}
-        if(favoriteColor) {this._favoriteColor = favoriteColor;} 
+        if (photoURL) {this._photoURL = photoURL; }
+        if (displayName) {this._displayName = displayName; }
+        if (favoriteColor) {this._favoriteColor = favoriteColor; }
     }
 }

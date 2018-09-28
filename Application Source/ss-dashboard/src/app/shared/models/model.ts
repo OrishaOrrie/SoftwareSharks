@@ -45,11 +45,10 @@ export class Model {
      * Adds a Category or list of Categories to _categories list.
      * @param category  The category or list of categories to add. Can be either type: string | string[]
      */
-    public addCategory(category: string | string[]) : void {
-        if (typeof category == "string") {
+    public addCategory(category: string | string[]): void {
+        if (typeof category === 'string') {
             this._categories.push(category);
-        }
-        else {
+        } else {
             this._categories = this._categories.concat(category);
         }
     }

@@ -10,15 +10,15 @@ import { AlertService } from '../../core/alert/alert.service';
 export class AlertComponent implements OnInit {
   @Input()
   public type: string = AlertType.Primary;
-  
-  @Input()
-  public message: string = "";
 
   @Input()
-  public strongStart: string = "";
+  public message = '';
 
   @Input()
-  public strongEnd: string = "";
+  public strongStart = '';
+
+  @Input()
+  public strongEnd = '';
 
   constructor(public alertService: AlertService) { }
 

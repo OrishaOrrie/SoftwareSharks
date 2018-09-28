@@ -7,7 +7,7 @@ import Typed from 'typed.js';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  
+
   // TypedJS Variable Setup
   typed: any;
   typed_options = {

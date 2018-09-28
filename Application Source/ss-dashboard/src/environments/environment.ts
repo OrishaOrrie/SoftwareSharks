@@ -10,7 +10,7 @@ export const environment = {
     databaseURL: 'https://softwaresharks-ninshiki.firebaseio.com',
     storageBucket: 'softwaresharks-ninshiki.appspot.com',
     projectId: 'softwaresharks-ninshiki' ,
-    messagingSenderId: '87209213232' 
+    messagingSenderId: '87209213232'
   }
 };
 

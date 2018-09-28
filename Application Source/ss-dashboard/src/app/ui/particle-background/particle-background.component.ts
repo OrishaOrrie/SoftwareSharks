@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-particle-background',
-  template: `
-  <particles [style]="particleSystem.style" [width]="particleSystem.width" [height]="particleSystem.height" [params]="particleSystem.parameters"></particles>  
-  `,
+  // tslint:disable-next-line:max-line-length
+  template: `<particles [style]="particleSystem.style" [width]="particleSystem.width" [height]="particleSystem.height" [params]="particleSystem.parameters"></particles>`,
   styleUrls: ['./particle-background.component.scss']
 })
 export class ParticleBackgroundComponent implements OnInit {

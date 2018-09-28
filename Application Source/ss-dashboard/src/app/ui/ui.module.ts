@@ -19,14 +19,14 @@ import { AlertComponent } from './alert/alert.component';
     RouterModule
   ],
   declarations: [
-    LayoutComponent, 
-    HeaderComponent, 
-    FooterComponent, 
-    SideNavComponent, 
-    ParticleBackgroundComponent, 
-    DashHeaderComponent, 
-    DashSideNavComponent, 
-    DashOverviewComponent, 
+    LayoutComponent,
+    HeaderComponent,
+    FooterComponent,
+    SideNavComponent,
+    ParticleBackgroundComponent,
+    DashHeaderComponent,
+    DashSideNavComponent,
+    DashOverviewComponent,
     AlertComponent
   ],
   exports: [
