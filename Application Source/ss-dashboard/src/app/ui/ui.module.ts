@@ -11,6 +11,7 @@ import { DashHeaderComponent } from './dash/dash-header/dash-header.component';
 import { DashSideNavComponent } from './dash/dash-side-nav/dash-side-nav.component';
 import { DashOverviewComponent } from './dash/dash-overview/dash-overview.component';
 import { AlertComponent } from './alert/alert.component';
+import { DashModelsComponent } from './dash/dash-models/dash-models.component';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { AlertComponent } from './alert/alert.component';
     DashHeaderComponent,
     DashSideNavComponent,
     DashOverviewComponent,
-    AlertComponent
+    AlertComponent,
+    DashModelsComponent
   ],
   exports: [
     LayoutComponent,
