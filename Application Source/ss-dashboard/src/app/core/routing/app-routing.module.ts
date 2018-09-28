@@ -5,8 +5,9 @@ import { LoginComponent } from '../../views/login/login.component';
 import { DashComponent } from '../../views/dash/dash.component';
 import { AuthGuard } from '../../core/auth.guard';
 import { UserProfileComponent } from '../../views/user-profile/user-profile.component';
-import { DashOverviewComponent } from '../../ui/dash-overview/dash-overview.component';
+import { DashOverviewComponent } from '..//../ui/dash/dash-overview/dash-overview.component';
 import { PageNotFoundComponent } from '../../views/page-not-found/page-not-found.component';
+import { DashModelsComponent } from '../../ui/dash/dash-models/dash-models.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -17,6 +18,11 @@ const appRoutes: Routes = [
       {
         path: 'overview',
         component: DashOverviewComponent,
+        outlet: 'sidebar'
+      },
+      {
+        path: 'models',
+        component: DashModelsComponent,
         outlet: 'sidebar'
       },
       {
