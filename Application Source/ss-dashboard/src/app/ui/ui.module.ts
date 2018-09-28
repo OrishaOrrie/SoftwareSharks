@@ -25,19 +25,20 @@ import { DashModelsComponent } from './dash/dash-models/dash-models.component';
     FooterComponent,
     SideNavComponent,
     ParticleBackgroundComponent,
+    AlertComponent,
     DashHeaderComponent,
     DashSideNavComponent,
     DashOverviewComponent,
-    AlertComponent,
     DashModelsComponent
   ],
   exports: [
     LayoutComponent,
     ParticleBackgroundComponent,
+    AlertComponent,
     DashHeaderComponent,
     DashSideNavComponent,
     DashOverviewComponent,
-    AlertComponent
+    DashModelsComponent
   ]
 })
 export class UiModule { }
