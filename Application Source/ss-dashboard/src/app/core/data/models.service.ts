@@ -22,11 +22,15 @@ export class ModelsService {
           switchMap(user => {
             if (user) {
               // return this.afs.doc<Model>(`users/${user.uid}`).valueChanges();
-              this.afs.collection<Model>(`users/${user.uid}/model`).valueChanges();
+              return this.afs.collection<Model>(`users/${user.uid}/model`).valueChanges();
             } else {
               return of(null);
             }
           })
         );
+  }
+
+  public getModelsAsPromise() {
+    return this.models.toPromise();
   }
 }
