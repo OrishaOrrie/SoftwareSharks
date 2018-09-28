@@ -1,2 +1,2 @@
-node index.js "angry"
-python ".\check_images.py" ".\downloaded_images\angry"
+node index.js %1
+python ".\check_images.py" %1
