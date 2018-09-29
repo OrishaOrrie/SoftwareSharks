@@ -12,6 +12,7 @@
 .feedback__form {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-around;
     background-color: lightgray;
     padding-top: 20px;
