@@ -5,17 +5,12 @@
   <div class="container-fluid">
     <div *ngIf="modelsService.modelsObservable | async as models">
       <div>
-        <p>Hello</p>
         <ul>
           <li *ngFor="let model of models">
             Testing: {{ model.Name }}
           </li>
         </ul>
-        <!-- <p>{{ models }}</p> -->
       </div>
     </div>
-    <!-- <li *ngFor="let model of modelsObservable | async as models; index as i; first as isFirst">
-      {{i}}/{{models.length}}. {{model}} <span *ngIf="isFirst">default</span>
-   </li> -->
   </div>
 </section>
