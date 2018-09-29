@@ -29,11 +29,11 @@ export class AppPage {
 
 export class ImageUploadPage {
   navigateTo() {
-    return browser.get('/imageupload');
+    return browser.get('/#/imageupload');
   }
 
   getFileInput() {
-    return element(by.css('#file-upload'));
+    return element(by.css('input[type="file"]'));
   }
 
   getUploadButton() {
@@ -48,7 +48,7 @@ export class ImageUploadPage {
 
 export class UtilitiesPage {
   navigateTo() {
-    return browser.get('/utilities');
+    return browser.get('/#/utilities');
   }
 
   getResultText() {
@@ -60,17 +60,17 @@ export class UtilitiesPage {
   }
 
   getEmptyWeight() {
-    return element(by.id('empty-weight'));
+    return element(by.id('empty-bucket'));
   }
 
   getFilledWeight() {
-    return element(by.id('filled-weight'));
+    return element(by.id('filled-bucket'));
   }
 }
 
 export class ContactUsPage {
   navigateTo() {
-    return browser.get('/contactus');
+    return browser.get('/#/contactus');
   }
 
   getNameField() {
@@ -86,7 +86,7 @@ export class ContactUsPage {
   }
 
   getSubmitButton() {
-    return element(by.className('sumbit-btn'));
+    return element(by.className('email__submit'));
   }
 
   getStatusResult() {
