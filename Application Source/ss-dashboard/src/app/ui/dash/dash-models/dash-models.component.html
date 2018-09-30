@@ -3,7 +3,7 @@
     <h1>Custom Models</h1>
   </div>
 
-  <div *ngIf="modelsService.modelsObservable | async as models">
+  <div *ngIf="modelsService.modelsObservable | async as models; else loading">
     <div class="card-deck my-4">
       <div class="row mx-0">
         <div class="col-4 my-2" *ngFor="let model of models">
@@ -23,3 +23,12 @@
   </div>
 
 </section>
+
+<!-- NG TEMPLATES -->
+
+<!-- Loading -->
+<ng-template #loading>
+  <div class="container-fluid">
+    <h3><i class="fa fa-spinner"></i> - Models Loading...</h3>
+  </div>
+</ng-template>
