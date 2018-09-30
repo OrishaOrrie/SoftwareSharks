@@ -2,15 +2,24 @@
   <div class="d-flex p-2 justify-content-start border-bottom">
     <h1>Custom Models</h1>
   </div>
-  <div class="container-fluid">
-    <div *ngIf="modelsService.modelsObservable | async as models">
-      <div>
-        <ul>
-          <li *ngFor="let model of models">
-            Testing: {{ model.name }}
-          </li>
-        </ul>
+
+  <div *ngIf="modelsService.modelsObservable | async as models">
+    <div class="card-deck my-4">
+      <div class="row mx-0">
+        <div class="col-4 my-2" *ngFor="let model of models">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{ model.name }}</h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                content. This card has even longer content than the first to show that equal height action.</p>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">Last updated 3 mins ago</small>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+
 </section>
