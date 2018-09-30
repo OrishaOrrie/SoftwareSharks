@@ -6,12 +6,25 @@
   <div *ngIf="modelsService.modelsObservable | async as models; else loading">
     <div class="card-deck my-4">
       <div class="row mx-0">
-        <div class="col-4 my-2" *ngFor="let model of models">
+        <div class="col-4 my-2" *ngFor="let model of models; index as i">
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">{{ model.name }}</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                content. This card has even longer content than the first to show that equal height action.</p>
+              <p>
+                <button class="btn btn-primary" type="button" data-toggle="collapse" [attr.data-target]="'#collapse'+i"
+                  aria-expanded="false" [attr.aria-controls]="'collapse'+i">
+                  Categories
+                </button>
+              </p>
+              <div class="collapse" [attr.id]="'collapse'+i">
+                <div class="card-text">
+                  <ul>
+                    <li *ngFor="let cat of model.categories">
+                      {{ cat }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
             <div class="card-footer">
               <div *ngIf="model.trained; then trained else untrained"></div>
