@@ -28,4 +28,21 @@ export class ModelsService {
     );
   }
 
+  //TODO: Complete GetModels Function - Retrieve Model objects from observable
+  public getModels() {
+    // console.log("Calling getModels");
+    this.modelsObservable.pipe(
+      switchMap(models => {
+        if (models) {
+          return null;
+        } else {
+          return of(null);
+        }
+      })
+    );
+    // this.modelsService.getModelsAsPromise().then((model) => {
+    //   console.log(model.name);
+    // });
+  }
+
 }

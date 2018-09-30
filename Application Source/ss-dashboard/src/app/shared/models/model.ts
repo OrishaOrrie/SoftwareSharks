@@ -61,4 +61,25 @@ export class Model {
         const index = this._categories.indexOf(category);
         this._categories.splice(index, 1);
     }
+
+    /**
+     * Represents the uri of the saved model on firebase.
+     */
+    private _uri: string;
+
+    /**
+     * Get accessor for _uri member variable.
+     * @returns The value of the _uri member variable as a string.
+     */
+    public get uri(): string {
+        return this._uri;
+    }
+
+    /**
+     * Set modifier for the _uri member variable.
+     * @param value  The updated value (of type string) to set _uri as.
+     */
+    public set uri(value: string) {
+        this._uri = value;
+    }
 }
