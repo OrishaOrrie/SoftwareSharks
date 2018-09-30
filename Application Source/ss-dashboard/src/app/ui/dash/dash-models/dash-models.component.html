@@ -7,7 +7,7 @@
     <div class="card-deck my-4">
       <div class="row mx-0" style="width: 100%">
         <div class="col-4 my-2" *ngFor="let model of models; index as i">
-          <div class="card">
+          <div class="card" *ngIf="i >= 1; else addModel">
             <div class="card-body">
               <h5 class="card-title">{{ model.name }}</h5>
               <p>
@@ -45,6 +45,21 @@
 <ng-template #loading>
   <div class="container-fluid">
     <h3><i class="fa fa-spinner"></i> - Models Loading...</h3>
+  </div>
+</ng-template>
+
+<!-- addModel -->
+<ng-template #addModel>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Create a New Model</h5>
+      <p class="card-text">
+        <button class="btn btn-dark" type="button">Create Model</button>
+      </p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Something cool might happen!</small>
+    </div>
   </div>
 </ng-template>
 
