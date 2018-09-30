@@ -82,4 +82,25 @@ export class Model {
     public set uri(value: string) {
         this._uri = value;
     }
+
+    /**
+     * Represents the trained status of the model.
+     */
+    private _trained: boolean;
+
+    /**
+     * Get accessor for _trained member variable.
+     * @returns The value of the _trained member variable as a string.
+     */
+    public get trained(): boolean {
+        return this._trained;
+    }
+
+    /**
+     * Set modifier for the _trained member variable.
+     * @param value  The updated value (of type boolean) to set _trained as.
+     */
+    public set boolean(value: boolean) {
+        this._trained = value;
+    }
 }
