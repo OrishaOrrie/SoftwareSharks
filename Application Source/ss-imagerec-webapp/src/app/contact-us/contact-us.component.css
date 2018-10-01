@@ -27,7 +27,9 @@
 }
 
 .email-container__cs {
-    height: 300px;
+    position: relative;
+    height: 30%;
+    width: 30%;
     padding: 10px;
 }
 
@@ -38,7 +40,7 @@
 }
 
 .email__form {
-    margin: 20px auto;
+    margin: 5% auto;
     width: 60%;
 }
 

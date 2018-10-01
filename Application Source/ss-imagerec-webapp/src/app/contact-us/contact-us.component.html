@@ -9,13 +9,13 @@
         <div class="email-container__form">
             <img class="email-container__cs" src="../../assets/bramhope-logo.jpg">
             <form class="form-horizontal email__form" id="usrForm" [formGroup]="myGroup" *ngIf="!submitted">
-                <mat-form-field color="primary">
+                <mat-form-field color="primary" class="email__msg-part">
                     <input class="email__name-part" matInput type="text" id="name" required formControlName="name" name="name" placeholder="Enter your name">
                 </mat-form-field>
                 <br>
-                <mat-form-field color="primary">
+                <mat-form-field color="primary" class="email__msg-part">
                     <input class="email__email-part" matInput id="email" required formControlName="email" name="email" placeholder="Enter your email">
-                <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+                    <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
                 </mat-form-field>
                 <br>
                 <mat-form-field class="email__msg-part" color="primary">
@@ -32,7 +32,6 @@
             <mat-card class="status-card" *ngIf="submitted">
                 <h2 class="status-heading">{{ msgReceived }}</h2>
             </mat-card>
-                <!-- <img class="email__image" src="../../assets/bramhope-logo.jpg"> -->
         </div>        
         
     </mat-card>
