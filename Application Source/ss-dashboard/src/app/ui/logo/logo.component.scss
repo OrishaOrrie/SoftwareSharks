@@ -1,0 +1,40 @@
+// Logo Values
+$logo-color: white;
+
+svg {
+    width: 60px;
+    height: 40px;
+}
+
+// Logo Section
+
+svg#Logo>g#Eye {
+    stroke: $logo-color;
+}
+
+svg#Logo>g#Decoration {
+    stroke: $logo-color;
+    fill: $logo-color;
+}
+
+svg#Logo>g#Pupil {
+    stroke: $logo-color;
+    fill: $logo-color;
+}
+
+svg#Logo>g#Iris {
+    stroke: $logo-color;
+    fill: $logo-color;
+}
+
+// Icon Section
+
+svg#Icon>g#Iris {
+    stroke: $logo-color;
+    fill: $logo-color;
+}
+
+svg#Icon>g#Pupil {
+    stroke: $logo-color;
+    fill: $logo-color;
+}

@@ -12,6 +12,7 @@ import { DashSideNavComponent } from './dash/dash-side-nav/dash-side-nav.compone
 import { DashOverviewComponent } from './dash/dash-overview/dash-overview.component';
 import { AlertComponent } from './alert/alert.component';
 import { DashModelsComponent } from './dash/dash-models/dash-models.component';
+import { LogoComponent } from './logo/logo.component';
 
 @NgModule({
   imports: [
@@ -29,12 +30,14 @@ import { DashModelsComponent } from './dash/dash-models/dash-models.component';
     DashHeaderComponent,
     DashSideNavComponent,
     DashOverviewComponent,
-    DashModelsComponent
+    DashModelsComponent,
+    LogoComponent
   ],
   exports: [
     LayoutComponent,
     ParticleBackgroundComponent,
     AlertComponent,
+    LogoComponent,
     DashHeaderComponent,
     DashSideNavComponent,
     DashOverviewComponent,
