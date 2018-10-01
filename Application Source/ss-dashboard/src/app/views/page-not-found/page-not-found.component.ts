@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-page-not-found',
@@ -7,16 +7,14 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./page-not-found.component.scss']
 })
 export class PageNotFoundComponent implements OnInit {
-  returnUrl: string;
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(private _location: Location) { }
 
   ngOnInit() {
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   public goBack() {
-    this.router.navigateByUrl(this.returnUrl);
+    this._location.back();
   }
 
 }

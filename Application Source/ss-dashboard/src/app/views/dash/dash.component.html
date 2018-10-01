@@ -1,5 +1,5 @@
 <div *ngIf="auth.user | async as user">
-  <app-dash-header></app-dash-header>
+  <!-- <app-dash-header></app-dash-header> -->
 
   <div class="container-fluid">
     <div class="row fill">
@@ -7,7 +7,7 @@
           <app-dash-side-nav></app-dash-side-nav>
       </div>
       <div class="col-10">
-          <router-outlet  name="sidebar"></router-outlet>
+          <router-outlet name="sidebar"></router-outlet>
       </div>     
     </div>
   </div>

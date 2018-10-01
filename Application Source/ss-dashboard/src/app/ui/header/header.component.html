@@ -52,7 +52,7 @@
         <i class="fa fa-user"></i> {{ user.displayName }}
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <a class="dropdown-item disabled" [routerLink]="" >Profile</a>
+        <a class="dropdown-item" [routerLink]="['/dashboard', { outlets: { sidebar: ['profile'] } }]" >Profile</a>
         <a class="dropdown-item disabled" [routerLink]="">Some Action</a>
         <a class="dropdown-item" [routerLink]="" (click)="signOut()">Sign Out</a>
       </div>
