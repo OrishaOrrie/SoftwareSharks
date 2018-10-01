@@ -6,11 +6,11 @@ export class AlertService {
   public alerts: Alert[] = [];
   constructor() { }
 
-  add(alert: Alert) {
+  public add(alert: Alert) {
     this.alerts.push(alert);
   }
 
-  clear() {
+  public clear() {
     this.alerts = [];
   }
 
