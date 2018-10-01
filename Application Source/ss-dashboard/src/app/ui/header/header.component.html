@@ -25,7 +25,7 @@
   </div>
 </nav>
 <div *ngIf="alertService.alerts.length">
-  <div class="container position-absolute" style="left: 20%; right: 20%; z-index: 2000;">
+  <div class="container" style="left: 20%; right: 20%; z-index: 2000;">
     <div *ngFor='let alerts of alertService.alerts'>
       <app-alert [type]="alerts.alertParams.type" [strongStart]="alerts.alertParams.strongStart" [message]="alerts.alertParams.message" [strongEnd]="alerts.alertParams.strongEnd"></app-alert> 
     </div>
