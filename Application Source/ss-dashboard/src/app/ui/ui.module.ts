@@ -13,6 +13,7 @@ import { DashOverviewComponent } from './dash/dash-overview/dash-overview.compon
 import { AlertComponent } from './alert/alert.component';
 import { DashModelsComponent } from './dash/dash-models/dash-models.component';
 import { LogoComponent } from './logo/logo.component';
+import { FlamesComponent } from './flames/flames.component';
 
 @NgModule({
   imports: [
@@ -31,13 +32,15 @@ import { LogoComponent } from './logo/logo.component';
     DashSideNavComponent,
     DashOverviewComponent,
     DashModelsComponent,
-    LogoComponent
+    LogoComponent,
+    FlamesComponent
   ],
   exports: [
     LayoutComponent,
     ParticleBackgroundComponent,
     AlertComponent,
     LogoComponent,
+    FlamesComponent,
     DashHeaderComponent,
     DashSideNavComponent,
     DashOverviewComponent,

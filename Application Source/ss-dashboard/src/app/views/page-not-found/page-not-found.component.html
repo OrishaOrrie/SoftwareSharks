@@ -1,16 +1,31 @@
 <app-layout>
   <!-- TODO: Add Building collpase background (FLAT POLYGON) -->
+  <!-- Reference for Image: -->
+  <!-- https://www.youtube.com/watch?time_continue=6&v=wZhkH2jhiXY -->
   <section id="not-found">
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <h1 class="display-1">
-            You broke it...
-          </h1>
-          <br>
-          <h2 class="display-3">
-            404: Page Not Found.
-          </h2>
+    <div class="container-fluid my-5">
+      <div class="col text-center">
+        <div class="jumbotron jumbotron-fluid">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-4">
+                  <app-flames></app-flames>
+              </div>
+              <div class="col">
+                  <h1 class="display-2">Oh No!</h1>
+                  <h2 class="lead">Error 404: Page not Found!</h2>
+                  <blockquote class="blockquot my-4">
+                    <p class="mb-0">"I really wish I knew how I got here."</p>
+                    <footer class="blockquote-footer"><cite title="Source Title">You.</cite>The person reading this.</footer>
+                  </blockquote>                 
+                  <p class="lead">It seems as if you're lost! <br> Why not just go back?</p>
+                  <button class="btn btn-dark" type="button" (click)="goBack()">Go Back</button>
+              </div>
+              <div class="col-4">
+                  <app-flames></app-flames>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
