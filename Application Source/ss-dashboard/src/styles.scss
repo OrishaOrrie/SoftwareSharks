@@ -8,3 +8,11 @@ $border-radius-sm: 0;
 
 @import "~bootstrap/scss/bootstrap";
 @import "~font-awesome/css/font-awesome.css";
+
+.top-shadow {
+    box-shadow: 0 -4px 6px 1px black;
+  }
+
+  .bottom-shadow {
+    box-shadow: 0 4px 6px 1px black;
+  }
