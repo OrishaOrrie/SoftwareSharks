@@ -8,6 +8,7 @@ import { UserProfileComponent } from '../../views/user-profile/user-profile.comp
 import { DashOverviewComponent } from '..//../ui/dash/dash-overview/dash-overview.component';
 import { PageNotFoundComponent } from '../../views/page-not-found/page-not-found.component';
 import { DashModelsComponent } from '../../ui/dash/dash-models/dash-models.component';
+import { DashModelsEditComponent } from '../../ui/dash/dash-models-edit/dash-models-edit.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -26,14 +27,21 @@ const appRoutes: Routes = [
         outlet: 'sidebar'
       },
       {
+        path: 'models-edit',
+        component: DashModelsEditComponent,
+        outlet: 'sidebar'
+      },
+      {
         path: 'profile',
         component: UserProfileComponent,
         outlet: 'sidebar'
       },
       {
         path: '',
-        component: DashComponent
-      }]
+        redirectTo: '/dashboard/(sidebar:overview)',
+        pathMatch: 'full'
+      }
+    ]
   },
   {
     path: '',

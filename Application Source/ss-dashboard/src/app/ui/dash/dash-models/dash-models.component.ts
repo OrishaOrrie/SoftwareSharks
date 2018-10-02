@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModelsService } from '../../../core/data/models.service';
 import { switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { async } from 'rxjs/internal/scheduler/async';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dash-models',
@@ -11,7 +11,9 @@ import { async } from 'rxjs/internal/scheduler/async';
 })
 export class DashModelsComponent implements OnInit {
 
-  constructor(public modelsService: ModelsService) { 
+  constructor(
+    private router: Router,
+    public modelsService: ModelsService) {
   }
 
   ngOnInit() {
@@ -19,16 +21,16 @@ export class DashModelsComponent implements OnInit {
   }
 
   public getModels() {
-    console.log("Calling getModels");
+    console.log('Calling getModels');
     this.modelsService.modelsObservable.pipe(
       switchMap(models => {
         if (models) {
           // return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
-          console.log("Kind of not broken");
+          console.log('Kind of not broken');
           console.log(models);
           return of(null);
         } else {
-          console.log("Dis is broken af");
+          console.log('Dis is broken af');
           return of(null);
         }
       })
@@ -36,5 +38,9 @@ export class DashModelsComponent implements OnInit {
     // this.modelsService.getModelsAsPromise().then((model) => {
     //   console.log(model.name);
     // });
+  }
+
+  public goToModelsEdit() {
+    this.router.navigateByUrl('/dashboard/(sidebar:models-edit)');
   }
 }
