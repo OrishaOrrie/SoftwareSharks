@@ -415,6 +415,8 @@ export class ImageuploadComponent implements OnInit {
     dialogConfig.data = {
       name: elName
     };
+    dialogConfig.minHeight = '250px';
+    dialogConfig.minHeight = '300px';
 
     this.dialog.open(QuoteDialogComponent, dialogConfig);
   }

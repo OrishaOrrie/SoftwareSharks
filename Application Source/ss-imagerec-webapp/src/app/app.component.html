@@ -11,8 +11,8 @@
     <!-- <span class="toolbar__button-spacer"></span> -->
     <a mat-button class="toolbar__link" id="navbar-contact" routerLink="/contactus">
       Contact Us
-      <i *ngIf="quoteStarted" class="material-icons" style="padding-left: 10px; padding-right: 5px; width: 5px; color: white;">shopping_cart</i>
-      <div *ngIf="quoteStarted" class="toolbar__quote-amount">2</div>
+      <i *ngIf="quoteStarted | async" class="material-icons" style="padding-left: 10px; padding-right: 5px; width: 5px; color: white;">shopping_cart</i>
+      <div *ngIf="quoteStarted | async" class="toolbar__quote-amount">{{ numQuoteItems | async }}</div>
     </a>
   </mat-toolbar>
   <br>

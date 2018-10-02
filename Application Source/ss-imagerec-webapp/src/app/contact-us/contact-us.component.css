@@ -57,6 +57,11 @@
     border: #607D8B 2px solid;
 }
 
+.email__quoteadd {
+    border: #607D8B 2px solid;
+    margin-right: 10px;
+}
+
 .status-card {
     background-color: lightgray;
     color: rgb(13, 33, 44);

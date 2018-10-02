@@ -20,10 +20,12 @@
                 <br>
                 <mat-form-field class="email__msg-part" color="primary">
                     <textarea matInput matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5" rows="3" 
-                    id="message" form="usrForm" required formControlName="message" name="message" placeholder="Enter your query"></textarea>
+                    id="message" form="usrForm" value="{{quoteMessage}}" required formControlName="message" name="message" placeholder="Enter your query"></textarea>
                 </mat-form-field>
                 <br>
                 <div>
+                    <button *ngIf="addQuoteDisplay | async" mat-stroked-button color="primary" (click)="addQuoteToMessage()"
+                    class="email__quoteadd">Add Quote to Message</button>
                     <button [disabled]="!myGroup.valid" mat-stroked-button color="primary" type="submit" (click)="onSubmit()" 
                     class="email__submit" form="usrForm">SUBMIT</button>
                     <mat-spinner style="float: right;" color="primary" [diameter]="30" [style.display]="showSpinner ? 'block':'none'"></mat-spinner>

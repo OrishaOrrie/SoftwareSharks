@@ -78,7 +78,7 @@
                 <th mat-header-cell *matHeaderCellDef>Link To Store</th>
                 <td mat-cell class="table__string" *matCellDef="let element" >
                   <a *ngIf="element.link" href="{{ element.link }}" target="_blank">
-                    <i class="material-icons" style="margin: auto 20px; color: #0D212C;">launch</i>
+                    <mat-icon style="margin: auto 20px; color: #0D212C;">launch</mat-icon>
                   </a>
                 </td>
               </ng-container>
@@ -87,7 +87,7 @@
                 <th mat-header-cell *matHeaderCellDef>Add to Quote</th>
                 <td mat-cell class="table__string" *matCellDef="let element" >
                   <button mat-icon-button *ngIf="element.link" (click)="openQuoteDialog(element.name)" style="margin: auto 20px;">
-                    <i class="material-icons table__quote-button" style="color: #0D212C;">add_shopping_cart</i>
+                    <mat-icon style="color: #0D212C;">add_shopping_cart</mat-icon>
                   </button>
                 </td>
               </ng-container>
