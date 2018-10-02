@@ -14,6 +14,7 @@ import { AlertComponent } from './alert/alert.component';
 import { DashModelsComponent } from './dash/dash-models/dash-models.component';
 import { LogoComponent } from './logo/logo.component';
 import { FlamesComponent } from './flames/flames.component';
+import { DashModelsEditComponent } from './dash/dash-models-edit/dash-models-edit.component';
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ import { FlamesComponent } from './flames/flames.component';
     DashOverviewComponent,
     DashModelsComponent,
     LogoComponent,
-    FlamesComponent
+    FlamesComponent,
+    DashModelsEditComponent
   ],
   exports: [
     LayoutComponent,
