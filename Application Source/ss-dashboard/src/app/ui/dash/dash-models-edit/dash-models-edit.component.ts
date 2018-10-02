@@ -26,7 +26,6 @@ export class DashModelsEditComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private afs: AngularFirestore,
     private modelService: ModelsService,
     private alertService: AlertService) { }
 

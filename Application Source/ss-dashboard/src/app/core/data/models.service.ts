@@ -70,6 +70,8 @@ export class ModelsService {
 
   public deleteModel(id) {
     this.modelDoc = this.afs.doc<Model>(this.basePath + `/${id}`);
-    this.modelDoc.delete();
+    return this.modelDoc.delete().then(() => {
+      return true;
+    });
   }
 }
