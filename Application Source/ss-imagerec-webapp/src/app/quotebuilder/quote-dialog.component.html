@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>Adding item to quote</h2>
+
+<mat-dialog-content>
+  <mat-form-field [formGroup]="quoteForm">
+    <input matInput placeHolder="Amount of items" formControlName="amount">
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-options>
+  <button class="mat-raised-button">Close</button>
+  <button class="mat-raised-button">Add to quote</button>
+</mat-dialog-options>

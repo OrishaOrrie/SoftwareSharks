@@ -9,7 +9,11 @@
     <!-- <span class="toolbar__button-spacer"></span> -->
     <a mat-button class="toolbar__link" id="navbar-utilities" routerLink="/utilities">Tools</a>
     <!-- <span class="toolbar__button-spacer"></span> -->
-    <a mat-button class="toolbar__link" id="navbar-contact" routerLink="/contactus">Contact Us</a>
+    <a mat-button class="toolbar__link" id="navbar-contact" routerLink="/contactus">
+      Contact Us
+      <i *ngIf="quoteStarted" class="material-icons" style="padding-left: 10px; padding-right: 5px; width: 5px; color: white;">shopping_cart</i>
+      <div *ngIf="quoteStarted" class="toolbar__quote-amount">2</div>
+    </a>
   </mat-toolbar>
   <br>
 </div>

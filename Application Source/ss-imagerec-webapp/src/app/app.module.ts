@@ -18,6 +18,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { HttpClientModule } from '@angular/common/http';
 import { environment } from './../environments/environment';
 import { LocationStrategy, HashLocationStrategy } from '../../node_modules/@angular/common';
+import { QuoteDialogComponent } from './quotebuilder/quote-dialog.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { LocationStrategy, HashLocationStrategy } from '../../node_modules/@angu
     ImageuploadComponent,
     UtilitiesComponent,
     ContactUsComponent,
-    FeedbackComponent
+    FeedbackComponent,
+    QuoteDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +47,9 @@ import { LocationStrategy, HashLocationStrategy } from '../../node_modules/@angu
   ],
   bootstrap: [
     AppComponent
+  ],
+  entryComponents: [
+    QuoteDialogComponent
   ],
   schemas: [NO_ERRORS_SCHEMA]
 })

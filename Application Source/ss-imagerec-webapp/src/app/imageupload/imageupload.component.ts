@@ -23,6 +23,8 @@
 */
 import { Component, OnInit } from '@angular/core';
 import { ModelLoaderService } from '../model/model-loader.service';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { QuoteDialogComponent } from '../quotebuilder/quote-dialog.component';
 // import { AngularFireStorage } from '../../../node_modules/angularfire2/storage';
 
 @Component({
@@ -115,7 +117,7 @@ export class ImageuploadComponent implements OnInit {
    * This constructor is only used to pass an instance of the HttpClient module.
    * @param http  HttpClient instance
    */
-  constructor(public ml: ModelLoaderService ) { }
+  constructor(public ml: ModelLoaderService, private dialog: MatDialog ) { }
 
   /**
    * Upon initialization of the component, the model loader service loads the model. It then queries whether
@@ -372,6 +374,11 @@ export class ImageuploadComponent implements OnInit {
       this.showSpinner = false;
       this.resultPreds = this.ml.mapPredictions(predictions);
       this.modelStatus = 'Submit';
+      if (this.ml.modelHasLinks()) {
+        this.displayedColumns = ['name', 'likeliness', 'link', 'quote'];
+      } else {
+        this.displayedColumns = ['name', 'likeliness'];
+      }
 
       const el = document.querySelector('.result-card');
       el.scrollIntoView({behavior: 'smooth'});
@@ -399,6 +406,17 @@ export class ImageuploadComponent implements OnInit {
         this.modelStatus = 'Submit';
       }
     }, 500);
+  }
+
+  openQuoteDialog(elName) {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = {
+      name: elName
+    };
+
+    this.dialog.open(QuoteDialogComponent, dialogConfig);
   }
 
   /**

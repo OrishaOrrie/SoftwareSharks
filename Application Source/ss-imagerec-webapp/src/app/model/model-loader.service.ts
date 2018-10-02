@@ -217,7 +217,7 @@ export class ModelLoaderService {
    * Checks whether the selected model contains catalogue links
    * @returns   True if the model has links, false if not
    */
-  private modelHasLinks() {
+  public modelHasLinks() {
     return this.modelType[this.modelNumber].hasLinks;
   }
 

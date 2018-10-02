@@ -30,6 +30,15 @@
     flex: 0 0 1em;
 }
 
+.toolbar__quote-amount {
+    float: right;
+    margin-left: 20px;
+    padding-left: 3px;
+    padding-right: 3px;
+    border-radius: 30%;
+    background-color: red;
+}
+
 main{
     margin: auto 5%;
     overflow: auto;
