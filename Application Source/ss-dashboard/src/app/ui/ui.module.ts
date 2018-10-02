@@ -15,10 +15,13 @@ import { DashModelsComponent } from './dash/dash-models/dash-models.component';
 import { LogoComponent } from './logo/logo.component';
 import { FlamesComponent } from './flames/flames.component';
 import { DashModelsEditComponent } from './dash/dash-models-edit/dash-models-edit.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     ParticlesModule,
     RouterModule
   ],

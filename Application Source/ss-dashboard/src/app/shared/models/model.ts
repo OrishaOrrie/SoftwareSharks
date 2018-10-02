@@ -1,8 +1,44 @@
 export class Model {
     /**
+     * Represents the id of the model document.
+     */
+    private _id: string;
+
+    /**
+     * Represents the uri of the saved model on firebase.
+     */
+    private _uri: string;
+
+    /**
      * Represents the name of the model.
      */
     private _name: string;
+
+    /**
+     * Represents the list of categories contained within the model.
+     */
+    private _categories: string[];
+
+    /**
+     * Represents the trained status of the model.
+     */
+    private _trained: boolean;
+
+    /**
+     * Get accessor for _id member variable.
+     * @returns The value of the _id member variable as a string.
+     */
+    public get id(): string {
+        return this._id;
+    }
+
+    /**
+     * Set modifier for the _id member variable.
+     * @param value  The updated value (of type string) to set _id as.
+     */
+    public set id(value: string) {
+        this._id = value;
+    }
 
     /**
      * Get accessor for _name member variable.
@@ -19,11 +55,6 @@ export class Model {
     public set name(value: string) {
         this._name = value;
     }
-
-    /**
-     * Represents the list of categories contained within the model.
-     */
-    private _categories: string[];
 
     /**
      * Get accessor for _categories member variable.
@@ -63,11 +94,6 @@ export class Model {
     }
 
     /**
-     * Represents the uri of the saved model on firebase.
-     */
-    private _uri: string;
-
-    /**
      * Get accessor for _uri member variable.
      * @returns The value of the _uri member variable as a string.
      */
@@ -84,11 +110,6 @@ export class Model {
     }
 
     /**
-     * Represents the trained status of the model.
-     */
-    private _trained: boolean;
-
-    /**
      * Get accessor for _trained member variable.
      * @returns The value of the _trained member variable as a string.
      */
@@ -100,7 +121,14 @@ export class Model {
      * Set modifier for the _trained member variable.
      * @param value  The updated value (of type boolean) to set _trained as.
      */
-    public set boolean(value: boolean) {
+    public set trained(value: boolean) {
         this._trained = value;
+    }
+
+    constructor(name: string, categories: string[]) {
+        this._name = name;
+        this._categories = categories;
+        this._uri = 'None';
+        this._trained = false;
     }
 }

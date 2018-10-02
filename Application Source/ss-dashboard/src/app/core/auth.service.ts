@@ -62,6 +62,7 @@ export class AuthService {
 
     // const modelRef: AngularFirestoreCollection<any> = userRef.collection('model');
     const modelData = {
+      id: 'M_000',
       name: 'Default',
       categories: [],
       uri: 'no uri',

@@ -11,11 +11,12 @@
             <div class="card-body">
               <h5 class="card-title">{{ model.name }}</h5>
               <p>
-                <button class="btn btn-dark" type="button" data-toggle="collapse" [attr.data-target]="'#collapse'+i"
-                  aria-expanded="false" [attr.aria-controls]="'collapse'+i">
-                  View Categories
-                </button>
+                  <small class="text-muted"> UID: {{ model.id }}</small>
               </p>
+              <button class="btn btn-dark" type="button" data-toggle="collapse" [attr.data-target]="'#collapse'+i"
+              aria-expanded="false" [attr.aria-controls]="'collapse'+i">
+              View Categories
+            </button>
               <div class="collapse" [attr.id]="'collapse'+i">
                 <div class="card-text">
                   <ul>
