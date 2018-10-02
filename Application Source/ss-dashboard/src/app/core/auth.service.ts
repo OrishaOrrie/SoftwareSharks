@@ -66,8 +66,8 @@ export class AuthService {
       categories: [],
       uri: 'no uri',
       trained: false
-    }
-    userRef.collection('model').doc('M_000').set(modelData, {merge: true}).then(()=>{return userRef.set(data, { merge: true });});
+    };
+    userRef.collection('model').doc('M_000').set(modelData, {merge: true}).then(() => userRef.set(data, { merge: true }));
     // return userRef.set(data, { merge: true });
 
   }
