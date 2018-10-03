@@ -1,0 +1,51 @@
+// .btn-cat:hover:after {
+//     background-color: #dc3545;
+// }
+
+// .btn-cat span:after {
+//     content: '\00bb';
+//     position: absolute;
+//     opacity: 0;
+//     top: 0;
+//     right: -20px;
+//     transition: 0.5s;
+//   }
+
+.btn-cat:hover {
+    background-color: #dc3545;
+}
+
+  .btn-cat span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.3s;
+  }
+  
+  .btn-cat i.fa {
+    visibility: hidden;
+  }
+
+  .btn-cat:hover i.fa {
+    visibility: visible;
+  }
+  // <i class="fa fa-minus-circle" aria-hidden="true"></i>
+//   .btn-cat span::before {
+//       visibility: hidden;
+//   }
+  .btn-cat span:after {
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.3s;
+  }
+  
+  .btn-cat:hover span {
+    padding-right: 20px;
+  }
+  
+  .btn-cat:hover span:after {
+    opacity: 1;
+    right: 0;
+  }

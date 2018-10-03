@@ -9,24 +9,36 @@
         <div class="col-4 my-2" *ngFor="let model of models; index as i">
           <div class="card" *ngIf="i >= 1; else addModel">
             <div class="card-header bg-dark text-light align-middle lead">{{ model.name }}
-                <div class="float-right"><app-dash-models-edit [model]="model"></app-dash-models-edit></div>
+              <div class="float-right">
+                <app-dash-models-edit [model]="model"></app-dash-models-edit>
+              </div>
             </div>
             <div class="card-body">
               <h5 class="card-title">{{ model.name }}</h5>
               <p>
-                  <small class="text-muted"> UID: {{ model.id }}</small>
+                <small class="text-muted"> UID: {{ model.id }}</small>
               </p>
               <button class="btn btn-dark" type="button" data-toggle="collapse" [attr.data-target]="'#collapse'+i"
-              aria-expanded="false" [attr.aria-controls]="'collapse'+i">
-              View Categories
-            </button>
+                aria-expanded="false" [attr.aria-controls]="'collapse'+i">
+                View Categories
+              </button>
               <div class="collapse" [attr.id]="'collapse'+i">
-                <div class="card-text">
-                  <ul>
-                    <li *ngFor="let cat of model.categories">
-                      {{ cat }}
-                    </li>
-                  </ul>
+                <div class="card my-2">
+                  <div class="card-body">
+                    <div class="card-text">
+                      <div class="row">
+                        <div class="col-auto">
+                            <button *ngFor="let cat of model.categories" type="button" class="btn btn-outline-dark btn-cat mx-1"><span>{{ cat }}</span><i class="fa fa-minus-circle" aria-hidden="true"></i></button>
+                          <!-- <span *ngFor="let cat of model.categories" class="badge badge-pill badge-primary border-dark">{{ cat }}</span> -->
+                        </div>
+                      </div>
+                      <!-- <ul>
+                        <li *ngFor="let cat of model.categories">
+                          {{ cat }}
+                        </li>
+                      </ul> -->
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -34,7 +46,8 @@
               <div *ngIf="model.trained; then trained else untrained"></div>
               <hr>
               <small class="text-muted">Last updated 3 mins ago</small>
-              <div class="float-right"><a class="btn btn-danger text-light" (click)="deleteModel(model.id)"><i class="fa fa-trash-o"></i> Delete</a></div>
+              <div class="float-right"><a class="btn btn-danger text-light" (click)="deleteModel(model.id)"><i class="fa fa-trash-o"></i>
+                  Delete</a></div>
             </div>
           </div>
         </div>

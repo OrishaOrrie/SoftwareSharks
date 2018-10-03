@@ -59,7 +59,7 @@ export class DashModelsEditComponent implements OnInit {
     this.modelService.updateModel(this.model.id, editedModel).then(() => {
       this.editModelForm.reset();
       this.alertService.add(new Alert(AlertType.Success, 'Model successfully edited!', 'WooHoo!', ':)'));
-      console.log(this.model.id,editedModel);
+      console.log(this.model.id, editedModel);
     });
   }
 
