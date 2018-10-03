@@ -32,3 +32,6 @@ Application Source/Backend/Node Server/functions/priv/serviceAccountKey.json
 *.pyc
 Application Source/ss-dashboard/node_modules/*
 Application Source/ss-dashboard/src/environments/environment.ts
+Application Source/ss-dashboard/.firebase/hosting.ZGlzdFxzcy1kYXNoYm9hcmQ.cache
+*.cache
+*.cache
