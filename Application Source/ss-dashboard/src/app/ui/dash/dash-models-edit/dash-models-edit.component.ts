@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormArray } from '@angular/forms';
 import * as feather from 'feather-icons';
-import { AngularFirestore } from '@angular/fire/firestore';
 import { ModelsService } from '../../../core/data/models.service';
 import { Model } from '../../../shared/models/model';
 import { AlertService } from '../../../core/alert/alert.service';

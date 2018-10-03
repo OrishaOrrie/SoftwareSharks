@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModelsService } from '../../../core/data/models.service';
 import { Router } from '@angular/router';
-import { Model } from '../../../shared/models/model';
 import { AlertType } from '../../../shared/models/AlertType';
 import { Alert } from '../../../shared/models/alert';
 import { AlertService } from '../../../core/alert/alert.service';

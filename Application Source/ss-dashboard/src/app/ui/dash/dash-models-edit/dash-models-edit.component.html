@@ -26,7 +26,7 @@
                       <input type="text" class="form-control my-2" placeholder="Enter category" [formControlName]="i"
                         required>
                       <div *ngIf="i > 0" class="input-group-prepend my-2">
-                        <button type="button" class="btn btn-danger input-group-text" (click)="removeCategory(i)"><span data-feather="delete"></span></button>
+                        <button type="button" class="btn btn-danger input-group-text" (click)="removeCategory(i)" placement="left" ngbTooltip="Delete Category"><span data-feather="delete"></span></button>
                       </div>
                     </div>
                   </div>

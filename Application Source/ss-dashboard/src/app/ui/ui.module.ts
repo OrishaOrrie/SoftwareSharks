@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ParticlesModule } from 'angular-particle';
@@ -23,6 +24,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     ParticlesModule,
+    NgbTooltipModule,
     RouterModule
   ],
   declarations: [
