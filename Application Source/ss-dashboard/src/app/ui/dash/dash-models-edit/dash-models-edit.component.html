@@ -1,8 +1,8 @@
-<button type="button" class="btn btn-info" data-toggle="modal" data-target="#editModelModal" (click)="setCurrentModel();">
+<button type="button" class="btn btn-info" data-toggle="modal" [attr.data-target]="'#editModelModal'+val" (click)="setCurrentModel();">
     <i class="fa fa-pencil-square-o"></i> Edit
 </button>
 <!-- (click)="deleteModel(model.id)" -->
-<div class="modal fade text-dark" id="editModelModal" tabindex="-1" role="dialog" aria-labelledby="editModelModalLabel"
+<div class="modal fade text-dark" [attr.id]="'editModelModal'+val" tabindex="-1" role="dialog" aria-labelledby="editModelModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">

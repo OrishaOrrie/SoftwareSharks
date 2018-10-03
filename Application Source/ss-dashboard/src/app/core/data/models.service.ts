@@ -19,7 +19,7 @@ export class ModelsService {
     private afs: AngularFirestore,
     private auth: AuthService
   ) {
-    this.modelsObservable = of([]);
+    this.modelsObservable = of(null);
     this.auth.user.subscribe(
       user => {
         if (user) {

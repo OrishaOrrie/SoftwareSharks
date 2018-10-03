@@ -16,6 +16,9 @@ export class DashModelsEditComponent implements OnInit {
   @Input()
   model: Model;
 
+  @Input()
+  val;
+
   editModelForm = this.fb.group({
     name: ['', Validators.required],
     categories: this.fb.array([
@@ -33,12 +36,13 @@ export class DashModelsEditComponent implements OnInit {
   }
 
   setCurrentModel() {
+    // console.log(this.model);
     this.editModelForm.patchValue({
       name: this.model.name
     });
     this.editModelForm.setControl('categories', this.fb.array(this.model.categories || []));
   }
-
+  // #editModelModal
   onSubmit() {
     // TODO: Use EventEmitter with form value
     // const model: Model = this.newModelForm.value as Model;
@@ -59,7 +63,7 @@ export class DashModelsEditComponent implements OnInit {
     this.modelService.updateModel(this.model.id, editedModel).then(() => {
       this.editModelForm.reset();
       this.alertService.add(new Alert(AlertType.Success, 'Model successfully edited!', 'WooHoo!', ':)'));
-      console.log(this.model.id, editedModel);
+      // console.log(this.model.id, editedModel);
     });
   }
 
