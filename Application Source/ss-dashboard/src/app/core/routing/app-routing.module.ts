@@ -8,7 +8,6 @@ import { UserProfileComponent } from '../../views/user-profile/user-profile.comp
 import { DashOverviewComponent } from '..//../ui/dash/dash-overview/dash-overview.component';
 import { PageNotFoundComponent } from '../../views/page-not-found/page-not-found.component';
 import { DashModelsComponent } from '../../ui/dash/dash-models/dash-models.component';
-import { DashModelsEditComponent } from '../../ui/dash/dash-models-edit/dash-models-edit.component';
 import { DashModelsCreateComponent } from '../../ui/dash/dash-models-create/dash-models-create.component';
 import { DashTrainComponent } from '../../ui/dash/dash-train/dash-train.component';
 

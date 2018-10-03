@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModelsService } from '../../../core/data/models.service';
+import { TrainingStatus } from '../../../shared/models/training-status.enum';
 
 @Component({
   selector: 'app-dash-train',
@@ -6,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dash-train.component.scss']
 })
 export class DashTrainComponent implements OnInit {
-
-  constructor() { }
+  trained = TrainingStatus.Trained;
+  training = TrainingStatus.Training;
+  untrained = TrainingStatus.Untrained;
+  constructor(private modelsService: ModelsService) { }
 
   ngOnInit() {
   }

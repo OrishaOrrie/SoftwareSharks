@@ -6,6 +6,7 @@ import { Model } from '../../../shared/models/model';
 import { AlertService } from '../../../core/alert/alert.service';
 import { AlertType } from '../../../shared/models/AlertType';
 import { Alert } from '../../../shared/models/alert';
+import { TrainingStatus } from '../../../shared/models/training-status.enum';
 
 @Component({
   selector: 'app-dash-models-create',
@@ -36,6 +37,7 @@ export class DashModelsCreateComponent implements OnInit {
     const model: Model = this.newModelForm.value as Model;
     model.uri = 'None';
     model.trained = false;
+    model.status = TrainingStatus.Untrained;
     this.saveModel(model).then(() => {
       this.newModelForm.reset();
       this.alertService.add(new Alert(AlertType.Success, 'Model successfully created!', 'WooHoo!', ':)'));

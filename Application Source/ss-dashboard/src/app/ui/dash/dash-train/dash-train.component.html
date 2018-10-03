@@ -6,4 +6,47 @@
       </div>
     </div>
   </div>
+  <div class="container-fluid my-5">
+    <div *ngIf="modelsService.modelsObservable | async as models; else loading">
+      <table class="table table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Model</th>
+            <th scope="col">#Categories</th>
+            <th scope="col">Status</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let model of models; index as i">
+            <th scope="row">{{ i }}</th>
+            <td>{{ model.name }}</td>
+            <td>{{ model.categories.length }}</td>
+            <td [class.bg-success]="model.status == this.trained"
+                [class.bg-info]="model.status == this.untrained"
+                [class.bg-warning]="model.status == this.training">
+                {{ model.status }}</td>
+            <td [ngSwitch]="model.status">
+                <button *ngSwitchCase="this.trained" type="button" class="btn btn-success">Get URL</button>
+                <button *ngSwitchCase="this.untrained" type="button" class="btn btn-info">Train</button>
+                <button *ngSwitchCase="this.training" type="button" class="btn btn-warning">Pause</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </section>
+<!-- NG TEMPLATES -->
+
+<!-- Loading -->
+<ng-template #loading>
+  <div class="container-fluid h-100 my-4">
+    <div class="row h-100 justify-content-center align-items-center">
+      <div class="col-auto">
+        <h2><i class="fa fa-circle-o-notch fa-spin fa-2x fa-fw"></i>Loading...</h2>
+      </div>
+    </div>
+  </div>
+</ng-template>

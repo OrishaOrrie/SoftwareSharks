@@ -1,3 +1,5 @@
+import { TrainingStatus } from './training-status.enum';
+
 export class Model {
     /**
      * Represents the id of the model document.
@@ -23,6 +25,11 @@ export class Model {
      * Represents the trained status of the model.
      */
     private _trained: boolean;
+
+    /**
+     * Represents the trained status of the model.
+     */
+    private _status: TrainingStatus;
 
     /**
      * Get accessor for _id member variable.
@@ -123,6 +130,22 @@ export class Model {
      */
     public set trained(value: boolean) {
         this._trained = value;
+    }
+
+    /**
+     * Get accessor for _status member variable.
+     * @returns The value of the _status member variable as a TrainingStatus.
+     */
+    public get status(): TrainingStatus {
+        return this._status;
+    }
+
+    /**
+     * Set modifier for the _status member variable.
+     * @param value  The updated value (of type TrainingStatus) to set _status as.
+     */
+    public set status(value: TrainingStatus) {
+        this._status = value;
     }
 
     constructor(name: string, categories: string[]) {
