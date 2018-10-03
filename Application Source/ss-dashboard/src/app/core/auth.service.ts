@@ -61,15 +61,15 @@ export class AuthService {
     };
 
     // const modelRef: AngularFirestoreCollection<any> = userRef.collection('model');
-    const modelData = {
-      id: 'M_000',
-      name: 'Default',
-      categories: [],
-      uri: 'no uri',
-      trained: false
-    };
-    userRef.collection('model').doc('M_000').set(modelData, {merge: true}).then(() => userRef.set(data, { merge: true }));
-    // return userRef.set(data, { merge: true });
+    // const modelData = {
+    //   id: 'M_000',
+    //   name: 'Default',
+    //   categories: [],
+    //   uri: 'no uri',
+    //   trained: false
+    // };
+    // userRef.collection('model').doc('M_000').set(modelData, {merge: true}).then(() => userRef.set(data, { merge: true }));
+    return userRef.set(data, { merge: true });
 
   }
 

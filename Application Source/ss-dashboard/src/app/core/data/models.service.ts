@@ -33,7 +33,7 @@ export class ModelsService {
             });
           }));
         } else {
-          console.log('Failed to load initial Data');
+          // console.log('Failed to load initial Data');
           this.modelsObservable = of(null);
         }
       }
