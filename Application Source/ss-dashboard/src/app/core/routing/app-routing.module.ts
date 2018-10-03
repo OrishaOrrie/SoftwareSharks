@@ -10,6 +10,7 @@ import { PageNotFoundComponent } from '../../views/page-not-found/page-not-found
 import { DashModelsComponent } from '../../ui/dash/dash-models/dash-models.component';
 import { DashModelsEditComponent } from '../../ui/dash/dash-models-edit/dash-models-edit.component';
 import { DashModelsCreateComponent } from '../../ui/dash/dash-models-create/dash-models-create.component';
+import { DashTrainComponent } from '../../ui/dash/dash-train/dash-train.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -30,6 +31,11 @@ const appRoutes: Routes = [
       {
         path: 'models-create',
         component: DashModelsCreateComponent,
+        outlet: 'sidebar'
+      },
+      {
+        path: 'train',
+        component: DashTrainComponent,
         outlet: 'sidebar'
       },
       {

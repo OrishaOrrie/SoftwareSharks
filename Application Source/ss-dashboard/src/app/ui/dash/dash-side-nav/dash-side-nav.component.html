@@ -17,7 +17,7 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link disabled" [routerLink]="">
+      <a class="nav-link" [routerLink]="[{ outlets: { sidebar: ['train'] } }]" routerLinkActive="active">
         <span data-feather="activity"></span>
         <span class="side-nav-text">Train</span>
       </a>
