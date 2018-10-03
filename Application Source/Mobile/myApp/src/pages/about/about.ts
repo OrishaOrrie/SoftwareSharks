@@ -23,6 +23,11 @@ export class AboutPage {
     return false;
   }
 
+  openBrowserToPP() {
+    window.open('https://www.freeprivacypolicy.com/privacy/view/b0d98055db1daabbf50b21d867461a36', '_system', 'location=yes');
+    return false;
+  }
+
   openFeedback() {
     let feedbackPage = this.modalCtrl.create(FeedbackPage);
 		feedbackPage.present();
