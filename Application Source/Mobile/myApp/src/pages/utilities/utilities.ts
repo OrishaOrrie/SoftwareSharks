@@ -18,10 +18,42 @@ import { AboutPage } from '../about/about';
 export class UtilitiesPage {
 	Math: Math = Math;
 	totalObjects : number =null;
-  single_item = 1;
-  empty_bucket = 2;
-  filled_bucket = 10;
+  single_item = 1.0;
+  empty_bucket = 2.0;
+  filled_bucket = 10.0;
   
+  hello = (() => {
+    // while(emp>=fil && sing>=fil)
+    //   {
+    //     return 0;
+    //   }
+    //   if(!sing || !emp || !fil)
+    //   {
+    //     return 0;
+    //   }
+    //   this.totalObjects = ((fil - emp)/sing);
+    //   return this.totalObjects;
+
+    if (!this.empty_bucket || !this.filled_bucket || !this.single_item) {
+        return 'Weight inputs cannot be empty';
+      }
+
+    if (this.empty_bucket <= 0 || this.filled_bucket <= 0 || this.single_item <= 0 ) {
+        return 'Weight value must be a positive value';
+    }
+
+    if (this.single_item - this.filled_bucket > 0) {
+      return 'Single item cannot weigh more than a filled bucket';
+    }
+
+    if (this.empty_bucket - this.filled_bucket >= 0) {
+      return 'Empty bucket cannot weigh more than a filled bucket';
+    }
+
+    return 'Number of items: ' + Math.floor((this.filled_bucket - this.empty_bucket) / this.single_item);
+
+  });
+
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     public alertController: AlertController, public modalCtrl : ModalController) {
       
@@ -56,22 +88,7 @@ export class UtilitiesPage {
     }
 
     //single filed empty
-  hello = function(sing: number, emp: number, fil: number)
-  {
   
-      while(emp>=fil && sing>=fil)
-      {
-        return 0;
-      }
-      if(!sing || !emp || !fil)
-      {
-        return 0;
-      }
-      this.totalObjects = ((fil - emp)/sing);
-      return this.totalObjects;
-       
-
-   }
    
 
 }

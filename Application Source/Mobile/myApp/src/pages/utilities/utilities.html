@@ -26,15 +26,15 @@
    <p class= "instructions">Enter the values as instructed. Use the same measurement units (e.g. Kg)</p> 
 <ion-item class="inputs">
    <ion-label  class="bob" color="secondary" stacked>Weight Single Item</ion-label> 
-    <ion-input type="number" required placeholder="Single item" [(ngModel)]="single_item" name="test" min=0></ion-input>
+    <ion-input id="single" type="number" required placeholder="Single item" [(ngModel)]="single_item" name="test" min=0></ion-input>
   </ion-item>
   <ion-item class = "inputs">
     <ion-label class="bob" color="secondary" stacked>Weight Empty Bucket</ion-label>
-    <ion-input type="number" required placeholder="Empty bucket" [(ngModel)]="empty_bucket" min=0></ion-input>
+    <ion-input id="empty" type="number" required placeholder="Empty bucket" [(ngModel)]="empty_bucket" min=0></ion-input>
   </ion-item>
   <ion-item class = "inputs">
     <ion-label class="bob" color="secondary"stacked>Weight Filled Bucket</ion-label>
-    <ion-input type="number" required placeholder="Filled bucket" [(ngModel)]="filled_bucket"  min=0></ion-input>
+    <ion-input id="filled" type="number" required placeholder="Filled bucket" [(ngModel)]="filled_bucket"  min=0></ion-input>
   </ion-item>
  <br>
  <br>
@@ -42,7 +42,7 @@
 <ion-card class = "result">
   <ion-card-header class="result" color="secondary">
     <!--Number of Items: {{ Math.floor((filled_bucket - empty_bucket)/single_item) }}-->
-    Number of items: {{ hello(single_item,empty_bucket, filled_bucket) }}
+    {{ hello() }}
   </ion-card-header>
 
 </ion-card>
