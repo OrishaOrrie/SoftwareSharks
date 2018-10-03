@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.softwaresharks.ninshiki" version="0.1.5" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.softwaresharks.ninshiki" version="0.1.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Ninshiki</name>
     <author email="orisha.orrie@gmail.com">Orisha Orrie</author>
     <content src="index.html" />
@@ -90,10 +90,15 @@
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="User location for queries" />
     </plugin>
     <plugin name="cordova-plugin-device" spec="^2.0.2" />
-    <plugin name="cordova-plugin-ionic-webview" spec="^1.2.1" />
-    <plugin name="cordova-plugin-ionic-keyboard" spec="^2.1.2" />
     <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
     <plugin name="cordova-plugin-camera" spec="^4.0.3" />
-    <engine name="browser" spec="5.0.4" />
+    <plugin name="cordova-plugin-ionic" spec="^5.2.4">
+        <variable name="APP_ID" value="a9c3140f" />
+        <variable name="CHANNEL_NAME" value="Master" />
+        <variable name="UPDATE_METHOD" value="background" />
+    </plugin>
+    <plugin name="cordova-plugin-ionic-keyboard" spec="2.1.2" />
+    <plugin name="cordova-plugin-ionic-webview" spec="^2.1.4" />
+    <engine name="browser" spec="^5.0.4" />
     <engine name="android" spec="7.1.1" />
 </widget>
