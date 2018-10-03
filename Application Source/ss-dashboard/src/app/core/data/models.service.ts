@@ -65,7 +65,9 @@ export class ModelsService {
 
   public updateModel(id, update) {
     this.modelDoc = this.afs.doc<Model>(this.basePath + `/${id}`);
-    this.modelDoc.update(update);
+    return this.modelDoc.update(update).then(() => {
+      return true;
+    });
   }
 
   public deleteModel(id) {

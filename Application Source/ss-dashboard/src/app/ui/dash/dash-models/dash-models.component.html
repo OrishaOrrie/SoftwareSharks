@@ -9,7 +9,7 @@
         <div class="col-4 my-2" *ngFor="let model of models; index as i">
           <div class="card" *ngIf="i >= 1; else addModel">
             <div class="card-header bg-dark text-light align-middle lead">{{ model.name }}
-                <div class="float-right"><a class="btn btn-info" (click)="deleteModel(model.id)"><i class="fa fa-pencil-square-o"></i> Edit</a></div>
+                <div class="float-right"><app-dash-models-edit [model]="model"></app-dash-models-edit></div>
             </div>
             <div class="card-body">
               <h5 class="card-title">{{ model.name }}</h5>

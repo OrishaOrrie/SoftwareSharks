@@ -24,11 +24,4 @@ export class DashModelsComponent implements OnInit {
   public goToModelsEdit() {
     this.router.navigateByUrl('/dashboard/(sidebar:models-create)');
   }
-
-  public deleteModel(id) {
-    // console.log(modelData);
-    this.modelsService.deleteModel(id).then(() => {
-      this.alertService.add(new Alert(AlertType.Success, 'Model successfully deleted!', 'WooHoo!', ':)'));
-    });
-  }
 }
