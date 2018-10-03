@@ -17,6 +17,7 @@ import { LogoComponent } from './logo/logo.component';
 import { FlamesComponent } from './flames/flames.component';
 import { DashModelsEditComponent } from './dash/dash-models-edit/dash-models-edit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DashModelsCreateComponent } from './dash/dash-models-create/dash-models-create.component';
 
 @NgModule({
   imports: [
@@ -40,7 +41,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     DashModelsComponent,
     LogoComponent,
     FlamesComponent,
-    DashModelsEditComponent
+    DashModelsEditComponent,
+    DashModelsCreateComponent
   ],
   exports: [
     LayoutComponent,

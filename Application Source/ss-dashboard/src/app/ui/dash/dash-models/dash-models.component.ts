@@ -22,7 +22,7 @@ export class DashModelsComponent implements OnInit {
   }
 
   public goToModelsEdit() {
-    this.router.navigateByUrl('/dashboard/(sidebar:models-edit)');
+    this.router.navigateByUrl('/dashboard/(sidebar:models-create)');
   }
 
   public deleteModel(id) {
