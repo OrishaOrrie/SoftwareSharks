@@ -11,7 +11,7 @@ export class DashTrainComponent implements OnInit {
   trained = TrainingStatus.Trained;
   training = TrainingStatus.Training;
   untrained = TrainingStatus.Untrained;
-  constructor(private modelsService: ModelsService) { }
+  constructor(public modelsService: ModelsService) { }
 
   ngOnInit() {
   }
