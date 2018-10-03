@@ -1,66 +1,59 @@
-<nav class="d-none d-md-block py-5 sidebar fill">
-    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-        <span>Dashboard</span>
-        <a class="d-flex align-items-center text-muted">
-          <span data-feather="plus-circle"></span>
-        </a>
-      </h6>
-  <ul class="nav flex-column">
+<nav class="nav navbar-dark bg-dark h-100 nav-side">
+  <ul class="nav flex-column w-100">
+    <li class="nav-item">
+      <h6 class="text-muted sideNav-heading">Dashboard</h6>
+      <hr>
+    </li>
     <li class="nav-item">
       <a class="nav-link" [routerLink]="[{ outlets: { sidebar: ['overview'] } }]" routerLinkActive="active">
         <span data-feather="code"></span>
-        Overview
+        <span class="side-nav-text">Overview</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" [routerLink]="[{ outlets: { sidebar: ['models'] } }]" routerLinkActive="active">
         <span data-feather="box"></span>
-        Models
+        <span class="side-nav-text">Models</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link disabled" [routerLink]="">
         <span data-feather="activity"></span>
-        Train
+        <span class="side-nav-text">Train</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link disabled" [routerLink]="">
         <span data-feather="aperture"></span>
-        Predict
+        <span class="side-nav-text">Predict</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link disabled" [routerLink]="">
         <span data-feather="bar-chart-2"></span>
-        Reports
+        <span class="side-nav-text">Reports</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link disabled" [routerLink]="">
         <span data-feather="layers"></span>
-        Integrations
+        <span class="side-nav-text">Integrations</span>
       </a>
     </li>
-  </ul>
-
-  <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-    <span>Profile</span>
-    <a class="d-flex align-items-center text-muted">
-      <span data-feather="plus-circle"></span>
-    </a>
-  </h6>
-  <ul class="nav flex-column mb-2">
+    <li class="nav-item">
+      <h6 class="text-muted sideNav-heading">Profile</h6>
+      <hr>
+    </li>
     <li class="nav-item">
       <a class="nav-link" [routerLink]="[{ outlets: { sidebar: ['profile'] } }]" routerLinkActive="active">
         <span data-feather="user"></span>
-        View
+        <span class="side-nav-text">View</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link disabled" [routerLink]="">
         <span data-feather="edit"></span>
-        Edit
+        <span class="side-nav-text">Edit</span>
       </a>
     </li>
   </ul>

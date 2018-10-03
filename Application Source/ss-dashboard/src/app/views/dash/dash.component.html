@@ -1,12 +1,10 @@
 <div *ngIf="auth.user | async as user">
-  <!-- <app-dash-header></app-dash-header> -->
-
   <div class="jumbotron jumbotron-fluid py-0 mx-0 my-0">
     <div class="row fill">
-      <div class="col-2 px-0">
+      <div class="col-1 col-sm-1 col-md-2 px-0">
           <app-dash-side-nav></app-dash-side-nav>
       </div>
-      <div class="col-10">
+      <div class="col-11 col-sm-11 col-md-10">
         <div class="container-fluid my-3">
             <router-outlet name="sidebar"></router-outlet>
         </div>
