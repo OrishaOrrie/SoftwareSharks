@@ -15,17 +15,14 @@
     Please tell us anything you like, don't like, or really hate, and then do the same but specifically about this app, thanks!
   </p>
 
-  <ion-item class="inputs">
-      <ion-label class = 'bob' color="secondary" stacked>Select feedback type</ion-label>
-      <ion-select required [(ngModel)]="feedType">
-        <ion-option selected=true value="General Feedback">General Feedback</ion-option>
-        <ion-option value="Bug">Bug</ion-option>
-        <ion-option value="New Feature">New Feature</ion-option>
-      </ion-select>
-  </ion-item>
-
   <form [formGroup]="myGroup"  *ngIf="!submitted" >
  
+    <ion-item class="inputs">
+      <ion-label class = 'bob' color="secondary" stacked>Select feedback type</ion-label>
+      <ion-select required formControlName="feedType">
+        <ion-option *ngFor="let f of feedType" [value]="f">{{ f }}</ion-option>
+      </ion-select>
+    </ion-item>
     <ion-item class="inputs">
       <ion-label class = 'bob' color="secondary" stacked>Full Name</ion-label>
       <ion-input id="name" type="text" placeholder="Enter your full name" required formControlName="name"></ion-input>
@@ -37,6 +34,6 @@
     
   </form>
 
-  <button ion-button full  color= "tertiary" [hidden]="!myGroup.valid" (click)="onSubmit()">Send</button>
+  <button ion-button full round color= "tertiary" [hidden]="!myGroup.valid" (click)="onSubmit()">Send</button>
 
 </ion-content>

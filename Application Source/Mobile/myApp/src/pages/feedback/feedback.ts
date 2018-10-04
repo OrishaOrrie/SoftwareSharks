@@ -10,7 +10,12 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 export class FeedbackPage {
 
   submitted = false;
-  feedType: any;
+  feedType: string[] = [
+    'General Feedback',
+    'Bug',
+    'Feature Request'
+  ];
+  defaultFeedType = 'General Feedback';
 
   myGroup = new FormGroup({
     name: new FormControl(),
@@ -21,10 +26,11 @@ export class FeedbackPage {
     private fb: FormBuilder, private http: HttpClient, public alertController: AlertController) {
 
       this.myGroup = this.fb.group({
+        'feedType': new FormControl(null),
         'name': ['', Validators.compose([Validators.required, Validators.minLength(1)])],
         'message': ['', Validators.compose([Validators.required, Validators.minLength(1)])]
       });
-
+      this.myGroup.controls['feedType'].setValue(this.defaultFeedType, {onlySelf: true});
   }
 
   ionViewDidLoad() {
@@ -53,7 +59,7 @@ export class FeedbackPage {
    */
   onSubmit() {
     const senderName = this.myGroup.get('name').value;
-    const senderFeedType = this.feedType;
+    const senderFeedType = this.myGroup.get('feedType').value;
     const senderMessage = this.myGroup.get('message').value;
     this.presentAlert();
     this.myGroup.reset();
