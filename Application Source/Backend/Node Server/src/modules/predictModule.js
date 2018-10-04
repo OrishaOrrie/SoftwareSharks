@@ -11,7 +11,7 @@
 */
 
 var predictModule = function predictModule() {
-    //ImageScraper.ImageScraper("Angry");
+    console.log("Predict Module");
 }
 
 module.exports.predictModule = predictModule;

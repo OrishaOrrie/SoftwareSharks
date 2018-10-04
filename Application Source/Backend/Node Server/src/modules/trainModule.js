@@ -11,8 +11,19 @@
 */
 var ImageScraper = require("../../../Image Scraper/index")
 
-var trainModule = function trainModule(category) {
-    ImageScraper.ImageScraper(category);
+var trainModule = function trainModule(categories) {
+    console.log("Training Module");
+    //console.log(categories);
+    
+    const header=categories["header"];
+    categories=categories["categories"];
+    
+    for(var category in categories) {
+        console.log("Image scraping for: "+categories[category]);
+        ImageScraper.ImageScraper(categories[category]);
+    }
+
+    //ImageScraper.ImageScraper(categories);
 }
 
 module.exports.trainModule = trainModule;

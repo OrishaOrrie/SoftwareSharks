@@ -24,17 +24,16 @@ const requestHandler = (request,response) => {
         let data=[];
         
         console.log("Training Model");
-        console.log(request.method);
 
         request.on('data', chunk => {
             data.push(chunk);
         });
         request.on('end',() => {
             let categories=JSON.parse(data);
-            console.log(categories);
+            //console.log(categories);
             
             //Deal with categories using trainModule.js
-            //trainModule.trainModule("Test");
+            trainModule.trainModule(categories);
 
             body+="<p>Training Model Now</p>"
             body+="<p>"+JSON.stringify(categories)+"</p>";

@@ -9,13 +9,13 @@ let headlessMode = true;
 if (process.argv[3]) {
   headlessMode = process.argv[3];
 }
-
+var ImageScraper = function ImageScraper(searchTerm) {
 (async () => {
   const browser = await puppeteer.launch({
     headless: headlessMode
   });
 
-  const searchTerm = process.argv[2];
+  //const searchTerm = process.argv[2];
   const dirTerm = searchTerm.replace(/ /g, '_');
 
   // Go to Google Images
@@ -113,3 +113,6 @@ if (process.argv[3]) {
 
   await browser.close();
 })();
+}
+//ImageScraper("Angry");
+module.exports.ImageScraper = ImageScraper;
