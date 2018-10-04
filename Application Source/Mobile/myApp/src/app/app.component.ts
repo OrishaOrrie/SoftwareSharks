@@ -13,7 +13,7 @@ import { ImagerecPage } from '../pages/imagerec/imagerec';
 import { ModelLoaderProvider } from '../providers/model-loader/model-loader';
 
 /**
- * Interface used to manage pages and tab-based navigation
+ * @ignore
  */
 export interface PageInterface {
   title: string;

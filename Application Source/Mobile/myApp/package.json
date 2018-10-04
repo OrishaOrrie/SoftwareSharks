@@ -8,7 +8,8 @@
     "start": "ionic-app-scripts serve",
     "clean": "ionic-app-scripts clean",
     "build": "ionic-app-scripts build",
-    "lint": "ionic-app-scripts lint"
+    "lint": "ionic-app-scripts lint",
+    "compodoc": "./node_modules/.bin/compodoc -p tsconfig.json"
   },
   "dependencies": {
     "@angular/animations": "6.0.9",
@@ -62,6 +63,7 @@
   },
   "devDependencies": {
     "@angular/forms": "^6.0.9",
+    "@compodoc/compodoc": "^1.1.5",
     "@ionic/app-scripts": "3.2.0",
     "@types/node": "^10.7.0",
     "typescript": "~2.6.2"

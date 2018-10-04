@@ -1,6 +1,9 @@
 import { AlertController } from 'ionic-angular';
 import { Injectable } from '@angular/core';
 import * as tf from '@tensorflow/tfjs';
+/**
+ * @ignore
+ */
 declare var require: any
 
 /**
@@ -13,6 +16,7 @@ declare var require: any
  * Update History:
  * ------------------------------------------
  * Date         Author        Description
+ * ------------------------------------------
  * 21/07/2018   Tobias        Created provider
  * ------------------------------------------
  * Functional Description:
