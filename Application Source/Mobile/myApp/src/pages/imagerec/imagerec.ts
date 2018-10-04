@@ -52,20 +52,46 @@ export class ImagerecPage {
 	 * An array of Result objects, which are obtained from the predict function and passed to the Results page
 	 */
 	public resultPreds = [];
+	/**
+	 * Stores the src of the Image Element that is displayed on the page and sent to be predicted on.
+	 * Initially stores a default image.
+	 */
 	public myPhoto= "assets/imgs/camera-holder.png";
+	/**
+	 * Stores the Image Element that is displayed and is predicted on. It's src value is that of myPhoto
+	 */
 	public imageToPredict: HTMLImageElement;
+	/**
+	 * Specifies the text that appears on the Predict button. Changes according to context
+	 */
 	public predictButtonText = 'Loading...';
+	/**
+	 * If true, then the predict button is disabled. Becomes false when the model has been loaded into memory
+	 */
 	public notReadyToPredict = true;
+	/**
+	 * A Loader element that is supposed to be displayed during the prediction process, but is not currently in use
+	 */
 	public loading = this.loadingController.create({
 		spinner: 'crescent',
 		content: 'Making a Prediction...',
 		dismissOnPageChange: true
 	});
 		
+	/**
+	 * 
+     * @param navCtrl Controls navigation
+	 * @param modalCtrl Controls the modal that is presented. Used for the Results page modal
+	 * @param navParams Controls parameters passed in during navigation
+	 * @param alertCtrl Controls the alert element
+	 * @param camera Provides functionality for capturing an image with the native camera
+	 * @param loadingController Controls the loader element
+	 * @param modelLoader The ModelLoader provider that handles all image classification requests
+	 */
 	constructor( public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, private alertCtrl: AlertController,
 		private camera: Camera, public loadingController: LoadingController, public modelLoader: ModelLoaderProvider ) {
 		
-		// Carries out the code below every second
+		// Carries out the code below every 500ms
 		let modelLoaded = setInterval(() => {
 			if (this.modelLoader.modelIsReady()) {
 				console.log('Model Ready');
@@ -78,75 +104,74 @@ export class ImagerecPage {
 		},500);
 	}
 		
-		openModal()
-		{
-			var data = { message : 'hello world' };
-			var homePage = this.modalCtrl.create(AboutPage,data);
-			homePage.present();
-		}
-
-	ngOnInit() 
-	{
-
-	}
-	
-	resultsModal()
-  	{
+	/**
+	 * Opens the About modal
+	 */
+	openModal() {
 		var data = { message : 'hello world' };
 		var homePage = this.modalCtrl.create(AboutPage,data);
 		homePage.present();
-	  }
+	}
 
-	  ///////////////////thissss added
-	  presentResults() {
+	/**
+	 * @ignore
+	 */
+	ngOnInit() { }
+
+	/**
+	 * Opens the Results modal and passes it resultPreds
+	 */
+	presentResults() {
 		let resultsModal = this.modalCtrl.create(ResultsPage,  this.resultPreds);
 		resultsModal.present();
-	  }
+	}
 	
+	/**
+	 * @ignore
+	 */
 	ionViewDidLoad() {
 		console.log('ionViewDidLoad ImagerecPage');
 		//this.content.scrollToBottom(300);
 	};
-		
-	/**
-	 * 
-	 * IONIC FUNTION TO USE CAMERA
-	 * 
-	 */
-		takePic(pictureSourceType: any) {
-			const options: CameraOptions = {
-				quality: 95,
-				destinationType: this.camera.DestinationType.DATA_URL,
-				encodingType: this.camera.EncodingType.JPEG,
-				mediaType: this.camera.MediaType.PICTURE,
-				saveToPhotoAlbum : true,
-				allowEdit :true,
-				targetWidth :300,
-				targetHeight :300
-			}
 
-			this.camera.getPicture(options).then((imageData) => {
-				// imageData is either a base64 encoded string or a file URI
-				// If it's base64 (DATA_URL):
-				this.myPhoto = 'data:image/jpeg;base64,' + imageData;
-				this.content.scrollToBottom(1000);
-				let image = <HTMLImageElement>document.getElementById('selectedImage');
-				this.imageToPredict = image;
-				this.imgSelectedOrCaptured = true;
-			}, (err) => {
-				// Handle error
-				this.imgSelectedOrCaptured = false;
-				this.imgAvailable = false;
-				let prompt = this.alertCtrl.create({
-					title: 'Error getting captured image',
-					subTitle: err,
-					buttons: ['OK']
-				});
-				prompt.present();
+	/**
+	 * Handles the native process of opening up the camera, accepting the captured image, and displaying it on the page.
+	 * Also handles errors from the camera process. 
+	 */
+	takePic() {
+		/**
+		 * Config options for the native Ionic camera component
+		 */
+		const options: CameraOptions = {
+			quality: 95,
+			destinationType: this.camera.DestinationType.DATA_URL,
+			encodingType: this.camera.EncodingType.JPEG,
+			mediaType: this.camera.MediaType.PICTURE,
+			saveToPhotoAlbum: true,
+			allowEdit: true,
+			targetWidth: 300,
+			targetHeight: 300
+		}
+
+		this.camera.getPicture(options).then((imageData) => {
+			this.myPhoto = 'data:image/jpeg;base64,' + imageData;
+			this.content.scrollToBottom(1000);
+			let image = <HTMLImageElement>document.getElementById('selectedImage');
+			this.imageToPredict = image;
+			this.imgSelectedOrCaptured = true;
+		}, (err) => {
+			this.imgSelectedOrCaptured = false;
+			this.imgAvailable = false;
+			let prompt = this.alertCtrl.create({
+				title: 'Error getting captured image',
+				subTitle: err,
+				buttons: ['OK']
 			});
+			prompt.present();
+		});
 			
-			this.imgAvailable = true;
-		};
+		this.imgAvailable = true;
+	};
 	  
 /**
  * 
@@ -154,65 +179,63 @@ export class ImagerecPage {
  * 
  */
 
-  		selectPic()
-  		{
-			const options: CameraOptions = {
-				quality: 100,
-				destinationType: this.camera.DestinationType.DATA_URL,
-				encodingType: this.camera.EncodingType.JPEG,
-				sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
-				saveToPhotoAlbum :false,
-				allowEdit :true,
-				targetWidth :300,
-				targetHeight :300
-			}
-
-			this.camera.getPicture(options).then((imageData) => {
-				// imageData is either a base64 encoded string or a file URI
-				// If it's base64 (DATA_URL):
-				
-				this.myPhoto = 'data:image/jpeg;base64,' + imageData;
-				this.content.scrollToBottom(1000);
-				let image = <HTMLImageElement>document.getElementById('selectedImage');
-				this.imageToPredict = image;
-				this.imgSelectedOrCaptured = true;
-			}, (err) => {
-				// Handle error
-				this.imgSelectedOrCaptured = false;
-				this.imgAvailable = false;
-				let prompt = this.alertCtrl.create({
-					title: 'Error getting selected image',
-					subTitle: err,
-					buttons: ['OK']
-				});
-				prompt.present();
-			});
-			
-			this.imgAvailable = true;
-			
-		};
-
-		/**
-		 * predictImage() is called when the classify button is clicked.
-		 * Then the predict() function is called. Here stuff happens in tf.tidy.
-		 * Stuff includes reading the image into a Tensor, cropping, resizing, and predicting the thing.
-		 * Then, the predictions are mapped to the correct classes. Thanks
+	/**
+	 * Handles the native process of opening the gallery, accepting the selected image, cropping the image, and displaying it on the page.
+	 * Also handles errors from the gallery process.
+	 */
+  	selectPic() {
+		  /**
+		 * Config options for the native Ionic camera component
 		 */
+		const options: CameraOptions = {
+			quality: 100,
+			destinationType: this.camera.DestinationType.DATA_URL,
+			encodingType: this.camera.EncodingType.JPEG,
+			sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+			saveToPhotoAlbum: false,
+			allowEdit: true,
+			targetWidth: 300,
+			targetHeight: 300
+		}
 
-		predictImage() {
+		this.camera.getPicture(options).then((imageData) => {
+			this.myPhoto = 'data:image/jpeg;base64,' + imageData;
+			this.content.scrollToBottom(1000);
 			let image = <HTMLImageElement>document.getElementById('selectedImage');
 			this.imageToPredict = image;
-			// this.loading.present();
-			this.predictButtonText = 'Predicting...';
-			this.modelLoader.predictImage(this.imageToPredict)
-				.then((predictions) => {
-					this.resultPreds = this.modelLoader.mapPredictions(predictions);
-					this.presentResults();
-					this.predictButtonText = 'Predict';
-				})
-				.catch((error) => {
-					console.error('Error: ' + error);
-				});
-		};
+			this.imgSelectedOrCaptured = true;
+		}, (err) => {
+			this.imgSelectedOrCaptured = false;
+			this.imgAvailable = false;
+			let prompt = this.alertCtrl.create({
+				title: 'Error getting selected image',
+				subTitle: err,
+				buttons: ['OK']
+			});
+			prompt.present();
+		});
+			
+		this.imgAvailable = true;
+	};
+
+	/**
+	 * Called when the Predict button is clicked. It passes the ImageElement to the ModelLoader provider.
+	 * Once it receives predictions for the image, it map the predictions to resultPreds and presents the results via the Results modal
+	 */
+	predictImage() {
+		let image = <HTMLImageElement>document.getElementById('selectedImage');
+		this.imageToPredict = image;
+		// this.loading.present();
+		this.predictButtonText = 'Predicting...';
+		this.modelLoader.predictImage(this.imageToPredict)
+			.then((predictions) => {
+				this.resultPreds = this.modelLoader.mapPredictions(predictions);
+				this.presentResults();
+				this.predictButtonText = 'Predict';
+			})
+			.catch((error) => {
+				console.error('Error: ' + error);
+			});
+	};
 		
 }
