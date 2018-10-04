@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CoreModule } from './core/core.module';
+import { HttpClientModule } from '@angular/common/http';
 
 import { ParticlesModule } from 'angular-particle';
 import { AngularFireModule } from '@angular/fire';
@@ -27,6 +28,7 @@ import { AppRoutingModule } from './core/routing/app-routing.module';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     UiModule,
     ParticlesModule,
     AngularFireModule.initializeApp(environment.firebase), // imports firebase/app needed for everything

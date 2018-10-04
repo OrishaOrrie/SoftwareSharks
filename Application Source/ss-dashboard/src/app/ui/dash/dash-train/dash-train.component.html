@@ -29,7 +29,7 @@
                 {{ model.status }}</td>
             <td [ngSwitch]="model.status">
                 <button *ngSwitchCase="this.trained" type="button" class="btn btn-success">Get URL</button>
-                <button *ngSwitchCase="this.untrained" type="button" class="btn btn-info">Train</button>
+                <button *ngSwitchCase="this.untrained" type="button" class="btn btn-info" (click)="sendTrainRequest()">Train</button>
                 <button *ngSwitchCase="this.training" type="button" class="btn btn-warning">Pause</button>
             </td>
           </tr>
