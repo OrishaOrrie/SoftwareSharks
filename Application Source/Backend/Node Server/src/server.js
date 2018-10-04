@@ -15,60 +15,78 @@ const predictModule = require('./modules/predictModule');
 const fb = require('./modules/firebaseAdmin');
 fb.initFirebaseAdmin();
 
-const port=3000;
+const port = 3000;
 
 let body = "";
 
-const requestHandler = (request,response) => {
+const requestHandler = (request, response) => {
     body = "<h1>Hello Node.js Server!</h1>";
-    if(request.url==="/trainModel") {
+
+    // Todo: Remove after debug
+    console.debug('Request Recieved');
+    console.debug('Request Body:');
+    console.debug(request.body);
+    console.debug('------------------------------');
+    console.debug('Response Body:');
+    console.debug(response.body);
+
+    if (request.url === "/trainModel") {
         //Todo: Need to find out how dashboard 
         //will post categories to create
-        let data=[];
-        
+        let data = [];
+
         console.log("Training Model");
 
         request.on('data', chunk => {
             data.push(chunk);
         });
-        request.on('end',() => {
-            let categories=JSON.parse(data);
-            //console.log(categories);
-            
-            //Deal with categories using trainModule.js
-            trainModule.trainModule(categories);
+        request.on('end', () => {
 
-            body+="<p>Training Model Now</p>"
-            body+="<p>"+JSON.stringify(categories)+"</p>";
-            
-            response.writeHead(200, {'Content-Type': 'text/html'});
-            response.end(body);
+            try {
+                let categories = JSON.parse(data);
+                //console.log(categories);
+
+                //Deal with categories using trainModule.js
+                trainModule.trainModule(categories);
+
+                body += "<p>Training Model Now</p>"
+                body += "<p>" + JSON.stringify(categories) + "</p>";
+
+                response.writeHead(200, { 'Content-Type': 'text/html' });
+                response.end(body);
+            } catch (err) {
+                if (err instanceof SyntaxError) {
+                    console.error('Syntax Error: ' + err);
+                } else {
+                    console.error('Unknown Error: ' + err);
+                }
+            }
         });
     }
-    else if(request.url==="/predict") {
+    else if (request.url === "/predict") {
         //Todo: Need to find out how the 
         //dashboard will post images to predict
-        
+
         console.log("Predicting");
-        body+="<p>Predicting Now</p>";
+        body += "<p>Predicting Now</p>";
 
         //Deal with image posted using predictModule.js
         //predictModule.predictModule(img.jpg);
 
-        response.writeHead(200, {'Content-Type': 'text/html'});
+        response.writeHead(200, { 'Content-Type': 'text/html' });
         response.end(body);
     }
     else {
-        console.log(request.url+" does not exist!");
+        console.log(request.url + " does not exist!");
     }
-    
+
 };
 
 const server = http.createServer(requestHandler);
 
 server.listen(port, (err) => {
-    if(err) {
-        return console.log('ERROR',err);
+    if (err) {
+        return console.log('ERROR', err);
     }
 
     console.log('Server is listening on %s', port);
