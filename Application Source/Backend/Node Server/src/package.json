@@ -8,5 +8,8 @@
     "start": "node server.js"
   },
   "author": "Jonathan Lew",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "firebase-admin": "^6.0.0"
+  }
 }

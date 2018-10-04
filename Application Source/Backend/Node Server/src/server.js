@@ -12,6 +12,9 @@ const http = require('http');
 const trainModule = require('./modules/trainModule');
 const predictModule = require('./modules/predictModule');
 
+const fb = require('./modules/firebaseAdmin');
+fb.initFirebaseAdmin();
+
 const port=3000;
 
 let body = "";
