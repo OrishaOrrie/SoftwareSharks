@@ -97,7 +97,7 @@ var ImageScraper = function ImageScraper(searchTerm) {
         // if (cb) cb(err.message);
       });
     }).on('error', function(err, cb) {
-      fs.unlink(fileName);
+      fs.unlinkSync(fileName);
       numDown++;
       console.log(i + ' was deleted');
       console.log(numDown + ' images completed');
@@ -110,7 +110,7 @@ var ImageScraper = function ImageScraper(searchTerm) {
       request.abort();
     })
   };
-
+  console.log("Finished Scraping for "+dirTerm);
   await browser.close();
 })();
 }

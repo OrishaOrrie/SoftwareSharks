@@ -18,12 +18,15 @@ var trainModule = function trainModule(categories) {
     const header=categories["header"];
     categories=categories["categories"];
     
+    //Scrape Images
     for(var category in categories) {
         console.log("Image scraping for: "+categories[category]);
         ImageScraper.ImageScraper(categories[category]);
     }
 
-    //ImageScraper.ImageScraper(categories);
+    //We now have images for categories
+    //Initialise training process
+    
 }
 
 module.exports.trainModule = trainModule;
