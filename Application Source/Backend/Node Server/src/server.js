@@ -9,10 +9,12 @@
         create a backend server for the dashboard
 */
 const http = require('http');
+const trainModule = require('./modules/trainModule');
+const predictModule = require('./modules/predictModule');
+
 const port=3000;
 
 let body = "";
-let categories=null;
 
 const requestHandler = (request,response) => {
     body = "<h1>Hello Node.js Server!</h1>";
@@ -28,10 +30,15 @@ const requestHandler = (request,response) => {
             data.push(chunk);
         });
         request.on('end',() => {
-            categories=JSON.parse(data);
+            let categories=JSON.parse(data);
             console.log(categories);
+            
+            //Deal with categories using trainModule.js
+            //trainModule.trainModule("Test");
+
             body+="<p>Training Model Now</p>"
             body+="<p>"+JSON.stringify(categories)+"</p>";
+            
             response.writeHead(200, {'Content-Type': 'text/html'});
             response.end(body);
         });
@@ -42,11 +49,15 @@ const requestHandler = (request,response) => {
         
         console.log("Predicting");
         body+="<p>Predicting Now</p>";
+
+        //Deal with image posted using predictModule.js
+        //predictModule.predictModule(img.jpg);
+
         response.writeHead(200, {'Content-Type': 'text/html'});
         response.end(body);
     }
     else {
-        console.log(request.url);
+        console.log(request.url+" does not exist!");
     }
     
 };

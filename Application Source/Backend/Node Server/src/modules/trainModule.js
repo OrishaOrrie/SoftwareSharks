@@ -11,8 +11,8 @@
 */
 var ImageScraper = require("../../../Image Scraper/index")
 
-var trainModule = function trainModule() {
-    ImageScraper.ImageScraper("Angry");
+var trainModule = function trainModule(category) {
+    ImageScraper.ImageScraper(category);
 }
 
 module.exports.trainModule = trainModule;
