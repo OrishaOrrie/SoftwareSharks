@@ -17,11 +17,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-import * as tf from '@tensorflow/tfjs';
 import { ModalController } from 'ionic-angular';
 import { ModelLoaderProvider } from './../../providers/model-loader/model-loader';
 // import { AngularFireStorage } from '../../../node_modules/angularfire2/storage';
-import { Result } from './result';
 import { AboutPage } from '../about/about';
 import { ResultsPage } from '../results/results';
 
@@ -94,12 +92,12 @@ export class ImagerecPage {
 		// Carries out the code below every 500ms
 		let modelLoaded = setInterval(() => {
 			if (this.modelLoader.modelIsReady()) {
-				console.log('Model Ready');
+				// console.log('Model Ready');
 				this.predictButtonText = 'Predict';
 				this.notReadyToPredict = false;
 				clearInterval(modelLoaded);
 			} else {
-				console.log('Not Ready');			
+				// console.log('Not Ready');			
 			}
 		},500);
 	}
