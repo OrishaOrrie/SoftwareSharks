@@ -26,6 +26,9 @@ import { HomePage } from '../home/home';
 import { UtilitiesPage } from '../utilities/utilities';
 import { ImagerecPage } from '../imagerec/imagerec';
 
+/**
+ * @ignore
+ */
 @Component({
   templateUrl: 'tabs.html'
 })

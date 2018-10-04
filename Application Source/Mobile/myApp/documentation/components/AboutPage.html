@@ -1,0 +1,780 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>myApp documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">myApp documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+</div>
+            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>AboutPage</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/pages/about/about.ts</code>
+</p>
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>File Name:       about.ts
+Version Number:  v1.0
+Author Name:     Orisha Orrie
+Project Name:    Ninshiki
+Organization:    Software Sharks
+Manual:  Refer to the Ninshiki User Manual at <a href="https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf">https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf</a></p>
+<h2 id="update-history-">Update History:</h2>
+<p>Date         Author        Description</p>
+<h2 id="21-07-2018-orisha-created-modal">21/07/2018   Orisha        Created modal</h2>
+<p>Functional Description:
+  Displays additional information about the app and provides access to the feedback page</p>
+
+    </p>
+
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>page-about</code></td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>about.html</code></td>
+            </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#modalCtrl">modalCtrl</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#navCtrl">navCtrl</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#viewCtrl">viewCtrl</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#closeModal">closeModal</a>
+                            </li>
+                            <li>
+                                <a href="#openBrowserToGithubIssues">openBrowserToGithubIssues</a>
+                            </li>
+                            <li>
+                                <a href="#openBrowserToPP">openBrowserToPP</a>
+                            </li>
+                            <li>
+                                <a href="#openFeedback">openFeedback</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(navCtrl: NavController, viewCtrl: ViewController, modalCtrl: ModalController)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/pages/about/about.ts:32</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>navCtrl</td>
+                                                  
+                                                        <td>
+                                                                    <code>NavController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>Controls navigation</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>viewCtrl</td>
+                                                  
+                                                        <td>
+                                                                    <code>ViewController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>Controls the current view</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>modalCtrl</td>
+                                                  
+                                                        <td>
+                                                                    <code>ModalController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>Controls the modal that is presented. Used for the Feedback page modal</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+        <h3 id="methods">
+            Methods
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="closeModal"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            closeModal
+                            </b>
+                            <a href="#closeModal"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>closeModal()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/pages/about/about.ts:45</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Called when the Back button is called</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="openBrowserToGithubIssues"></a>
+                        <span class="name">
+                            <b>
+                            openBrowserToGithubIssues
+                            </b>
+                            <a href="#openBrowserToGithubIssues"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>openBrowserToGithubIssues()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/pages/about/about.ts:52</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Opens website in external browser</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="openBrowserToPP"></a>
+                        <span class="name">
+                            <b>
+                            openBrowserToPP
+                            </b>
+                            <a href="#openBrowserToPP"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>openBrowserToPP()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/pages/about/about.ts:60</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Opens website in external browser</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="openFeedback"></a>
+                        <span class="name">
+                            <b>
+                            openFeedback
+                            </b>
+                            <a href="#openFeedback"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>openFeedback()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/pages/about/about.ts:68</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Opens the Feedback page modal</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="modalCtrl"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            modalCtrl
+                            </b>
+                            <a href="#modalCtrl"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>modalCtrl:     <code>ModalController</code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>ModalController</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/pages/about/about.ts:39</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description">Controls the modal that is presented. Used for the Feedback page modal</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="navCtrl"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            navCtrl
+                            </b>
+                            <a href="#navCtrl"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>navCtrl:     <code>NavController</code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>NavController</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/pages/about/about.ts:39</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description">Controls navigation</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="viewCtrl"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            viewCtrl
+                            </b>
+                            <a href="#viewCtrl"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>viewCtrl:     <code>ViewController</code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>ViewController</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/pages/about/about.ts:39</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description">Controls the current view</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { FeedbackPage } from &#x27;./../feedback/feedback&#x27;;
+import { Component } from &#x27;@angular/core&#x27;;
+import { NavController, ModalController } from &#x27;ionic-angular&#x27;;
+import { ViewController } from &#x27;ionic-angular&#x27;;
+
+/**
+ * File Name:       about.ts
+ * Version Number:  v1.0
+ * Author Name:     Orisha Orrie
+ * Project Name:    Ninshiki
+ * Organization:    Software Sharks
+ * Manual:  Refer to the Ninshiki User Manual at https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf
+ * Update History:
+ * ------------------------------------------
+ * Date         Author        Description
+ * 21/07/2018   Orisha        Created modal
+ * ------------------------------------------
+ * Functional Description:
+ *  Displays additional information about the app and provides access to the feedback page
+ */
+
+/*
+  Generated class for the ModelLoaderProvider provider.
+
+  See https://angular.io/guide/dependency-injection for more info on providers
+  and Angular DI.
+*/
+@Component({
+  selector: &#x27;page-about&#x27;,
+  templateUrl: &#x27;about.html&#x27;
+})
+export class AboutPage {
+
+  /**
+   * @param navCtrl Controls navigation
+   * @param viewCtrl Controls the current view
+   * @param modalCtrl Controls the modal that is presented. Used for the Feedback page modal
+   */
+  constructor(public navCtrl: NavController, public viewCtrl : ViewController, public modalCtrl: ModalController) {
+  }
+
+  /**
+   * Called when the Back button is called
+   */
+  public closeModal(){
+    this.viewCtrl.dismiss();
+  }
+
+  /**
+   * Opens website in external browser
+   */
+  openBrowserToGithubIssues() {
+    window.open(&#x27;https://github.com/OrishaOrrie/SoftwareSharks/issues/new/choose&#x27;, &#x27;_system&#x27;, &#x27;location&#x3D;yes&#x27;);
+    return false;
+  }
+
+  /**
+   * Opens website in external browser
+   */
+  openBrowserToPP() {
+    window.open(&#x27;https://www.freeprivacypolicy.com/privacy/view/b0d98055db1daabbf50b21d867461a36&#x27;, &#x27;_system&#x27;, &#x27;location&#x3D;yes&#x27;);
+    return false;
+  }
+
+  /**
+   * Opens the Feedback page modal
+   */
+  openFeedback() {
+    let feedbackPage &#x3D; this.modalCtrl.create(FeedbackPage);
+		feedbackPage.present();
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;ion-header&gt;
+  &lt;ion-navbar&gt;
+      &lt;ion-buttons end&gt;
+          &lt;button ion-button (click)&#x3D;&quot;closeModal()&quot;&gt;Close&lt;/button&gt;
+        &lt;/ion-buttons&gt;
+    &lt;ion-title&gt;About Us&lt;/ion-title&gt;
+  &lt;/ion-navbar&gt;
+&lt;/ion-header&gt;
+
+&lt;ion-content padding&gt;
+  &lt;!-- &lt;h1 ion-text color&#x3D;&quot;secondary&quot; style&#x3D;&quot;text-align: center;&quot;&gt;Ninshiki&lt;/h1&gt; --&gt;
+  &lt;ion-img src&#x3D;&quot;assets/imgs/white_logo.png&quot; id&#x3D;&quot;about__nishiki-logo&quot; alt&#x3D;&quot;ninshiki-logo&quot;&gt;&lt;/ion-img&gt;
+  &lt;p style&#x3D;&quot;margin: 20px 20px; color: black&quot;&gt;Ninshiki brings the power of AI and Computer Vision to your mobile device. Take an image
+  of an object and let our custom-defined model predict what the object is!&lt;/p&gt;
+  &lt;h6 ion-text style&#x3D;&quot;text-align: center&quot; color&#x3D;&quot;tertiary&quot;&gt;Developed by:&lt;/h6&gt;
+  &lt;ion-img id&#x3D;&quot;softw&quot; src&#x3D;&quot;assets/imgs/soft.png&quot;&gt;&lt;/ion-img&gt;
+  &lt;div class&#x3D;&quot;about__members&quot;&gt;
+    &lt;p class&#x3D;&quot;about__single-member&quot;&gt;Orisha Orrie&lt;/p&gt;
+    &lt;p class&#x3D;&quot;about__single-member&quot;&gt;Mark Coetzer&lt;/p&gt;
+    &lt;p class&#x3D;&quot;about__single-member&quot;&gt;Mukundi Matodzi&lt;/p&gt;
+    &lt;p class&#x3D;&quot;about__single-member&quot;&gt;Jonathan Lew&lt;/p&gt;
+    &lt;p class&#x3D;&quot;about__single-member&quot;&gt;Tobias Bester&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;developed-by&quot;&gt;
+    &lt;ion-img class&#x3D;&quot;uni&quot; src&#x3D;&quot;assets/imgs/uni.png&quot;&gt;&lt;/ion-img&gt;
+    &lt;ion-img class&#x3D;&quot;sa&quot; src&#x3D;&quot;assets/imgs/SA-flag.png&quot;&gt;&lt;/ion-img&gt;
+  &lt;/div&gt;
+  &lt;p style&#x3D;&quot;margin: 20px 20px; color: black&quot;&gt;We are Software Sharks, a team of Computer Science students from the University of Pretoria, South Africa&lt;/p&gt;
+  &lt;p style&#x3D;&quot;margin: 20px 20px; color: black&quot;&gt;This app is part of our Capstone Project, in which we have to design, develop, and document a system 
+    to meet a client&#x27;s needs. The app is open-source and is still in Beta testing, so any feedback and bug reports would be hugely appreciated, and might help us get better marks :)&lt;/p&gt;
+  &lt;a style&#x3D;&quot;display: block; margin: auto;&quot; round ion-button icon-start color&#x3D;&quot;secondary&quot; (click)&#x3D;&quot;openBrowserToGithubIssues()&quot;&gt;
+    &lt;ion-icon name&#x3D;&quot;logo-github&quot;&gt;&lt;/ion-icon&gt;
+    Report Issue on GitHub&lt;/a&gt;&lt;br/&gt;
+  &lt;button style&#x3D;&quot;display: block; margin: auto;&quot; round block icon-start ion-button color&#x3D;&quot;secondary&quot; (click)&#x3D;&quot;openFeedback()&quot;&gt;
+    &lt;ion-icon name&#x3D;&quot;mail&quot;&gt;&lt;/ion-icon&gt;
+    Send Feedback&lt;/button&gt;&lt;br/&gt;
+  &lt;button style&#x3D;&quot;display: block; margin: auto;&quot; round block icon-start ion-button color&#x3D;&quot;secondary&quot; (click)&#x3D;&quot;openBrowserToPP()&quot;&gt;
+    View Privacy Policy&lt;/button&gt;
+&lt;/ion-content&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><ion-header>  <ion-navbar>      <ion-buttons end>          <button ion-button (click)="closeModal()">Close</button>        </ion-buttons>    <ion-title>About Us</ion-title>  </ion-navbar></ion-header><ion-content padding>  <!-- <h1 ion-text color="secondary" style="text-align: center;">Ninshiki</h1> -->  <ion-img src="assets/imgs/white_logo.png" id="about__nishiki-logo" alt="ninshiki-logo"></ion-img>  <p style="margin: 20px 20px; color: black">Ninshiki brings the power of AI and Computer Vision to your mobile device. Take an image  of an object and let our custom-defined model predict what the object is!</p>  <h6 ion-text style="text-align: center" color="tertiary">Developed by:</h6>  <ion-img id="softw" src="assets/imgs/soft.png"></ion-img>  <div class="about__members">    <p class="about__single-member">Orisha Orrie</p>    <p class="about__single-member">Mark Coetzer</p>    <p class="about__single-member">Mukundi Matodzi</p>    <p class="about__single-member">Jonathan Lew</p>    <p class="about__single-member">Tobias Bester</p>  </div>  <div class="developed-by">    <ion-img class="uni" src="assets/imgs/uni.png"></ion-img>    <ion-img class="sa" src="assets/imgs/SA-flag.png"></ion-img>  </div>  <p style="margin: 20px 20px; color: black">We are Software Sharks, a team of Computer Science students from the University of Pretoria, South Africa</p>  <p style="margin: 20px 20px; color: black">This app is part of our Capstone Project, in which we have to design, develop, and document a system     to meet a client\'s needs. The app is open-source and is still in Beta testing, so any feedback and bug reports would be hugely appreciated, and might help us get better marks :)</p>  <a style="display: block; margin: auto;" round ion-button icon-start color="secondary" (click)="openBrowserToGithubIssues()">    <ion-icon name="logo-github"></ion-icon>    Report Issue on GitHub</a><br/>  <button style="display: block; margin: auto;" round block icon-start ion-button color="secondary" (click)="openFeedback()">    <ion-icon name="mail"></ion-icon>    Send Feedback</button><br/>  <button style="display: block; margin: auto;" round block icon-start ion-button color="secondary" (click)="openBrowserToPP()">    View Privacy Policy</button></ion-content></div>'
+    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'page-about'},{'name': 'ContactPage', 'selector': 'page-contact'},{'name': 'FeedbackPage', 'selector': 'page-feedback'},{'name': 'HomePage', 'selector': 'page-home'},{'name': 'ImagerecPage', 'selector': 'page-imagerec'},{'name': 'MyApp', 'selector': ''},{'name': 'ResultsPage', 'selector': 'page-results'},{'name': 'UtilitiesPage', 'selector': 'page-utilities'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'AboutPage'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'AboutPage.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <script src="../js/menu-wc.js"></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

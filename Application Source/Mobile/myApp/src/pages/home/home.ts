@@ -11,7 +11,7 @@
 * 20/07/2018   Orisha		Created component
 * ------------------------------------------
 * Functional Description:
-*  The functionality of the main page that will be seen when a user opens the app.
+*  Serves as a facade for the application
 */
 
 import { Component } from '@angular/core';
@@ -20,18 +20,25 @@ import { ModalController } from 'ionic-angular';
 // import { ContactPage } from '../contact/contact';
 import { AboutPage } from '../about/about';
 //import {ContactPage} from '../contact/contact';
+
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
 
+  /**
+   * @ignore
+   */
   constructor(public navCtrl: NavController,public modalCtrl : ModalController) {
-  		//contactPage = ContactPage;
   }
-  openModal()
-  {
-    var data = { message : 'Welcome!' };
+
+  /**
+   * Opens the About modal page
+   */
+  openModal() {
+    var data = { message : 'hello world' };
     var homePage = this.modalCtrl.create(AboutPage,data);
     homePage.present();
   }

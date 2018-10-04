@@ -14,8 +14,7 @@
 * 01/10/2018   Tobias   Validation errors fixed
 * ------------------------------------------
 * Functional Description:
-*  The functions of the page to calculate the amount of items in a box. 
-*  Values are validated and calculated here
+*  Provides ability for user to conduct weight analysis
 */
 
 import { Component } from '@angular/core';
@@ -23,6 +22,8 @@ import { NavController, NavParams, AlertController} from 'ionic-angular';
 import { ModalController } from 'ionic-angular';
 // import { ContactPage } from '../contact/contact';
 import { AboutPage } from '../about/about';
+
+
 /**
  * Generated class for the UtilitiesPage page.
  *
@@ -34,16 +35,23 @@ import { AboutPage } from '../about/about';
   selector: 'page-utilities',
   templateUrl: 'utilities.html',
 })
-
 export class UtilitiesPage {
-	Math: Math = Math;
-	totalObjects : number =null;
+  
+  /**
+   * An instance of the JavaScript Math class required to use the floor function
+   */
+  Math: Math = Math;
+  
   single_item = 1.0;
   empty_bucket = 2.0;
   filled_bucket = 10.0;
   
+  /**
+   * Determines what is the resulting weight value to be displayed. Handles invalid input values by returning
+   * appropriate validation messages
+   * @returns A string value that is displayed in the result card on the page
+   */
   hello = (() => {
-//validation for values
     if (!this.empty_bucket || !this.filled_bucket || !this.single_item) {
         return 'Weight inputs cannot be empty';
       }
@@ -61,28 +69,30 @@ export class UtilitiesPage {
     }
 
     return 'Number of items: ' + Math.floor((this.filled_bucket - this.empty_bucket) / this.single_item);
-
   });
 
+  /**
+   * @ignore
+   */
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     public alertController: AlertController, public modalCtrl : ModalController) {
-      
 
   }
 
-  openModal()
-  {
-    var data = { message : 'Welcome!' };
+  /**
+   * Opens the About page modal
+   */
+  openModal() {
+    var data = { message : 'hello world' };
     var homePage = this.modalCtrl.create(AboutPage,data);
     homePage.present();
   }
+
+  /**
+   * @ignore
+   */
   ionViewDidLoad() {
     console.log('ionViewDidLoad UtilitiesPage');
-  }
-
-
-    //single filed empty
-  
-   
+  }  
 
 }
