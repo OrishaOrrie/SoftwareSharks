@@ -22,13 +22,18 @@ let body = "";
 const requestHandler = (request, response) => {
     body = "<h1>Hello Node.js Server!</h1>";
 
+    // ---------------------------------------------------------
+    // REMOVE BELOW WHEN GOING INTO PRODUCTION
+    // ---------------------------------------------------------
     // Todo: Remove after debug
+    // ---------------------------------------------------------
     console.debug('Request Recieved');
-    console.debug('Request Body:');
-    console.debug(request.body);
-    console.debug('------------------------------');
-    console.debug('Response Body:');
-    console.debug(response.body);
+    // console.debug('Request Body:');
+    // console.debug(request.body);
+    // console.debug('------------------------------');
+    // console.debug('Response Body:');
+    // console.debug(response.body);
+    // ---------------------------------------------------------
 
     if (request.url === "/trainModel") {
         //Todo: Need to find out how dashboard 
@@ -41,8 +46,19 @@ const requestHandler = (request, response) => {
             data.push(chunk);
         });
         request.on('end', () => {
-
             try {
+                // ---------------------------------------------------------
+                // REMOVE BELOW WHEN GOING INTO PRODUCTION
+                // ---------------------------------------------------------
+                // Todo: Remove after debug
+                // ---------------------------------------------------------
+                console.debug('------------------------------');
+                console.debug('Request Data:');
+                console.debug(data);
+                console.debug('------------------------------');
+                // ---------------------------------------------------------
+
+
                 let categories = JSON.parse(data);
                 //console.log(categories);
 
@@ -56,7 +72,7 @@ const requestHandler = (request, response) => {
                 response.end(body);
             } catch (err) {
                 if (err instanceof SyntaxError) {
-                    console.error('Syntax Error: ' + err);
+                    console.error('Syntax Error: ' + (err));
                 } else {
                     console.error('Unknown Error: ' + err);
                 }
