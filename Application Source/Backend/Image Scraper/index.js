@@ -4,20 +4,24 @@ const http = require('http');
 const https = require('https');
 const spawn = require('child_process').spawn;
 
+let headlessMode = true;
+
+if (process.argv[3]) {
+  headlessMode = process.argv[3];
+}
 
 (async () => {
   const browser = await puppeteer.launch({
-    headless: false
+    headless: headlessMode
   });
 
   const searchTerm = process.argv[2];
-  const dirTerm = searchTerm.replace(' ', '_');
+  const dirTerm = searchTerm.replace(/ /g, '_');
 
   // Go to Google Images
   console.log('Don\'t mind me just popping in to Google Images');
   const page = await browser.newPage();
   await page.goto("https://images.google.com");
-  await page.screenshot({ path: 'screenshots/example.png' });
 
   // Input the search term and hit Enter
   console.log('Hello can I get uhhhh some ' + searchTerm);
@@ -28,7 +32,7 @@ const spawn = require('child_process').spawn;
   await page.addScriptTag({url: 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js'});
 
   // Scroll to the bottom of the page
-  console.log('Now I am scrolling to the bottom of the page vroom vroom bois');
+  console.log('\nNow I am scrolling to the bottom of the page... this may take a while');
   await page.evaluate(async() => {
     await new Promise((resolve, reject) => {
       let totalHeight = 0;
@@ -43,6 +47,7 @@ const spawn = require('child_process').spawn;
         }
       }, 100);
     });
+  }).then(() => {
     console.log('Reached end of page');
   });
 
@@ -58,12 +63,15 @@ const spawn = require('child_process').spawn;
   for (let i = 0; i < numImages; i++) {
     urls.push( await page.evaluate((i) => {
       let index = '[data-ri=\"' + i + '\"]';
-      let metaText = document.querySelector(index).childNodes[1].innerHTML;
+      let metaText = document.querySelector(index).childNodes[2].innerHTML;
       return JSON.parse(metaText).ou;
     }, i));
   }
 
   // get all the images at the urls
+  console.log('getting image download URLs');
+  let numDown = 0;
+
   for (let i = 0; i < urls.length; i++) {
     // console.log(urls[i]);
     let dir = 'downloaded_images/' + dirTerm + '/';
@@ -84,17 +92,23 @@ const spawn = require('child_process').spawn;
       file.on('finish', function(cb) {
         file.close(cb);
         console.log(i + ': ' + urls[i]);
-        // let pyImageDir = '.\\downloaded_images\\'+ dirTerm + '\\' + i + '.jpg';
-        // const pythonProcess = spawn('python',['./check_images.py', pyImageDir]);
-        // pythonProcess.stdout.on('data', (data) => {
-        //   console.log(data);
-        // });
+        numDown++;
+        console.log(numDown + ' images downloaded');
+        // if (cb) cb(err.message);
       });
     }).on('error', function(err, cb) {
       fs.unlink(fileName);
+      numDown++;
       console.log(i + ' was deleted');
-      if (cb) cb(err.message);
+      console.log(numDown + ' images completed');
+      // if (cb) cb(err.message);
     });
+
+    // If the download doesn't complete within a minute, then cancel the download
+    // Number is milliseconds, so 120 000 is 120 seconds, or 2 minutes
+    request.setTimeout(120000, ()=> {
+      request.abort();
+    })
   };
 
   await browser.close();

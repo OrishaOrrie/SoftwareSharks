@@ -6,6 +6,10 @@ import os
 
 arg1 = sys.argv[1]
 
+formatted_arg = arg1.replace(" ", "_")
+arg1 = ".\downloaded_images\\" + formatted_arg
+print(arg1)
+
 for imagePath in paths.list_images(arg1):
     delete = False
 
