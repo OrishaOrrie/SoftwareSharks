@@ -11,12 +11,9 @@
  * 20/07/2018   Orisha        Created component
  * 08/15/2018   Orisha        Added Custom Image Upload Functionality
  * ------------------------------------------
- * Test Cases:      imageupload.component.spec.ts
  * Functional Description:
- *  Provides interface for user to select or capture an image and upload
- *  it to the system server. Displays results of image classification.
+ *  Provides interface for user to select or capture an image and submit it for prediction.
  */
-// import { HttpClient,HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
@@ -25,11 +22,9 @@ import { ModalController } from 'ionic-angular';
 import { ModelLoaderProvider } from './../../providers/model-loader/model-loader';
 // import { AngularFireStorage } from '../../../node_modules/angularfire2/storage';
 import { Result } from './result';
-// import { Observable } from '../../../node_modules/rxjs/internal/Observable';
-// import { MatTableDataSource, MatSort } from '@angular/material';
-// import { DataSource } from '@angular/cdk/table';
 import { AboutPage } from '../about/about';
 import { ResultsPage } from '../results/results';
+
 /**
  * Generated class for the ImagerecPage page.
  *
@@ -40,65 +35,48 @@ import { ResultsPage } from '../results/results';
   selector: 'page-imagerec',
   templateUrl: 'imagerec.html'
 })
-
-/**
- * 
- * ORISHA'S CODE IS HERE
- * 
- */
-//content: new ViewChild('content');
 export class ImagerecPage {
 	@ViewChild('content') content:any;
-		public showSpinner = false;
-			
-		/**
-		 * This variable is a reference to the file that will be uploaded, either selected or captured
-		 */
-		public imageToUpload: File = null;
 		
-		/**
-		 * Determines whether the file to upload was selected from the file explorer or captured via webcam
-		 */
-		public uploadCapture = false;
+	/**
+	 * Evaulates to true either when an image has been selected or an image has been captured, else false.
+	 * If true, then the predict button is displayed
+	 */
+	public imgAvailable = false;
+	/**
+	 * Evaluates to true at the same time as imgAvailable, but is false if an action is canceled.
+	 * If true, then the selected image is displayed.
+	 */
+	public imgSelectedOrCaptured = false;
+	/**
+	 * An array of Result objects, which are obtained from the predict function and passed to the Results page
+	 */
+	public resultPreds = [];
+	public myPhoto= "assets/imgs/camera-holder.png";
+	public imageToPredict: HTMLImageElement;
+	public predictButtonText = 'Loading...';
+	public notReadyToPredict = true;
+	public loading = this.loadingController.create({
+		spinner: 'crescent',
+		content: 'Making a Prediction...',
+		dismissOnPageChange: true
+	});
 		
-		/**
-		 * Determines if an image is available to be uploaded
-		 */
-		public imgAvailable = false;
-		public imgSelectedOrCaptured = false;
-		public predictions: any;
-		public modelRef = null;
-		public resultPreds = [];
-		public displayedColumns = ['name', 'likeliness'];
-		public model: tf.Model;
-		public modelStatus = '';
-		public results: Result[] = [];
-		public resultsReady = false;
-		public myPhoto= "assets/imgs/camera-holder.png";
-		public imageToPredict: HTMLImageElement;
-		public predictButtonText = 'Loading...';
-		public notReadyToPredict = true;
-		public loading = this.loadingController.create({
-			spinner: 'crescent',
-			content: 'Making a Prediction...',
-			dismissOnPageChange: true
-		});
+	constructor( public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, private alertCtrl: AlertController,
+		private camera: Camera, public loadingController: LoadingController, public modelLoader: ModelLoaderProvider ) {
 		
-		constructor( public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, private alertCtrl: AlertController,
-			private camera: Camera, public loadingController: LoadingController, public modelLoader: ModelLoaderProvider ) {
-		
-			// Carries out the code below every second
-			let modelLoaded = setInterval(() => {
-				if (this.modelLoader.modelIsReady()) {
-					console.log('Model Ready');
-					this.predictButtonText = 'Predict';
-					this.notReadyToPredict = false;
-					clearInterval(modelLoaded);
-				} else {
-					console.log('Not Ready');			
-				}
-			},500);
-		}
+		// Carries out the code below every second
+		let modelLoaded = setInterval(() => {
+			if (this.modelLoader.modelIsReady()) {
+				console.log('Model Ready');
+				this.predictButtonText = 'Predict';
+				this.notReadyToPredict = false;
+				clearInterval(modelLoaded);
+			} else {
+				console.log('Not Ready');			
+			}
+		},500);
+	}
 		
 		openModal()
 		{
