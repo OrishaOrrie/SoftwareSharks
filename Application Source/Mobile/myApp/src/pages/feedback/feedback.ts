@@ -80,7 +80,7 @@ export class FeedbackPage {
   }
 
   /**
-   * Called when the Back button is called
+   * Called when the Back button is pressed
    */
   public closeModal(){
     this.viewCtrl.dismiss();

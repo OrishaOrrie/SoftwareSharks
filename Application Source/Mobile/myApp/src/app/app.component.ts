@@ -12,7 +12,9 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { ImagerecPage } from '../pages/imagerec/imagerec';
 import { ModelLoaderProvider } from '../providers/model-loader/model-loader';
 
-
+/**
+ * Interface used to manage pages and tab-based navigation
+ */
 export interface PageInterface {
   title: string;
   pageName: string;
@@ -25,13 +27,26 @@ export interface PageInterface {
 })
 export class MyApp {
 @ViewChild(Nav) nav: Nav;
-  rootPage:any = TabsPage;
-  isLoaded = false;
+
+  /**
+   * The root page should be the page with the Tabs
+   */
+  rootPage: any = TabsPage;
+  /**
+   * Array of page objects which are in the form (title, component)
+   */
   pages: Array<{ title: string, component: any }>;
+
+  /**
+   * Creates the status bar and requests the model to be loaded as soon as the platform is ready
+   * @param platform Default Ionic platofrm
+   * @param statusBar Cordova plugin for a statusbar
+   * @param splashScreen Cordova plugin for the splash screen
+   * @param modelLoader Provider that handles model loading and image classification
+   */
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, modelLoader: ModelLoaderProvider) {
     platform.ready().then(() => {
       statusBar.styleDefault();
-
       console.log('App: Calling provider function - loadModel');
       modelLoader.loadModel();
     });
@@ -43,12 +58,12 @@ export class MyApp {
     ];
   }
 
+  /**
+   * Handles which page is opened depending on which tab is pressed
+   * @param page Determines which page is opened
+   */
   openPage(page) {
     this.nav.setRoot(page.component);
   }
   
-  isActive(page)
-  {
-
-  }
 }
