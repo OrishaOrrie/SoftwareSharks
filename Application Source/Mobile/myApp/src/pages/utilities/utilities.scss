@@ -32,12 +32,15 @@ page-utilities {
 .result
 {
     text-align: center;
-   // background-color: rgb(129, 123, 134);
-   background-color: transparent;
+    background-color: transparent;
+}
+
+.result__amount {
     font-weight: bold;
     font-size: 20px !important;
-
+    word-wrap: break-word;
 }
+
 .instructions
 {
     font-size: 17px !important;
