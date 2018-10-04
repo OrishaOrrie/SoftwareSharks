@@ -1,3 +1,21 @@
+<!-- /**
+ * File Name:       feedback.html
+ * Version Number:  v1.1
+ * Author:          Orisha Orrie, Tobias Bester
+ * Project Name:    Ninshiki
+ * Organization:    Software Sharks
+ * User Manual:     Refer to https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf
+ * Update History:
+ * ------------------------------------------
+ * Date         Author		Description
+ * 20/07/2018   Orisha		Created component
+ * 15/08/2018   Tobias    Added backend functionality
+ * 18/09/2018   Orisha    Fixed layout
+ * ------------------------------------------
+ * Functional Description:
+ *  This page includes ways to contact the Bramhope group or Sfotware Sharks in order to 
+ *  report any issues. Issues can be reported either through github or through email.
+ */ -->
 <ion-header>
 
   <ion-navbar>
@@ -16,7 +34,7 @@
   </p>
 
   <form [formGroup]="myGroup"  *ngIf="!submitted" >
- 
+<!--  Type of feedback can be 'General Feedback', 'Bug', 'Feature Request' -->
     <ion-item class="inputs">
       <ion-label class = 'bob' color="secondary" stacked>Select feedback type</ion-label>
       <ion-select required formControlName="feedType">

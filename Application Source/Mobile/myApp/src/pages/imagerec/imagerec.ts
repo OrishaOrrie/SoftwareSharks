@@ -1,21 +1,24 @@
 /**
  * File Name:       imagerec.ts
  * Version Number:  v1.1
- * Author:          Orisha Orrie
+ * Author:          Tobias Bester, Orisha Orrie
  * Project Name:    Ninshiki
  * Organization:    Software Sharks
  * User Manual:     Refer to https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf
  * Update History:
  * ------------------------------------------
- * Date         Author        Description
- * 20/07/2018   Orisha        Created component
- * 08/15/2018   Orisha        Added Custom Image Upload Functionality
+ * Date         Author		Description
+ * 20/07/2018   Orisha		Created component
+ * 15/08/2018   Orisha		Added Custom Image Upload Functionality
+ * 15/08/2018	Tobias		Added backend for image recognition			
  * ------------------------------------------
  * Test Cases:      imageupload.component.spec.ts
  * Functional Description:
  *  Provides interface for user to select or capture an image and upload
  *  it to the system server. Displays results of image classification.
  */
+
+ 
 // import { HttpClient,HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
@@ -102,7 +105,7 @@ export class ImagerecPage {
 		
 		openModal()
 		{
-			var data = { message : 'hello world' };
+			var data = { message : 'Results' };
 			var homePage = this.modalCtrl.create(AboutPage,data);
 			homePage.present();
 		}
@@ -114,12 +117,12 @@ export class ImagerecPage {
 	
 	resultsModal()
   	{
-		var data = { message : 'hello world' };
+		var data = { message : 'Results' };
 		var homePage = this.modalCtrl.create(AboutPage,data);
 		homePage.present();
 	  }
 
-	  ///////////////////thissss added
+	  //Present the results page with image prediction results 
 	  presentResults() {
 		let resultsModal = this.modalCtrl.create(ResultsPage,  this.resultPreds);
 		resultsModal.present();
@@ -127,7 +130,6 @@ export class ImagerecPage {
 	
 	ionViewDidLoad() {
 		console.log('ionViewDidLoad ImagerecPage');
-		//this.content.scrollToBottom(300);
 	};
 		
 	/**

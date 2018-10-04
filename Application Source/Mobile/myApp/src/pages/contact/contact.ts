@@ -1,3 +1,21 @@
+/**
+ * File Name:       contact.ts
+ * Version Number:  v1.1
+ * Author:          Orisha Orrie
+ * Project Name:    Ninshiki
+ * Organization:    Software Sharks
+ * User Manual:     Refer to https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf
+ * Update History:
+ * ------------------------------------------
+ * Date         Author		Description
+ * 20/07/2018   Orisha		Created component
+ * 15/08/2018   Orisha    Added backend functionality
+ * ------------------------------------------
+ * Functional Description:
+ *  This page includes the functionality in order to contact the 
+ * Bramhope group in order to request a quote or report any issues.
+ */
+
 import { Geolocation } from '@ionic-native/geolocation';
 import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
@@ -62,25 +80,20 @@ export class ContactPage {
 
         this.getGeolocation();
     }
-
+//displays error message if details entered are incorrect
     getErrorMessage() {
       // console.log('Errrorrrrr');
       return this.email.hasError('required') ? 'You must enter a value' :
         this.email.hasError('email') ? 'Not a valid email' :
           '';
     }
-    
+//submit button functionality which includes error checking and actually submitting the email   
     onSubmit() {
 
       const contactName = this.myGroup.get('name').value;
       const contactEmail = this.myGroup.get('email').value;
       const contactMessage = this.myGroup.get('message').value;
       this.presentAlert();
-      // const httpOptions = {
-      //   headers: new HttpHeaders({
-      //     'Access-Control-Allow-Origin': '*'
-      //   })
-      // }
       this.myGroup.reset();
 
       if (this.shouldLocationBeSent() == true) {
@@ -98,7 +111,7 @@ export class ContactPage {
       }
 
     }
-
+//Alert to show that email has been sent
     presentAlert =function() {
       let alert = this.alertController.create({
         title: 'Message sent!',
@@ -108,7 +121,7 @@ export class ContactPage {
   
       alert.present();
     }
-
+//Post function to sent email to software sharks email
     postMessage(name, email, message, address) {
       console.log('Name: ' + name + ' Email: ' + email + ' Msg: ' + message + ' Address: ' + address);
       let messageToSend = message + '\nSent from:  ' + address;

@@ -1,3 +1,22 @@
+<!-- /**
+ * File Name:       about.html
+ * Version Number:  v1.1
+ * Author:          Orisha Orrie, Tobias Bester
+ * Project Name:    Ninshiki
+ * Organization:    Software Sharks
+ * User Manual:     Refer to https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf
+ * Update History:
+ * ------------------------------------------
+ * Date         Author		Description
+ * 20/07/2018   Orisha		Created component
+ * 15/08/2018   Orisha    Added details about project and team members
+ * 15/08/2018   Tobias		Added functionality for feedback
+ * ------------------------------------------
+ * Functional Description:
+ *  This page includes details about the project as well as the team members. A user 
+ *  can also send feedback from here.
+ */ -->
+
 <ion-header>
   <ion-navbar>
       <ion-buttons end>
@@ -6,9 +25,8 @@
     <ion-title>About Us</ion-title>
   </ion-navbar>
 </ion-header>
-
+<!-- Details about the team and the project -->
 <ion-content padding>
-  <!-- <h1 ion-text color="secondary" style="text-align: center;">Ninshiki</h1> -->
   <ion-img src="assets/imgs/white_logo.png" id="about__nishiki-logo" alt="ninshiki-logo"></ion-img>
   <p style="margin: 20px 20px; color: black">Ninshiki brings the power of AI and Computer Vision to your mobile device. Take an image
   of an object and let our custom-defined model predict what the object is!</p>
@@ -28,12 +46,15 @@
   <p style="margin: 20px 20px; color: black">We are Software Sharks, a team of Computer Science students from the University of Pretoria, South Africa</p>
   <p style="margin: 20px 20px; color: black">This app is part of our Capstone Project, in which we have to design, develop, and document a system 
     to meet a client's needs. The app is open-source and is still in Beta testing, so any feedback and bug reports would be hugely appreciated, and might help us get better marks :)</p>
-  <a style="display: block; margin: auto;" round ion-button icon-start color="secondary" (click)="openBrowserToGithubIssues()">
+  <!-- Button to report an issue on github -->
+    <a style="display: block; margin: auto;" round ion-button icon-start color="secondary" (click)="openBrowserToGithubIssues()">
     <ion-icon name="logo-github"></ion-icon>
     Report Issue on GitHub</a><br/>
+  <!-- Button to report an issue through email -->
   <button style="display: block; margin: auto;" round block icon-start ion-button color="secondary" (click)="openFeedback()">
     <ion-icon name="mail"></ion-icon>
     Send Feedback</button><br/>
+    <!-- Button to view privacy policy -->
   <button style="display: block; margin: auto;" round block icon-start ion-button color="secondary" (click)="openBrowserToPP()">
     View Privacy Policy</button>
 </ion-content>

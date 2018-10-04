@@ -1,3 +1,21 @@
+<!-- /**
+* File Name:       utilities.html
+* Version Number:  v1.1
+* Author:          Orisha Orrie
+* Project Name:    Ninshiki
+* Organization:    Software Sharks
+* User Manual:     Refer to https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf
+* Update History:
+* ------------------------------------------
+* Date         Author		Description
+* 20/07/2018   Orisha		Created component
+* 18/09/2018   Orisha	  Fixed layout
+* 18/09/2018   Orisha   Added functionality
+* ------------------------------------------
+* Functional Description:
+*  The page to calculate the amount of items in a box. 
+*/ -->
+
 <!--
   Generated template for the UtilitiesPage page.
 
@@ -22,7 +40,7 @@
 
 
 <ion-content padding >
-
+<!--Values are entered here and validation occurs in the .ts file-->
    <p class= "instructions">Enter the values as instructed. Use the same measurement units (e.g. Kg)</p> 
 <ion-item class="inputs">
    <ion-label  class="bob" color="secondary" stacked>Weight Single Item</ion-label> 
@@ -39,6 +57,7 @@
  <br>
  <br>
  <br> 
+ <!--Card to display the results-->
 <ion-card class = "result">
   <ion-card-content class="result__amount" color="secondary">
     {{ hello() }}

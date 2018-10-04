@@ -1,3 +1,20 @@
+<!-- /**
+* File Name:       home.scss
+* Version Number:  v1.1
+* Author:          Orisha Orrie
+* Project Name:    Ninshiki
+* Organization:    Software Sharks
+* User Manual:     Refer to https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf
+* Update History:
+* ------------------------------------------
+* Date         Author		Description
+* 20/07/2018   Orisha		Created component
+* 18/09/2018   Orisha	   Fixed layout
+* ------------------------------------------
+* Functional Description:
+*  The layout of the main page that will be seen when a user opens the app.
+*/ -->
+
 <!--
   Generated template for the ImagerecPage page.
 
@@ -17,7 +34,7 @@
 
 </ion-header>
 
-<!-- <div class="overlay" padding [hidden]="isLoaded"></div> -->
+<!--  Instructions on how to upload an image-->
 
 <ion-content #content padding>
 
@@ -27,7 +44,7 @@
 <p class= "steps">2. Crop the image.</p>
 <p class= "steps">3. Click the Predict button.</p>
 <p class= "steps">4. View the results!</p>
-<!-- <h2 class = "second" color="secondary" >Capture an image using device camera</h2> -->
+<!-- Buttons to select way to upload an image -->
   <div class="wrapper">
     <p>
       <button class="button" color= "custom" ion-button icon-start round  (click) = "takePic()" >
@@ -43,7 +60,7 @@
       Gallery</button>
   </p> 
 </div>
-
+<!--Image is send through to predictor to be predicted-->
   <p align = "center"><img *ngIf="imgSelectedOrCaptured" src="{{ myPhoto }}" class="user-image" id="selectedImage" alt="Select an image please">
     <img *ngIf="!imgSelectedOrCaptured" src="assets/imgs/camera-holder.png" class="user-image" id="selectedImage">
   </p>

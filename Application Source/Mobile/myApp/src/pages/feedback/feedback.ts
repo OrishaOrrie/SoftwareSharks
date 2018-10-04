@@ -1,3 +1,22 @@
+/**
+* File Name:       feedback.ts
+* Version Number:  v1.1
+* Author:          Orisha Orrie, Tobias Bester
+* Project Name:    Ninshiki
+* Organization:    Software Sharks
+* User Manual:     Refer to https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf
+* Update History:
+* ------------------------------------------
+* Date         Author		Description
+* 20/07/2018   Orisha		Created component
+* 18/09/2018   Tobias   Fixed layout
+* 18/09/2018   Tobias   Created feedback page functionality
+* ------------------------------------------
+* Functional Description:
+*  Functions of the feedback page such as the type of feedback selection as well as form 
+* validation
+*/
+
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController, AlertController } from 'ionic-angular';

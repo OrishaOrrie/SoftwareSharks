@@ -1,3 +1,19 @@
+/**
+* File Name:       home.ts
+* Version Number:  v1.1
+* Author:          Orisha Orrie
+* Project Name:    Ninshiki
+* Organization:    Software Sharks
+* User Manual:     Refer to https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf
+* Update History:
+* ------------------------------------------
+* Date         Author		Description
+* 20/07/2018   Orisha		Created component
+* ------------------------------------------
+* Functional Description:
+*  The functionality of the main page that will be seen when a user opens the app.
+*/
+
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ModalController } from 'ionic-angular';
@@ -15,7 +31,7 @@ export class HomePage {
   }
   openModal()
   {
-    var data = { message : 'hello world' };
+    var data = { message : 'Welcome!' };
     var homePage = this.modalCtrl.create(AboutPage,data);
     homePage.present();
   }

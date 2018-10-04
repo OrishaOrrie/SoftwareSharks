@@ -1,3 +1,23 @@
+ /**
+* File Name:       utilities.scss
+* Version Number:  v1.1
+* Author:          Tobias Bester, Orisha Orrie
+* Project Name:    Ninshiki
+* Organization:    Software Sharks
+* User Manual:     Refer to https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf
+* Update History:
+* ------------------------------------------
+* Date         Author		Description
+* 20/07/2018   Orisha		Created component
+* 18/09/2018   Orisha	    Fixed layout
+* 18/09/2018   Orisha   Functionality added
+* 01/10/2018   Tobias   Validation errors fixed
+* ------------------------------------------
+* Functional Description:
+*  The functions of the page to calculate the amount of items in a box. 
+*  Values are validated and calculated here
+*/
+
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController} from 'ionic-angular';
 import { ModalController } from 'ionic-angular';
@@ -23,17 +43,7 @@ export class UtilitiesPage {
   filled_bucket = 10.0;
   
   hello = (() => {
-    // while(emp>=fil && sing>=fil)
-    //   {
-    //     return 0;
-    //   }
-    //   if(!sing || !emp || !fil)
-    //   {
-    //     return 0;
-    //   }
-    //   this.totalObjects = ((fil - emp)/sing);
-    //   return this.totalObjects;
-
+//validation for values
     if (!this.empty_bucket || !this.filled_bucket || !this.single_item) {
         return 'Weight inputs cannot be empty';
       }
@@ -62,7 +72,7 @@ export class UtilitiesPage {
 
   openModal()
   {
-    var data = { message : 'hello world' };
+    var data = { message : 'Welcome!' };
     var homePage = this.modalCtrl.create(AboutPage,data);
     homePage.present();
   }
@@ -70,22 +80,6 @@ export class UtilitiesPage {
     console.log('ionViewDidLoad UtilitiesPage');
   }
 
-  // errorAlert =function() {
-  //   let erralert = this.alertController.create({
-  //     title: 'Message sent!',
-  //     subTitle: 'Your message has been sent. A member of our team will get back to you as soon as possible.',
-  //     buttons: ['Dismiss']
-  //   })
-  // }
-
-    presentAlert =function() {
-      let alert = this.alertController.create({
-        title: 'Total amount of items',
-        subTitle: this.totalObjects,
-        buttons: ['Dismiss']
-      });
-      alert.present();
-    }
 
     //single filed empty
   

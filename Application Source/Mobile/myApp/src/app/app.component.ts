@@ -1,3 +1,20 @@
+/**
+ * File Name:       app.component.ts
+ * Version Number:  v1.1
+ * Author:          Orisha Orrie
+ * Project Name:    Ninshiki
+ * Organization:    Software Sharks
+ * User Manual:     Refer to https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf
+ * Update History:
+ * ------------------------------------------
+ * Date         Author		Description
+ * 20/07/2018   Orisha		Created component		
+ * ------------------------------------------
+ * Functional Description:
+ *  Main app component interface. Pages created here.
+ */
+
+
 import { Component  , ViewChild} from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';

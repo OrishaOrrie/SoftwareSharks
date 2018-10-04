@@ -1,3 +1,20 @@
+/**
+ * File Name:       app.module.ts
+ * Version Number:  v1.1
+ * Author:          Orisha Orrie
+ * Project Name:    Ninshiki
+ * Organization:    Software Sharks
+ * User Manual:     Refer to https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf
+ * Update History:
+ * ------------------------------------------
+ * Date         Author		Description
+ * 20/07/2018   Orisha		Created component	
+ * 20/07/2018   Orisha    Extra pages added here 	
+ * ------------------------------------------
+ * Functional Description:
+ *  Main app component interface. If a new page is added, it must be declared here.
+ */
+
 import { ModelLoaderProvider } from './../providers/model-loader/model-loader';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
