@@ -36,7 +36,9 @@ export class DashTrainComponent implements OnInit {
         'Authorization': 'my-auth-token'
       })
     };
-    this.http.post<any[]>(url, data, httpOptions);
+    this.http.post<any[]>(url, JSON.stringify(data), httpOptions).toPromise().then((response) => {
+      console.log(response);
+    });
     // console.log(this.http.post<any[]>(url, data, httpOptions));
   }
 
