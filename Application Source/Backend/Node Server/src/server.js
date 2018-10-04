@@ -20,82 +20,90 @@ const port = 3000;
 let body = "";
 
 const requestHandler = (request, response) => {
-    body = "<h1>Hello Node.js Server!</h1>";
+    const headers = {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'OPTIONS, POST, GET',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        'Access-Control-Max-Age': 2592000, // 30 days,
+        'Access-Control-Allow-Credentials': 'true'
+        /** add other headers as per requirement */
+    };
 
-    // ---------------------------------------------------------
-    // REMOVE BELOW WHEN GOING INTO PRODUCTION
-    // ---------------------------------------------------------
-    // Todo: Remove after debug
-    // ---------------------------------------------------------
-    console.debug('Request Recieved');
-    // console.debug('Request Body:');
-    // console.debug(request.body);
-    // console.debug('------------------------------');
-    // console.debug('Response Body:');
-    // console.debug(response.body);
-    // ---------------------------------------------------------
+    // if request = OPTIONS
+    // simply writes the headers to the response and 
+    // results in a 204 (No Content) to the browser.
+    if (request.method === 'OPTIONS') {
+        response.writeHead(204, headers);
+        response.end();
+        return;
+    }
 
-    if (request.url === "/trainModel") {
-        //Todo: Need to find out how dashboard 
-        //will post categories to create
-        let data = [];
+    if (['GET', 'POST'].indexOf(request.method) > -1) {
+        // 200 - Okay
+        response.writeHead(200, headers);
 
-        console.log("Training Model");
+        // Todo: Write a quick response here - As confirmation:
+        response.end('Request Accepted');
 
-        request.on('data', chunk => {
-            data.push(chunk);
-        });
-        request.on('end', () => {
-            try {
-                // ---------------------------------------------------------
-                // REMOVE BELOW WHEN GOING INTO PRODUCTION
-                // ---------------------------------------------------------
-                // Todo: Remove after debug
-                // ---------------------------------------------------------
-                console.debug('------------------------------');
-                console.debug('Request Data:');
-                console.debug(data);
-                console.debug('------------------------------');
-                // ---------------------------------------------------------
+        // NB: No need for this to run in the entire request body
+        // Create a new request and post it to client once its complete
+        // Because this will obv take a while
 
+        if (request.url === "/trainModel") {
 
-                let categories = JSON.parse(data);
-                //console.log(categories);
+            //Todo: Need to find out how dashboard 
+            //will post categories to create
+            let data = [];
 
-                //Deal with categories using trainModule.js
-                trainModule.trainModule(categories);
+            console.log("Training Model");
 
-                body += "<p>Training Model Now</p>"
-                body += "<p>" + JSON.stringify(categories) + "</p>";
+            request.on('data', chunk => {
+                data.push(chunk);
+            });
+            request.on('end', () => {
+                try {
+                    let categories = JSON.parse(data);
+                    //console.log(categories);
 
-                response.writeHead(200, { 'Content-Type': 'text/html' });
-                response.end(body);
-            } catch (err) {
-                if (err instanceof SyntaxError) {
-                    console.error('Syntax Error: ' + (err));
-                } else {
-                    console.error('Unknown Error: ' + err);
+                    //Deal with categories using trainModule.js
+                    trainModule.trainModule(categories);
+
+                    body += "<p>Training Model Now</p>"
+                    body += "<p>" + JSON.stringify(categories) + "</p>";
+
+                    response.writeHead(200, { 'Content-Type': 'text/html' });
+                    response.end(body);
+                } catch (err) {
+                    if (err instanceof SyntaxError) {
+                        console.error('Syntax Error: ' + (err));
+                    } else {
+                        console.error('Unknown Error: ' + err);
+                    }
                 }
-            }
-        });
+            });
+        }
+        else if (request.url === "/predict") {
+            //Todo: Need to find out how the 
+            //dashboard will post images to predict
+
+            console.log("Predicting");
+            body += "<p>Predicting Now</p>";
+
+            //Deal with image posted using predictModule.js
+            //predictModule.predictModule(img.jpg);
+
+            response.writeHead(200, { 'Content-Type': 'text/html' });
+            response.end(body);
+        }
+        else {
+            console.log(request.url + " does not exist!");
+        }
+        return;
     }
-    else if (request.url === "/predict") {
-        //Todo: Need to find out how the 
-        //dashboard will post images to predict
 
-        console.log("Predicting");
-        body += "<p>Predicting Now</p>";
-
-        //Deal with image posted using predictModule.js
-        //predictModule.predictModule(img.jpg);
-
-        response.writeHead(200, { 'Content-Type': 'text/html' });
-        response.end(body);
-    }
-    else {
-        console.log(request.url + " does not exist!");
-    }
-
+    // Method NOT GET/POST
+    response.writeHead(405, headers);
+    response.end(`${request.method} is not allowed for the request.`);
 };
 
 const server = http.createServer(requestHandler);

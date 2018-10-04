@@ -33,11 +33,13 @@ export class DashTrainComponent implements OnInit {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
-        'Authorization': 'my-auth-token'
+        'Authorization': 'Basic YWxhZGRpbjpvcGVuc2VzYW1l'
       })
     };
     this.http.post<any[]>(url, JSON.stringify(data), httpOptions).toPromise().then((response) => {
       console.log(response);
+    }).catch((rejected) => {
+      console.log(rejected);
     });
     // console.log(this.http.post<any[]>(url, data, httpOptions));
   }
