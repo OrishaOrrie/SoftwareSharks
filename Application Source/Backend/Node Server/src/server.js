@@ -12,15 +12,29 @@ const http = require('http');
 const port=3000;
 
 let body = "";
+let categories=null;
 
 const requestHandler = (request,response) => {
     body = "<h1>Hello Node.js Server!</h1>";
     if(request.url==="/trainModel") {
         //Todo: Need to find out how dashboard 
         //will post categories to create
+        let data=[];
         
         console.log("Training Model");
-        body+="<p>Training Model Now</p>"
+        console.log(request.method);
+
+        request.on('data', chunk => {
+            data.push(chunk);
+        });
+        request.on('end',() => {
+            categories=JSON.parse(data);
+            console.log(categories);
+            body+="<p>Training Model Now</p>"
+            body+="<p>"+JSON.stringify(categories)+"</p>";
+            response.writeHead(200, {'Content-Type': 'text/html'});
+            response.end(body);
+        });
     }
     else if(request.url==="/predict") {
         //Todo: Need to find out how the 
@@ -28,12 +42,13 @@ const requestHandler = (request,response) => {
         
         console.log("Predicting");
         body+="<p>Predicting Now</p>";
+        response.writeHead(200, {'Content-Type': 'text/html'});
+        response.end(body);
     }
     else {
         console.log(request.url);
     }
-    response.writeHead(200, {'Content-Type': 'text/html'});
-    response.end(body);
+    
 };
 
 const server = http.createServer(requestHandler);
