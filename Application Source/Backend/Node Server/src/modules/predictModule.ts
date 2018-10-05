@@ -11,5 +11,5 @@
 */
 
 export function predictModule() {
-    console.log("Predict Module");
+    console.log('Predict Module');
 }

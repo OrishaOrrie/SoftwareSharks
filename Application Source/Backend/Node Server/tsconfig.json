@@ -10,7 +10,8 @@
       "es2017.object",
       "es2015",
       "es2017"
-    ]
+    ],
+    "resolveJsonModule": true
   },
   "files": [
     "./node_modules/@types/node/index.d.ts"
