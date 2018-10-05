@@ -12,7 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "firebase-admin": "^6.0.0",
-    "puppeteer": "^1.8.0"
+    "puppeteer": "^1.8.0",
+    "typescript": "^3.1.1"
   },
   "devDependencies": {
     "nodemon": "^1.18.4"
