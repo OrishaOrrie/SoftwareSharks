@@ -1,6 +1,6 @@
 {
-  "name": "img_scraper",
-  "version": "1.0.0",
+  "name": "image-scraper",
+  "version": "2.0.0",
   "description": "Scrapes Images I guess",
   "main": "index.js",
   "scripts": {
