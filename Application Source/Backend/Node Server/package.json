@@ -26,7 +26,7 @@
     "clean": "rimraf ./build",
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
     "tsc": "tsc",
-    "test": "mocha -r ts-node/register src/**/*.spec.ts", 
+    "test": "mocha -r ts-node/register src/**/*.spec.ts",
     "start": "ntl",
     "start-dev": "nodemon build/server.js",
     "start-prod": "node build/server.js"

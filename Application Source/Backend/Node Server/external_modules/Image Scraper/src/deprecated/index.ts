@@ -1,15 +1,18 @@
-const puppeteer = require("puppeteer");
-const fs = require("fs");
-const http = require("http");
-const https = require("https");
-const spawn = require("child_process").spawn;
+import fs = require('fs');
+import http = require('http');
+import https = require('https');
+import puppeteer = require('puppeteer');
+// const spawn = require("child_process").spawn;
 
-let headlessMode = true;
+let headlessMode;
 
 if (process.argv[3]) {
   headlessMode = process.argv[3];
+} else {
+  headlessMode = true;
 }
-let ImageScraper = function ImageScraper(searchTerm) {
+
+export function ImageScraper(searchTerm) {
   return new Promise((resolve, reject) => {
     (async () => {
       const browser = await puppeteer.launch({
@@ -17,23 +20,23 @@ let ImageScraper = function ImageScraper(searchTerm) {
       });
 
       // const searchTerm = process.argv[2];
-      const dirTerm = searchTerm.replace(/ /g, "_");
+      const dirTerm = searchTerm.replace(/ /g, '_');
 
       // Go to Google Images
       console.log("Don't mind me just popping in to Google Images");
       const page = await browser.newPage();
-      await page.goto("https://images.google.com");
+      await page.goto('https://images.google.com');
 
       // Input the search term and hit Enter
-      console.log("Hello can I get uhhhh some " + searchTerm);
-      await page.type("#lst-ib", searchTerm);
-      await page.keyboard.press("Enter");
-      await page.waitForSelector("#hdtb-msb-vis");
+      console.log('Hello can I get uhhhh some ' + searchTerm);
+      await page.type('#lst-ib', searchTerm);
+      await page.keyboard.press('Enter');
+      await page.waitForSelector('#hdtb-msb-vis');
 
-      await page.addScriptTag({url: "https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"});
+      await page.addScriptTag({url: 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js'});
 
       // Scroll to the bottom of the page
-      console.log("Now I am scrolling to the bottom of the page... this may take a while");
+      console.log('Now I am scrolling to the bottom of the page... this may take a while');
       await page.evaluate(async () => {
         await new Promise((resolve, reject) => {
           let totalHeight = 0;
@@ -49,15 +52,15 @@ let ImageScraper = function ImageScraper(searchTerm) {
           }, 100);
         });
       }).then(() => {
-        console.log("Reached end of page");
+        console.log('Reached end of page');
       });
 
       let numImages = 0;
       numImages = await page.evaluate(() => {
-        return document.querySelectorAll(".rg_di").length;
+        return document.querySelectorAll('.rg_di').length;
       });
 
-      console.log(numImages + " images found");
+      console.log(numImages + ' images found');
 
       // Get the image source urls of all the images found and add them to an array
       const urls = [];
@@ -70,7 +73,7 @@ let ImageScraper = function ImageScraper(searchTerm) {
       }
 
       // get all the images at the urls
-      console.log("getting image download URLs");
+      console.log('getting image download URLs');
       let numDown = 0;
 
       const looper = new Promise((resolve) => {
@@ -79,15 +82,15 @@ let ImageScraper = function ImageScraper(searchTerm) {
             // console.log(urls[i]);
             const j = 0;
 
-            const dir = "downloaded_images/" + dirTerm + "/";
+            const dir = 'downloaded_images/' + dirTerm + '/';
             if (!fs.existsSync(dir)) {
               fs.mkdirSync(dir);
             }
 
-            const fileName = dir + i + ".jpg";
+            const fileName = dir + i + '.jpg';
             const file = fs.createWriteStream(fileName);
             let protocol = http;
-            if (urls[i].slice(0, 5) === "https") {
+            if (urls[i].slice(0, 5) === 'https') {
               protocol = https;
             } else {
               protocol = http;
@@ -95,27 +98,28 @@ let ImageScraper = function ImageScraper(searchTerm) {
 
             const request = protocol.get(urls[i], function(response) {
               response.pipe(file);
-              file.on("finish", function(cb) {
+              file.on('finish', function(cb) {
                 file.close(cb);
-                console.log(i + ": " + urls[i]);
+                console.log(i + ': ' + urls[i]);
                 numDown++;
-                console.log(numDown + " images downloaded");
+                console.log(numDown + ' images downloaded');
 
                 /**
-                 * If the number of images processed is within 50 of the total images identified, then resolve this promise
+                 * If the number of images processed is within 50 of the total images identified,
+                 * then resolve this promise
                  */
                 if (numDown > numImages - 50) {
-                  resolve("\nYEEEEEEEET\n");
+                  resolve('\nYEEEEEEEET\n');
                   clearTimeout(); // doesn't work
                   return; // doesn't work
                 }
                 if (cb) { cb(err.message); }
               });
-            }).on("error", function(err, cb) {
+            }).on('error', function(err, cb) {
               fs.unlinkSync(fileName);
               numDown++;
-              console.log(i + " was deleted");
-              console.log(numDown + " images completed");
+              console.log(i + ' was deleted');
+              console.log(numDown + ' images completed');
               // if (cb) cb(err.message);
             });
 
@@ -128,10 +132,8 @@ let ImageScraper = function ImageScraper(searchTerm) {
       const result = await looper;
       console.log(result);
       resolve();
-      console.log("Finished Scraping for " + dirTerm);
+      console.log('Finished Scraping for ' + dirTerm);
     })();
   });
 
-};
-// ImageScraper("Angry");
-module.exports.ImageScraper = ImageScraper;
+}

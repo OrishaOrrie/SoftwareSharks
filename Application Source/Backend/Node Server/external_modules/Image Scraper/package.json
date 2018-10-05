@@ -1,17 +1,44 @@
 {
   "name": "image-scraper",
   "version": "2.0.0",
-  "description": "Scrapes Images I guess",
+  "description": "Mass scrapes images based on input parameter",
+  "homepage": "https://github.com/OrishaOrrie/SoftwareSharks",
+  "bugs": {
+    "url": "https://github.com/OrishaOrrie/SoftwareSharks/issues"
+  },
+  "license": "MPL-2.0",
+  "author": "Tobias Bester <u14041368@tuks.co.za> (https://www.linkedin.com/in/tobias-bester-1a3a18138/)",
+  "contributors": [
+    "Mark Coetzer <u14044537@tuks.co.za> (https://www.linkedin.com/in/mark-coetzer/)"
+  ],
+  "repository": "https://github.com/OrishaOrrie/SoftwareSharks",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepare": "npm run build",
+    "build": "tsc && npm run lint",
+    "clean": "rimraf ./dist",
+    "lint": "tslint -c tslint.json 'src/**/*.ts'",
+    "tsc": "tsc",
+    "test": "mocha -r ts-node/register src/**/*.spec.ts",
+    "start": "ntl",
+    "start-dev": "nodemon dist/index.js",
+    "start-prod": "node dist/index.js"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "jquery": "^3.3.1",
     "jsdom": "^11.12.0",
     "minimist": "^1.2.0",
     "puppeteer": "^1.6.2"
+  },
+  "devDependencies": {
+    "@types/node": "^10.11.4",
+    "@types/puppeteer": "^1.8.0",
+    "nodemon": "^1.18.4",
+    "ntl": "^3.0.0",
+    "rimraf": "^2.6.2",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "typescript": "^3.1.1",
+    "typescript-eslint-parser": "^19.0.2"
   }
 }
