@@ -21,7 +21,5 @@ Application Source/ss-imagerec-webapp/angular_material_schematics-UIHR27/dashboa
 .angulardoc.json
 *.pyc
 Application Source/ss-dashboard/node_modules/*
-Application Source/ss-dashboard/src/environments/environment.ts
 Application Source/ss-dashboard/.firebase/hosting.ZGlzdFxzcy1kYXNoYm9hcmQ.cache
-*.cache
 *.cache
