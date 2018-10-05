@@ -66,7 +66,9 @@ const requestHandler = (request, response) => {
                     //console.log(categories);
 
                     //Deal with categories using trainModule.js
-                    trainModule.trainModule(categories);
+
+                    // Todo: Establish after bug testing
+                    // trainModule.trainModule(categories);
 
                     body += "<p>Training Model Now</p>"
                     body += "<p>" + JSON.stringify(categories) + "</p>";
