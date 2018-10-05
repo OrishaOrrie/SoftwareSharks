@@ -1,21 +1,48 @@
 {
   "name": "dashboard_backend",
   "version": "1.0.0",
-  "description": "A server for the dashboard",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "nodemon server.js",
-    "start": "node server.js"
+  "description": "Initialises the data retrieval process and then trains a TensorFlow / Keras - Mobile Net Model.",
+  "homepage": "https://github.com/OrishaOrrie/SoftwareSharks",
+  "bugs": {
+    "url": "https://github.com/OrishaOrrie/SoftwareSharks/issues"
   },
-  "author": "Jonathan Lew",
-  "license": "ISC",
+  "license": "MPL-2.0",
+  "author": "Software Sharks",
+  "contributors": [
+    "Mark Coetzer <u14044537@tuks.co.za> (https://www.linkedin.com/in/mark-coetzer/)",
+    "Orisha Orrie <u13025199@tuks.co.za> (https://www.linkedin.com/in/orisha-orrie/)",
+    "Mukundi Matodzi <u16091265@tuks.co.za> (https://www.linkedin.com/in/mukundi-matodzi-89225815b/)",
+    "Jonathan Lew <u13318765@tuks.co.za> (https://www.linkedin.com/in/jonathan-lew-a296a715b/)",
+    "Tobias Bester <u14041368@tuks.co.za> (https://www.linkedin.com/in/tobias-bester-1a3a18138/)"
+  ],
+  "repository": "https://github.com/OrishaOrrie/SoftwareSharks",
+  "main": "server.js",
+  "config": {
+    "port": "3000"
+  },
+  "scripts": {
+    "prepare": "npm run build",
+    "build": "tsc && npm run lint",
+    "clean": "rimraf ./build",
+    "lint": "tslint -c tslint.json 'src/**/*.ts'",
+    "tsc": "tsc",
+    "test": "mocha -r ts-node/register src/**/*.spec.ts", 
+    "start": "ntl",
+    "start-dev": "nodemon build/server.js",
+    "start-prod": "node build/server.js"
+  },
   "dependencies": {
     "firebase-admin": "^6.0.0",
-    "puppeteer": "^1.8.0",
-    "typescript": "^3.1.1"
+    "puppeteer": "^1.8.0"
   },
   "devDependencies": {
-    "nodemon": "^1.18.4"
+    "@types/node": "^10.11.4",
+    "nodemon": "^1.18.4",
+    "ntl": "^3.0.0",
+    "rimraf": "^2.6.2",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "typescript": "^3.1.1",
+    "typescript-eslint-parser": "^19.0.2"
   }
 }

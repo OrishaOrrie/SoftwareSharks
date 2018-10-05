@@ -15,7 +15,7 @@ const predictModule = require('./modules/predictModule');
 const fb = require('./modules/firebaseAdmin');
 fb.initFirebaseAdmin();
 
-const port = 3000;
+const port = process.env.npm_package_config_port;
 
 let body = "";
 
@@ -53,7 +53,7 @@ const requestHandler = (request, response) => {
 
             //Todo: Need to find out how dashboard 
             //will post categories to create
-            let data = [];
+            let data: string[] = [];
 
             console.log("Training Model");
 
@@ -110,7 +110,7 @@ const requestHandler = (request, response) => {
 
 const server = http.createServer(requestHandler);
 
-server.listen(port, (err) => {
+server.listen(port || 8080, (err) => {
     if (err) {
         return console.log('ERROR', err);
     }

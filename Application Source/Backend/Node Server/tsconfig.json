@@ -1,16 +1,25 @@
 {
-    "compilerOptions": {
-      "module": "commonjs",
-      "removeComments": true,
-      "sourceMap": true,
-      "target": "es5",
-      "outDir": "build"
-    },
-    "include": [
-      "src/**/*.ts"
-    ],
-    "exclude": [
-      "node_modules",
-      "**/*.spec.ts"
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "build",
+    "sourceMap": false,
+    "removeComments": true,
+    "declaration": true,
+    "lib": [
+      "es2017.object",
+      "es2015",
+      "es2017"
     ]
-  }
+  },
+  "files": [
+    "./node_modules/@types/node/index.d.ts"
+  ],
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ]
+}
