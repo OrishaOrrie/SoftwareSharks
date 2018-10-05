@@ -1,5 +1,5 @@
 /*
-    File Name: server.js
+    File Name: server.ts
     Version Number: 1.0.0
     Author Name: Jonathan Lew
     Project Name: Ninshiki
@@ -8,6 +8,7 @@
     Functional Description: This class is here to
         create a backend server for the dashboard
 */
+
 const http = require("http");
 const trainModule = require("./modules/trainModule");
 const predictModule = require("./modules/predictModule");
