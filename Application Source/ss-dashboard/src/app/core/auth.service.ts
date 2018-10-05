@@ -73,11 +73,20 @@ export class AuthService {
 
   }
 
-
   public signOut() {
     return this.afAuth.auth.signOut().then(() => {
       // this.alertService.add(new Alert(AlertType.Success, 'Goodbye!', 'Signout Successful!'));
       // this.router.navigate(['/']);
     });
+  }
+  
+  public getIdToken(): Promise<string> {
+    return this.afAuth.auth.currentUser.getIdToken(true).then((idToken) => {
+      return idToken;
+    }).catch((error) => {
+      // Todo: Handle Error
+      return null;
+    });
+    // return token;
   }
 }

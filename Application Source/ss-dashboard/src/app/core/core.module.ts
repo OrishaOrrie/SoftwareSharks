@@ -7,6 +7,8 @@ import { AlertService } from './alert/alert.service';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { ModelsService } from './data/models.service';
+import { BackendService } from './http/backend.service';
+import { HttpInterceptProviders } from './http/http-intercept-providers';
 
 @NgModule({
   imports: [
@@ -18,7 +20,9 @@ import { ModelsService } from './data/models.service';
   providers: [
     AuthService,
     AlertService,
-    ModelsService
+    ModelsService,
+    BackendService,
+    HttpInterceptProviders
   ]
 })
 export class CoreModule { }

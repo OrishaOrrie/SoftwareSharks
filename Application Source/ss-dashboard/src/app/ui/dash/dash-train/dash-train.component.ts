@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ModelsService } from '../../../core/data/models.service';
 import { TrainingStatus } from '../../../shared/models/training-status.enum';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { switchMap } from 'rxjs/operators';
+import { Model } from '../../../shared/models/model';
+import { AuthService } from '../../../core/auth.service';
+import { BackendService } from '../../../core/http/backend.service';
+import { ConfirmationResponse } from '../../../shared/models/responses/confirmation-response';
 
 @Component({
   selector: 'app-dash-train',
@@ -13,35 +16,22 @@ export class DashTrainComponent implements OnInit {
   trained = TrainingStatus.Trained;
   training = TrainingStatus.Training;
   untrained = TrainingStatus.Untrained;
+
+  private response: ConfirmationResponse;
+  private error;
+
   constructor(
     public modelsService: ModelsService,
-    private http: HttpClient) { }
+    private backend: BackendService) { }
 
   ngOnInit() {
   }
 
-  sendTrainRequest() {
-    const url = 'http://localhost:3000/trainModel';
-    const data = {
-        'name': 'Animals',
-        'categories': [
-          'Dogs',
-          'Cats',
-          'Birds'
-        ]
-    };
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-        'Authorization': 'Basic YWxhZGRpbjpvcGVuc2VzYW1l'
-      })
-    };
-    this.http.post<any[]>(url, JSON.stringify(data), httpOptions).toPromise().then((response) => {
-      console.log(response);
-    }).catch((rejected) => {
-      console.log(rejected);
-    });
-    // console.log(this.http.post<any[]>(url, data, httpOptions));
+  sendTrainRequest(model: Model) {
+    this.backend.sendTrainRequest(model)
+      .subscribe(
+        (response: ConfirmationResponse) => this.response = {... response},
+        error => this.error = error);
   }
 
 }

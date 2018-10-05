@@ -11,7 +11,8 @@ export const environment = {
     storageBucket: 'softwaresharks-ninshiki.appspot.com',
     projectId: 'softwaresharks-ninshiki' ,
     messagingSenderId: '87209213232'
-  }
+  },
+  apiURI: 'http://localhost:3000/'
 };
 
 /*
