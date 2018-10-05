@@ -21,8 +21,8 @@
     "tsc": "tsc",
     "test": "mocha -r ts-node/register src/**/*.spec.ts",
     "start": "ntl",
-    "start-dev": "nodemon dist/index.js",
-    "start-prod": "node dist/index.js"
+    "start-dev": "nodemon dist/server.js",
+    "start-prod": "node dist/server.js"
   },
   "dependencies": {
     "jquery": "^3.3.1",

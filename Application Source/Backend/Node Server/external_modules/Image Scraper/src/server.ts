@@ -1,5 +1,5 @@
-import { Test } from './test';
+import { ImageScraper } from './index';
 
 // import { Test } from 'Test';
 
-Test('bacon');
+ImageScraper('bacon');

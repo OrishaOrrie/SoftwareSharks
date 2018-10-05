@@ -38,6 +38,7 @@ export function ImageScraper(searchTerm) {
       // Scroll to the bottom of the page
       console.log('Now I am scrolling to the bottom of the page... this may take a while');
       await page.evaluate(async () => {
+        // tslint:disable-next-line:no-shadowed-variable
         await new Promise((resolve, reject) => {
           let totalHeight = 0;
           const distance = 100;
@@ -65,9 +66,10 @@ export function ImageScraper(searchTerm) {
       // Get the image source urls of all the images found and add them to an array
       const urls = [];
       for (let i = 0; i < numImages; i++) {
+        // tslint:disable-next-line:no-shadowed-variable
         urls.push( await page.evaluate((i) => {
           const index = '[data-ri=\"' + i + '\"]';
-          const metaText = document.querySelector(index).childNodes[2].innerHTML;
+          const metaText = (document.querySelector(index).childNodes[2] as HTMLElement).innerHTML;
           return JSON.parse(metaText).ou;
         }, i));
       }
@@ -76,6 +78,7 @@ export function ImageScraper(searchTerm) {
       console.log('getting image download URLs');
       let numDown = 0;
 
+      // tslint:disable-next-line:no-shadowed-variable
       const looper = new Promise((resolve) => {
         setTimeout(() => {
           for (let i = 0; i < urls.length; i++) {
@@ -89,17 +92,17 @@ export function ImageScraper(searchTerm) {
 
             const fileName = dir + i + '.jpg';
             const file = fs.createWriteStream(fileName);
-            let protocol = http;
+            let protocol; // = http | https;
             if (urls[i].slice(0, 5) === 'https') {
               protocol = https;
             } else {
               protocol = http;
             }
 
-            const request = protocol.get(urls[i], function(response) {
+            const request = protocol.get(urls[i], (response) => {
               response.pipe(file);
-              file.on('finish', function(cb) {
-                file.close(cb);
+              file.on('finish', (cb) => {
+                file.close();
                 console.log(i + ': ' + urls[i]);
                 numDown++;
                 console.log(numDown + ' images downloaded');
@@ -113,9 +116,9 @@ export function ImageScraper(searchTerm) {
                   clearTimeout(); // doesn't work
                   return; // doesn't work
                 }
-                if (cb) { cb(err.message); }
+                // if (cb) { cb(err.message); }
               });
-            }).on('error', function(err, cb) {
+            }).on('error', (err, cb) => {
               fs.unlinkSync(fileName);
               numDown++;
               console.log(i + ' was deleted');
