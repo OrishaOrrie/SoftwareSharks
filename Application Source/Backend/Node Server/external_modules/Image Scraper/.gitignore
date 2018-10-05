@@ -4,5 +4,7 @@
 /urls
 /node_modules
 *.jpg
+*.jpeg
 *.png
+*.model
 package-lock.json
