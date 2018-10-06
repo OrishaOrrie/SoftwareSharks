@@ -11,7 +11,7 @@ export class BackendService {
   private apiURI = environment.apiURI;
   private trainReqPath = 'trainModel';
   private predictReqPath = 'predict';
-  
+
   constructor(
     private http: HttpClient
   ) { }

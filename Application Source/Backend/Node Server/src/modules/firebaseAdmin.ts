@@ -30,8 +30,9 @@ export function initFirebaseAdmin() {
 
 export function verifyToken(idToken) {
     checkSetInit();
-    admin.auth().verifyIdToken(idToken)
+    return admin.auth().verifyIdToken(idToken)
     .then((decodedToken) => {
+        console.log('Successfully verified user!');
         const uid = decodedToken.uid;
         return uid;
     }).catch((error) => {

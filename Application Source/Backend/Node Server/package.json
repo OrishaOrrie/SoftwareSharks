@@ -32,8 +32,10 @@
     "start-prod": "node build/server.js"
   },
   "dependencies": {
+    "body": "^5.1.0",
     "firebase-admin": "^6.0.0",
-    "puppeteer": "^1.8.0"
+    "puppeteer": "^1.8.0",
+    "send-data": "^8.0.0"
   },
   "devDependencies": {
     "@types/node": "^10.11.4",

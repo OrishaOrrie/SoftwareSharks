@@ -16,11 +16,11 @@ export class AuthInterceptor implements HttpInterceptor {
                 // cloned headers, updated with the authorization.
                 const authReq = req.clone({
                     headers: req.headers
-                        .set('Authorization', 'Bearer' + authToken)
+                        .set('Authorization', authToken)
                         .append('Content-Type', 'application/json')
                 });
                 // send Cloned request with header to the next handler.
                 return next.handle(authReq);
-            }))
+            }));
     }
 }
