@@ -72,7 +72,7 @@
       <div class="intro-text">
         <div class="intro-lead-in">Welcome To Our Capstone Project Page!</div>
         <div class="intro-heading text-uppercase">It's Nice To Meet You</div>
-        <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#project">Tell Me More</a>
+        <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#overview">Tell Me More</a>
       </div>
     </div>
   </header>
@@ -80,125 +80,134 @@
 
   <!--overview-->
   <section  id="overview">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 text-center">
-          <h2 class="section-heading text-uppercase">Project Description</h2>
-          <h3 class="section-subheading text-muted">To empower the client to automate certain warehousing processing
-            activities, reduce errors and improve operational efficiencies through the use of image recognition
-            technologies and robust application design.</h3>
-        </div>
-
-      </div>
-  <div class ="row justify-content-center">
-      <div class="col-3">
-        <a  href="#TheProblem">
-        <img class="img-fluid" src="img/icons/problem.svg" alt="problem">
-        <h4 class="service-heading">The problem</h4>
-      </a>
-        <p class="text-muted">Description of the problem</p>
-      </div>
-      <div class="col-3">
-        <a  href="#TheSolution">
-        <img class="img-fluid" src="img/icons/solution.svg" alt="solution">
-        <h4 class="service-heading">The solution</h4>
-      </a>
-        <p class="text-muted">Description of the problem</p>
-
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h2 class="section-heading text-uppercase">Project Description</h2>
+        <h3 class="section-subheading text-muted">To empower the client to automate certain warehousing processing
+          activities, reduce errors and improve operational efficiencies through the use of image recognition
+          technologies and robust application design.</h3>
       </div>
 
     </div>
-  </div>
+    <div class ="row justify-content-center">
+    <div class="col-3">
+      <a  href="#TheProblem" class = "js-scroll-trigger">
+      <img class="img-fluid" src="img/icons/problem.svg" alt="problem">
+      <h4 class="service-heading">The problem</h4>
+    </a>
+      <p class="text-muted">Description of the problem</p>
+    </div>
+    <div class="col-3">
+      <a  href="#TheSolution"  class = "js-scroll-trigger">
+      <img class="img-fluid" src="img/icons/solution.svg" alt="solution">
+      <h4 class="service-heading">The solution</h4>
+    </a>
+      <p class="text-muted">Description of the problem</p>
+
+    </div>
+
+    </div>
+    </div>
 
 
 
 
 
 
-  <section  id="TheProblem">
+    <section  id="TheProblem">
+    <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h2 class="section-heading text-uppercase">The Problem</h2>
+        <h3 class="section-heading text-uppercase">Description</h3>
+        <p class="section-subheading text-muted">
+          Ware house staff members lack knowledge on identifying and sorting stock items.
+          This leads to an error in identification and sorting
+          of stock items.This is time consuming and costly when a wrong item gets shipped to other warehouses/consumers and has to be returned.
+        </p>
+
+    </div>
+
+    </div>
+
+    </div>
+    </section>
+
+    <!--Solution section-->
+    <section class="bg-light" id ="TheSolution">
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
-          <h2 class="section-heading text-uppercase">The Problem</h2>
+          <h2 class="section-heading text-uppercase">The Soltuion</h2>
           <h3 class="section-heading text-uppercase">Description</h3>
           <p class="section-subheading text-muted">
-            Ware house staff members lack knowledge on identifying and sorting stock items.
-            This leads to an error in identification and sorting
-            of stock items.This is time consuming and costly when a wrong item gets shipped to other warehouses/consumers and has to be returned.
+          A mobile and web appilication was developed to solve the problem.This application gives the user the ability
+          to use a mobile phone or a computer to capture or select an image of interest(warehouse engineering items) and submit
+          it to the image classification model inorder to predict the what the image is. The user is also capable of doing
+          basic stock counting of weighed items and the Dashboard API which extends the solution by making the user to able
+          to create their own image classification model to identify items of their own desired catageory.
           </p>
+    <h3 class="section-heading text-uppercase">User Story</h3>
+    <div class="row">
+    <div class="col-md-3">
+    <img class="img-fluid" id ="user-img" src="img/icons/1.PNG" alt="1">
+    <h4 class="service-heading">1</h4>
+    <p class="text-muted">Bob is part of  the warehouse staff.Bob does not know every item in the warehouse off by heart.</p>
+    </div>
+    <div class="col-md-3">
+    <img class="img-fluid"  id ="user-img" src="img/icons/2.PNG" alt="2">
+    <h4 class="service-heading">2</h4>
+    <p class="text-muted">Bob wants to identify what the item is.</p>
+    </div>
+    <div class="col-md-3">
+    <img class="img-fluid"  id ="user-img" src="img/icons/3.png" alt="3">
+    <h4 class="service-heading">3</h4>
+    <p class="text-muted">Bob uses the image recognition Ninshiki app on his phone to identifying/classify the item.</p>
+    </div>
 
-</div>
+
+    <div class="col-md-3">
+    <img class="img-fluid"  id ="user-img" src="img/icons/4.PNG" alt="4">
+    <h4 class="service-heading">4</h4>
+    <p class="text-muted">The app uses artificial intelligence to predict item.</p>
+    </div>
+
+
+    <div class="col-md-3">
+    <img class="img-fluid"  id ="user-img" src="img/icons/5.PNG" alt="5">
+    <h4 class="service-heading">5</h4>
+    <p class="text-muted">Bob gets the items classification and name  as a result from app.Problem solved!</p>
+    </div>
+    </div>
+
+
+
+
 
     </div>
 
-  </div>
-  </section>
-
-<!--Solution section-->
-  <section class="bg-light" id ="TheSolution">
-      <div class="container">
+    </div>
         <div class="row">
-          <div class="col-lg-12 text-center">
-            <h2 class="section-heading text-uppercase">The Soltuion</h2>
-            <h3 class="section-heading text-uppercase">Description</h3>
-            <p class="section-subheading text-muted">
-            A mobile and web appilication was developed to solve the problem.This application gives the user the ability
-            to use a mobile phone or a computer to capture or select an image of interest(warehouse engineering items) and submit
-            it to the image classification model inorder to predict the what the image is. The user is also capable of doing
-            basic stock counting of weighed items and the Dashboard API which extends the solution by making the user to able
-            to create their own image classification model to identify items of their own desired catageory.
-            </p>
-  <h3 class="section-heading text-uppercase">User Story</h3>
-  <div class="row">
-    <div class="col-md-3">
-      <img class="img-fluid" id ="user-img" src="img/icons/1.PNG" alt="1">
-      <h4 class="service-heading">1</h4>
-      <p class="text-muted">Bob is part of  the warehouse staff.Bob does not know every item in the warehouse off by heart.</p>
-    </div>
-    <div class="col-md-3">
-      <img class="img-fluid"  id ="user-img" src="img/icons/2.PNG" alt="2">
-      <h4 class="service-heading">2</h4>
-      <p class="text-muted">Bob wants to identify what the item is.</p>
-    </div>
-    <div class="col-md-3">
-      <img class="img-fluid"  id ="user-img" src="img/icons/3.png" alt="3">
-      <h4 class="service-heading">3</h4>
-      <p class="text-muted">Bob uses the image recognition Ninshiki app on his phone to identifying/classify the item.</p>
-    </div>
+    <div class="col-lg-12 text-center">
+    <h3 class="section-heading text-uppercase">The process</h3>
+      <p class="section-subheading text-muted">We followed the Agile process where the implementation of the system was broken into sprints.Each sprint was completed in
+         a duration of 2 weeks following the process as shown in the flowchart.
+       </p>
 
-
-    <div class="col-md-3">
-      <img class="img-fluid"  id ="user-img" src="img/icons/4.PNG" alt="4">
-      <h4 class="service-heading">4</h4>
-      <p class="text-muted">The app uses artificial intelligence to predict item.</p>
-    </div>
-
-
-    <div class="col-md-3">
-      <img class="img-fluid"  id ="user-img" src="img/icons/5.PNG" alt="5">
-      <h4 class="service-heading">5</h4>
-      <p class="text-muted">Bob gets the items classification and name  as a result from app.Problem solved!</p>
-    </div>
-    </div>
-
-
-
-
-
-  </div>
+      <div class="row justify-content-center">
+      <div class="col-6">
+      <img class="img-fluid"  src="img/flowchart.PNG" alt="flow">
+      <h4 class="service-heading">Agile Process followed for each sprint</h4>
 
       </div>
-          <div class="row">
-      <div class="col-lg-12 text-center">
-      <h3 class="section-heading text-uppercase">The process</h3>
-        <p class="section-subheading text-muted">This section describes the process we followed during the Implementation of our capstone project</p>
+    </div>
 
-      </div>
+    </div>
 
     </div>
 
 
-  </section>
+    </section>
 
 
   </section>
@@ -229,7 +238,7 @@
           <p class="text-muted">The use of Artificial intelligence to predict items in an Image.</p>
         </div>
         <div class="col-md-4">
-          <img class="img-fluid" src="img/about/api.png" alt="Dashboard API">
+          <img class="img-fluid" src="img/about/API.SVG" alt="Dashboard API">
           <h4 class="service-heading">API</h4>
           <p class="text-muted">Dashboard </p>
         </div>
