@@ -28,7 +28,7 @@
     "tsc": "tsc",
     "test": "mocha -r ts-node/register src/**/*.spec.ts",
     "start": "ntl",
-    "start-dev": "nodemon build/server.js",
+    "start-dev": "tsc-watch --onSuccess \"node build/server.js\" --onFailure \"echo Beep! Compilation Failed\"",
     "start-prod": "node build/server.js"
   },
   "dependencies": {
@@ -37,10 +37,10 @@
   },
   "devDependencies": {
     "@types/node": "^10.11.4",
-    "nodemon": "^1.18.4",
     "ntl": "^3.0.0",
     "rimraf": "^2.6.2",
     "ts-node": "^7.0.1",
+    "tsc-watch": "^1.0.29",
     "tslint": "^5.11.0",
     "typescript": "^3.1.1",
     "typescript-eslint-parser": "^19.0.2"
