@@ -10,20 +10,25 @@
 */
 
 import http = require('http');
+
+// import jsonBody = require('body/json');
+// import sendJson = require('send-data/json');
+
 import predictModule = require('./modules/predictModule');
 // import trainModule = require('./modules/trainModule');
 
+import { ConfirmationResponse } from './models/confirmation-response';
 import fb = require('./modules/firebaseAdmin');
 fb.initFirebaseAdmin();
 
 const port = process.env.npm_package_config_port;
 
-let body = '';
+// let body = '';
 
 const requestHandler = (request, response) => {
-    const headers = {
+    const responseHeaders = {
         'Access-Control-Allow-Credentials': 'true',
-        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization, Keep-Alive',
         'Access-Control-Allow-Methods': 'OPTIONS, POST, GET',
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Max-Age': 2592000, // 30 days,
@@ -34,68 +39,94 @@ const requestHandler = (request, response) => {
     // simply writes the headers to the response and
     // results in a 204 (No Content) to the browser.
     if (request.method === 'OPTIONS') {
-        response.writeHead(204, headers);
+        response.writeHead(204, responseHeaders);
         response.end();
         return;
     }
 
     if (['GET', 'POST'].indexOf(request.method) > -1) {
-        // 200 - Okay
-        response.writeHead(200, headers);
-
-        // Todo: Write a quick response here - As confirmation:
-        response.end('Request Accepted');
-
         // NB: No need for this to run in the entire request body
         // Create a new request and post it to client once its complete
         // Because this will obv take a while
-
         if (request.url === '/trainModel') {
+            fb.verifyToken(request.headers.authorization).then(
+                (uid) => {
+                    const body = [];
+                    request.on('error', (err) => {
+                        console.error('Request Error: ' + err);
+                    }).on('data', (chunk) => {
+                        body.push(chunk);
+                    }).on('end', () => {
+                        const result = Buffer.concat(body).toString();
+                        console.log(result);
+                        response.on('error', (err) => {
+                            console.error('Response Error: ' + err);
+                        });
+                        response.writeHead(200, responseHeaders);
+                        const confirmResponse = {
+                            acknowledgement: 'Train Request Accepted!',
+                            data: 'No data',
+                        };
+                        response.write(JSON.stringify(confirmResponse));
+                        response.end();
+                    });
+                },
+            ).catch(
+                (err) => {
+                    console.error(err);
+                    response.writeHead(403, responseHeaders);
+                    response.end();
+                },
+            );
+            // response.end(confirmResponse);
+
+            // Todo: Do proper verification comments here
+            // console.log(request.body);
 
             // Todo: Need to find out how dashboard
             // will post categories to create
-            const data = [];
+            // const data = [];
 
-            console.log('Training Model');
+            // console.log('Training Model');
+            // Todo: Uncomment When done testing
+            // request.on('data', (chunk) => {
+            //     data.push(chunk);
+            // });
+            // request.on('end', () => {
+            //     try {
+            //         // let categories = JSON.parse(data);
+            //         // console.log(categories);
 
-            request.on('data', (chunk) => {
-                data.push(chunk);
-            });
-            request.on('end', () => {
-                try {
-                    // let categories = JSON.parse(data);
-                    // console.log(categories);
+            //         // Deal with categories using trainModule.js
 
-                    // Deal with categories using trainModule.js
+            //         // Todo: Establish after bug testing
+            //         // trainModule.trainModule(categories);
 
-                    // Todo: Establish after bug testing
-                    // trainModule.trainModule(categories);
+            //         // body += "<p>Training Model Now</p>"
+            //         // body += "<p>" + JSON.stringify(categories) + "</p>";
 
-                    // body += "<p>Training Model Now</p>"
-                    // body += "<p>" + JSON.stringify(categories) + "</p>";
-
-                    response.writeHead(200, { 'Content-Type': 'text/html' });
-                    response.end(body);
-                } catch (err) {
-                    if (err instanceof SyntaxError) {
-                        console.error('Syntax Error: ' + (err));
-                    } else {
-                        console.error('Unknown Error: ' + err);
-                    }
-                }
-            });
+            //         response.writeHead(200, { 'Content-Type': 'text/html' });
+            //         response.end(body);
+            //     } catch (err) {
+            //         if (err instanceof SyntaxError) {
+            //             console.error('Syntax Error: ' + (err));
+            //         } else {
+            //             console.error('Unknown Error: ' + err);
+            //         }
+            //     }
+            // });
         } else if (request.url === '/predict') {
             // Todo: Need to find out how the
             // dashboard will post images to predict
 
             console.log('Predicting');
-            body += '<p>Predicting Now</p>';
+            // body += '<p>Predicting Now</p>';
 
             // Deal with image posted using predictModule.js
             // predictModule.predictModule(img.jpg);
 
             response.writeHead(200, { 'Content-Type': 'text/html' });
-            response.end(body);
+            // response.end(body);
         } else {
             console.log(request.url + ' does not exist!');
         }
@@ -103,7 +134,7 @@ const requestHandler = (request, response) => {
     }
 
     // Method NOT GET/POST
-    response.writeHead(405, headers);
+    response.writeHead(405, responseHeaders);
     response.end(`${request.method} is not allowed for the request.`);
 };
 
