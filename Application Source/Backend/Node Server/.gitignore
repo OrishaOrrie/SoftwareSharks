@@ -2,4 +2,4 @@ package-lock.json
 /build/
 /node_modules
 /src/environment/AccountKey.json
-/docs
+/docs/
