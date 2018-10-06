@@ -14,12 +14,13 @@ import http = require('http');
 // import jsonBody = require('body/json');
 // import sendJson = require('send-data/json');
 
+import fb = require('./modules/firebaseAdmin');
 import predictModule = require('./modules/predictModule');
 // import trainModule = require('./modules/trainModule');
+fb.initFirebaseAdmin();
 
 import { ConfirmationResponse } from './models/confirmation-response';
-import fb = require('./modules/firebaseAdmin');
-fb.initFirebaseAdmin();
+import { HTTP_STATUS_CODES } from './models/http-codes';
 
 const port = process.env.npm_package_config_port;
 
@@ -39,7 +40,7 @@ const requestHandler = (request, response) => {
     // simply writes the headers to the response and
     // results in a 204 (No Content) to the browser.
     if (request.method === 'OPTIONS') {
-        response.writeHead(204, responseHeaders);
+        response.writeHead(HTTP_STATUS_CODES.NO_CONTENT, responseHeaders);
         response.end();
         return;
     }
@@ -62,7 +63,7 @@ const requestHandler = (request, response) => {
                         response.on('error', (err) => {
                             console.error('Response Error: ' + err);
                         });
-                        response.writeHead(200, responseHeaders);
+                        response.writeHead(HTTP_STATUS_CODES.ACCEPTED, responseHeaders);
                         const confirmResponse: ConfirmationResponse = {
                             acknowledgement: 'Train Request Accepted!',
                             data: 'No data',
@@ -74,7 +75,7 @@ const requestHandler = (request, response) => {
             ).catch(
                 (err) => {
                     console.error(err);
-                    response.writeHead(403, responseHeaders);
+                    response.writeHead(HTTP_STATUS_CODES.FORBIDDEN, responseHeaders);
                     response.end();
                 },
             );
@@ -125,7 +126,7 @@ const requestHandler = (request, response) => {
             // Deal with image posted using predictModule.js
             // predictModule.predictModule(img.jpg);
 
-            response.writeHead(200, { 'Content-Type': 'text/html' });
+            response.writeHead(HTTP_STATUS_CODES.NOT_IMPLEMENTED, { 'Content-Type': 'text/html' });
             // response.end(body);
         } else {
             console.log(request.url + ' does not exist!');
@@ -134,7 +135,7 @@ const requestHandler = (request, response) => {
     }
 
     // Method NOT GET/POST
-    response.writeHead(405, responseHeaders);
+    response.writeHead(HTTP_STATUS_CODES.METHOD_NOT_ALLOWED, responseHeaders);
     response.end(`${request.method} is not allowed for the request.`);
 };
 
