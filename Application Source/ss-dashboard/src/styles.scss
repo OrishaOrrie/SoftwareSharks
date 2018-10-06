@@ -6,13 +6,24 @@ $border-radius: 0;
 $border-radius-lg: 0;
 $border-radius-sm: 0;
 
+$space: #081421;
+$theme-colors: (
+  "space": $space
+);
+
+// $navbar-dark-color: #081421cc;
+
 @import "~bootstrap/scss/bootstrap";
 @import "~font-awesome/css/font-awesome.css";
 
 .top-shadow {
-    box-shadow: 0 -4px 6px 1px black;
+    box-shadow: 0 -4px 6px 1px #000b;
   }
 
   .bottom-shadow {
-    box-shadow: 0 4px 6px 1px black;
+    box-shadow: 0 4px 6px 1px #000b;
   }
+
+// .bg-dark {
+//   background-color: #081421cc;
+// }
