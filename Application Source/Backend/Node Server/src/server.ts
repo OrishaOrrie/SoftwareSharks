@@ -63,7 +63,7 @@ const requestHandler = (request, response) => {
                             console.error('Response Error: ' + err);
                         });
                         response.writeHead(200, responseHeaders);
-                        const confirmResponse = {
+                        const confirmResponse: ConfirmationResponse = {
                             acknowledgement: 'Train Request Accepted!',
                             data: 'No data',
                         };
