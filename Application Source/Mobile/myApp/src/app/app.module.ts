@@ -29,7 +29,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { UtilitiesPage } from '../pages/utilities/utilities';
 import { ImagerecPage } from '../pages/imagerec/imagerec';
 import { ResultsPage } from '../pages/results/results';
-
+import { QuoteBuilderPage } from '../pages/quote-builder/quote-builder';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -49,6 +49,7 @@ import { CdkTableModule } from '@angular/cdk/table';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { environment } from './../environments/environment';
 import { AngularFireStorageModule } from 'angularfire2/storage';
+import { QuotationProvider } from '../providers/quotation/quotation';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
     UtilitiesPage,
     ImagerecPage,
     FeedbackPage,
-    ResultsPage
+    ResultsPage,
+    QuoteBuilderPage
   ],
   imports: [
     BrowserModule,
@@ -89,7 +91,8 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
     UtilitiesPage,
     ImagerecPage,
     FeedbackPage,
-    ResultsPage
+    ResultsPage,
+    QuoteBuilderPage
   ],
   providers: [
     StatusBar,
@@ -99,6 +102,7 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
     Firebase,
     ModelLoaderProvider,
     Geolocation,
+    QuotationProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

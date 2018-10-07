@@ -26,3 +26,44 @@ page-results {
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
 }
+ion-modal.custom-popup ion-backdrop {
+    visibility: visible !important;
+    z-index:0;
+}
+ion-modal.custom-popup .modal-wrapper{
+    top: 20%;
+    width:60%;
+    height:300px;
+    position:absolute;
+}
+body {
+    cursor: url('http://ionicframework.com/img/finger.png'), auto;
+}
+
+.header .col {
+    background-color:lightgrey;
+}
+.header .cname {
+    background-color:lightgrey;
+}
+.col {
+    border: solid 1px black;
+    border-bottom-style: double;
+    border-right-style: none;
+    width: 50px;
+}
+
+.col:last-child {
+    border-right: solid 1px grey;
+}
+
+.row:last-child .col {
+    border-bottom: solid 1px grey;
+}
+.cname
+{
+    border: solid 1px black;
+    border-bottom-style: double;
+    border-right-style: none;
+    width: 95px;
+}

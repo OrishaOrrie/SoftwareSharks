@@ -15,11 +15,14 @@
 * Functional Description:
 *   Displays results as predicted by the TensorFlowJS model
 */
-
-import { Component } from '@angular/core';
+import { Dialogs } from '@ionic-native/dialogs';
+import { Component, Renderer } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { ModalController } from 'ionic-angular';
 import { ViewController } from 'ionic-angular';
 import { ModelLoaderProvider } from './../../providers/model-loader/model-loader';
+import { QuoteBuilderPage } from '../quote-builder/quote-builder';
+import { ToastController } from 'ionic-angular';
 /**
  * Generated class for the ResultsPage page.
  *
@@ -47,10 +50,10 @@ export class ResultsPage {
    * @param viewCtrl Controls the current view
    * @param modelLoader The ModelLoader provider that handles all image classification requests
    */
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public modelLoader : ModelLoaderProvider) {
+  constructor(private toastCtrl: ToastController, public renderer: Renderer,public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, public viewCtrl: ViewController, public modelLoader : ModelLoaderProvider) {
       this.resultPreds= modelLoader.getResults();
+     // this.renderer.setElementClass(viewCtrl.pageRef().nativeElement, 'custom-popup', true);
   }
-
   /**
    * @ignore
    */
@@ -76,5 +79,17 @@ export class ResultsPage {
     window.open(url, '_system', 'location=yes');
     return false;
   }
+
+
+    openQuoteDialog(elName) {
+      elName = elName || 'There is no item in store that matches your selection';
+      let resultsModal = this.modalCtrl.create(QuoteBuilderPage, {data: elName});
+		  resultsModal.present();
+    /* this.navCtrl.push(QuoteBuilderPage, {
+      data: elName
+    });*/
+    
+    } 
+
 
 }

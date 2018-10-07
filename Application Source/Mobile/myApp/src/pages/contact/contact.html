@@ -41,14 +41,14 @@
       </ion-item>
       <ion-item class="inputs">
         <ion-label class = 'bob' color="secondary" stacked>Message</ion-label>
-        <ion-input id="message" type="text" required formControlName="message"></ion-input>
+        <ion-textarea rows="8" maxLength="500" id="message" type="text" required formControlName="message" style = " height: 100px"></ion-textarea >
       </ion-item>
     </form>
       <ion-item class="inputs">
         <ion-label style="font-weight: bold" color="secondary">Send location data</ion-label>
         <ion-checkbox color="secondary" checked="true" [(ngModel)]="sendLocation"></ion-checkbox>
       </ion-item>
- 
     <button ion-button full round color= "tertiary" [disabled]="!myGroup.valid" (click)="onSubmit()">Send</button>
-  
+    <button *ngIf="addQuoteDisplay | async" ion-button full round color= "tertiary" (click)="addQuoteToMessage()" >Add Quote</button>
+    
 </ion-content>

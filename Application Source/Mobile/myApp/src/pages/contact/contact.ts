@@ -22,8 +22,9 @@ import { HttpClient } from '@angular/common/http';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { ModalController } from 'ionic-angular';
 import { AboutPage } from '../about/about';
-
-
+import { IonicPage, NavParams } from 'ionic-angular';
+import { QuotationProvider } from './../../providers/quotation/quotation';
+import { Observable } from 'rxjs';
 /*
   Generated class for the ModelLoaderProvider provider.
 
@@ -36,7 +37,8 @@ import { AboutPage } from '../about/about';
   templateUrl: 'contact.html'
 })
 export class ContactPage {
-
+  amount : string;
+  resName : string;
   /**
    * Evaluates to true when a server response is received.
    */
@@ -62,6 +64,7 @@ export class ContactPage {
    */
   positionLong = 0;
 
+  public quoteMessage = '';
   /**
    * FormGroup used as a model for form input
    */
@@ -80,9 +83,12 @@ export class ContactPage {
    * @param fb Provides the service to build a form
    * @param geolocation Ionic Cordova plugin to natively handle geolocation data
    */
-  constructor(public navCtrl: NavController, public modalCtrl : ModalController, private http: HttpClient, 
-    public alertController: AlertController, private fb: FormBuilder, private geolocation: Geolocation) {
-    
+  constructor(public quotationProvider: QuotationProvider ,public navCtrl: NavController, public modalCtrl : ModalController, private http: HttpClient, 
+    public alertController: AlertController, private fb: FormBuilder, private geolocation: Geolocation, public navParams: NavParams) {
+      
+     // this.amount = navParams.get('data');
+      //this.resName = navParams.get('resName');
+      //this.quotationProvider.attempt();
     this.myGroup = this.fb.group({  
       'name': ['', Validators.compose([Validators.required, Validators.minLength(1)])],
       'email': ['', Validators.compose([Validators.maxLength(70), Validators.pattern('^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$'), Validators.required])],
@@ -99,6 +105,7 @@ export class ContactPage {
     var data = { message : 'hello world' };
     var homePage = this.modalCtrl.create(AboutPage,data);
     homePage.present();
+    
   }
     
   /**
@@ -193,5 +200,25 @@ export class ContactPage {
           return response.json();
         });
   }
+  addQuoteToMessage() {
+    const quoteList = this.quotationProvider.getQuoteList();
+    this.quoteMessage = '\nI\'d like to receive a quote for the following items:\n';
+    this.quoteMessage += '=================\n';
+    quoteList.forEach((element, index) => {
+      this.quoteMessage += (index + 1) + '. ' + element.name + ' x' + element.amount + '\n';
+    });
+    this.quoteMessage += '=================\n';
+
+    const messageText = this.myGroup.get('message').value;
+    this.myGroup.patchValue({
+      message: messageText + this.quoteMessage
+    });
+  }
+
+  public addQuoteDisplay = new Observable((data) => {
+    setInterval(() => {
+      data.next(this.quotationProvider.isQuoteStarted());
+    }, 1000);
+  });
 
 }

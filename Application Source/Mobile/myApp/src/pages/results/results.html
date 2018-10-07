@@ -36,11 +36,52 @@
 
 <ion-content padding>
   <h6 class="instructions">Tap on an object class to go to the Bramhope catalogue for that object</h6>
-  <ion-list>
+  <!--<ion-list>
     <ion-item style="color: black;" *ngFor="let result of resultPreds" (click)="openBrowserToBramhope( result.link )">
       <ion-label>{{ result.name }}: {{ result.likeliness }}%
         <ion-icon *ngIf="result.link" name="open" style="float: right"></ion-icon>
       </ion-label>
     </ion-item>
-  </ion-list>
+  </ion-list>-->
+
+  <!-- <ion-grid>
+    <ion-row>
+      <ion-col>
+          <ion-item style="color: black;" *ngFor="let result of resultPreds">
+              <ion-label>{{ result.name }}: {{ result.likeliness }}%
+      
+              </ion-label>
+            </ion-item>
+      </ion-col>
+      <ion-col>
+        <button item-right clear *ngFor="let result of resultPreds"  (click)=" openBrowserToBramhope( result.link )">
+          <ion-icon *ngIf="result.link" name="open" style="float: right"></ion-icon>
+        </button>
+      </ion-col>
+      <ion-col>
+          <button item-right clear *ngFor="let result of resultPreds"  (click)="openQuoteDialog(result.name)">
+              <ion-icon *ngIf="result.link" name="cart" style="float: right"></ion-icon>
+            </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid> -->
+  <div class="row header">
+    <div class="cname">Class Name</div>
+    <div class="cname">Likelihood</div>
+    <div class="col">Store Link</div>
+    <div class="col">Add to quote</div>
+  </div>
+  <div class="row" *ngFor="let result of resultPreds">
+    <div class="cname"  >{{ result.name }}</div>
+    <div class="cname" >{{ result.likeliness }}%</div>
+    <div class="col"><button item-right clear style = "background-color: transparent"   (click)=" openBrowserToBramhope( result.link )">
+      <ion-icon *ngIf="result.link" name="open" ></ion-icon>
+    </button></div>
+    <div class="col"><button item-right clear style = "background-color: transparent" (click)="openQuoteDialog(result.name)">
+      <ion-icon *ngIf="result.link" name="cart" ></ion-icon>
+    </button></div>
+  </div>
+
 </ion-content>
+
+
