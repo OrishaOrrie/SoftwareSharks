@@ -85,7 +85,11 @@ export async function trainModule(categories) {
                 console.log('The exit code was: ' + code);
                 console.log('The exit signal was: ' + signal);
                 console.log("Finish");
-                resolve('Check_images completed');
+                numCompleted++;
+                if (numCompleted === categories.length) {
+                    resolve('Check_images completed');
+                }
+                // resolve('Check_images completed');
             });
         }
     });
