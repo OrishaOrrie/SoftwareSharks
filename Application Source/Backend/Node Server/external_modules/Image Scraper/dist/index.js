@@ -86,6 +86,9 @@ ImageScraper = function (searchTerm) {
             const j = 0;
 
             const dir = 'downloaded_images/' + dirTerm + '/';
+            if (!fs.existsSync('downloaded_images/')) {
+              fs.mkdirSync('downloaded_images/');
+            }
             if (!fs.existsSync(dir)) {
               fs.mkdirSync(dir);
             }
