@@ -22,9 +22,10 @@ fb.initFirebaseAdmin();
 import { ConfirmationResponse } from './models/confirmation-response';
 import { ErrorResponse } from './models/error-response';
 import { HTTP_STATUS_CODES } from './models/http-codes';
+import { Logger } from './modules/logger';
 
 const port = process.env.npm_package_config_port;
-
+const logger = new Logger(true);
 //  let body = '';
 
 const requestHandler = (request, response) => {
@@ -57,14 +58,17 @@ const requestHandler = (request, response) => {
                     (uid) => {
                         const body = [];
                         request.on('error', (err) => {
-                            console.error('Request Error: ' + err);
+                            logger.error('Request Error: ' + err);
+                            // console.error('Request Error: ' + err);
                         }).on('data', (chunk) => {
                             body.push(chunk);
                         }).on('end', () => {
                             const result = Buffer.concat(body).toString();
-                            console.log(result);
+                            logger.debug(result);
+                            // console.log(result);
                             response.on('error', (err) => {
-                                console.error('Response Error: ' + err);
+                                logger.error('Response Error: ' + err);
+                                // console.error('Response Error: ' + err);
                             });
                             response.writeHead(HTTP_STATUS_CODES.ACCEPTED, responseHeaders);
                             const confirmResponse: ConfirmationResponse = {
@@ -77,7 +81,8 @@ const requestHandler = (request, response) => {
                     })
                     .catch(
                     (err) => {
-                        console.error('Verification Error: ' + err);
+                        logger.error('Verification Error: ' + err);
+                        // console.error('Verification Error: ' + err);
                         const errorResponse: ErrorResponse = {
                             code: HTTP_STATUS_CODES.FORBIDDEN,
                             acknowledgement: 'Error - Verification: Train Request Rejected!',
@@ -91,7 +96,8 @@ const requestHandler = (request, response) => {
             } else {
                 // Todo: Look into establishing persistant logs on firebase.
                 // Todo: Look into adding more information into the log (Request IP etc)
-                console.error('Error: Unauthorised Request.');
+                logger.error('Error: Unauthorised Request.');
+                // console.error('Error: Unauthorised Request.');
                 const errorResponse: ErrorResponse = {
                     code: HTTP_STATUS_CODES.UNAUTHORISED,
                     acknowledgement: 'Error - Unauthorised: Train Request Rejected!',
@@ -142,7 +148,9 @@ const requestHandler = (request, response) => {
             // Todo: Need to find out how the
             // dashboard will post images to predict
 
-            console.log('Predicting');
+            logger.info('Predicting');
+            // console.log('Predicting');
+
             // body += '<p>Predicting Now</p>';
 
             // Deal with image posted using predictModule.js
@@ -151,7 +159,8 @@ const requestHandler = (request, response) => {
             response.writeHead(HTTP_STATUS_CODES.NOT_IMPLEMENTED, { 'Content-Type': 'text/html' });
             // response.end(body);
         } else {
-            console.log(request.url + ' does not exist!');
+            logger.error(request.url + ' does not exist!');
+            // console.log(request.url + ' does not exist!');
         }
         return;
     }
@@ -168,5 +177,8 @@ server.listen(port || 8080, (err) => {
         return console.log('ERROR', err);
     }
 
-    console.log('Server is listening on %s', port);
+    logger.info('----------------------------------------');
+    logger.info('Server Initialised');
+    logger.info('----------------------------------------');
+    logger.info('Server is listening on: ' + port);
 });
