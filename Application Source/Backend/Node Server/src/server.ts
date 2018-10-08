@@ -54,45 +54,59 @@ const requestHandler = (request, response) => {
         if (request.url === '/trainModel') {
             if (request.headers.authorization) {
                 fb.verifyToken(request.headers.authorization)
-                .then(
-                    (uid) => {
-                        const body = [];
-                        request.on('error', (err) => {
-                            logger.error('Request Error: ' + err);
-                            // console.error('Request Error: ' + err);
-                        }).on('data', (chunk) => {
-                            body.push(chunk);
-                        }).on('end', () => {
-                            const result = Buffer.concat(body).toString();
-                            logger.debug(result);
-                            // console.log(result);
-                            response.on('error', (err) => {
-                                logger.error('Response Error: ' + err);
-                                // console.error('Response Error: ' + err);
+                    .then(
+                        (uid) => {
+                            const body = [];
+                            request.on('error', (err) => {
+                                logger.error('Request Error: ' + err);
+                                // console.error('Request Error: ' + err);
+                            }).on('data', (chunk) => {
+                                body.push(chunk);
+                            }).on('end', () => {
+                                const result = Buffer.concat(body).toString();
+                                try {
+                                    const categories = JSON.parse(result.toString());
+                                    logger.debug(result);
+                                    console.log('Categories: ' + categories);
+
+                                    // Deal with categories using trainModule.js
+
+                                    // Todo: Establish after bug testing
+                                    // trainModule.trainModule(categories);
+
+                                    response.on('error', (err) => {
+                                        logger.error('Response Error: ' + err);
+                                    });
+                                    response.writeHead(HTTP_STATUS_CODES.ACCEPTED, responseHeaders);
+                                    const confirmResponse: ConfirmationResponse = {
+                                        acknowledgement: 'Train Request Accepted!',
+                                        data: 'No data',
+                                    };
+                                    response.write(JSON.stringify(confirmResponse));
+                                    response.end();
+                                } catch (err) {
+                                    if (err instanceof SyntaxError) {
+                                        console.error('Syntax Error: ' + (err));
+                                    } else {
+                                        console.error('Unknown Error: ' + err);
+                                    }
+                                }
                             });
-                            response.writeHead(HTTP_STATUS_CODES.ACCEPTED, responseHeaders);
-                            const confirmResponse: ConfirmationResponse = {
-                                acknowledgement: 'Train Request Accepted!',
+                        })
+                    .catch(
+                        (err) => {
+                            logger.error('Verification Error: ' + err);
+                            // console.error('Verification Error: ' + err);
+                            const errorResponse: ErrorResponse = {
+                                code: HTTP_STATUS_CODES.FORBIDDEN,
+                                acknowledgement: 'Error - Verification: Train Request Rejected!',
                                 data: 'No data',
                             };
-                            response.write(JSON.stringify(confirmResponse));
+                            response.writeHead(HTTP_STATUS_CODES.FORBIDDEN, responseHeaders);
+                            response.write(JSON.stringify(errorResponse));
                             response.end();
-                        });
-                    })
-                    .catch(
-                    (err) => {
-                        logger.error('Verification Error: ' + err);
-                        // console.error('Verification Error: ' + err);
-                        const errorResponse: ErrorResponse = {
-                            code: HTTP_STATUS_CODES.FORBIDDEN,
-                            acknowledgement: 'Error - Verification: Train Request Rejected!',
-                            data: 'No data',
-                        };
-                        response.writeHead(HTTP_STATUS_CODES.FORBIDDEN, responseHeaders);
-                        response.write(JSON.stringify(errorResponse));
-                        response.end();
-                    },
-                );
+                        },
+                    );
             } else {
                 // Todo: Look into establishing persistant logs on firebase.
                 // Todo: Look into adding more information into the log (Request IP etc)
