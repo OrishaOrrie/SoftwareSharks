@@ -16,7 +16,7 @@ import http = require('http');
 
 import fb = require('./modules/firebaseAdmin');
 import predictModule = require('./modules/predictModule');
-// import trainModule = require('./modules/trainModule');
+import trainModule = require('./modules/trainModule');
 fb.initFirebaseAdmin();
 
 import { ConfirmationResponse } from './models/confirmation-response';
@@ -25,7 +25,7 @@ import { HTTP_STATUS_CODES } from './models/http-codes';
 
 const port = process.env.npm_package_config_port;
 
-// let body = '';
+//  let body = '';
 
 const requestHandler = (request, response) => {
     const responseHeaders = {
@@ -108,25 +108,25 @@ const requestHandler = (request, response) => {
 
             // Todo: Need to find out how dashboard
             // will post categories to create
-            // const data = [];
+            //  const data = [];
 
-            // console.log('Training Model');
-            // Todo: Uncomment When done testing
-            // request.on('data', (chunk) => {
-            //     data.push(chunk);
-            // });
-            // request.on('end', () => {
-            //     try {
-            //         // let categories = JSON.parse(data);
-            //         // console.log(categories);
+            //  console.log('Training Model');
+            // // Todo: Uncomment When done testing
+            //  request.on('data', (chunk) => {
+            //      data.push(chunk);
+            //  });
+            //  request.on('end', () => {
+            //      try {
+            //          let categories = JSON.parse(data.toString());
+            //          console.log("Categories: "+categories);
 
-            //         // Deal with categories using trainModule.js
+            //          // Deal with categories using trainModule.js
 
-            //         // Todo: Establish after bug testing
-            //         // trainModule.trainModule(categories);
+            //          // Todo: Establish after bug testing
+            //          trainModule.trainModule(categories);
 
-            //         // body += "<p>Training Model Now</p>"
-            //         // body += "<p>" + JSON.stringify(categories) + "</p>";
+            //         body += "<p>Training Model Now</p>"
+            //         body += "<p>" + JSON.stringify(categories) + "</p>";
 
             //         response.writeHead(200, { 'Content-Type': 'text/html' });
             //         response.end(body);

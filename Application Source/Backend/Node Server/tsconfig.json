@@ -9,7 +9,8 @@
     "lib": [
       "es2017.object",
       "es2015",
-      "es2017"
+      "es2017",
+      "dom"
     ],
     "resolveJsonModule": true
   },
@@ -17,7 +18,8 @@
     "./node_modules/@types/node/index.d.ts"
   ],
   "include": [
-    "src/**/*.ts"
+    "src/**/*.ts",
+    "external_modules/Image Scraper/src/*.ts"
   ],
   "exclude": [
     "node_modules",

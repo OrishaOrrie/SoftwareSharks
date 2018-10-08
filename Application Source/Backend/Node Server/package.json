@@ -30,13 +30,16 @@
     "start": "ntl",
     "start-dev": "tsc-watch --onSuccess \"node build/server.js\" --onFailure \"echo Beep! Compilation Failed\"",
     "start-prod": "node build/server.js --name Ninshiki NodeJS Backend --target ES6 --module commonjs",
-    "gen-docs" : "typedoc --out docs/"
+    "gen-docs": "typedoc --out docs/"
   },
   "dependencies": {
     "body": "^5.1.0",
     "firebase-admin": "^6.0.0",
-    "puppeteer": "^1.8.0",
-    "send-data": "^8.0.0"
+    "send-data": "^8.0.0",
+    "jquery": "^3.3.1",
+    "jsdom": "^11.12.0",
+    "minimist": "^1.2.0",
+    "puppeteer": "^1.6.2"
   },
   "devDependencies": {
     "@types/node": "^10.11.4",
