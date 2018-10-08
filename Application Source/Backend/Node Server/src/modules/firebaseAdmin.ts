@@ -30,13 +30,20 @@ export function initFirebaseAdmin() {
 
 export function verifyToken(idToken) {
     checkSetInit();
-    return admin.auth().verifyIdToken(idToken)
-    .then((decodedToken) => {
-        console.log('Successfully verified user!');
-        const uid = decodedToken.uid;
-        return uid;
-    }).catch((error) => {
-        console.log(error);
-        return null;
-    });
+    try {
+        return admin.auth().verifyIdToken(idToken)
+        .then((decodedToken) => {
+            console.log('Successfully verified user!');
+            const uid = decodedToken.uid;
+            return uid;
+        }).catch((error) => {
+            console.error('Error verifying user: ' + error);
+            // Promise.reject(error);
+            throw error;
+            // return error;
+        });
+    } catch (error) {
+        console.error('Error attempting to call verifyIdToken(): ' + error);
+        return error;
+    }
 }

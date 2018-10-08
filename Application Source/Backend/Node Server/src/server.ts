@@ -20,6 +20,7 @@ import predictModule = require('./modules/predictModule');
 fb.initFirebaseAdmin();
 
 import { ConfirmationResponse } from './models/confirmation-response';
+import { ErrorResponse } from './models/error-response';
 import { HTTP_STATUS_CODES } from './models/http-codes';
 
 const port = process.env.npm_package_config_port;
@@ -50,35 +51,56 @@ const requestHandler = (request, response) => {
         // Create a new request and post it to client once its complete
         // Because this will obv take a while
         if (request.url === '/trainModel') {
-            fb.verifyToken(request.headers.authorization).then(
-                (uid) => {
-                    const body = [];
-                    request.on('error', (err) => {
-                        console.error('Request Error: ' + err);
-                    }).on('data', (chunk) => {
-                        body.push(chunk);
-                    }).on('end', () => {
-                        const result = Buffer.concat(body).toString();
-                        console.log(result);
-                        response.on('error', (err) => {
-                            console.error('Response Error: ' + err);
+            if (request.headers.authorization) {
+                fb.verifyToken(request.headers.authorization)
+                .then(
+                    (uid) => {
+                        const body = [];
+                        request.on('error', (err) => {
+                            console.error('Request Error: ' + err);
+                        }).on('data', (chunk) => {
+                            body.push(chunk);
+                        }).on('end', () => {
+                            const result = Buffer.concat(body).toString();
+                            console.log(result);
+                            response.on('error', (err) => {
+                                console.error('Response Error: ' + err);
+                            });
+                            response.writeHead(HTTP_STATUS_CODES.ACCEPTED, responseHeaders);
+                            const confirmResponse: ConfirmationResponse = {
+                                acknowledgement: 'Train Request Accepted!',
+                                data: 'No data',
+                            };
+                            response.write(JSON.stringify(confirmResponse));
+                            response.end();
                         });
-                        response.writeHead(HTTP_STATUS_CODES.ACCEPTED, responseHeaders);
-                        const confirmResponse: ConfirmationResponse = {
-                            acknowledgement: 'Train Request Accepted!',
+                    })
+                    .catch(
+                    (err) => {
+                        console.error('Verification Error: ' + err);
+                        const errorResponse: ErrorResponse = {
+                            code: HTTP_STATUS_CODES.FORBIDDEN,
+                            acknowledgement: 'Error - Verification: Train Request Rejected!',
                             data: 'No data',
                         };
-                        response.write(JSON.stringify(confirmResponse));
+                        response.writeHead(HTTP_STATUS_CODES.FORBIDDEN, responseHeaders);
+                        response.write(JSON.stringify(errorResponse));
                         response.end();
-                    });
-                },
-            ).catch(
-                (err) => {
-                    console.error(err);
-                    response.writeHead(HTTP_STATUS_CODES.FORBIDDEN, responseHeaders);
-                    response.end();
-                },
-            );
+                    },
+                );
+            } else {
+                // Todo: Look into establishing persistant logs on firebase.
+                // Todo: Look into adding more information into the log (Request IP etc)
+                console.error('Error: Unauthorised Request.');
+                const errorResponse: ErrorResponse = {
+                    code: HTTP_STATUS_CODES.UNAUTHORISED,
+                    acknowledgement: 'Error - Unauthorised: Train Request Rejected!',
+                    data: 'No data',
+                };
+                response.writeHead(HTTP_STATUS_CODES.UNAUTHORISED, responseHeaders);
+                response.write(JSON.stringify(errorResponse));
+                response.end();
+            }
             // response.end(confirmResponse);
 
             // Todo: Do proper verification comments here
