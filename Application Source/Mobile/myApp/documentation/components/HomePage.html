@@ -64,23 +64,6 @@
     <code>src/pages/home/home.ts</code>
 </p>
 
-    <p class="comment">
-        <h3>Description</h3>
-    </p>
-    <p class="comment">
-        <p>File Name:       home.ts
-Version Number:  v1.0
-Author Name:     Orisha Orrie
-Project Name:    Ninshiki
-Organization:    Software Sharks
-Manual:  Refer to the Ninshiki User Manual at <a href="https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf">https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf</a></p>
-<h2 id="update-history-">Update History:</h2>
-<p>Date         Author        Description</p>
-<h2 id="21-07-2018-orisha-created-component">21/07/2018   Orisha        Created component</h2>
-<p>Functional Description:
-  Serves as a facade for the application</p>
-
-    </p>
 
 
 
@@ -178,7 +161,7 @@ Manual:  Refer to the Ninshiki User Manual at <a href="https://github.com/Orisha
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/pages/home/home.ts:39</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/pages/home/home.ts:40</a></div>
                             </td>
                         </tr>
 
@@ -210,21 +193,6 @@ import { ModalController } from &#x27;ionic-angular&#x27;;
 import { AboutPage } from &#x27;../about/about&#x27;;
 //import {ContactPage} from &#x27;../contact/contact&#x27;;
 
-/**
- * File Name:       home.ts
- * Version Number:  v1.0
- * Author Name:     Orisha Orrie
- * Project Name:    Ninshiki
- * Organization:    Software Sharks
- * Manual:  Refer to the Ninshiki User Manual at https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf
- * Update History:
- * ------------------------------------------
- * Date         Author        Description
- * 21/07/2018   Orisha        Created component
- * ------------------------------------------
- * Functional Description:
- *  Serves as a facade for the application
- */
 
 @Component({
   selector: &#x27;page-home&#x27;,
@@ -251,7 +219,25 @@ export class HomePage {
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;ion-header&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;!-- /**
+* File Name:       home.ts
+* Version Number:  v1.1
+* Author:          Orisha Orrie
+* Project Name:    Ninshiki
+* Organization:    Software Sharks
+* User Manual:     Refer to https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf
+* Update History:
+* ------------------------------------------
+* Date         Author		Description
+* 20/07/2018   Orisha		Created component
+* 18/09/2018   Orisha   Fixed layout
+* 18/09/2018   Orisha   Created home page functionality
+* ------------------------------------------
+* Functional Description:
+*  The main page that woll be seen when a user opens the app.
+*/ --&gt;
+
+&lt;ion-header&gt;
 &lt;ion-navbar&gt;
   
     &lt;ion-title&gt;Home&lt;/ion-title&gt;
@@ -262,7 +248,7 @@ export class HomePage {
       &lt;/ion-buttons&gt;
 &lt;/ion-navbar&gt;
 &lt;/ion-header&gt;
-
+&lt;!-- Carousel of images with a decription of the app --&gt;
 &lt;ion-content padding&gt;
  &lt;ion-slides pager&gt;
   &lt;ion-slide id &#x3D; &quot;slide1&quot; style&#x3D;&quot;background-image: url(assets/imgs/takeimage1.jpeg)&quot;&gt;
@@ -308,8 +294,8 @@ export class HomePage {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ion-header><ion-navbar>      <ion-title>Home</ion-title>    <ion-buttons end>        <button ion-button icon-only (click) ="openModal()"  >         <ion-icon name="help-circle" color= "dark"></ion-icon>       </button>      </ion-buttons></ion-navbar></ion-header><ion-content padding> <ion-slides pager>  <ion-slide id = "slide1" style="background-image: url(assets/imgs/takeimage1.jpeg)">    <h2>Submit Image</h2>   <p class="writing">Click on the Predict button and select an image of an object to be recognised.</p>   </ion-slide>  <ion-slide id ="slide2" style="background-image: url(assets/imgs/brains.jpg)">    <h2>Image Analysis</h2>    <p class="writing">Once you submit an image, we\'ll process the image with our trained AI model.</p>  </ion-slide>  <ion-slide id = "slide3" style="background-image: url(assets/imgs/store.jpg)">    <h2>Image Classification</h2>    <p class="writing">You will then receive a classification of the object in the image.</p>  </ion-slide> </ion-slides></ion-content></div>'
-    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'page-about'},{'name': 'ContactPage', 'selector': 'page-contact'},{'name': 'FeedbackPage', 'selector': 'page-feedback'},{'name': 'HomePage', 'selector': 'page-home'},{'name': 'ImagerecPage', 'selector': 'page-imagerec'},{'name': 'MyApp', 'selector': ''},{'name': 'ResultsPage', 'selector': 'page-results'},{'name': 'UtilitiesPage', 'selector': 'page-utilities'}];
+        var COMPONENT_TEMPLATE = '<div><!-- /*** File Name:       home.ts* Version Number:  v1.1* Author:          Orisha Orrie* Project Name:    Ninshiki* Organization:    Software Sharks* User Manual:     Refer to https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf* Update History:* ------------------------------------------* Date         Author		Description* 20/07/2018   Orisha		Created component* 18/09/2018   Orisha   Fixed layout* 18/09/2018   Orisha   Created home page functionality* ------------------------------------------* Functional Description:*  The main page that woll be seen when a user opens the app.*/ --><ion-header><ion-navbar>      <ion-title>Home</ion-title>    <ion-buttons end>        <button ion-button icon-only (click) ="openModal()"  >         <ion-icon name="help-circle" color= "dark"></ion-icon>       </button>      </ion-buttons></ion-navbar></ion-header><!-- Carousel of images with a decription of the app --><ion-content padding> <ion-slides pager>  <ion-slide id = "slide1" style="background-image: url(assets/imgs/takeimage1.jpeg)">    <h2>Submit Image</h2>   <p class="writing">Click on the Predict button and select an image of an object to be recognised.</p>   </ion-slide>  <ion-slide id ="slide2" style="background-image: url(assets/imgs/brains.jpg)">    <h2>Image Analysis</h2>    <p class="writing">Once you submit an image, we\'ll process the image with our trained AI model.</p>  </ion-slide>  <ion-slide id = "slide3" style="background-image: url(assets/imgs/store.jpg)">    <h2>Image Classification</h2>    <p class="writing">You will then receive a classification of the object in the image.</p>  </ion-slide> </ion-slides></ion-content></div>'
+    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'page-about'},{'name': 'ContactPage', 'selector': 'page-contact'},{'name': 'FeedbackPage', 'selector': 'page-feedback'},{'name': 'HomePage', 'selector': 'page-home'},{'name': 'ImagerecPage', 'selector': 'page-imagerec'},{'name': 'MyApp', 'selector': ''},{'name': 'QuoteBuilderPage', 'selector': 'page-quote-builder'},{'name': 'ResultsPage', 'selector': 'page-results'},{'name': 'UtilitiesPage', 'selector': 'page-utilities'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'HomePage'};
 </script>
