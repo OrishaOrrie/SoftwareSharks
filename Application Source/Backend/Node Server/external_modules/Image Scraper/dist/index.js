@@ -106,15 +106,24 @@ ImageScraper = function (searchTerm) {
               response.pipe(file);
               file.on('finish', (cb) => {
                 file.close();
-                console.log(i + ': ' + urls[i]);
+                // console.log(i + ': ' + urls[i]);
                 numDown++;
-                console.log(numDown + ' images downloaded');
-
+                // --------------------------------------------------
+                // Todo: COMMENT WHEN IN PROD
+                // --------------------------------------------------
+                            
+                if(numDown <= numImages-50) {//-250 to speed up
+                  //console.log(i + ': ' + urls[i]);
+                  console.log(numDown + ' images downloaded');
+                }
+                // --------------------------------------------------
                 /**
                  * If the number of images processed is within 50 of the total images identified,
                  * then resolve this promise
                  */
-                if (numDown > numImages - 50) {
+                if (numDown > numImages-50) {//-250 to speed up
+                  //fs.unlinkSync(fileName);
+                  //console.log("Unlinking");
                   resolve('\nYEEEEEEEET\n');
                   clearTimeout(); // doesn't work
                   return; // doesn't work
@@ -124,8 +133,16 @@ ImageScraper = function (searchTerm) {
             }).on('error', (err, cb) => {
               fs.unlinkSync(fileName);
               numDown++;
-              console.log(i + ' was deleted');
-              console.log(numDown + ' images completed');
+              // --------------------------------------------------
+              // Todo: COMMENT WHEN IN PROD
+              // --------------------------------------------------
+                            
+              if(numDown <= numImages-50) {//-250 to speed up
+                console.log(i + ' was deleted');
+                console.log(numDown + ' images completed');
+              }
+              // --------------------------------------------------
+              
               // if (cb) cb(err.message);
             });
 

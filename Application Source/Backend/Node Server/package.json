@@ -39,6 +39,7 @@
     "jsdom": "^11.12.0",
     "minimist": "^1.2.0",
     "puppeteer": "^1.6.2",
+    "python-shell": "^1.0.6",
     "send-data": "^8.0.0",
     "webpack": "^4.20.2"
   },

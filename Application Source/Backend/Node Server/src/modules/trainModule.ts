@@ -9,8 +9,11 @@
 //         allow for training a model based on user
 //         defined categories.
 // */
-// const test=require("../../external_modules/Image Scraper/src/index");
+
 let ImageScraper = require("../../external_modules/Image Scraper/dist/index");
+// let PythonShell = require('python-shell');
+import {PythonShell} from 'python-shell';
+
 export async function trainModule(categories) {
 // let trainModule = async function trainModule(categories) {
     console.log('Training Module');
@@ -33,6 +36,23 @@ export async function trainModule(categories) {
             console.log('Image scraping for: ' + categories[category]);
             ImageScraper.ImageScraper(categories[category]).then(() => {
                 numCompleted++;
+
+                var imageChecker='./external_modules/Image Scraper/check_images.py';
+                let pyChecker = new PythonShell(imageChecker);
+                pyChecker.send(categories[category]);
+                console.log("Checking folder: "+categories[category]);
+                pyChecker.on('message',function(message){
+                    console.log('Python Checker: '+message);
+                });
+                pyChecker.end(function(err,code,signal) {
+                    if(err){
+                        throw err;
+                    };
+                    console.log('The exit code was: '+code);
+                    console.log('The exit signal was: '+signal);
+                    console.log("Finish");
+                });
+
                 console.log('\n' + numCompleted + ' categories completed out of ' + categories.length + '\n');
                 if (numCompleted === categories.length) {
                     resolve('All loops completed');
@@ -62,6 +82,40 @@ export async function trainModule(categories) {
     // We now have images for categories
     // Initialise training process
     console.log('THIS SHOULD ONLY APPEAR AFTER ALL IMAGES ARE SCRAPED');
+
+    //Run the python image checker
+    // var imageChecker='./external_modules/Image Scraper/check_images.py';
+    // let pyChecker = new PythonShell(imageChecker);
+    // pyChecker.send
+    // pyChecker.on('message',function(message){
+    //     console.log('Python: '+message);
+    // });
+    // pyChecker.end(function(err,code,signal) {
+    //     if(err){
+    //         throw err;
+    //     };
+    //     console.log('The exit code was: '+code);
+    //     console.log('The exit signal was: '+signal);
+    //     console.log("Finish");
+    // });
+
+    //Split Files
+    // var myScript='./external_modules/Keras Training Model/split-files.py';
+    // let pyshell = new PythonShell(myScript);
+
+    // pyshell.on('message',function(message){
+    //     console.log('Python: '+message);
+    // });
+    // pyshell.end(function(err,code,signal) {
+    //     if(err){
+    //         throw err;
+    //     };
+    //     console.log('The exit code was: '+code);
+    //     console.log('The exit signal was: '+signal);
+    //     console.log("Finish");
+    // });
+
+
 }
 
 // module.exports.trainModule = trainModule;

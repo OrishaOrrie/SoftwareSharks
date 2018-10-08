@@ -3,8 +3,10 @@ import sys
 import requests
 import cv2
 import os
-
-arg1 = sys.argv[1]
+if len(sys.argv) < 2:
+    arg1 = input("Category: ")
+else:
+    arg1 = sys.argv[1]
 
 formatted_arg = arg1.replace(" ", "_")
 arg1 = ".\downloaded_images\\" + formatted_arg
