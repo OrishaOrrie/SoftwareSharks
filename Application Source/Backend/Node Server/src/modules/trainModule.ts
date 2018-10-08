@@ -37,22 +37,6 @@ export async function trainModule(categories) {
             ImageScraper.ImageScraper(categories[category]).then(() => {
                 numCompleted++;
 
-                var imageChecker='./external_modules/Image Scraper/check_images.py';
-                let pyChecker = new PythonShell(imageChecker);
-                pyChecker.send(categories[category]);
-                console.log("Checking folder: "+categories[category]);
-                pyChecker.on('message',function(message){
-                    console.log('Python Checker: '+message);
-                });
-                pyChecker.end(function(err,code,signal) {
-                    if(err){
-                        throw err;
-                    };
-                    console.log('The exit code was: '+code);
-                    console.log('The exit signal was: '+signal);
-                    console.log("Finish");
-                });
-
                 console.log('\n' + numCompleted + ' categories completed out of ' + categories.length + '\n');
                 if (numCompleted === categories.length) {
                     resolve('All loops completed');
@@ -83,37 +67,47 @@ export async function trainModule(categories) {
     // Initialise training process
     console.log('THIS SHOULD ONLY APPEAR AFTER ALL IMAGES ARE SCRAPED');
 
-    //Run the python image checker
-    // var imageChecker='./external_modules/Image Scraper/check_images.py';
-    // let pyChecker = new PythonShell(imageChecker);
-    // pyChecker.send
-    // pyChecker.on('message',function(message){
-    //     console.log('Python: '+message);
-    // });
-    // pyChecker.end(function(err,code,signal) {
-    //     if(err){
-    //         throw err;
-    //     };
-    //     console.log('The exit code was: '+code);
-    //     console.log('The exit signal was: '+signal);
-    //     console.log("Finish");
-    // });
+    //Check Images
+    numCompleted = 0;
+    const checkImages = new Promise(async (resolve) => {
+        for (const category in categories) {
+            var imageChecker = './external_modules/Image Scraper/check_images.py';
+            let pyChecker = new PythonShell(imageChecker);
+            pyChecker.send(categories[category]);
+            console.log("Checking folder: " + categories[category]);
+            pyChecker.on('message', function (message) {
+                console.log('Python Checker: ' + message);
+            });
+            pyChecker.end(function (err, code, signal) {
+                if (err) {
+                    throw err;
+                };
+                console.log('The exit code was: ' + code);
+                console.log('The exit signal was: ' + signal);
+                console.log("Finish");
+                resolve('Check_images completed');
+            });
+        }
+    });
+
+    const checkedImages = await checkImages;
+    console.log(checkedImages);
 
     //Split Files
-    // var myScript='./external_modules/Keras Training Model/split-files.py';
-    // let pyshell = new PythonShell(myScript);
+    var fileSplitter='./external_modules/Keras Training Model/split-files.py';
+    let pySplitFiles = new PythonShell(fileSplitter);
 
-    // pyshell.on('message',function(message){
-    //     console.log('Python: '+message);
-    // });
-    // pyshell.end(function(err,code,signal) {
-    //     if(err){
-    //         throw err;
-    //     };
-    //     console.log('The exit code was: '+code);
-    //     console.log('The exit signal was: '+signal);
-    //     console.log("Finish");
-    // });
+    pySplitFiles.on('message',function(message){
+        console.log('Python: '+message);
+    });
+    pySplitFiles.end(function(err,code,signal) {
+        if(err){
+            throw err;
+        };
+        console.log('The exit code was: '+code);
+        console.log('The exit signal was: '+signal);
+        console.log("Finish");
+    });
 
 
 }
