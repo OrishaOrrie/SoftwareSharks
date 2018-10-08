@@ -25,7 +25,7 @@ import { HTTP_STATUS_CODES } from './models/http-codes';
 import { Logger } from './modules/logger';
 
 const port = process.env.npm_package_config_port;
-const logger = new Logger(true);
+const logger = new Logger(true, true, true);
 //  let body = '';
 
 const requestHandler = (request, response) => {
@@ -176,7 +176,6 @@ server.listen(port || 8080, (err) => {
     if (err) {
         return console.log('ERROR', err);
     }
-
     logger.info('----------------------------------------');
     logger.info('Server Initialised');
     logger.info('----------------------------------------');

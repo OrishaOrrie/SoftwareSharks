@@ -19,17 +19,25 @@ export class Logger {
     private errorStream = fs.createWriteStream('build/logs/error.txt', { flags : 'a+', encoding : 'utf-8' });
     private debugStream = fs.createWriteStream('build/logs/debug.txt', { flags : 'a+', encoding : 'utf-8' });
 
-    private verbose = false;
+    private verbose = {
+        info: false,
+        error: false,
+        debug: false
+    };
 
-    constructor(verbose: boolean) {
-        this.verbose = verbose;
+    constructor(infoVerbose?: boolean, errorVerbose?: boolean, debugVerbose?: boolean) {
+        this.verbose = {
+            info: infoVerbose,
+            error: errorVerbose,
+            debug: debugVerbose
+        };
     }
 
     public info(msg: string) {
         const message = new Date().toISOString() + ' : ' + msg + '\n';
         this.infoStream.write(message);
 
-        if (this.verbose) {
+        if (this.verbose.info) {
             console.info(message);
         }
     }
@@ -38,7 +46,7 @@ export class Logger {
         const message = new Date().toISOString() + ' : ' + msg + '\n';
         this.errorStream.write(message);
 
-        if (this.verbose) {
+        if (this.verbose.error) {
             console.error(message);
         }
     }
@@ -47,7 +55,7 @@ export class Logger {
         const message = new Date().toISOString() + ' : ' + msg + '\n';
         this.debugStream.write(message);
 
-        if (this.verbose) {
+        if (this.verbose.debug) {
             console.warn(message);
         }
     }
