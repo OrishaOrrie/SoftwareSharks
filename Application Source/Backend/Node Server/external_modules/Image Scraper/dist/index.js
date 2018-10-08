@@ -131,6 +131,7 @@ ImageScraper = function (searchTerm) {
                 // if (cb) { cb(err.message); }
               });
             }).on('error', (err, cb) => {
+              file.close();
               fs.unlinkSync(fileName);
               numDown++;
               // --------------------------------------------------

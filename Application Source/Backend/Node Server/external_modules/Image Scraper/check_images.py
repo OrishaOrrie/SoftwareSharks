@@ -16,7 +16,7 @@ for imagePath in paths.list_images(arg1):
     delete = False
 
     try:
-        image = cv2.imread(imagePath)
+        image = cv2.imread(imagePath,0)
 
         if image is None:
             delete = True
@@ -29,3 +29,4 @@ for imagePath in paths.list_images(arg1):
         print("[INFO] deleting {}".format(imagePath))
         sys.stdout.flush()
         os.remove(imagePath)
+    
