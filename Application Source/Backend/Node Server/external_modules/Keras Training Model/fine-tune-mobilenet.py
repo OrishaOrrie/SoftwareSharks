@@ -192,8 +192,8 @@ def plot_training(history):
 
 if __name__=="__main__":
 	a=argparse.ArgumentParser()
-	a.add_argument("--train_dir", default="./training_data")
-	a.add_argument("--val_dir", default="./validation_data")
+	a.add_argument("--train_dir")#, default="./training_data")
+	a.add_argument("--val_dir")#, default="./validation_data")
 	a.add_argument("--nb_epoch",default=NB_EPOCHS)
 	a.add_argument("--batch_size",default=BAT_SIZE)
 	a.add_argument("--output_model_file",default="mobilenet-tf.h5")
@@ -202,9 +202,14 @@ if __name__=="__main__":
 	ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 	args=a.parse_args()
+
 	if args.train_dir is None or args.val_dir is None:
-		a.print_help()
-		sys.exit(1)
+		args.train_dir = input("Train Dir: ")
+		args.val_dir = input("Val Dir: ")
+		args.output_model_file = input("Model File:")
+		args.nb_epoch = input("Epochs: ")
+		# a.print_help()
+		# sys.exit(1)
 
 	if (not os.path.exists(args.train_dir)) or (not os.path.exists(args.val_dir)):
 		print("Directories do not exist")

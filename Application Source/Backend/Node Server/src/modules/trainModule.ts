@@ -13,6 +13,7 @@
 let ImageScraper = require("../../external_modules/Image Scraper/dist/index");
 // let PythonShell = require('python-shell');
 import {PythonShell} from 'python-shell';
+import { head } from 'shelljs';
 
 export async function trainModule(categories) {
 // let trainModule = async function trainModule(categories) {
@@ -121,27 +122,31 @@ export async function trainModule(categories) {
     console.log(filesSplit);
 
     //Train Model
-    // console.log("Training Model Now");
-    // const startTraining = new Promise(async (resolve) => {
-    //     var modelTrainer = './external_modules/Keras Training Model/fine-tune-mobilenet.py';
-    //     let pyTrainer = new PythonShell(modelTrainer);
+    console.log("Training Model Now");
+    const startTraining = new Promise(async (resolve) => {
+        var modelTrainer = './external_modules/Keras Training Model/fine-tune-mobilenet.py';
+        let pyTrainer = new PythonShell(modelTrainer);
 
-    //     pyTrainer.on('message',function(message) {
-    //         console.log("Python Trainer: "+message)
-    //     });
-    //     pyTrainer.end(function(err,code,signal){
-    //         if(err){
-    //             throw err;
-    //         }
-    //         console.log('The exit code was: ' + code);
-    //         console.log('The exit signal was: ' + signal);
-    //         console.log("Finish");
-    //         resolve("Fine-tune-mobilenet completed");
-    //     });
-    // });
+        pyTrainer.send("./"+header+"_dataset/training_data");
+        pyTrainer.send("./"+header+"_dataset/validation_data");
+        pyTrainer.send("./"+header+"_dataset/mobilenet-tf.h5");
+        pyTrainer.send("1");
+        pyTrainer.on('message',function(message) {
+            console.log("Python Trainer: "+message)
+        });
+        pyTrainer.end(function(err,code,signal){
+            if(err){
+                throw err;
+            }
+            console.log('The exit code was: ' + code);
+            console.log('The exit signal was: ' + signal);
+            console.log("Finish");
+            resolve("Fine-tune-mobilenet completed");
+        });
+    });
 
-    // const trainer = await startTraining;
-    // console.log(trainer);
+    const trainer = await startTraining;
+    console.log(trainer);
 
 }
 

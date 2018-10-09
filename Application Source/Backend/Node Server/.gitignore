@@ -4,3 +4,7 @@ package-lock.json
 /src/node_modules
 /src/environment/AccountKey.json
 /docs/
+/**/training_data
+/**/validation_data
+/**/classes.json
+/**/mobilenet.tf.h5
