@@ -733,15 +733,27 @@ img.grayscale:hover {
     border-radius: 50%;
 
 }
-.sidenav {
-    height: inherit; /* 100% Full-height */
-    width: 20%; /* 0 width - change this with JavaScript */
-    position: fixed; /* Stay in place */
+.img-circle
+{
 
-    top: 0; /* Stay at the top */
-    left: 0;
-    background-color: #111; /* Black*/
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 60px; /* Place content 60px from the top */
-    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  border-radius: 50%;
+  background-color: #00695A;
+  background-size: contain;
+}
+
+.img-project{
+  max-width: 70%;
+  height:300px;
+  display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.img-document{
+  max-width: 70%;
+  height:300px;
+  display: block;
+    margin-left: auto;
+    margin-right: auto;
+
 }
