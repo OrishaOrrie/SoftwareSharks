@@ -34,15 +34,15 @@ export async function trainModule(categories) {
     const allLoops = new Promise(async (resolve) => {
         for (const category in categories) {
             console.log('Image scraping for: ' + categories[category]);
-            ImageScraper.ImageScraper(categories[category]).then(() => {
-                numCompleted++;
+            // ImageScraper.ImageScraper(categories[category]).then(() => {
+            //     numCompleted++;
 
-                console.log('\n' + numCompleted + ' categories completed out of ' + categories.length + '\n');
-                if (numCompleted === categories.length) {
-                    resolve('All loops completed');
-                }
-            });
-            // resolve("One loop completed");
+            //     console.log('\n' + numCompleted + ' categories completed out of ' + categories.length + '\n');
+            //     if (numCompleted === categories.length) {
+            //         resolve('All loops completed');
+            //     }
+            // });
+            resolve("One loop completed");
         }
         console.log('THIS SHOULD APPEAR IN THE BEGINNING');
     });
@@ -98,21 +98,50 @@ export async function trainModule(categories) {
     console.log(checkedImages);
 
     //Split Files
-    var fileSplitter='./external_modules/Keras Training Model/split-files.py';
-    let pySplitFiles = new PythonShell(fileSplitter);
+    console.log("Splitting Files");
+    const splitFiles = new Promise(async (resolve) => {
+        var fileSplitter = './external_modules/Keras Training Model/split-files.py';
+        let pySplitFiles = new PythonShell(fileSplitter);
 
-    pySplitFiles.on('message',function(message){
-        console.log('Python: '+message);
+        pySplitFiles.send(header);
+        pySplitFiles.on('message', function (message) {
+            console.log('Python Splitter: ' + message);
+        });
+        pySplitFiles.end(function (err, code, signal) {
+            if (err) {
+                throw err;
+            };
+            console.log('The exit code was: ' + code);
+            console.log('The exit signal was: ' + signal);
+            console.log("Finish");
+            resolve("Split_files completed");
+        });
     });
-    pySplitFiles.end(function(err,code,signal) {
-        if(err){
-            throw err;
-        };
-        console.log('The exit code was: '+code);
-        console.log('The exit signal was: '+signal);
-        console.log("Finish");
-    });
+    const filesSplit = await splitFiles;
+    console.log(filesSplit);
 
+    //Train Model
+    // console.log("Training Model Now");
+    // const startTraining = new Promise(async (resolve) => {
+    //     var modelTrainer = './external_modules/Keras Training Model/fine-tune-mobilenet.py';
+    //     let pyTrainer = new PythonShell(modelTrainer);
+
+    //     pyTrainer.on('message',function(message) {
+    //         console.log("Python Trainer: "+message)
+    //     });
+    //     pyTrainer.end(function(err,code,signal){
+    //         if(err){
+    //             throw err;
+    //         }
+    //         console.log('The exit code was: ' + code);
+    //         console.log('The exit signal was: ' + signal);
+    //         console.log("Finish");
+    //         resolve("Fine-tune-mobilenet completed");
+    //     });
+    // });
+
+    // const trainer = await startTraining;
+    // console.log(trainer);
 
 }
 

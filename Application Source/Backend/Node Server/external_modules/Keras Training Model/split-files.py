@@ -1,9 +1,11 @@
 import os, shutil, json, math, time, random
 from os.path import isfile, join
 
-TRAINING_DIR = "./training_data"
-VALIDATION_DIR = "./validation_data"
-ALL_DIR = "./bramhope_dataset"
+TRAINING_DIR = "/training_data"
+VALIDATION_DIR = "/validation_data"
+MODEL_DIR = "./"
+ALL_DIR = './downloaded_images'
+#ALL_DIR = "./bramhope_dataset"
 MIN_NUM_IMAGES = 30
 
 def createFolder(directory):
@@ -29,11 +31,11 @@ def createClassesJSON(directory):
             })
             i += 1
 
-        with open('classes.json','w') as outfile:
+        with open(MODEL_DIR+'/classes.json','w') as outfile:
             json.dump(classes, outfile, indent=4)
 
 def createCategoryFolders(directory):
-    json_filename = open("classes.json", "r")
+    json_filename = open(MODEL_DIR+"/classes.json", "r")
     json_classes = json.loads( json_filename.read() )
     for x in json_classes['classes']:
         category_path = directory + '/' + x['name']
@@ -43,7 +45,7 @@ def createCategoryFolders(directory):
             # os.makedirs(directory + '/' + x['name'])
 
 def copyImages(directory):
-    json_filename = open("classes.json", "r")
+    json_filename = open(MODEL_DIR+"/classes.json", "r")
     json_classes = json.loads( json_filename.read() )
     for x in json_classes['classes']:
         category_path = directory + '/' + x['name']
@@ -64,6 +66,10 @@ def copyImages(directory):
                 count += 1
 
 start = time.time()
+MODEL_DIR += input("Model: ")+"_dataset"
+createFolder(MODEL_DIR)
+TRAINING_DIR = MODEL_DIR + TRAINING_DIR
+VALIDATION_DIR = MODEL_DIR + VALIDATION_DIR
 createFolder(TRAINING_DIR)
 createFolder(VALIDATION_DIR)
 createClassesJSON(ALL_DIR)
@@ -71,7 +77,7 @@ createCategoryFolders(TRAINING_DIR)
 createCategoryFolders(VALIDATION_DIR)
 copyImages(ALL_DIR)
 end = time.time()
-print((end - start) + " seconds to complete which is ")
+print((end - start))# + " seconds to complete which is ")
 
 # PROCESS
 #   1. Create Training and Validation Folders
