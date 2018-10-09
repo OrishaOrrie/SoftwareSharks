@@ -35,14 +35,14 @@ export async function trainModule(categories) {
     const allLoops = new Promise(async (resolve) => {
         for (const category in categories) {
             console.log('Image scraping for: ' + categories[category]);
-            // ImageScraper.ImageScraper(categories[category]).then(() => {
-            //     numCompleted++;
+            ImageScraper.ImageScraper(categories[category]).then(() => {
+                numCompleted++;
 
-            //     console.log('\n' + numCompleted + ' categories completed out of ' + categories.length + '\n');
-            //     if (numCompleted === categories.length) {
-            //         resolve('All loops completed');
-            //     }
-            // });
+                console.log('\n' + numCompleted + ' categories completed out of ' + categories.length + '\n');
+                if (numCompleted === categories.length) {
+                    resolve('All loops completed');
+                }
+            });
             resolve("One loop completed");
         }
         console.log('THIS SHOULD APPEAR IN THE BEGINNING');
