@@ -21,6 +21,7 @@ export async function trainModule(categories) {
     console.log(categories);
 
     const header = categories.header;
+    const ScrapeImages = categories.scrape;
     categories = categories.categories;
 
     // Scrape Images all categories simultaneously
@@ -35,15 +36,20 @@ export async function trainModule(categories) {
     const allLoops = new Promise(async (resolve) => {
         for (const category in categories) {
             console.log('Image scraping for: ' + categories[category]);
-            ImageScraper.ImageScraper(categories[category]).then(() => {
-                numCompleted++;
+            if(ScrapeImages==="true") {
+                ImageScraper.ImageScraper(header,categories[category]).then(() => {
+                    numCompleted++;
 
-                console.log('\n' + numCompleted + ' categories completed out of ' + categories.length + '\n');
-                if (numCompleted === categories.length) {
-                    resolve('All loops completed');
-                }
-            });
-            resolve("One loop completed");
+                    console.log('\n' + numCompleted + ' categories completed out of ' + categories.length + '\n');
+                    if (numCompleted === categories.length) {
+                        resolve('All loops completed');
+                    }
+                });
+            }
+            else{
+                resolve("No Scraping Needed");
+            }
+            // resolve("One loop completed");
         }
         console.log('THIS SHOULD APPEAR IN THE BEGINNING');
     });
@@ -75,6 +81,7 @@ export async function trainModule(categories) {
             var imageChecker = './external_modules/Image Scraper/check_images.py';
             let pyChecker = new PythonShell(imageChecker);
             pyChecker.send(categories[category]);
+            pyChecker.send(header);
             console.log("Checking folder: " + categories[category]);
             pyChecker.on('message', function (message) {
                 console.log('Python Checker: ' + message);
@@ -127,9 +134,9 @@ export async function trainModule(categories) {
         var modelTrainer = './external_modules/Keras Training Model/fine-tune-mobilenet.py';
         let pyTrainer = new PythonShell(modelTrainer);
 
-        pyTrainer.send("./"+header+"_dataset/training_data");
-        pyTrainer.send("./"+header+"_dataset/validation_data");
-        pyTrainer.send("./"+header+"_dataset/"+header+"-mobilenet-tf.h5");
+        pyTrainer.send("./"+header+"_dataset\\training_data");
+        pyTrainer.send("./"+header+"_dataset\\validation_data");
+        pyTrainer.send("./"+header+"_dataset\\"+header+"-mobilenet-tf.h5");
         // --------------------------------------------------
         // Todo: Change line below to reflect number of
         //          Epochs to be used in training model.
@@ -152,6 +159,33 @@ export async function trainModule(categories) {
 
     const trainer = await startTraining;
     console.log(trainer);
+
+    //Run test on model accuracy
+    console.log("testing accuracy of model")
+    //"./test_images"
+    const testModel = new Promise(async (resolve) => {
+        var modelTester = './external_modules/Keras Training Model/test-mobile-acc.py';
+        let pyTester = new PythonShell(modelTester);
+
+        pyTester.send("./"+header+"_dataset/"+header+"-mobilenet-tf.h5");
+        pyTester.send("./test_images")
+
+        pyTester.on('message',function(message) {
+            console.log("Python Tester: "+message)
+        });
+        pyTester.end(function(err,code,signal){
+            if(err){
+                throw err;
+            }
+            console.log('The exit code was: ' + code);
+            console.log('The exit signal was: ' + signal);
+            console.log("Finish");
+            resolve("test-mobile-acc completed");
+        });
+    });
+
+    const tester = await testModel;
+    console.log(tester);
 
 }
 

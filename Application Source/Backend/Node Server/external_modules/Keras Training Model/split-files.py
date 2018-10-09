@@ -4,7 +4,7 @@ from os.path import isfile, join
 TRAINING_DIR = "/training_data"
 VALIDATION_DIR = "/validation_data"
 MODEL_DIR = "./"
-ALL_DIR = './downloaded_images'
+ALL_DIR = './'
 #ALL_DIR = "./bramhope_dataset"
 MIN_NUM_IMAGES = 30
 
@@ -59,14 +59,18 @@ def copyImages(directory):
             numVal = math.ceil( 0.25 * len(files) )
             count = 0
             while (count < numTrain):
-                shutil.copy(category_path + '/' + files[count], TRAINING_DIR + '/' + x['name'])
+                if os.path.isfile(category_path + '/' + files[count]):
+                    shutil.copy(category_path + '/' + files[count], TRAINING_DIR + '/' + x['name'])
                 count += 1
             while (count < numFiles):
-                shutil.copy(category_path + '/' + files[count], VALIDATION_DIR + '/' + x['name'])
+                if os.path.isfile(category_path + '/' + files[count]):
+                    shutil.copy(category_path + '/' + files[count], VALIDATION_DIR + '/' + x['name'])
                 count += 1
 
 start = time.time()
-MODEL_DIR += input("Model: ")+"_dataset"
+MODEL_NAME = input("Model: ")
+MODEL_DIR += MODEL_NAME + "_dataset"
+ALL_DIR += MODEL_NAME + "_downloaded_images"
 createFolder(MODEL_DIR)
 TRAINING_DIR = MODEL_DIR + TRAINING_DIR
 VALIDATION_DIR = MODEL_DIR + VALIDATION_DIR

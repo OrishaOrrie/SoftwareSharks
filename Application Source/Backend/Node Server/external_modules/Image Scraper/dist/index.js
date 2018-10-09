@@ -12,7 +12,7 @@ if (process.argv[3]) {
   headlessMode = true;
 }
 
-ImageScraper = function (searchTerm) {
+ImageScraper = function (category,searchTerm) {
   return new Promise((resolve, reject) => {
     (async () => {
       const browser = await puppeteer.launch({
@@ -85,9 +85,9 @@ ImageScraper = function (searchTerm) {
             // console.log(urls[i]);
             const j = 0;
 
-            const dir = 'downloaded_images/' + dirTerm + '/';
-            if (!fs.existsSync('downloaded_images/')) {
-              fs.mkdirSync('downloaded_images/');
+            const dir = category+'_downloaded_images/' + dirTerm + '/';
+            if (!fs.existsSync(category+'_downloaded_images/')) {
+              fs.mkdirSync(category+'_downloaded_images/');
             }
             if (!fs.existsSync(dir)) {
               fs.mkdirSync(dir);
@@ -112,16 +112,16 @@ ImageScraper = function (searchTerm) {
                 // Todo: COMMENT WHEN IN PROD
                 // --------------------------------------------------
                             
-                if(numDown <= numImages-50) {//-250 to speed up
+                if(numDown <= numImages-100) {//-250 to speed up
                   //console.log(i + ': ' + urls[i]);
-                  console.log(numDown + ' images downloaded');
+                  console.log(numDown + ' images of '+dirTerm+' downloaded');
                 }
                 // --------------------------------------------------
                 /**
                  * If the number of images processed is within 50 of the total images identified,
                  * then resolve this promise
                  */
-                if (numDown > numImages-50) {//-250 to speed up
+                if (numDown > numImages-100) {//-250 to speed up
                   //fs.unlinkSync(fileName);
                   //console.log("Unlinking");
                   resolve('\nYEEEEEEEET\n');
@@ -131,16 +131,16 @@ ImageScraper = function (searchTerm) {
                 // if (cb) { cb(err.message); }
               });
             }).on('error', (err, cb) => {
-              file.close();
               fs.unlinkSync(fileName);
+              file.close();
               numDown++;
               // --------------------------------------------------
               // Todo: COMMENT WHEN IN PROD
               // --------------------------------------------------
                             
-              if(numDown <= numImages-50) {//-250 to speed up
+              if(numDown <= numImages-1000) {//-250 to speed up
                 console.log(i + ' was deleted');
-                console.log(numDown + ' images completed');
+                console.log(numDown + ' images of '+dirTerm+' completed');
               }
               // --------------------------------------------------
               
