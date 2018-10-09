@@ -129,7 +129,12 @@ export async function trainModule(categories) {
 
         pyTrainer.send("./"+header+"_dataset/training_data");
         pyTrainer.send("./"+header+"_dataset/validation_data");
-        pyTrainer.send("./"+header+"_dataset/mobilenet-tf.h5");
+        pyTrainer.send("./"+header+"_dataset/"+header+"-mobilenet-tf.h5");
+        // --------------------------------------------------
+        // Todo: Change line below to reflect number of
+        //          Epochs to be used in training model.
+        // --------------------------------------------------
+        
         pyTrainer.send("1");
         pyTrainer.on('message',function(message) {
             console.log("Python Trainer: "+message)

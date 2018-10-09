@@ -7,4 +7,3 @@ package-lock.json
 /**/training_data
 /**/validation_data
 /**/classes.json
-/**/mobilenet.tf.h5
