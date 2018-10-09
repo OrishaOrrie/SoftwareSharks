@@ -15,14 +15,17 @@ let ImageScraper = require("../../external_modules/Image Scraper/dist/index");
 import {PythonShell} from 'python-shell';
 import { head } from 'shelljs';
 
-export async function trainModule(categories) {
+export async function trainModule(payload) {
 // let trainModule = async function trainModule(categories) {
     console.log('Training Module');
-    console.log(categories);
+    console.log(payload);
 
-    const header = categories.header;
-    const ScrapeImages = categories.scrape;
-    categories = categories.categories;
+    const header = payload.header;
+    var ScrapeImages = payload.scrape;
+    if(ScrapeImages == null){ScrapeImages="true";}
+    var epochs = payload.epochs;
+    if(epochs == null){epochs="20";}
+    var categories = payload.categories;
 
     // Scrape Images all categories simultaneously
     // let numCompleted = 0;
@@ -134,15 +137,15 @@ export async function trainModule(categories) {
         var modelTrainer = './external_modules/Keras Training Model/fine-tune-mobilenet.py';
         let pyTrainer = new PythonShell(modelTrainer);
 
-        pyTrainer.send("./"+header+"_dataset\\training_data");
-        pyTrainer.send("./"+header+"_dataset\\validation_data");
-        pyTrainer.send("./"+header+"_dataset\\"+header+"-mobilenet-tf.h5");
+        pyTrainer.send("./"+header+"_model\\"+header+"_dataset\\training_data");
+        pyTrainer.send("./"+header+"_model\\"+header+"_dataset\\validation_data");
+        pyTrainer.send("./"+header+"_model\\"+header+"_dataset\\"+header+"-mobilenet-tf.h5");
         // --------------------------------------------------
         // Todo: Change line below to reflect number of
         //          Epochs to be used in training model.
         // --------------------------------------------------
         
-        pyTrainer.send("1");
+        pyTrainer.send(epochs);
         pyTrainer.on('message',function(message) {
             console.log("Python Trainer: "+message)
         });
@@ -167,7 +170,7 @@ export async function trainModule(categories) {
         var modelTester = './external_modules/Keras Training Model/test-mobile-acc.py';
         let pyTester = new PythonShell(modelTester);
 
-        pyTester.send("./"+header+"_dataset/"+header+"-mobilenet-tf.h5");
+        pyTester.send("./"+header+"_model/"+header+"_dataset/"+header+"-mobilenet-tf.h5");
         pyTester.send("./test_images")
 
         pyTester.on('message',function(message) {

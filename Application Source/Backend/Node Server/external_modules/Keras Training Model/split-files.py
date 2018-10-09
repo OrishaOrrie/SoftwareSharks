@@ -69,8 +69,8 @@ def copyImages(directory):
 
 start = time.time()
 MODEL_NAME = input("Model: ")
-MODEL_DIR += MODEL_NAME + "_dataset"
-ALL_DIR += MODEL_NAME + "_downloaded_images"
+MODEL_DIR += MODEL_NAME + "_model/" + MODEL_NAME + "_dataset"
+ALL_DIR += MODEL_NAME + "_model/" + MODEL_NAME + "_downloaded_images"
 createFolder(MODEL_DIR)
 TRAINING_DIR = MODEL_DIR + TRAINING_DIR
 VALIDATION_DIR = MODEL_DIR + VALIDATION_DIR

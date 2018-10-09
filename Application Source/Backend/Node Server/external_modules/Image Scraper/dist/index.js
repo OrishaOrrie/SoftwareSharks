@@ -85,9 +85,12 @@ ImageScraper = function (category,searchTerm) {
             // console.log(urls[i]);
             const j = 0;
 
-            const dir = category+'_downloaded_images/' + dirTerm + '/';
-            if (!fs.existsSync(category+'_downloaded_images/')) {
-              fs.mkdirSync(category+'_downloaded_images/');
+            const dir = category+"_model/"+category+'_downloaded_images/' + dirTerm + '/';
+            if(!fs.existsSync(category+"_model/")){
+              fs.mkdirSync(category+"_model/");
+            }
+            if (!fs.existsSync(category+"_model/"+category+'_downloaded_images/')) {
+              fs.mkdirSync(category+"_model/"+category+'_downloaded_images/');
             }
             if (!fs.existsSync(dir)) {
               fs.mkdirSync(dir);
@@ -139,7 +142,7 @@ ImageScraper = function (category,searchTerm) {
               // --------------------------------------------------
                             
               if(numDown <= numImages-1000) {//-250 to speed up
-                console.log(i + ' was deleted');
+                console.log(i + ' of '+dirTerm+' was deleted');
                 console.log(numDown + ' images of '+dirTerm+' completed');
               }
               // --------------------------------------------------
