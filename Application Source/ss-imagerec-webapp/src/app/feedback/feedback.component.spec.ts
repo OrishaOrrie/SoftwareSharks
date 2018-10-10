@@ -4,10 +4,12 @@ import { FeedbackComponent } from './feedback.component';
 import { MaterialModule } from '../material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpClient } from 'selenium-webdriver/http';
 
 describe('FeedbackComponent', () => {
   let component: FeedbackComponent;
   let fixture: ComponentFixture<FeedbackComponent>;
+  let spy: any;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -25,6 +27,10 @@ describe('FeedbackComponent', () => {
     fixture = TestBed.createComponent(FeedbackComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+  });
+
+  afterEach(() => {
+    spy = null;
   });
 
   it('should create', () => {
@@ -47,5 +53,18 @@ describe('FeedbackComponent', () => {
     const name = component.formGroup.controls['name'];
     errors = name.errors || {};
     expect(errors['required']).toBeTruthy();
+  });
+
+  it('should submit the form by making a POST request', () => {
+    spy = spyOn(component.http, 'post');
+    component.formGroup.controls['name'].setValue('Karma Test');
+    component.formGroup.controls['feedType'].setValue('Bug');
+    component.formGroup.controls['message'].setValue('Testing Testing tTEsinsg');
+    fixture.detectChanges();
+    component.postMessage();
+    // fixture.detectChanges();
+    // component.submitForm();
+    // fixture.detectChanges();
+    expect(spy).toHaveBeenCalled();
   });
 });

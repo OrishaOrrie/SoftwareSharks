@@ -81,6 +81,9 @@ export class FeedbackComponent implements OnInit {
     this.formGroup.controls['feedType'].setValue(this.defaultType, {onlySelf: true});
   }
 
+  /**
+   * @ignore
+   */
   ngOnInit() {
   }
 
@@ -90,12 +93,9 @@ export class FeedbackComponent implements OnInit {
    */
   submitForm() {
     this.sending = true;
-    console.log('Form Valid!');
-    console.log(this.formGroup.controls['name'].value);
 
     this.postMessage().subscribe(
       (data => {
-        console.log(data);
         if (data['message'] === 'Message sent') {
           this.submitted = true;
         } else {

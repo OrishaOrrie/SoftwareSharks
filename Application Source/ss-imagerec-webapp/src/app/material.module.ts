@@ -1,5 +1,5 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule, MatToolbarModule, MatDialogModule,  MatSnackBarModule } from '@angular/material';
 import { MatInputModule, MatListModule, MatDividerModule, MatTableModule, MatSelectModule , MatCardModule} from '@angular/material';
@@ -8,7 +8,8 @@ import { MatGridListModule, MatIconModule, MatProgressSpinnerModule  } from '@an
 @NgModule({
   imports: [
     CommonModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule
   ],
   exports: [
     MatButtonModule,
@@ -27,6 +28,9 @@ import { MatGridListModule, MatIconModule, MatProgressSpinnerModule  } from '@an
     MatSnackBarModule
   ],
   declarations: [],
-  schemas: [NO_ERRORS_SCHEMA]
+  schemas: [
+    NO_ERRORS_SCHEMA,
+    CUSTOM_ELEMENTS_SCHEMA
+  ]
 })
 export class MaterialModule { }

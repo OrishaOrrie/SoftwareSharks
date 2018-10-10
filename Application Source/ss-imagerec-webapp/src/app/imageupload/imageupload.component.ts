@@ -352,9 +352,9 @@ export class ImageuploadComponent implements OnInit {
   /**
    * This function is required for the browser to make use of the device's webcam.
    */
-  hasGetUserMedia() {
-    return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
-  }
+  // hasGetUserMedia() {
+  //   return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
+  // }
 
   /**
    * Called when the Submit button is clicked. Calls the model loader service's predictImage method,
@@ -408,6 +408,10 @@ export class ImageuploadComponent implements OnInit {
     }, 500);
   }
 
+  /**
+   * Called when clicking on a predicted item. Handles the addition of quotes
+   * @param elName Corresponds with the results table element clicked
+   */
   openQuoteDialog(elName) {
     const dialogConfig = new MatDialogConfig();
 

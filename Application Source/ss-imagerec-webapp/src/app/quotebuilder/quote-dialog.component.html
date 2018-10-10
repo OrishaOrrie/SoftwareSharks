@@ -2,11 +2,13 @@
   <h2 mat-dialog-title>Adding "{{ item }}" to quote</h2>
 
 <mat-dialog-content style="font-family: 'Lato', Arial, Helvetica, sans-serif;">
-  <mat-form-field [formGroup]="quoteForm" class="quoteForm">
-    <mat-label for="amountQuote">Amount to add</mat-label>
-    <input matInput placeholder="Amount of items" formControlName="amount" 
-    type="number" id="amountQuote" class="quoteForm__amount">
-  </mat-form-field>
+  <form>
+    <mat-form-field [formGroup]="quoteForm" class="quoteForm">
+      <mat-label for="amountQuote">Amount to add</mat-label>
+      <input matInput placeholder="Amount of items" formControlName="amount" 
+      type="number" id="amountQuote" class="quoteForm__amount">
+    </mat-form-field>
+  </form>
   <p>Add {{ amount }} '{{ item }}' to quote?</p>
 </mat-dialog-content>
 

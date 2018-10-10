@@ -122,14 +122,9 @@ export class ContactUsComponent implements OnInit {
 
   }
 
-  // canAddQuote() {
-  //   return new Observable((data) => {
-  //     setInterval(() => {
-  //       data.next(this.qb.isQuoteStarted());
-  //     }, 1000);
-  //   });
-  // }
-
+  /**
+   * Appends the quote data from the QuoteBuilderService to the message textarea in a formatted presentation
+   */
   addQuoteToMessage() {
     this.pressedButton = true;
     const quoteList = this.qb.getQuoteList();

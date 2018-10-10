@@ -15,7 +15,7 @@
  *  Provides interface to add an amount of items to a quote.
  */
 
-import { Component, OnInit, CUSTOM_ELEMENTS_SCHEMA, Inject } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material';
@@ -28,15 +28,30 @@ import { QuoteBuilderService } from './quote-builder.service';
 })
 export class QuoteDialogComponent implements OnInit {
 
+  /**
+   * The FormGroup used to control the modal input form
+   */
   quoteForm: FormGroup;
+
+  /**
+   * The name of the item that is to be added to the quote
+   */
   item: string;
+
+  /**
+   * The amount of the item that is added to the quote
+   */
   amount: number;
 
+  /**@ignore */
   constructor(private fb: FormBuilder, private dialogRef: MatDialogRef<QuoteDialogComponent>, @Inject(MAT_DIALOG_DATA) data,
   public snackbar: MatSnackBar, public qb: QuoteBuilderService) {
     this.item = data.name;
   }
 
+  /**
+   * Sets up the FormGroup with the validators for the amount input field
+   */
   ngOnInit() {
     this.quoteForm = this.fb.group({
       amount: new FormControl('', Validators.compose([
@@ -47,6 +62,9 @@ export class QuoteDialogComponent implements OnInit {
     });
   }
 
+  /**
+   * Calls the QuoteBuilder Service to add the input quote details and display a snack bar on success
+   */
   addQuoteItem() {
     this.amount = this.quoteForm.controls['amount'].value;
 
@@ -59,12 +77,19 @@ export class QuoteDialogComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  /**
+   * Opens the snackbar which displays the input message
+   * @param message The string that is to be displayed
+   */
   openSnackBar(message: string) {
     this.snackbar.open(message, 'Okay', {
       duration: 5000
     });
   }
 
+  /**
+   * @ignore
+   */
   closeDialog() {
     this.dialogRef.close();
   }
