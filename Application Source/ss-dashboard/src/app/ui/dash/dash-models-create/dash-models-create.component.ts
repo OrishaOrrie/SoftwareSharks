@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, QueryList, ViewChildren, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, QueryList, ViewChildren, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, Validators, FormArray } from '@angular/forms';
 import * as feather from 'feather-icons';
 import { ModelsService } from '../../../core/data/models.service';
@@ -33,17 +33,19 @@ export class DashModelsCreateComponent implements OnInit, AfterViewInit {
     private fb: FormBuilder,
     private modelService: ModelsService,
     private alertService: AlertService,
-    private router: Router) { }
+    private router: Router,
+    private cdr: ChangeDetectorRef) { }
 
   ngOnInit() {
   }
 
   ngAfterViewInit() {
     this.categoriesInput.changes.subscribe(formArray => {
-      console.log(formArray);
+      // console.log(formArray);
       const lastCatParent: HTMLElement = formArray.last.nativeElement;
       const lastCatInput = lastCatParent.firstElementChild.firstElementChild as HTMLElement;
       lastCatInput.focus();
+      this.cdr.detectChanges();
     });
   }
 
