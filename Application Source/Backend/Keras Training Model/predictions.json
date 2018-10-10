@@ -1,0 +1,44 @@
+{
+    "data": [
+        {
+            "id": 0,
+            "class": "t_piece_galv",
+            "value": "0.4726128"
+        },
+        {
+            "id": 1,
+            "class": "person",
+            "value": "0.17961828"
+        },
+        {
+            "id": 2,
+            "class": "group_of_people",
+            "value": "0.09970679"
+        },
+        {
+            "id": 3,
+            "class": "suction_cup",
+            "value": "0.07008669"
+        },
+        {
+            "id": 4,
+            "class": "elbow_galv",
+            "value": "0.01880434"
+        },
+        {
+            "id": 5,
+            "class": "tape_measure",
+            "value": "0.018140336"
+        },
+        {
+            "id": 6,
+            "class": "hammer",
+            "value": "0.01663889"
+        },
+        {
+            "id": 7,
+            "class": "galv_nipple",
+            "value": "0.014163916"
+        }
+    ]
+}

@@ -1,0 +1,47 @@
+<!-- /**
+* File Name:       home.ts
+* Version Number:  v1.1
+* Author:          Orisha Orrie
+* Project Name:    Ninshiki
+* Organization:    Software Sharks
+* User Manual:     Refer to https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf
+* Update History:
+* ------------------------------------------
+* Date         Author		Description
+* 20/07/2018   Orisha		Created component
+* 18/09/2018   Orisha   Fixed layout
+* 18/09/2018   Orisha   Created home page functionality
+* ------------------------------------------
+* Functional Description:
+*  The main page that woll be seen when a user opens the app.
+*/ -->
+
+<ion-header>
+<ion-navbar>
+  
+    <ion-title>Home</ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only (click) ="openModal()"  >
+         <ion-icon name="help-circle" style="color: white"></ion-icon>
+       </button>
+      </ion-buttons>
+</ion-navbar>
+</ion-header>
+<!-- Carousel of images with a decription of the app -->
+<ion-content padding>
+ <ion-slides pager>
+  <ion-slide id = "slide1" style="background-image: url(assets/imgs/takeimage1.jpeg)">
+    <h2>Submit Image</h2>
+   <p class="writing">Click on the Predict button and select an image of an object to be recognised.</p> 
+
+  </ion-slide>
+  <ion-slide id ="slide2" style="background-image: url(assets/imgs/brains.jpg)">
+    <h2>Image Analysis</h2>
+    <p class="writing">Once you submit an image, we'll process the image with our trained AI model.</p>
+  </ion-slide>
+  <ion-slide id = "slide3" style="background-image: url(assets/imgs/store.jpg)">
+    <h2>Image Classification</h2>
+    <p class="writing">You will then receive a classification of the object in the image.</p>
+  </ion-slide> 
+</ion-slides>
+</ion-content>

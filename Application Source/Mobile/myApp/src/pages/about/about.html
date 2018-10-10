@@ -1,0 +1,62 @@
+<!-- /**
+ * File Name:       about.html
+ * Version Number:  v1.1
+ * Author:          Orisha Orrie, Tobias Bester
+ * Project Name:    Ninshiki
+ * Organization:    Software Sharks
+ * User Manual:     Refer to https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf
+ * Update History:
+ * ------------------------------------------
+ * Date         Author		Description
+ * 20/07/2018   Orisha		Created component
+ * 15/08/2018   Orisha    Added details about project and team members
+ * 15/08/2018   Tobias		Added functionality for feedback
+ * ------------------------------------------
+ * Functional Description:
+ *  This page includes details about the project as well as the team members. A user 
+ *  can also send feedback from here.
+ */ -->
+
+<ion-header>
+  <ion-navbar>
+      <ion-buttons end>
+          <button ion-button style="color: rgb(50, 150, 231)" (click)="closeModal()">Close</button>
+        </ion-buttons>
+    <ion-title>About Us</ion-title>
+    
+  </ion-navbar>
+</ion-header>
+<!-- Details about the team and the project -->
+<ion-content padding>
+  <ion-img src="assets/imgs/white_logo.png" id="about__nishiki-logo" alt="ninshiki-logo"></ion-img>
+  <p style="margin: 20px 20px; color: black">Ninshiki brings the power of AI and Computer Vision to your mobile device. Take an image
+  of an object and let our custom-defined model predict what the object is!</p>
+  <h6 ion-text style="text-align: center" color="tertiary">Developed by:</h6>
+  <ion-img id="softw" src="assets/imgs/soft.png"></ion-img>
+  <div class="about__members">
+    <p class="about__single-member">Orisha Orrie</p>
+    <p class="about__single-member">Mark Coetzer</p>
+    <p class="about__single-member">Mukundi Matodzi</p>
+    <p class="about__single-member">Jonathan Lew</p>
+    <p class="about__single-member">Tobias Bester</p>
+  </div>
+  <div class="developed-by">
+    <ion-img class="uni" src="assets/imgs/uni.png"></ion-img>
+    <ion-img class="sa" src="assets/imgs/SA-flag.png"></ion-img>
+  </div>
+  <p style="margin: 20px 20px; color: black">We are Software Sharks, a team of Computer Science students from the University of Pretoria, South Africa</p>
+  <p style="margin: 20px 20px; color: black">This app is part of our Capstone Project, in which we have to design, develop, and document a system 
+    to meet a client's needs. The app is open-source and is still in Beta testing, so any feedback and bug reports would be hugely appreciated, and might help us get better marks :)</p>
+  <!-- Button to report an issue on github -->
+    <a style="display: block; margin: auto; background-color :black;" round ion-button icon-start (click)="openBrowserToGithubIssues()">
+    <ion-icon name="logo-github"></ion-icon>
+    Report Issue on GitHub</a><br/>
+  <!-- Button to report an issue through email -->
+  <button style="display: block; margin: auto; background-color :black;" round block icon-start ion-button  (click)="openFeedback()">
+    <ion-icon name="mail"></ion-icon>
+    Send Feedback</button><br/>
+    <!-- Button to view privacy policy -->
+  <button style="display: block; margin: auto; background-color :black;" round block icon-start ion-button  (click)="openBrowserToPP()">
+      <ion-icon name="lock"></ion-icon>
+    View Privacy Policy</button>
+</ion-content>

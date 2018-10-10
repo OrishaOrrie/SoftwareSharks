@@ -1,0 +1,35 @@
+<!-- /**
+ * File Name:       app.html
+ * Version Number:  v1.1
+ * Author:          Orisha Orrie
+ * Project Name:    Ninshiki
+ * Organization:    Software Sharks
+ * User Manual:     Refer to https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf
+ * Update History:
+ * ------------------------------------------
+ * Date         Author		Description
+ * 20/07/2018   Orisha		Created component		
+ * ------------------------------------------
+ * Functional Description:
+ *  Main app component interface. Pages created here.
+ */ -->
+  
+      <ion-navbar *navbar> 
+        <ion-title> Page Title </ion-title> 
+        
+      </ion-navbar>
+  
+<!-- <ion-menu> -->
+  <!-- <ion-content>
+    <ion-list>
+      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+          <!-- <ion-icon item-start [name]="p.icon" [color]="isActive(p)"></ion-icon> -->
+          <!-- <ion-icon item-start [color]="isActive(p)"></ion-icon> -->
+        <!-- {{p.title}} -->
+      <!-- </button> -->
+    <!-- </ion-list> -->
+  <!-- </ion-content> -->
+<!-- </ion-menu> -->
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

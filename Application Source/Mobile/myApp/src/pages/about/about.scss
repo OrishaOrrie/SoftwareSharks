@@ -1,0 +1,77 @@
+/**
+ * File Name:       about.scss
+ * Version Number:  v1.1
+ * Author:          tobias Bester
+ * Project Name:    Ninshiki
+ * Organization:    Software Sharks
+ * User Manual:     Refer to https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf
+ * Update History:
+ * ------------------------------------------
+ * Date         Author		Description
+ * 20/07/2018   Orisha		Created component		
+ * 15/08/2018   Tobias      Added css rules for formatting
+ * ------------------------------------------
+ * Functional Description:
+ *  Main app component interface. Pages created here.
+ */ 
+
+page-about {
+
+}
+ion-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 10px 1px;
+    width: 100%;
+    height: 100%;
+    //text-align: center;
+    background-color: black !important;
+  }
+.uni
+{
+    width: 100px;
+    height :100px;
+    background: transparent !important;
+}
+.sa 
+{
+    width: 100px;
+    height: 75px;
+    background: transparent !important;
+}
+#softw
+{
+    width: 150px;
+    height :60px;
+    background: transparent !important;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+#about__nishiki-logo
+{
+    height: 200px;
+    width: 200px;
+    display: block;
+    margin: auto;
+}
+.developed-by {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    // align-content: center;
+}
+.about__members{
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    text-align: center;
+    // align-content: center;
+}
+.about__single-member {
+    color: black;
+    // flex-shrink: 0.5;
+    padding: 0px 0px;
+}

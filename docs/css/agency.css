@@ -174,7 +174,7 @@ header.masthead {
   text-align: center;
   color: white;
   background: linear-gradient(
-    rgba(0, 0, 0, 0.5), 
+    rgba(0, 0, 0, 0.5),
     rgba(0, 0, 0, 0.5)),
     url("../img/header-bg.jpg");
   background-repeat: no-repeat;
@@ -407,7 +407,7 @@ header.masthead .intro-text .intro-heading {
   width: 2px;
   margin-left: -1.5px;
   content: '';
-  background-color: #e9ecef;
+  background-color: 	#00FF00;
 }
 
 .timeline > li {
@@ -456,10 +456,11 @@ header.masthead .intro-text .intro-heading {
   margin-left: 0;
   text-align: center;
   color: white;
-  border: 7px solid #e9ecef;
+  border: 7px solid 	#00FF00;
   border-radius: 100%;
   background-color: #00695C;
 }
+
 
 .timeline > li .timeline-image h4 {
   font-size: 10px;
@@ -704,4 +705,55 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
 
 #mainBrand {
   color: white;
+}
+
+.docs{
+height: 100%;
+ width: 100%;
+}
+
+.imgTech
+{
+  height: 200px;
+   width: 50%;
+}
+
+img.grayscale {
+  filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 3.5+ */
+  filter: gray; /* IE6-9 */
+  -webkit-filter: grayscale(100%); /* Chrome 19+ & Safari 6+ */
+}
+
+img.grayscale:hover {
+  filter: none;
+  -webkit-filter: grayscale(0%);
+}
+
+#user-img{
+    border-radius: 50%;
+
+}
+.img-circle
+{
+
+  border-radius: 50%;
+  background-color: #00695A;
+  background-size: contain;
+}
+
+.img-project{
+  max-width: 70%;
+  height:300px;
+  display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.img-document{
+  max-width: 70%;
+  height:300px;
+  display: block;
+    margin-left: auto;
+    margin-right: auto;
+
 }
