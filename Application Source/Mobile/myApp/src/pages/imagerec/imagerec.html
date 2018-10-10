@@ -1,3 +1,21 @@
+<!-- /**
+ * File Name:       imagerec.ts
+ * Version Number:  v1.1
+ * Author:          Tobias Bester, Orisha Orrie
+ * Project Name:    Ninshiki
+ * Organization:    Software Sharks
+ * User Manual:     Refer to https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf
+ * Update History:
+ * ------------------------------------------
+ * Date         Author		Description
+ * 20/07/2018   Orisha		Created component
+ * 15/08/2018   Tobias		Added Custom Image Upload Functionality
+ * 15/08/2018	  Tobias		Added backend for image recognition			
+ * ------------------------------------------
+ * Functional Description:
+ *  Provides interface for user to select or capture an image and submit it for prediction.
+ */ -->
+
 <!--
   Generated template for the ImagerecPage page.
 
@@ -9,25 +27,28 @@
   <ion-navbar>
     <ion-title>Image recognition</ion-title>
     <ion-buttons end>
+        <button ion-button icon-only (click) ="alertSing()" style="color: white; background-color: transparent"  >
+         <ion-icon name="information-circle"></ion-icon>
+    </button>
+    </ion-buttons>
+      <ion-buttons end>
         <button ion-button icon-only (click) ="openModal()"  >
-         <ion-icon name="help-circle" color= "dark"></ion-icon>
+         <ion-icon name="help-circle" style="color: white"></ion-icon>
        </button>
       </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
-<!-- <div class="overlay" padding [hidden]="isLoaded"></div> -->
+<!--  Instructions on how to upload an image-->
 
 <ion-content #content padding>
+<div>
+<h1 class = "head" style="color: black">Upload an Image </h1>
 
-<h1 class = "first" color ="primary" ></h1>
-<p class = "instructions">How to upload an image:</p>
-<p class= "steps">1. Take a picture with your device's camera or select an image from your gallery.</p>
-<p class= "steps">2. Crop the image.</p>
-<p class= "steps">3. Click the Predict button.</p>
-<p class= "steps">4. View the results!</p>
-<!-- <h2 class = "second" color="secondary" >Capture an image using device camera</h2> -->
+</div>
+<br>
+<!-- Buttons to select way to upload an image -->
   <div class="wrapper">
     <p>
       <button class="button" color= "custom" ion-button icon-start round  (click) = "takePic()" >
@@ -43,7 +64,7 @@
       Gallery</button>
   </p> 
 </div>
-
+<!--Image is send through to predictor to be predicted-->
   <p align = "center"><img *ngIf="imgSelectedOrCaptured" src="{{ myPhoto }}" class="user-image" id="selectedImage" alt="Select an image please">
     <img *ngIf="!imgSelectedOrCaptured" src="assets/imgs/camera-holder.png" class="user-image" id="selectedImage">
   </p>

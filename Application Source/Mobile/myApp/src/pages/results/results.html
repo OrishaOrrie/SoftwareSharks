@@ -1,3 +1,22 @@
+<!-- /**
+* File Name:       results.html
+* Version Number:  v1.1
+* Author:          Tobias Bester
+* Project Name:    Ninshiki
+* Organization:    Software Sharks
+* User Manual:     Refer to https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf
+* Update History:
+* ------------------------------------------
+* Date         Author		Description
+* 20/07/2018   Tobias		Created component
+* 18/09/2018   Tobias   Added functionality
+* 18/09/2018   Tobias	   Fixed layout
+* ------------------------------------------
+* Functional Description:
+*  The page that will display the results of the image prediction as well as a link to the store and an
+*  option to add it to their basket for a quotation
+*/ -->
+
 <!--
   Generated template for the ResultsPage page.
 
@@ -5,10 +24,10 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
+<!--display the results modal with all the likelihoods-->
   <ion-navbar>
       <ion-buttons end>
-          <button ion-button (click)="closeModal()">Close</button>
+          <button ion-button style="color:  rgb(50, 150, 231)" (click)="closeModal()">Close</button>
         </ion-buttons>
     <ion-title>Results</ion-title>
   </ion-navbar>
@@ -16,12 +35,25 @@
 </ion-header>
 
 <ion-content padding>
-  <h6 class="instructions">Tap on an object class to go to the Bramhope catalogue for that object</h6>
-  <ion-list>
-    <ion-item style="color: black;" *ngFor="let result of resultPreds" (click)="openBrowserToBramhope( result.link )">
-      <ion-label>{{ result.name }}: {{ result.likeliness }}%
-        <ion-icon *ngIf="result.link" name="open" style="float: right"></ion-icon>
-      </ion-label>
-    </ion-item>
-  </ion-list>
+  <h6 class="instructions">Select the store link option to go to the Bramhope Website or the Add to Quote option to add the object to the contact us page to request a quote</h6>
+
+  <div class="row header">
+    <div class="cname">Class Name</div>
+    <div class="like">Likelihood</div>
+    <div class="col">Store Link</div>
+    <div class="col">Add to quote</div>
+  </div>
+  <div class="row" *ngFor="let result of resultPreds">
+    <div class="cname"  >{{ result.name }}</div>
+    <div class="like" >{{ result.likeliness }}%</div>
+    <div class="col"><button item-right clear style = "background-color: transparent"   (click)=" openBrowserToBramhope( result.link )">
+      <ion-icon *ngIf="result.link" name="open" ></ion-icon>
+    </button></div>
+    <div class="col"><button item-right clear style = "background-color: transparent" (click)="openQuoteDialog(result.name)">
+      <ion-icon *ngIf="result.link" name="cart" ></ion-icon>
+    </button></div>
+  </div>
+
 </ion-content>
+
+

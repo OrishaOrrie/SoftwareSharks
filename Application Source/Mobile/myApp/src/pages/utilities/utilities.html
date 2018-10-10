@@ -1,3 +1,21 @@
+<!-- /**
+* File Name:       utilities.html
+* Version Number:  v1.1
+* Author:          Orisha Orrie
+* Project Name:    Ninshiki
+* Organization:    Software Sharks
+* User Manual:     Refer to https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf
+* Update History:
+* ------------------------------------------
+* Date         Author		Description
+* 20/07/2018   Orisha		Created component
+* 18/09/2018   Orisha	  Fixed layout
+* 18/09/2018   Orisha   Added functionality
+* ------------------------------------------
+* Functional Description:
+*  The page to calculate the amount of items in a box. 
+*/ -->
+
 <!--
   Generated template for the UtilitiesPage page.
 
@@ -8,42 +26,60 @@
 
   <ion-navbar>
   
+
     <ion-title>Item calculator</ion-title>
     <ion-buttons end>
-        <button ion-button icon-only (click) ="openModal()"  >
-         <ion-icon name="help-circle" color= "dark"></ion-icon>
+        <button ion-button icon-only (click) ="alertSing()"  >
+         <ion-icon name="information-circle" style="color: white"></ion-icon>
        </button>
       </ion-buttons>
-   <!-- <ion-buttons end> <button (click)="openModal()"> Modal </button> </ion-buttons>  -->
-  </ion-navbar>
+    <ion-buttons end>
+        <button ion-button icon-only (click) ="openModal()"  >
+         <ion-icon name="help-circle" style="color: white"></ion-icon>
+       </button>
+      </ion-buttons>
 
+      
+  </ion-navbar>
+  
 
 </ion-header>
 
-
 <ion-content padding >
+  <h1 style="color: black; ">Calculate total items</h1>
+<!--Values are entered here and validation occurs in the .ts file-->
+<br>
+    <ion-card class = "inputFormat">
+      <ion-card-content>
+        <ion-item class="inputs">
+        <ion-label  class="bob" stacked>Weight Single Item  </ion-label>
+          <ion-input id="single"  type="number" required placeholder="Single Item" [(ngModel)]="single_item" min=0></ion-input> 
+        
+        </ion-item>
+      </ion-card-content>
+    </ion-card>  
+<ion-card class = "inputFormat">
+    <ion-card-content>
+  <ion-item class = "inputs">
+    <ion-label class="bob" stacked>Weight Empty Bucket</ion-label>
+    <ion-input id="empty" type="number" required placeholder="Empty bucket" [(ngModel)]="empty_bucket" min=0></ion-input>
+  </ion-item>
+</ion-card-content>
+</ion-card>
+<ion-card class = "inputFormat">
+    <ion-card-content>
+      <ion-item class = "inputs">
+        <ion-label class="bob" stacked>Weight Filled Bucket</ion-label>
+        <ion-input id="filled" type="number" required placeholder="Filled bucket" [(ngModel)]="filled_bucket"  min=0></ion-input>
+      </ion-item>
+</ion-card-content>
+</ion-card>
+ <br>
 
-   <p class= "instructions">Enter the values as instructed. Use the same measurement units (e.g. Kg)</p> 
-<ion-item class="inputs">
-   <ion-label  class="bob" color="secondary" stacked>Weight Single Item</ion-label> 
-    <ion-input type="number" required placeholder="Single item" [(ngModel)]="single_item" name="test" min=0></ion-input>
-  </ion-item>
-  <ion-item class = "inputs">
-    <ion-label class="bob" color="secondary" stacked>Weight Empty Bucket</ion-label>
-    <ion-input type="number" required placeholder="Empty bucket" [(ngModel)]="empty_bucket" min=0></ion-input>
-  </ion-item>
-  <ion-item class = "inputs">
-    <ion-label class="bob" color="secondary"stacked>Weight Filled Bucket</ion-label>
-    <ion-input type="number" required placeholder="Filled bucket" [(ngModel)]="filled_bucket"  min=0></ion-input>
-  </ion-item>
- <br>
- <br>
- <br> 
+ <!--Card to display the results-->
 <ion-card class = "result">
-  <ion-card-header class="result" color="secondary">
-    <!--Number of Items: {{ Math.floor((filled_bucket - empty_bucket)/single_item) }}-->
-    Number of items: {{ hello(single_item,empty_bucket, filled_bucket) }}
-  </ion-card-header>
-
+  <ion-card-content class="result__amount">
+    {{ hello() }}
+  </ion-card-content>
 </ion-card>
 </ion-content>

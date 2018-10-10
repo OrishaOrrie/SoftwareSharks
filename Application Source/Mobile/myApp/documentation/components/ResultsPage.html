@@ -1,0 +1,1046 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>myApp documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">myApp documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+</div>
+            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>ResultsPage</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/pages/results/results.ts</code>
+</p>
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Generated class for the ResultsPage page.</p>
+<p>See <a href="https://ionicframework.com/docs/components/#navigation">https://ionicframework.com/docs/components/#navigation</a> for more info on
+Ionic pages and navigation.</p>
+
+    </p>
+
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>page-results</code></td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>results.html</code></td>
+            </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#modalCtrl">modalCtrl</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#modelLoader">modelLoader</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#navCtrl">navCtrl</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#navParams">navParams</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#renderer">renderer</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#resultPreds">resultPreds</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#viewCtrl">viewCtrl</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#closeModal">closeModal</a>
+                            </li>
+                            <li>
+                                <a href="#openBrowserToBramhope">openBrowserToBramhope</a>
+                            </li>
+                            <li>
+                                <a href="#openQuoteDialog">openQuoteDialog</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(toastCtrl: ToastController, renderer: <a href="https://angular.io/api/core/Renderer" target="_blank">Renderer</a>, navCtrl: NavController, modalCtrl: ModalController, navParams: NavParams, viewCtrl: ViewController, modelLoader: <a href="../injectables/ModelLoaderProvider.html">ModelLoaderProvider</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/pages/results/results.ts:44</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Fetches the resultPreds from the model loader provider</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>toastCtrl</td>
+                                                  
+                                                        <td>
+                                                                    <code>ToastController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>renderer</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="https://angular.io/api/core/Renderer" target="_blank" >Renderer</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>navCtrl</td>
+                                                  
+                                                        <td>
+                                                                    <code>NavController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>Controls navigation</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>modalCtrl</td>
+                                                  
+                                                        <td>
+                                                                    <code>ModalController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>navParams</td>
+                                                  
+                                                        <td>
+                                                                    <code>NavParams</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>Controls parameters passed in during navigation</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>viewCtrl</td>
+                                                  
+                                                        <td>
+                                                                    <code>ViewController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>Controls the current view</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>modelLoader</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../injectables/ModelLoaderProvider.html" target="_self" >ModelLoaderProvider</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>The ModelLoader provider that handles all image classification requests</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+        <h3 id="methods">
+            Methods
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="closeModal"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            closeModal
+                            </b>
+                            <a href="#closeModal"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>closeModal()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/pages/results/results.ts:67</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Closes the modal when the back button is pressed</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="openBrowserToBramhope"></a>
+                        <span class="name">
+                            <b>
+                            openBrowserToBramhope
+                            </b>
+                            <a href="#openBrowserToBramhope"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>openBrowserToBramhope(url: )</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">src/pages/results/results.ts:75</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Opens a link to the Bramhope store for the corresponding item that was pressed</p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>url</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                        <td>
+                                                                <code><p>Passed in from the item that is clicked. The corresponding URL is stored in the classes JSON file</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="openQuoteDialog"></a>
+                        <span class="name">
+                            <b>
+                            openQuoteDialog
+                            </b>
+                            <a href="#openQuoteDialog"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>openQuoteDialog(elName: )</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">src/pages/results/results.ts:84</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>elName</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="modalCtrl"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            modalCtrl
+                            </b>
+                            <a href="#modalCtrl"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>modalCtrl:     <code>ModalController</code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>ModalController</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/pages/results/results.ts:53</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="modelLoader"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            modelLoader
+                            </b>
+                            <a href="#modelLoader"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>modelLoader:     <code><a href="../injectables/ModelLoaderProvider.html" target="_self" >ModelLoaderProvider</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="../injectables/ModelLoaderProvider.html" target="_self" >ModelLoaderProvider</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/pages/results/results.ts:53</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description">The ModelLoader provider that handles all image classification requests</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="navCtrl"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            navCtrl
+                            </b>
+                            <a href="#navCtrl"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>navCtrl:     <code>NavController</code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>NavController</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/pages/results/results.ts:53</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description">Controls navigation</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="navParams"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            navParams
+                            </b>
+                            <a href="#navParams"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>navParams:     <code>NavParams</code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>NavParams</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/pages/results/results.ts:53</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description">Controls parameters passed in during navigation</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="renderer"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            renderer
+                            </b>
+                            <a href="#renderer"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>renderer:     <code><a href="https://angular.io/api/core/Renderer" target="_blank" >Renderer</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="https://angular.io/api/core/Renderer" target="_blank" >Renderer</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/pages/results/results.ts:53</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="resultPreds"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            resultPreds
+                            </b>
+                            <a href="#resultPreds"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>resultPreds:     <code>[]</code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>[]</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/pages/results/results.ts:44</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Array of result objects, which contain the category name, likeliness, and item web links, if specified.
+This array is used to display the list of results in the page</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="viewCtrl"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            viewCtrl
+                            </b>
+                            <a href="#viewCtrl"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>viewCtrl:     <code>ViewController</code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>ViewController</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/pages/results/results.ts:53</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description">Controls the current view</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Dialogs } from &#x27;@ionic-native/dialogs&#x27;;
+import { Component, Renderer } from &#x27;@angular/core&#x27;;
+import { NavController, NavParams } from &#x27;ionic-angular&#x27;;
+import { ModalController } from &#x27;ionic-angular&#x27;;
+import { ViewController } from &#x27;ionic-angular&#x27;;
+import { ModelLoaderProvider } from &#x27;./../../providers/model-loader/model-loader&#x27;;
+import { QuoteBuilderPage } from &#x27;../quote-builder/quote-builder&#x27;;
+import { ToastController } from &#x27;ionic-angular&#x27;;
+/**
+ * Generated class for the ResultsPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+
+@Component({
+  selector: &#x27;page-results&#x27;,
+  templateUrl: &#x27;results.html&#x27;,
+})
+export class ResultsPage {
+
+  /**
+   * Array of result objects, which contain the category name, likeliness, and item web links, if specified.
+   * This array is used to display the list of results in the page
+   */
+  public resultPreds &#x3D; [];
+
+  /**
+   * Fetches the resultPreds from the model loader provider
+   * @param navCtrl Controls navigation
+   * @param navParams Controls parameters passed in during navigation
+   * @param viewCtrl Controls the current view
+   * @param modelLoader The ModelLoader provider that handles all image classification requests
+   */
+  constructor(private toastCtrl: ToastController, public renderer: Renderer,public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, public viewCtrl: ViewController, public modelLoader : ModelLoaderProvider) {
+      this.resultPreds&#x3D; modelLoader.getResults();
+     // this.renderer.setElementClass(viewCtrl.pageRef().nativeElement, &#x27;custom-popup&#x27;, true);
+  }
+  /**
+   * @ignore
+   */
+  ionViewDidLoad() {
+    console.log(&#x27;ionViewDidLoad ResultsPage&#x27;);
+  }
+
+  /**
+   * Closes the modal when the back button is pressed
+   */
+  public closeModal(){
+    this.viewCtrl.dismiss();
+  }
+
+  /**
+   * Opens a link to the Bramhope store for the corresponding item that was pressed
+   * @param url Passed in from the item that is clicked. The corresponding URL is stored in the classes JSON file
+   */
+  openBrowserToBramhope(url) {
+    if (url &#x3D;&#x3D; &#x27;&#x27;) {
+      return false;
+    }
+    window.open(url, &#x27;_system&#x27;, &#x27;location&#x3D;yes&#x27;);
+    return false;
+  }
+
+
+    openQuoteDialog(elName) {
+      elName &#x3D; elName || &#x27;There is no item in store that matches your selection&#x27;;
+      let resultsModal &#x3D; this.modalCtrl.create(QuoteBuilderPage, {data: elName});
+		  resultsModal.present();
+    /* this.navCtrl.push(QuoteBuilderPage, {
+      data: elName
+    });*/
+    
+    } 
+
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;!-- /**
+* File Name:       results.html
+* Version Number:  v1.1
+* Author:          Tobias Bester
+* Project Name:    Ninshiki
+* Organization:    Software Sharks
+* User Manual:     Refer to https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf
+* Update History:
+* ------------------------------------------
+* Date         Author		Description
+* 20/07/2018   Tobias		Created component
+* 18/09/2018   Tobias   Added functionality
+* 18/09/2018   Tobias	   Fixed layout
+* ------------------------------------------
+* Functional Description:
+*  The page that will display the results of the image prediction as well as a link to the store and an
+*  option to add it to their basket for a quotation
+*/ --&gt;
+
+&lt;!--
+  Generated template for the ResultsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+--&gt;
+&lt;ion-header&gt;
+&lt;!--display the results modal with all the likelihoods--&gt;
+  &lt;ion-navbar&gt;
+      &lt;ion-buttons end&gt;
+          &lt;button ion-button style&#x3D;&quot;color:  rgb(50, 150, 231)&quot; (click)&#x3D;&quot;closeModal()&quot;&gt;Close&lt;/button&gt;
+        &lt;/ion-buttons&gt;
+    &lt;ion-title&gt;Results&lt;/ion-title&gt;
+  &lt;/ion-navbar&gt;
+
+&lt;/ion-header&gt;
+
+&lt;ion-content padding&gt;
+  &lt;h6 class&#x3D;&quot;instructions&quot;&gt;Select the store link option to go to the Bramhope Website or the Add to Quote option to add the object to the contact us page to request a quote&lt;/h6&gt;
+
+  &lt;div class&#x3D;&quot;row header&quot;&gt;
+    &lt;div class&#x3D;&quot;cname&quot;&gt;Class Name&lt;/div&gt;
+    &lt;div class&#x3D;&quot;like&quot;&gt;Likelihood&lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;Store Link&lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;Add to quote&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;row&quot; *ngFor&#x3D;&quot;let result of resultPreds&quot;&gt;
+    &lt;div class&#x3D;&quot;cname&quot;  &gt;{{ result.name }}&lt;/div&gt;
+    &lt;div class&#x3D;&quot;like&quot; &gt;{{ result.likeliness }}%&lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;&lt;button item-right clear style &#x3D; &quot;background-color: transparent&quot;   (click)&#x3D;&quot; openBrowserToBramhope( result.link )&quot;&gt;
+      &lt;ion-icon *ngIf&#x3D;&quot;result.link&quot; name&#x3D;&quot;open&quot; &gt;&lt;/ion-icon&gt;
+    &lt;/button&gt;&lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;&lt;button item-right clear style &#x3D; &quot;background-color: transparent&quot; (click)&#x3D;&quot;openQuoteDialog(result.name)&quot;&gt;
+      &lt;ion-icon *ngIf&#x3D;&quot;result.link&quot; name&#x3D;&quot;cart&quot; &gt;&lt;/ion-icon&gt;
+    &lt;/button&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+&lt;/ion-content&gt;
+
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><!-- /*** File Name:       results.html* Version Number:  v1.1* Author:          Tobias Bester* Project Name:    Ninshiki* Organization:    Software Sharks* User Manual:     Refer to https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf* Update History:* ------------------------------------------* Date         Author		Description* 20/07/2018   Tobias		Created component* 18/09/2018   Tobias   Added functionality* 18/09/2018   Tobias	   Fixed layout* ------------------------------------------* Functional Description:*  The page that will display the results of the image prediction as well as a link to the store and an*  option to add it to their basket for a quotation*/ --><!--  Generated template for the ResultsPage page.  See http://ionicframework.com/docs/components/#navigation for more info on  Ionic pages and navigation.--><ion-header><!--display the results modal with all the likelihoods-->  <ion-navbar>      <ion-buttons end>          <button ion-button style="color:  rgb(50, 150, 231)" (click)="closeModal()">Close</button>        </ion-buttons>    <ion-title>Results</ion-title>  </ion-navbar></ion-header><ion-content padding>  <h6 class="instructions">Select the store link option to go to the Bramhope Website or the Add to Quote option to add the object to the contact us page to request a quote</h6>  <div class="row header">    <div class="cname">Class Name</div>    <div class="like">Likelihood</div>    <div class="col">Store Link</div>    <div class="col">Add to quote</div>  </div>  <div class="row" *ngFor="let result of resultPreds">    <div class="cname"  >{{ result.name }}</div>    <div class="like" >{{ result.likeliness }}%</div>    <div class="col"><button item-right clear style = "background-color: transparent"   (click)=" openBrowserToBramhope( result.link )">      <ion-icon *ngIf="result.link" name="open" ></ion-icon>    </button></div>    <div class="col"><button item-right clear style = "background-color: transparent" (click)="openQuoteDialog(result.name)">      <ion-icon *ngIf="result.link" name="cart" ></ion-icon>    </button></div>  </div></ion-content></div>'
+    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'page-about'},{'name': 'ContactPage', 'selector': 'page-contact'},{'name': 'FeedbackPage', 'selector': 'page-feedback'},{'name': 'HomePage', 'selector': 'page-home'},{'name': 'ImagerecPage', 'selector': 'page-imagerec'},{'name': 'MyApp', 'selector': ''},{'name': 'QuoteBuilderPage', 'selector': 'page-quote-builder'},{'name': 'ResultsPage', 'selector': 'page-results'},{'name': 'UtilitiesPage', 'selector': 'page-utilities'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'ResultsPage'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ResultsPage.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <script src="../js/menu-wc.js"></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

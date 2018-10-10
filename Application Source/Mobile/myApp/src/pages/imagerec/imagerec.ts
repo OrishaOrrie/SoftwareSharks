@@ -1,35 +1,29 @@
 /**
  * File Name:       imagerec.ts
  * Version Number:  v1.1
- * Author:          Orisha Orrie
+ * Author:          Tobias Bester, Orisha Orrie
  * Project Name:    Ninshiki
  * Organization:    Software Sharks
  * User Manual:     Refer to https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf
  * Update History:
  * ------------------------------------------
- * Date         Author        Description
- * 20/07/2018   Orisha        Created component
- * 08/15/2018   Orisha        Added Custom Image Upload Functionality
+ * Date         Author		Description
+ * 20/07/2018   Orisha		Created component
+ * 15/08/2018   Tobias		Added Custom Image Upload Functionality
+ * 15/08/2018	Tobias		Added backend for image recognition			
  * ------------------------------------------
- * Test Cases:      imageupload.component.spec.ts
  * Functional Description:
- *  Provides interface for user to select or capture an image and upload
- *  it to the system server. Displays results of image classification.
+ *  Provides interface for user to select or capture an image and submit it for prediction.
  */
-// import { HttpClient,HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-import * as tf from '@tensorflow/tfjs';
 import { ModalController } from 'ionic-angular';
 import { ModelLoaderProvider } from './../../providers/model-loader/model-loader';
 // import { AngularFireStorage } from '../../../node_modules/angularfire2/storage';
-import { Result } from './result';
-// import { Observable } from '../../../node_modules/rxjs/internal/Observable';
-// import { MatTableDataSource, MatSort } from '@angular/material';
-// import { DataSource } from '@angular/cdk/table';
 import { AboutPage } from '../about/about';
 import { ResultsPage } from '../results/results';
+
 /**
  * Generated class for the ImagerecPage page.
  *
@@ -40,135 +34,142 @@ import { ResultsPage } from '../results/results';
   selector: 'page-imagerec',
   templateUrl: 'imagerec.html'
 })
-
-/**
- * 
- * ORISHA'S CODE IS HERE
- * 
- */
-//content: new ViewChild('content');
 export class ImagerecPage {
 	@ViewChild('content') content:any;
-		public showSpinner = false;
-			
-		/**
-		 * This variable is a reference to the file that will be uploaded, either selected or captured
-		 */
-		public imageToUpload: File = null;
 		
-		/**
-		 * Determines whether the file to upload was selected from the file explorer or captured via webcam
-		 */
-		public uploadCapture = false;
-		
-		/**
-		 * Determines if an image is available to be uploaded
-		 */
-		public imgAvailable = false;
-		public imgSelectedOrCaptured = false;
-		public predictions: any;
-		public modelRef = null;
-		public resultPreds = [];
-		public displayedColumns = ['name', 'likeliness'];
-		public model: tf.Model;
-		public modelStatus = '';
-		public results: Result[] = [];
-		public resultsReady = false;
-		public myPhoto= "assets/imgs/camera-holder.png";
-		public imageToPredict: HTMLImageElement;
-		public predictButtonText = 'Loading...';
-		public notReadyToPredict = true;
-		public loading = this.loadingController.create({
-			spinner: 'crescent',
-			content: 'Making a Prediction...',
-			dismissOnPageChange: true
-		});
-		
-		constructor( public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, private alertCtrl: AlertController,
-			private camera: Camera, public loadingController: LoadingController, public modelLoader: ModelLoaderProvider ) {
-		
-			// Carries out the code below every second
-			let modelLoaded = setInterval(() => {
-				if (this.modelLoader.modelIsReady()) {
-					console.log('Model Ready');
-					this.predictButtonText = 'Predict';
-					this.notReadyToPredict = false;
-					clearInterval(modelLoaded);
-				} else {
-					console.log('Not Ready');			
-				}
-			},500);
-		}
-		
-		openModal()
-		{
-			var data = { message : 'hello world' };
-			var homePage = this.modalCtrl.create(AboutPage,data);
-			homePage.present();
-		}
-
-	ngOnInit() 
-	{
-
-	}
-	
-	resultsModal()
-  	{
-		var data = { message : 'hello world' };
-		var homePage = this.modalCtrl.create(AboutPage,data);
-		homePage.present();
-	  }
-
-	  ///////////////////thissss added
-	  presentResults() {
-		let resultsModal = this.modalCtrl.create(ResultsPage,  this.resultPreds);
-		resultsModal.present();
-	  }
-	
-	ionViewDidLoad() {
-		console.log('ionViewDidLoad ImagerecPage');
-		//this.content.scrollToBottom(300);
-	};
+	/**
+	 * Evaulates to true either when an image has been selected or an image has been captured, else false.
+	 * If true, then the predict button is displayed
+	 */
+	public imgAvailable = false;
+	/**
+	 * Evaluates to true at the same time as imgAvailable, but is false if an action is canceled.
+	 * If true, then the selected image is displayed.
+	 */
+	public imgSelectedOrCaptured = false;
+	/**
+	 * An array of Result objects, which are obtained from the predict function and passed to the Results page
+	 */
+	public resultPreds = [];
+	/**
+	 * Stores the src of the Image Element that is displayed on the page and sent to be predicted on.
+	 * Initially stores a default image.
+	 */
+	public myPhoto= "assets/imgs/camera-holder.png";
+	/**
+	 * Stores the Image Element that is displayed and is predicted on. It's src value is that of myPhoto
+	 */
+	public imageToPredict: HTMLImageElement;
+	/**
+	 * Specifies the text that appears on the Predict button. Changes according to context
+	 */
+	public predictButtonText = 'Loading...';
+	/**
+	 * If true, then the predict button is disabled. Becomes false when the model has been loaded into memory
+	 */
+	public notReadyToPredict = true;
+	/**
+	 * A Loader element that is supposed to be displayed during the prediction process, but is not currently in use
+	 */
+	public loading = this.loadingController.create({
+		spinner: 'crescent',
+		content: 'Making a Prediction...',
+		dismissOnPageChange: true
+	});
 		
 	/**
 	 * 
-	 * IONIC FUNTION TO USE CAMERA
-	 * 
+     * @param navCtrl Controls navigation
+	 * @param modalCtrl Controls the modal that is presented. Used for the Results page modal
+	 * @param navParams Controls parameters passed in during navigation
+	 * @param alertCtrl Controls the alert element
+	 * @param camera Provides functionality for capturing an image with the native camera
+	 * @param loadingController Controls the loader element
+	 * @param modelLoader The ModelLoader provider that handles all image classification requests
 	 */
-		takePic(pictureSourceType: any) {
-			const options: CameraOptions = {
-				quality: 95,
-				destinationType: this.camera.DestinationType.DATA_URL,
-				encodingType: this.camera.EncodingType.JPEG,
-				mediaType: this.camera.MediaType.PICTURE,
-				saveToPhotoAlbum : true,
-				allowEdit :true,
-				targetWidth :300,
-				targetHeight :300
+	constructor( public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, private alertCtrl: AlertController,
+		private camera: Camera, public loadingController: LoadingController, public modelLoader: ModelLoaderProvider ) {
+		
+		// Carries out the code below every 500ms
+		let modelLoaded = setInterval(() => {
+			if (this.modelLoader.modelIsReady()) {
+				// console.log('Model Ready');
+				this.predictButtonText = 'Predict';
+				this.notReadyToPredict = false;
+				clearInterval(modelLoaded);
+			} else {
+				// console.log('Not Ready');			
 			}
+		},500);
+	}
+		
+	/**
+	 * Opens the About modal
+	 */
+	openModal() {
+		var data = { message : 'hello world' };
+		var homePage = this.modalCtrl.create(AboutPage,data);
+		homePage.present();
+	}
 
-			this.camera.getPicture(options).then((imageData) => {
-				// imageData is either a base64 encoded string or a file URI
-				// If it's base64 (DATA_URL):
-				this.myPhoto = 'data:image/jpeg;base64,' + imageData;
-				this.content.scrollToBottom(1000);
-				let image = <HTMLImageElement>document.getElementById('selectedImage');
-				this.imageToPredict = image;
-				this.imgSelectedOrCaptured = true;
-			}, (err) => {
-				// Handle error
-				this.imgSelectedOrCaptured = false;
-				this.imgAvailable = false;
-				let prompt = this.alertCtrl.create({
-					title: 'Error getting captured image',
-					subTitle: err,
-					buttons: ['OK']
-				});
-				prompt.present();
+	/**
+	 * @ignore
+	 */
+	ngOnInit() { }
+
+	/**
+	 * Opens the Results modal and passes it resultPreds
+	 */
+	presentResults() {
+		let resultsModal = this.modalCtrl.create(ResultsPage,  this.resultPreds);
+		resultsModal.present();
+	}
+	
+	/**
+	 * @ignore
+	 */
+	ionViewDidLoad() {
+		console.log('ionViewDidLoad ImagerecPage');
+	};
+
+	/**
+	 * Handles the native process of opening up the camera, accepting the captured image, and displaying it on the page.
+	 * Also handles errors from the camera process. 
+	 */
+	takePic() {
+		/**
+		 * Config options for the native Ionic camera component
+		 */
+		const options: CameraOptions = {
+			quality: 95,
+			destinationType: this.camera.DestinationType.DATA_URL,
+			encodingType: this.camera.EncodingType.JPEG,
+			mediaType: this.camera.MediaType.PICTURE,
+			saveToPhotoAlbum: true,
+			allowEdit: true,
+			targetWidth: 300,
+			targetHeight: 300
+		}
+
+		this.camera.getPicture(options).then((imageData) => {
+			this.myPhoto = 'data:image/jpeg;base64,' + imageData;
+			this.content.scrollToBottom(1000);
+			let image = <HTMLImageElement>document.getElementById('selectedImage');
+			this.imageToPredict = image;
+			this.imgSelectedOrCaptured = true;
+		}, (err) => {
+			this.imgSelectedOrCaptured = false;
+			this.imgAvailable = false;
+			let prompt = this.alertCtrl.create({
+				title: 'Error getting captured image',
+				subTitle: err,
+				buttons: ['OK']
 			});
+			prompt.present();
+		});
 			
-			this.imgAvailable = true;
-		};
+		this.imgAvailable = true;
+	};
 	  
 /**
  * 
@@ -176,65 +177,82 @@ export class ImagerecPage {
  * 
  */
 
-  		selectPic()
-  		{
-			const options: CameraOptions = {
-				quality: 100,
-				destinationType: this.camera.DestinationType.DATA_URL,
-				encodingType: this.camera.EncodingType.JPEG,
-				sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
-				saveToPhotoAlbum :false,
-				allowEdit :true,
-				targetWidth :300,
-				targetHeight :300
-			}
-
-			this.camera.getPicture(options).then((imageData) => {
-				// imageData is either a base64 encoded string or a file URI
-				// If it's base64 (DATA_URL):
-				
-				this.myPhoto = 'data:image/jpeg;base64,' + imageData;
-				this.content.scrollToBottom(1000);
-				let image = <HTMLImageElement>document.getElementById('selectedImage');
-				this.imageToPredict = image;
-				this.imgSelectedOrCaptured = true;
-			}, (err) => {
-				// Handle error
-				this.imgSelectedOrCaptured = false;
-				this.imgAvailable = false;
-				let prompt = this.alertCtrl.create({
-					title: 'Error getting selected image',
-					subTitle: err,
-					buttons: ['OK']
-				});
-				prompt.present();
-			});
-			
-			this.imgAvailable = true;
-			
-		};
-
-		/**
-		 * predictImage() is called when the classify button is clicked.
-		 * Then the predict() function is called. Here stuff happens in tf.tidy.
-		 * Stuff includes reading the image into a Tensor, cropping, resizing, and predicting the thing.
-		 * Then, the predictions are mapped to the correct classes. Thanks
+	/**
+	 * Handles the native process of opening the gallery, accepting the selected image, cropping the image, and displaying it on the page.
+	 * Also handles errors from the gallery process.
+	 */
+  	selectPic() {
+		  /**
+		 * Config options for the native Ionic camera component
 		 */
+		const options: CameraOptions = {
+			quality: 100,
+			destinationType: this.camera.DestinationType.DATA_URL,
+			encodingType: this.camera.EncodingType.JPEG,
+			sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+			saveToPhotoAlbum: false,
+			allowEdit: true,
+			targetWidth: 300,
+			targetHeight: 300
+		}
 
-		predictImage() {
+		this.camera.getPicture(options).then((imageData) => {
+			this.myPhoto = 'data:image/jpeg;base64,' + imageData;
+			this.content.scrollToBottom(1000);
 			let image = <HTMLImageElement>document.getElementById('selectedImage');
 			this.imageToPredict = image;
-			// this.loading.present();
-			this.predictButtonText = 'Predicting...';
-			this.modelLoader.predictImage(this.imageToPredict)
-				.then((predictions) => {
-					this.resultPreds = this.modelLoader.mapPredictions(predictions);
-					this.presentResults();
-					this.predictButtonText = 'Predict';
-				})
-				.catch((error) => {
-					console.error('Error: ' + error);
-				});
-		};
-		
+			this.imgSelectedOrCaptured = true;
+		}, (err) => {
+			this.imgSelectedOrCaptured = false;
+			this.imgAvailable = false;
+			let prompt = this.alertCtrl.create({
+				title: 'Error getting selected image',
+				subTitle: err,
+				buttons: ['OK']
+			});
+			prompt.present();
+		});
+			
+		this.imgAvailable = true;
+	};
+
+	/**
+	 * Called when the Predict button is clicked. It passes the ImageElement to the ModelLoader provider.
+	 * Once it receives predictions for the image, it map the predictions to resultPreds and presents the results via the Results modal
+	 */
+	predictImage() {
+		let image = <HTMLImageElement>document.getElementById('selectedImage');
+		this.imageToPredict = image;
+		// this.loading.present();
+		this.predictButtonText = 'Predicting...';
+		this.modelLoader.predictImage(this.imageToPredict)
+			.then((predictions) => {
+				this.resultPreds = this.modelLoader.mapPredictions(predictions);
+				this.presentResults();
+				this.predictButtonText = 'Predict';
+			})
+			.catch((error) => {
+				console.error('Error: ' + error);
+			});
+	};
+	alertSing()
+  {
+    let alert = this.alertCtrl.create({
+      title: 'How to upload an image:',
+	  message:` <ol>
+	  <li>Take a picture with your device's camera or select an image from your gallery.</li>
+	  <li>Crop the image</li>
+	  <li>Click the Predict button</li>
+	  <li>View the results!</li>
+	  </ol>
+	  `,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+		/*<ol><li>Take a picture with your device's camera or select an image from your gallery.<\li> 
+	  <li>Crop the image<\li>
+	  <li>Click the Predict button.<\li>
+	  <li>View the results!<\li>     
+      </ol>*/
 }

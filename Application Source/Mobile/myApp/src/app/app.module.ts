@@ -1,3 +1,20 @@
+/**
+ * File Name:       app.module.ts
+ * Version Number:  v1.1
+ * Author:          Orisha Orrie
+ * Project Name:    Ninshiki
+ * Organization:    Software Sharks
+ * User Manual:     Refer to https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf
+ * Update History:
+ * ------------------------------------------
+ * Date         Author		Description
+ * 20/07/2018   Orisha		Created component	
+ * 20/07/2018   Orisha    Extra pages added here 	
+ * ------------------------------------------
+ * Functional Description:
+ *  Main app component interface. If a new page is added, it must be declared here.
+ */
+
 import { ModelLoaderProvider } from './../providers/model-loader/model-loader';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -12,7 +29,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { UtilitiesPage } from '../pages/utilities/utilities';
 import { ImagerecPage } from '../pages/imagerec/imagerec';
 import { ResultsPage } from '../pages/results/results';
-
+import { QuoteBuilderPage } from '../pages/quote-builder/quote-builder';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -32,6 +49,7 @@ import { CdkTableModule } from '@angular/cdk/table';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { environment } from './../environments/environment';
 import { AngularFireStorageModule } from 'angularfire2/storage';
+import { QuotationProvider } from '../providers/quotation/quotation';
 
 @NgModule({
   declarations: [
@@ -43,7 +61,8 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
     UtilitiesPage,
     ImagerecPage,
     FeedbackPage,
-    ResultsPage
+    ResultsPage,
+    QuoteBuilderPage
   ],
   imports: [
     BrowserModule,
@@ -72,7 +91,8 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
     UtilitiesPage,
     ImagerecPage,
     FeedbackPage,
-    ResultsPage
+    ResultsPage,
+    QuoteBuilderPage
   ],
   providers: [
     StatusBar,
@@ -82,6 +102,7 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
     Firebase,
     ModelLoaderProvider,
     Geolocation,
+    QuotationProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

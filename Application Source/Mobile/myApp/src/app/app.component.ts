@@ -1,3 +1,20 @@
+/**
+ * File Name:       app.component.ts
+ * Version Number:  v1.1
+ * Author:          Orisha Orrie
+ * Project Name:    Ninshiki
+ * Organization:    Software Sharks
+ * User Manual:     Refer to https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf
+ * Update History:
+ * ------------------------------------------
+ * Date         Author		Description
+ * 20/07/2018   Orisha		Created component		
+ * ------------------------------------------
+ * Functional Description:
+ *  Main app component interface. Pages created here.
+ */
+
+
 import { Component  , ViewChild} from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -12,7 +29,9 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { ImagerecPage } from '../pages/imagerec/imagerec';
 import { ModelLoaderProvider } from '../providers/model-loader/model-loader';
 
-
+/**
+ * @ignore
+ */
 export interface PageInterface {
   title: string;
   pageName: string;
@@ -25,13 +44,26 @@ export interface PageInterface {
 })
 export class MyApp {
 @ViewChild(Nav) nav: Nav;
-  rootPage:any = TabsPage;
-  isLoaded = false;
+
+  /**
+   * The root page should be the page with the Tabs
+   */
+  rootPage: any = TabsPage;
+  /**
+   * Array of page objects which are in the form (title, component)
+   */
   pages: Array<{ title: string, component: any }>;
+
+  /**
+   * Creates the status bar and requests the model to be loaded as soon as the platform is ready
+   * @param platform Default Ionic platofrm
+   * @param statusBar Cordova plugin for a statusbar
+   * @param splashScreen Cordova plugin for the splash screen
+   * @param modelLoader Provider that handles model loading and image classification
+   */
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, modelLoader: ModelLoaderProvider) {
     platform.ready().then(() => {
       statusBar.styleDefault();
-
       console.log('App: Calling provider function - loadModel');
       modelLoader.loadModel();
     });
@@ -43,12 +75,12 @@ export class MyApp {
     ];
   }
 
+  /**
+   * Handles which page is opened depending on which tab is pressed
+   * @param page Determines which page is opened
+   */
   openPage(page) {
     this.nav.setRoot(page.component);
   }
   
-  isActive(page)
-  {
-
-  }
 }
