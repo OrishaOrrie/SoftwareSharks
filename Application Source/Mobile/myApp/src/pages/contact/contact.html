@@ -1,0 +1,60 @@
+<!-- /**
+ * File Name:       contact.html
+ * Version Number:  v1.1
+ * Author:          Orisha Orrie, Tobias Bester
+ * Project Name:    Ninshiki
+ * Organization:    Software Sharks
+ * User Manual:     Refer to https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf
+ * Update History:
+ * ------------------------------------------
+ * Date         Author		Description
+ * 20/07/2018   Orisha		Created component
+ * 15/08/2018   Orisha    Added backend functionality
+ * 18/09/2018   Orisha    Fixed layout
+ * ------------------------------------------
+ * Functional Description:
+ *  This page includes ways to contact the Bramhope group in order to request a quote or report any issues.
+ */ -->
+
+<ion-header>
+    <ion-navbar>
+        <ion-title>Contact Us</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click) ="alertSing()"  >
+             <ion-icon name="information-circle" style="color: white"></ion-icon>
+           </button>
+          </ion-buttons>
+        <ion-buttons end>
+            <button ion-button icon-only (click) ="openModal()"  >
+             <ion-icon name="help-circle" style="color: white"></ion-icon>
+           </button>
+          </ion-buttons>
+      </ion-navbar>
+</ion-header>
+<!-- form to submit email to Bramhope group -->
+<ion-content padding id ="formcol">
+<h1 style="color: black;">Issues? Quote? Contact us!</h1>
+    <form [formGroup]="myGroup"  *ngIf="!submitted" >
+ 
+      <ion-item class="inputs">
+        <ion-label class = 'bob' color="secondary" stacked>Full Name</ion-label>
+        <ion-input id="name" type="text" required formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item class="inputs">
+        <ion-label class = 'bob' color="secondary" stacked>Email Address</ion-label>
+        <ion-input id="email" type="email" required formControlName="email" ></ion-input>
+      </ion-item>
+      <ion-item class="inputs">
+        <ion-label class = 'bob' color="secondary" stacked>Message</ion-label>
+        <ion-textarea rows="8" maxLength="500" id="message" type="text" required formControlName="message" style = " height: 140px"></ion-textarea >
+      </ion-item>
+    </form>
+      <ion-item class="inputs">
+        <ion-label style="font-weight: bold" color="secondary">Send location data</ion-label>
+        <ion-checkbox color="secondary" checked="true" [(ngModel)]="sendLocation"></ion-checkbox>
+      </ion-item>
+      <button *ngIf="addQuoteDisplay | async" ion-button full round color= "tertiary" (click)="addQuoteToMessage()" >Add Quote</button>
+    <button ion-button full round color= "tertiary" [disabled]="!myGroup.valid" (click)="onSubmit()">Send</button>
+   
+    
+</ion-content>

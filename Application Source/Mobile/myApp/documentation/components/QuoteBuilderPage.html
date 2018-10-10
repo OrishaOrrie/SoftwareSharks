@@ -1,0 +1,938 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>myApp documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">myApp documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+</div>
+            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>QuoteBuilderPage</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/pages/quote-builder/quote-builder.ts</code>
+</p>
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Generated class for the QuoteBuilderPage page.</p>
+<p>See <a href="https://ionicframework.com/docs/components/#navigation">https://ionicframework.com/docs/components/#navigation</a> for more info on
+Ionic pages and navigation.</p>
+
+    </p>
+
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>page-quote-builder</code></td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>quote-builder.html</code></td>
+            </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#amount">amount</a>
+                            </li>
+                            <li>
+                                <a href="#DataArray">DataArray</a>
+                            </li>
+                            <li>
+                                <a href="#myGroup">myGroup</a>
+                            </li>
+                            <li>
+                                <a href="#name">name</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#navParams">navParams</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#quotation">quotation</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#viewCtrl">viewCtrl</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#addQuoteItem">addQuoteItem</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#closeModal">closeModal</a>
+                            </li>
+                            <li>
+                                <a href="#ionViewDidLoad">ionViewDidLoad</a>
+                            </li>
+                            <li>
+                                <a href="#presentToast">presentToast</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(toastCtrl: ToastController, quotation: <a href="../injectables/QuotationProvider.html">QuotationProvider</a>, navCtrl: NavController, fb: <a href="https://angular.io/api/forms/FormBuilder" target="_blank">FormBuilder</a>, viewCtrl: ViewController, navParams: NavParams)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/pages/quote-builder/quote-builder.ts:27</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>toastCtrl</td>
+                                                  
+                                                        <td>
+                                                                    <code>ToastController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>quotation</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../injectables/QuotationProvider.html" target="_self" >QuotationProvider</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>navCtrl</td>
+                                                  
+                                                        <td>
+                                                                    <code>NavController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>fb</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="https://angular.io/api/forms/FormBuilder" target="_blank" >FormBuilder</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>viewCtrl</td>
+                                                  
+                                                        <td>
+                                                                    <code>ViewController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>navParams</td>
+                                                  
+                                                        <td>
+                                                                    <code>NavParams</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+        <h3 id="methods">
+            Methods
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="addQuoteItem"></a>
+                        <span class="name">
+                            <b>
+                            addQuoteItem
+                            </b>
+                            <a href="#addQuoteItem"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>addQuoteItem()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/pages/quote-builder/quote-builder.ts:50</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="closeModal"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            closeModal
+                            </b>
+                            <a href="#closeModal"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>closeModal()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/pages/quote-builder/quote-builder.ts:62</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ionViewDidLoad"></a>
+                        <span class="name">
+                            <b>
+                            ionViewDidLoad
+                            </b>
+                            <a href="#ionViewDidLoad"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>ionViewDidLoad()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/pages/quote-builder/quote-builder.ts:36</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="presentToast"></a>
+                        <span class="name">
+                            <b>
+                            presentToast
+                            </b>
+                            <a href="#presentToast"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>presentToast()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/pages/quote-builder/quote-builder.ts:66</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="amount"></a>
+                        <span class="name">
+                            <b>
+                            amount
+                            </b>
+                            <a href="#amount"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>amount:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/pages/quote-builder/quote-builder.ts:23</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="DataArray"></a>
+                        <span class="name">
+                            <b>
+                            DataArray
+                            </b>
+                            <a href="#DataArray"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>DataArray:     <code>Array&lt;string&gt;</code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Array&lt;string&gt;</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/pages/quote-builder/quote-builder.ts:22</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="myGroup"></a>
+                        <span class="name">
+                            <b>
+                            myGroup
+                            </b>
+                            <a href="#myGroup"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>myGroup:     <code></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new FormGroup({
+    amount: new FormControl()
+  })</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/pages/quote-builder/quote-builder.ts:25</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="name"></a>
+                        <span class="name">
+                            <b>
+                            name
+                            </b>
+                            <a href="#name"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>name:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/pages/quote-builder/quote-builder.ts:24</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="navParams"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            navParams
+                            </b>
+                            <a href="#navParams"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>navParams:     <code>NavParams</code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>NavParams</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/pages/quote-builder/quote-builder.ts:28</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="quotation"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            quotation
+                            </b>
+                            <a href="#quotation"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>quotation:     <code><a href="../injectables/QuotationProvider.html" target="_self" >QuotationProvider</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="../injectables/QuotationProvider.html" target="_self" >QuotationProvider</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/pages/quote-builder/quote-builder.ts:28</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="viewCtrl"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            viewCtrl
+                            </b>
+                            <a href="#viewCtrl"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>viewCtrl:     <code>ViewController</code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>ViewController</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/pages/quote-builder/quote-builder.ts:28</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { IonicPage, NavController, NavParams } from &#x27;ionic-angular&#x27;;
+import { FormControl, Validators, FormGroup, FormBuilder } from &#x27;@angular/forms&#x27;;
+import { ViewController } from &#x27;ionic-angular&#x27;;
+import { ContactPage } from &#x27;../contact/contact&#x27;;
+import {QuotationProvider} from &#x27;./../../providers/quotation/quotation&#x27;;
+import { ToastController } from &#x27;ionic-angular&#x27;;
+/**
+ * Generated class for the QuoteBuilderPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+@IonicPage()
+@Component({
+  selector: &#x27;page-quote-builder&#x27;,
+  templateUrl: &#x27;quote-builder.html&#x27;,
+})
+export class QuoteBuilderPage {
+
+  DataArray: Array&lt;string&gt; &#x3D; [];
+  amount : number;
+  name : string;
+  myGroup &#x3D; new FormGroup({
+    amount: new FormControl()
+  });
+  constructor(private toastCtrl: ToastController ,public quotation: QuotationProvider, navCtrl: NavController, private fb: FormBuilder,public viewCtrl: ViewController, public navParams: NavParams) {
+    this.name&#x3D; navParams.get(&#x27;data&#x27;);
+    
+    this.myGroup &#x3D; this.fb.group({  
+      &#x27;amount&#x27;: [&#x27;&#x27;, Validators.compose([Validators.required, Validators.minLength(1)])]
+    });
+  }
+
+  ionViewDidLoad() {
+    console.log(&#x27;ionViewDidLoad QuoteBuilderPage&#x27;);
+  }
+  /* requestQuote(amount) {
+    amount &#x3D; amount || &#x27;No Amount Entered&#x27;;
+    this.DataArray.push(amount);
+    this.DataArray.push(name);
+    alert(this.DataArray);
+    this.navCtrl.push(ContactPage, {
+      data: amount,
+      resName: this.elName
+    });
+  } */
+ 
+  addQuoteItem() {
+    //this.quotation.attempt();
+    this.amount &#x3D; this.myGroup.controls[&#x27;amount&#x27;].value;
+
+    this.quotation.addQuote(this.name, this.amount);
+
+    const message &#x3D; &#x27;Added &#x27; + this.amount + &#x27; items of type &quot;&#x27; + this.amount + &#x27;&quot; to your quote. &#x27;
+    + &#x27;\nGo to the Contact Us page to request the quote&#x27;;
+    //this.openSnackBar(message);
+    this.presentToast();
+    this.closeModal();
+  }
+  public closeModal(){
+    this.viewCtrl.dismiss();
+  }
+
+  presentToast() {
+    let toast &#x3D; this.toastCtrl.create({
+      message: &#x27;Quotation added! Go to the Contact Us page to request the quote&#x27;,
+      duration: 30000,
+      position: &#x27;bottom&#x27;,
+      showCloseButton: true
+    });
+  
+    toast.onDidDismiss(() &#x3D;&gt; {
+      console.log(&#x27;Dismissed toast&#x27;);
+    });
+    toast.present();
+    
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;!--
+  Generated template for the QuoteBuilderPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+--&gt;
+&lt;ion-header&gt;
+
+  &lt;ion-navbar&gt;
+  &lt;/ion-navbar&gt;
+
+&lt;/ion-header&gt;
+
+
+&lt;ion-content padding class &#x3D; &quot;main-view&quot;&gt;
+    &lt;!-- &lt;label&gt; Adding &quot;{{elName}}&quot; to quote&lt;/label&gt;
+    &lt;ion-item&gt;
+        &lt;ion-label color&#x3D;&quot;secondary&quot;stacked&gt;Amount of items&lt;/ion-label&gt;
+        &lt;ion-input type&#x3D;&quot;number&quot; style&#x3D;&quot;color: black&quot; placeholder&#x3D;&quot;Number items&quot;&gt;&lt;/ion-input&gt;
+    &lt;/ion-item&gt;
+    &lt;label&gt; Add &quot;{{elName}}&quot; to quote? &lt;/label&gt; --&gt;
+  &lt;div class&#x3D;&quot;overlay&quot; (click)&#x3D;&quot;closeModal()&quot;&gt;&lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;modal_content&quot;&gt;
+      &lt;form [formGroup]&#x3D;&quot;myGroup&quot;  *ngIf&#x3D;&quot;!submitted&quot; &gt;
+          &lt;ion-label class &#x3D; &#x27;qBuilHeading&#x27; stacked&gt;Adding &quot;{{name}}&quot; to quote&lt;/ion-label&gt;
+          &lt;ion-item class&#x3D;&quot;inputs&quot;&gt;
+            &lt;ion-label class &#x3D; &#x27;qBuil&#x27; stacked&gt;Enter the quantity of {{name}}:&lt;/ion-label&gt;
+            &lt;ion-input id&#x3D;&quot;amount&quot; type&#x3D;&quot;number&quot; placeholder&#x3D; &quot;Enter amount&quot; required formControlName&#x3D;&quot;amount&quot; #amount&gt;&lt;/ion-input&gt;
+          &lt;/ion-item&gt;
+
+          &lt;br&gt;
+          &lt;br&gt;
+          &lt;button ion-button full round color&#x3D; &quot;tertiary&quot; [disabled]&#x3D;&quot;!myGroup.valid&quot; (click)&#x3D;&quot;addQuoteItem()&quot;&gt;Request Quote&lt;/button&gt;
+        &lt;ion-buttons&gt;
+            &lt;button *ngIf&#x3D;&quot;addQuoteDisplay | async&quot; ion-button full round color&#x3D; &quot;tertiary&quot; (click)&#x3D;&quot;closeModal()&quot;&gt;Close&lt;/button&gt;
+          &lt;/ion-buttons&gt;
+        &lt;/form&gt;
+    
+    
+    &lt;/div&gt;
+&lt;/ion-content&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><!--  Generated template for the QuoteBuilderPage page.  See http://ionicframework.com/docs/components/#navigation for more info on  Ionic pages and navigation.--><ion-header>  <ion-navbar>  </ion-navbar></ion-header><ion-content padding class = "main-view">    <!-- <label> Adding "{{elName}}" to quote</label>    <ion-item>        <ion-label color="secondary"stacked>Amount of items</ion-label>        <ion-input type="number" style="color: black" placeholder="Number items"></ion-input>    </ion-item>    <label> Add "{{elName}}" to quote? </label> -->  <div class="overlay" (click)="closeModal()"></div>    <div class="modal_content">      <form [formGroup]="myGroup"  *ngIf="!submitted" >          <ion-label class = \'qBuilHeading\' stacked>Adding "{{name}}" to quote</ion-label>          <ion-item class="inputs">            <ion-label class = \'qBuil\' stacked>Enter the quantity of {{name}}:</ion-label>            <ion-input id="amount" type="number" placeholder= "Enter amount" required formControlName="amount" #amount></ion-input>          </ion-item>          <br>          <br>          <button ion-button full round color= "tertiary" [disabled]="!myGroup.valid" (click)="addQuoteItem()">Request Quote</button>        <ion-buttons>            <button *ngIf="addQuoteDisplay | async" ion-button full round color= "tertiary" (click)="closeModal()">Close</button>          </ion-buttons>        </form>            </div></ion-content></div>'
+    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'page-about'},{'name': 'ContactPage', 'selector': 'page-contact'},{'name': 'FeedbackPage', 'selector': 'page-feedback'},{'name': 'HomePage', 'selector': 'page-home'},{'name': 'ImagerecPage', 'selector': 'page-imagerec'},{'name': 'MyApp', 'selector': ''},{'name': 'QuoteBuilderPage', 'selector': 'page-quote-builder'},{'name': 'ResultsPage', 'selector': 'page-results'},{'name': 'UtilitiesPage', 'selector': 'page-utilities'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'QuoteBuilderPage'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'QuoteBuilderPage.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <script src="../js/menu-wc.js"></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

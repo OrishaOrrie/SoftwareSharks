@@ -1,0 +1,79 @@
+ /**
+* File Name:       utilities.scss
+* Version Number:  v1.1
+* Author:          Orisha Orrie
+* Project Name:    Ninshiki
+* Organization:    Software Sharks
+* User Manual:     Refer to https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf
+* Update History:
+* ------------------------------------------
+* Date         Author		Description
+* 20/07/2018   Orisha		Created component
+* 18/09/2018   Orisha	    Fixed layout
+* ------------------------------------------
+* Functional Description:
+*  The layout of the page to calculate the amount of items in a box. 
+*/
+
+page-utilities {
+
+}
+.calc
+{
+    border-color: rgba(0, 0, 0, 0);
+	background-color: rgba(0, 0, 0, 0);
+	color: rgb(116, 86, 133); 
+}
+.lab
+{
+    font-weight: bold;
+    font-size: 14px !important;
+}
+.tot
+{
+    font-weight: bold;
+    font-size: 16px !important;
+
+}
+.inputs
+{
+    color: black;
+    background-color: transparent;
+    border-bottom-color: aqua
+}
+.bob
+{
+    //font-weight: bold;
+    font-size: 14px !important;
+    color: black !important;
+}
+
+.result
+{
+    text-align: center;
+    background-color: transparent;
+}
+
+.result__amount {
+    font-weight: bold;
+    font-size: 16px !important;
+    word-wrap: break-word;
+    color: black;
+}
+
+.instructions
+{
+    font-size: 15px !important;
+    color: rgb(0, 0, 0);
+    //font-family: 'Courier New', Courier, monospace;
+    //font-weight: bold;
+    text-align: center;
+}
+.inputFormat
+{
+    background-color: rgba(221, 221, 221, 0.678);
+}
+ion-card
+{
+    border-top: 4px solid rgb(170, 184, 196);
+}

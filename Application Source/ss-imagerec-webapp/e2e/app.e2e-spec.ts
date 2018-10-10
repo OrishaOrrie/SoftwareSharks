@@ -125,7 +125,7 @@ describe('ss-imagerec-webapp Utilities', () => {
     expect(page.getResultText()).toBe('Number of items: 15');
   });
 
-  it('should display error message if input values are negative', () => {
+  xit('should display error message if input values are negative', () => {
     browser.sleep(5000);
     page.navigateTo();
     page.getSingleWeight().clear();
@@ -156,12 +156,12 @@ describe('ss-imagerec-webapp ContactUs', () => {
     page = new ContactUsPage();
   });
 
-  it('should not display any status message initially', () => {
+  xit('should not display any status message initially', () => {
     page.navigateTo();
     expect(page.getStatusResult()).toBeTruthy();
   });
 
-  it('should display status message if a valid request is sent', () => {
+  xit('should display status message if a valid request is sent', () => {
     page.navigateTo();
     page.getNameField().clear();
     page.getNameField().sendKeys('Testy Boi');

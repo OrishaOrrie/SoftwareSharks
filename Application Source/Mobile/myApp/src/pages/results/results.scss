@@ -1,0 +1,101 @@
+/**
+* File Name:       results.scss
+* Version Number:  v1.1
+* Author:          Tobias Bester
+* Project Name:    Ninshiki
+* Organization:    Software Sharks
+* User Manual:     Refer to https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf
+* Update History:
+* ------------------------------------------
+* Date         Author		Description
+* 20/07/2018   Tobias		Created component
+* 18/09/2018   Tobias	   Fixed layout
+* ------------------------------------------
+* Functional Description:
+*  The layout of the page that will display the results of the image prediction as well as a link to the store and an
+*  option to add it to their basket for a quotation
+*/
+
+page-results {
+
+}
+
+.instructions {
+    font-size: 20px;
+    color: rgb(42, 51, 61);
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+ion-modal.custom-popup ion-backdrop {
+    visibility: visible !important;
+    z-index:0;
+}
+ion-modal.custom-popup .modal-wrapper{
+    top: 20%;
+    width:60%;
+    height:300px;
+    position:absolute;
+}
+body {
+    cursor: url('http://ionicframework.com/img/finger.png'), auto;
+}
+
+.header .col {
+    padding: 1px;
+    background-color:black;
+    font-weight: bold;
+    color: white;
+}
+.header .cname {
+
+    padding-top: 6px;
+    background-color:black;
+    font-weight: bold;
+    color: white;
+}
+.header .like {
+    padding-top: 6px;
+    background-color:black;
+    font-weight: bold;
+    color: white;
+}
+.col {
+    border: solid 1px rgb(131, 115, 115);
+    border-right-style: none;
+    border-bottom-style: none;
+    width: 50px;
+}
+
+.col:last-child {
+    border-right: solid 1px grey;
+}
+
+.row:last-child .col {
+    border-bottom: solid 1px grey ;
+}
+.row:last-child .like {
+    border-bottom: solid 1px grey ;
+}
+.row:last-child .cname {
+    border-bottom: solid 1px grey ;
+}
+.like
+{
+    border: solid 1px rgb(131, 115, 115);
+    border-right-style: none;
+    border-bottom-style: none;
+    width: 80px;
+    color: black;
+}
+.cname
+{
+    border: solid 1px rgb(131, 115, 115);
+    border-right-style: none;
+    border-bottom-style: none;
+    width: 90px;
+    color: black;
+}
+.row
+{
+  //  background-color: 
+}
