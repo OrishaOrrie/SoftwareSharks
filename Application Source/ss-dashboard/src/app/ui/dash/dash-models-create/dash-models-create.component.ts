@@ -7,6 +7,9 @@ import { AlertService } from '../../../core/alert/alert.service';
 import { AlertType } from '../../../shared/models/AlertType';
 import { Alert } from '../../../shared/models/alert';
 import { TrainingStatus } from '../../../shared/models/training-status.enum';
+import { Router } from '@angular/router';
+
+declare var $: any;
 
 @Component({
   selector: 'app-dash-models-create',
@@ -27,12 +30,15 @@ export class DashModelsCreateComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private modelService: ModelsService,
-    private alertService: AlertService) { }
+    private alertService: AlertService,
+    private router: Router) { }
 
   ngOnInit() {
   }
 
   onSubmit() {
+    // Dismiss Modal
+    $('#confirmationModal').modal('hide');
     // TODO: Use EventEmitter with form value
     const model: Model = this.newModelForm.value as Model;
     model.uri = 'None';
@@ -41,6 +47,7 @@ export class DashModelsCreateComponent implements OnInit {
     this.saveModel(model).then(() => {
       this.newModelForm.reset();
       this.alertService.add(new Alert(AlertType.Success, 'Model successfully created!', 'WooHoo!', ':)'));
+      this.router.navigate(['/dashboard/(sidebar:models)']);
     }).catch((error) => {
       this.alertService.add(new Alert(AlertType.Danger, 'Looks like something went wrong!', 'Oh No!', ':('));
       console.log(error);
