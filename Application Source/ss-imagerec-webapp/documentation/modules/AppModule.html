@@ -100,6 +100,9 @@
                                     <a href="../components/ImageuploadComponent.html" >ImageuploadComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/QuoteDialogComponent.html" >QuoteDialogComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/UtilitiesComponent.html" >UtilitiesComponent</a>
                                 </li>
                         </ul>
@@ -124,6 +127,9 @@
                             >
                                 <li class="link">
                                     <a href="../injectables/ModelLoaderService.html" >ModelLoaderService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/QuoteBuilderService.html" >QuoteBuilderService</a>
                                 </li>
                         </ul>
                     </li>
@@ -235,6 +241,9 @@
                                            <a href="../components/ImageuploadComponent.html" >ImageuploadComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/QuoteDialogComponent.html" >QuoteDialogComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/UtilitiesComponent.html" >UtilitiesComponent</a>
                                        </li>
                                </ul>
@@ -259,6 +268,9 @@
                    >
                                        <li class="link">
                                            <a href="../injectables/ModelLoaderService.html" >ModelLoaderService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/QuoteBuilderService.html" >QuoteBuilderService</a>
                                        </li>
                                </ul>
                            </li>
@@ -347,6 +359,9 @@
                             <li class="list-group-item">
                                 <a href="../components/FeedbackComponent.html">FeedbackComponent</a>
                             </li>
+                            <li class="list-group-item">
+                                <a href="../components/QuoteDialogComponent.html">QuoteDialogComponent</a>
+                            </li>
                     </ul>
                 </div>
                 <div class="col-sm-3">
@@ -375,7 +390,7 @@
         <pre><code class="hljs javascript">import { ContactUsComponent } from &#x27;./contact-us/contact-us.component&#x27;;
 import { MaterialModule } from &#x27;./material.module&#x27;;
 import { BrowserModule } from &#x27;@angular/platform-browser&#x27;;
-import { NgModule, NO_ERRORS_SCHEMA } from &#x27;@angular/core&#x27;;
+import { NgModule, NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from &#x27;@angular/core&#x27;;
 import { BrowserAnimationsModule } from &#x27;@angular/platform-browser/animations&#x27;;
 import { AppRoutingModule } from &#x27;.//app-routing.module&#x27;;
 import { FormsModule, ReactiveFormsModule } from &#x27;@angular/forms&#x27;;
@@ -392,6 +407,7 @@ import { FeedbackComponent } from &#x27;./feedback/feedback.component&#x27;;
 import { HttpClientModule } from &#x27;@angular/common/http&#x27;;
 import { environment } from &#x27;./../environments/environment&#x27;;
 import { LocationStrategy, HashLocationStrategy } from &#x27;../../node_modules/@angular/common&#x27;;
+import { QuoteDialogComponent } from &#x27;./quotebuilder/quote-dialog.component&#x27;;
 
 @NgModule({
   declarations: [
@@ -400,7 +416,8 @@ import { LocationStrategy, HashLocationStrategy } from &#x27;../../node_modules/
     ImageuploadComponent,
     UtilitiesComponent,
     ContactUsComponent,
-    FeedbackComponent
+    FeedbackComponent,
+    QuoteDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -420,7 +437,13 @@ import { LocationStrategy, HashLocationStrategy } from &#x27;../../node_modules/
   bootstrap: [
     AppComponent
   ],
-  schemas: [NO_ERRORS_SCHEMA]
+  entryComponents: [
+    QuoteDialogComponent
+  ],
+  schemas: [
+    NO_ERRORS_SCHEMA,
+    CUSTOM_ELEMENTS_SCHEMA
+  ]
 })
 export class AppModule { }
 </code></pre>

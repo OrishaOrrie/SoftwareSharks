@@ -91,7 +91,7 @@
                                     <a href="../components/ContactUsComponent.html" >ContactUsComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/FeedbackComponent.html"  class="active" >FeedbackComponent</a>
+                                    <a href="../components/FeedbackComponent.html" >FeedbackComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/HomeComponent.html" >HomeComponent</a>
@@ -100,7 +100,7 @@
                                     <a href="../components/ImageuploadComponent.html" >ImageuploadComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/QuoteDialogComponent.html" >QuoteDialogComponent</a>
+                                    <a href="../components/QuoteDialogComponent.html"  class="active" >QuoteDialogComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/UtilitiesComponent.html" >UtilitiesComponent</a>
@@ -232,7 +232,7 @@
                                            <a href="../components/ContactUsComponent.html" >ContactUsComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/FeedbackComponent.html"  class="active" >FeedbackComponent</a>
+                                           <a href="../components/FeedbackComponent.html" >FeedbackComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/HomeComponent.html" >HomeComponent</a>
@@ -241,7 +241,7 @@
                                            <a href="../components/ImageuploadComponent.html" >ImageuploadComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/QuoteDialogComponent.html" >QuoteDialogComponent</a>
+                                           <a href="../components/QuoteDialogComponent.html"  class="active" >QuoteDialogComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/UtilitiesComponent.html" >UtilitiesComponent</a>
@@ -302,7 +302,7 @@
 
 <ol class="breadcrumb">
   <li>Components</li>
-  <li>FeedbackComponent</li>
+  <li>QuoteDialogComponent</li>
 </ol>
 
 
@@ -320,7 +320,7 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>src/app/feedback/feedback.component.ts</code>
+    <code>src/app/quotebuilder/quote-dialog.component.ts</code>
 </p>
 
 
@@ -343,19 +343,19 @@
 
             <tr>
                 <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>app-feedback</code></td>
+                <td class="col-md-9"><code>app-quote-dialog</code></td>
             </tr>
 
             <tr>
                 <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>feedback.component.scss</code></td>
+                <td class="col-md-9"><code>quote-dialog.component.css</code></td>
             </tr>
 
 
 
             <tr>
                 <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>feedback.component.html</code></td>
+                <td class="col-md-9"><code>quote-dialog.component.html</code></td>
             </tr>
 
 
@@ -371,36 +371,13 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(fb: <a href="https://angular.io/docs/ts/latest/api/forms/index/FormBuilder-class.html" target="_blank" >FormBuilder</a>, http: HttpClient)</code>
+                            <code>constructor(fb: <a href="https://angular.io/docs/ts/latest/api/forms/index/FormBuilder-class.html" target="_blank" >FormBuilder</a>, dialogRef: any, data: any, snackbar: MatSnackBar, qb: <a href="../injectables/QuoteBuilderService.html" >QuoteBuilderService</a>)</code>
                         </td>
                     </tr>
     
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-description"><p>THe form group and it&#39;s validation is defined in this constructor</p>
-    </div>
                                 <div class="io-description">
-                                        <b>Parameters :</b>
-                                        <ul class="jsdoc-params">
-                                                <li>
-                                                    <div>
-                                                        <b>fb</b>
-                                                    </div>
-                                                    <div>
-                                                        <p>Form Builder injection used for Form validation</p>
-    
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div>
-                                                        <b>http</b>
-                                                    </div>
-                                                    <div>
-                                                        <p>HttpClient injection used to make HTTP requests</p>
-    
-                                                    </div>
-                                                </li>
-                                        </ul>
                                 </div>
                         </td>
                     </tr>
@@ -414,19 +391,19 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b> submitForm</b>
+                            <b> addQuoteItem</b>
                         </td>
                     </tr>
     
                     <tr>
                         <td class="col-md-4">
-    <code>submitForm()</code>
+    <code>addQuoteItem()</code>
                         </td>
                     </tr>
     
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-description"><p>Called when the Send Feedback button is clicked. POSTs the message and handles the server<br>response</p>
+                                <div class="io-description"><p>Calls the QuoteBuilder Service to add the input quote details and display a snack bar on success</p>
     </div>
                                 <div class="io-description">
                                     <b>Returns: </b>    <code>void</code>
@@ -440,20 +417,61 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b> postMessage</b>
+                            <b> openSnackBar</b>
                         </td>
                     </tr>
     
                     <tr>
                         <td class="col-md-4">
-    <code>postMessage()</code>
+    <code>openSnackBar(message: string)</code>
                         </td>
                     </tr>
     
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-description"><p>Handles sending the HTTP POST request to the email server with the necessary feedback details</p>
+                                <div class="io-description"><p>Opens the snackbar which displays the input message</p>
     </div>
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <ul class="jsdoc-params">
+                                                <li>
+                                                    <div>
+                                                        <b>message</b>
+                                                    </div>
+                                                    <div>
+                                                        <p>The string that is to be displayed</p>
+    
+                                                    </div>
+                                                </li>
+                                        </ul>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                                    <div class="io-description">
+                                        
+                                    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> closeDialog</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>closeDialog()</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
                                 <div class="io-description">
                                 </div>
                                 <div class="io-description">
@@ -461,8 +479,7 @@
     
                                 </div>
                                     <div class="io-description">
-                                        <p>Observable with the data received by the email server</p>
-    
+                                        
                                     </div>
                         </td>
                     </tr>
@@ -476,23 +493,18 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b><span class="modifier">Public</span> defaultType</b>
+                            <b> amount</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-circle"></span><code>defaultType:     <code>string</code>
+                            <code>amount:     <code>number</code>
     </bcode>
                         </td>
                     </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Default value: </i><code>General Feedback</code>
-                            </td>
-                        </tr>
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-description"><p>The default feedback type to be used</p>
+                            <div class="io-description"><p>The amount of the item that is added to the quote</p>
     </div>
                         </td>
                     </tr>
@@ -502,23 +514,18 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b><span class="modifier">Public</span> failedToSubmit</b>
+                            <b> item</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-circle"></span><code>failedToSubmit:     <code>Boolean</code>
+                            <code>item:     <code>string</code>
     </bcode>
                         </td>
                     </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Default value: </i><code>false</code>
-                            </td>
-                        </tr>
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-description"><p>Indicates that an error occured while trying to submit feedback</p>
+                            <div class="io-description"><p>The name of the item that is to be added to the quote</p>
     </div>
                         </td>
                     </tr>
@@ -528,12 +535,12 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b> fb</b>
+                            <b> qb</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <code>fb:     <code><a href="https://angular.io/docs/ts/latest/api/forms/index/FormBuilder-class.html" target="_blank" >FormBuilder</a></code>
+                            <code>qb:     <code><a href="../injectables/QuoteBuilderService.html" target="_self" >QuoteBuilderService</a></code>
     </bcode>
                         </td>
                     </tr>
@@ -543,18 +550,18 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b><span class="modifier">Public</span> feedbackTypes</b>
+                            <b> quoteForm</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-circle"></span><code>feedbackTypes:     <code>string[]</code>
+                            <code>quoteForm:     <code><a href="https://angular.io/docs/ts/latest/api/forms/index/FormGroup-class.html" target="_blank" >FormGroup</a></code>
     </bcode>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-description"><p>Array of all types of feedback</p>
+                            <div class="io-description"><p>The FormGroup used to control the modal input form</p>
     </div>
                         </td>
                     </tr>
@@ -564,86 +571,13 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b><span class="modifier">Public</span> formGroup</b>
+                            <b> snackbar</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-circle"></span><code>formGroup:     <code><a href="https://angular.io/docs/ts/latest/api/forms/index/FormGroup-class.html" target="_blank" >FormGroup</a></code>
+                            <code>snackbar:     <code>MatSnackBar</code>
     </bcode>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-description"><p>Used for form controls and validation</p>
-    </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> http</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <code>http:     <code>HttpClient</code>
-    </bcode>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b><span class="modifier">Public</span> sending</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-circle"></span><code>sending:     <code>Boolean</code>
-    </bcode>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Default value: </i><code>false</code>
-                            </td>
-                        </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-description"><p>Indicates that the feedback is being sent</p>
-    </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b><span class="modifier">Public</span> submitted</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-circle"></span><code>submitted:     <code>Boolean</code>
-    </bcode>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Default value: </i><code>false</code>
-                            </td>
-                        </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-description"><p>Indicates that a response has been received from the server</p>
-    </div>
                         </td>
                     </tr>
                 </tbody>
@@ -651,114 +585,83 @@
     </section>
 </div>
         <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import { HttpClient } from &#x27;@angular/common/http&#x27;;
-import { Component, OnInit } from &#x27;@angular/core&#x27;;
-import { FormGroup, FormControl, FormBuilder, Validators } from &#x27;@angular/forms&#x27;;
+            <pre><code class="hljs javascript">import { Component, OnInit, Inject } from &#x27;@angular/core&#x27;;
+import { FormGroup, FormBuilder, FormControl, Validators } from &#x27;@angular/forms&#x27;;
+import { MatDialogRef, MAT_DIALOG_DATA } from &#x27;@angular/material/dialog&#x27;;
+import { MatSnackBar } from &#x27;@angular/material&#x27;;
+import { QuoteBuilderService } from &#x27;./quote-builder.service&#x27;;
 
 @Component({
-  selector: &#x27;app-feedback&#x27;,
-  templateUrl: &#x27;./feedback.component.html&#x27;,
-  styleUrls: [&#x27;./feedback.component.scss&#x27;]
+  selector: &#x27;app-quote-dialog&#x27;,
+  templateUrl: &#x27;./quote-dialog.component.html&#x27;,
+  styleUrls: [&#x27;./quote-dialog.component.css&#x27;]
 })
-export class FeedbackComponent implements OnInit {
+export class QuoteDialogComponent implements OnInit {
 
   /**
-   * Array of all types of feedback
+   * The FormGroup used to control the modal input form
    */
-  public feedbackTypes: string[] &#x3D; [
-    &#x27;General Feedback&#x27;,
-    &#x27;Bug&#x27;,
-    &#x27;Feature Request&#x27;
-  ];
+  quoteForm: FormGroup;
 
   /**
-   * The default feedback type to be used
+   * The name of the item that is to be added to the quote
    */
-  public defaultType &#x3D; &#x27;General Feedback&#x27;;
+  item: string;
 
   /**
-   * Indicates that the feedback is being sent
+   * The amount of the item that is added to the quote
    */
-  public sending: Boolean &#x3D; false;
+  amount: number;
+
+  /**@ignore */
+  constructor(private fb: FormBuilder, private dialogRef: MatDialogRef&lt;QuoteDialogComponent&gt;, @Inject(MAT_DIALOG_DATA) data,
+  public snackbar: MatSnackBar, public qb: QuoteBuilderService) {
+    this.item &#x3D; data.name;
+  }
 
   /**
-   * Indicates that a response has been received from the server
+   * Sets up the FormGroup with the validators for the amount input field
    */
-  public submitted: Boolean &#x3D; false;
-
-  /**
-   * Indicates that an error occured while trying to submit feedback
-   */
-  public failedToSubmit: Boolean &#x3D; false;
-
-  /**
-   * Used for form controls and validation
-   */
-  public formGroup: FormGroup;
-
-  /**
-   * THe form group and it&#x27;s validation is defined in this constructor
-   * @param fb Form Builder injection used for Form validation
-   * @param http HttpClient injection used to make HTTP requests
-   */
-  constructor(public fb: FormBuilder, public http: HttpClient) {
-    this.formGroup &#x3D; this.fb.group({
-      name: new FormControl(&#x27;&#x27;, Validators.compose([
-        Validators.maxLength(30),
-        Validators.minLength(3),
-        Validators.required
-      ])),
-      feedType: new FormControl(null),
-      message: new FormControl(&#x27;&#x27;, Validators.compose([
-        Validators.minLength(5),
-        Validators.maxLength(200)
+  ngOnInit() {
+    this.quoteForm &#x3D; this.fb.group({
+      amount: new FormControl(&#x27;&#x27;, Validators.compose([
+        Validators.required,
+        Validators.max(1000),
+        Validators.min(1)
       ]))
     });
-    this.formGroup.controls[&#x27;feedType&#x27;].setValue(this.defaultType, {onlySelf: true});
+  }
+
+  /**
+   * Calls the QuoteBuilder Service to add the input quote details and display a snack bar on success
+   */
+  addQuoteItem() {
+    this.amount &#x3D; this.quoteForm.controls[&#x27;amount&#x27;].value;
+
+    this.qb.addQuote(this.item, this.amount);
+
+    const message &#x3D; &#x27;Added &#x27; + this.amount + &#x27; items of type &quot;&#x27; + this.item + &#x27;&quot; to your quote. &#x27;
+    + &#x27;\nGo to the Contact Us page to request the quote&#x27;;
+    this.openSnackBar(message);
+
+    this.dialogRef.close();
+  }
+
+  /**
+   * Opens the snackbar which displays the input message
+   * @param message The string that is to be displayed
+   */
+  openSnackBar(message: string) {
+    this.snackbar.open(message, &#x27;Okay&#x27;, {
+      duration: 5000
+    });
   }
 
   /**
    * @ignore
    */
-  ngOnInit() {
-  }
-
-  /**
-   * Called when the Send Feedback button is clicked. POSTs the message and handles the server
-   * response
-   */
-  submitForm() {
-    this.sending &#x3D; true;
-
-    this.postMessage().subscribe(
-      (data &#x3D;&gt; {
-        if (data[&#x27;message&#x27;] &#x3D;&#x3D;&#x3D; &#x27;Message sent&#x27;) {
-          this.submitted &#x3D; true;
-        } else {
-          this.failedToSubmit &#x3D; true;
-        }
-        this.sending &#x3D; false;
-      })
-    );
-    // this.formGroup.reset();
-
-  }
-
-  /**
-   * Handles sending the HTTP POST request to the email server with the necessary feedback details
-   * @returns   Observable with the data received by the email server
-   */
-  postMessage() {
-    const msgToSend &#x3D; &#x27;Feedback type: &#x27; + this.formGroup.controls[&#x27;feedType&#x27;].value + &#x27;\n&#x27;
-    + this.formGroup.controls[&#x27;message&#x27;].value;
-
-    return this.http.post(&#x27;https://us-central1-testproject-ee885.cloudfunctions.net/app/sendmail&#x27;,
-      {
-        &#x27;subject&#x27;: this.formGroup.controls[&#x27;name&#x27;].value,
-        &#x27;text&#x27;: msgToSend,
-        &#x27;email&#x27;: &#x27;Email Unavailable&#x27;,
-      }
-    );
+  closeDialog() {
+    this.dialogRef.close();
   }
 
 }

@@ -94,7 +94,7 @@
                                     <a href="../components/FeedbackComponent.html" >FeedbackComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/HomeComponent.html"  class="active" >HomeComponent</a>
+                                    <a href="../components/HomeComponent.html" >HomeComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/ImageuploadComponent.html" >ImageuploadComponent</a>
@@ -129,7 +129,7 @@
                                     <a href="../injectables/ModelLoaderService.html" >ModelLoaderService</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../injectables/QuoteBuilderService.html" >QuoteBuilderService</a>
+                                    <a href="../injectables/QuoteBuilderService.html"  class="active" >QuoteBuilderService</a>
                                 </li>
                         </ul>
                     </li>
@@ -235,7 +235,7 @@
                                            <a href="../components/FeedbackComponent.html" >FeedbackComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/HomeComponent.html"  class="active" >HomeComponent</a>
+                                           <a href="../components/HomeComponent.html" >HomeComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/ImageuploadComponent.html" >ImageuploadComponent</a>
@@ -270,7 +270,7 @@
                                            <a href="../injectables/ModelLoaderService.html" >ModelLoaderService</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../injectables/QuoteBuilderService.html" >QuoteBuilderService</a>
+                                           <a href="../injectables/QuoteBuilderService.html"  class="active" >QuoteBuilderService</a>
                                        </li>
                                </ul>
                            </li>
@@ -296,147 +296,303 @@
                    
                    </nav>
                </div>
-               <div class="content component">
+               <div class="content injectable">
                    <div class="content-data">
 
 
+
+
 <ol class="breadcrumb">
-  <li>Components</li>
-  <li>HomeComponent</li>
+  <li>Injectables</li>
+  <li>QuoteBuilderService</li>
 </ol>
 
+<ul class="nav nav-tabs" role="tablist">
+    <li class="active">
+        <a href="#infos" id="infos-tab" role="tab" data-toggle="tab">Infos</a>
+    </li>
+    <li>
+        <a href="#source" role="tab" id="source-tab" data-toggle="tab">Source</a>
+    </li>
+</ul>
 
-    <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a href="#infos" id="infos-tab" role="tab" data-toggle="tab">Infos</a>
-        </li>
-        <li>
-            <a href="#source" role="tab" id="source-tab" data-toggle="tab">Source</a>
-        </li>
-    </ul>
-
-    <div class="tab-content">
-        <div class="tab-pane fade active in" id="infos"><p class="comment">
-    <h3>File</h3>
-</p>
-<p class="comment">
-    <code>src/app/home/home.component.ts</code>
-</p>
-
-
-
-<section>
-    <h3>Metadata</h3>
-    <table class="table table-sm table-hover">
-        <tbody>
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="infos">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/quotebuilder/quote-builder.service.ts</code>
+        </p>
 
 
+            <section>
+                <h3 id="constructor">Constructor</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>constructor()</code>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description">
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </section>
 
+            <section>
+                <h3 id="methods">Methods</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> addQuote</b>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            <code>addQuote(name: string, amount: number)</code>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Adds the quote object from the quote dialog to the quoteList</p>
+            </div>
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <ul class="jsdoc-params">
+                                                        <li>
+                                                            <div>
+                                                                <b>name</b>
+                                                            </div>
+                                                            <div>
+                                                                <p>The name of the item that is to be part of the quote</p>
+            
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div>
+                                                                <b>amount</b>
+                                                            </div>
+                                                            <div>
+                                                                <p>The amount of the item that is part of the quote</p>
+            
+                                                            </div>
+                                                        </li>
+                                                </ul>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns: </b>    <code>void</code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> getNumQuoteItems</b>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            <code>getNumQuoteItems()</code>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Gets the number of quote items added</p>
+            </div>
+                                        <div class="io-description">
+                                            <b>Returns: </b>    <code>void</code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> isQuoteStarted</b>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            <code>isQuoteStarted()</code>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Evaluates to true if the quoteList has been added to at least once</p>
+            </div>
+                                        <div class="io-description">
+                                            <b>Returns: </b>    <code>void</code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> getQuoteList</b>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            <code>getQuoteList()</code>
+                                </td>
+                            </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Returns the array of quote elements</p>
+            </div>
+                                        <div class="io-description">
+                                            <b>Returns: </b>    <code>void</code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </section>
 
+            <section>
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b><span class="modifier">Private</span> quoteList</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-lock"></span><code>quoteList:     <code>any[]</code>
+            </bcode>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>An array of all quote elements added from the imagerec component</p>
+            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b><span class="modifier">Private</span> quoteStarted</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-lock"></span><code>quoteStarted:     <code>boolean</code>
+            </bcode>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Default value: </i><code>false</code>
+                                    </td>
+                                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Evaluates to true if the quoteList has been added to at least once</p>
+            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </section>
+    </div>
+    <div class="tab-pane fade tab-source-code" id="source">
+        <pre><code class="hljs javascript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { Observable } from &#x27;rxjs&#x27;;
 
-
-
-
-
-
-
-
-            <tr>
-                <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>app-home</code></td>
-            </tr>
-
-            <tr>
-                <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>home.component.css,<br>.../../node_modules/hover.css/css/hover-min.css</code></td>
-            </tr>
-
-
-
-            <tr>
-                <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>home.component.html</code></td>
-            </tr>
-
-
-        </tbody>
-    </table>
-</section>
-
-
-
-    <section>
-        <h3 id="constructor">Constructor</h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <code>constructor(ml: <a href="../injectables/ModelLoaderService.html" >ModelLoaderService</a>)</code>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-description">
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-    </section>
-
-
-    <section>
-        <h3 id="inputs">Properties</h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> ml</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <code>ml:     <code><a href="../injectables/ModelLoaderService.html" target="_self" >ModelLoaderService</a></code>
-    </bcode>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-    </section>
-</div>
-        <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
-import { ModelLoaderService } from &#x27;./../model/model-loader.service&#x27;;
-
-@Component({
-  selector: &#x27;app-home&#x27;,
-  templateUrl: &#x27;./home.component.html&#x27;,
-  styleUrls: [&#x27;./home.component.css&#x27;, &#x27;../../../node_modules/hover.css/css/hover-min.css&#x27;],
-  animations: []
+@Injectable({
+  providedIn: &#x27;root&#x27;
 })
-export class HomeComponent implements OnInit {
+export class QuoteBuilderService {
+
+  /**
+   * An array of all quote elements added from the imagerec component
+   */
+  private quoteList: any[] &#x3D; [];
+
+  /**
+   * Evaluates to true if the quoteList has been added to at least once
+   */
+  private quoteStarted &#x3D; false;
 
   /**
    * @ignore
    */
-  constructor(public ml: ModelLoaderService) { }
+  constructor() { }
 
   /**
-   * The model loader service should start loading the model from the Internet upon home page entrance
+   * Adds the quote object from the quote dialog to the quoteList
+   * @param name The name of the item that is to be part of the quote
+   * @param amount The amount of the item that is part of the quote
    */
-  ngOnInit() {
-    console.log(&#x27;Fetching model&#x27;);
-    this.ml.loadModel();
+  addQuote(name: string, amount: number) {
+    const quote &#x3D; {
+      &#x27;name&#x27;: name,
+      &#x27;amount&#x27;: amount
+    };
+    this.quoteList.push(quote);
+    this.quoteStarted &#x3D; true;
   }
 
+  /**
+   * Gets the number of quote items added
+   */
+  getNumQuoteItems() {
+    return this.quoteList.length;
+  }
+
+  /**
+   * Evaluates to true if the quoteList has been added to at least once
+   */
+  isQuoteStarted() {
+    return this.quoteStarted;
+  }
+
+  /**
+   * Returns the array of quote elements
+   */
+  getQuoteList() {
+    return this.quoteList;
+  }
 }
 </code></pre>
-        </div>
     </div>
-
-
-
+</div>
 
 
 

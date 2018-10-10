@@ -100,6 +100,9 @@
                                     <a href="../components/ImageuploadComponent.html" >ImageuploadComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/QuoteDialogComponent.html" >QuoteDialogComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/UtilitiesComponent.html" >UtilitiesComponent</a>
                                 </li>
                         </ul>
@@ -124,6 +127,9 @@
                             >
                                 <li class="link">
                                     <a href="../injectables/ModelLoaderService.html" >ModelLoaderService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/QuoteBuilderService.html" >QuoteBuilderService</a>
                                 </li>
                         </ul>
                     </li>
@@ -235,6 +241,9 @@
                                            <a href="../components/ImageuploadComponent.html" >ImageuploadComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/QuoteDialogComponent.html" >QuoteDialogComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/UtilitiesComponent.html" >UtilitiesComponent</a>
                                        </li>
                                </ul>
@@ -259,6 +268,9 @@
                    >
                                        <li class="link">
                                            <a href="../injectables/ModelLoaderService.html" >ModelLoaderService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/QuoteBuilderService.html" >QuoteBuilderService</a>
                                        </li>
                                </ul>
                            </li>
@@ -359,7 +371,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(http: HttpClient)</code>
+                            <code>constructor(http: HttpClient, qb: <a href="../injectables/QuoteBuilderService.html" >QuoteBuilderService</a>)</code>
                         </td>
                     </tr>
     
@@ -441,10 +453,51 @@
                     </tr>
                 </tbody>
             </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> addQuoteToMessage</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>addQuoteToMessage()</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Appends the quote data from the QuoteBuilderService to the message textarea in a formatted presentation</p>
+    </div>
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
     </section>
 
     <section>
         <h3 id="inputs">Properties</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> addQuoteDisplay</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>addQuoteDisplay:     <code>Observable&lt;{}&gt;</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <table class="table table-sm table-bordered">
                 <tbody>
                     <tr>
@@ -512,6 +565,56 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
+                            <b><span class="modifier">Private</span> pressedButton</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-lock"></span><code>pressedButton:     <code>boolean</code>
+    </bcode>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Default value: </i><code>false</code>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> qb</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>qb:     <code><a href="../injectables/QuoteBuilderService.html" target="_self" >QuoteBuilderService</a></code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> quoteMessage</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>quoteMessage:     <code>string</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
                             <b> showSpinner</b>
                         </td>
                     </tr>
@@ -564,8 +667,10 @@
 </div>
         <div class="tab-pane fade tab-source-code" id="source">
             <pre><code class="hljs javascript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
-import { HttpClient, HttpHandler, HttpErrorResponse, HttpHeaders, HttpResponse } from &#x27;@angular/common/http&#x27;;
+import { HttpClient, HttpHeaders } from &#x27;@angular/common/http&#x27;;
 import { FormControl, Validators, FormGroup } from &#x27;@angular/forms&#x27;;
+import { QuoteBuilderService } from &#x27;../quotebuilder/quote-builder.service&#x27;;
+import { Observable } from &#x27;rxjs&#x27;;
 
 @Component({
   selector: &#x27;app-contact-us&#x27;,
@@ -603,11 +708,20 @@ export class ContactUsComponent implements OnInit {
     message: new FormControl(&#x27;&#x27;)
   });
 
+  public quoteMessage &#x3D; &#x27;&#x27;;
+
+  public addQuoteDisplay &#x3D; new Observable((data) &#x3D;&gt; {
+    setInterval(() &#x3D;&gt; {
+      data.next(this.qb.isQuoteStarted());
+    }, 1000);
+  });
+  private pressedButton &#x3D; false;
+
   /**
    * This constructor is only used to pass an instance of the HttpClient module.
    * @param http  HttpClient instance
    */
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, public qb: QuoteBuilderService) { }
 
   ngOnInit() {
   }
@@ -630,6 +744,7 @@ export class ContactUsComponent implements OnInit {
     const contactName &#x3D; this.myGroup.get(&#x27;name&#x27;).value;
     const contactEmail &#x3D; this.myGroup.get(&#x27;email&#x27;).value;
     const contactMessage &#x3D; this.myGroup.get(&#x27;message&#x27;).value;
+    // this.myGroup.setValue();
 
     const httpOptions &#x3D; {
       headers: new HttpHeaders({
@@ -656,6 +771,25 @@ export class ContactUsComponent implements OnInit {
       }
     });
 
+  }
+
+  /**
+   * Appends the quote data from the QuoteBuilderService to the message textarea in a formatted presentation
+   */
+  addQuoteToMessage() {
+    this.pressedButton &#x3D; true;
+    const quoteList &#x3D; this.qb.getQuoteList();
+    this.quoteMessage &#x3D; &#x27;\nI\&#x27;d like to receive a quote for the following items:\n&#x27;;
+    this.quoteMessage +&#x3D; &#x27;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;\n&#x27;;
+    quoteList.forEach((element, index) &#x3D;&gt; {
+      this.quoteMessage +&#x3D; (index + 1) + &#x27;. &#x27; + element.name + &#x27; x&#x27; + element.amount + &#x27;\n&#x27;;
+    });
+    this.quoteMessage +&#x3D; &#x27;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;\n&#x27;;
+
+    const messageText &#x3D; this.myGroup.get(&#x27;message&#x27;).value;
+    this.myGroup.patchValue({
+      message: messageText + this.quoteMessage
+    });
   }
 
 }
