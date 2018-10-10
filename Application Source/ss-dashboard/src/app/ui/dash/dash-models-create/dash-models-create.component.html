@@ -10,7 +10,7 @@
           <div class="card-body text-dark">
             <h5 class="card-title">Create a new Model</h5>
             <p class="card-text">Fill in the fields below to create a new Model:</p>
-            <form [formGroup]="newModelForm" (ngSubmit)="onSubmit()" id="newModelForm">
+            <form [formGroup]="newModelForm" (ngSubmit)="onSubmit()" id="newModelForm" (keydown.enter)="$event.preventDefault()">
               <div class="form-group row">
                 <label for="modelNameInput" class="col-md-2 col-sm-12 col-form-label">Model Name</label>
                 <div class="col-md-10 col-sm-12">
@@ -21,12 +21,13 @@
               <div class="form-group row">
                 <label class="col-md-2 col-sm-12 col-form-label">Categories</label>
                 <div class="col-md-10 col-sm-12" formArrayName="categories">
-                  <div *ngFor="let address of categories.controls; let i=index">
+                  <div #categoriesInput *ngFor="let address of categories.controls; let i=index">
                     <div class="input-group">
-                      <input type="text" class="form-control my-2" placeholder="Enter category" [formControlName]="i"
-                        required>
+                      <input type="text" class="form-control my-2" placeholder="Enter category" [formControlName]="i" [attr.id]="i + 'Category'"
+                      (keyup.enter)="keytab(i)" autofocus required>
                       <div *ngIf="i > 0" class="input-group-prepend my-2">
-                        <button type="button" class="btn btn-danger input-group-text" (click)="removeCategory(i)" placement="left" ngbTooltip="Delete Category"><span data-feather="delete"></span></button>
+                        <button type="button" class="btn btn-danger input-group-text" (click)="removeCategory(i)"
+                          placement="left" ngbTooltip="Delete Category"><span data-feather="delete"></span></button>
                       </div>
                     </div>
                   </div>
@@ -34,7 +35,8 @@
               </div>
               <button type="button" (click)="addCategory()" class="btn btn-info">Add Category</button>
               <!-- <button type="button" data-toggle="modal" data-target="#confirmationModal" class="btn btn-info">Add Category</button> -->
-              <button type="button" data-toggle="modal" data-target="#confirmationModal" class="btn btn-dark" [disabled]="!newModelForm.valid">Confirm</button>
+              <button type="button" data-toggle="modal" data-target="#confirmationModal" class="btn btn-dark"
+                [disabled]="!newModelForm.valid">Confirm</button>
             </form>
           </div>
         </div>
@@ -44,7 +46,8 @@
 </section>
 
 <!-- Confirmation Modal -->
-<div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+<div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
