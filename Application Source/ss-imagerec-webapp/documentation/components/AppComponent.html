@@ -100,6 +100,9 @@
                                     <a href="../components/ImageuploadComponent.html" >ImageuploadComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/QuoteDialogComponent.html" >QuoteDialogComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/UtilitiesComponent.html" >UtilitiesComponent</a>
                                 </li>
                         </ul>
@@ -124,6 +127,9 @@
                             >
                                 <li class="link">
                                     <a href="../injectables/ModelLoaderService.html" >ModelLoaderService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/QuoteBuilderService.html" >QuoteBuilderService</a>
                                 </li>
                         </ul>
                     </li>
@@ -235,6 +241,9 @@
                                            <a href="../components/ImageuploadComponent.html" >ImageuploadComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/QuoteDialogComponent.html" >QuoteDialogComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/UtilitiesComponent.html" >UtilitiesComponent</a>
                                        </li>
                                </ul>
@@ -259,6 +268,9 @@
                    >
                                        <li class="link">
                                            <a href="../injectables/ModelLoaderService.html" >ModelLoaderService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/QuoteBuilderService.html" >QuoteBuilderService</a>
                                        </li>
                                </ul>
                            </li>
@@ -353,10 +365,68 @@
 
 
 
+    <section>
+        <h3 id="constructor">Constructor</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>constructor(qb: <a href="../injectables/QuoteBuilderService.html" >QuoteBuilderService</a>)</code>
+                        </td>
+                    </tr>
+    
+                </tbody>
+            </table>
+    </section>
 
 
     <section>
         <h3 id="inputs">Properties</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> numQuoteItems</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>numQuoteItems:     <code>Observable&lt;{}&gt;</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> qb</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>qb:     <code><a href="../injectables/QuoteBuilderService.html" target="_self" >QuoteBuilderService</a></code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> quoteStarted</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>quoteStarted:     <code>Observable&lt;{}&gt;</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <table class="table table-sm table-bordered">
                 <tbody>
                     <tr>
@@ -381,6 +451,8 @@
 </div>
         <div class="tab-pane fade tab-source-code" id="source">
             <pre><code class="hljs javascript">import { Component } from &#x27;@angular/core&#x27;;
+import { QuoteBuilderService } from &#x27;./quotebuilder/quote-builder.service&#x27;;
+import { Observable } from &#x27;rxjs&#x27;;
 
 @Component({
   selector: &#x27;app-root&#x27;,
@@ -389,6 +461,19 @@
 })
 export class AppComponent {
   title &#x3D; &#x27;Ninshiki&#x27;;
+  quoteStarted &#x3D; new Observable((data) &#x3D;&gt; {
+    setInterval(() &#x3D;&gt; {
+      data.next(this.qb.isQuoteStarted());
+    }, 1000);
+  });
+  numQuoteItems &#x3D; new Observable((data) &#x3D;&gt; {
+    setInterval(() &#x3D;&gt; {
+      data.next(this.qb.getNumQuoteItems());
+    }, 1000);
+  });
+
+  constructor(public qb: QuoteBuilderService) {
+  }
 }
 </code></pre>
         </div>

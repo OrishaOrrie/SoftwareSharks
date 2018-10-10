@@ -156,7 +156,7 @@ export class ModelLoaderService {
    * @param img   The raw image pixel data as returned by tf.fromPixels
    * @returns   The raw pixel data of the cropped image
    */
-  private cropImage(img) {
+  cropImage(img) {
     const size = Math.min(img.shape[0], img.shape[1]);
     const centerHeight = img.shape[0] / 2;
     const beginHeight = centerHeight - (size / 2);
@@ -207,7 +207,7 @@ export class ModelLoaderService {
   /**
    * Called by mapPredictions in order to sort the classes by likeliness
   */
-  private sortPreds() {
+  public sortPreds() {
     this.resultPreds.sort((a, b) => {
       return b.likeliness - a.likeliness;
     });
@@ -217,7 +217,7 @@ export class ModelLoaderService {
    * Checks whether the selected model contains catalogue links
    * @returns   True if the model has links, false if not
    */
-  private modelHasLinks() {
+  public modelHasLinks() {
     return this.modelType[this.modelNumber].hasLinks;
   }
 
@@ -226,7 +226,7 @@ export class ModelLoaderService {
    * than 0.001%
    * @returns   Sliced array of processed classes
    */
-  private processResultNames() {
+  public processResultNames() {
     this.resultPreds.forEach((element, index) => {
       element.name = element.name.replace(/_/g, ' ');
       element.name = element.name.charAt(0).toUpperCase() + element.name.slice(1);

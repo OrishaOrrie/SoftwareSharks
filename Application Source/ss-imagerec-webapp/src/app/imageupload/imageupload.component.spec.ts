@@ -7,6 +7,7 @@ import { DebugElement } from '../../../node_modules/@angular/core';
 import { By } from '@angular/platform-browser';
 import { ModelLoaderService } from '../model/model-loader.service';
 import { FormsModule } from '@angular/forms';
+import { QuoteBuilderService } from '../quotebuilder/quote-builder.service';
 
 describe('ImageuploadComponent', () => {
   let component: ImageuploadComponent;
@@ -45,7 +46,7 @@ describe('ImageuploadComponent', () => {
   });
 
   it('should create', async(inject([ModelLoaderService],
-    (service: ModelLoaderService) => {
+    (service: ModelLoaderService, qs: QuoteBuilderService) => {
     expect(component).toBeTruthy();
   })));
 
@@ -60,6 +61,13 @@ describe('ImageuploadComponent', () => {
     component.madeChange();
     fixture.detectChanges();
     expect(previewEl.children.length).toBe(1);
+  });
+
+  it('should display an appropriate message if no image has been captured', () => {
+    component.imgAvailable = true;
+    component.uploadCapture = false;
+    component.updateInstruction();
+    expect(component.instruction).toBe('Click Submit to submit the selected image');
   });
 
   xit('an image should appear if a file was selected', () => {
@@ -115,6 +123,24 @@ describe('ImageuploadComponent', () => {
     captureButton.triggerEventHandler('click', null);
     fixture.detectChanges();
     expect(previewEl.children.length).toBeTruthy();
+  });
+
+  /**
+   * Model service integration
+   */
+  it('should update status text if an image is being predicted', () => {
+    // tslint:disable-next-line:prefer-const
+    let testImg: HTMLImageElement;
+    component.image = testImg;
+    component.predictImage();
+    fixture.detectChanges();
+    expect(component.modelStatus).toBe('Predicting...');
+  });
+
+  it('should change the model correctly', () => {
+    component.changeSelectedModel();
+    fixture.detectChanges();
+    expect(component.modelStatus).toBe('Loading...');
   });
 
 });

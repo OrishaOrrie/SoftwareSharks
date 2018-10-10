@@ -67,8 +67,14 @@ export class UtilitiesComponent implements OnInit {
     return 'Number of items: ' + Math.floor((this.filled_bucket - this.empty_bucket) / this.single_item);
   });
 
+  /**
+   * @ignore
+   */
   constructor() { }
 
+  /**
+   * @ignore
+   */
   ngOnInit() {
   }
 

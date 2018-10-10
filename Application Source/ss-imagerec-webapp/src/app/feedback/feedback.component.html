@@ -1,5 +1,5 @@
 <div class="feedback">
-  <p class="feedback_instructions" *ngIf="!submitted">We at Software Sharks are constantly trying to improve our webapp. Please provide us with feedback via the form below...</p>
+  <p class="feedback_instructions" *ngIf="!submitted">We at Software Sharks are constantly trying to improve our webapp. Please provide us with feedback via the form below</p>
   <form [formGroup]="formGroup" (ngSubmit)="submitForm()" class="feedback__form" *ngIf="!submitted">
     <mat-form-field color="primary">
       <input matInput formControlName="name" type="text" placeholder="Enter your name" required>

@@ -100,6 +100,9 @@
                                     <a href="../components/ImageuploadComponent.html"  class="active" >ImageuploadComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/QuoteDialogComponent.html" >QuoteDialogComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/UtilitiesComponent.html" >UtilitiesComponent</a>
                                 </li>
                         </ul>
@@ -124,6 +127,9 @@
                             >
                                 <li class="link">
                                     <a href="../injectables/ModelLoaderService.html" >ModelLoaderService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/QuoteBuilderService.html" >QuoteBuilderService</a>
                                 </li>
                         </ul>
                     </li>
@@ -235,6 +241,9 @@
                                            <a href="../components/ImageuploadComponent.html"  class="active" >ImageuploadComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/QuoteDialogComponent.html" >QuoteDialogComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/UtilitiesComponent.html" >UtilitiesComponent</a>
                                        </li>
                                </ul>
@@ -259,6 +268,9 @@
                    >
                                        <li class="link">
                                            <a href="../injectables/ModelLoaderService.html" >ModelLoaderService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/QuoteBuilderService.html" >QuoteBuilderService</a>
                                        </li>
                                </ul>
                            </li>
@@ -359,7 +371,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(ml: <a href="../injectables/ModelLoaderService.html" >ModelLoaderService</a>)</code>
+                            <code>constructor(ml: <a href="../injectables/ModelLoaderService.html" >ModelLoaderService</a>, dialog: MatDialog)</code>
                         </td>
                     </tr>
     
@@ -637,32 +649,6 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b> hasGetUserMedia</b>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-    <code>hasGetUserMedia()</code>
-                        </td>
-                    </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-description"><p>This function is required for the browser to make use of the device&#39;s webcam.</p>
-    </div>
-                                <div class="io-description">
-                                    <b>Returns: </b>    <code>void</code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
                             <b> predictImage</b>
                         </td>
                     </tr>
@@ -675,7 +661,7 @@
     
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-description"><p>Called when the Submit button is clicked. Calls the model loader service&#39;s predictImage method,<br>then maps the predictions and fills the resultPreds array, so that the results table is updated</p>
+                                <div class="io-description"><p>This function is required for the browser to make use of the device&#39;s webcam.<br>Called when the Submit button is clicked. Calls the model loader service&#39;s predictImage method,<br>then maps the predictions and fills the resultPreds array, so that the results table is updated</p>
     </div>
                                 <div class="io-description">
                                     <b>Returns: </b>    <code>void</code>
@@ -707,6 +693,49 @@
                                     <b>Returns: </b>    <code>void</code>
     
                                 </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> openQuoteDialog</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>openQuoteDialog(elName: any)</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Called when clicking on a predicted item. Handles the addition of quotes</p>
+    </div>
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <ul class="jsdoc-params">
+                                                <li>
+                                                    <div>
+                                                        <b>elName</b>
+                                                    </div>
+                                                    <div>
+                                                        <p>Corresponds with the results table element clicked</p>
+    
+                                                    </div>
+                                                </li>
+                                        </ul>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                                    <div class="io-description">
+                                        
+                                    </div>
                         </td>
                     </tr>
                 </tbody>
@@ -1174,6 +1203,8 @@
         <div class="tab-pane fade tab-source-code" id="source">
             <pre><code class="hljs javascript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
 import { ModelLoaderService } from &#x27;../model/model-loader.service&#x27;;
+import { MatDialog, MatDialogConfig } from &#x27;@angular/material/dialog&#x27;;
+import { QuoteDialogComponent } from &#x27;../quotebuilder/quote-dialog.component&#x27;;
 // import { AngularFireStorage } from &#x27;../../../node_modules/angularfire2/storage&#x27;;
 
 @Component({
@@ -1266,7 +1297,7 @@ export class ImageuploadComponent implements OnInit {
    * This constructor is only used to pass an instance of the HttpClient module.
    * @param http  HttpClient instance
    */
-  constructor(public ml: ModelLoaderService ) { }
+  constructor(public ml: ModelLoaderService, private dialog: MatDialog ) { }
 
   /**
    * Upon initialization of the component, the model loader service loads the model. It then queries whether
@@ -1501,9 +1532,9 @@ export class ImageuploadComponent implements OnInit {
   /**
    * This function is required for the browser to make use of the device&#x27;s webcam.
    */
-  hasGetUserMedia() {
-    return !!(navigator.mediaDevices &amp;&amp; navigator.mediaDevices.getUserMedia);
-  }
+  // hasGetUserMedia() {
+  //   return !!(navigator.mediaDevices &amp;&amp; navigator.mediaDevices.getUserMedia);
+  // }
 
   /**
    * Called when the Submit button is clicked. Calls the model loader service&#x27;s predictImage method,
@@ -1523,6 +1554,11 @@ export class ImageuploadComponent implements OnInit {
       this.showSpinner &#x3D; false;
       this.resultPreds &#x3D; this.ml.mapPredictions(predictions);
       this.modelStatus &#x3D; &#x27;Submit&#x27;;
+      if (this.ml.modelHasLinks()) {
+        this.displayedColumns &#x3D; [&#x27;name&#x27;, &#x27;likeliness&#x27;, &#x27;link&#x27;, &#x27;quote&#x27;];
+      } else {
+        this.displayedColumns &#x3D; [&#x27;name&#x27;, &#x27;likeliness&#x27;];
+      }
 
       const el &#x3D; document.querySelector(&#x27;.result-card&#x27;);
       el.scrollIntoView({behavior: &#x27;smooth&#x27;});
@@ -1550,6 +1586,23 @@ export class ImageuploadComponent implements OnInit {
         this.modelStatus &#x3D; &#x27;Submit&#x27;;
       }
     }, 500);
+  }
+
+  /**
+   * Called when clicking on a predicted item. Handles the addition of quotes
+   * @param elName Corresponds with the results table element clicked
+   */
+  openQuoteDialog(elName) {
+    const dialogConfig &#x3D; new MatDialogConfig();
+
+    dialogConfig.autoFocus &#x3D; true;
+    dialogConfig.data &#x3D; {
+      name: elName
+    };
+    dialogConfig.minHeight &#x3D; &#x27;250px&#x27;;
+    dialogConfig.minHeight &#x3D; &#x27;300px&#x27;;
+
+    this.dialog.open(QuoteDialogComponent, dialogConfig);
   }
 
   /**

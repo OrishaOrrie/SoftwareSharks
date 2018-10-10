@@ -16,8 +16,10 @@
  */
 
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHandler, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { QuoteBuilderService } from '../quotebuilder/quote-builder.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-contact-us',
@@ -55,11 +57,20 @@ export class ContactUsComponent implements OnInit {
     message: new FormControl('')
   });
 
+  public quoteMessage = '';
+
+  public addQuoteDisplay = new Observable((data) => {
+    setInterval(() => {
+      data.next(this.qb.isQuoteStarted());
+    }, 1000);
+  });
+  private pressedButton = false;
+
   /**
    * This constructor is only used to pass an instance of the HttpClient module.
    * @param http  HttpClient instance
    */
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, public qb: QuoteBuilderService) { }
 
   ngOnInit() {
   }
@@ -82,6 +93,7 @@ export class ContactUsComponent implements OnInit {
     const contactName = this.myGroup.get('name').value;
     const contactEmail = this.myGroup.get('email').value;
     const contactMessage = this.myGroup.get('message').value;
+    // this.myGroup.setValue();
 
     const httpOptions = {
       headers: new HttpHeaders({
@@ -108,6 +120,25 @@ export class ContactUsComponent implements OnInit {
       }
     });
 
+  }
+
+  /**
+   * Appends the quote data from the QuoteBuilderService to the message textarea in a formatted presentation
+   */
+  addQuoteToMessage() {
+    this.pressedButton = true;
+    const quoteList = this.qb.getQuoteList();
+    this.quoteMessage = '\nI\'d like to receive a quote for the following items:\n';
+    this.quoteMessage += '========================================\n';
+    quoteList.forEach((element, index) => {
+      this.quoteMessage += (index + 1) + '. ' + element.name + ' x' + element.amount + '\n';
+    });
+    this.quoteMessage += '========================================\n';
+
+    const messageText = this.myGroup.get('message').value;
+    this.myGroup.patchValue({
+      message: messageText + this.quoteMessage
+    });
   }
 
 }

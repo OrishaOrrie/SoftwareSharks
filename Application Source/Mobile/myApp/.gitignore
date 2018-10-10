@@ -1,3 +1,15 @@
+/platforms
+/plugins
+/www
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
 # Specifies intentionally untracked files to ignore when using Git
 # http://git-scm.com/docs/gitignore
 !*.jpeg
@@ -31,7 +43,6 @@ plugins/android.json
 plugins/ios.json
 www/
 $RECYCLE.BIN/
-
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate

@@ -100,6 +100,9 @@
                                     <a href="../components/ImageuploadComponent.html" >ImageuploadComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/QuoteDialogComponent.html" >QuoteDialogComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/UtilitiesComponent.html" >UtilitiesComponent</a>
                                 </li>
                         </ul>
@@ -124,6 +127,9 @@
                             >
                                 <li class="link">
                                     <a href="../injectables/ModelLoaderService.html"  class="active" >ModelLoaderService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/QuoteBuilderService.html" >QuoteBuilderService</a>
                                 </li>
                         </ul>
                     </li>
@@ -235,6 +241,9 @@
                                            <a href="../components/ImageuploadComponent.html" >ImageuploadComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/QuoteDialogComponent.html" >QuoteDialogComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/UtilitiesComponent.html" >UtilitiesComponent</a>
                                        </li>
                                </ul>
@@ -259,6 +268,9 @@
                    >
                                        <li class="link">
                                            <a href="../injectables/ModelLoaderService.html"  class="active" >ModelLoaderService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/QuoteBuilderService.html" >QuoteBuilderService</a>
                                        </li>
                                </ul>
                            </li>
@@ -491,16 +503,13 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Private</span> cropImage</b>
+                                    <b> cropImage</b>
                                 </td>
                             </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock">
-                                            <span class="fa fa-lock"></span>
-                                        </span>
-                                    <code>cropImage(img: any)</code>
+            <code>cropImage(img: any)</code>
                                 </td>
                             </tr>
             
@@ -582,14 +591,14 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Private</span> sortPreds</b>
+                                    <b><span class="modifier">Public</span> sortPreds</b>
                                 </td>
                             </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock">
-                                            <span class="fa fa-lock"></span>
+                                        <span class="modifier-icon method fa fa-play circle">
+                                            <span class="fa fa-circle"></span>
                                         </span>
                                     <code>sortPreds()</code>
                                 </td>
@@ -611,14 +620,14 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Private</span> modelHasLinks</b>
+                                    <b><span class="modifier">Public</span> modelHasLinks</b>
                                 </td>
                             </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock">
-                                            <span class="fa fa-lock"></span>
+                                        <span class="modifier-icon method fa fa-play circle">
+                                            <span class="fa fa-circle"></span>
                                         </span>
                                     <code>modelHasLinks()</code>
                                 </td>
@@ -646,14 +655,14 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Private</span> processResultNames</b>
+                                    <b><span class="modifier">Public</span> processResultNames</b>
                                 </td>
                             </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock">
-                                            <span class="fa fa-lock"></span>
+                                        <span class="modifier-icon method fa fa-play circle">
+                                            <span class="fa fa-circle"></span>
                                         </span>
                                     <code>processResultNames()</code>
                                 </td>
@@ -911,7 +920,7 @@ export class ModelLoaderService {
    * @param img   The raw image pixel data as returned by tf.fromPixels
    * @returns   The raw pixel data of the cropped image
    */
-  private cropImage(img) {
+  cropImage(img) {
     const size &#x3D; Math.min(img.shape[0], img.shape[1]);
     const centerHeight &#x3D; img.shape[0] / 2;
     const beginHeight &#x3D; centerHeight - (size / 2);
@@ -962,7 +971,7 @@ export class ModelLoaderService {
   /**
    * Called by mapPredictions in order to sort the classes by likeliness
   */
-  private sortPreds() {
+  public sortPreds() {
     this.resultPreds.sort((a, b) &#x3D;&gt; {
       return b.likeliness - a.likeliness;
     });
@@ -972,7 +981,7 @@ export class ModelLoaderService {
    * Checks whether the selected model contains catalogue links
    * @returns   True if the model has links, false if not
    */
-  private modelHasLinks() {
+  public modelHasLinks() {
     return this.modelType[this.modelNumber].hasLinks;
   }
 
@@ -981,7 +990,7 @@ export class ModelLoaderService {
    * than 0.001%
    * @returns   Sliced array of processed classes
    */
-  private processResultNames() {
+  public processResultNames() {
     this.resultPreds.forEach((element, index) &#x3D;&gt; {
       element.name &#x3D; element.name.replace(/_/g, &#x27; &#x27;);
       element.name &#x3D; element.name.charAt(0).toUpperCase() + element.name.slice(1);

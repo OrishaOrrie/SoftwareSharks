@@ -1,7 +1,7 @@
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { MaterialModule } from './material.module';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './/app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -18,6 +18,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { HttpClientModule } from '@angular/common/http';
 import { environment } from './../environments/environment';
 import { LocationStrategy, HashLocationStrategy } from '../../node_modules/@angular/common';
+import { QuoteDialogComponent } from './quotebuilder/quote-dialog.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { LocationStrategy, HashLocationStrategy } from '../../node_modules/@angu
     ImageuploadComponent,
     UtilitiesComponent,
     ContactUsComponent,
-    FeedbackComponent
+    FeedbackComponent,
+    QuoteDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -46,6 +48,12 @@ import { LocationStrategy, HashLocationStrategy } from '../../node_modules/@angu
   bootstrap: [
     AppComponent
   ],
-  schemas: [NO_ERRORS_SCHEMA]
+  entryComponents: [
+    QuoteDialogComponent
+  ],
+  schemas: [
+    NO_ERRORS_SCHEMA,
+    CUSTOM_ELEMENTS_SCHEMA
+  ]
 })
 export class AppModule { }

@@ -1,15 +1,19 @@
 <div class="toolbar-container">
 
-  <mat-toolbar color="primary">
+  <mat-toolbar color="primary" class="toolbar">
     <a mat-button routerLink="/home" class="toolbar__title">[ {{ title }} ]</a>
-    <span class="toolbar__spacer"></span>
-    <a mat-button class="toolbar__link" routerLink="/home">Home</a>
-    <span class="toolbar__button-spacer"></span>
+    <!-- <span class="toolbar__spacer"></span> -->
+    <!-- <a mat-button class="toolbar__link" routerLink="/home">Home</a> -->
+    <!-- <span class="toolbar__button-spacer"></span> -->
     <a mat-button class="toolbar__link" id="navbar-image" routerLink="/imageupload">Classify Image</a>
-    <span class="toolbar__button-spacer"></span>
+    <!-- <span class="toolbar__button-spacer"></span> -->
     <a mat-button class="toolbar__link" id="navbar-utilities" routerLink="/utilities">Tools</a>
-    <span class="toolbar__button-spacer"></span>
-    <a mat-button class="toolbar__link" id="navbar-contact" routerLink="/contactus">Contact Us</a>
+    <!-- <span class="toolbar__button-spacer"></span> -->
+    <a mat-button class="toolbar__link" id="navbar-contact" routerLink="/contactus">
+      Contact Us
+      <i *ngIf="quoteStarted | async" class="material-icons" style="padding-left: 10px; padding-right: 5px; width: 5px; color: white;">shopping_cart</i>
+      <div *ngIf="quoteStarted | async" class="toolbar__quote-amount">{{ numQuoteItems | async }}</div>
+    </a>
   </mat-toolbar>
   <br>
 </div>
@@ -22,56 +26,19 @@
 <app-feedback></app-feedback>
 
 <div class="footer">
-    <!-- <mat-grid-list cols="3" rowHeight="3:1">
-      <mat-grid-tile [colspan]=1 [rowspan]=1>
-        <div>
-          <a mat-button routerLink="/home" class="footer__link">Home</a><br>
-          <a mat-button routerLink="/imageupload" class="footer__link">Upload Image</a><br>
-          <a mat-button routerLink="/utilities" class="footer__link">Utilities</a><br>
-          <a mat-button id="footer-contactus" routerLink="/contactus" class="footer__link">Contact Us</a>
-        </div>
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <a mat-button href="https://github.com/OrishaOrrie/SoftwareSharks" class="footer__link" target="_blank">Developed by<br> Software Sharks</a><br>
-        <img class="footer__logo" src="../assets/ss-logo.png" alt="Software-Sharks">
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <a mat-button href="http://www.bramhope.co.za/" class="footer__link" target="_blank">Developed for<br>The Bramhope Group</a><br>
-        <img class="footer__logo" src="../assets/bramhope-logo.jpg" alt="logo">
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <a mat-button href="https://www.up.ac.za/" class="footer__link" target="_blank">A Project for<br>The University of Pretoria</a><br>
-        <img class="footer__logo" src="../assets/tukslogo.png" alt="logo">
-      </mat-grid-tile>
-    </mat-grid-list> -->
 
     <div class="footer__buttons">
-      <!-- <a class="footer__button" mat-button href="https://github.com/OrishaOrrie/SoftwareSharks" target="_blank">
-        <h3 class="footer__button-info">Developed by</h3>
-        <img class="footer__logo" src="../assets/ss-logo.png" alt="Software Sharks Logo">
-        <h3 class="footer__button-info">Software Sharks</h3>
-      </a>
-      <a class="footer__button" mat-button href="http://www.bramhope.co.za/" target="_blank">
-        <h3 class="footer__button-info">Developed for</h3>
-        <img class="footer__logo" src="../assets/bramhope-logo.jpg" alt="Bramhope Logo">
-        <h3 class="footer__button-info">The Bramhope Group</h3>
-      </a>
-      <a class="footer__button" mat-button href="https://www.up.ac.za/" target="_blank">
-        <h3 class="footer__button-info">A project for</h3>
-        <img class="footer__logo" src="../assets/tukslogo.png" alt="University of Pretoria logo">
-        <h3 class="footer__button-info">The University of Pretoria</h3>
-      </a> -->
       <a class="footer__button" mat-button href="https://github.com/OrishaOrrie/SoftwareSharks" target="_blank">
         <img class="footer__logo" src="../assets/ss-logo.png" alt="Software Sharks Logo">
-        <h4 class="footer__button-info">Developed by<br> Software Sharks</h4>
+        <p class="footer__button-info">Developed by Software Sharks</p>
       </a>
       <a class="footer__button" mat-button href="http://www.bramhope.co.za/" target="_blank">
         <img class="footer__logo" src="../assets/bramhope-logo.jpg" alt="Bramhope Logo">
-        <h4 class="footer__button-info">Developed for<br> The Bramhope Group</h4>
+        <p class="footer__button-info">Developed for The Bramhope Group</p>
       </a>
       <a class="footer__button" mat-button href="https://www.up.ac.za/" target="_blank">
         <img class="footer__logo" src="../assets/tukslogo.png" alt="University of Pretoria Logo">
-        <h4 class="footer__button-info">A Project for <br> University of Pretoria</h4>
+        <p class="footer__button-info">A Project for The University of Pretoria</p>
       </a>
     </div>
 

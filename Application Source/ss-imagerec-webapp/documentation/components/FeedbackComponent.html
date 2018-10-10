@@ -100,6 +100,9 @@
                                     <a href="../components/ImageuploadComponent.html" >ImageuploadComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/QuoteDialogComponent.html" >QuoteDialogComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/UtilitiesComponent.html" >UtilitiesComponent</a>
                                 </li>
                         </ul>
@@ -124,6 +127,9 @@
                             >
                                 <li class="link">
                                     <a href="../injectables/ModelLoaderService.html" >ModelLoaderService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/QuoteBuilderService.html" >QuoteBuilderService</a>
                                 </li>
                         </ul>
                     </li>
@@ -235,6 +241,9 @@
                                            <a href="../components/ImageuploadComponent.html" >ImageuploadComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/QuoteDialogComponent.html" >QuoteDialogComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/UtilitiesComponent.html" >UtilitiesComponent</a>
                                        </li>
                                </ul>
@@ -259,6 +268,9 @@
                    >
                                        <li class="link">
                                            <a href="../injectables/ModelLoaderService.html" >ModelLoaderService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/QuoteBuilderService.html" >QuoteBuilderService</a>
                                        </li>
                                </ul>
                            </li>
@@ -705,6 +717,9 @@ export class FeedbackComponent implements OnInit {
     this.formGroup.controls[&#x27;feedType&#x27;].setValue(this.defaultType, {onlySelf: true});
   }
 
+  /**
+   * @ignore
+   */
   ngOnInit() {
   }
 
@@ -714,12 +729,9 @@ export class FeedbackComponent implements OnInit {
    */
   submitForm() {
     this.sending &#x3D; true;
-    console.log(&#x27;Form Valid!&#x27;);
-    console.log(this.formGroup.controls[&#x27;name&#x27;].value);
 
     this.postMessage().subscribe(
       (data &#x3D;&gt; {
-        console.log(data);
         if (data[&#x27;message&#x27;] &#x3D;&#x3D;&#x3D; &#x27;Message sent&#x27;) {
           this.submitted &#x3D; true;
         } else {
