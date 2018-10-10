@@ -919,7 +919,7 @@ export class ResultsPage {
 &lt;!--display the results modal with all the likelihoods--&gt;
   &lt;ion-navbar&gt;
       &lt;ion-buttons end&gt;
-          &lt;button ion-button (click)&#x3D;&quot;closeModal()&quot;&gt;Close&lt;/button&gt;
+          &lt;button ion-button style&#x3D;&quot;color:  rgb(50, 150, 231)&quot; (click)&#x3D;&quot;closeModal()&quot;&gt;Close&lt;/button&gt;
         &lt;/ion-buttons&gt;
     &lt;ion-title&gt;Results&lt;/ion-title&gt;
   &lt;/ion-navbar&gt;
@@ -927,45 +927,17 @@ export class ResultsPage {
 &lt;/ion-header&gt;
 
 &lt;ion-content padding&gt;
-  &lt;h6 class&#x3D;&quot;instructions&quot;&gt;Tap on an object class to go to the Bramhope catalogue for that object&lt;/h6&gt;
-  &lt;!--&lt;ion-list&gt;
-    &lt;ion-item style&#x3D;&quot;color: black;&quot; *ngFor&#x3D;&quot;let result of resultPreds&quot; (click)&#x3D;&quot;openBrowserToBramhope( result.link )&quot;&gt;
-      &lt;ion-label&gt;{{ result.name }}: {{ result.likeliness }}%
-        &lt;ion-icon *ngIf&#x3D;&quot;result.link&quot; name&#x3D;&quot;open&quot; style&#x3D;&quot;float: right&quot;&gt;&lt;/ion-icon&gt;
-      &lt;/ion-label&gt;
-    &lt;/ion-item&gt;
-  &lt;/ion-list&gt;--&gt;
+  &lt;h6 class&#x3D;&quot;instructions&quot;&gt;Select the store link option to go to the Bramhope Website or the Add to Quote option to add the object to the contact us page to request a quote&lt;/h6&gt;
 
-  &lt;!-- &lt;ion-grid&gt;
-    &lt;ion-row&gt;
-      &lt;ion-col&gt;
-          &lt;ion-item style&#x3D;&quot;color: black;&quot; *ngFor&#x3D;&quot;let result of resultPreds&quot;&gt;
-              &lt;ion-label&gt;{{ result.name }}: {{ result.likeliness }}%
-      
-              &lt;/ion-label&gt;
-            &lt;/ion-item&gt;
-      &lt;/ion-col&gt;
-      &lt;ion-col&gt;
-        &lt;button item-right clear *ngFor&#x3D;&quot;let result of resultPreds&quot;  (click)&#x3D;&quot; openBrowserToBramhope( result.link )&quot;&gt;
-          &lt;ion-icon *ngIf&#x3D;&quot;result.link&quot; name&#x3D;&quot;open&quot; style&#x3D;&quot;float: right&quot;&gt;&lt;/ion-icon&gt;
-        &lt;/button&gt;
-      &lt;/ion-col&gt;
-      &lt;ion-col&gt;
-          &lt;button item-right clear *ngFor&#x3D;&quot;let result of resultPreds&quot;  (click)&#x3D;&quot;openQuoteDialog(result.name)&quot;&gt;
-              &lt;ion-icon *ngIf&#x3D;&quot;result.link&quot; name&#x3D;&quot;cart&quot; style&#x3D;&quot;float: right&quot;&gt;&lt;/ion-icon&gt;
-            &lt;/button&gt;
-      &lt;/ion-col&gt;
-    &lt;/ion-row&gt;
-  &lt;/ion-grid&gt; --&gt;
   &lt;div class&#x3D;&quot;row header&quot;&gt;
     &lt;div class&#x3D;&quot;cname&quot;&gt;Class Name&lt;/div&gt;
-    &lt;div class&#x3D;&quot;cname&quot;&gt;Likelihood&lt;/div&gt;
+    &lt;div class&#x3D;&quot;like&quot;&gt;Likelihood&lt;/div&gt;
     &lt;div class&#x3D;&quot;col&quot;&gt;Store Link&lt;/div&gt;
     &lt;div class&#x3D;&quot;col&quot;&gt;Add to quote&lt;/div&gt;
   &lt;/div&gt;
   &lt;div class&#x3D;&quot;row&quot; *ngFor&#x3D;&quot;let result of resultPreds&quot;&gt;
     &lt;div class&#x3D;&quot;cname&quot;  &gt;{{ result.name }}&lt;/div&gt;
-    &lt;div class&#x3D;&quot;cname&quot; &gt;{{ result.likeliness }}%&lt;/div&gt;
+    &lt;div class&#x3D;&quot;like&quot; &gt;{{ result.likeliness }}%&lt;/div&gt;
     &lt;div class&#x3D;&quot;col&quot;&gt;&lt;button item-right clear style &#x3D; &quot;background-color: transparent&quot;   (click)&#x3D;&quot; openBrowserToBramhope( result.link )&quot;&gt;
       &lt;ion-icon *ngIf&#x3D;&quot;result.link&quot; name&#x3D;&quot;open&quot; &gt;&lt;/ion-icon&gt;
     &lt;/button&gt;&lt;/div&gt;
@@ -1005,7 +977,7 @@ export class ResultsPage {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><!-- /*** File Name:       results.html* Version Number:  v1.1* Author:          Tobias Bester* Project Name:    Ninshiki* Organization:    Software Sharks* User Manual:     Refer to https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf* Update History:* ------------------------------------------* Date         Author		Description* 20/07/2018   Tobias		Created component* 18/09/2018   Tobias   Added functionality* 18/09/2018   Tobias	   Fixed layout* ------------------------------------------* Functional Description:*  The page that will display the results of the image prediction as well as a link to the store and an*  option to add it to their basket for a quotation*/ --><!--  Generated template for the ResultsPage page.  See http://ionicframework.com/docs/components/#navigation for more info on  Ionic pages and navigation.--><ion-header><!--display the results modal with all the likelihoods-->  <ion-navbar>      <ion-buttons end>          <button ion-button (click)="closeModal()">Close</button>        </ion-buttons>    <ion-title>Results</ion-title>  </ion-navbar></ion-header><ion-content padding>  <h6 class="instructions">Tap on an object class to go to the Bramhope catalogue for that object</h6>  <!--<ion-list>    <ion-item style="color: black;" *ngFor="let result of resultPreds" (click)="openBrowserToBramhope( result.link )">      <ion-label>{{ result.name }}: {{ result.likeliness }}%        <ion-icon *ngIf="result.link" name="open" style="float: right"></ion-icon>      </ion-label>    </ion-item>  </ion-list>-->  <!-- <ion-grid>    <ion-row>      <ion-col>          <ion-item style="color: black;" *ngFor="let result of resultPreds">              <ion-label>{{ result.name }}: {{ result.likeliness }}%                    </ion-label>            </ion-item>      </ion-col>      <ion-col>        <button item-right clear *ngFor="let result of resultPreds"  (click)=" openBrowserToBramhope( result.link )">          <ion-icon *ngIf="result.link" name="open" style="float: right"></ion-icon>        </button>      </ion-col>      <ion-col>          <button item-right clear *ngFor="let result of resultPreds"  (click)="openQuoteDialog(result.name)">              <ion-icon *ngIf="result.link" name="cart" style="float: right"></ion-icon>            </button>      </ion-col>    </ion-row>  </ion-grid> -->  <div class="row header">    <div class="cname">Class Name</div>    <div class="cname">Likelihood</div>    <div class="col">Store Link</div>    <div class="col">Add to quote</div>  </div>  <div class="row" *ngFor="let result of resultPreds">    <div class="cname"  >{{ result.name }}</div>    <div class="cname" >{{ result.likeliness }}%</div>    <div class="col"><button item-right clear style = "background-color: transparent"   (click)=" openBrowserToBramhope( result.link )">      <ion-icon *ngIf="result.link" name="open" ></ion-icon>    </button></div>    <div class="col"><button item-right clear style = "background-color: transparent" (click)="openQuoteDialog(result.name)">      <ion-icon *ngIf="result.link" name="cart" ></ion-icon>    </button></div>  </div></ion-content></div>'
+        var COMPONENT_TEMPLATE = '<div><!-- /*** File Name:       results.html* Version Number:  v1.1* Author:          Tobias Bester* Project Name:    Ninshiki* Organization:    Software Sharks* User Manual:     Refer to https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf* Update History:* ------------------------------------------* Date         Author		Description* 20/07/2018   Tobias		Created component* 18/09/2018   Tobias   Added functionality* 18/09/2018   Tobias	   Fixed layout* ------------------------------------------* Functional Description:*  The page that will display the results of the image prediction as well as a link to the store and an*  option to add it to their basket for a quotation*/ --><!--  Generated template for the ResultsPage page.  See http://ionicframework.com/docs/components/#navigation for more info on  Ionic pages and navigation.--><ion-header><!--display the results modal with all the likelihoods-->  <ion-navbar>      <ion-buttons end>          <button ion-button style="color:  rgb(50, 150, 231)" (click)="closeModal()">Close</button>        </ion-buttons>    <ion-title>Results</ion-title>  </ion-navbar></ion-header><ion-content padding>  <h6 class="instructions">Select the store link option to go to the Bramhope Website or the Add to Quote option to add the object to the contact us page to request a quote</h6>  <div class="row header">    <div class="cname">Class Name</div>    <div class="like">Likelihood</div>    <div class="col">Store Link</div>    <div class="col">Add to quote</div>  </div>  <div class="row" *ngFor="let result of resultPreds">    <div class="cname"  >{{ result.name }}</div>    <div class="like" >{{ result.likeliness }}%</div>    <div class="col"><button item-right clear style = "background-color: transparent"   (click)=" openBrowserToBramhope( result.link )">      <ion-icon *ngIf="result.link" name="open" ></ion-icon>    </button></div>    <div class="col"><button item-right clear style = "background-color: transparent" (click)="openQuoteDialog(result.name)">      <ion-icon *ngIf="result.link" name="cart" ></ion-icon>    </button></div>  </div></ion-content></div>'
     var COMPONENTS = [{'name': 'AboutPage', 'selector': 'page-about'},{'name': 'ContactPage', 'selector': 'page-contact'},{'name': 'FeedbackPage', 'selector': 'page-feedback'},{'name': 'HomePage', 'selector': 'page-home'},{'name': 'ImagerecPage', 'selector': 'page-imagerec'},{'name': 'MyApp', 'selector': ''},{'name': 'QuoteBuilderPage', 'selector': 'page-quote-builder'},{'name': 'ResultsPage', 'selector': 'page-results'},{'name': 'UtilitiesPage', 'selector': 'page-utilities'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ResultsPage'};

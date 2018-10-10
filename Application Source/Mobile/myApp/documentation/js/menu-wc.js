@@ -110,13 +110,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         <a href="modules/QuoteBuilderPageModule.html" data-type="entity-link">QuoteBuilderPageModule</a>
                             <li class="chapter inner">
                                 <div class="simple menu-toggler" data-toggle="collapse"
-                                    ${ isNormalMode ? 'data-target="#components-links-module-QuoteBuilderPageModule-d1b8ceb96107908432111375674f303e"' : 'data-target="#xs-components-links-module-QuoteBuilderPageModule-d1b8ceb96107908432111375674f303e"' }>
+                                    ${ isNormalMode ? 'data-target="#components-links-module-QuoteBuilderPageModule-2429a885c4623b3fd2b1f61306cf91d2"' : 'data-target="#xs-components-links-module-QuoteBuilderPageModule-2429a885c4623b3fd2b1f61306cf91d2"' }>
                                     <span class="icon ion-md-cog"></span>
                                     <span>Components</span>
                                     <span class="icon ion-ios-arrow-down"></span>
                                 </div>
                                 <ul class="links collapse"
-                                    ${ isNormalMode ? 'id="components-links-module-QuoteBuilderPageModule-d1b8ceb96107908432111375674f303e"' : 'id="xs-components-links-module-QuoteBuilderPageModule-d1b8ceb96107908432111375674f303e"' }>
+                                    ${ isNormalMode ? 'id="components-links-module-QuoteBuilderPageModule-2429a885c4623b3fd2b1f61306cf91d2"' : 'id="xs-components-links-module-QuoteBuilderPageModule-2429a885c4623b3fd2b1f61306cf91d2"' }>
                                         <li class="link">
                                             <a href="components/QuoteBuilderPage.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">QuoteBuilderPage</a>
                                         </li>

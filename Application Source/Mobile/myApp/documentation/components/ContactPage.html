@@ -181,6 +181,9 @@
                                 <a href="#addQuoteToMessage">addQuoteToMessage</a>
                             </li>
                             <li>
+                                <a href="#alertSing">alertSing</a>
+                            </li>
+                            <li>
                                 <a href="#getGeolocation">getGeolocation</a>
                             </li>
                             <li>
@@ -409,6 +412,44 @@
                         <tr>
                             <td class="col-md-4">
                                     <div class="io-line">Defined in <a href="" data-line="203" class="link-to-prism">src/pages/contact/contact.ts:203</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="alertSing"></a>
+                        <span class="name">
+                            <b>
+                            alertSing
+                            </b>
+                            <a href="#alertSing"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>alertSing()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="224" class="link-to-prism">src/pages/contact/contact.ts:224</a></div>
                             </td>
                         </tr>
 
@@ -1627,6 +1668,17 @@ export class ContactPage {
     }, 1000);
   });
 
+  alertSing()
+  {
+    let alert &#x3D; this.alertController.create({
+      title: &#x27;Hey There!&#x27;,
+      message:&#x60;
+      Got a query about one of Brahope&#x27;s products? Want to request a quote? Send Bramhope a message!&#x60;,
+      buttons: [&#x27;OK&#x27;]
+    });
+    alert.present();
+  }
+
 }
 </code></pre>
     </div>
@@ -1654,15 +1706,20 @@ export class ContactPage {
     &lt;ion-navbar&gt;
         &lt;ion-title&gt;Contact Us&lt;/ion-title&gt;
         &lt;ion-buttons end&gt;
+            &lt;button ion-button icon-only (click) &#x3D;&quot;alertSing()&quot;  &gt;
+             &lt;ion-icon name&#x3D;&quot;information-circle&quot; style&#x3D;&quot;color: white&quot;&gt;&lt;/ion-icon&gt;
+           &lt;/button&gt;
+          &lt;/ion-buttons&gt;
+        &lt;ion-buttons end&gt;
             &lt;button ion-button icon-only (click) &#x3D;&quot;openModal()&quot;  &gt;
-             &lt;ion-icon name&#x3D;&quot;help-circle&quot; color&#x3D; &quot;dark&quot;&gt;&lt;/ion-icon&gt;
+             &lt;ion-icon name&#x3D;&quot;help-circle&quot; style&#x3D;&quot;color: white&quot;&gt;&lt;/ion-icon&gt;
            &lt;/button&gt;
           &lt;/ion-buttons&gt;
       &lt;/ion-navbar&gt;
 &lt;/ion-header&gt;
 &lt;!-- form to submit email to Bramhope group --&gt;
 &lt;ion-content padding id &#x3D;&quot;formcol&quot;&gt;
-    &lt;p class&#x3D; &quot;instructions&quot;&gt;Got a query about one of Brahope&#x27;s products? Want to request a quote? Send Bramhope a message!&lt;/p&gt; 
+&lt;h1 style&#x3D;&quot;color: black;&quot;&gt;Issues? Quote? Contact us!&lt;/h1&gt;
     &lt;form [formGroup]&#x3D;&quot;myGroup&quot;  *ngIf&#x3D;&quot;!submitted&quot; &gt;
  
       &lt;ion-item class&#x3D;&quot;inputs&quot;&gt;
@@ -1675,15 +1732,16 @@ export class ContactPage {
       &lt;/ion-item&gt;
       &lt;ion-item class&#x3D;&quot;inputs&quot;&gt;
         &lt;ion-label class &#x3D; &#x27;bob&#x27; color&#x3D;&quot;secondary&quot; stacked&gt;Message&lt;/ion-label&gt;
-        &lt;ion-textarea rows&#x3D;&quot;8&quot; maxLength&#x3D;&quot;500&quot; id&#x3D;&quot;message&quot; type&#x3D;&quot;text&quot; required formControlName&#x3D;&quot;message&quot; style &#x3D; &quot; height: 100px&quot;&gt;&lt;/ion-textarea &gt;
+        &lt;ion-textarea rows&#x3D;&quot;8&quot; maxLength&#x3D;&quot;500&quot; id&#x3D;&quot;message&quot; type&#x3D;&quot;text&quot; required formControlName&#x3D;&quot;message&quot; style &#x3D; &quot; height: 140px&quot;&gt;&lt;/ion-textarea &gt;
       &lt;/ion-item&gt;
     &lt;/form&gt;
       &lt;ion-item class&#x3D;&quot;inputs&quot;&gt;
         &lt;ion-label style&#x3D;&quot;font-weight: bold&quot; color&#x3D;&quot;secondary&quot;&gt;Send location data&lt;/ion-label&gt;
         &lt;ion-checkbox color&#x3D;&quot;secondary&quot; checked&#x3D;&quot;true&quot; [(ngModel)]&#x3D;&quot;sendLocation&quot;&gt;&lt;/ion-checkbox&gt;
       &lt;/ion-item&gt;
+      &lt;button *ngIf&#x3D;&quot;addQuoteDisplay | async&quot; ion-button full round color&#x3D; &quot;tertiary&quot; (click)&#x3D;&quot;addQuoteToMessage()&quot; &gt;Add Quote&lt;/button&gt;
     &lt;button ion-button full round color&#x3D; &quot;tertiary&quot; [disabled]&#x3D;&quot;!myGroup.valid&quot; (click)&#x3D;&quot;onSubmit()&quot;&gt;Send&lt;/button&gt;
-    &lt;button *ngIf&#x3D;&quot;addQuoteDisplay | async&quot; ion-button full round color&#x3D; &quot;tertiary&quot; (click)&#x3D;&quot;addQuoteToMessage()&quot; &gt;Add Quote&lt;/button&gt;
+   
     
 &lt;/ion-content&gt;</code></pre>
     </div>
@@ -1713,7 +1771,7 @@ export class ContactPage {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><!-- /** * File Name:       contact.html * Version Number:  v1.1 * Author:          Orisha Orrie, Tobias Bester * Project Name:    Ninshiki * Organization:    Software Sharks * User Manual:     Refer to https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf * Update History: * ------------------------------------------ * Date         Author		Description * 20/07/2018   Orisha		Created component * 15/08/2018   Orisha    Added backend functionality * 18/09/2018   Orisha    Fixed layout * ------------------------------------------ * Functional Description: *  This page includes ways to contact the Bramhope group in order to request a quote or report any issues. */ --><ion-header>    <ion-navbar>        <ion-title>Contact Us</ion-title>        <ion-buttons end>            <button ion-button icon-only (click) ="openModal()"  >             <ion-icon name="help-circle" color= "dark"></ion-icon>           </button>          </ion-buttons>      </ion-navbar></ion-header><!-- form to submit email to Bramhope group --><ion-content padding id ="formcol">    <p class= "instructions">Got a query about one of Brahope\'s products? Want to request a quote? Send Bramhope a message!</p>     <form [formGroup]="myGroup"  *ngIf="!submitted" >       <ion-item class="inputs">        <ion-label class = \'bob\' color="secondary" stacked>Full Name</ion-label>        <ion-input id="name" type="text" required formControlName="name"></ion-input>      </ion-item>      <ion-item class="inputs">        <ion-label class = \'bob\' color="secondary" stacked>Email Address</ion-label>        <ion-input id="email" type="email" required formControlName="email" ></ion-input>      </ion-item>      <ion-item class="inputs">        <ion-label class = \'bob\' color="secondary" stacked>Message</ion-label>        <ion-textarea rows="8" maxLength="500" id="message" type="text" required formControlName="message" style = " height: 100px"></ion-textarea >      </ion-item>    </form>      <ion-item class="inputs">        <ion-label style="font-weight: bold" color="secondary">Send location data</ion-label>        <ion-checkbox color="secondary" checked="true" [(ngModel)]="sendLocation"></ion-checkbox>      </ion-item>    <button ion-button full round color= "tertiary" [disabled]="!myGroup.valid" (click)="onSubmit()">Send</button>    <button *ngIf="addQuoteDisplay | async" ion-button full round color= "tertiary" (click)="addQuoteToMessage()" >Add Quote</button>    </ion-content></div>'
+        var COMPONENT_TEMPLATE = '<div><!-- /** * File Name:       contact.html * Version Number:  v1.1 * Author:          Orisha Orrie, Tobias Bester * Project Name:    Ninshiki * Organization:    Software Sharks * User Manual:     Refer to https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf * Update History: * ------------------------------------------ * Date         Author		Description * 20/07/2018   Orisha		Created component * 15/08/2018   Orisha    Added backend functionality * 18/09/2018   Orisha    Fixed layout * ------------------------------------------ * Functional Description: *  This page includes ways to contact the Bramhope group in order to request a quote or report any issues. */ --><ion-header>    <ion-navbar>        <ion-title>Contact Us</ion-title>        <ion-buttons end>            <button ion-button icon-only (click) ="alertSing()"  >             <ion-icon name="information-circle" style="color: white"></ion-icon>           </button>          </ion-buttons>        <ion-buttons end>            <button ion-button icon-only (click) ="openModal()"  >             <ion-icon name="help-circle" style="color: white"></ion-icon>           </button>          </ion-buttons>      </ion-navbar></ion-header><!-- form to submit email to Bramhope group --><ion-content padding id ="formcol"><h1 style="color: black;">Issues? Quote? Contact us!</h1>    <form [formGroup]="myGroup"  *ngIf="!submitted" >       <ion-item class="inputs">        <ion-label class = \'bob\' color="secondary" stacked>Full Name</ion-label>        <ion-input id="name" type="text" required formControlName="name"></ion-input>      </ion-item>      <ion-item class="inputs">        <ion-label class = \'bob\' color="secondary" stacked>Email Address</ion-label>        <ion-input id="email" type="email" required formControlName="email" ></ion-input>      </ion-item>      <ion-item class="inputs">        <ion-label class = \'bob\' color="secondary" stacked>Message</ion-label>        <ion-textarea rows="8" maxLength="500" id="message" type="text" required formControlName="message" style = " height: 140px"></ion-textarea >      </ion-item>    </form>      <ion-item class="inputs">        <ion-label style="font-weight: bold" color="secondary">Send location data</ion-label>        <ion-checkbox color="secondary" checked="true" [(ngModel)]="sendLocation"></ion-checkbox>      </ion-item>      <button *ngIf="addQuoteDisplay | async" ion-button full round color= "tertiary" (click)="addQuoteToMessage()" >Add Quote</button>    <button ion-button full round color= "tertiary" [disabled]="!myGroup.valid" (click)="onSubmit()">Send</button>       </ion-content></div>'
     var COMPONENTS = [{'name': 'AboutPage', 'selector': 'page-about'},{'name': 'ContactPage', 'selector': 'page-contact'},{'name': 'FeedbackPage', 'selector': 'page-feedback'},{'name': 'HomePage', 'selector': 'page-home'},{'name': 'ImagerecPage', 'selector': 'page-imagerec'},{'name': 'MyApp', 'selector': ''},{'name': 'QuoteBuilderPage', 'selector': 'page-quote-builder'},{'name': 'ResultsPage', 'selector': 'page-results'},{'name': 'UtilitiesPage', 'selector': 'page-utilities'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ContactPage'};

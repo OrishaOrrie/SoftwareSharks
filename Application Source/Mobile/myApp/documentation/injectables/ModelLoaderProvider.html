@@ -1116,14 +1116,14 @@ export class ModelLoaderProvider {
         // Use if the classes json is in the plain format
         this.resultPreds[i] &#x3D; {};
         this.resultPreds[i].name &#x3D; classesJson[i];
-        this.resultPreds[i].likeliness &#x3D; (classPreds[i] * 100).toFixed(4);
+        this.resultPreds[i].likeliness &#x3D; (classPreds[i] * 100).toFixed(1);
       } else {
         // Used if the classes json is in the custom format
         this.resultPreds[i] &#x3D; {};
         this.resultPreds[i].id &#x3D; classesJson.classes[i].id;
         this.resultPreds[i].first &#x3D; classesJson.classes[i].first;
         this.resultPreds[i].name &#x3D; classesJson.classes[i].name;
-        this.resultPreds[i].likeliness &#x3D; (classPreds[i] * 100).toFixed(4);
+        this.resultPreds[i].likeliness &#x3D; (classPreds[i] * 100).toFixed(1);
         if (linkExists) {
           this.resultPreds[i].link &#x3D; classesJson.classes[i].link;
         }
@@ -1161,7 +1161,7 @@ export class ModelLoaderProvider {
       element.name &#x3D; element.name.replace(/_/g, &#x27; &#x27;);
       element.name &#x3D; element.name.charAt(0).toUpperCase() + element.name.slice(1);
 
-      if (element.likeliness &lt; 0.001) {
+      if (element.likeliness &lt; 5) {
         this.resultPreds &#x3D; this.resultPreds.slice(0, index);
       }
     });

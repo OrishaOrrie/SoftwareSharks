@@ -150,6 +150,9 @@ Ionic pages and navigation.</p>
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#alertSing">alertSing</a>
+                            </li>
+                            <li>
                                 <a href="#openModal">openModal</a>
                             </li>
                         </ul>
@@ -178,6 +181,44 @@ Ionic pages and navigation.</p>
             <tbody>
                 <tr>
                     <td class="col-md-4">
+                        <a name="alertSing"></a>
+                        <span class="name">
+                            <b>
+                            alertSing
+                            </b>
+                            <a href="#alertSing"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>alertSing()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">src/pages/utilities/utilities.ts:98</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
                         <a name="openModal"></a>
                         <span class="name">
                             <b>
@@ -196,7 +237,7 @@ Ionic pages and navigation.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">src/pages/utilities/utilities.ts:85</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">src/pages/utilities/utilities.ts:86</a></div>
                             </td>
                         </tr>
 
@@ -253,7 +294,7 @@ Ionic pages and navigation.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/pages/utilities/utilities.ts:46</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/pages/utilities/utilities.ts:47</a></div>
                             </td>
                         </tr>
 
@@ -292,7 +333,7 @@ Ionic pages and navigation.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/pages/utilities/utilities.ts:47</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/pages/utilities/utilities.ts:48</a></div>
                             </td>
                         </tr>
 
@@ -337,13 +378,13 @@ Ionic pages and navigation.</p>
       return &#x27;Empty bucket cannot weigh more than a filled bucket&#x27;;
     }
 
-    return &#x27;Number of items: &#x27; + Math.floor((this.filled_bucket - this.empty_bucket) / this.single_item);
+    return &#x27;Total items: &#x27; + Math.floor((this.filled_bucket - this.empty_bucket) / this.single_item);
   })</code>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/pages/utilities/utilities.ts:54</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/pages/utilities/utilities.ts:55</a></div>
                             </td>
                         </tr>
 
@@ -389,7 +430,7 @@ appropriate validation messages</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/pages/utilities/utilities.ts:43</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/pages/utilities/utilities.ts:44</a></div>
                             </td>
                         </tr>
 
@@ -434,7 +475,7 @@ appropriate validation messages</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/pages/utilities/utilities.ts:45</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/pages/utilities/utilities.ts:46</a></div>
                             </td>
                         </tr>
 
@@ -452,6 +493,7 @@ import { NavController, NavParams, AlertController} from &#x27;ionic-angular&#x2
 import { ModalController } from &#x27;ionic-angular&#x27;;
 // import { ContactPage } from &#x27;../contact/contact&#x27;;
 import { AboutPage } from &#x27;../about/about&#x27;;
+
 
 
 /**
@@ -498,14 +540,14 @@ export class UtilitiesPage {
       return &#x27;Empty bucket cannot weigh more than a filled bucket&#x27;;
     }
 
-    return &#x27;Number of items: &#x27; + Math.floor((this.filled_bucket - this.empty_bucket) / this.single_item);
+    return &#x27;Total items: &#x27; + Math.floor((this.filled_bucket - this.empty_bucket) / this.single_item);
   });
 
   /**
    * @ignore
    */
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-    public alertController: AlertController, public modalCtrl : ModalController) {
+    public alertCtrl: AlertController, public modalCtrl : ModalController) {
 
   }
 
@@ -524,6 +566,21 @@ export class UtilitiesPage {
   ionViewDidLoad() {
     console.log(&#x27;ionViewDidLoad UtilitiesPage&#x27;);
   }  
+  alertSing()
+  {
+    let alert &#x3D; this.alertCtrl.create({
+      title: &#x27;Instructions&#x27;,
+      message:&#x60;
+      &lt;ol&gt;
+        &lt;li&gt;Weigh a single item and then enter the weight of the single item under &quot;Weight Single Item&quot;&lt;/li&gt;
+        &lt;li&gt;Weigh the empty bucket and then enter the weight of the empty bucket under &quot;Weight Empty Bucket&quot;&lt;/li&gt;
+        &lt;li&gt;Weigh the filled bucket which contains the items and then enter the weight of the filled bucket under &quot;Weight Filled Bucket&quot;&lt;/li&gt;
+        
+      &lt;/ol&gt;&#x60;,
+      buttons: [&#x27;OK&#x27;]
+    });
+    alert.present();
+  }
 
 }
 </code></pre>
@@ -558,40 +615,59 @@ export class UtilitiesPage {
 
   &lt;ion-navbar&gt;
   
+
     &lt;ion-title&gt;Item calculator&lt;/ion-title&gt;
     &lt;ion-buttons end&gt;
-        &lt;button ion-button icon-only (click) &#x3D;&quot;openModal()&quot;  &gt;
-         &lt;ion-icon name&#x3D;&quot;help-circle&quot; color&#x3D; &quot;dark&quot;&gt;&lt;/ion-icon&gt;
+        &lt;button ion-button icon-only (click) &#x3D;&quot;alertSing()&quot;  &gt;
+         &lt;ion-icon name&#x3D;&quot;information-circle&quot; style&#x3D;&quot;color: white&quot;&gt;&lt;/ion-icon&gt;
        &lt;/button&gt;
       &lt;/ion-buttons&gt;
-   &lt;!-- &lt;ion-buttons end&gt; &lt;button (click)&#x3D;&quot;openModal()&quot;&gt; Modal &lt;/button&gt; &lt;/ion-buttons&gt;  --&gt;
-  &lt;/ion-navbar&gt;
+    &lt;ion-buttons end&gt;
+        &lt;button ion-button icon-only (click) &#x3D;&quot;openModal()&quot;  &gt;
+         &lt;ion-icon name&#x3D;&quot;help-circle&quot; style&#x3D;&quot;color: white&quot;&gt;&lt;/ion-icon&gt;
+       &lt;/button&gt;
+      &lt;/ion-buttons&gt;
 
+      
+  &lt;/ion-navbar&gt;
+  
 
 &lt;/ion-header&gt;
 
-
 &lt;ion-content padding &gt;
+  &lt;h1 style&#x3D;&quot;color: black; &quot;&gt;Calculate total items&lt;/h1&gt;
 &lt;!--Values are entered here and validation occurs in the .ts file--&gt;
-   &lt;p class&#x3D; &quot;instructions&quot;&gt;Enter the values as instructed. Use the same measurement units (e.g. Kg)&lt;/p&gt; 
-&lt;ion-item class&#x3D;&quot;inputs&quot;&gt;
-   &lt;ion-label  class&#x3D;&quot;bob&quot; color&#x3D;&quot;secondary&quot; stacked&gt;Weight Single Item&lt;/ion-label&gt; 
-    &lt;ion-input id&#x3D;&quot;single&quot; type&#x3D;&quot;number&quot; required placeholder&#x3D;&quot;Single item&quot; [(ngModel)]&#x3D;&quot;single_item&quot; name&#x3D;&quot;test&quot; min&#x3D;0&gt;&lt;/ion-input&gt;
-  &lt;/ion-item&gt;
+&lt;br&gt;
+    &lt;ion-card class &#x3D; &quot;inputFormat&quot;&gt;
+      &lt;ion-card-content&gt;
+        &lt;ion-item class&#x3D;&quot;inputs&quot;&gt;
+        &lt;ion-label  class&#x3D;&quot;bob&quot; stacked&gt;Weight Single Item  &lt;/ion-label&gt;
+          &lt;ion-input id&#x3D;&quot;single&quot;  type&#x3D;&quot;number&quot; required placeholder&#x3D;&quot;Single Item&quot; [(ngModel)]&#x3D;&quot;single_item&quot; min&#x3D;0&gt;&lt;/ion-input&gt; 
+        
+        &lt;/ion-item&gt;
+      &lt;/ion-card-content&gt;
+    &lt;/ion-card&gt;  
+&lt;ion-card class &#x3D; &quot;inputFormat&quot;&gt;
+    &lt;ion-card-content&gt;
   &lt;ion-item class &#x3D; &quot;inputs&quot;&gt;
-    &lt;ion-label class&#x3D;&quot;bob&quot; color&#x3D;&quot;secondary&quot; stacked&gt;Weight Empty Bucket&lt;/ion-label&gt;
+    &lt;ion-label class&#x3D;&quot;bob&quot; stacked&gt;Weight Empty Bucket&lt;/ion-label&gt;
     &lt;ion-input id&#x3D;&quot;empty&quot; type&#x3D;&quot;number&quot; required placeholder&#x3D;&quot;Empty bucket&quot; [(ngModel)]&#x3D;&quot;empty_bucket&quot; min&#x3D;0&gt;&lt;/ion-input&gt;
   &lt;/ion-item&gt;
-  &lt;ion-item class &#x3D; &quot;inputs&quot;&gt;
-    &lt;ion-label class&#x3D;&quot;bob&quot; color&#x3D;&quot;secondary&quot;stacked&gt;Weight Filled Bucket&lt;/ion-label&gt;
-    &lt;ion-input id&#x3D;&quot;filled&quot; type&#x3D;&quot;number&quot; required placeholder&#x3D;&quot;Filled bucket&quot; [(ngModel)]&#x3D;&quot;filled_bucket&quot;  min&#x3D;0&gt;&lt;/ion-input&gt;
-  &lt;/ion-item&gt;
+&lt;/ion-card-content&gt;
+&lt;/ion-card&gt;
+&lt;ion-card class &#x3D; &quot;inputFormat&quot;&gt;
+    &lt;ion-card-content&gt;
+      &lt;ion-item class &#x3D; &quot;inputs&quot;&gt;
+        &lt;ion-label class&#x3D;&quot;bob&quot; stacked&gt;Weight Filled Bucket&lt;/ion-label&gt;
+        &lt;ion-input id&#x3D;&quot;filled&quot; type&#x3D;&quot;number&quot; required placeholder&#x3D;&quot;Filled bucket&quot; [(ngModel)]&#x3D;&quot;filled_bucket&quot;  min&#x3D;0&gt;&lt;/ion-input&gt;
+      &lt;/ion-item&gt;
+&lt;/ion-card-content&gt;
+&lt;/ion-card&gt;
  &lt;br&gt;
- &lt;br&gt;
- &lt;br&gt; 
+
  &lt;!--Card to display the results--&gt;
 &lt;ion-card class &#x3D; &quot;result&quot;&gt;
-  &lt;ion-card-content class&#x3D;&quot;result__amount&quot; color&#x3D;&quot;secondary&quot;&gt;
+  &lt;ion-card-content class&#x3D;&quot;result__amount&quot;&gt;
     {{ hello() }}
   &lt;/ion-card-content&gt;
 &lt;/ion-card&gt;
@@ -624,7 +700,7 @@ export class UtilitiesPage {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><!-- /*** File Name:       utilities.html* Version Number:  v1.1* Author:          Orisha Orrie* Project Name:    Ninshiki* Organization:    Software Sharks* User Manual:     Refer to https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf* Update History:* ------------------------------------------* Date         Author		Description* 20/07/2018   Orisha		Created component* 18/09/2018   Orisha	  Fixed layout* 18/09/2018   Orisha   Added functionality* ------------------------------------------* Functional Description:*  The page to calculate the amount of items in a box. */ --><!--  Generated template for the UtilitiesPage page.  See http://ionicframework.com/docs/components/#navigation for more info on  Ionic pages and navigation.--><ion-header>  <ion-navbar>      <ion-title>Item calculator</ion-title>    <ion-buttons end>        <button ion-button icon-only (click) ="openModal()"  >         <ion-icon name="help-circle" color= "dark"></ion-icon>       </button>      </ion-buttons>   <!-- <ion-buttons end> <button (click)="openModal()"> Modal </button> </ion-buttons>  -->  </ion-navbar></ion-header><ion-content padding ><!--Values are entered here and validation occurs in the .ts file-->   <p class= "instructions">Enter the values as instructed. Use the same measurement units (e.g. Kg)</p> <ion-item class="inputs">   <ion-label  class="bob" color="secondary" stacked>Weight Single Item</ion-label>     <ion-input id="single" type="number" required placeholder="Single item" [(ngModel)]="single_item" name="test" min=0></ion-input>  </ion-item>  <ion-item class = "inputs">    <ion-label class="bob" color="secondary" stacked>Weight Empty Bucket</ion-label>    <ion-input id="empty" type="number" required placeholder="Empty bucket" [(ngModel)]="empty_bucket" min=0></ion-input>  </ion-item>  <ion-item class = "inputs">    <ion-label class="bob" color="secondary"stacked>Weight Filled Bucket</ion-label>    <ion-input id="filled" type="number" required placeholder="Filled bucket" [(ngModel)]="filled_bucket"  min=0></ion-input>  </ion-item> <br> <br> <br>  <!--Card to display the results--><ion-card class = "result">  <ion-card-content class="result__amount" color="secondary">    {{ hello() }}  </ion-card-content></ion-card></ion-content></div>'
+        var COMPONENT_TEMPLATE = '<div><!-- /*** File Name:       utilities.html* Version Number:  v1.1* Author:          Orisha Orrie* Project Name:    Ninshiki* Organization:    Software Sharks* User Manual:     Refer to https://github.com/OrishaOrrie/SoftwareSharks/blob/master/Documentation/User%20Manual.pdf* Update History:* ------------------------------------------* Date         Author		Description* 20/07/2018   Orisha		Created component* 18/09/2018   Orisha	  Fixed layout* 18/09/2018   Orisha   Added functionality* ------------------------------------------* Functional Description:*  The page to calculate the amount of items in a box. */ --><!--  Generated template for the UtilitiesPage page.  See http://ionicframework.com/docs/components/#navigation for more info on  Ionic pages and navigation.--><ion-header>  <ion-navbar>      <ion-title>Item calculator</ion-title>    <ion-buttons end>        <button ion-button icon-only (click) ="alertSing()"  >         <ion-icon name="information-circle" style="color: white"></ion-icon>       </button>      </ion-buttons>    <ion-buttons end>        <button ion-button icon-only (click) ="openModal()"  >         <ion-icon name="help-circle" style="color: white"></ion-icon>       </button>      </ion-buttons>        </ion-navbar>  </ion-header><ion-content padding >  <h1 style="color: black; ">Calculate total items</h1><!--Values are entered here and validation occurs in the .ts file--><br>    <ion-card class = "inputFormat">      <ion-card-content>        <ion-item class="inputs">        <ion-label  class="bob" stacked>Weight Single Item  </ion-label>          <ion-input id="single"  type="number" required placeholder="Single Item" [(ngModel)]="single_item" min=0></ion-input>                 </ion-item>      </ion-card-content>    </ion-card>  <ion-card class = "inputFormat">    <ion-card-content>  <ion-item class = "inputs">    <ion-label class="bob" stacked>Weight Empty Bucket</ion-label>    <ion-input id="empty" type="number" required placeholder="Empty bucket" [(ngModel)]="empty_bucket" min=0></ion-input>  </ion-item></ion-card-content></ion-card><ion-card class = "inputFormat">    <ion-card-content>      <ion-item class = "inputs">        <ion-label class="bob" stacked>Weight Filled Bucket</ion-label>        <ion-input id="filled" type="number" required placeholder="Filled bucket" [(ngModel)]="filled_bucket"  min=0></ion-input>      </ion-item></ion-card-content></ion-card> <br> <!--Card to display the results--><ion-card class = "result">  <ion-card-content class="result__amount">    {{ hello() }}  </ion-card-content></ion-card></ion-content></div>'
     var COMPONENTS = [{'name': 'AboutPage', 'selector': 'page-about'},{'name': 'ContactPage', 'selector': 'page-contact'},{'name': 'FeedbackPage', 'selector': 'page-feedback'},{'name': 'HomePage', 'selector': 'page-home'},{'name': 'ImagerecPage', 'selector': 'page-imagerec'},{'name': 'MyApp', 'selector': ''},{'name': 'QuoteBuilderPage', 'selector': 'page-quote-builder'},{'name': 'ResultsPage', 'selector': 'page-results'},{'name': 'UtilitiesPage', 'selector': 'page-utilities'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'UtilitiesPage'};
