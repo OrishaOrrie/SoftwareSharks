@@ -2,7 +2,7 @@
 <widget id="com.softwaresharks.ninshiki" version="0.1.6" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Ninshiki</name>
     <author email="orisha.orrie@gmail.com">Orisha Orrie</author>
-    <content src="index.html" />
+    <content original-src="index.html" src="http://192.168.1.36:8100" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />

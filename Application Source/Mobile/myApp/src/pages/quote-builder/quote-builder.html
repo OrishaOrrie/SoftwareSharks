@@ -23,9 +23,9 @@
 
     <div class="modal_content">
       <form [formGroup]="myGroup"  *ngIf="!submitted" >
-          <ion-label class = 'qBuilHeading' color="secondary" stacked>Adding "{{name}}" to quote</ion-label>
+          <ion-label class = 'qBuilHeading' stacked>Adding "{{name}}" to quote</ion-label>
           <ion-item class="inputs">
-            <ion-label class = 'qBuil' color="secondary" stacked>Amount of items</ion-label>
+            <ion-label class = 'qBuil' stacked>Enter the quantity of {{name}}:</ion-label>
             <ion-input id="amount" type="number" placeholder= "Enter amount" required formControlName="amount" #amount></ion-input>
           </ion-item>
 

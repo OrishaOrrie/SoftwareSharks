@@ -24,6 +24,7 @@ import { ModalController } from 'ionic-angular';
 import { AboutPage } from '../about/about';
 
 
+
 /**
  * Generated class for the UtilitiesPage page.
  *
@@ -68,14 +69,14 @@ export class UtilitiesPage {
       return 'Empty bucket cannot weigh more than a filled bucket';
     }
 
-    return 'Number of items: ' + Math.floor((this.filled_bucket - this.empty_bucket) / this.single_item);
+    return 'Total items: ' + Math.floor((this.filled_bucket - this.empty_bucket) / this.single_item);
   });
 
   /**
    * @ignore
    */
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-    public alertController: AlertController, public modalCtrl : ModalController) {
+    public alertCtrl: AlertController, public modalCtrl : ModalController) {
 
   }
 
@@ -94,5 +95,20 @@ export class UtilitiesPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad UtilitiesPage');
   }  
+  alertSing()
+  {
+    let alert = this.alertCtrl.create({
+      title: 'Instructions',
+      message:`
+      <ol>
+        <li>Weigh a single item and then enter the weight of the single item under "Weight Single Item"</li>
+        <li>Weigh the empty bucket and then enter the weight of the empty bucket under "Weight Empty Bucket"</li>
+        <li>Weigh the filled bucket which contains the items and then enter the weight of the filled bucket under "Weight Filled Bucket"</li>
+        
+      </ol>`,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
 
 }

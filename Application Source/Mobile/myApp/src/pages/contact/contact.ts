@@ -221,4 +221,15 @@ export class ContactPage {
     }, 1000);
   });
 
+  alertSing()
+  {
+    let alert = this.alertController.create({
+      title: 'Hey There!',
+      message:`
+      Got a query about one of Brahope's products? Want to request a quote? Send Bramhope a message!`,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
 }

@@ -20,9 +20,10 @@
 <ion-header>
   <ion-navbar>
       <ion-buttons end>
-          <button ion-button (click)="closeModal()">Close</button>
+          <button ion-button style="color: rgb(50, 150, 231)" (click)="closeModal()">Close</button>
         </ion-buttons>
     <ion-title>About Us</ion-title>
+    
   </ion-navbar>
 </ion-header>
 <!-- Details about the team and the project -->
@@ -47,14 +48,15 @@
   <p style="margin: 20px 20px; color: black">This app is part of our Capstone Project, in which we have to design, develop, and document a system 
     to meet a client's needs. The app is open-source and is still in Beta testing, so any feedback and bug reports would be hugely appreciated, and might help us get better marks :)</p>
   <!-- Button to report an issue on github -->
-    <a style="display: block; margin: auto;" round ion-button icon-start color="secondary" (click)="openBrowserToGithubIssues()">
+    <a style="display: block; margin: auto; background-color :black;" round ion-button icon-start (click)="openBrowserToGithubIssues()">
     <ion-icon name="logo-github"></ion-icon>
     Report Issue on GitHub</a><br/>
   <!-- Button to report an issue through email -->
-  <button style="display: block; margin: auto;" round block icon-start ion-button color="secondary" (click)="openFeedback()">
+  <button style="display: block; margin: auto; background-color :black;" round block icon-start ion-button  (click)="openFeedback()">
     <ion-icon name="mail"></ion-icon>
     Send Feedback</button><br/>
     <!-- Button to view privacy policy -->
-  <button style="display: block; margin: auto;" round block icon-start ion-button color="secondary" (click)="openBrowserToPP()">
+  <button style="display: block; margin: auto; background-color :black;" round block icon-start ion-button  (click)="openBrowserToPP()">
+      <ion-icon name="lock"></ion-icon>
     View Privacy Policy</button>
 </ion-content>

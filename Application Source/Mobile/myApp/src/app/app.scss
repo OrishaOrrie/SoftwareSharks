@@ -15,7 +15,7 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 ion-content {
-	@include linear-gradient(left, $moor);
+	@include linear-gradient(top, $metallic-toad);
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	background-size: cover;
@@ -25,7 +25,10 @@ ion-content {
 .toolbar-title.toolbar-title-ios, 
 .toolbar-title.toolbar-title-wp { color: map-get($colors, custom); }
 
-title{ color: red; font: 12px tahoma;} 
+ion-title
+{ 
+	font: 12px tahoma;
+} 
 
 .overlay {
 	position: fixed;

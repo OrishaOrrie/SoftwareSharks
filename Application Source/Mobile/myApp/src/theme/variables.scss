@@ -36,6 +36,13 @@ $text-input-placeholder-color: #c7c7c7;
 // to match your app's branding. Ionic uses a Sass map of
 // colors so you can add, rename and remove colors as needed.
 // The "primary" color is the only required color in the map.
+$text-input-highlight-color-valid: #32fc00;
+
+$text-input-md-highlight-color-invalid: red;
+$text-input-md-highlight-color-valid: rgb(0, 255, 42);
+$text-input-md-show-invalid-highlight: red;
+$text-input-md-highlight-color: rgb(133, 221, 214);
+$text-input-md-show-valid-highlight: rgb(0, 255, 0);
 
 $colors: (
   primary:    #442c2c,
@@ -44,7 +51,7 @@ $colors: (
   danger:     #f53d3d,
   light:      #f4f4f4,
   dark:       #222,
-  custom: rgb(80, 71, 71)
+  custom: rgb(255, 255, 255)
 );
 
 

@@ -181,14 +181,14 @@ export class ModelLoaderProvider {
         // Use if the classes json is in the plain format
         this.resultPreds[i] = {};
         this.resultPreds[i].name = classesJson[i];
-        this.resultPreds[i].likeliness = (classPreds[i] * 100).toFixed(4);
+        this.resultPreds[i].likeliness = (classPreds[i] * 100).toFixed(1);
       } else {
         // Used if the classes json is in the custom format
         this.resultPreds[i] = {};
         this.resultPreds[i].id = classesJson.classes[i].id;
         this.resultPreds[i].first = classesJson.classes[i].first;
         this.resultPreds[i].name = classesJson.classes[i].name;
-        this.resultPreds[i].likeliness = (classPreds[i] * 100).toFixed(4);
+        this.resultPreds[i].likeliness = (classPreds[i] * 100).toFixed(1);
         if (linkExists) {
           this.resultPreds[i].link = classesJson.classes[i].link;
         }
@@ -226,7 +226,7 @@ export class ModelLoaderProvider {
       element.name = element.name.replace(/_/g, ' ');
       element.name = element.name.charAt(0).toUpperCase() + element.name.slice(1);
 
-      if (element.likeliness < 0.001) {
+      if (element.likeliness < 5) {
         this.resultPreds = this.resultPreds.slice(0, index);
       }
     });

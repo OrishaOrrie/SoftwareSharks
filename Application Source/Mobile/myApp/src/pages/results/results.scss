@@ -41,15 +41,28 @@ body {
 }
 
 .header .col {
-    background-color:lightgrey;
+    padding: 1px;
+    background-color:black;
+    font-weight: bold;
+    color: white;
 }
 .header .cname {
-    background-color:lightgrey;
+
+    padding-top: 6px;
+    background-color:black;
+    font-weight: bold;
+    color: white;
+}
+.header .like {
+    padding-top: 6px;
+    background-color:black;
+    font-weight: bold;
+    color: white;
 }
 .col {
-    border: solid 1px black;
-    border-bottom-style: double;
+    border: solid 1px rgb(131, 115, 115);
     border-right-style: none;
+    border-bottom-style: none;
     width: 50px;
 }
 
@@ -58,12 +71,31 @@ body {
 }
 
 .row:last-child .col {
-    border-bottom: solid 1px grey;
+    border-bottom: solid 1px grey ;
+}
+.row:last-child .like {
+    border-bottom: solid 1px grey ;
+}
+.row:last-child .cname {
+    border-bottom: solid 1px grey ;
+}
+.like
+{
+    border: solid 1px rgb(131, 115, 115);
+    border-right-style: none;
+    border-bottom-style: none;
+    width: 80px;
+    color: black;
 }
 .cname
 {
-    border: solid 1px black;
-    border-bottom-style: double;
+    border: solid 1px rgb(131, 115, 115);
     border-right-style: none;
-    width: 95px;
+    border-bottom-style: none;
+    width: 90px;
+    color: black;
+}
+.row
+{
+  //  background-color: 
 }

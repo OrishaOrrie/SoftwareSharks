@@ -35,7 +35,7 @@ page-quote-builder {
         padding-left: 10px;
         padding-right: 10px;
         padding-bottom: 10px;
-        color: #333;
+        color: black;
         background: #e8e8e8;
         box-shadow: 0 2px 3px rgba(51, 51, 51, .35);
         //overflow: hidden;
@@ -44,9 +44,13 @@ page-quote-builder {
     {
        // font-weight: bold;
         font-size: 16px !important;
+        color: rgb(0, 0, 0) !important;
+        text-align: center;
     }
     .qBuilHeading
     {
+        font-weight: bold;
         font-size: 18px !important;
+        text-align: center;
     }
 }

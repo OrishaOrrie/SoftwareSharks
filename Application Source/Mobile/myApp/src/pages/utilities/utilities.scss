@@ -39,11 +39,13 @@ page-utilities {
 {
     color: black;
     background-color: transparent;
+    border-bottom-color: aqua
 }
 .bob
 {
-    font-weight: bold;
-    font-size: 16px !important;
+    //font-weight: bold;
+    font-size: 14px !important;
+    color: black !important;
 }
 
 .result
@@ -54,15 +56,24 @@ page-utilities {
 
 .result__amount {
     font-weight: bold;
-    font-size: 20px !important;
+    font-size: 16px !important;
     word-wrap: break-word;
+    color: black;
 }
 
 .instructions
 {
-    font-size: 17px !important;
-    color: rgb(67, 80, 95);
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: bold;
+    font-size: 15px !important;
+    color: rgb(0, 0, 0);
+    //font-family: 'Courier New', Courier, monospace;
+    //font-weight: bold;
     text-align: center;
+}
+.inputFormat
+{
+    background-color: rgba(221, 221, 221, 0.678);
+}
+ion-card
+{
+    border-top: 4px solid rgb(170, 184, 196);
 }

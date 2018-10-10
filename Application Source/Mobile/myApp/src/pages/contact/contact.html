@@ -20,15 +20,20 @@
     <ion-navbar>
         <ion-title>Contact Us</ion-title>
         <ion-buttons end>
+            <button ion-button icon-only (click) ="alertSing()"  >
+             <ion-icon name="information-circle" style="color: white"></ion-icon>
+           </button>
+          </ion-buttons>
+        <ion-buttons end>
             <button ion-button icon-only (click) ="openModal()"  >
-             <ion-icon name="help-circle" color= "dark"></ion-icon>
+             <ion-icon name="help-circle" style="color: white"></ion-icon>
            </button>
           </ion-buttons>
       </ion-navbar>
 </ion-header>
 <!-- form to submit email to Bramhope group -->
 <ion-content padding id ="formcol">
-    <p class= "instructions">Got a query about one of Brahope's products? Want to request a quote? Send Bramhope a message!</p> 
+<h1 style="color: black;">Issues? Quote? Contact us!</h1>
     <form [formGroup]="myGroup"  *ngIf="!submitted" >
  
       <ion-item class="inputs">
@@ -41,14 +46,15 @@
       </ion-item>
       <ion-item class="inputs">
         <ion-label class = 'bob' color="secondary" stacked>Message</ion-label>
-        <ion-textarea rows="8" maxLength="500" id="message" type="text" required formControlName="message" style = " height: 100px"></ion-textarea >
+        <ion-textarea rows="8" maxLength="500" id="message" type="text" required formControlName="message" style = " height: 140px"></ion-textarea >
       </ion-item>
     </form>
       <ion-item class="inputs">
         <ion-label style="font-weight: bold" color="secondary">Send location data</ion-label>
         <ion-checkbox color="secondary" checked="true" [(ngModel)]="sendLocation"></ion-checkbox>
       </ion-item>
+      <button *ngIf="addQuoteDisplay | async" ion-button full round color= "tertiary" (click)="addQuoteToMessage()" >Add Quote</button>
     <button ion-button full round color= "tertiary" [disabled]="!myGroup.valid" (click)="onSubmit()">Send</button>
-    <button *ngIf="addQuoteDisplay | async" ion-button full round color= "tertiary" (click)="addQuoteToMessage()" >Add Quote</button>
+   
     
 </ion-content>

@@ -26,40 +26,59 @@
 
   <ion-navbar>
   
+
     <ion-title>Item calculator</ion-title>
     <ion-buttons end>
-        <button ion-button icon-only (click) ="openModal()"  >
-         <ion-icon name="help-circle" color= "dark"></ion-icon>
+        <button ion-button icon-only (click) ="alertSing()"  >
+         <ion-icon name="information-circle" style="color: white"></ion-icon>
        </button>
       </ion-buttons>
-   <!-- <ion-buttons end> <button (click)="openModal()"> Modal </button> </ion-buttons>  -->
-  </ion-navbar>
+    <ion-buttons end>
+        <button ion-button icon-only (click) ="openModal()"  >
+         <ion-icon name="help-circle" style="color: white"></ion-icon>
+       </button>
+      </ion-buttons>
 
+      
+  </ion-navbar>
+  
 
 </ion-header>
 
-
 <ion-content padding >
+  <h1 style="color: black; ">Calculate total items</h1>
 <!--Values are entered here and validation occurs in the .ts file-->
-   <p class= "instructions">Enter the values as instructed. Use the same measurement units (e.g. Kg)</p> 
-<ion-item class="inputs">
-   <ion-label  class="bob" color="secondary" stacked>Weight Single Item</ion-label> 
-    <ion-input id="single" type="number" required placeholder="Single item" [(ngModel)]="single_item" name="test" min=0></ion-input>
-  </ion-item>
+<br>
+    <ion-card class = "inputFormat">
+      <ion-card-content>
+        <ion-item class="inputs">
+        <ion-label  class="bob" stacked>Weight Single Item  </ion-label>
+          <ion-input id="single"  type="number" required placeholder="Single Item" [(ngModel)]="single_item" min=0></ion-input> 
+        
+        </ion-item>
+      </ion-card-content>
+    </ion-card>  
+<ion-card class = "inputFormat">
+    <ion-card-content>
   <ion-item class = "inputs">
-    <ion-label class="bob" color="secondary" stacked>Weight Empty Bucket</ion-label>
+    <ion-label class="bob" stacked>Weight Empty Bucket</ion-label>
     <ion-input id="empty" type="number" required placeholder="Empty bucket" [(ngModel)]="empty_bucket" min=0></ion-input>
   </ion-item>
-  <ion-item class = "inputs">
-    <ion-label class="bob" color="secondary"stacked>Weight Filled Bucket</ion-label>
-    <ion-input id="filled" type="number" required placeholder="Filled bucket" [(ngModel)]="filled_bucket"  min=0></ion-input>
-  </ion-item>
+</ion-card-content>
+</ion-card>
+<ion-card class = "inputFormat">
+    <ion-card-content>
+      <ion-item class = "inputs">
+        <ion-label class="bob" stacked>Weight Filled Bucket</ion-label>
+        <ion-input id="filled" type="number" required placeholder="Filled bucket" [(ngModel)]="filled_bucket"  min=0></ion-input>
+      </ion-item>
+</ion-card-content>
+</ion-card>
  <br>
- <br>
- <br> 
+
  <!--Card to display the results-->
 <ion-card class = "result">
-  <ion-card-content class="result__amount" color="secondary">
+  <ion-card-content class="result__amount">
     {{ hello() }}
   </ion-card-content>
 </ion-card>

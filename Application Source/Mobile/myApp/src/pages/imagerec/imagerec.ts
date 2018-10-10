@@ -235,5 +235,24 @@ export class ImagerecPage {
 				console.error('Error: ' + error);
 			});
 	};
-		
+	alertSing()
+  {
+    let alert = this.alertCtrl.create({
+      title: 'How to upload an image:',
+	  message:` <ol>
+	  <li>Take a picture with your device's camera or select an image from your gallery.</li>
+	  <li>Crop the image</li>
+	  <li>Click the Predict button</li>
+	  <li>View the results!</li>
+	  </ol>
+	  `,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+		/*<ol><li>Take a picture with your device's camera or select an image from your gallery.<\li> 
+	  <li>Crop the image<\li>
+	  <li>Click the Predict button.<\li>
+	  <li>View the results!<\li>     
+      </ol>*/
 }
