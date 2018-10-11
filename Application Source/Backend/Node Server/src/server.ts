@@ -182,14 +182,14 @@ let trainModelFunction = function (request, response, responseHeaders) {
     }).on('end', () => {
         const result = Buffer.concat(body).toString();
         try {
-            const categories = JSON.parse(result.toString());
+            const payload = JSON.parse(result.toString());
             logger.debug(result);
-            console.log('Categories: ' + categories);
+            console.log('Categories: ' + payload);
 
             // Deal with categories using trainModule.js
 
             // Todo: Establish after bug testing
-            trainModule.trainModule(categories);
+            trainModule.trainModule(payload,logger);
 
             response.on('error', (err) => {
                 logger.error('Response Error: ' + err);
