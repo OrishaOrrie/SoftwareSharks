@@ -275,24 +275,24 @@
         },
         {
             "id": 39,
+            "name": "screw_socket_head",
+            "first": "s",
+            "quantity": 357,
+            "link": "http://www.bramhope.co.za/?search=screw+socket+head"
+        },
+        {
+            "id": 40,
             "name": "screwdriver",
             "first": "s",
             "quantity": 382,
             "link": ""
         },
         {
-            "id": 40,
+            "id": 41,
             "name": "screwdriver_bit",
             "first": "s",
             "quantity": 384,
             "link": "http://www.bramhope.co.za/catalogue/Tool-Accessories/Titanium-Screwdriver-Bits#.W5QNKEYzZPY"
-        },
-        {
-            "id": 41,
-            "name": "screw_socket_head",
-            "first": "s",
-            "quantity": 357,
-            "link": "http://www.bramhope.co.za/?search=screw+socket+head"
         },
         {
             "id": 42,
@@ -303,17 +303,17 @@
         },
         {
             "id": 43,
-            "name": "tape_measure",
-            "first": "t",
-            "quantity": 401,
-            "link": "http://www.bramhope.co.za/catalogue/Tools/3-In-1-Tape-Measure_2#.W5QNdkYzZPY"
-        },
-        {
-            "id": 44,
             "name": "tap_wrench",
             "first": "t",
             "quantity": 386,
             "link": "http://www.bramhope.co.za/catalogue/Tools/Ratchet-Type-Tap-Wrench-3.0-6.0mm#.W5QNjkYzZPY"
+        },
+        {
+            "id": 44,
+            "name": "tape_measure",
+            "first": "t",
+            "quantity": 401,
+            "link": "http://www.bramhope.co.za/catalogue/Tools/3-In-1-Tape-Measure_2#.W5QNdkYzZPY"
         },
         {
             "id": 45,
