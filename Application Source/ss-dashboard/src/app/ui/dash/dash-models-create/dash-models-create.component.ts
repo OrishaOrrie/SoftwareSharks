@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewChild, ElementRef, QueryList, ViewChildren, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, QueryList, ViewChildren, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { Location } from '@angular/common';
 import { FormBuilder, Validators, FormArray } from '@angular/forms';
 import * as feather from 'feather-icons';
 import { ModelsService } from '../../../core/data/models.service';
@@ -7,7 +8,6 @@ import { AlertService } from '../../../core/alert/alert.service';
 import { AlertType } from '../../../shared/models/AlertType';
 import { Alert } from '../../../shared/models/alert';
 import { TrainingStatus } from '../../../shared/models/training-status.enum';
-import { Router } from '@angular/router';
 
 declare var $: any;
 
@@ -33,7 +33,7 @@ export class DashModelsCreateComponent implements OnInit, AfterViewInit {
     private fb: FormBuilder,
     private modelService: ModelsService,
     private alertService: AlertService,
-    private router: Router,
+    private _location: Location,
     private cdr: ChangeDetectorRef) { }
 
   ngOnInit() {
@@ -61,7 +61,7 @@ export class DashModelsCreateComponent implements OnInit, AfterViewInit {
       this.newModelForm.reset();
       this.alertService.add(new Alert(AlertType.Success, 'Model successfully created!', 'WooHoo!', ':)'));
       // Todo: Fix route
-      this.router.navigate(['/dashboard/(sidebar:models)']);
+      this._location.back();
     }).catch((error) => {
       this.alertService.add(new Alert(AlertType.Danger, 'Looks like something went wrong!', 'Oh No!', ':('));
       console.log(error);
