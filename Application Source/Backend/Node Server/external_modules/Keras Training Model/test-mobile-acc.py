@@ -71,7 +71,7 @@ def predict(model,img,target_size):
 	return preds
 
 if len(sys.argv) < 2:
-    arg1 = input("Model: ")
+    modelArg = input("Model: ")
 else:
     modelArg = str(sys.argv[1])
 print ("Loading model named: " + modelArg)
@@ -80,6 +80,6 @@ with CustomObjectScope({'relu6':relu6, 'DepthwiseConv2D': DepthwiseConv2D}):
 	model = load_model(modelArg)
 # model = load_model(modelArg)
 print("Model finished loading")
-ALL_DIR = input("Main Dir: ")+"_dataset"
+# ALL_DIR = input("Main Dir: ")+"_dataset"
 test_dir = input("Test Dir: ")
 test_images(test_dir)
