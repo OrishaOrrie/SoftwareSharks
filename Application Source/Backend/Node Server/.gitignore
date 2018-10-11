@@ -1,5 +1,8 @@
 package-lock.json
-/build/
+/build/*
+/build/logs/*
+!/build/.gitkeep
+!/build/logs/.gitkeep
 /node_modules
 /src/node_modules
 /src/environment/AccountKey.json

@@ -52,7 +52,6 @@ export class DashModelsCreateComponent implements OnInit, AfterViewInit {
   onSubmit() {
     // Dismiss Modal
     $('#confirmationModal').modal('hide');
-    // TODO: Use EventEmitter with form value
     const model: Model = this.newModelForm.value as Model;
     model.uri = 'None';
     model.trained = false;
@@ -60,7 +59,6 @@ export class DashModelsCreateComponent implements OnInit, AfterViewInit {
     this.saveModel(model).then(() => {
       this.newModelForm.reset();
       this.alertService.add(new Alert(AlertType.Success, 'Model successfully created!', 'WooHoo!', ':)'));
-      // Todo: Fix route
       this._location.back();
     }).catch((error) => {
       this.alertService.add(new Alert(AlertType.Danger, 'Looks like something went wrong!', 'Oh No!', ':('));
