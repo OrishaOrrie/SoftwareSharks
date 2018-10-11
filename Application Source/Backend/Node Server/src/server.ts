@@ -171,7 +171,7 @@ server.listen(port || 8080, (err) => {
     logger.info('Server is listening on: ' + port);
 });
 
-let trainModelFunction = function (request, response, responseHeaders) {
+const trainModelFunction = (request, response, responseHeaders) => {
 
     const body = [];
     request.on('error', (err) => {
@@ -189,7 +189,7 @@ let trainModelFunction = function (request, response, responseHeaders) {
             // Deal with categories using trainModule.js
 
             // Todo: Establish after bug testing
-            trainModule.trainModule(payload,logger);
+            trainModule.trainModule(payload, logger);
 
             response.on('error', (err) => {
                 logger.error('Response Error: ' + err);
@@ -209,4 +209,4 @@ let trainModelFunction = function (request, response, responseHeaders) {
             }
         }
     });
-}
+};
