@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, QueryList, ViewChildren, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { Location } from '@angular/common';
 import { FormBuilder, Validators, FormArray } from '@angular/forms';
 import * as feather from 'feather-icons';
 import { ModelsService } from '../../../core/data/models.service';
@@ -8,12 +9,14 @@ import { AlertType } from '../../../shared/models/AlertType';
 import { Alert } from '../../../shared/models/alert';
 import { TrainingStatus } from '../../../shared/models/training-status.enum';
 
+declare var $: any;
+
 @Component({
   selector: 'app-dash-models-create',
   templateUrl: './dash-models-create.component.html',
   styleUrls: ['./dash-models-create.component.scss']
 })
-export class DashModelsCreateComponent implements OnInit {
+export class DashModelsCreateComponent implements OnInit, AfterViewInit {
 
   newModelForm = this.fb.group({
     name: ['', Validators.required],
@@ -24,15 +27,31 @@ export class DashModelsCreateComponent implements OnInit {
 
   models: Model[];
 
+  @ViewChildren('categoriesInput') categoriesInput: QueryList<any>;
+
   constructor(
     private fb: FormBuilder,
     private modelService: ModelsService,
-    private alertService: AlertService) { }
+    private alertService: AlertService,
+    private _location: Location,
+    private cdr: ChangeDetectorRef) { }
 
   ngOnInit() {
   }
 
+  ngAfterViewInit() {
+    this.categoriesInput.changes.subscribe(formArray => {
+      // console.log(formArray);
+      const lastCatParent: HTMLElement = formArray.last.nativeElement;
+      const lastCatInput = lastCatParent.firstElementChild.firstElementChild as HTMLElement;
+      lastCatInput.focus();
+      this.cdr.detectChanges();
+    });
+  }
+
   onSubmit() {
+    // Dismiss Modal
+    $('#confirmationModal').modal('hide');
     // TODO: Use EventEmitter with form value
     const model: Model = this.newModelForm.value as Model;
     model.uri = 'None';
@@ -41,6 +60,8 @@ export class DashModelsCreateComponent implements OnInit {
     this.saveModel(model).then(() => {
       this.newModelForm.reset();
       this.alertService.add(new Alert(AlertType.Success, 'Model successfully created!', 'WooHoo!', ':)'));
+      // Todo: Fix route
+      this._location.back();
     }).catch((error) => {
       this.alertService.add(new Alert(AlertType.Danger, 'Looks like something went wrong!', 'Oh No!', ':('));
       console.log(error);
@@ -52,8 +73,8 @@ export class DashModelsCreateComponent implements OnInit {
     return this.newModelForm.get('categories') as FormArray;
   }
 
-  addCategory() {
-    this.categories.push(this.fb.control(''));
+  async addCategory() {
+    await this.categories.push(this.fb.control(''));
   }
 
   removeCategory(index) {
@@ -63,8 +84,12 @@ export class DashModelsCreateComponent implements OnInit {
   }
 
   saveModel(modelData: Model) {
-    // console.log(modelData);
     return this.modelService.addModel(modelData);
   }
 
+  async keytab(index) {
+    if (index === this.categories.length - 1) {
+      await this.addCategory();
+    }
+  }
 }
