@@ -1,12 +1,11 @@
 package-lock.json
 /build/*
-/build/logs/*
+!/build/logs
+/build/logs/*.txt
 !/build/.gitkeep
-!/build/logs/.gitkeep
 /node_modules
 /src/node_modules
 /src/environment/AccountKey.json
-/docs/
 /**/training_data
 /**/validation_data
 /**/classes.json
