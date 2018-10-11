@@ -104,8 +104,12 @@ if __name__=="__main__":
 	# args = a.parse_args()
 
 	####################
-	imageArg=str(sys.argv[2])
-	modelArg = str(sys.argv[1])
+	if len(sys.argv) < 2:
+		imageArg=input("Image: ")
+		modelArg = input("Model: ")
+	else:
+		imageArg=str(sys.argv[2])
+		modelArg = str(sys.argv[1])
 	# modelArg = str(sys.stdin.readlines())
 
 	print ("model-name: " + modelArg)

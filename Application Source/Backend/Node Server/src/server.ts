@@ -26,7 +26,6 @@ import { Logger } from './modules/logger';
 
 const port = process.env.npm_package_config_port;
 const logger = new Logger(true, true, true);
-//  let body = '';
 
 const requestHandler = (request, response) => {
     const responseHeaders = {
@@ -138,14 +137,54 @@ const requestHandler = (request, response) => {
             // dashboard will post images to predict
 
             logger.info('Predicting');
-            // console.log('Predicting');
+            if (request.headers.authorization) {
+                fb.verifyToken(request.headers.authorization)
+                    .then(
+                        (uid) => {
+                            predictFunction(request, response, responseHeaders);
+                        })
+                    .catch(
+                        (err) => {
+                            // --------------------------------------------------
+                            // Todo: COMMENT WHEN IN PROD
+                            // --------------------------------------------------
+                            predictFunction(request, response, responseHeaders);
+                            // --------------------------------------------------
 
-            // body += '<p>Predicting Now</p>';
-
+                            // --------------------------------------------------
+                            // Todo: REMOVE WHEN IN PROD
+                            // --------------------------------------------------
+                            // logger.error('Verification Error: ' + err);
+                            // // console.error('Verification Error: ' + err);
+                            // const errorResponse: ErrorResponse = {
+                            //     code: HTTP_STATUS_CODES.FORBIDDEN,
+                            //     acknowledgement: 'Error - Verification: Predict Request Rejected!',
+                            //     data: 'No data',
+                            // };
+                            // response.writeHead(HTTP_STATUS_CODES.FORBIDDEN, responseHeaders);
+                            // response.write(JSON.stringify(errorResponse));
+                            // response.end();
+                            // --------------------------------------------------
+                        },
+                    );
+            } else {
+                // Todo: Look into establishing persistant logs on firebase.
+                // Todo: Look into adding more information into the log (Request IP etc)
+                logger.error('Error: Unauthorised Request.');
+                // console.error('Error: Unauthorised Request.');
+                const errorResponse: ErrorResponse = {
+                    code: HTTP_STATUS_CODES.UNAUTHORISED,
+                    acknowledgement: 'Error - Unauthorised: Predict Request Rejected!',
+                    data: 'No data',
+                };
+                response.writeHead(HTTP_STATUS_CODES.UNAUTHORISED, responseHeaders);
+                response.write(JSON.stringify(errorResponse));
+                response.end();
+            }
             // Deal with image posted using predictModule.js
             // predictModule.predictModule(img.jpg);
 
-            response.writeHead(HTTP_STATUS_CODES.NOT_IMPLEMENTED, { 'Content-Type': 'text/html' });
+            // response.writeHead(HTTP_STATUS_CODES.NOT_IMPLEMENTED, { 'Content-Type': 'text/html' });
             // response.end(body);
         } else {
             logger.error(request.url + ' does not exist!');
@@ -202,6 +241,44 @@ const trainModelFunction = (request, response, responseHeaders) => {
             response.write(JSON.stringify(confirmResponse));
             response.end();
         } catch (err) {
+            if (err instanceof SyntaxError) {
+                console.error('Syntax Error: ' + (err));
+            } else {
+                console.error('Unknown Error: ' + err);
+            }
+        }
+    });
+};
+
+const predictFunction = (request, response, responseHeaders) => {
+    const body = [];
+    request.on('error', (err) => {
+        logger.error('Request Error: ' + err);
+        // console.error('Request Error: ' + err);
+    }).on('data', (chunk) => {
+        body.push(chunk);
+    }).on('end', () => {
+        const result = Buffer.concat(body).toString();
+        try {
+            const payload = JSON.parse(result.toString());
+            logger.debug(result);
+            console.log('Categories: ' + payload);
+
+            //PREDICT MODULE COMES HERE
+            predictModule.predictModule(payload, logger);
+
+            response.on('error', (err) => {
+                logger.error('Response Error: ' + err);
+            });
+            response.writeHead(HTTP_STATUS_CODES.ACCEPTED, responseHeaders);
+            const confirmResponse: ConfirmationResponse = {
+                acknowledgement: 'Predict Request Accepted!',
+                data: 'No data',
+            };
+            response.write(JSON.stringify(confirmResponse));
+            response.end();
+
+        } catch(err) {
             if (err instanceof SyntaxError) {
                 console.error('Syntax Error: ' + (err));
             } else {

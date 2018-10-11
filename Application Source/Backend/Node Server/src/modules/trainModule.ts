@@ -15,7 +15,7 @@ const ImageScraper = require('../../external_modules/Image Scraper/dist/index');
 import {PythonShell} from 'python-shell';
 import { head } from 'shelljs';
 
-export async function trainModule(payload, logger) {
+export function trainModule(payload, logger) {
     logger.info('Training Module Starting To Handle Train Request');
 
     const header = payload.header;
@@ -85,9 +85,9 @@ export async function trainModule(payload, logger) {
     // --------------------------------------------------
     // Running test on model accuracy
     // --------------------------------------------------
-    logger.info('Training Model Starting to Test Model');
-    TestModelAccuracy(header, logger);
-    logger.info('Training Model Finished Testing Model');
+    // logger.info('Training Model Starting to Test Model');
+    // TestModelAccuracy(header, logger);
+    // logger.info('Training Model Finished Testing Model');
 
     logger.info('Training Module Finished Handling Train Request');
 }
