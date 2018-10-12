@@ -18,7 +18,7 @@ import { head } from 'shelljs';
 export async function trainModule(payload, logger) {
     logger.info('Training Module Starting To Handle Train Request');
 
-    const header = payload.header;
+    const header = payload.name;
     let ScrapeImages = payload.scrape;
     if (ScrapeImages == null) {ScrapeImages = 'true'; }
     let epochs = payload.epochs;
