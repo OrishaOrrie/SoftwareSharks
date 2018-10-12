@@ -166,8 +166,17 @@ def train(args):
 	print("")
 
 	print('saving model to file')
-	model.save(args.output_model_file)
-	model.summary()
+	if save_for_quickload is True:
+		print("Saving for NODEJS Model")
+		model.save_weights(args.output_model_file)
+		model_json = model.to_json()
+		with open('./' + model_name + '_model\\' + model_name + '_dataset\\' + model_name + '_model.json',"w") as json_file:
+			json_file.write(model_json)
+		json_file.close
+		model.summary()
+	else:
+		model.save(args.output_model_file)
+		model.summary()
 	# tfjs.converters.save_keras_model(model, ".\\tfjs\\")
 
 	print('plotting fine tuning process')
@@ -203,11 +212,16 @@ if __name__=="__main__":
 
 	args=a.parse_args()
 
+	save_for_quickload = False
+
+	model_name = ""
 	if args.train_dir is None or args.val_dir is None:
+		model_name = input("Model Name: ")
 		args.train_dir = input("Train Dir: ")
 		args.val_dir = input("Val Dir: ")
 		args.output_model_file = input("Model File:")
 		args.nb_epoch = input("Epochs: ")
+		# save_for_quickload = True
 		# a.print_help()
 		# sys.exit(1)
 

@@ -10,7 +10,7 @@ import imghdr
 from pathlib import Path
 
 from keras.preprocessing import image
-from keras.models import load_model
+from keras.models import load_model, model_from_json
 from keras.applications.mobilenet import preprocess_input, decode_predictions, relu6, DepthwiseConv2D
 from keras.utils.generic_utils import CustomObjectScope
 
@@ -68,6 +68,12 @@ modelArg = './'+modelName+'_model/'+modelName+'_dataset/'+modelName+'-mobilenet-
 
 with CustomObjectScope({'relu6':relu6, 'DepthwiseConv2D': DepthwiseConv2D}):
 	model = load_model(modelArg)
+
+# json_file = open('./' + modelName + '_model\\' + modelName + '_dataset\\' + modelName + '_model.json',"r")
+# loaded_model_json = json_file.read()
+# json_file.close()
+# model = model_from_json(loaded_model_json)
+# model.load_weights(modelArg)
 
 print("Model finished loading")
 imageUrl = input("")

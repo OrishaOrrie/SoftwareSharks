@@ -36,7 +36,7 @@ export async function predictModule(payload, logger) {
                 message = message.substring(6);
                 var results = message.split('|');
                 console.log("Class: "+results[0]+", Likeness: "+results[1]);
-            } else {
+            } else if(message.length>0) {
                 console.log('Python Predicter: ' + message);
             }
         });
