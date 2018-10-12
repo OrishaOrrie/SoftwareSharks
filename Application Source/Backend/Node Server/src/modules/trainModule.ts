@@ -179,7 +179,7 @@ const CheckImages = async (header, categories, logger) => {
             pyChecker.end((err, code, signal) => {
                 if (err) {
                     logger.error('Error: ' + err);
-                    throw err;
+                    // throw err;
                 }
                 logger.debug('Exited with code <' + code + '> and signal ' + signal);
                 numCompleted++;
@@ -221,7 +221,7 @@ const SplitFiles = async (header, logger) => {
         pySplitFiles.end((err, code, signal) => {
             if (err) {
                 logger.error('Error: ' + err);
-                throw err;
+                // throw err;
             }
             logger.debug('Exited with code <' + code + '> and signal ' + signal);
             resolve('split_files completed');
@@ -261,7 +261,7 @@ const TrainModel = async (header, epochs, logger) => {
         pyTrainer.end((err, code, signal) => {
             if (err) {
                 logger.error('Error: ' + err);
-                throw err;
+                // throw err;
             }
             logger.debug('Exited with code <' + code + '> and signal ' + signal);
             resolve('Fine-tune-mobilenet completed');
