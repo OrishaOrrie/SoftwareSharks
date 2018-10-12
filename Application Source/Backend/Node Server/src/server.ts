@@ -264,7 +264,7 @@ const predictFunction = (request, response, responseHeaders) => {
             logger.debug(result);
             console.log('Categories: ' + payload);
 
-            //PREDICT MODULE COMES HERE
+            // PREDICT MODULE COMES HERE
             predictModule.predictModule(payload, logger);
 
             response.on('error', (err) => {
@@ -278,7 +278,7 @@ const predictFunction = (request, response, responseHeaders) => {
             response.write(JSON.stringify(confirmResponse));
             response.end();
 
-        } catch(err) {
+        } catch (err) {
             if (err instanceof SyntaxError) {
                 console.error('Syntax Error: ' + (err));
             } else {
