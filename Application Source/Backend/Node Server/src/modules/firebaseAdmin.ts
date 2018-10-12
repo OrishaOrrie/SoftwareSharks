@@ -54,10 +54,10 @@ export function verifyToken(idToken) {
     }
 }
 
-export function setTraining(modelId: string, status: string) {
+export function setTraining(modelId: string, newStatus: string) {
     const docRef = db.collection('users').doc(uid).collection('model').doc(modelId);
 
     return docRef.update({
-        trained: status
+        status: newStatus
     });
 }
