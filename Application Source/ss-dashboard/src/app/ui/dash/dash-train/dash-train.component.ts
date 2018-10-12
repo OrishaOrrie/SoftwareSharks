@@ -6,6 +6,7 @@ import { Model } from '../../../shared/models/model';
 import { AuthService } from '../../../core/auth.service';
 import { BackendService } from '../../../core/http/backend.service';
 import { ConfirmationResponse } from '../../../shared/models/responses/confirmation-response';
+import { assertDataInRangeInternal } from '@angular/core/src/render3/util';
 
 @Component({
   selector: 'app-dash-train',
@@ -32,6 +33,10 @@ export class DashTrainComponent implements OnInit {
       .subscribe(
         (response: ConfirmationResponse) => this.response = {... response},
         error => this.error = error);
+  }
+
+  getURL(model: Model) {
+    console.log(model.uri);
   }
 
 }
