@@ -15,7 +15,7 @@ const ImageScraper = require('../../external_modules/Image Scraper/dist/index');
 import {PythonShell} from 'python-shell';
 import { head } from 'shelljs';
 
-export function trainModule(payload, logger) {
+export async function trainModule(payload, logger) {
     logger.info('Training Module Starting To Handle Train Request');
 
     const header = payload.header;
@@ -29,10 +29,16 @@ export function trainModule(payload, logger) {
     // Scraping Images
     // --------------------------------------------------
 
-    if (ScrapeImages) {
+    if (ScrapeImages == 'true') {
         logger.info('Training Module Starting to Scrape Images');
-        ImageScrape(header, categories, logger);
-        logger.info('Training Module Finished Scraping Images');
+        const IS = new Promise(async (resolve) => {
+            var done = ImageScrape(header, categories, logger);
+            if(await done){
+               resolve('Training Module Finished Scraping Images');
+            }
+        });
+        const scraper = await IS;
+        logger.info(scraper);
     } else {
         logger.info('Training Module Does Not Need to Scrape Images');
         logger.debug('No Images Being Scraped');
@@ -48,8 +54,14 @@ export function trainModule(payload, logger) {
     // Checking Images
     // --------------------------------------------------
     logger.info('Training Model Starting to Check Images');
-    CheckImages(header, categories, logger);
-    logger.info('Training Model Finished Checking Images');
+    const CI = new Promise(async (resolve) => {
+        var done = CheckImages(header, categories, logger);
+        if(await done) {
+            resolve('Training Model Finished Checking Images');
+        }
+    });
+    const checker = await CI;
+    logger.info(checker);
 
     // --------------------------------------------------
     // Initialise training process
@@ -59,8 +71,14 @@ export function trainModule(payload, logger) {
     // Splitting Files
     // --------------------------------------------------
     logger.info('Training Model Starting to Split Files');
-    SplitFiles(header, logger);
-    logger.info('Training Model Finished Splitting Files');
+    const SF = new Promise(async (resolve) => {
+        var done = SplitFiles(header, logger);
+        if(await done) {
+            resolve('Training Model Finished Splitting Files');
+        }
+    });
+    const splitter = await SF;
+    logger.info(splitter);
 
     // --------------------------------------------------
     // We now have trainig and validation files for
@@ -74,8 +92,14 @@ export function trainModule(payload, logger) {
     // Training Model
     // --------------------------------------------------
     logger.info('Training Model Starting to Train Model');
-    TrainModel(header, epochs, logger);
-    logger.info('Training Model Finished Training Model');
+    const TM = new Promise(async (resolve) => {
+        var done = TrainModel(header, epochs, logger);
+        if(await done) {
+            resolve('Training Model Finished Training Model');
+        }
+    });
+    const trainer = await TM;
+    logger.info(trainer);
 
     // --------------------------------------------------
     // We now have a model file saved to a folder called:
@@ -124,6 +148,7 @@ const ImageScrape = async (header, categories, logger) => {
     logger.debug(allLoopsDone);
     logger.debug('THIS SHOULD ONLY APPEAR AFTER ALL IMAGES ARE SCRAPED');
     logger.debug('ImageScraper done');
+    return true;
 };
 
 // --------------------------------------------------
@@ -147,7 +172,9 @@ const CheckImages = async (header, categories, logger) => {
             pyChecker.send(header);
             logger.debug('Checking folder: ' + categories[category]);
             pyChecker.on('message', (message) => {
-                logger.debug('Python Checker: ' + message);
+                if(message.length>0) {
+                    logger.debug('Python Checker: ' + message);
+                }
             });
             pyChecker.end((err, code, signal) => {
                 if (err) {
@@ -166,6 +193,7 @@ const CheckImages = async (header, categories, logger) => {
 
     const checkedImages = await checkImages;
     logger.debug(checkedImages);
+    return true;
 };
 
 // --------------------------------------------------
@@ -186,7 +214,9 @@ const SplitFiles = async (header, logger) => {
 
         pySplitFiles.send(header);
         pySplitFiles.on('message', (message) => {
-            logger.debug('Python Splitter: ' + message);
+            if(message.length>0) {
+                logger.debug('Python Splitter: ' + message);
+            }
         });
         pySplitFiles.end((err, code, signal) => {
             if (err) {
@@ -199,6 +229,7 @@ const SplitFiles = async (header, logger) => {
     });
     const filesSplit = await splitFiles;
     logger.debug(filesSplit);
+    return true;
 };
 
 // --------------------------------------------------
@@ -217,13 +248,15 @@ const TrainModel = async (header, epochs, logger) => {
         const modelTrainer = './external_modules/Keras Training Model/fine-tune-mobilenet.py';
         const pyTrainer = new PythonShell(modelTrainer);
 
+        pyTrainer.send(header);
         pyTrainer.send('./' + header + '_model\\' + header + '_dataset\\training_data');
         pyTrainer.send('./' + header + '_model\\' + header + '_dataset\\validation_data');
         pyTrainer.send('./' + header + '_model\\' + header + '_dataset\\' + header + '-mobilenet-tf.h5');
         pyTrainer.send(epochs);
-
         pyTrainer.on('message', (message) => {
-            logger.debug('Python Trainer: ' + message);
+            if(message.length>0) {
+                logger.debug('Python Trainer: ' + message);
+            }
         });
         pyTrainer.end((err, code, signal) => {
             if (err) {
@@ -237,6 +270,7 @@ const TrainModel = async (header, epochs, logger) => {
 
     const trainer = await startTraining;
     logger.debug(trainer);
+    return true;
 };
 
 // --------------------------------------------------
@@ -258,7 +292,9 @@ const TestModelAccuracy = async (header, logger) => {
         pyTester.send('./test_images');
 
         pyTester.on('message', (message) => {
-            logger.debug('Python Tester: ' + message);
+            if(message.length>0) {
+                logger.debug('Python Tester: ' + message);
+            }
         });
         pyTester.end((err, code, signal) => {
             if (err) {
@@ -272,5 +308,6 @@ const TestModelAccuracy = async (header, logger) => {
 
     const tester = await testModel;
     logger.debug(tester);
+    return true;
 };
 // module.exports.trainModule = trainModule;

@@ -35,14 +35,16 @@ export async function predictModule(payload, logger) {
             if (message.substring(0, 6) === 'Result') {
                 message = message.substring(6);
                 const results = message.split('|');
-                console.log('Class: ' + results[0] + ', Likeness: ' + results[1]);
-            } else {
-                console.log('Python Predicter: ' + message);
+                const msg = 'Class: ' + results[0] + ', Likeness: ' + results[1];
+                logger.info(msg);
+                logger.debug(msg);
+            } else if(message.length>0) {
+                logger.debug('Python Predicter: ' + message);
             }
         });
         pyPredict.end((err, code, signal) => {
             if (err) {
-                // logger.error('Error: ' + err);
+                logger.error('Error: ' + err);
                 throw err;
             }
             logger.debug('Exited with code <' + code + '> and signal ' + signal);
