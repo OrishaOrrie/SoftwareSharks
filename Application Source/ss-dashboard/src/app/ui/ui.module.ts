@@ -19,6 +19,7 @@ import { DashModelsEditComponent } from './dash/dash-models-edit/dash-models-edi
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashModelsCreateComponent } from './dash/dash-models-create/dash-models-create.component';
 import { DashTrainComponent } from './dash/dash-train/dash-train.component';
+import { ComingSoonComponent } from './coming-soon/coming-soon.component';
 
 @NgModule({
   imports: [
@@ -44,7 +45,8 @@ import { DashTrainComponent } from './dash/dash-train/dash-train.component';
     FlamesComponent,
     DashModelsEditComponent,
     DashModelsCreateComponent,
-    DashTrainComponent
+    DashTrainComponent,
+    ComingSoonComponent
   ],
   exports: [
     LayoutComponent,
@@ -56,7 +58,8 @@ import { DashTrainComponent } from './dash/dash-train/dash-train.component';
     DashSideNavComponent,
     DashOverviewComponent,
     DashModelsComponent,
-    DashTrainComponent
+    DashTrainComponent,
+    ComingSoonComponent
   ]
 })
 export class UiModule { }
