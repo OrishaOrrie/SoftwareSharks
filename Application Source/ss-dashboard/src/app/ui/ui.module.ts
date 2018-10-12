@@ -58,7 +58,8 @@ import { ComingSoonComponent } from './coming-soon/coming-soon.component';
     DashSideNavComponent,
     DashOverviewComponent,
     DashModelsComponent,
-    DashTrainComponent
+    DashTrainComponent,
+    ComingSoonComponent
   ]
 })
 export class UiModule { }
