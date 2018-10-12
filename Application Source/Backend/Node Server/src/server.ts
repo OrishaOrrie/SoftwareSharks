@@ -223,7 +223,8 @@ const trainModelFunction = (request, response, responseHeaders) => {
         try {
             const payload = JSON.parse(result.toString());
             logger.debug(result);
-            console.log('Categories: ' + payload);
+            logger.debug('Categories: ' + payload);
+            // console.log('Categories: ' + payload);
 
             // Deal with categories using trainModule.js
 
@@ -240,6 +241,7 @@ const trainModelFunction = (request, response, responseHeaders) => {
             };
             response.write(JSON.stringify(confirmResponse));
             response.end();
+            fb.setTraining(payload.modelId, 'Training');
         } catch (err) {
             if (err instanceof SyntaxError) {
                 console.error('Syntax Error: ' + (err));
