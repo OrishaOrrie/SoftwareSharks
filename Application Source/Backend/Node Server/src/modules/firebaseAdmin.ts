@@ -28,6 +28,8 @@ export function initFirebaseAdmin() {
     });
     initialized = true;
     db = admin.firestore();
+    const settings = {/* your settings... */ timestampsInSnapshots: true};
+    db.settings(settings);
 
     console.log('Successfully initialised Firebase Admin SDK');
 }

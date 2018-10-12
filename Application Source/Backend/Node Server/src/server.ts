@@ -241,7 +241,11 @@ const trainModelFunction = (request, response, responseHeaders) => {
             };
             response.write(JSON.stringify(confirmResponse));
             response.end();
-            fb.setTraining(payload.modelId, 'Training');
+            fb.setTraining(payload.modelId, 'Training').then(() => {
+                logger.info('Successfully updated training status');
+            }).catch(() => {
+                logger.error('Error: couldn\'t update model on firebase');
+            });
         } catch (err) {
             if (err instanceof SyntaxError) {
                 console.error('Syntax Error: ' + (err));
