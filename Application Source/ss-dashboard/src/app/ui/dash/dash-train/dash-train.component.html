@@ -30,7 +30,7 @@
             <td [ngSwitch]="model.status">
                 <button *ngSwitchCase="this.trained" type="button" class="btn btn-success">Get URL</button>
                 <button *ngSwitchCase="this.untrained" type="button" class="btn btn-info" (click)="sendTrainRequest(model)">Train</button>
-                <button *ngSwitchCase="this.training" type="button" class="btn btn-warning">Pause</button>
+                <button *ngSwitchCase="this.training" type="button" class="btn btn-warning" disabled>Training</button>
             </td>
           </tr>
         </tbody>
