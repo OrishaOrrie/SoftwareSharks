@@ -10,12 +10,12 @@
         user input.
 */
 
-import {PythonShell} from 'python-shell';
+import { PythonShell } from 'python-shell';
 
 export async function predictModule(payload, logger) {
     console.log('Predict Module');
-    //console.log('Header: '+payload.header);
-    //console.log('Image: '+payload.image);
+    // console.log('Header: '+payload.header);
+    // console.log('Image: '+payload.image);
 
     const header = payload.header;
     const url = payload.image;
@@ -26,16 +26,16 @@ export async function predictModule(payload, logger) {
         const pyPredict = new PythonShell(predictFile);
 
         // './'+header+'_model/'+header+'_dataset/'+header+'-mobilenet-tf.h5'
-        //pyPredict.send( './'+header+'_model/'+header+'_dataset/'+header+'-mobilenet-tf.h5');
+        // pyPredict.send( './'+header+'_model/'+header+'_dataset/'+header+'-mobilenet-tf.h5');
         pyPredict.send(header);
         pyPredict.send(url);
         pyPredict.send(numResults);
         // console.log("Sending");
         pyPredict.on('message', (message) => {
-            if(message.substring(0,6) == 'Result') {
+            if (message.substring(0, 6) === 'Result') {
                 message = message.substring(6);
-                var results = message.split('|');
-                console.log("Class: "+results[0]+", Likeness: "+results[1]);
+                const results = message.split('|');
+                console.log('Class: ' + results[0] + ', Likeness: ' + results[1]);
             } else {
                 console.log('Python Predicter: ' + message);
             }
