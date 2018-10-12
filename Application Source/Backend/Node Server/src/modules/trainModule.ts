@@ -29,7 +29,7 @@ export async function trainModule(payload, logger) {
     // Scraping Images
     // --------------------------------------------------
 
-    if (ScrapeImages === 'true') {
+    if (ScrapeImages) {
         logger.info('Training Module Starting to Scrape Images');
         const IS = new Promise(async (resolve) => {
             const done = ImageScrape(header, categories, logger);
