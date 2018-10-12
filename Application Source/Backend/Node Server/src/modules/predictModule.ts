@@ -38,7 +38,7 @@ export async function predictModule(payload, logger) {
                 const msg = 'Class: ' + results[0] + ', Likeness: ' + results[1];
                 logger.info(msg);
                 logger.debug(msg);
-            } else if(message.length>0) {
+            } else if (message.length > 0) {
                 logger.debug('Python Predicter: ' + message);
             }
         });

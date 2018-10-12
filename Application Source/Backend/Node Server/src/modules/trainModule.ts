@@ -29,11 +29,11 @@ export async function trainModule(payload, logger) {
     // Scraping Images
     // --------------------------------------------------
 
-    if (ScrapeImages == 'true') {
+    if (ScrapeImages === 'true') {
         logger.info('Training Module Starting to Scrape Images');
         const IS = new Promise(async (resolve) => {
-            var done = ImageScrape(header, categories, logger);
-            if(await done){
+            const done = ImageScrape(header, categories, logger);
+            if (await done) {
                resolve('Training Module Finished Scraping Images');
             }
         });
@@ -55,8 +55,8 @@ export async function trainModule(payload, logger) {
     // --------------------------------------------------
     logger.info('Training Model Starting to Check Images');
     const CI = new Promise(async (resolve) => {
-        var done = CheckImages(header, categories, logger);
-        if(await done) {
+        const done = CheckImages(header, categories, logger);
+        if (await done) {
             resolve('Training Model Finished Checking Images');
         }
     });
@@ -72,8 +72,8 @@ export async function trainModule(payload, logger) {
     // --------------------------------------------------
     logger.info('Training Model Starting to Split Files');
     const SF = new Promise(async (resolve) => {
-        var done = SplitFiles(header, logger);
-        if(await done) {
+        const done = SplitFiles(header, logger);
+        if (await done) {
             resolve('Training Model Finished Splitting Files');
         }
     });
@@ -93,8 +93,8 @@ export async function trainModule(payload, logger) {
     // --------------------------------------------------
     logger.info('Training Model Starting to Train Model');
     const TM = new Promise(async (resolve) => {
-        var done = TrainModel(header, epochs, logger);
-        if(await done) {
+        const done = TrainModel(header, epochs, logger);
+        if (await done) {
             resolve('Training Model Finished Training Model');
         }
     });
@@ -172,7 +172,7 @@ const CheckImages = async (header, categories, logger) => {
             pyChecker.send(header);
             logger.debug('Checking folder: ' + categories[category]);
             pyChecker.on('message', (message) => {
-                if(message.length>0) {
+                if (message.length > 0) {
                     logger.debug('Python Checker: ' + message);
                 }
             });
@@ -214,7 +214,7 @@ const SplitFiles = async (header, logger) => {
 
         pySplitFiles.send(header);
         pySplitFiles.on('message', (message) => {
-            if(message.length>0) {
+            if (message.length > 0) {
                 logger.debug('Python Splitter: ' + message);
             }
         });
@@ -254,7 +254,7 @@ const TrainModel = async (header, epochs, logger) => {
         pyTrainer.send('./' + header + '_model\\' + header + '_dataset\\' + header + '-mobilenet-tf.h5');
         pyTrainer.send(epochs);
         pyTrainer.on('message', (message) => {
-            if(message.length>0) {
+            if (message.length > 0) {
                 logger.debug('Python Trainer: ' + message);
             }
         });
@@ -292,7 +292,7 @@ const TestModelAccuracy = async (header, logger) => {
         pyTester.send('./test_images');
 
         pyTester.on('message', (message) => {
-            if(message.length>0) {
+            if (message.length > 0) {
                 logger.debug('Python Tester: ' + message);
             }
         });
