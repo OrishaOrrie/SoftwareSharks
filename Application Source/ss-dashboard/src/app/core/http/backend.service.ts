@@ -5,6 +5,7 @@ import { environment } from '../../../environments/environment';
 import { ConfirmationResponse } from '../../shared/models/responses/confirmation-response';
 import { throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import { TrainingRequest } from 'src/app/shared/models/responses/training-request';
 
 @Injectable()
 export class BackendService {
@@ -18,11 +19,17 @@ export class BackendService {
 
   sendTrainRequest(model: Model) {
     const url = this.apiURI + this.trainReqPath;
-
-    const data = JSON.stringify(model);
+    const data: TrainingRequest = {
+      name: model.name,
+      modelId: model.id,
+      categories: model.categories,
+      epochs: 10,
+      scrape: true
+    };
+    // const data = JSON.stringify(model);
     console.log(data);
 
-    return this.http.post<ConfirmationResponse>(url, data)
+    return this.http.post<ConfirmationResponse>(url, JSON.stringify(data))
       .pipe(
         retry(3), // Retry request 3 times if failed
         catchError(this.handleError) // Else handle error and continue
