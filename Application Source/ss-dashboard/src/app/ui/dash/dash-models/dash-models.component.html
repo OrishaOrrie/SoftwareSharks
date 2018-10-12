@@ -57,7 +57,8 @@
               </div>
             </div>
             <div class="card-footer">
-              <div *ngIf="model.trained; then trained else untrained"></div>
+              <div>
+                  <p class="lead text-center">{{ model.status }}</p></div>
               <hr>
               <small class="text-muted">Last updated 3 mins ago</small>
               <div class="float-right"><a class="btn btn-danger text-light" (click)="deleteModel(model.id)"><i class="fa fa-trash-o"></i>
@@ -97,14 +98,4 @@
       <small class="text-muted">Something cool might happen!</small>
     </div>
   </div>
-</ng-template>
-
-<!-- Untrained -->
-<ng-template #untrained>
-  <p class="lead text-center">Not Trained</p>
-</ng-template>
-
-<!-- Untrained -->
-<ng-template #trained>
-  <p class="lead text-center">Trained</p>
 </ng-template>
