@@ -95,7 +95,7 @@
     <plugin name="cordova-plugin-ionic" spec="^5.2.4">
         <variable name="APP_ID" value="a9c3140f" />
         <variable name="CHANNEL_NAME" value="Master" />
-        <variable name="UPDATE_METHOD" value="background" />
+        <variable name="UPDATE_METHOD" value="manual" />
     </plugin>
     <plugin name="cordova-plugin-ionic-keyboard" spec="2.1.2" />
     <plugin name="cordova-plugin-ionic-webview" spec="^2.1.4" />
