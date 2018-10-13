@@ -22,7 +22,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { ModalController } from 'ionic-angular';
 import { AboutPage } from '../about/about';
-import { IonicPage, NavParams } from 'ionic-angular';
+import { NavParams } from 'ionic-angular';
 import { QuotationProvider } from './../../providers/quotation/quotation';
 import { Observable } from 'rxjs';
 /*

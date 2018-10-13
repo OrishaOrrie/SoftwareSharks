@@ -15,14 +15,14 @@
 * Functional Description:
 *   Displays results as predicted by the TensorFlowJS model
 */
-import { Dialogs } from '@ionic-native/dialogs';
+// import { Dialogs } from '@ionic-native/dialogs';
 import { Component, Renderer } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ModalController } from 'ionic-angular';
 import { ViewController } from 'ionic-angular';
 import { ModelLoaderProvider } from './../../providers/model-loader/model-loader';
 import { QuoteBuilderPage } from '../quote-builder/quote-builder';
-import { ToastController } from 'ionic-angular';
+// import { ToastController } from 'ionic-angular';
 /**
  * Generated class for the ResultsPage page.
  *
@@ -50,7 +50,7 @@ export class ResultsPage {
    * @param viewCtrl Controls the current view
    * @param modelLoader The ModelLoader provider that handles all image classification requests
    */
-  constructor(private toastCtrl: ToastController, public renderer: Renderer,public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, public viewCtrl: ViewController, public modelLoader : ModelLoaderProvider) {
+  constructor( public renderer: Renderer,public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, public viewCtrl: ViewController, public modelLoader : ModelLoaderProvider) {
       this.resultPreds= modelLoader.getResults();
      // this.renderer.setElementClass(viewCtrl.pageRef().nativeElement, 'custom-popup', true);
   }
