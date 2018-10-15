@@ -1,0 +1,890 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ss-dashboard documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">ss-dashboard documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+</div>
+            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>DashModelsEditComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/ui/dash/dash-models-edit/dash-models-edit.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-dash-models-edit</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>dash-models-edit.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./dash-models-edit.component.html</code></td>
+            </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#editModelForm">editModelForm</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#addCategory">addCategory</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onSubmit">onSubmit</a>
+                            </li>
+                            <li>
+                                <a href="#removeCategory">removeCategory</a>
+                            </li>
+                            <li>
+                                <a href="#setCurrentModel">setCurrentModel</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#updateModel">updateModel</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#model">model</a>
+                            </li>
+                            <li>
+                                <a href="#val">val</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#categories">categories</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(fb: <a href="https://angular.io/api/forms/FormBuilder" target="_blank">FormBuilder</a>, modelService: <a href="../injectables/ModelsService.html">ModelsService</a>, alertService: <a href="../injectables/AlertService.html">AlertService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/ui/dash/dash-models-edit/dash-models-edit.component.ts:27</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>fb</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="https://angular.io/api/forms/FormBuilder" target="_blank" >FormBuilder</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>modelService</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../injectables/ModelsService.html" target="_self" >ModelsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>alertService</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../injectables/AlertService.html" target="_self" >AlertService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="model"></a>
+                        <code>model</code>
+                    </td>
+                    <td class="col-md-10">
+                            <p>
+                            <em>Type :</em>    <code><a href="../classes/Model.html" target="_self" >Model</a></code>
+
+                            </p>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/ui/dash/dash-models-edit/dash-models-edit.component.ts:17</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="val"></a>
+                        <code>val</code>
+                    </td>
+                    <td class="col-md-10">
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/ui/dash/dash-models-edit/dash-models-edit.component.ts:20</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+    <section>
+    
+        <h3 id="methods">
+            Methods
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="addCategory"></a>
+                        <span class="name">
+                            <b>
+                            addCategory
+                            </b>
+                            <a href="#addCategory"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>addCategory()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">src/app/ui/dash/dash-models-edit/dash-models-edit.component.ts:75</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ngOnInit"></a>
+                        <span class="name">
+                            <b>
+                            ngOnInit
+                            </b>
+                            <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>ngOnInit()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/ui/dash/dash-models-edit/dash-models-edit.component.ts:35</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="onSubmit"></a>
+                        <span class="name">
+                            <b>
+                            onSubmit
+                            </b>
+                            <a href="#onSubmit"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>onSubmit()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/ui/dash/dash-models-edit/dash-models-edit.component.ts:46</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="removeCategory"></a>
+                        <span class="name">
+                            <b>
+                            removeCategory
+                            </b>
+                            <a href="#removeCategory"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>removeCategory(index: )</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/app/ui/dash/dash-models-edit/dash-models-edit.component.ts:79</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>index</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="setCurrentModel"></a>
+                        <span class="name">
+                            <b>
+                            setCurrentModel
+                            </b>
+                            <a href="#setCurrentModel"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>setCurrentModel()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/ui/dash/dash-models-edit/dash-models-edit.component.ts:38</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="updateModel"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            updateModel
+                            </b>
+                            <a href="#updateModel"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>updateModel()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/ui/dash/dash-models-edit/dash-models-edit.component.ts:60</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="editModelForm"></a>
+                        <span class="name">
+                            <b>
+                            editModelForm
+                            </b>
+                            <a href="#editModelForm"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>editModelForm:     <code></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.fb.group({
+    name: [&#x27;&#x27;, Validators.required],
+    categories: this.fb.array([
+      this.fb.control(&#x27;&#x27;)
+    ], Validators.required)
+  })</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/ui/dash/dash-models-edit/dash-models-edit.component.ts:22</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="categories"></a>
+                        <span class="name"><b>categories</b><a href="#categories"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>categories()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">src/app/ui/dash/dash-models-edit/dash-models-edit.component.ts:70</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Input } from &#x27;@angular/core&#x27;;
+import { Model } from &#x27;../../../shared/models/model&#x27;;
+import { ModelsService } from &#x27;../../../core/data/models.service&#x27;;
+import { AlertService } from &#x27;../../../core/alert/alert.service&#x27;;
+import { Alert } from &#x27;../../../shared/models/alert&#x27;;
+import { AlertType } from &#x27;../../../shared/models/AlertType&#x27;;
+import { FormBuilder, Validators, FormArray } from &#x27;@angular/forms&#x27;;
+import * as feather from &#x27;feather-icons&#x27;;
+
+@Component({
+  selector: &#x27;app-dash-models-edit&#x27;,
+  templateUrl: &#x27;./dash-models-edit.component.html&#x27;,
+  styleUrls: [&#x27;./dash-models-edit.component.scss&#x27;]
+})
+export class DashModelsEditComponent implements OnInit {
+  @Input()
+  model: Model;
+
+  @Input()
+  val;
+
+  editModelForm &#x3D; this.fb.group({
+    name: [&#x27;&#x27;, Validators.required],
+    categories: this.fb.array([
+      this.fb.control(&#x27;&#x27;)
+    ], Validators.required)
+  });
+
+  constructor(
+    private fb: FormBuilder,
+    private modelService: ModelsService,
+    private alertService: AlertService
+  ) { }
+
+  ngOnInit() {
+  }
+
+  setCurrentModel() {
+    // console.log(this.model);
+    this.editModelForm.patchValue({
+      name: this.model.name
+    });
+    this.editModelForm.setControl(&#x27;categories&#x27;, this.fb.array(this.model.categories || []));
+  }
+  // #editModelModal
+  onSubmit() {
+    // TODO: Use EventEmitter with form value
+    // const model: Model &#x3D; this.newModelForm.value as Model;
+    // model.uri &#x3D; &#x27;None&#x27;;
+    // model.trained &#x3D; false;
+    // this.updateModel().then(() &#x3D;&gt; {
+    //   this.editModelForm.reset();
+    //   this.alertService.add(new Alert(AlertType.Success, &#x27;Model successfully created!&#x27;, &#x27;WooHoo!&#x27;, &#x27;:)&#x27;));
+    // }).catch((error) &#x3D;&gt; {
+    //   this.alertService.add(new Alert(AlertType.Danger, &#x27;Looks like something went wrong!&#x27;, &#x27;Oh No!&#x27;, &#x27;:(&#x27;));
+    //   console.log(error);
+    // });
+  }
+
+  public updateModel() {
+    // console.log(modelData);
+    const editedModel: Model &#x3D; this.editModelForm.value as Model;
+    this.modelService.updateModel(this.model.id, editedModel).then(() &#x3D;&gt; {
+      this.editModelForm.reset();
+      this.alertService.add(new Alert(AlertType.Success, &#x27;Model successfully edited!&#x27;, &#x27;WooHoo!&#x27;, &#x27;:)&#x27;));
+      // console.log(this.model.id, editedModel);
+    });
+  }
+
+  get categories() {
+    feather.replace();
+    return this.editModelForm.get(&#x27;categories&#x27;) as FormArray;
+  }
+
+  addCategory() {
+    this.categories.push(this.fb.control(&#x27;&#x27;));
+  }
+
+  removeCategory(index) {
+    if (index &gt; 0) {
+      this.categories.removeAt(index);
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-info&quot; data-toggle&#x3D;&quot;modal&quot; [attr.data-target]&#x3D;&quot;&#x27;#editModelModal&#x27;+val&quot; (click)&#x3D;&quot;setCurrentModel();&quot;&gt;
+    &lt;i class&#x3D;&quot;fa fa-pencil-square-o&quot;&gt;&lt;/i&gt; Edit
+&lt;/button&gt;
+&lt;!-- (click)&#x3D;&quot;deleteModel(model.id)&quot; --&gt;
+&lt;div class&#x3D;&quot;modal fade text-dark&quot; [attr.id]&#x3D;&quot;&#x27;editModelModal&#x27;+val&quot; tabindex&#x3D;&quot;-1&quot; role&#x3D;&quot;dialog&quot; aria-labelledby&#x3D;&quot;editModelModalLabel&quot;
+    aria-hidden&#x3D;&quot;true&quot;&gt;
+    &lt;div class&#x3D;&quot;modal-dialog&quot; role&#x3D;&quot;document&quot;&gt;
+        &lt;div class&#x3D;&quot;modal-content&quot;&gt;
+            &lt;div class&#x3D;&quot;modal-header text-light bg-dark&quot;&gt;
+                &lt;h5 class&#x3D;&quot;modal-title&quot; id&#x3D;&quot;editModelModalLabel&quot;&gt;Edit Model&lt;/h5&gt;
+                &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;close text-light&quot; data-dismiss&#x3D;&quot;modal&quot; aria-label&#x3D;&quot;Close&quot;&gt;
+                    &lt;span aria-hidden&#x3D;&quot;true&quot;&gt;&amp;times;&lt;/span&gt;
+                &lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;modal-body&quot;&gt;
+                &lt;form [formGroup]&#x3D;&quot;editModelForm&quot; (ngSubmit)&#x3D;&quot;onSubmit()&quot;&gt;
+                    &lt;div class&#x3D;&quot;form-group row&quot;&gt;
+                        &lt;label for&#x3D;&quot;modelNameInput&quot; class&#x3D;&quot;col-sm-12 col-form-label&quot;&gt;Model Name&lt;/label&gt;
+                        &lt;div class&#x3D;&quot;col-sm-12&quot;&gt;
+                            &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; id&#x3D;&quot;modelNameInput&quot; placeholder&#x3D;&quot;Enter Model name&quot;
+                                formControlName&#x3D;&quot;name&quot;&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;form-group row&quot;&gt;
+                        &lt;label class&#x3D;&quot;col-sm-12 col-form-label&quot;&gt;Categories&lt;/label&gt;
+                        &lt;div class&#x3D;&quot;col-sm-12&quot; formArrayName&#x3D;&quot;categories&quot;&gt;
+                            &lt;div *ngFor&#x3D;&quot;let address of categories.controls; let i&#x3D;index&quot;&gt;
+                                &lt;div class&#x3D;&quot;input-group&quot;&gt;
+                                    &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control my-2&quot; placeholder&#x3D;&quot;Enter category&quot;
+                                        [formControlName]&#x3D;&quot;i&quot; required&gt;
+                                    &lt;div *ngIf&#x3D;&quot;i &gt; 0&quot; class&#x3D;&quot;input-group-prepend my-2&quot;&gt;
+                                        &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-danger input-group-text&quot; (click)&#x3D;&quot;removeCategory(i)&quot;
+                                            placement&#x3D;&quot;left&quot; ngbTooltip&#x3D;&quot;Delete Category&quot;&gt;&lt;span data-feather&#x3D;&quot;delete&quot;&gt;&lt;/span&gt;&lt;/button&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;button type&#x3D;&quot;button&quot; (click)&#x3D;&quot;addCategory()&quot; class&#x3D;&quot;btn btn-info&quot;&gt;Add Category&lt;/button&gt;
+                &lt;/form&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;modal-footer&quot;&gt;
+                &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-secondary&quot; data-dismiss&#x3D;&quot;modal&quot;&gt;Close&lt;/button&gt;
+                &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-dark&quot; [disabled]&#x3D;&quot;!editModelForm.valid&quot; (click)&#x3D;&quot;updateModel()&quot; data-dismiss&#x3D;&quot;modal&quot;&gt;Save Changes&lt;/button&gt;
+                &lt;!-- &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-primary&quot;&gt;Save changes&lt;/button&gt; --&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><button type="button" class="btn btn-info" data-toggle="modal" [attr.data-target]="\'#editModelModal\'+val" (click)="setCurrentModel();">    <i class="fa fa-pencil-square-o"></i> Edit</button><!-- (click)="deleteModel(model.id)" --><div class="modal fade text-dark" [attr.id]="\'editModelModal\'+val" tabindex="-1" role="dialog" aria-labelledby="editModelModalLabel"    aria-hidden="true">    <div class="modal-dialog" role="document">        <div class="modal-content">            <div class="modal-header text-light bg-dark">                <h5 class="modal-title" id="editModelModalLabel">Edit Model</h5>                <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">                    <span aria-hidden="true">&times;</span>                </button>            </div>            <div class="modal-body">                <form [formGroup]="editModelForm" (ngSubmit)="onSubmit()">                    <div class="form-group row">                        <label for="modelNameInput" class="col-sm-12 col-form-label">Model Name</label>                        <div class="col-sm-12">                            <input type="text" class="form-control" id="modelNameInput" placeholder="Enter Model name"                                formControlName="name">                        </div>                    </div>                    <div class="form-group row">                        <label class="col-sm-12 col-form-label">Categories</label>                        <div class="col-sm-12" formArrayName="categories">                            <div *ngFor="let address of categories.controls; let i=index">                                <div class="input-group">                                    <input type="text" class="form-control my-2" placeholder="Enter category"                                        [formControlName]="i" required>                                    <div *ngIf="i > 0" class="input-group-prepend my-2">                                        <button type="button" class="btn btn-danger input-group-text" (click)="removeCategory(i)"                                            placement="left" ngbTooltip="Delete Category"><span data-feather="delete"></span></button>                                    </div>                                </div>                            </div>                        </div>                    </div>                    <button type="button" (click)="addCategory()" class="btn btn-info">Add Category</button>                </form>            </div>            <div class="modal-footer">                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>                <button type="button" class="btn btn-dark" [disabled]="!editModelForm.valid" (click)="updateModel()" data-dismiss="modal">Save Changes</button>                <!-- <button type="button" class="btn btn-primary">Save changes</button> -->            </div>        </div>    </div></div></div>'
+    var COMPONENTS = [{'name': 'AlertComponent', 'selector': 'app-alert'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ComingSoonComponent', 'selector': 'app-coming-soon'},{'name': 'DashComponent', 'selector': 'app-dash'},{'name': 'DashHeaderComponent', 'selector': 'app-dash-header'},{'name': 'DashModelsComponent', 'selector': 'app-dash-models'},{'name': 'DashModelsCreateComponent', 'selector': 'app-dash-models-create'},{'name': 'DashModelsEditComponent', 'selector': 'app-dash-models-edit'},{'name': 'DashOverviewComponent', 'selector': 'app-dash-overview'},{'name': 'DashSideNavComponent', 'selector': 'app-dash-side-nav'},{'name': 'DashTrainComponent', 'selector': 'app-dash-train'},{'name': 'FlamesComponent', 'selector': 'app-flames'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LayoutComponent', 'selector': 'app-layout'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'LogoComponent', 'selector': 'app-logo'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'ParticleBackgroundComponent', 'selector': 'app-particle-background'},{'name': 'SideNavComponent', 'selector': 'app-side-nav'},{'name': 'UserProfileComponent', 'selector': 'app-user-profile'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'DashModelsEditComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'DashModelsEditComponent.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <script src="../js/menu-wc.js"></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
