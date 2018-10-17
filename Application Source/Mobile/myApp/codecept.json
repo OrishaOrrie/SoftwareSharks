@@ -1,0 +1,18 @@
+{
+  "tests": "./tests/*_test.js",
+  "timeout": 10000,
+  "output": "./output",
+  "helpers": {
+    "Puppeteer": {
+      "url": "http://localhost:8100",
+      "show": true,
+      "restart": false
+    }
+  },
+  "include": {
+    "I": "./tests/steps_file.js"
+  },
+  "bootstrap": false,
+  "mocha": {},
+  "name": "myApp"
+}

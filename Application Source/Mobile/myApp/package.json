@@ -9,7 +9,8 @@
     "clean": "ionic-app-scripts clean",
     "build": "ionic-app-scripts build",
     "lint": "ionic-app-scripts lint",
-    "compodoc": "./node_modules/.bin/compodoc -p tsconfig.json"
+    "compodoc": "./node_modules/.bin/compodoc -p tsconfig.json",
+    "e2e": "./node_modules/.bin/codeceptjs run --steps"
   },
   "dependencies": {
     "@angular/animations": "6.0.9",
@@ -68,6 +69,8 @@
     "@compodoc/compodoc": "^1.1.5",
     "@ionic/app-scripts": "3.2.0",
     "@types/node": "^10.7.0",
+    "codeceptjs": "^1.4.3",
+    "puppeteer": "^1.9.0",
     "typescript": "~2.6.2"
   },
   "description": "An Ionic project",

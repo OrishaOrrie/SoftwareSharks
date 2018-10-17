@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { ViewController } from 'ionic-angular';
-import { ContactPage } from '../contact/contact';
+// import { ContactPage } from '../contact/contact';
 import {QuotationProvider} from './../../providers/quotation/quotation';
 import { ToastController } from 'ionic-angular';
 /**
@@ -53,8 +53,8 @@ export class QuoteBuilderPage {
 
     this.quotation.addQuote(this.name, this.amount);
 
-    const message = 'Added ' + this.amount + ' items of type "' + this.amount + '" to your quote. '
-    + '\nGo to the Contact Us page to request the quote';
+    // const message = 'Added ' + this.amount + ' items of type "' + this.amount + '" to your quote. '
+    // + '\nGo to the Contact Us page to request the quote';
     //this.openSnackBar(message);
     this.presentToast();
     this.closeModal();

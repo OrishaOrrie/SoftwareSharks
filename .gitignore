@@ -36,6 +36,7 @@ Application Source/Mobile/myApp/google-services.json
 /Application Source/Backend/Node Server/functions/node_modules/
 /Application Source/Mobile/myApp/google-services.json
 /Application Source/ss-imagerec-webapp/functions/local_modules/credentials.js
+Application Source/Mobile/myApp/output
 Application Source/Backend/Node Server/.vscode/settings.json
 .angulardoc.json
 Application Source/Backend/Node Server/functions/priv/serviceAccountKey.json
