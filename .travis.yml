@@ -19,7 +19,6 @@ branches:
 before_install:
   - cd './Application Source'
   - cd './ss-imagerec-webapp'
-  - rm -rf node_modules
 
 before_script:
   - export DISPLAY=:99.0
