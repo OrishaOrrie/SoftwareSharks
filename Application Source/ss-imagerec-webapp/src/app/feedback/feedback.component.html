@@ -1,0 +1,25 @@
+<div class="feedback">
+  <p class="feedback_instructions" *ngIf="!submitted">We at Software Sharks are constantly trying to improve our webapp. Please provide us with feedback via the form below</p>
+  <form [formGroup]="formGroup" (ngSubmit)="submitForm()" class="feedback__form" *ngIf="!submitted">
+    <mat-form-field color="primary">
+      <input matInput formControlName="name" type="text" placeholder="Enter your name" required>
+    </mat-form-field>
+    <mat-form-field color="primary">
+      <mat-select placeholder="Select feedback type" formControlName="feedType" required>
+        <mat-option *ngFor="let f of feedbackTypes" [value]="f">{{ f }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field color="primary">
+      <textarea matInput matAutosizeMaxRows="3" rows="1" formControlName="message" type="text" placeholder="Enter feedback" required></textarea>
+    </mat-form-field>
+    <div>
+      <button mat-stroked-button type="submit" class="feedback__send-button" [disabled]="!formGroup.valid">
+        Send Feedback</button>
+      <!-- <mat-spinner color="primary" mode="indeterminate" diameter="10" style.display="sending ? 'block': 'none'"></mat-spinner> -->
+      <mat-spinner style="float: right; padding-left: 10px;" color="primary" 
+      [diameter]="30" [style.display]="sending ? 'block':'none'"></mat-spinner>
+    </div>
+    <p class="feedback__sent" *ngIf="failedToSubmit">Sorry, we couldn't receive your feedback.</p>
+  </form>
+  <h3 class="feedback__sent" *ngIf="submitted">Thank you for the feedback!</h3>
+</div>

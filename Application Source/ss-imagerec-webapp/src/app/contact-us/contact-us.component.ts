@@ -16,8 +16,10 @@
  */
 
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHandler, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { QuoteBuilderService } from '../quotebuilder/quote-builder.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-contact-us',
@@ -32,6 +34,16 @@ export class ContactUsComponent implements OnInit {
   submitted = false;
 
   /**
+   * Determines whether the spinner is to be displayed or not
+   */
+  showSpinner = false;
+
+  /**
+   * Message received from the server. Displayed on the status card
+   */
+  msgReceived = '';
+
+  /**
    * FormControl used to validate email input
    */
   email = new FormControl('', [Validators.required, Validators.email] );
@@ -44,6 +56,24 @@ export class ContactUsComponent implements OnInit {
     email: new FormControl('', [Validators.required, Validators.email] ),
     message: new FormControl('')
   });
+
+  public quoteMessage = '';
+
+  public addQuoteDisplay = new Observable((data) => {
+    setInterval(() => {
+      data.next(this.qb.isQuoteStarted());
+    }, 1000);
+  });
+  private pressedButton = false;
+
+  /**
+   * This constructor is only used to pass an instance of the HttpClient module.
+   * @param http  HttpClient instance
+   */
+  constructor(private http: HttpClient, public qb: QuoteBuilderService) { }
+
+  ngOnInit() {
+  }
 
   /**
    * Called when invalid input is detected
@@ -63,6 +93,7 @@ export class ContactUsComponent implements OnInit {
     const contactName = this.myGroup.get('name').value;
     const contactEmail = this.myGroup.get('email').value;
     const contactMessage = this.myGroup.get('message').value;
+    // this.myGroup.setValue();
 
     const httpOptions = {
       headers: new HttpHeaders({
@@ -71,25 +102,43 @@ export class ContactUsComponent implements OnInit {
     };
 
     console.log('Name: ' + contactName + ' Email: ' + contactEmail + ' Msg: ' + contactMessage);
+    this.showSpinner = true;
 
-    this.http.post('http://localhost:3000/send',
-    {'subject': contactName, 'text': contactMessage, 'email': contactEmail}
+    this.http.post('https://us-central1-testproject-ee885.cloudfunctions.net/app/sendmail',
+    {'subject': contactName, 'text': contactMessage, 'email': contactEmail},
+    httpOptions
     ).subscribe(data1 => {
-      console.log(data1);
-      if (data1 === 'sent') {
-        this.submitted = true;
+      this.showSpinner = false;
+      const msgFromServer = data1['message'];
+      this.submitted = true;
+      if (msgFromServer === 'Message sent') {
+        console.log('Message sent == true');
+        this.msgReceived = 'Thank you for contacting us! We\'ll be in touch ;) ';
+      } else {
+        console.log('Message sent == false');
+        this.msgReceived = 'Sorry, your message was not sent. Try again later please if you don\'t mind OwO';
       }
     });
 
   }
 
   /**
-   * This constructor is only used to pass an instance of the HttpClient module.
-   * @param http  HttpClient instance
+   * Appends the quote data from the QuoteBuilderService to the message textarea in a formatted presentation
    */
-  constructor(private http: HttpClient) { }
+  addQuoteToMessage() {
+    this.pressedButton = true;
+    const quoteList = this.qb.getQuoteList();
+    this.quoteMessage = '\nI\'d like to receive a quote for the following items:\n';
+    this.quoteMessage += '========================================\n';
+    quoteList.forEach((element, index) => {
+      this.quoteMessage += (index + 1) + '. ' + element.name + ' x' + element.amount + '\n';
+    });
+    this.quoteMessage += '========================================\n';
 
-  ngOnInit() {
+    const messageText = this.myGroup.get('message').value;
+    this.myGroup.patchValue({
+      message: messageText + this.quoteMessage
+    });
   }
 
 }

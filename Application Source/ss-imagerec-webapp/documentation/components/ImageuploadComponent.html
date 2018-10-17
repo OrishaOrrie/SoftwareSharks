@@ -1,0 +1,1668 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ss-imagerec-webapp documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	    <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">ss-imagerec-webapp documentation</a>
+            <button type="button" class="btn btn-default btn-menu fa fa-bars" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+            <div id="book-search-input" role="search">
+                <input type="text" placeholder="Type to search">
+            </div>
+            <nav>
+            
+                <ul class="list">
+            
+                    <li class="title">
+                        <a href="../">ss-imagerec-webapp documentation</a>
+                    </li>
+            
+                    <li class="divider"></li>
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../"><span class="fa fa-home"></span>Getting started</a>
+                        <ul class="links">
+                                <li class="link">
+                                    <a href="../" ><span class="fa fa-file-text-o"></span>README</a>
+                                </li>
+                                <li class="link">
+                                    <a 
+                                        
+                                         href="../overview.html" 
+                                         href="../overview.html" 
+                                        >
+                                        <span class="fa fa-th"></span>Overview
+                                    </a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="./modules.html" >
+                            <span class="fa fa-archive"></span>
+                            <span>Modules</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-modules-links"
+                            ></span>
+                        </a>
+                        <ul class="links collapse in"
+                                id="xs-modules-links"
+                            >
+                                <li class="link">
+                                    <a href="../modules/AppModule.html" >AppModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/AppRoutingModule.html" >AppRoutingModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/MaterialModule.html" >MaterialModule</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-cogs"></span>
+                            <span>Components</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-components-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-components-links"
+                            >
+                                <li class="link">
+                                    <a href="../components/AppComponent.html" >AppComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/ContactUsComponent.html" >ContactUsComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/FeedbackComponent.html" >FeedbackComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/HomeComponent.html" >HomeComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/ImageuploadComponent.html"  class="active" >ImageuploadComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/QuoteDialogComponent.html" >QuoteDialogComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/UtilitiesComponent.html" >UtilitiesComponent</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../routes.html" ><span class="fa fa-code-fork"></span>Routes</a>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-long-arrow-down"></span>
+                            <span>Injectables</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-injectables-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-injectables-links"
+                            >
+                                <li class="link">
+                                    <a href="../injectables/ModelLoaderService.html" >ModelLoaderService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/QuoteBuilderService.html" >QuoteBuilderService</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
+                    </li>
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../coverage.html" ><span class="fa fa-tasks"></span>Documentation coverage</a>
+                    </li>
+            
+                    <li class="divider"></li>
+                    <li class="copyright">
+                            Documentation generated using <a href="https://compodoc.github.io/compodoc/" target="_blank">
+                                        <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
+                            </a>
+                    </li>
+            
+                </ul>
+            
+            </nav>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <nav>
+                   
+                       <ul class="list">
+                   
+                           <li class="title">
+                               <a href="../">ss-imagerec-webapp documentation</a>
+                           </li>
+                   
+                           <li class="divider"></li>
+                   
+                               <div id="book-search-input" role="search">
+                                   <input type="text" placeholder="Type to search">
+                               </div>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../"><span class="fa fa-home"></span>Getting started</a>
+                               <ul class="links">
+                                       <li class="link">
+                                           <a href="../" ><span class="fa fa-file-text-o"></span>README</a>
+                                       </li>
+                                       <li class="link">
+                                           <a 
+                                               
+                                                href="../overview.html" 
+                                                href="../overview.html" 
+                                               >
+                                               <span class="fa fa-th"></span>Overview
+                                           </a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="./modules.html" >
+                                   <span class="fa fa-archive"></span>
+                                   <span>Modules</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#modules-links"
+                                   ></span>
+                               </a>
+                               <ul class="links collapse in"
+                                       id="modules-links"
+                   >
+                                       <li class="link">
+                                           <a href="../modules/AppModule.html" >AppModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/AppRoutingModule.html" >AppRoutingModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/MaterialModule.html" >MaterialModule</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-cogs"></span>
+                                   <span>Components</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#components-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="components-links"
+                   >
+                                       <li class="link">
+                                           <a href="../components/AppComponent.html" >AppComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/ContactUsComponent.html" >ContactUsComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/FeedbackComponent.html" >FeedbackComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/HomeComponent.html" >HomeComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/ImageuploadComponent.html"  class="active" >ImageuploadComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/QuoteDialogComponent.html" >QuoteDialogComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/UtilitiesComponent.html" >UtilitiesComponent</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../routes.html" ><span class="fa fa-code-fork"></span>Routes</a>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-long-arrow-down"></span>
+                                   <span>Injectables</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#injectables-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="injectables-links"
+                   >
+                                       <li class="link">
+                                           <a href="../injectables/ModelLoaderService.html" >ModelLoaderService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/QuoteBuilderService.html" >QuoteBuilderService</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
+                           </li>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../coverage.html" ><span class="fa fa-tasks"></span>Documentation coverage</a>
+                           </li>
+                   
+                           <li class="divider"></li>
+                           <li class="copyright">
+                                   Documentation generated using <a href="https://compodoc.github.io/compodoc/" target="_blank">
+                                               <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
+                                   </a>
+                           </li>
+                   
+                       </ul>
+                   
+                   </nav>
+               </div>
+               <div class="content component">
+                   <div class="content-data">
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>ImageuploadComponent</li>
+</ol>
+
+
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#infos" id="infos-tab" role="tab" data-toggle="tab">Infos</a>
+        </li>
+        <li>
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab">Source</a>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <div class="tab-pane fade active in" id="infos"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/imageupload/imageupload.component.ts</code>
+</p>
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-imageupload</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>imageupload.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>imageupload.component.html</code></td>
+            </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+    <section>
+        <h3 id="constructor">Constructor</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>constructor(ml: <a href="../injectables/ModelLoaderService.html" >ModelLoaderService</a>, dialog: MatDialog)</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>This constructor is only used to pass an instance of the HttpClient module.</p>
+    </div>
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <ul class="jsdoc-params">
+                                                <li>
+                                                    <div>
+                                                        <b>http</b>
+                                                    </div>
+                                                    <div>
+                                                        <p>HttpClient instance</p>
+    
+                                                    </div>
+                                                </li>
+                                        </ul>
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </section>
+
+    <section>
+        <h3 id="methods">Methods</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> madeChange</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>madeChange()</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>This function is triggered by the user selecting an image from the file explorer. It displays the selected<br>image in the &#39;preview&#39; element. This image element is added dynamically and is only done if there is an actual<br>file selected. The selected image is also set as the file to be uploaded.</p>
+    </div>
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> updateInstruction</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>updateInstruction()</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>This function updates the instruction <p> element to display contextual information.</p>
+    </div>
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> formattedFileSize</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>formattedFileSize(size: any)</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>This function formats the size value of the selected file from bytes to a readable string.</p>
+    </div>
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <ul class="jsdoc-params">
+                                                <li>
+                                                    <div>
+                                                        <b>size</b>
+                                                    </div>
+                                                    <div>
+                                                        <p>This is the size in bytes of the selected file from madeChange().</p>
+    
+                                                    </div>
+                                                </li>
+                                        </ul>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                                    <div class="io-description">
+                                        <p>Returns the size in bytes, KB, or MB depending on the value of size.</p>
+    
+                                    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> captureImage</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>captureImage()</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>This function handles everything to do with the webcam capture option. It is called when the webcam button is clicked<br>and creates and maintains webcam footage in a video element. Allows the user to capture an image from the webcam<br>recording to upload.</p>
+    </div>
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> startup</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>startup(video: any, canvas: any, image: any, captureButton: any)</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>This function carries out the process of displaying the webcam footage and saving captured images.</p>
+    </div>
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <ul class="jsdoc-params">
+                                                <li>
+                                                    <div>
+                                                        <b>video</b>
+                                                    </div>
+                                                    <div>
+                                                        <p>the video element that displays the webcam footage</p>
+    
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div>
+                                                        <b>canvas</b>
+                                                    </div>
+                                                    <div>
+                                                        <p>the canvas element that draws the capture webcam image upon clicking Capture</p>
+    
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div>
+                                                        <b>image</b>
+                                                    </div>
+                                                    <div>
+                                                        <p>the image element that displays the image drawn by the canvas</p>
+    
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div>
+                                                        <b>captureButton</b>
+                                                    </div>
+                                                    <div>
+                                                        <p>the button element that allows the user to capture the webcam footage</p>
+    
+                                                    </div>
+                                                </li>
+                                        </ul>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                                    <div class="io-description">
+                                        
+                                    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> clearPhoto</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>clearPhoto(canvas: any, image: any)</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>This function makes the canvas white if no image has been captured yet.</p>
+    </div>
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <ul class="jsdoc-params">
+                                                <li>
+                                                    <div>
+                                                        <b>canvas</b>
+                                                    </div>
+                                                    <div>
+                                                        <p>Same as the startup function</p>
+    
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div>
+                                                        <b>image</b>
+                                                    </div>
+                                                    <div>
+                                                        <p>Same as the startup function</p>
+    
+                                                    </div>
+                                                </li>
+                                        </ul>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                                    <div class="io-description">
+                                        
+                                    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> predictImage</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>predictImage()</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>This function is required for the browser to make use of the device&#39;s webcam.<br>Called when the Submit button is clicked. Calls the model loader service&#39;s predictImage method,<br>then maps the predictions and fills the resultPreds array, so that the results table is updated</p>
+    </div>
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> changeSelectedModel</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>changeSelectedModel()</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Called when the select element is changed. The model loader service methods are called to change the<br>selected model and load it into memory</p>
+    </div>
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> openQuoteDialog</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    <code>openQuoteDialog(elName: any)</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Called when clicking on a predicted item. Handles the addition of quotes</p>
+    </div>
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <ul class="jsdoc-params">
+                                                <li>
+                                                    <div>
+                                                        <b>elName</b>
+                                                    </div>
+                                                    <div>
+                                                        <p>Corresponds with the results table element clicked</p>
+    
+                                                    </div>
+                                                </li>
+                                        </ul>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                                    <div class="io-description">
+                                        
+                                    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier"></span> reloadPage</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <span class="modifier-icon method fa fa-play ">
+                                    <span class="fa fa-"></span>
+                                </span>
+                            <code>reloadPage()</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>This function scrolls up to the Image Submit section of the page</p>
+    </div>
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </section>
+
+    <section>
+        <h3 id="inputs">Properties</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> canvas</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>canvas:     <code>any</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> captureButton</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>captureButton:     <code>any</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> displayedColumns</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>displayedColumns:     <code>string[]</code>
+    </bcode>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>The header column text displayed in the results table</p>
+    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> displayUpload</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>displayUpload:     <code>Boolean</code>
+    </bcode>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Default value: </i><code>false</code>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>Determines whether or not the Submit button should be displayed</p>
+    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> image</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>image:     <code>any</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> imageToUpload</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>imageToUpload:     <code>File</code>
+    </bcode>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>This variable is a reference to the file that will be uploaded, either selected or captured</p>
+    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> imgAvailable</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>imgAvailable:     <code>boolean</code>
+    </bcode>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Default value: </i><code>false</code>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>Determines if an image is available to be uploaded</p>
+    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> instruction</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>instruction:     <code>String</code>
+    </bcode>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Default value: </i><code>Click either the File Select or Webcam Capture button</code>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>Text displayed on the interface indicating what needs to be done</p>
+    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> ml</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>ml:     <code><a href="../injectables/ModelLoaderService.html" target="_self" >ModelLoaderService</a></code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> modelLoaded</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>modelLoaded:     <code>Boolean</code>
+    </bcode>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Default value: </i><code>false</code>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>Indicates whether the model loader service has loaded a model into memory</p>
+    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> modelNumber</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>modelNumber:     <code>number</code>
+    </bcode>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Default value: </i><code>1</code>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>Determines which model is to be used in the model loader service</p>
+    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> modelStatus</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>modelStatus:     <code>string</code>
+    </bcode>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Default value: </i><code>Loading...</code>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>The text displayed on the Submit button</p>
+    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> notReadyToPredict</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>notReadyToPredict:     <code>boolean</code>
+    </bcode>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Default value: </i><code>true</code>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>Determines whether a model is ready and whether an image has been predicted</p>
+    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> predictions</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>predictions:     <code>any</code>
+    </bcode>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>Stores the results returned by the model loader predict method</p>
+    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> resultPreds</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>resultPreds:     <code>any[]</code>
+    </bcode>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>An array used to store JSON objects related to the classes that were predicted. Includes class name, class likeliness,<br>and class catalogue links, if specified</p>
+    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> showSpinner</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>showSpinner:     <code>boolean</code>
+    </bcode>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Default value: </i><code>false</code>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>Determines whether the spinner next to the Submit button should be displayed or not</p>
+    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> streaming</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>streaming:     <code>boolean</code>
+    </bcode>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Default value: </i><code>false</code>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>Determines whether the video element should display the current webcam footage</p>
+    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> uploadCapture</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>uploadCapture:     <code>boolean</code>
+    </bcode>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Default value: </i><code>false</code>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>Determines whether the file to upload was selected from the file explorer or captured via webcam</p>
+    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> video</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>video:     <code>any</code>
+    </bcode>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>The video, canvas, image, and captureButton variables are used when dynamically creating elements for webcam capture</p>
+    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </section>
+</div>
+        <div class="tab-pane fade tab-source-code" id="source">
+            <pre><code class="hljs javascript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { ModelLoaderService } from &#x27;../model/model-loader.service&#x27;;
+import { MatDialog, MatDialogConfig } from &#x27;@angular/material/dialog&#x27;;
+import { QuoteDialogComponent } from &#x27;../quotebuilder/quote-dialog.component&#x27;;
+// import { AngularFireStorage } from &#x27;../../../node_modules/angularfire2/storage&#x27;;
+
+@Component({
+  selector: &#x27;app-imageupload&#x27;,
+  templateUrl: &#x27;./imageupload.component.html&#x27;,
+  styleUrls: [&#x27;./imageupload.component.css&#x27;]
+})
+export class ImageuploadComponent implements OnInit {
+
+  /**
+   * Text displayed on the interface indicating what needs to be done
+   */
+  public instruction: String &#x3D; &#x27;Click either the File Select or Webcam Capture button&#x27;;
+
+  /**
+   * Determines whether the spinner next to the Submit button should be displayed or not
+   */
+  public showSpinner &#x3D; false;
+
+  /**
+   * Determines whether the video element should display the current webcam footage
+   */
+  public streaming &#x3D; false;
+
+  /**
+   * The video, canvas, image, and captureButton variables are used when dynamically creating elements for webcam capture
+   */
+  public video &#x3D; null;
+  public canvas &#x3D; null;
+  public image &#x3D; null;
+  public captureButton &#x3D; null;
+
+  /**
+   * This variable is a reference to the file that will be uploaded, either selected or captured
+   */
+  public imageToUpload: File &#x3D; null;
+
+  /**
+   * Determines whether the file to upload was selected from the file explorer or captured via webcam
+   */
+  public uploadCapture &#x3D; false;
+
+  /**
+   * Determines if an image is available to be uploaded
+   */
+  public imgAvailable &#x3D; false;
+
+  /**
+   * Determines whether or not the Submit button should be displayed
+   */
+  public displayUpload: Boolean &#x3D; false;
+
+  /**
+   * Indicates whether the model loader service has loaded a model into memory
+   */
+  public modelLoaded: Boolean &#x3D; false;
+
+  /**
+   * Stores the results returned by the model loader predict method
+   */
+  public predictions: any;
+
+  /**
+   * An array used to store JSON objects related to the classes that were predicted. Includes class name, class likeliness,
+   * and class catalogue links, if specified
+   */
+  public resultPreds &#x3D; [];
+
+  /**
+   * The header column text displayed in the results table
+   */
+  public displayedColumns &#x3D; [&#x27;name&#x27;, &#x27;likeliness&#x27;, &#x27;link&#x27;];
+
+  /**
+   * Determines whether a model is ready and whether an image has been predicted
+   */
+  public notReadyToPredict &#x3D; true;
+
+  /**
+   * The text displayed on the Submit button
+   */
+  public modelStatus &#x3D; &#x27;Loading...&#x27;;
+
+  /**
+   * Determines which model is to be used in the model loader service
+   */
+  public modelNumber &#x3D; 1;
+
+  /**
+   * This constructor is only used to pass an instance of the HttpClient module.
+   * @param http  HttpClient instance
+   */
+  constructor(public ml: ModelLoaderService, private dialog: MatDialog ) { }
+
+  /**
+   * Upon initialization of the component, the model loader service loads the model. It then queries whether
+   * the model has been loaded every 500 ms and if it is, it allows predicting to take place. This timed query
+   * is due to the asynchronous nature of the TensorFlowJS loadModel method
+   */
+  ngOnInit() {
+    this.ml.loadModel();
+    const modelLoaded &#x3D; setInterval(() &#x3D;&gt; {
+      if (this.ml.modelIsReady()) {
+        this.notReadyToPredict &#x3D; false;
+        clearInterval(modelLoaded);
+        this.modelStatus &#x3D; &#x27;Submit&#x27;;
+      }
+    }, 500);
+  }
+
+  /**
+   *  This function is triggered by the user selecting an image from the file explorer. It displays the selected
+   *  image in the &#x27;preview&#x27; element. This image element is added dynamically and is only done if there is an actual
+   *  file selected. The selected image is also set as the file to be uploaded.
+   */
+  madeChange() {
+    const uploadedFile &#x3D; document.querySelector(&#x27;input&#x27;);
+    const preview &#x3D; document.querySelector(&#x27;.preview&#x27;);
+
+    this.uploadCapture &#x3D; false;
+    this.imageToUpload &#x3D; null;
+    this.streaming &#x3D; false;
+    this.updateInstruction();
+
+    while (preview.firstChild) {
+      preview.removeChild(preview.firstChild);
+    }
+
+    if (uploadedFile.files.length &#x3D;&#x3D;&#x3D; 0) {
+      const newP &#x3D; document.createElement(&#x27;p&#x27;);
+      newP.textContent &#x3D; &#x27;No files currently selected&#x27;;
+      newP.style.setProperty(&#x27;color&#x27;, &#x27;lightgray&#x27;);
+
+      preview.appendChild(newP);
+
+      this.imgAvailable &#x3D; false;
+      this.imageToUpload &#x3D; null;
+      this.updateInstruction();
+    } else {
+      const newP &#x3D; document.createElement(&#x27;p&#x27;);
+      const fileSize &#x3D; this.formattedFileSize(uploadedFile.files[0].size);
+      newP.textContent &#x3D; &#x27;Name: &#x27; + uploadedFile.files[0].name + &#x27; Size: &#x27; + fileSize;
+      newP.style.setProperty(&#x27;color&#x27;, &#x27;lightgray&#x27;);
+      newP.style.setProperty(&#x27;margin&#x27;, &#x27;auto&#x27;);
+      newP.style.setProperty(&#x27;font-family&#x27;, &#x27;&quot;Lato&quot;, Arial, Helvetica, sans-serif&#x27;);
+
+      const image &#x3D; document.createElement(&#x27;img&#x27;);
+      image.src &#x3D; window.URL.createObjectURL(uploadedFile.files[0]);
+      image.style.setProperty(&#x27;height&#x27;, &#x27;200px&#x27;);
+      this.image &#x3D; image;
+
+      preview.appendChild(newP);
+      preview.appendChild(image);
+
+      this.uploadCapture &#x3D; false;
+      this.imgAvailable &#x3D; true;
+      this.imageToUpload &#x3D; uploadedFile.files[0];
+      this.updateInstruction();
+    }
+  }
+
+  /**
+   * This function updates the instruction &lt;p&gt; element to display contextual information.
+   */
+  updateInstruction() {
+    if (this.imgAvailable &#x3D;&#x3D;&#x3D; false) {
+      this.instruction &#x3D; &#x27;Click either the File Select or Webcam Capture button&#x27;;
+    } else {
+      if (this.uploadCapture &#x3D;&#x3D;&#x3D; false) {
+        this.instruction &#x3D; &#x27;Click Submit to submit the selected image&#x27;;
+      } else {
+        this.instruction &#x3D; &#x27;Click Capture to take a screenshot and then click Submit to submit the captured image&#x27;;
+      }
+    }
+  }
+
+/**
+ * This function formats the size value of the selected file from bytes to a readable string.
+ * @param size  This is the size in bytes of the selected file from madeChange().
+ * @returns     Returns the size in bytes, KB, or MB depending on the value of size.
+ */
+  formattedFileSize (size) {
+    if (size &lt; 1024) {
+      return size + &#x27; bytes&#x27;;
+    }
+    if (size &lt; 1024 * 1024) {
+      return ( (size / 1024).toFixed(2) + &#x27;KB&#x27; );
+    }
+    if (size &gt; 1024 * 1024) {
+      return ( (size / (1024 * 1024)).toFixed(2) + &#x27;MB&#x27;);
+    }
+
+  }
+
+  /**
+   * This function handles everything to do with the webcam capture option. It is called when the webcam button is clicked
+   * and creates and maintains webcam footage in a video element. Allows the user to capture an image from the webcam
+   * recording to upload.
+   */
+  captureImage() {
+    const preview &#x3D; document.querySelector(&#x27;.preview&#x27;);
+    this.imgAvailable &#x3D; false;
+    this.displayUpload &#x3D; false;
+    this.updateInstruction();
+
+    while (preview.firstChild) {
+      preview.removeChild(preview.firstChild);
+    }
+
+    this.imageToUpload &#x3D; null;
+    this.uploadCapture &#x3D; true;
+
+    // Video element
+    this.video &#x3D; document.createElement(&#x27;video&#x27;);
+    this.video.textContent &#x3D; &#x27;Video stream not available&#x27;;
+    this.video.style.setProperty(&#x27;float&#x27;, &#x27;left&#x27;);
+    this.video.style.setProperty(&#x27;text-align&#x27;, &#x27;center&#x27;);
+
+    // Capture button element
+    this.captureButton &#x3D; document.createElement(&#x27;button&#x27;);
+    this.captureButton.textContent &#x3D; &#x27;CAPTURE&#x27;;
+    this.captureButton.style.setProperty(&#x27;padding&#x27;, &#x27;16px 32px&#x27;);
+    this.captureButton.style.setProperty(&#x27;border&#x27;, &#x27;3px lightgray solid&#x27;);
+    this.captureButton.style.setProperty(&#x27;color&#x27;, &#x27;lightgray&#x27;);
+    this.captureButton.style.setProperty(&#x27;background-color&#x27;, &#x27;rgba(5,5,5,0)&#x27;);
+    this.captureButton.style.setProperty(&#x27;font-family&#x27;, &#x27;&quot;Lato&quot;, Arial, Helvetica, sans-serif&#x27;);
+    this.captureButton.style.setProperty(&#x27;margin-left&#x27;, &#x27;20px&#x27;);
+    this.captureButton.onmouseover &#x3D; function() {
+      this.style.setProperty(&#x27;cursor&#x27;, &#x27;pointer&#x27;);
+      this.style.setProperty(&#x27;background-color&#x27;, &#x27;rgb(33, 74, 95)&#x27;);
+    };
+    this.captureButton.onmouseleave &#x3D; function() {
+      this.style.setProperty(&#x27;cursor&#x27;, &#x27;default&#x27;);
+      this.style.setProperty(&#x27;background-color&#x27;, &#x27;rgba(5,5,5,0)&#x27;);
+    };
+
+    const br &#x3D; document.createElement(&#x27;br&#x27;);
+
+    // Canvas element that draws screenshot
+    this.canvas &#x3D; document.createElement(&#x27;canvas&#x27;);
+    this.canvas.style.setProperty(&#x27;display&#x27;, &#x27;none&#x27;);
+    this.canvas.style.setProperty(&#x27;float&#x27;, &#x27;right&#x27;);
+
+    // Image element displaying saved screenshot
+    this.image &#x3D; document.createElement(&#x27;img&#x27;);
+
+    this.startup(this.video, this.canvas, this.image, this.captureButton);
+
+    preview.appendChild(this.video);
+    preview.appendChild(this.canvas);
+    preview.appendChild(this.image);
+    preview.appendChild(br);
+    preview.appendChild(this.captureButton);
+
+    this.imgAvailable &#x3D; true;
+    this.updateInstruction();
+  }
+
+  /**
+   * This function carries out the process of displaying the webcam footage and saving captured images.
+   * @param video   the video element that displays the webcam footage
+   * @param canvas  the canvas element that draws the capture webcam image upon clicking Capture
+   * @param image   the image element that displays the image drawn by the canvas
+   * @param captureButton   the button element that allows the user to capture the webcam footage
+   */
+  startup(video, canvas, image, captureButton) {
+    const width &#x3D; 320;
+    let height &#x3D; 0;
+    navigator.mediaDevices.getUserMedia({video: true})
+      .then(function(stream) {
+        video.srcObject &#x3D; stream;
+        video.play();
+      })
+      .catch(function(err) {
+        console.log(&#x27;An error has occured! &#x27; + err);
+      });
+
+    video.addEventListener(&#x27;canplay&#x27;, function(ev) {
+      if (!this.streaming) {
+        height &#x3D; video.videoHeight / (video.videoWidth / width);
+        video.setAttribute(&#x27;width&#x27;, width);
+        video.setAttribute(&#x27;height&#x27;, height);
+        canvas.setAttribute(&#x27;width&#x27;, width);
+        canvas.setAttribute(&#x27;height&#x27;, height);
+        this.streaming &#x3D; true;
+      }
+    }, false);
+
+    captureButton.onclick &#x3D; function() {
+      const context &#x3D; canvas.getContext(&#x27;2d&#x27;);
+      let data &#x3D; null;
+      if (width &amp;&amp; height) {
+        this.uploadCapture &#x3D; true;
+        canvas.width &#x3D; width;
+        canvas.height &#x3D; height;
+        context.drawImage(video, 0, 0, width, height);
+
+        data &#x3D; canvas.toDataURL(&#x27;image/png&#x27;);
+        image.src &#x3D; data;
+
+      } else {
+        // this.clearPhoto(canvas, image);
+      }
+    };
+
+    this.clearPhoto(canvas, image);
+  }
+
+  /**
+   * This function makes the canvas white if no image has been captured yet.
+   * @param canvas Same as the startup function
+   * @param image Same as the startup function
+   */
+  clearPhoto(canvas, image) {
+    const context3 &#x3D; canvas.getContext(&#x27;2d&#x27;);
+    context3.fillStyle &#x3D; &#x27;rgb(207, 207, 207)&#x27;;
+    context3.fillRect(0, 0, canvas.width, canvas.height);
+
+    const dataF &#x3D; canvas.toDataURL(&#x27;image/png&#x27;);
+    image.setAttribute(&#x27;src&#x27;, dataF);
+
+    this.imgAvailable &#x3D; false;
+  }
+
+  /**
+   * This function is required for the browser to make use of the device&#x27;s webcam.
+   */
+  // hasGetUserMedia() {
+  //   return !!(navigator.mediaDevices &amp;&amp; navigator.mediaDevices.getUserMedia);
+  // }
+
+  /**
+   * Called when the Submit button is clicked. Calls the model loader service&#x27;s predictImage method,
+   * then maps the predictions and fills the resultPreds array, so that the results table is updated
+   */
+  predictImage() {
+
+    // Spinner is not displayed due to async issues or not being able to figure it out
+    const updateStatus &#x3D; (txt) &#x3D;&gt; {
+      this.modelStatus &#x3D; txt;
+      this.showSpinner &#x3D; true;
+    };
+
+    updateStatus(&#x27;Predicting...&#x27;);
+    this.ml.predictImage(this.image)
+    .then((predictions) &#x3D;&gt; {
+      this.showSpinner &#x3D; false;
+      this.resultPreds &#x3D; this.ml.mapPredictions(predictions);
+      this.modelStatus &#x3D; &#x27;Submit&#x27;;
+      if (this.ml.modelHasLinks()) {
+        this.displayedColumns &#x3D; [&#x27;name&#x27;, &#x27;likeliness&#x27;, &#x27;link&#x27;, &#x27;quote&#x27;];
+      } else {
+        this.displayedColumns &#x3D; [&#x27;name&#x27;, &#x27;likeliness&#x27;];
+      }
+
+      const el &#x3D; document.querySelector(&#x27;.result-card&#x27;);
+      el.scrollIntoView({behavior: &#x27;smooth&#x27;});
+    })
+    .catch((error) &#x3D;&gt; {
+      console.error(&#x27;Error: &#x27; + error);
+      this.showSpinner &#x3D; false;
+    });
+
+  }
+
+  /**
+   * Called when the select element is changed. The model loader service methods are called to change the
+   * selected model and load it into memory
+   */
+  changeSelectedModel() {
+    this.ml.changeModel(this.modelNumber);
+    this.notReadyToPredict &#x3D; true;
+    this.modelStatus &#x3D; &#x27;Loading...&#x27;;
+    this.ml.loadModel();
+    const modelLoaded &#x3D; setInterval(() &#x3D;&gt; {
+      if (this.ml.modelIsReady()) {
+        this.notReadyToPredict &#x3D; false;
+        clearInterval(modelLoaded);
+        this.modelStatus &#x3D; &#x27;Submit&#x27;;
+      }
+    }, 500);
+  }
+
+  /**
+   * Called when clicking on a predicted item. Handles the addition of quotes
+   * @param elName Corresponds with the results table element clicked
+   */
+  openQuoteDialog(elName) {
+    const dialogConfig &#x3D; new MatDialogConfig();
+
+    dialogConfig.autoFocus &#x3D; true;
+    dialogConfig.data &#x3D; {
+      name: elName
+    };
+    dialogConfig.minHeight &#x3D; &#x27;250px&#x27;;
+    dialogConfig.minHeight &#x3D; &#x27;300px&#x27;;
+
+    this.dialog.open(QuoteDialogComponent, dialogConfig);
+  }
+
+  /**
+   * This function scrolls up to the Image Submit section of the page
+   */
+  async reloadPage() {
+    const el &#x3D; document.querySelector(&#x27;.upload-card__instruction&#x27;);
+    el.scrollIntoView({behavior: &#x27;smooth&#x27;});
+  }
+
+}
+</code></pre>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+           </div>
+       </div>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/search/search.js"></script>
+       <script src="../js/search/lunr.min.js"></script>
+       <script src="../js/search/search-lunr.js"></script>
+
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/highlight.pack.js"></script>
+       <script src="../js/libs/highlightjs-line-numbers.min.js"></script>
+       <script src="../js/search/search_index.js"></script>
+       <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                hljs.initHighlightingOnLoad();
+                hljs.initLineNumbersOnLoad();
+            });
+       </script>
+
+    </body>
+</html>

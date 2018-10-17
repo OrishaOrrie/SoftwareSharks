@@ -1,64 +1,76 @@
 .total-upload-card{
-    background-color: rgb(60, 60, 80);
+    background-color:  #607D8B;
     color: lightgray;
+}
+
+.total-upload-card__title{
+    text-align: center;
+    font-family: "Lato", Arial, Helvetica, sans-serif;
 }
 
 .upload-card {
-    background-color: rgb(207, 207, 207);
+    background-color:  #607D8B;
+    border: lightgray 2px solid;
 }
 
-.title{
-    text-align: center;
-    font-family: "Lato", Arial, Helvetica, sans-serif;
-}
-
-.instruction {
+.upload-card__instruction {
     text-align: center;
     font-size: 150%;
-    color: rgb(100, 99, 99);
-}
-
-.nothing-to-show{
-    color: lightgray;
-}
-
-.result-card{
-    background-color: rgb(75, 75, 97);
-}
-
-.results-list{
-    color: lightgray;
-    text-align: left;
-}
-
-mat-card-title{
     color: lightgray;
     font-family: "Lato", Arial, Helvetica, sans-serif;
 }
 
-.file-button {
+.upload-card__file-button {
     text-align: center;
 }
 
-.custom-file-upload {
+.upload-card__button-label {
     font-family: "Lato", sans-serif;
     font-size: 100%;
     /* border: 1px solid rgb(75, 75, 97); */
     display: inline-block;
-    padding: 16px 32px;
+    padding-top: 8%;
+    padding-bottom: 8%;
+    padding-left: 10%;
+    padding-right: 10%;
+    /* min-width: 130px; */
+    width: 70%;
     cursor: pointer;
-    border-radius: 3px;
-    box-shadow: 2px 2px 2px black;
-    color: white;
+    border: 3px solid lightgray;
+    color: lightgray;
     background: #607D8B;
+    line-height: 20px;
 }
 
-.custom-file-upload:hover{
-    font-size: 100%;
-    background: rgb(144, 144, 158);
-    display: inline-block;
-    padding: 16px 32px;
+.upload-card__button-label:hover{
+    background: rgb(68, 101, 117);
     cursor: pointer;
+}
+
+.upload-card__button-label:active{
+    background: rgb(146, 170, 182);
+}
+
+.button__icon {
+    padding-right: 10px;
+    padding-bottom: 6px;
+    /* background: red; */
+}
+
+.preview {
+    width: 100%;
+    text-align: center;
+    background: rgb(13, 33, 44);
+    border: 5px lightgray solid;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.preview__no-files {
+    color: lightgray;
+    font-family: "Lato", Arial, Helvetica, sans-serif;
 }
 
 #file-upload {
@@ -69,16 +81,81 @@ mat-card-title{
     display: none;
 }
 
-.upload-button {
-    width: 200%;
+.model-select {
+    text-align: center;
+    color: white;
+    border: 3px solid lightgray;
+    width: 80%;
+}
+
+.upload-card__upload-button {
+    background: #607D8B;
+    border: 3px solid lightgray;
+    padding: 10px 50px;
     font-size: 150%;
     float: left;
+    color: lightgray;
+    font-family: "Lato", Arial, Helvetica, sans-serif;
 }
 
 mat-spinner{
     float: right;
 }
 
+.result-card{
+    background-color: lightgray;
+    text-align: center;
+}
+
+.result-card__nothing-to-show{
+    color: rgb(35, 64, 78);
+    font-family: "Lato", Arial, Helvetica, sans-serif;
+}
+
+.result-card__results-list{
+    font-family: "Lato", Arial, Helvetica, sans-serif;
+    text-align: left;
+}
+
+.results__title {
+    color: rgb(35, 64, 78);
+    font-family: "Lato", Arial, Helvetica, sans-serif;
+}
+
+.table__container {
+    height: 400px;
+    overflow: auto;
+    margin: auto 10%;
+    text-align: left;
+}
+
+.results__table {
+    margin-right: 20%;
+    width: 100%;
+    background-color: #CFD8DC;
+}
+
+.table__string {
+    color: rgb(35, 64, 78);
+    font-family: "Lato", Arial, Helvetica, sans-serif;
+}
+
+.table__header {
+    background-color: #607D8B;
+    text-transform: capitalize;
+}
+
+.table__row {
+    background-color: rgb(228, 228, 228);
+}
+
+.table__row:hover {
+    background-color: lightgray;
+}
+
 .reload-upload{
-    align-content: center;
+    border: 3px solid rgb(35, 64, 78);
+    color: rgb(35, 64, 78);
+    font-family: "Lato", Arial, Helvetica, sans-serif;
+    background-color: rgba(5,5,5,0);
 }

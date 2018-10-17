@@ -3,8 +3,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './../material.module';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ContactUsComponent } from './contact-us.component';
-import { RouterModule, Router } from '@angular/router';
-import { RouterTestingModule } from '@angular/router/testing';
 
 describe('ContactUsComponent', () => {
   let component: ContactUsComponent;
@@ -66,5 +64,18 @@ describe('ContactUsComponent', () => {
     email.setValue('test@2');
     errors = email.errors || {};
     expect(errors['email']).toBeFalsy();
+  });
+
+  it('valid email submission should result in a success message being displayed', () => {
+    component.myGroup.controls['name'].setValue('JasmineTest');
+    component.myGroup.controls['email'].setValue('jasmine@test.com');
+    component.myGroup.controls['message'].setValue('JasmineTest is happening hello');
+    component.onSubmit();
+    expect(component.showSpinner).toBeTruthy();
+  });
+
+  it('adding a quote to the message should create a quote message to append', () => {
+    component.addQuoteToMessage();
+    expect(component.quoteMessage.length).toBeGreaterThan(1);
   });
 });

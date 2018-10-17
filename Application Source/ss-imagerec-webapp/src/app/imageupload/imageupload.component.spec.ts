@@ -1,16 +1,19 @@
+// import { AngularFireStorageModule, AngularFireStorage } from 'angularfire2/storage';
 import { trigger } from '@angular/animations';
-import { HttpClientModule } from '@angular/common/http';
-import { async, ComponentFixture, TestBed, tick } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, tick, inject, fakeAsync } from '@angular/core/testing';
 import { MaterialModule } from './../material.module';
 import { ImageuploadComponent } from './imageupload.component';
 import { DebugElement } from '../../../node_modules/@angular/core';
 import { By } from '@angular/platform-browser';
+import { ModelLoaderService } from '../model/model-loader.service';
+import { FormsModule } from '@angular/forms';
+import { QuoteBuilderService } from '../quotebuilder/quote-builder.service';
 
 describe('ImageuploadComponent', () => {
   let component: ImageuploadComponent;
   let fixture: ComponentFixture<ImageuploadComponent>;
-  let previewEl, fileSelectEl, fileSelButtonEl, webcamButtonEl: DebugElement;
-  let captureButton, uploadButtonEl: DebugElement;
+  let previewEl, fileSelectEl, webcamButtonEl: DebugElement;
+  let captureButton: DebugElement;
   let spy: any;
 
   beforeEach(async(() => {
@@ -18,7 +21,7 @@ describe('ImageuploadComponent', () => {
       declarations: [ ImageuploadComponent ],
       imports: [
         MaterialModule,
-        HttpClientModule
+        FormsModule
       ]
     })
     .compileComponents();
@@ -30,7 +33,6 @@ describe('ImageuploadComponent', () => {
 
     previewEl = fixture.debugElement.query(By.css('.preview'));
     fileSelectEl = fixture.debugElement.query(By.css('#file-upload'));
-    fileSelButtonEl = fixture.debugElement.query(By.css('.custom-file-upload'));
     webcamButtonEl = fixture.debugElement.query(By.css('#webcam-upload'));
     captureButton = fixture.debugElement.query(By.css('button'));
 
@@ -43,13 +45,10 @@ describe('ImageuploadComponent', () => {
     spy = null;
   });
 
-  it('should create', () => {
+  it('should create', async(inject([ModelLoaderService],
+    (service: ModelLoaderService, qs: QuoteBuilderService) => {
     expect(component).toBeTruthy();
-  });
-
-  /**
-   * File Select option
-   */
+  })));
 
   it('madeChange should be called when a file has been selected', () => {
     spy = spyOn(component, 'madeChange');
@@ -57,19 +56,18 @@ describe('ImageuploadComponent', () => {
     expect(spy).toHaveBeenCalled();
   });
 
-  xit('preview should have removed all of its children', () => {
-    const numChildren = previewEl.children.length;
-    spy = spyOn(previewEl, 'removeChild');
-    component.madeChange();
-    fixture.detectChanges();
-    expect(previewEl.removeChild).toHaveBeenCalledTimes(numChildren);
-  });
-
   it('a message should be displayed if no file was selected', () => {
     spy = spyOn(component, 'updateInstruction');
     component.madeChange();
     fixture.detectChanges();
     expect(previewEl.children.length).toBe(1);
+  });
+
+  it('should display an appropriate message if no image has been captured', () => {
+    component.imgAvailable = true;
+    component.uploadCapture = false;
+    component.updateInstruction();
+    expect(component.instruction).toBe('Click Submit to submit the selected image');
   });
 
   xit('an image should appear if a file was selected', () => {
@@ -88,7 +86,6 @@ describe('ImageuploadComponent', () => {
   /**
    * Formatted File Size function
    */
-
   it('should return a formatted file size in bytes if small', () => {
     const size = 200;
     expect(component.formattedFileSize(size)).toBe('200 bytes');
@@ -107,7 +104,6 @@ describe('ImageuploadComponent', () => {
   /**
    * Webcam option
    */
-
   it('webcam should activate when Webcam Capture is clicked', () => {
     spy = spyOn(navigator.mediaDevices, 'getUserMedia');
     webcamButtonEl.triggerEventHandler('click', null);
@@ -130,66 +126,21 @@ describe('ImageuploadComponent', () => {
   });
 
   /**
-   * Image Upload
+   * Model service integration
    */
-  it('should not display Upload button if no image was selected or captured', () => {
-    uploadButtonEl = fixture.debugElement.query(By.css('.upload-button'));
+  it('should update status text if an image is being predicted', () => {
+    // tslint:disable-next-line:prefer-const
+    let testImg: HTMLImageElement;
+    component.image = testImg;
+    component.predictImage();
     fixture.detectChanges();
-    expect(uploadButtonEl).toBeNull();
+    expect(component.modelStatus).toBe('Predicting...');
   });
 
-  it('should display Upload button if image has been selected or captured', () => {
-    component.imgAvailable = true;
+  it('should change the model correctly', () => {
+    component.changeSelectedModel();
     fixture.detectChanges();
-    uploadButtonEl = fixture.debugElement.query(By.css('.upload-button'));
-    expect(uploadButtonEl).toBeTruthy();
-  });
-
-  it('should display an error message if no image is selected when Upload is clicked', () => {
-    component.uploadCapture = false;
-    component.imageToUpload = null;
-    spy = spyOn(component, 'updateInstruction');
-    component.uploadImage();
-    fixture.detectChanges();
-    expect(component.updateInstruction).toHaveBeenCalled();
-  });
-
-  it('should call the http function if an image is selected when Upload is clicked', () => {
-    const mockBlob = new Blob([''], {type: 'image/png'});
-    mockBlob['lastModifiedDate'] = '';
-    mockBlob['name'] = 'fileName';
-    const mockFile = <File>mockBlob;
-
-    component.uploadCapture = false;
-    component.imageToUpload = mockFile;
-    spy = spyOn(component, 'httpUploadImage');
-    component.uploadImage();
-    fixture.detectChanges();
-    expect(component.httpUploadImage).toHaveBeenCalled();
-  });
-
-  it('should call getCapturedImage if the webcam option was selected and the Upload button is clicked', () => {
-    component.uploadCapture = true;
-    component.imageToUpload = null;
-    spy = spyOn(component, 'getCapturedImage');
-    let spy2 = spy;
-    spy2 = spyOn(component, 'updateInstruction');
-    component.uploadImage();
-    fixture.detectChanges();
-    expect(component.getCapturedImage).toHaveBeenCalled();
-    expect(component.updateInstruction).toHaveBeenCalled();
-  });
-
-  xit('should store the file if one was selected', () => {
-    const mockBlob = new Blob([''], {type: 'image/png'});
-    mockBlob['lastModifiedDate'] = '';
-    mockBlob['name'] = 'fileName';
-    const mockFile = <File>mockBlob;
-
-    fileSelectEl.nativeElement.setAttribute('file', mockFile);
-    component.madeChange();
-    fixture.detectChanges();
-    expect(fileSelectEl.nativeElement.getAttribute('files')).toBeTruthy();
+    expect(component.modelStatus).toBe('Loading...');
   });
 
 });

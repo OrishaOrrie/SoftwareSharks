@@ -1,57 +1,88 @@
 <div class="welcome-container">
 
-  <div class="intro-message">Let us tell you what you're holding</div>
-
-  <div style="width:100%;">
-    <mat-grid-list cols="3" rowHeight="9:10" gutterSize="10px">
-      <mat-grid-tile class="step-tile" [colspan]=1 >
-        <mat-card class="hvr-float step-card" style="background-image: url(/assets/taking-img-of-dessert.jpeg)">
-          <h2 class="step-number">1</h2>
-          <div class="steps-descript">image<br>upload</div>
-          <mat-card class="detailed-descript" color="primary">
-              Click the Upload Image button to continue
-          </mat-card>
-        </mat-card>
-      </mat-grid-tile>
-      <mat-grid-tile class="step-tile" [colspan]=1>
-        <mat-card class="hvr-float step-card" style="background-image: url(/assets/gears.jpeg)">
-          <h2 class="step-number">2</h2>
-          <div class="steps-descript">image<br>analysis</div>
-          <mat-card class="detailed-descript" color="primary">
-              We run the image through our image recognition model
-          </mat-card>
-        </mat-card>
-      </mat-grid-tile>
-      <mat-grid-tile class="step-tile" [colspan]=1>
-        <mat-card class="hvr-float step-card" style="background-image: url(/assets/hardware-store.jpg)">
-          <h2 class="step-number">3</h2>
-          <div class="steps-descript">image<br>classification</div>
-          <mat-card class="detailed-descript" color="primary">
-              Receive a classification of the object in the image
-          </mat-card>
-        </mat-card>
-      </mat-grid-tile>
-    </mat-grid-list>
+  <h1 class="intro-message">Let us tell you what you're holding</h1>
+  <h2 class="intro__subtitle">Ninshiki uses Artificial Intelligence and Computer Vision to predict the object in an image</h2>
+  <br>
+  <br>
+  <button mat-stroked-button color="primary" routerLink="/imageupload" class="upload-button" id="submit-button">
+    <i class="material-icons" style="padding-right: 5px; color: lightgray;">image_search</i>
+    <span class="upload-button__text">SUBMIT IMAGE</span>
+  </button>
+  <br>
+  <a mat-stroked-button color="primary" class="playstore-button" id="playstore-button" 
+  href="https://play.google.com/store/apps/details?id=com.softwaresharks.ninshiki" target="_blank">
+    <img class="playstore-icon" src="../../assets/icons/google-play.svg">
+    <span class="upload-button__text">Download from Play Store</span>
+  </a>
+  <br>
+  <br>
+  <div class="carousel">
+    <div class="carousel__img">
+      <img class="carousel__img-src" src="../../assets/pineapple.jpeg">
+    </div>
+    <div class="carousel__content">
+      <h2 class="carousel__content-header">You Select an Image</h2>
+      <p class="carousel__content-text">Have an object that you'd like to classify? Capture an image of it using your webcam or select an 
+        image from your gallery.</p>
+    </div>
   </div>
-
-  <!--mat-card class="how-to hvr-float">
-    <h2 class="steps">1</h2>
-    <div class="steps-descript">image<br>upload</div>
-    <mat-card class="detailed-descript" color="accent">Click the Upload Image button to continue</mat-card>
-  </mat-card>
-  <mat-card class="classify hvr-float">
-    <h2 class="steps">2</h2>
-    <div class="steps-descript">image<br>analysis</div>
-    <mat-card class="detailed-descript" color="primary">We run the image through our image recognition model</mat-card>
-  </mat-card>
-  <mat-card class="getresult hvr-float">
-    <h2 class="steps">3</h2>
-    <div class="steps-descript">image<br>classification</div>
-    <mat-card class="detailed-descript" color="primary">Receive a classification of the object in the image</mat-card>
-  </mat-card-->
-
-  <div class="button-area">
-      <br>
-    <button mat-raised-button color="primary" routerLink="/imageupload" class="go-to-upload">UPLOAD IMAGE</button>
+  <br>
+  <br>
+  <div class="carousel">
+    <div class="carousel__img">
+      <img class="carousel__img-src" src="../../assets/coggers.jpeg">
+    </div>
+    <div class="carousel__content">
+      <h2 class="carousel__content-header">We Analyze the Image</h2>
+      <p class="carousel__content-text">Using state-of-the-art Artificial Intelligence and Image Classification technology, Ninshiki
+          will analyze the content of the image.</p>
+    </div>
   </div>
+  <br>
+  <br>
+  <div class="carousel">
+    <div class="carousel__img">
+      <img class="carousel__img-src" src="../../assets/ikea.jpg">
+    </div>
+    <div class="carousel__content">
+      <h2 class="carousel__content-header">You Learn What the Object Is</h2>
+      <p class="carousel__content-text">Within moments, Ninshiki will return the name or type of the object in the image. Now 
+          you can continue with that knowledge!</p>
+    </div>
+  </div>
+  <!-- <div class="carousel">
+    <div class="carousel__img">
+      <img class="carousel__img-src" src="../../assets/pineapple.jpeg">
+    </div>
+    <div class="carousel__content">
+      <h2 class="carousel__content-header">You Select an Image</h2>
+      <p class="carousel__content-text">Have an object that you'd like to classify? Capture an image of it using your webcam or select an 
+        image from your gallery.</p>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="carousel">
+    <div class="carousel__img">
+      <img class="carousel__img-src" src="../../assets/coggers.jpeg">
+    </div>
+    <div class="carousel__content">
+      <h2 class="carousel__content-header">We Analyze the Image</h2>
+      <p class="carousel__content-text">Using state-of-the-art Artificial Intelligence and Image Classification technology, Ninshiki
+      will analyze the content of the image.</p>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="carousel">
+    <div class="carousel__img">
+      <img class="carousel__img-src" src="../../assets/ikea.jpg">
+    </div>
+    <div class="carousel__content">
+      <h2 class="carousel__content-header">You Learn What the Object Is</h2>
+      <p class="carousel__content-text">Within moments, Ninshiki will return the name or type of the object in the image. Now 
+        you can continue with that knowledge!</p>
+    </div>
+  </div> -->
+
 </div>
