@@ -8,8 +8,6 @@ addons:
       - google-chrome-stable
 
 language: node_js
-node_js:
-  - "8"
 
 branches:
   only:
@@ -33,4 +31,9 @@ script:
   - ng lint
   - ng test --watch=false
   - ng e2e
+  - cd ..
+  - cd './Mobile'
+  - cd './myApp'
+  - npm install
+  - npm run e2e
   # - ng serve
