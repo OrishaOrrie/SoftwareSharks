@@ -127,6 +127,7 @@ ImageScraper = function (category,searchTerm) {
                 if (numDown > numImages-100) {//-250 to speed up
                   //fs.unlinkSync(fileName);
                   //console.log("Unlinking");
+                  // clearTimeout();
                   resolve('\nYEEEEEEEET\n');
                   clearTimeout(); // doesn't work
                   return; // doesn't work
@@ -134,14 +135,18 @@ ImageScraper = function (category,searchTerm) {
                 // if (cb) { cb(err.message); }
               });
             }).on('error', (err, cb) => {
-              fs.unlinkSync(fileName);
+              // console.log("File: " + fileName+" - " + fs.existsSync(fileName));
+              if(fs.existsSync(fileName)) {
+                fs.unlinkSync(fileName);
+              }
               file.close();
+              // numImages--;
               numDown++;
               // --------------------------------------------------
               // Todo: COMMENT WHEN IN PROD
               // --------------------------------------------------
                             
-              if(numDown <= numImages-1000) {//-250 to speed up
+              if(numDown <= numImages-100) {//-250 to speed up
                 console.log(i + ' of '+dirTerm+' was deleted');
                 console.log(numDown + ' images of '+dirTerm+' completed');
               }

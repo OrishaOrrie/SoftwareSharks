@@ -57,14 +57,15 @@ def copyImages(directory):
             numFiles = len(files)
             numTrain = math.floor(0.75 * len(files))
             numVal = math.ceil( 0.25 * len(files) )
+            
             count = 0
             while (count < numTrain):
-                if os.path.isfile(category_path + '/' + files[count]):
-                    shutil.copy(category_path + '/' + files[count], TRAINING_DIR + '/' + x['name'])
+                if os.path.isfile(category_path + '/' + files[count]) and os.access(category_path + '/' + files[count],os.R_OK):
+                    shutil.copyfile(category_path + '/' + files[count], TRAINING_DIR + '/' + x['name'] + '/' + files[count])
                 count += 1
             while (count < numFiles):
-                if os.path.isfile(category_path + '/' + files[count]):
-                    shutil.copy(category_path + '/' + files[count], VALIDATION_DIR + '/' + x['name'])
+                if os.path.isfile(category_path + '/' + files[count]) and os.access(category_path + '/' + files[count],os.R_OK):
+                    shutil.copyfile(category_path + '/' + files[count], VALIDATION_DIR + '/' + x['name'] + '/' + files[count])
                 count += 1
 
 start = time.time()
@@ -81,7 +82,7 @@ createCategoryFolders(TRAINING_DIR)
 createCategoryFolders(VALIDATION_DIR)
 copyImages(ALL_DIR)
 end = time.time()
-print((end - start))# + " seconds to complete which is ")
+# print((end - start))# + " seconds to complete which is ")
 
 # PROCESS
 #   1. Create Training and Validation Folders

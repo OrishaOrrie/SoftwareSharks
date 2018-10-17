@@ -3,6 +3,7 @@ import sys
 import requests
 import cv2
 import os
+
 if len(sys.argv) < 2:
     arg1 = input("Category: ")
 else:
@@ -14,9 +15,13 @@ print(arg1)
 
 for imagePath in paths.list_images(arg1):
     delete = False
-
+    # print(imagePath)
     try:
-        image = cv2.imread(imagePath,0)
+        if os.path.exists(imagePath):
+            # print('Image exists: '+imagePath)
+            image = cv2.imread(imagePath,0)
+        # else:
+        #     image = None
 
         if image is None:
             delete = True
