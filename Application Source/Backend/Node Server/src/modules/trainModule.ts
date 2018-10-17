@@ -173,12 +173,12 @@ const CheckImages = async (header, categories, logger) => {
             logger.debug('Checking folder: ' + categories[category]);
             pyChecker.on('message', (message) => {
                 if (message.length > 0) {
-                    logger.debug('Python Checker: ' + message);
+                    logger.debug('Python Checker(' + header + '): ' + message);
                 }
             });
             pyChecker.end((err, code, signal) => {
                 if (err) {
-                    logger.error('Error: ' + err);
+                    logger.error('Python Checker Error(' + header + '): ' + err);
                     // throw err;
                 }
                 logger.debug('Exited with code <' + code + '> and signal ' + signal);
@@ -215,12 +215,12 @@ const SplitFiles = async (header, logger) => {
         pySplitFiles.send(header);
         pySplitFiles.on('message', (message) => {
             if (message.length > 0) {
-                logger.debug('Python Splitter: ' + message);
+                logger.debug('Python Splitter(' + header + '): ' + message);
             }
         });
         pySplitFiles.end((err, code, signal) => {
             if (err) {
-                logger.error('Error: ' + err);
+                logger.error('Python Splitter Error(' + header + '): ' + err);
                 throw err;
             }
             logger.debug('Exited with code <' + code + '> and signal ' + signal);
@@ -255,12 +255,12 @@ const TrainModel = async (header, epochs, logger) => {
         pyTrainer.send(epochs);
         pyTrainer.on('message', (message) => {
             if (message.length > 0) {
-                logger.debug('Python Trainer: ' + message);
+                logger.debug('Python Trainer(' + header + '): ' + message);
             }
         });
         pyTrainer.end((err, code, signal) => {
             if (err) {
-                logger.error('Error: ' + err);
+                logger.error('Python Trainer Error(' + header + '): ' + err);
                 // throw err;
             }
             logger.debug('Exited with code <' + code + '> and signal ' + signal);
@@ -293,12 +293,12 @@ const TestModelAccuracy = async (header, logger) => {
 
         pyTester.on('message', (message) => {
             if (message.length > 0) {
-                logger.debug('Python Tester: ' + message);
+                logger.debug('Python Tester(' + header + '): ' + message);
             }
         });
         pyTester.end((err, code, signal) => {
             if (err) {
-                logger.error('Error: ' + err);
+                logger.error('Python Tester Error(' + header + '): ' + err);
                 throw err;
             }
             logger.debug('Exited with code <' + code + '> and signal ' + signal);
